@@ -3,139 +3,653 @@
   "type": "object",
   "additionalProperties": false,
   "required": [
-    "schemaVersion", "id", "entityType", "name", "status", "phase",
-    "attention", "version", "lastCompleted", "currentTask", "nextAction",
-    "blocker", "lastAI", "model", "workspace", "lastUpdated", "where",
-    "workspaceObservation", "session", "approvalGates", "conflicts",
-    "sourceFingerprints", "cases", "derivationReason"
+    "schemaVersion",
+    "id",
+    "entityType",
+    "name",
+    "status",
+    "phase",
+    "attention",
+    "version",
+    "lastCompleted",
+    "currentTask",
+    "nextAction",
+    "blocker",
+    "lastAI",
+    "model",
+    "workspace",
+    "lastUpdated",
+    "where",
+    "workspaceObservation",
+    "session",
+    "approvalGates",
+    "conflicts",
+    "sourceFingerprints",
+    "cases",
+    "derivationReason"
   ],
   "properties": {
-    "schemaVersion": {"const": "1.0"},
-    "id": {"type": "string"},
-    "entityType": {"enum": ["project", "system", "case"]},
-    "parentId": {"type": ["string", "null"]},
-    "name": {"$ref": "#/$defs/claim"},
-    "status": {"$ref": "#/$defs/statusClaim"},
-    "phase": {"$ref": "#/$defs/phaseClaim"},
-    "attention": {"$ref": "#/$defs/claim"},
-    "version": {"$ref": "#/$defs/claim"},
-    "lastCompleted": {"$ref": "#/$defs/claim"},
-    "currentTask": {"$ref": "#/$defs/claim"},
-    "nextAction": {"$ref": "#/$defs/claim"},
-    "blocker": {"$ref": "#/$defs/claim"},
-    "lastAI": {"$ref": "#/$defs/claim"},
-    "model": {"$ref": "#/$defs/claim"},
-    "workspace": {"$ref": "#/$defs/claim"},
-    "lastUpdated": {"$ref": "#/$defs/claim"},
+    "schemaVersion": {
+      "const": "1.0"
+    },
+    "id": {
+      "type": "string"
+    },
+    "entityType": {
+      "enum": [
+        "project",
+        "system",
+        "case"
+      ]
+    },
+    "parentId": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "name": {
+      "$ref": "#/$defs/claim"
+    },
+    "status": {
+      "$ref": "#/$defs/statusClaim"
+    },
+    "phase": {
+      "$ref": "#/$defs/phaseClaim"
+    },
+    "attention": {
+      "$ref": "#/$defs/claim"
+    },
+    "version": {
+      "$ref": "#/$defs/claim"
+    },
+    "lastCompleted": {
+      "$ref": "#/$defs/claim"
+    },
+    "currentTask": {
+      "$ref": "#/$defs/claim"
+    },
+    "nextAction": {
+      "$ref": "#/$defs/claim"
+    },
+    "blocker": {
+      "$ref": "#/$defs/claim"
+    },
+    "lastAI": {
+      "$ref": "#/$defs/claim"
+    },
+    "model": {
+      "$ref": "#/$defs/claim"
+    },
+    "workspace": {
+      "$ref": "#/$defs/claim"
+    },
+    "lastUpdated": {
+      "$ref": "#/$defs/claim"
+    },
     "where": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["localPath", "repository", "branch", "storedCommit", "observedCommit", "production", "database", "relevantDocs"],
+      "required": [
+        "localPath",
+        "repository",
+        "branch",
+        "storedCommit",
+        "observedCommit",
+        "production",
+        "database",
+        "relevantDocs"
+      ],
       "properties": {
-        "localPath": {"$ref": "#/$defs/claim"},
-        "repository": {"$ref": "#/$defs/claim"},
-        "branch": {"$ref": "#/$defs/claim"},
-        "storedCommit": {"$ref": "#/$defs/claim"},
-        "observedCommit": {"$ref": "#/$defs/claim"},
-        "production": {"$ref": "#/$defs/claim"},
-        "database": {"$ref": "#/$defs/claim"},
-        "relevantDocs": {"$ref": "#/$defs/claim"}
+        "localPath": {
+          "$ref": "#/$defs/claim"
+        },
+        "repository": {
+          "$ref": "#/$defs/claim"
+        },
+        "branch": {
+          "$ref": "#/$defs/claim"
+        },
+        "storedCommit": {
+          "$ref": "#/$defs/claim"
+        },
+        "observedCommit": {
+          "$ref": "#/$defs/claim"
+        },
+        "production": {
+          "$ref": "#/$defs/claim"
+        },
+        "database": {
+          "$ref": "#/$defs/claim"
+        },
+        "relevantDocs": {
+          "$ref": "#/$defs/claim"
+        }
       }
     },
     "workspaceObservation": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["observedAt"],
+      "required": [
+        "observedAt"
+      ],
       "properties": {
-        "path": {"type": "string"}, "branch": {"type": "string"},
-        "head": {"type": "string"}, "origin": {"type": "string"},
-        "upstream": {"type": "string"}, "ahead": {"type": "number"},
-        "behind": {"type": "number"}, "dirtyState": {"type": "string"},
-        "observedAt": {"type": ["string", "null"]},
-        "observationFingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
-        "source": {"$ref": "#/$defs/source"},
-        "error": {"type": "string"}
-      }
-    },
-    "session": {
-      "type": ["object", "null"],
-      "additionalProperties": false,
-      "required": ["schemaVersion", "id", "entityId", "ai", "model", "workspaceId", "path", "state", "createdAt", "updatedAt"],
-      "properties": {
-        "schemaVersion": {"const": "1.0"}, "id": {"type": "string"},
-        "entityId": {"type": "string"}, "ai": {"type": "string"},
-        "model": {"type": "string"}, "workspaceId": {"type": "string"},
-        "path": {"type": "string", "safePath": true}, "repository": {"type": "string"},
-        "branch": {"type": "string"}, "startingCommit": {"type": "string"},
-        "currentCommit": {"type": "string"}, "permissionBoundary": {"type": "string"},
-        "declaredTask": {"type": "string"},
-        "state": {"enum": ["starting", "running", "waiting_for_joey", "stopped", "failed"]},
-        "createdAt": {"type": "string", "format": "date-time"},
-        "updatedAt": {"type": "string", "format": "date-time"}
-      }
-    },
-    "approvalGates": {"type": "array", "items": {"type": "string"}},
-    "conflicts": {
-      "type": "array",
-      "items": {
-        "type": "object", "additionalProperties": false,
-        "required": ["kind", "message"],
-        "properties": {
-          "kind": {"type": "string"}, "message": {"type": "string"},
-          "values": {"type": "array", "items": {"type": "string"}}
+        "path": {
+          "type": "string"
+        },
+        "branch": {
+          "type": "string"
+        },
+        "head": {
+          "type": "string"
+        },
+        "origin": {
+          "type": "string"
+        },
+        "upstream": {
+          "type": "string"
+        },
+        "ahead": {
+          "type": "number"
+        },
+        "behind": {
+          "type": "number"
+        },
+        "dirtyState": {
+          "type": "string"
+        },
+        "observedAt": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "observationFingerprint": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "source": {
+          "$ref": "#/$defs/source"
+        },
+        "error": {
+          "type": "string"
         }
       }
     },
-    "sourceFingerprints": {"type": "array", "items": {"$ref": "#/$defs/fingerprint"}},
-    "cases": {"type": "array", "items": {"$ref": "#"}},
-    "derivationReason": {"type": "string"}
+    "session": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "required": [
+        "schemaVersion",
+        "id",
+        "entityId",
+        "ai",
+        "model",
+        "workspaceId",
+        "path",
+        "state",
+        "createdAt",
+        "updatedAt"
+      ],
+      "properties": {
+        "schemaVersion": {
+          "const": "1.0"
+        },
+        "id": {
+          "type": "string"
+        },
+        "entityId": {
+          "type": "string"
+        },
+        "ai": {
+          "type": "string"
+        },
+        "model": {
+          "type": "string"
+        },
+        "workspaceId": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string",
+          "safePath": true
+        },
+        "repository": {
+          "type": "string"
+        },
+        "branch": {
+          "type": "string"
+        },
+        "startingCommit": {
+          "type": "string"
+        },
+        "currentCommit": {
+          "type": "string"
+        },
+        "permissionBoundary": {
+          "type": "string"
+        },
+        "declaredTask": {
+          "type": "string"
+        },
+        "state": {
+          "enum": [
+            "starting",
+            "running",
+            "waiting_for_joey",
+            "stopped",
+            "failed"
+          ]
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "approvalGates": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "conflicts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "kind",
+          "message"
+        ],
+        "properties": {
+          "kind": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          },
+          "values": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "sourceFingerprints": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/fingerprint"
+      }
+    },
+    "cases": {
+      "type": "array",
+      "items": {
+        "$ref": "#"
+      }
+    },
+    "derivationReason": {
+      "type": "string"
+    },
+    "currentStage": {
+      "$ref": "#/$defs/claim"
+    },
+    "management": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "approvals",
+        "decisions"
+      ],
+      "properties": {
+        "approvals": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/claim"
+          }
+        },
+        "decisions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/claim"
+          }
+        }
+      }
+    },
+    "projectUrls": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "canonicalProductionStatus",
+        "entries",
+        "source",
+        "issues"
+      ],
+      "properties": {
+        "canonicalProductionStatus": {
+          "enum": [
+            "recorded",
+            "not_established",
+            "not_recorded"
+          ]
+        },
+        "entries": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/urlEntry"
+          }
+        },
+        "source": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "authority": {
+              "const": "joey_confirmed_project_metadata"
+            },
+            "sourcePath": {
+              "type": "string"
+            },
+            "sourceSection": {
+              "type": "string"
+            },
+            "fingerprint": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            "verificationStatus": {
+              "const": "joey_confirmed_url"
+            },
+            "readAt": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          "additionalProperties": false
+        },
+        "issues": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
   },
   "$defs": {
     "source": {
       "type": "object",
-      "required": ["classification", "sourcePath", "sourceSection", "fingerprint", "verificationStatus", "readAt"],
+      "required": [
+        "classification",
+        "sourcePath",
+        "sourceSection",
+        "fingerprint",
+        "verificationStatus",
+        "readAt"
+      ],
       "properties": {
-        "classification": {"enum": ["canonical", "observed", "local_overlay"]},
-        "sourcePath": {"type": "string"}, "sourceSection": {"type": "string"},
-        "fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
-        "asOf": {"type": "string"}, "verificationStatus": {"type": "string"},
-        "readAt": {"type": "string", "format": "date-time"}
+        "classification": {
+          "enum": [
+            "canonical",
+            "observed",
+            "local_overlay"
+          ]
+        },
+        "sourcePath": {
+          "type": "string"
+        },
+        "sourceSection": {
+          "type": "string"
+        },
+        "fingerprint": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "asOf": {
+          "type": "string"
+        },
+        "verificationStatus": {
+          "type": "string"
+        },
+        "readAt": {
+          "type": "string",
+          "format": "date-time"
+        }
       },
       "additionalProperties": false
     },
     "fingerprint": {
-      "type": "object", "additionalProperties": false,
-      "required": ["path", "fingerprint"],
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "fingerprint"
+      ],
       "properties": {
-        "path": {"type": "string", "minLength": 1},
-        "fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "fingerprint": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
       }
     },
     "claim": {
-      "type": "object", "additionalProperties": false,
-      "required": ["value", "classification", "source"],
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "value",
+        "classification",
+        "source"
+      ],
       "properties": {
         "value": {},
-        "classification": {"enum": ["canonical", "derived", "observed", "local_overlay", "proposal", "unknown"]},
-        "source": {"type": ["object", "null"]}
+        "classification": {
+          "enum": [
+            "canonical",
+            "derived",
+            "observed",
+            "local_overlay",
+            "proposal",
+            "unknown"
+          ]
+        },
+        "source": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "missingReason": {
+          "enum": [
+            "unknown",
+            "not_recorded",
+            "not_derived",
+            "source_unavailable"
+          ]
+        }
       }
     },
     "statusClaim": {
-      "type": "object", "additionalProperties": false,
-      "required": ["value", "classification", "source"],
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "value",
+        "classification",
+        "source"
+      ],
       "properties": {
-        "value": {"enum": ["Active", "Paused", "Idea", "Planned", "Completed", "Unknown"]},
-        "classification": {"enum": ["derived", "unknown"]},
-        "source": {"type": ["object", "null"]}
+        "value": {
+          "enum": [
+            "Active",
+            "Paused",
+            "Idea",
+            "Planned",
+            "Completed",
+            "Unknown"
+          ]
+        },
+        "classification": {
+          "enum": [
+            "derived",
+            "unknown"
+          ]
+        },
+        "source": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "missingReason": {
+          "enum": [
+            "unknown",
+            "not_recorded",
+            "not_derived",
+            "source_unavailable"
+          ]
+        }
       }
     },
     "phaseClaim": {
-      "type": "object", "additionalProperties": false,
-      "required": ["value", "classification", "source"],
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "value",
+        "classification",
+        "source"
+      ],
       "properties": {
-        "value": {"enum": ["IDEA", "DISCOVERY", "SPEC", "BUILD", "TEST", "DEPLOY", "MAINTAIN", "Unknown"]},
-        "classification": {"enum": ["derived", "unknown"]},
-        "source": {"type": ["object", "null"]}
+        "value": {
+          "enum": [
+            "IDEA",
+            "DISCOVERY",
+            "SPEC",
+            "BUILD",
+            "TEST",
+            "DEPLOY",
+            "MAINTAIN",
+            "Unknown"
+          ]
+        },
+        "classification": {
+          "enum": [
+            "derived",
+            "unknown"
+          ]
+        },
+        "source": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "missingReason": {
+          "enum": [
+            "unknown",
+            "not_recorded",
+            "not_derived",
+            "source_unavailable"
+          ]
+        }
+      }
+    },
+    "urlEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "url",
+        "type",
+        "deploymentType",
+        "status",
+        "urlVerification",
+        "deploymentVerification",
+        "deployedGitSha"
+      ],
+      "properties": {
+        "url": {
+          "type": "string",
+          "pattern": "^https://[^\\s/@]+(?:/[^\\s]*)?$"
+        },
+        "type": {
+          "enum": [
+            "canonical_production",
+            "current_application",
+            "preview_test",
+            "legacy"
+          ]
+        },
+        "deploymentType": {
+          "enum": [
+            "Production",
+            "ChatGPT Site",
+            "Preview/Test",
+            "Legacy"
+          ]
+        },
+        "status": {
+          "enum": [
+            "active",
+            "active_legacy_named",
+            "preview",
+            "historical"
+          ]
+        },
+        "urlVerification": {
+          "const": "joey_confirmed"
+        },
+        "deploymentVerification": {
+          "const": "not_verified"
+        },
+        "deployedGitSha": {
+          "type": "null"
+        }
+      }
+    },
+    "urlSource": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authority",
+        "sourcePath",
+        "sourceSection",
+        "fingerprint",
+        "verificationStatus",
+        "readAt"
+      ],
+      "properties": {
+        "authority": {
+          "const": "joey_confirmed_project_metadata"
+        },
+        "sourcePath": {
+          "type": "string"
+        },
+        "sourceSection": {
+          "type": "string"
+        },
+        "fingerprint": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "verificationStatus": {
+          "const": "joey_confirmed_url"
+        },
+        "readAt": {
+          "type": "string",
+          "format": "date-time"
+        }
       }
     }
   }

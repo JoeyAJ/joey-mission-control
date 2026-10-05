@@ -1,0 +1,2745 @@
+{
+  "schemaVersion": "1.0",
+  "generatedAt": "2026-10-05T06:06:12.241Z",
+  "projects": [
+    {
+      "schemaVersion": "1.0",
+      "projectUrls": {
+        "canonicalProductionStatus": "recorded",
+        "entries": [
+          {
+            "url": "https://nexaeon-web.vercel.app/",
+            "type": "canonical_production",
+            "deploymentType": "Production",
+            "status": "active",
+            "urlVerification": "joey_confirmed",
+            "deploymentVerification": "not_verified",
+            "deployedGitSha": null
+          }
+        ],
+        "source": {
+          "authority": "joey_confirmed_project_metadata",
+          "sourcePath": "/Users/joeyaj/Documents/Codex/Projects/joey-mission-control/metadata/project-urls.v1.json",
+          "sourceSection": "Joey confirmed project URL metadata",
+          "fingerprint": "b1bb9a026a0abeec9fe3920b6c5dac419cf63d56531902955a0e30fe2d382001",
+          "verificationStatus": "joey_confirmed_url",
+          "readAt": "2026-10-05T06:06:11.775Z"
+        },
+        "issues": []
+      },
+      "id": "NEXAEON",
+      "entityType": "project",
+      "name": {
+        "value": "NexAeon",
+        "classification": "canonical",
+        "source": {
+          "classification": "canonical",
+          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/MEMORY_INDEX.md",
+          "sourceSection": "Memory Index",
+          "fingerprint": "863dad67e5822c016cf52a92de73ac92ad0feaa2c7b43b69244137f9d98da8e7",
+          "asOf": "2026-10-04",
+          "verificationStatus": "verified_current",
+          "readAt": "2026-10-05T06:06:11.773Z"
+        }
+      },
+      "status": {
+        "value": "Active",
+        "classification": "derived",
+        "source": {
+          "classification": "canonical",
+          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/NEXAEON/CURRENT_STATE.md",
+          "sourceSection": "CURRENT_STATE",
+          "fingerprint": "540b0d7ab1ef76a9de485374c267182aabde992a1e54d024361484f2876d56a8",
+          "asOf": "2026-10-03",
+          "verificationStatus": "verified_current_with_operational_unknowns",
+          "readAt": "2026-10-05T06:06:12.236Z"
+        }
+      },
+      "phase": {
+        "value": "MAINTAIN",
+        "classification": "derived",
+        "source": {
+          "classification": "canonical",
+          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/NEXAEON/CURRENT_STATE.md",
+          "sourceSection": "CURRENT_STATE",
+          "fingerprint": "540b0d7ab1ef76a9de485374c267182aabde992a1e54d024361484f2876d56a8",
+          "asOf": "2026-10-03",
+          "verificationStatus": "verified_current_with_operational_unknowns",
+          "readAt": "2026-10-05T06:06:12.236Z"
+        }
+      },
+      "attention": {
+        "value": "blocker",
+        "classification": "derived",
+        "source": {
+          "classification": "canonical",
+          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/NEXAEON/NEXT_ACTIONS.md",
+          "sourceSection": "NEXT_ACTIONS",
+          "fingerprint": "8a37bf84452dc7b6df67f79e663a0e814f43b807acb8366b20f2140863e010b3",
+          "verificationStatus": "documented",
+          "readAt": "2026-10-05T06:06:12.236Z"
+        }
+      },
+      "currentStage": {
+        "value": "Production-operational multilingual Agent platform. Stage 5-4A n8n contract is accepted. Stage 5-4B Explorer web-search code and admin diagnostic path exist, but real n8n/Tavily configuration and canary remain unverified; public Explorer chat does not currently expose open-web search. Stage 5-4C has not started.",
+        "classification": "canonical",
+        "source": {
+          "classification": "canonical",
+          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/NEXAEON/CURRENT_STATE.md",
+          "sourceSection": "Current Stage",
+          "fingerprint": "540b0d7ab1ef76a9de485374c267182aabde992a1e54d024361484f2876d56a8",
+          "asOf": "2026-10-03",
+          "verificationStatus": "verified_current_with_operational_unknowns",
+          "readAt": "2026-10-05T06:06:12.236Z"
+        }
+      },
+      "management": {
+        "approvals": [],
+        "decisions": [
+          {
+            "value": "Explorer web search: real production canary now, remain diagnostic-only, or defer until distributed rate limiting exists?",
+            "classification": "canonical",
+            "source": {
+              "classification": "canonical",
+              "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/NEXAEON/NEXT_ACTIONS.md",
+              "sourceSection": "Decisions Needed From Joey",
+              "fingerprint": "8a37bf84452dc7b6df67f79e663a0e814f43b807acb8366b20f2140863e010b3",
+              "verificationStatus": "documented",
+              "readAt": "2026-10-05T06:06:12.236Z"
+            }
+          },
+          {
+            "value": "Runtime version: standardize Vercel on Node 22, or move package/CI to Node 24?",
+            "classification": "canonical",
+            "source": {
+              "classification": "canonical",
+              "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/NEXAEON/NEXT_ACTIONS.md",
+              "sourceSection": "Decisions Needed From Joey",
+              "fingerprint": "8a37bf84452dc7b6df67f79e663a0e814f43b807acb8366b20f2140863e010b3",
+              "verificationStatus": "documented",
+              "readAt": "2026-10-05T06:06:12.236Z"
+            }
+          },
+          {
+            "value": "Model architecture: make Shared Model Gateway mandatory for all Agents, or keep it scoped to controlled Xchange generation?",
+            "classification": "canonical",
+            "source": {
+              "classification": "canonical",
+              "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/NEXAEON/NEXT_ACTIONS.md",
+              "sourceSection": "Decisions Needed From Joey",
+              "fingerprint": "8a37bf84452dc7b6df67f79e663a0e814f43b807acb8366b20f2140863e010b3",
+              "verificationStatus": "documented",
+              "readAt": "2026-10-05T06:06:12.236Z"
+            }
+          },
+          {
+            "value": "Collaboration: show an empty live catalog when there are no Public records, or provide local fallback content?",
+            "classification": "canonical",
+            "source": {
+              "classification": "canonical",
+              "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/NEXAEON/NEXT_ACTIONS.md",
+              "sourceSection": "Decisions Needed From Joey",
+              "fingerprint": "8a37bf84452dc7b6df67f79e663a0e814f43b807acb8366b20f2140863e010b3",
+              "verificationStatus": "documented",
+              "readAt": "2026-10-05T06:06:12.236Z"
+            }
+          },
+          {
+            "value": "Fix stale readiness/docs immediately as maintenance, or after Stage 5-4B operational work?",
+            "classification": "canonical",
+            "source": {
+              "classification": "canonical",
+              "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/NEXAEON/NEXT_ACTIONS.md",
+              "sourceSection": "Decisions Needed From Joey",
+              "fingerprint": "8a37bf84452dc7b6df67f79e663a0e814f43b807acb8366b20f2140863e010b3",
+              "verificationStatus": "documented",
+              "readAt": "2026-10-05T06:06:12.236Z"
+            }
+          }
+        ]
+      },
+      "version": {
+        "value": "Unknown",
+        "classification": "unknown",
+        "source": {
+          "classification": "canonical",
+          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/NEXAEON/CURRENT_STATE.md",
+          "sourceSection": "CURRENT_STATE",
+          "fingerprint": "540b0d7ab1ef76a9de485374c267182aabde992a1e54d024361484f2876d56a8",
+          "asOf": "2026-10-03",
+          "verificationStatus": "verified_current_with_operational_unknowns",
+          "readAt": "2026-10-05T06:06:12.236Z"
+        },
+        "missingReason": "not_recorded"
+      },
+      "lastCompleted": {
+        "value": "Unknown",
+        "classification": "unknown",
+        "source": null,
+        "missingReason": "source_unavailable"
+      },
+      "currentTask": {
+        "value": "Unknown",
+        "classification": "unknown",
+        "source": {
+          "classification": "canonical",
+          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/NEXAEON/CURRENT_STATE.md",
+          "sourceSection": "CURRENT_STATE",
+          "fingerprint": "540b0d7ab1ef76a9de485374c267182aabde992a1e54d024361484f2876d56a8",
+          "asOf": "2026-10-03",
+          "verificationStatus": "verified_current_with_operational_unknowns",
+          "readAt": "2026-10-05T06:06:12.236Z"
+        },
+        "missingReason": "not_recorded"
+      },
+      "nextAction": {
+        "value": "- First perform a read-only operational reconciliation of Vercel runtime metadata, non-secret environment-name presence, authorized model readiness and external schemas; record one authoritative runtime matrix.\n- If Joey approves Explorer canary work, follow the Stage 5-4B runbook and stop before public rollout.\n- After operational truth is established, correct the readiness registry and Identity endpoint typo with connected/partial/fallback tests.\n- Require lint, Node tests, 132 eval cases, build and Playwright with zero flaky retries before delivery.",
+        "classification": "canonical",
+        "source": {
+          "classification": "canonical",
+          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/NEXAEON/NEXT_ACTIONS.md",
+          "sourceSection": "NEXT_ACTIONS",
+          "fingerprint": "8a37bf84452dc7b6df67f79e663a0e814f43b807acb8366b20f2140863e010b3",
+          "verificationStatus": "documented",
+          "readAt": "2026-10-05T06:06:12.236Z"
+        }
+      },
+      "blocker": {
+        "value": "- n8n/Tavily configuration and canary require privileged Vercel/n8n access.\n- Admin readiness, migration, repair and write-path checks require valid admin session/CSRF access.\n- Distributed rate limiting and WAF verification require an infrastructure decision and privileged Vercel settings.\n- Exact production deployment-to-Git-SHA proof requires deployment metadata not exposed in the latest read-only inspection.",
+        "classification": "canonical",
+        "source": {
+          "classification": "canonical",
+          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/NEXAEON/NEXT_ACTIONS.md",
+          "sourceSection": "NEXT_ACTIONS",
+          "fingerprint": "8a37bf84452dc7b6df67f79e663a0e814f43b807acb8366b20f2140863e010b3",
+          "verificationStatus": "documented",
+          "readAt": "2026-10-05T06:06:12.236Z"
+        }
+      },
+      "lastAI": {
+        "value": "Unknown",
+        "classification": "unknown",
+        "source": {
+          "classification": "canonical",
+          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/NEXAEON/CURRENT_STATE.md",
+          "sourceSection": "CURRENT_STATE",
+          "fingerprint": "540b0d7ab1ef76a9de485374c267182aabde992a1e54d024361484f2876d56a8",
+          "asOf": "2026-10-03",
+          "verificationStatus": "verified_current_with_operational_unknowns",
+          "readAt": "2026-10-05T06:06:12.236Z"
+        },
+        "missingReason": "not_recorded"
+      },
+      "model": {
+        "value": "Unknown",
+        "classification": "unknown",
+        "source": {
+          "classification": "canonical",
+          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/NEXAEON/CURRENT_STATE.md",
+          "sourceSection": "CURRENT_STATE",
+          "fingerprint": "540b0d7ab1ef76a9de485374c267182aabde992a1e54d024361484f2876d56a8",
+          "asOf": "2026-10-03",
+          "verificationStatus": "verified_current_with_operational_unknowns",
+          "readAt": "2026-10-05T06:06:12.236Z"
+        },
+        "missingReason": "not_recorded"
+      },
+      "workspace": {
+        "value": "/Users/joeyaj/Documents/Codex/Projects/nexaeon-web",
+        "classification": "canonical",
+        "source": {
+          "classification": "canonical",
+          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+          "sourceSection": "NexAeon",
+          "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8",
+          "asOf": "2026-10-04",
+          "verificationStatus": "verified_current",
+          "readAt": "2026-10-05T06:06:11.774Z"
+        }
+      },
+      "lastUpdated": {
+        "value": "2026-10-03",
+        "classification": "canonical",
+        "source": {
+          "classification": "canonical",
+          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/NEXAEON/CURRENT_STATE.md",
+          "sourceSection": "CURRENT_STATE",
+          "fingerprint": "540b0d7ab1ef76a9de485374c267182aabde992a1e54d024361484f2876d56a8",
+          "asOf": "2026-10-03",
+          "verificationStatus": "verified_current_with_operational_unknowns",
+          "readAt": "2026-10-05T06:06:12.236Z"
+        }
+      },
+      "where": {
+        "localPath": {
+          "value": "/Users/joeyaj/Documents/Codex/Projects/nexaeon-web",
+          "classification": "canonical",
+          "source": {
+            "classification": "canonical",
+            "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+            "sourceSection": "NexAeon",
+            "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8",
+            "asOf": "2026-10-04",
+            "verificationStatus": "verified_current",
+            "readAt": "2026-10-05T06:06:11.774Z"
+          }
+        },
+        "repository": {
+          "value": "JoeyAJ/nexaeon-web",
+          "classification": "canonical",
+          "source": {
+            "classification": "canonical",
+            "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+            "sourceSection": "NexAeon",
+            "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8",
+            "asOf": "2026-10-04",
+            "verificationStatus": "verified_current",
+            "readAt": "2026-10-05T06:06:11.774Z"
+          }
+        },
+        "branch": {
+          "value": "main",
+          "classification": "canonical",
+          "source": {
+            "classification": "canonical",
+            "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+            "sourceSection": "NexAeon",
+            "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8",
+            "asOf": "2026-10-04",
+            "verificationStatus": "verified_current",
+            "readAt": "2026-10-05T06:06:11.774Z"
+          }
+        },
+        "storedCommit": {
+          "value": "8271e1bbae78eb7fc4fc86c06feaa50d6fa82c39",
+          "classification": "canonical",
+          "source": {
+            "classification": "canonical",
+            "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+            "sourceSection": "NexAeon",
+            "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8",
+            "asOf": "2026-10-04",
+            "verificationStatus": "verified_current",
+            "readAt": "2026-10-05T06:06:11.774Z"
+          }
+        },
+        "observedCommit": {
+          "value": "8271e1bbae78eb7fc4fc86c06feaa50d6fa82c39",
+          "classification": "observed",
+          "source": {
+            "classification": "observed",
+            "sourcePath": "/Users/joeyaj/Documents/Codex/Projects/nexaeon-web",
+            "sourceSection": "Git observation",
+            "fingerprint": "2789c1a000186082adb46632efc61b2a80862fa2a251202411b3018691407a1c",
+            "verificationStatus": "observed",
+            "readAt": "2026-10-05T06:06:11.895Z"
+          }
+        },
+        "production": {
+          "value": "https://nexaeon-web.vercel.app/",
+          "classification": "canonical",
+          "source": {
+            "classification": "canonical",
+            "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+            "sourceSection": "NexAeon",
+            "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8",
+            "asOf": "2026-10-04",
+            "verificationStatus": "verified_current",
+            "readAt": "2026-10-05T06:06:11.774Z"
+          }
+        },
+        "database": {
+          "value": "No conventional SQL application database. Notion databases hold Identity, Research, Teaching, Knowledge and Xchange destinations. Airtable holds Demos, Action Center, Collaboration, Audit, action drafts and locks.",
+          "classification": "canonical",
+          "source": {
+            "classification": "canonical",
+            "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/NEXAEON/CURRENT_STATE.md",
+            "sourceSection": "CURRENT_STATE",
+            "fingerprint": "540b0d7ab1ef76a9de485374c267182aabde992a1e54d024361484f2876d56a8",
+            "asOf": "2026-10-03",
+            "verificationStatus": "verified_current_with_operational_unknowns",
+            "readAt": "2026-10-05T06:06:12.236Z"
+          }
+        },
+        "relevantDocs": {
+          "value": [
+            "PROJECTS/NEXAEON/PROJECT_MEMORY.md",
+            "PROJECTS/NEXAEON/CURRENT_STATE.md",
+            "PROJECTS/NEXAEON/NEXT_ACTIONS.md",
+            "PROJECTS/NEXAEON/DECISIONS.md"
+          ],
+          "classification": "derived",
+          "source": {
+            "classification": "canonical",
+            "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/MEMORY_INDEX.md",
+            "sourceSection": "Memory Index",
+            "fingerprint": "863dad67e5822c016cf52a92de73ac92ad0feaa2c7b43b69244137f9d98da8e7",
+            "asOf": "2026-10-04",
+            "verificationStatus": "verified_current",
+            "readAt": "2026-10-05T06:06:11.773Z"
+          }
+        }
+      },
+      "workspaceObservation": {
+        "path": "/Users/joeyaj/Documents/Codex/Projects/nexaeon-web",
+        "branch": "main",
+        "head": "8271e1bbae78eb7fc4fc86c06feaa50d6fa82c39",
+        "origin": "git@github.com:JoeyAJ/nexaeon-web.git",
+        "upstream": "origin/main",
+        "ahead": 0,
+        "behind": 0,
+        "dirtyState": "clean",
+        "observedAt": "2026-10-05T06:06:11.895Z",
+        "observationFingerprint": "2789c1a000186082adb46632efc61b2a80862fa2a251202411b3018691407a1c",
+        "source": {
+          "classification": "observed",
+          "sourcePath": "/Users/joeyaj/Documents/Codex/Projects/nexaeon-web",
+          "sourceSection": "Git observation",
+          "fingerprint": "2789c1a000186082adb46632efc61b2a80862fa2a251202411b3018691407a1c",
+          "verificationStatus": "observed",
+          "readAt": "2026-10-05T06:06:11.895Z"
+        }
+      },
+      "session": null,
+      "approvalGates": [
+        "Explorer web search: real production canary now, remain diagnostic-only, or defer until distributed rate limiting exists?",
+        "Runtime version: standardize Vercel on Node 22, or move package/CI to Node 24?",
+        "Model architecture: make Shared Model Gateway mandatory for all Agents, or keep it scoped to controlled Xchange generation?",
+        "Collaboration: show an empty live catalog when there are no Public records, or provide local fallback content?",
+        "Fix stale readiness/docs immediately as maintenance, or after Stage 5-4B operational work?"
+      ],
+      "conflicts": [],
+      "sourceFingerprints": [
+        {
+          "path": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/MEMORY_INDEX.md",
+          "fingerprint": "863dad67e5822c016cf52a92de73ac92ad0feaa2c7b43b69244137f9d98da8e7"
+        },
+        {
+          "path": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+          "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8"
+        },
+        {
+          "path": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/NEXAEON/CURRENT_STATE.md",
+          "fingerprint": "540b0d7ab1ef76a9de485374c267182aabde992a1e54d024361484f2876d56a8"
+        },
+        {
+          "path": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/NEXAEON/NEXT_ACTIONS.md",
+          "fingerprint": "8a37bf84452dc7b6df67f79e663a0e814f43b807acb8366b20f2140863e010b3"
+        }
+      ],
+      "cases": [],
+      "derivationReason": "Conservative mapping from canonical Current Stage"
+    },
+    {
+      "schemaVersion": "1.0",
+      "projectUrls": {
+        "canonicalProductionStatus": "recorded",
+        "entries": [
+          {
+            "url": "https://woosong-buddy-app.vercel.app/",
+            "type": "canonical_production",
+            "deploymentType": "Production",
+            "status": "active",
+            "urlVerification": "joey_confirmed",
+            "deploymentVerification": "not_verified",
+            "deployedGitSha": null
+          }
+        ],
+        "source": {
+          "authority": "joey_confirmed_project_metadata",
+          "sourcePath": "/Users/joeyaj/Documents/Codex/Projects/joey-mission-control/metadata/project-urls.v1.json",
+          "sourceSection": "Joey confirmed project URL metadata",
+          "fingerprint": "b1bb9a026a0abeec9fe3920b6c5dac419cf63d56531902955a0e30fe2d382001",
+          "verificationStatus": "joey_confirmed_url",
+          "readAt": "2026-10-05T06:06:11.775Z"
+        },
+        "issues": []
+      },
+      "id": "WOOSONG_BUDDY",
+      "entityType": "project",
+      "name": {
+        "value": "Woosong Buddy",
+        "classification": "canonical",
+        "source": {
+          "classification": "canonical",
+          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/MEMORY_INDEX.md",
+          "sourceSection": "Memory Index",
+          "fingerprint": "863dad67e5822c016cf52a92de73ac92ad0feaa2c7b43b69244137f9d98da8e7",
+          "asOf": "2026-10-04",
+          "verificationStatus": "verified_current",
+          "readAt": "2026-10-05T06:06:11.773Z"
+        }
+      },
+      "status": {
+        "value": "Active",
+        "classification": "derived",
+        "source": {
+          "classification": "canonical",
+          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/WOOSONG_BUDDY/CURRENT_STATE.md",
+          "sourceSection": "CURRENT_STATE",
+          "fingerprint": "3665171d1a11b9e5c9a99c1e5cb0568c79d28735b41ac7df7504db86a191a488",
+          "asOf": "2026-10-03",
+          "verificationStatus": "verified_current_with_remote_unknowns",
+          "readAt": "2026-10-05T06:06:12.238Z"
+        }
+      },
+      "phase": {
+        "value": "TEST",
+        "classification": "derived",
+        "source": {
+          "classification": "canonical",
+          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/WOOSONG_BUDDY/CURRENT_STATE.md",
+          "sourceSection": "CURRENT_STATE",
+          "fingerprint": "3665171d1a11b9e5c9a99c1e5cb0568c79d28735b41ac7df7504db86a191a488",
+          "asOf": "2026-10-03",
+          "verificationStatus": "verified_current_with_remote_unknowns",
+          "readAt": "2026-10-05T06:06:12.238Z"
+        }
+      },
+      "attention": {
+        "value": "blocker",
+        "classification": "derived",
+        "source": {
+          "classification": "canonical",
+          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/WOOSONG_BUDDY/NEXT_ACTIONS.md",
+          "sourceSection": "NEXT_ACTIONS",
+          "fingerprint": "1ec402f107f07ea8abe6244875c5e2702a990b060e0910180506425392dac6ac",
+          "verificationStatus": "documented",
+          "readAt": "2026-10-05T06:06:12.238Z"
+        }
+      },
+      "currentStage": {
+        "value": "Feature-rich deployed MVP/Public Beta. Core learning, companion, farm, campus and social loops exist. The next stage should be stabilization, security hardening, data consistency, persistence ownership and testability—not continued horizontal feature expansion.",
+        "classification": "canonical",
+        "source": {
+          "classification": "canonical",
+          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/WOOSONG_BUDDY/CURRENT_STATE.md",
+          "sourceSection": "Current Stage",
+          "fingerprint": "3665171d1a11b9e5c9a99c1e5cb0568c79d28735b41ac7df7504db86a191a488",
+          "asOf": "2026-10-03",
+          "verificationStatus": "verified_current_with_remote_unknowns",
+          "readAt": "2026-10-05T06:06:12.238Z"
+        }
+      },
+      "management": {
+        "approvals": [],
+        "decisions": [
+          {
+            "value": "Formal login: school SSO, school-email OTP, magic link, invitation code, or another verification source?",
+            "classification": "canonical",
+            "source": {
+              "classification": "canonical",
+              "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/WOOSONG_BUDDY/NEXT_ACTIONS.md",
+              "sourceSection": "Decisions Needed From Joey",
+              "fingerprint": "1ec402f107f07ea8abe6244875c5e2702a990b060e0910180506425392dac6ac",
+              "verificationStatus": "documented",
+              "readAt": "2026-10-05T06:06:12.238Z"
+            }
+          },
+          {
+            "value": "Which local-only states must sync across devices?",
+            "classification": "canonical",
+            "source": {
+              "classification": "canonical",
+              "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/WOOSONG_BUDDY/NEXT_ACTIONS.md",
+              "sourceSection": "Decisions Needed From Joey",
+              "fingerprint": "1ec402f107f07ea8abe6244875c5e2702a990b060e0910180506425392dac6ac",
+              "verificationStatus": "documented",
+              "readAt": "2026-10-05T06:06:12.238Z"
+            }
+          },
+          {
+            "value": "Approve atomic inventory/equipment RPCs and `pets.equipped_backdrop` migration?",
+            "classification": "canonical",
+            "source": {
+              "classification": "canonical",
+              "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/WOOSONG_BUDDY/NEXT_ACTIONS.md",
+              "sourceSection": "Decisions Needed From Joey",
+              "fingerprint": "1ec402f107f07ea8abe6244875c5e2702a990b060e0910180506425392dac6ac",
+              "verificationStatus": "documented",
+              "readAt": "2026-10-05T06:06:12.238Z"
+            }
+          },
+          {
+            "value": "Keep R3F `PetCanvas` as a future 3D path, or formally archive/remove it from production dependencies?",
+            "classification": "canonical",
+            "source": {
+              "classification": "canonical",
+              "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/WOOSONG_BUDDY/NEXT_ACTIONS.md",
+              "sourceSection": "Decisions Needed From Joey",
+              "fingerprint": "1ec402f107f07ea8abe6244875c5e2702a990b060e0910180506425392dac6ac",
+              "verificationStatus": "documented",
+              "readAt": "2026-10-05T06:06:12.238Z"
+            }
+          },
+          {
+            "value": "Archive, delete or preserve AJ/Golden Retriever legacy material and old `index.html` as product history?",
+            "classification": "canonical",
+            "source": {
+              "classification": "canonical",
+              "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/WOOSONG_BUDDY/NEXT_ACTIONS.md",
+              "sourceSection": "Decisions Needed From Joey",
+              "fingerprint": "1ec402f107f07ea8abe6244875c5e2702a990b060e0910180506425392dac6ac",
+              "verificationStatus": "documented",
+              "readAt": "2026-10-05T06:06:12.238Z"
+            }
+          },
+          {
+            "value": "Move diary, avatar and profile extras to Supabase tables/Storage, with what retention/privacy policy?",
+            "classification": "canonical",
+            "source": {
+              "classification": "canonical",
+              "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/WOOSONG_BUDDY/NEXT_ACTIONS.md",
+              "sourceSection": "Decisions Needed From Joey",
+              "fingerprint": "1ec402f107f07ea8abe6244875c5e2702a990b060e0910180506425392dac6ac",
+              "verificationStatus": "documented",
+              "readAt": "2026-10-05T06:06:12.238Z"
+            }
+          },
+          {
+            "value": "Is full PWA installability/offline behavior a near-term acceptance criterion or is app-like mobile web sufficient?",
+            "classification": "canonical",
+            "source": {
+              "classification": "canonical",
+              "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/WOOSONG_BUDDY/NEXT_ACTIONS.md",
+              "sourceSection": "Decisions Needed From Joey",
+              "fingerprint": "1ec402f107f07ea8abe6244875c5e2702a990b060e0910180506425392dac6ac",
+              "verificationStatus": "documented",
+              "readAt": "2026-10-05T06:06:12.238Z"
+            }
+          }
+        ]
+      },
+      "version": {
+        "value": "Unknown",
+        "classification": "unknown",
+        "source": {
+          "classification": "canonical",
+          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/WOOSONG_BUDDY/CURRENT_STATE.md",
+          "sourceSection": "CURRENT_STATE",
+          "fingerprint": "3665171d1a11b9e5c9a99c1e5cb0568c79d28735b41ac7df7504db86a191a488",
+          "asOf": "2026-10-03",
+          "verificationStatus": "verified_current_with_remote_unknowns",
+          "readAt": "2026-10-05T06:06:12.238Z"
+        },
+        "missingReason": "not_recorded"
+      },
+      "lastCompleted": {
+        "value": "Unknown",
+        "classification": "unknown",
+        "source": null,
+        "missingReason": "source_unavailable"
+      },
+      "currentTask": {
+        "value": "Unknown",
+        "classification": "unknown",
+        "source": {
+          "classification": "canonical",
+          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/WOOSONG_BUDDY/CURRENT_STATE.md",
+          "sourceSection": "CURRENT_STATE",
+          "fingerprint": "3665171d1a11b9e5c9a99c1e5cb0568c79d28735b41ac7df7504db86a191a488",
+          "asOf": "2026-10-03",
+          "verificationStatus": "verified_current_with_remote_unknowns",
+          "readAt": "2026-10-05T06:06:12.238Z"
+        },
+        "missingReason": "not_recorded"
+      },
+      "nextAction": {
+        "value": "- First stabilization PR: documentation truth, PWA icons, locale parity checker and test/CI scripts only; no database or production change.\n- After Joey authorizes remote inspection, compare remote schema with migrations and regenerate `types/database.types.ts`.\n- Design atomic inventory/equipment RPC SQL for review before applying anything remotely.\n- Write an authentication ADR covering verification source, OTP/magic link/SSO, existing-account migration, recovery, rate limiting and enumeration resistance.\n- Replace the boilerplate README with the canonical developer quickstart and separate current v3 rules from legacy documentation.",
+        "classification": "canonical",
+        "source": {
+          "classification": "canonical",
+          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/WOOSONG_BUDDY/NEXT_ACTIONS.md",
+          "sourceSection": "NEXT_ACTIONS",
+          "fingerprint": "1ec402f107f07ea8abe6244875c5e2702a990b060e0910180506425392dac6ac",
+          "verificationStatus": "documented",
+          "readAt": "2026-10-05T06:06:12.238Z"
+        }
+      },
+      "blocker": {
+        "value": "- Remote schema/RLS/function changes require Joey's explicit approval.\n- Auth redesign requires a decision on the real student identity provider and existing-account migration.\n- localStorage-to-server synchronization requires privacy, ownership, conflict and migration policies.\n- Fresh remote schema, Storage object, production and real-device verification are not available from this source-only pass.\n- Lack of automated tests raises regression risk for auth, economy and persistence refactors.",
+        "classification": "canonical",
+        "source": {
+          "classification": "canonical",
+          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/WOOSONG_BUDDY/NEXT_ACTIONS.md",
+          "sourceSection": "NEXT_ACTIONS",
+          "fingerprint": "1ec402f107f07ea8abe6244875c5e2702a990b060e0910180506425392dac6ac",
+          "verificationStatus": "documented",
+          "readAt": "2026-10-05T06:06:12.238Z"
+        }
+      },
+      "lastAI": {
+        "value": "Unknown",
+        "classification": "unknown",
+        "source": {
+          "classification": "canonical",
+          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/WOOSONG_BUDDY/CURRENT_STATE.md",
+          "sourceSection": "CURRENT_STATE",
+          "fingerprint": "3665171d1a11b9e5c9a99c1e5cb0568c79d28735b41ac7df7504db86a191a488",
+          "asOf": "2026-10-03",
+          "verificationStatus": "verified_current_with_remote_unknowns",
+          "readAt": "2026-10-05T06:06:12.238Z"
+        },
+        "missingReason": "not_recorded"
+      },
+      "model": {
+        "value": "Unknown",
+        "classification": "unknown",
+        "source": {
+          "classification": "canonical",
+          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/WOOSONG_BUDDY/CURRENT_STATE.md",
+          "sourceSection": "CURRENT_STATE",
+          "fingerprint": "3665171d1a11b9e5c9a99c1e5cb0568c79d28735b41ac7df7504db86a191a488",
+          "asOf": "2026-10-03",
+          "verificationStatus": "verified_current_with_remote_unknowns",
+          "readAt": "2026-10-05T06:06:12.238Z"
+        },
+        "missingReason": "not_recorded"
+      },
+      "workspace": {
+        "value": "/Users/joeyaj/Documents/Codex/Projects/woosongbuddy",
+        "classification": "canonical",
+        "source": {
+          "classification": "canonical",
+          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+          "sourceSection": "Woosong Buddy",
+          "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8",
+          "asOf": "2026-10-04",
+          "verificationStatus": "verified_current",
+          "readAt": "2026-10-05T06:06:11.774Z"
+        }
+      },
+      "lastUpdated": {
+        "value": "2026-10-03",
+        "classification": "canonical",
+        "source": {
+          "classification": "canonical",
+          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/WOOSONG_BUDDY/CURRENT_STATE.md",
+          "sourceSection": "CURRENT_STATE",
+          "fingerprint": "3665171d1a11b9e5c9a99c1e5cb0568c79d28735b41ac7df7504db86a191a488",
+          "asOf": "2026-10-03",
+          "verificationStatus": "verified_current_with_remote_unknowns",
+          "readAt": "2026-10-05T06:06:12.238Z"
+        }
+      },
+      "where": {
+        "localPath": {
+          "value": "/Users/joeyaj/Documents/Codex/Projects/woosongbuddy",
+          "classification": "canonical",
+          "source": {
+            "classification": "canonical",
+            "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+            "sourceSection": "Woosong Buddy",
+            "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8",
+            "asOf": "2026-10-04",
+            "verificationStatus": "verified_current",
+            "readAt": "2026-10-05T06:06:11.774Z"
+          }
+        },
+        "repository": {
+          "value": "JoeyAJ/woosongbuddy",
+          "classification": "canonical",
+          "source": {
+            "classification": "canonical",
+            "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+            "sourceSection": "Woosong Buddy",
+            "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8",
+            "asOf": "2026-10-04",
+            "verificationStatus": "verified_current",
+            "readAt": "2026-10-05T06:06:11.774Z"
+          }
+        },
+        "branch": {
+          "value": "main",
+          "classification": "canonical",
+          "source": {
+            "classification": "canonical",
+            "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+            "sourceSection": "Woosong Buddy",
+            "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8",
+            "asOf": "2026-10-04",
+            "verificationStatus": "verified_current",
+            "readAt": "2026-10-05T06:06:11.774Z"
+          }
+        },
+        "storedCommit": {
+          "value": "23d58a1f56a76a8198569df345b3d4d09ee3de09",
+          "classification": "canonical",
+          "source": {
+            "classification": "canonical",
+            "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+            "sourceSection": "Woosong Buddy",
+            "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8",
+            "asOf": "2026-10-04",
+            "verificationStatus": "verified_current",
+            "readAt": "2026-10-05T06:06:11.774Z"
+          }
+        },
+        "observedCommit": {
+          "value": "23d58a1f56a76a8198569df345b3d4d09ee3de09",
+          "classification": "observed",
+          "source": {
+            "classification": "observed",
+            "sourcePath": "/Users/joeyaj/Documents/Codex/Projects/woosongbuddy",
+            "sourceSection": "Git observation",
+            "fingerprint": "7000c5be9f0bef7d6962ae6bb501021c054474410138ec8a8471f43e1745013c",
+            "verificationStatus": "observed",
+            "readAt": "2026-10-05T06:06:12.010Z"
+          }
+        },
+        "production": {
+          "value": "https://woosong-buddy-app.vercel.app/",
+          "classification": "canonical",
+          "source": {
+            "classification": "canonical",
+            "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+            "sourceSection": "Woosong Buddy",
+            "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8",
+            "asOf": "2026-10-04",
+            "verificationStatus": "verified_current",
+            "readAt": "2026-10-05T06:06:11.774Z"
+          }
+        },
+        "database": {
+          "value": "Supabase PostgreSQL. Baseline tables include `users`, `pets`, `inventory`, `guestbook`; migrations add reward/economy, raid/friendship/quiz/catalog, campus and social-presence/PK tables. SECURITY DEFINER RPCs and RLS protect core economy/social operations.",
+          "classification": "canonical",
+          "source": {
+            "classification": "canonical",
+            "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/WOOSONG_BUDDY/CURRENT_STATE.md",
+            "sourceSection": "CURRENT_STATE",
+            "fingerprint": "3665171d1a11b9e5c9a99c1e5cb0568c79d28735b41ac7df7504db86a191a488",
+            "asOf": "2026-10-03",
+            "verificationStatus": "verified_current_with_remote_unknowns",
+            "readAt": "2026-10-05T06:06:12.238Z"
+          }
+        },
+        "relevantDocs": {
+          "value": [
+            "PROJECTS/WOOSONG_BUDDY/PROJECT_MEMORY.md",
+            "PROJECTS/WOOSONG_BUDDY/CURRENT_STATE.md",
+            "PROJECTS/WOOSONG_BUDDY/NEXT_ACTIONS.md",
+            "PROJECTS/WOOSONG_BUDDY/DECISIONS.md"
+          ],
+          "classification": "derived",
+          "source": {
+            "classification": "canonical",
+            "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/MEMORY_INDEX.md",
+            "sourceSection": "Memory Index",
+            "fingerprint": "863dad67e5822c016cf52a92de73ac92ad0feaa2c7b43b69244137f9d98da8e7",
+            "asOf": "2026-10-04",
+            "verificationStatus": "verified_current",
+            "readAt": "2026-10-05T06:06:11.773Z"
+          }
+        }
+      },
+      "workspaceObservation": {
+        "path": "/Users/joeyaj/Documents/Codex/Projects/woosongbuddy",
+        "branch": "main",
+        "head": "23d58a1f56a76a8198569df345b3d4d09ee3de09",
+        "origin": "https://github.com/JoeyAJ/woosongbuddy.git",
+        "upstream": "origin/main",
+        "ahead": 0,
+        "behind": 0,
+        "dirtyState": "clean",
+        "observedAt": "2026-10-05T06:06:12.010Z",
+        "observationFingerprint": "7000c5be9f0bef7d6962ae6bb501021c054474410138ec8a8471f43e1745013c",
+        "source": {
+          "classification": "observed",
+          "sourcePath": "/Users/joeyaj/Documents/Codex/Projects/woosongbuddy",
+          "sourceSection": "Git observation",
+          "fingerprint": "7000c5be9f0bef7d6962ae6bb501021c054474410138ec8a8471f43e1745013c",
+          "verificationStatus": "observed",
+          "readAt": "2026-10-05T06:06:12.010Z"
+        }
+      },
+      "session": null,
+      "approvalGates": [
+        "Formal login: school SSO, school-email OTP, magic link, invitation code, or another verification source?",
+        "Which local-only states must sync across devices?",
+        "Approve atomic inventory/equipment RPCs and `pets.equipped_backdrop` migration?",
+        "Keep R3F `PetCanvas` as a future 3D path, or formally archive/remove it from production dependencies?",
+        "Archive, delete or preserve AJ/Golden Retriever legacy material and old `index.html` as product history?",
+        "Move diary, avatar and profile extras to Supabase tables/Storage, with what retention/privacy policy?",
+        "Is full PWA installability/offline behavior a near-term acceptance criterion or is app-like mobile web sufficient?"
+      ],
+      "conflicts": [],
+      "sourceFingerprints": [
+        {
+          "path": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/MEMORY_INDEX.md",
+          "fingerprint": "863dad67e5822c016cf52a92de73ac92ad0feaa2c7b43b69244137f9d98da8e7"
+        },
+        {
+          "path": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+          "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8"
+        },
+        {
+          "path": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/WOOSONG_BUDDY/CURRENT_STATE.md",
+          "fingerprint": "3665171d1a11b9e5c9a99c1e5cb0568c79d28735b41ac7df7504db86a191a488"
+        },
+        {
+          "path": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/WOOSONG_BUDDY/NEXT_ACTIONS.md",
+          "fingerprint": "1ec402f107f07ea8abe6244875c5e2702a990b060e0910180506425392dac6ac"
+        }
+      ],
+      "cases": [],
+      "derivationReason": "Conservative mapping from canonical Current Stage"
+    },
+    {
+      "schemaVersion": "1.0",
+      "projectUrls": {
+        "canonicalProductionStatus": "recorded",
+        "entries": [
+          {
+            "url": "https://namyoung-web3d.vercel.app/",
+            "type": "canonical_production",
+            "deploymentType": "Production",
+            "status": "active",
+            "urlVerification": "joey_confirmed",
+            "deploymentVerification": "not_verified",
+            "deployedGitSha": null
+          }
+        ],
+        "source": {
+          "authority": "joey_confirmed_project_metadata",
+          "sourcePath": "/Users/joeyaj/Documents/Codex/Projects/joey-mission-control/metadata/project-urls.v1.json",
+          "sourceSection": "Joey confirmed project URL metadata",
+          "fingerprint": "b1bb9a026a0abeec9fe3920b6c5dac419cf63d56531902955a0e30fe2d382001",
+          "verificationStatus": "joey_confirmed_url",
+          "readAt": "2026-10-05T06:06:11.775Z"
+        },
+        "issues": []
+      },
+      "id": "NAMYOUNG_WEB3D",
+      "entityType": "project",
+      "name": {
+        "value": "Namyoung Web3D",
+        "classification": "canonical",
+        "source": {
+          "classification": "canonical",
+          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/MEMORY_INDEX.md",
+          "sourceSection": "Memory Index",
+          "fingerprint": "863dad67e5822c016cf52a92de73ac92ad0feaa2c7b43b69244137f9d98da8e7",
+          "asOf": "2026-10-04",
+          "verificationStatus": "verified_current",
+          "readAt": "2026-10-05T06:06:11.773Z"
+        }
+      },
+      "status": {
+        "value": "Active",
+        "classification": "derived",
+        "source": {
+          "classification": "canonical",
+          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/NAMYOUNG/CURRENT_STATE.md",
+          "sourceSection": "CURRENT_STATE",
+          "fingerprint": "835ca188efb2ca75c37a1e4007b4f5250deb19d6b8caf7270a4d0f2e856ae172",
+          "asOf": "2026-10-03",
+          "verificationStatus": "verified_current",
+          "readAt": "2026-10-05T06:06:12.239Z"
+        }
+      },
+      "phase": {
+        "value": "MAINTAIN",
+        "classification": "derived",
+        "source": {
+          "classification": "canonical",
+          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/NAMYOUNG/CURRENT_STATE.md",
+          "sourceSection": "CURRENT_STATE",
+          "fingerprint": "835ca188efb2ca75c37a1e4007b4f5250deb19d6b8caf7270a4d0f2e856ae172",
+          "asOf": "2026-10-03",
+          "verificationStatus": "verified_current",
+          "readAt": "2026-10-05T06:06:12.239Z"
+        }
+      },
+      "attention": {
+        "value": "blocker",
+        "classification": "derived",
+        "source": {
+          "classification": "canonical",
+          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/NAMYOUNG/NEXT_ACTIONS.md",
+          "sourceSection": "NEXT_ACTIONS",
+          "fingerprint": "99e26d97a65c97d3c134d4a4a5a7d401bfd7cfc5d53c4ec07822975212ef913c",
+          "verificationStatus": "documented",
+          "readAt": "2026-10-05T06:06:12.240Z"
+        }
+      },
+      "currentStage": {
+        "value": "Production-deployed browser visualization/configuration PoC. Interactive Web3D, conceptual construction surfaces, layout, trimming and quantity preview are implemented. It is not yet a verified engineering tool, formal BOM/quotation system, persistent Product Asset system or Universal Domain Asset System.",
+        "classification": "canonical",
+        "source": {
+          "classification": "canonical",
+          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/NAMYOUNG/CURRENT_STATE.md",
+          "sourceSection": "Current Stage",
+          "fingerprint": "835ca188efb2ca75c37a1e4007b4f5250deb19d6b8caf7270a4d0f2e856ae172",
+          "asOf": "2026-10-03",
+          "verificationStatus": "verified_current",
+          "readAt": "2026-10-05T06:06:12.239Z"
+        }
+      },
+      "management": {
+        "approvals": [],
+        "decisions": [
+          {
+            "value": "First verified asset: Mesh Block or Stone Box; what exact official name/SKU and PDF/DWG page/drawing governs it?",
+            "classification": "canonical",
+            "source": {
+              "classification": "canonical",
+              "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/NAMYOUNG/NEXT_ACTIONS.md",
+              "sourceSection": "Decisions Needed From Joey",
+              "fingerprint": "99e26d97a65c97d3c134d4a4a5a7d401bfd7cfc5d53c4ec07822975212ef913c",
+              "verificationStatus": "documented",
+              "readAt": "2026-10-05T06:06:12.240Z"
+            }
+          },
+          {
+            "value": "Should the current PoC keep user scaling, and must verified assets be locked to rigid scale?",
+            "classification": "canonical",
+            "source": {
+              "classification": "canonical",
+              "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/NAMYOUNG/NEXT_ACTIONS.md",
+              "sourceSection": "Decisions Needed From Joey",
+              "fingerprint": "99e26d97a65c97d3c134d4a4a5a7d401bfd7cfc5d53c4ec07822975212ef913c",
+              "verificationStatus": "documented",
+              "readAt": "2026-10-05T06:06:12.240Z"
+            }
+          },
+          {
+            "value": "Is boundary cutting conceptual preview only, formally allowed, or disabled for verified assets?",
+            "classification": "canonical",
+            "source": {
+              "classification": "canonical",
+              "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/NAMYOUNG/NEXT_ACTIONS.md",
+              "sourceSection": "Decisions Needed From Joey",
+              "fingerprint": "99e26d97a65c97d3c134d4a4a5a7d401bfd7cfc5d53c4ec07822975212ef913c",
+              "verificationStatus": "documented",
+              "readAt": "2026-10-05T06:06:12.240Z"
+            }
+          },
+          {
+            "value": "Should Auto Fill preserve manually placed products/foundations or replace all builder items?",
+            "classification": "canonical",
+            "source": {
+              "classification": "canonical",
+              "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/NAMYOUNG/NEXT_ACTIONS.md",
+              "sourceSection": "Decisions Needed From Joey",
+              "fingerprint": "99e26d97a65c97d3c134d4a4a5a7d401bfd7cfc5d53c4ec07822975212ef913c",
+              "verificationStatus": "documented",
+              "readAt": "2026-10-05T06:06:12.240Z"
+            }
+          },
+          {
+            "value": "Should V1 persistence be local JSON import/export only, or include backend/cloud/auth despite the current V1 PRD excluding them?",
+            "classification": "canonical",
+            "source": {
+              "classification": "canonical",
+              "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/NAMYOUNG/NEXT_ACTIONS.md",
+              "sourceSection": "Decisions Needed From Joey",
+              "fingerprint": "99e26d97a65c97d3c134d4a4a5a7d401bfd7cfc5d53c4ec07822975212ef913c",
+              "verificationStatus": "documented",
+              "readAt": "2026-10-05T06:06:12.240Z"
+            }
+          }
+        ]
+      },
+      "version": {
+        "value": "Unknown",
+        "classification": "unknown",
+        "source": {
+          "classification": "canonical",
+          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/NAMYOUNG/CURRENT_STATE.md",
+          "sourceSection": "CURRENT_STATE",
+          "fingerprint": "835ca188efb2ca75c37a1e4007b4f5250deb19d6b8caf7270a4d0f2e856ae172",
+          "asOf": "2026-10-03",
+          "verificationStatus": "verified_current",
+          "readAt": "2026-10-05T06:06:12.239Z"
+        },
+        "missingReason": "not_recorded"
+      },
+      "lastCompleted": {
+        "value": "Unknown",
+        "classification": "unknown",
+        "source": null,
+        "missingReason": "source_unavailable"
+      },
+      "currentTask": {
+        "value": "Unknown",
+        "classification": "unknown",
+        "source": {
+          "classification": "canonical",
+          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/NAMYOUNG/CURRENT_STATE.md",
+          "sourceSection": "CURRENT_STATE",
+          "fingerprint": "835ca188efb2ca75c37a1e4007b4f5250deb19d6b8caf7270a4d0f2e856ae172",
+          "asOf": "2026-10-03",
+          "verificationStatus": "verified_current",
+          "readAt": "2026-10-05T06:06:12.239Z"
+        },
+        "missingReason": "not_recorded"
+      },
+      "nextAction": {
+        "value": "- First deliverable: standalone `schemas/` and `fixtures/` for ProductAsset, SiteDefinition, LayoutRequest, Action and GenerationResult; do not change UI behavior.\n- Record whether current scaling remains as a legacy visual mode while verified assets require `scale=[1,1,1]`.\n- Map current catalog/dimensions as unverified adapters with source page/drawing and model hash, not as approved engineering data.\n- In the first behavior-maintenance change, make status text product-neutral and decide/test whether Auto Fill replaces all builder items or only prior Auto Fill groups.",
+        "classification": "canonical",
+        "source": {
+          "classification": "canonical",
+          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/NAMYOUNG/NEXT_ACTIONS.md",
+          "sourceSection": "NEXT_ACTIONS",
+          "fingerprint": "99e26d97a65c97d3c134d4a4a5a7d401bfd7cfc5d53c4ec07822975212ef913c",
+          "verificationStatus": "documented",
+          "readAt": "2026-10-05T06:06:12.240Z"
+        }
+      },
+      "blocker": {
+        "value": "- No Joey-approved first product/SKU and authoritative drawing/page reference.\n- Cutting, stagger, setback and construction rules are unverified and block formal quantity/engineering claims.\n- The no-write constraint prevented rerunning tests/build, asset restoration and Blender generation in this pass.\n- Current architecture lacks schema, persistence, version migration and stable generation identity needed for round-trip/tool handoff.",
+        "classification": "canonical",
+        "source": {
+          "classification": "canonical",
+          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/NAMYOUNG/NEXT_ACTIONS.md",
+          "sourceSection": "NEXT_ACTIONS",
+          "fingerprint": "99e26d97a65c97d3c134d4a4a5a7d401bfd7cfc5d53c4ec07822975212ef913c",
+          "verificationStatus": "documented",
+          "readAt": "2026-10-05T06:06:12.240Z"
+        }
+      },
+      "lastAI": {
+        "value": "Unknown",
+        "classification": "unknown",
+        "source": {
+          "classification": "canonical",
+          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/NAMYOUNG/CURRENT_STATE.md",
+          "sourceSection": "CURRENT_STATE",
+          "fingerprint": "835ca188efb2ca75c37a1e4007b4f5250deb19d6b8caf7270a4d0f2e856ae172",
+          "asOf": "2026-10-03",
+          "verificationStatus": "verified_current",
+          "readAt": "2026-10-05T06:06:12.239Z"
+        },
+        "missingReason": "not_recorded"
+      },
+      "model": {
+        "value": "Unknown",
+        "classification": "unknown",
+        "source": {
+          "classification": "canonical",
+          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/NAMYOUNG/CURRENT_STATE.md",
+          "sourceSection": "CURRENT_STATE",
+          "fingerprint": "835ca188efb2ca75c37a1e4007b4f5250deb19d6b8caf7270a4d0f2e856ae172",
+          "asOf": "2026-10-03",
+          "verificationStatus": "verified_current",
+          "readAt": "2026-10-05T06:06:12.239Z"
+        },
+        "missingReason": "not_recorded"
+      },
+      "workspace": {
+        "value": "/Users/joeyaj/Documents/Codex/Projects/namyoung-web3d",
+        "classification": "canonical",
+        "source": {
+          "classification": "canonical",
+          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+          "sourceSection": "Namyoung Web3D",
+          "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8",
+          "asOf": "2026-10-04",
+          "verificationStatus": "verified_current",
+          "readAt": "2026-10-05T06:06:11.774Z"
+        }
+      },
+      "lastUpdated": {
+        "value": "2026-10-03",
+        "classification": "canonical",
+        "source": {
+          "classification": "canonical",
+          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/NAMYOUNG/CURRENT_STATE.md",
+          "sourceSection": "CURRENT_STATE",
+          "fingerprint": "835ca188efb2ca75c37a1e4007b4f5250deb19d6b8caf7270a4d0f2e856ae172",
+          "asOf": "2026-10-03",
+          "verificationStatus": "verified_current",
+          "readAt": "2026-10-05T06:06:12.239Z"
+        }
+      },
+      "where": {
+        "localPath": {
+          "value": "/Users/joeyaj/Documents/Codex/Projects/namyoung-web3d",
+          "classification": "canonical",
+          "source": {
+            "classification": "canonical",
+            "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+            "sourceSection": "Namyoung Web3D",
+            "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8",
+            "asOf": "2026-10-04",
+            "verificationStatus": "verified_current",
+            "readAt": "2026-10-05T06:06:11.774Z"
+          }
+        },
+        "repository": {
+          "value": "JoeyAJ/namyoung-web3d",
+          "classification": "canonical",
+          "source": {
+            "classification": "canonical",
+            "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+            "sourceSection": "Namyoung Web3D",
+            "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8",
+            "asOf": "2026-10-04",
+            "verificationStatus": "verified_current",
+            "readAt": "2026-10-05T06:06:11.774Z"
+          }
+        },
+        "branch": {
+          "value": "main",
+          "classification": "canonical",
+          "source": {
+            "classification": "canonical",
+            "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+            "sourceSection": "Namyoung Web3D",
+            "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8",
+            "asOf": "2026-10-04",
+            "verificationStatus": "verified_current",
+            "readAt": "2026-10-05T06:06:11.774Z"
+          }
+        },
+        "storedCommit": {
+          "value": "92c17b8adeec5eaa80d27b8facad532e6ff61d59",
+          "classification": "canonical",
+          "source": {
+            "classification": "canonical",
+            "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+            "sourceSection": "Namyoung Web3D",
+            "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8",
+            "asOf": "2026-10-04",
+            "verificationStatus": "verified_current",
+            "readAt": "2026-10-05T06:06:11.774Z"
+          }
+        },
+        "observedCommit": {
+          "value": "92c17b8adeec5eaa80d27b8facad532e6ff61d59",
+          "classification": "observed",
+          "source": {
+            "classification": "observed",
+            "sourcePath": "/Users/joeyaj/Documents/Codex/Projects/namyoung-web3d",
+            "sourceSection": "Git observation",
+            "fingerprint": "a51e346488524b2d83844e1d15834879540c9a8e1943768608aa0da97a47c242",
+            "verificationStatus": "observed",
+            "readAt": "2026-10-05T06:06:12.117Z"
+          }
+        },
+        "production": {
+          "value": "https://namyoung-web3d.vercel.app/",
+          "classification": "canonical",
+          "source": {
+            "classification": "canonical",
+            "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+            "sourceSection": "Namyoung Web3D",
+            "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8",
+            "asOf": "2026-10-04",
+            "verificationStatus": "verified_current",
+            "readAt": "2026-10-05T06:06:11.774Z"
+          }
+        },
+        "database": {
+          "value": "N/A. No runtime database.",
+          "classification": "canonical",
+          "source": {
+            "classification": "canonical",
+            "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/NAMYOUNG/CURRENT_STATE.md",
+            "sourceSection": "CURRENT_STATE",
+            "fingerprint": "835ca188efb2ca75c37a1e4007b4f5250deb19d6b8caf7270a4d0f2e856ae172",
+            "asOf": "2026-10-03",
+            "verificationStatus": "verified_current",
+            "readAt": "2026-10-05T06:06:12.239Z"
+          }
+        },
+        "relevantDocs": {
+          "value": [
+            "PROJECTS/NAMYOUNG/PROJECT_MEMORY.md",
+            "PROJECTS/NAMYOUNG/CURRENT_STATE.md",
+            "PROJECTS/NAMYOUNG/NEXT_ACTIONS.md",
+            "PROJECTS/NAMYOUNG/DECISIONS.md"
+          ],
+          "classification": "derived",
+          "source": {
+            "classification": "canonical",
+            "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/MEMORY_INDEX.md",
+            "sourceSection": "Memory Index",
+            "fingerprint": "863dad67e5822c016cf52a92de73ac92ad0feaa2c7b43b69244137f9d98da8e7",
+            "asOf": "2026-10-04",
+            "verificationStatus": "verified_current",
+            "readAt": "2026-10-05T06:06:11.773Z"
+          }
+        }
+      },
+      "workspaceObservation": {
+        "path": "/Users/joeyaj/Documents/Codex/Projects/namyoung-web3d",
+        "branch": "main",
+        "head": "92c17b8adeec5eaa80d27b8facad532e6ff61d59",
+        "origin": "git@github.com:JoeyAJ/namyoung-web3d.git",
+        "upstream": "origin/main",
+        "ahead": 0,
+        "behind": 0,
+        "dirtyState": "clean",
+        "observedAt": "2026-10-05T06:06:12.117Z",
+        "observationFingerprint": "a51e346488524b2d83844e1d15834879540c9a8e1943768608aa0da97a47c242",
+        "source": {
+          "classification": "observed",
+          "sourcePath": "/Users/joeyaj/Documents/Codex/Projects/namyoung-web3d",
+          "sourceSection": "Git observation",
+          "fingerprint": "a51e346488524b2d83844e1d15834879540c9a8e1943768608aa0da97a47c242",
+          "verificationStatus": "observed",
+          "readAt": "2026-10-05T06:06:12.117Z"
+        }
+      },
+      "session": null,
+      "approvalGates": [
+        "First verified asset: Mesh Block or Stone Box; what exact official name/SKU and PDF/DWG page/drawing governs it?",
+        "Should the current PoC keep user scaling, and must verified assets be locked to rigid scale?",
+        "Is boundary cutting conceptual preview only, formally allowed, or disabled for verified assets?",
+        "Should Auto Fill preserve manually placed products/foundations or replace all builder items?",
+        "Should V1 persistence be local JSON import/export only, or include backend/cloud/auth despite the current V1 PRD excluding them?"
+      ],
+      "conflicts": [],
+      "sourceFingerprints": [
+        {
+          "path": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/MEMORY_INDEX.md",
+          "fingerprint": "863dad67e5822c016cf52a92de73ac92ad0feaa2c7b43b69244137f9d98da8e7"
+        },
+        {
+          "path": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+          "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8"
+        },
+        {
+          "path": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/NAMYOUNG/CURRENT_STATE.md",
+          "fingerprint": "835ca188efb2ca75c37a1e4007b4f5250deb19d6b8caf7270a4d0f2e856ae172"
+        },
+        {
+          "path": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/NAMYOUNG/NEXT_ACTIONS.md",
+          "fingerprint": "99e26d97a65c97d3c134d4a4a5a7d401bfd7cfc5d53c4ec07822975212ef913c"
+        }
+      ],
+      "cases": [],
+      "derivationReason": "Conservative mapping from canonical Current Stage"
+    },
+    {
+      "schemaVersion": "1.0",
+      "projectUrls": {
+        "canonicalProductionStatus": "not_established",
+        "entries": [
+          {
+            "url": "https://namyoung-asset-lab.joeyaj.chatgpt.site/",
+            "type": "current_application",
+            "deploymentType": "ChatGPT Site",
+            "status": "active_legacy_named",
+            "urlVerification": "joey_confirmed",
+            "deploymentVerification": "not_verified",
+            "deployedGitSha": null
+          }
+        ],
+        "source": {
+          "authority": "joey_confirmed_project_metadata",
+          "sourcePath": "/Users/joeyaj/Documents/Codex/Projects/joey-mission-control/metadata/project-urls.v1.json",
+          "sourceSection": "Joey confirmed project URL metadata",
+          "fingerprint": "b1bb9a026a0abeec9fe3920b6c5dac419cf63d56531902955a0e30fe2d382001",
+          "verificationStatus": "joey_confirmed_url",
+          "readAt": "2026-10-05T06:06:11.775Z"
+        },
+        "issues": []
+      },
+      "id": "JOEY_ASSET_SYSTEM",
+      "entityType": "system",
+      "name": {
+        "value": "Joey Asset System",
+        "classification": "canonical",
+        "source": {
+          "classification": "canonical",
+          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/MEMORY_INDEX.md",
+          "sourceSection": "Memory Index",
+          "fingerprint": "863dad67e5822c016cf52a92de73ac92ad0feaa2c7b43b69244137f9d98da8e7",
+          "asOf": "2026-10-04",
+          "verificationStatus": "verified_current",
+          "readAt": "2026-10-05T06:06:11.773Z"
+        }
+      },
+      "status": {
+        "value": "Paused",
+        "classification": "derived",
+        "source": {
+          "classification": "canonical",
+          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/CURRENT_STATE.md",
+          "sourceSection": "CURRENT_STATE",
+          "fingerprint": "13cda352e0b17a6755b1bea83712a7488d7286974a0bf5d7fcc43c48f2e9ae67",
+          "asOf": "2026-10-04",
+          "verificationStatus": "verified_phase_1_characterization_local_github_aligned",
+          "readAt": "2026-10-05T06:06:12.240Z"
+        }
+      },
+      "phase": {
+        "value": "TEST",
+        "classification": "derived",
+        "source": {
+          "classification": "canonical",
+          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/CURRENT_STATE.md",
+          "sourceSection": "CURRENT_STATE",
+          "fingerprint": "13cda352e0b17a6755b1bea83712a7488d7286974a0bf5d7fcc43c48f2e9ae67",
+          "asOf": "2026-10-04",
+          "verificationStatus": "verified_phase_1_characterization_local_github_aligned",
+          "readAt": "2026-10-05T06:06:12.240Z"
+        }
+      },
+      "attention": {
+        "value": "blocker",
+        "classification": "derived",
+        "source": {
+          "classification": "canonical",
+          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/NEXT_ACTIONS.md",
+          "sourceSection": "NEXT_ACTIONS",
+          "fingerprint": "a6d33a09f5ed538ac13aee34215cac6344ac254a14bd045a5abb720873b8fdeb",
+          "verificationStatus": "documented",
+          "readAt": "2026-10-05T06:06:12.240Z"
+        }
+      },
+      "currentStage": {
+        "value": "Phase 1 Characterization is complete, committed, pushed, and verified between local `main` and private GitHub `main` at `eb03e2a9d86abf8b53acfe207fb6737d255ba0d4`. Six files under `cases/CASE_001_NAMYOUNG/characterization/phase-1/` define the v0.15 golden fixture, 21 characterization tests, and behavior/provenance documentation. The recovered production source remains byte-identical to the Phase 0 manifest. Phase 2 has not started.",
+        "classification": "canonical",
+        "source": {
+          "classification": "canonical",
+          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/CURRENT_STATE.md",
+          "sourceSection": "Current Stage",
+          "fingerprint": "13cda352e0b17a6755b1bea83712a7488d7286974a0bf5d7fcc43c48f2e9ae67",
+          "asOf": "2026-10-04",
+          "verificationStatus": "verified_phase_1_characterization_local_github_aligned",
+          "readAt": "2026-10-05T06:06:12.240Z"
+        }
+      },
+      "management": {
+        "approvals": [
+          {
+            "value": "Do not begin Phase 2 or extract/abstract reusable Core.",
+            "classification": "canonical",
+            "source": {
+              "classification": "canonical",
+              "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/NEXT_ACTIONS.md",
+              "sourceSection": "Not Authorized Yet",
+              "fingerprint": "a6d33a09f5ed538ac13aee34215cac6344ac254a14bd045a5abb720873b8fdeb",
+              "verificationStatus": "documented",
+              "readAt": "2026-10-05T06:06:12.240Z"
+            }
+          },
+          {
+            "value": "Do not modify, publish, deploy, or rebind the existing ChatGPT Site.",
+            "classification": "canonical",
+            "source": {
+              "classification": "canonical",
+              "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/NEXT_ACTIONS.md",
+              "sourceSection": "Not Authorized Yet",
+              "fingerprint": "a6d33a09f5ed538ac13aee34215cac6344ac254a14bd045a5abb720873b8fdeb",
+              "verificationStatus": "documented",
+              "readAt": "2026-10-05T06:06:12.240Z"
+            }
+          }
+        ],
+        "decisions": [
+          {
+            "value": "Approve or reject beginning Phase 2 and selecting a reusable-Core extraction boundary.",
+            "classification": "canonical",
+            "source": {
+              "classification": "canonical",
+              "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/NEXT_ACTIONS.md",
+              "sourceSection": "Decisions Needed From Joey",
+              "fingerprint": "a6d33a09f5ed538ac13aee34215cac6344ac254a14bd045a5abb720873b8fdeb",
+              "verificationStatus": "documented",
+              "readAt": "2026-10-05T06:06:12.240Z"
+            }
+          },
+          {
+            "value": "Decide later whether authenticated ChatGPT Site QA or deployment-source reconciliation is needed.",
+            "classification": "canonical",
+            "source": {
+              "classification": "canonical",
+              "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/NEXT_ACTIONS.md",
+              "sourceSection": "Decisions Needed From Joey",
+              "fingerprint": "a6d33a09f5ed538ac13aee34215cac6344ac254a14bd045a5abb720873b8fdeb",
+              "verificationStatus": "documented",
+              "readAt": "2026-10-05T06:06:12.240Z"
+            }
+          }
+        ]
+      },
+      "version": {
+        "value": "Unknown",
+        "classification": "unknown",
+        "source": {
+          "classification": "canonical",
+          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/CURRENT_STATE.md",
+          "sourceSection": "CURRENT_STATE",
+          "fingerprint": "13cda352e0b17a6755b1bea83712a7488d7286974a0bf5d7fcc43c48f2e9ae67",
+          "asOf": "2026-10-04",
+          "verificationStatus": "verified_phase_1_characterization_local_github_aligned",
+          "readAt": "2026-10-05T06:06:12.240Z"
+        },
+        "missingReason": "not_recorded"
+      },
+      "lastCompleted": {
+        "value": "Publish Phase 1 Characterization — Committed and pushed the approved CASE_001_NAMYOUNG Phase 1 Characterization to the private Joey Asset System repository. Local `main`, `origin/main`, and GitHub `main` are aligned at the final Phase 1 commit.",
+        "classification": "canonical",
+        "source": {
+          "classification": "canonical",
+          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/HANDOFF/HISTORY/2026-10-04_1529_joey-asset-system_publish-phase-1-characterization.md",
+          "sourceSection": "Handoff",
+          "fingerprint": "1fc6c9f1232b15a40172c65143b5741712caac02b94745bb538902c20d4f4f53",
+          "asOf": "2026-10-04T15:29:27+09:00",
+          "verificationStatus": "documented",
+          "readAt": "2026-10-05T06:06:11.779Z"
+        }
+      },
+      "currentTask": {
+        "value": "Unknown",
+        "classification": "unknown",
+        "source": {
+          "classification": "canonical",
+          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/CURRENT_STATE.md",
+          "sourceSection": "CURRENT_STATE",
+          "fingerprint": "13cda352e0b17a6755b1bea83712a7488d7286974a0bf5d7fcc43c48f2e9ae67",
+          "asOf": "2026-10-04",
+          "verificationStatus": "verified_phase_1_characterization_local_github_aligned",
+          "readAt": "2026-10-05T06:06:12.240Z"
+        },
+        "missingReason": "not_recorded"
+      },
+      "nextAction": {
+        "value": "- Preserve the published Phase 1 characterization commit as the regression boundary.\n- Keep the existing ChatGPT Site isolated and do not deploy or publish.\n- Preserve the recovered 57-file v0.15 tree as the immutable production-behavior baseline.",
+        "classification": "canonical",
+        "source": {
+          "classification": "canonical",
+          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/NEXT_ACTIONS.md",
+          "sourceSection": "NEXT_ACTIONS",
+          "fingerprint": "a6d33a09f5ed538ac13aee34215cac6344ac254a14bd045a5abb720873b8fdeb",
+          "verificationStatus": "documented",
+          "readAt": "2026-10-05T06:06:12.240Z"
+        }
+      },
+      "blocker": {
+        "value": "Unknown",
+        "classification": "unknown",
+        "source": {
+          "classification": "canonical",
+          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/NEXT_ACTIONS.md",
+          "sourceSection": "NEXT_ACTIONS",
+          "fingerprint": "a6d33a09f5ed538ac13aee34215cac6344ac254a14bd045a5abb720873b8fdeb",
+          "verificationStatus": "documented",
+          "readAt": "2026-10-05T06:06:12.240Z"
+        },
+        "missingReason": "not_recorded"
+      },
+      "lastAI": {
+        "value": "Unknown",
+        "classification": "unknown",
+        "source": {
+          "classification": "canonical",
+          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/CURRENT_STATE.md",
+          "sourceSection": "CURRENT_STATE",
+          "fingerprint": "13cda352e0b17a6755b1bea83712a7488d7286974a0bf5d7fcc43c48f2e9ae67",
+          "asOf": "2026-10-04",
+          "verificationStatus": "verified_phase_1_characterization_local_github_aligned",
+          "readAt": "2026-10-05T06:06:12.240Z"
+        },
+        "missingReason": "not_recorded"
+      },
+      "model": {
+        "value": "Unknown",
+        "classification": "unknown",
+        "source": {
+          "classification": "canonical",
+          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/CURRENT_STATE.md",
+          "sourceSection": "CURRENT_STATE",
+          "fingerprint": "13cda352e0b17a6755b1bea83712a7488d7286974a0bf5d7fcc43c48f2e9ae67",
+          "asOf": "2026-10-04",
+          "verificationStatus": "verified_phase_1_characterization_local_github_aligned",
+          "readAt": "2026-10-05T06:06:12.240Z"
+        },
+        "missingReason": "not_recorded"
+      },
+      "workspace": {
+        "value": "/Users/joeyaj/Documents/Codex/Projects/joey-asset-system",
+        "classification": "canonical",
+        "source": {
+          "classification": "canonical",
+          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+          "sourceSection": "Joey Asset System",
+          "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8",
+          "asOf": "2026-10-04",
+          "verificationStatus": "verified_current",
+          "readAt": "2026-10-05T06:06:11.774Z"
+        }
+      },
+      "lastUpdated": {
+        "value": "2026-10-04",
+        "classification": "canonical",
+        "source": {
+          "classification": "canonical",
+          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/CURRENT_STATE.md",
+          "sourceSection": "CURRENT_STATE",
+          "fingerprint": "13cda352e0b17a6755b1bea83712a7488d7286974a0bf5d7fcc43c48f2e9ae67",
+          "asOf": "2026-10-04",
+          "verificationStatus": "verified_phase_1_characterization_local_github_aligned",
+          "readAt": "2026-10-05T06:06:12.240Z"
+        }
+      },
+      "where": {
+        "localPath": {
+          "value": "/Users/joeyaj/Documents/Codex/Projects/joey-asset-system",
+          "classification": "canonical",
+          "source": {
+            "classification": "canonical",
+            "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+            "sourceSection": "Joey Asset System",
+            "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8",
+            "asOf": "2026-10-04",
+            "verificationStatus": "verified_current",
+            "readAt": "2026-10-05T06:06:11.774Z"
+          }
+        },
+        "repository": {
+          "value": "JoeyAJ/joey-asset-system",
+          "classification": "canonical",
+          "source": {
+            "classification": "canonical",
+            "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+            "sourceSection": "Joey Asset System",
+            "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8",
+            "asOf": "2026-10-04",
+            "verificationStatus": "verified_current",
+            "readAt": "2026-10-05T06:06:11.774Z"
+          }
+        },
+        "branch": {
+          "value": "main",
+          "classification": "canonical",
+          "source": {
+            "classification": "canonical",
+            "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+            "sourceSection": "Joey Asset System",
+            "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8",
+            "asOf": "2026-10-04",
+            "verificationStatus": "verified_current",
+            "readAt": "2026-10-05T06:06:11.774Z"
+          }
+        },
+        "storedCommit": {
+          "value": "eb03e2a9d86abf8b53acfe207fb6737d255ba0d4",
+          "classification": "canonical",
+          "source": {
+            "classification": "canonical",
+            "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+            "sourceSection": "Joey Asset System",
+            "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8",
+            "asOf": "2026-10-04",
+            "verificationStatus": "verified_current",
+            "readAt": "2026-10-05T06:06:11.774Z"
+          }
+        },
+        "observedCommit": {
+          "value": "eb03e2a9d86abf8b53acfe207fb6737d255ba0d4",
+          "classification": "observed",
+          "source": {
+            "classification": "observed",
+            "sourcePath": "/Users/joeyaj/Documents/Codex/Projects/joey-asset-system",
+            "sourceSection": "Git observation",
+            "fingerprint": "66e6e8700b08d4932c7e012ddf112d16f31ba61f0a48411efcb19166e8394c92",
+            "verificationStatus": "observed",
+            "readAt": "2026-10-05T06:06:12.223Z"
+          }
+        },
+        "production": {
+          "value": "Unknown",
+          "classification": "unknown",
+          "source": {
+            "classification": "canonical",
+            "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+            "sourceSection": "Joey Asset System",
+            "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8",
+            "asOf": "2026-10-04",
+            "verificationStatus": "verified_current",
+            "readAt": "2026-10-05T06:06:11.774Z"
+          },
+          "missingReason": "not_recorded"
+        },
+        "database": {
+          "value": "Unknown",
+          "classification": "unknown",
+          "source": {
+            "classification": "canonical",
+            "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/CURRENT_STATE.md",
+            "sourceSection": "CURRENT_STATE",
+            "fingerprint": "13cda352e0b17a6755b1bea83712a7488d7286974a0bf5d7fcc43c48f2e9ae67",
+            "asOf": "2026-10-04",
+            "verificationStatus": "verified_phase_1_characterization_local_github_aligned",
+            "readAt": "2026-10-05T06:06:12.240Z"
+          },
+          "missingReason": "not_recorded"
+        },
+        "relevantDocs": {
+          "value": [
+            "SYSTEMS/JOEY_ASSET_SYSTEM/PROJECT_MEMORY.md",
+            "SYSTEMS/JOEY_ASSET_SYSTEM/CURRENT_STATE.md",
+            "SYSTEMS/JOEY_ASSET_SYSTEM/NEXT_ACTIONS.md",
+            "SYSTEMS/JOEY_ASSET_SYSTEM/DECISIONS.md"
+          ],
+          "classification": "derived",
+          "source": {
+            "classification": "canonical",
+            "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/MEMORY_INDEX.md",
+            "sourceSection": "Memory Index",
+            "fingerprint": "863dad67e5822c016cf52a92de73ac92ad0feaa2c7b43b69244137f9d98da8e7",
+            "asOf": "2026-10-04",
+            "verificationStatus": "verified_current",
+            "readAt": "2026-10-05T06:06:11.773Z"
+          }
+        }
+      },
+      "workspaceObservation": {
+        "path": "/Users/joeyaj/Documents/Codex/Projects/joey-asset-system",
+        "branch": "main",
+        "head": "eb03e2a9d86abf8b53acfe207fb6737d255ba0d4",
+        "origin": "https://github.com/JoeyAJ/joey-asset-system.git",
+        "upstream": "origin/main",
+        "ahead": 0,
+        "behind": 0,
+        "dirtyState": "clean",
+        "observedAt": "2026-10-05T06:06:12.223Z",
+        "observationFingerprint": "66e6e8700b08d4932c7e012ddf112d16f31ba61f0a48411efcb19166e8394c92",
+        "source": {
+          "classification": "observed",
+          "sourcePath": "/Users/joeyaj/Documents/Codex/Projects/joey-asset-system",
+          "sourceSection": "Git observation",
+          "fingerprint": "66e6e8700b08d4932c7e012ddf112d16f31ba61f0a48411efcb19166e8394c92",
+          "verificationStatus": "observed",
+          "readAt": "2026-10-05T06:06:12.223Z"
+        }
+      },
+      "session": null,
+      "approvalGates": [
+        "Do not begin Phase 2 or extract/abstract reusable Core.",
+        "Do not modify, publish, deploy, or rebind the existing ChatGPT Site.",
+        "Approve or reject beginning Phase 2 and selecting a reusable-Core extraction boundary.",
+        "Decide later whether authenticated ChatGPT Site QA or deployment-source reconciliation is needed."
+      ],
+      "conflicts": [],
+      "sourceFingerprints": [
+        {
+          "path": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/HANDOFF/HISTORY/2026-10-04_1529_joey-asset-system_publish-phase-1-characterization.md",
+          "fingerprint": "1fc6c9f1232b15a40172c65143b5741712caac02b94745bb538902c20d4f4f53"
+        },
+        {
+          "path": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/MEMORY_INDEX.md",
+          "fingerprint": "863dad67e5822c016cf52a92de73ac92ad0feaa2c7b43b69244137f9d98da8e7"
+        },
+        {
+          "path": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+          "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8"
+        },
+        {
+          "path": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/CURRENT_STATE.md",
+          "fingerprint": "13cda352e0b17a6755b1bea83712a7488d7286974a0bf5d7fcc43c48f2e9ae67"
+        },
+        {
+          "path": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/NEXT_ACTIONS.md",
+          "fingerprint": "a6d33a09f5ed538ac13aee34215cac6344ac254a14bd045a5abb720873b8fdeb"
+        }
+      ],
+      "cases": [
+        {
+          "schemaVersion": "1.0",
+          "id": "CASE_001_NAMYOUNG",
+          "entityType": "case",
+          "parentId": "JOEY_ASSET_SYSTEM",
+          "name": {
+            "value": "CASE_001_NAMYOUNG",
+            "classification": "canonical",
+            "source": {
+              "classification": "canonical",
+              "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/MEMORY_INDEX.md",
+              "sourceSection": "Memory Index",
+              "fingerprint": "863dad67e5822c016cf52a92de73ac92ad0feaa2c7b43b69244137f9d98da8e7",
+              "asOf": "2026-10-04",
+              "verificationStatus": "verified_current",
+              "readAt": "2026-10-05T06:06:11.773Z"
+            }
+          },
+          "status": {
+            "value": "Completed",
+            "classification": "derived",
+            "source": {
+              "classification": "canonical",
+              "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/CASES/CASE_001_NAMYOUNG/CURRENT_STATE.md",
+              "sourceSection": "CURRENT_STATE",
+              "fingerprint": "4fff0de5173a285cc11ce5497ebc52bffca0b872f6cd7c4a23ae506152a07960",
+              "asOf": "2026-10-04",
+              "verificationStatus": "documented",
+              "readAt": "2026-10-05T06:06:12.224Z"
+            }
+          },
+          "phase": {
+            "value": "TEST",
+            "classification": "derived",
+            "source": {
+              "classification": "canonical",
+              "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/CASES/CASE_001_NAMYOUNG/CURRENT_STATE.md",
+              "sourceSection": "CURRENT_STATE",
+              "fingerprint": "4fff0de5173a285cc11ce5497ebc52bffca0b872f6cd7c4a23ae506152a07960",
+              "asOf": "2026-10-04",
+              "verificationStatus": "documented",
+              "readAt": "2026-10-05T06:06:12.224Z"
+            }
+          },
+          "attention": {
+            "value": "ready_to_continue",
+            "classification": "derived",
+            "source": {
+              "classification": "canonical",
+              "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/CASES/CASE_001_NAMYOUNG/NEXT_ACTIONS.md",
+              "sourceSection": "NEXT_ACTIONS",
+              "fingerprint": "cd21fb550963a8bf5a91d912ea8580b3c124c6160d96c65fceafb2d4d505d647",
+              "verificationStatus": "documented",
+              "readAt": "2026-10-05T06:06:12.225Z"
+            }
+          },
+          "currentStage": {
+            "value": "Unknown",
+            "classification": "unknown",
+            "source": {
+              "classification": "canonical",
+              "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/CASES/CASE_001_NAMYOUNG/CURRENT_STATE.md",
+              "sourceSection": "Current Stage",
+              "fingerprint": "4fff0de5173a285cc11ce5497ebc52bffca0b872f6cd7c4a23ae506152a07960",
+              "asOf": "2026-10-04",
+              "verificationStatus": "documented",
+              "readAt": "2026-10-05T06:06:12.224Z"
+            },
+            "missingReason": "not_recorded"
+          },
+          "management": {
+            "approvals": [],
+            "decisions": []
+          },
+          "version": {
+            "value": "Unknown",
+            "classification": "unknown",
+            "source": {
+              "classification": "canonical",
+              "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/CASES/CASE_001_NAMYOUNG/CURRENT_STATE.md",
+              "sourceSection": "CURRENT_STATE",
+              "fingerprint": "4fff0de5173a285cc11ce5497ebc52bffca0b872f6cd7c4a23ae506152a07960",
+              "asOf": "2026-10-04",
+              "verificationStatus": "documented",
+              "readAt": "2026-10-05T06:06:12.224Z"
+            },
+            "missingReason": "not_recorded"
+          },
+          "lastCompleted": {
+            "value": "Unknown",
+            "classification": "unknown",
+            "source": null,
+            "missingReason": "source_unavailable"
+          },
+          "currentTask": {
+            "value": "Unknown",
+            "classification": "unknown",
+            "source": {
+              "classification": "canonical",
+              "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/CASES/CASE_001_NAMYOUNG/CURRENT_STATE.md",
+              "sourceSection": "CURRENT_STATE",
+              "fingerprint": "4fff0de5173a285cc11ce5497ebc52bffca0b872f6cd7c4a23ae506152a07960",
+              "asOf": "2026-10-04",
+              "verificationStatus": "documented",
+              "readAt": "2026-10-05T06:06:12.224Z"
+            },
+            "missingReason": "not_recorded"
+          },
+          "nextAction": {
+            "value": "Preserve the published Phase 1 characterization commit and golden fixture as the regression boundary. Keep the recovered v0.15 tree unchanged as the comparison baseline. Do not begin Phase 2 or extract a reusable Core until separately approved. Await Joey's explicit decision before planning or implementing Phase 2. Do not publish or deploy to the historical ChatGPT Site. Do not infer engineering, construction, purchasing, or manufacturer-confirmed rules from photos, concept images, exports, or synthetic calibration fixtures. Treat Project JSON and localStorage data for photo projects as sensitive because they contain the embedded image payload.",
+            "classification": "canonical",
+            "source": {
+              "classification": "canonical",
+              "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/CASES/CASE_001_NAMYOUNG/NEXT_ACTIONS.md",
+              "sourceSection": "NEXT_ACTIONS",
+              "fingerprint": "cd21fb550963a8bf5a91d912ea8580b3c124c6160d96c65fceafb2d4d505d647",
+              "verificationStatus": "documented",
+              "readAt": "2026-10-05T06:06:12.225Z"
+            }
+          },
+          "blocker": {
+            "value": "Unknown",
+            "classification": "unknown",
+            "source": {
+              "classification": "canonical",
+              "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/CASES/CASE_001_NAMYOUNG/NEXT_ACTIONS.md",
+              "sourceSection": "NEXT_ACTIONS",
+              "fingerprint": "cd21fb550963a8bf5a91d912ea8580b3c124c6160d96c65fceafb2d4d505d647",
+              "verificationStatus": "documented",
+              "readAt": "2026-10-05T06:06:12.225Z"
+            },
+            "missingReason": "not_recorded"
+          },
+          "lastAI": {
+            "value": "Unknown",
+            "classification": "unknown",
+            "source": {
+              "classification": "canonical",
+              "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/CASES/CASE_001_NAMYOUNG/CURRENT_STATE.md",
+              "sourceSection": "CURRENT_STATE",
+              "fingerprint": "4fff0de5173a285cc11ce5497ebc52bffca0b872f6cd7c4a23ae506152a07960",
+              "asOf": "2026-10-04",
+              "verificationStatus": "documented",
+              "readAt": "2026-10-05T06:06:12.224Z"
+            },
+            "missingReason": "not_recorded"
+          },
+          "model": {
+            "value": "Unknown",
+            "classification": "unknown",
+            "source": {
+              "classification": "canonical",
+              "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/CASES/CASE_001_NAMYOUNG/CURRENT_STATE.md",
+              "sourceSection": "CURRENT_STATE",
+              "fingerprint": "4fff0de5173a285cc11ce5497ebc52bffca0b872f6cd7c4a23ae506152a07960",
+              "asOf": "2026-10-04",
+              "verificationStatus": "documented",
+              "readAt": "2026-10-05T06:06:12.224Z"
+            },
+            "missingReason": "not_recorded"
+          },
+          "workspace": {
+            "value": "/Users/joeyaj/Documents/Codex/Projects/joey-asset-system",
+            "classification": "canonical",
+            "source": {
+              "classification": "canonical",
+              "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+              "sourceSection": "Joey Asset System",
+              "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8",
+              "asOf": "2026-10-04",
+              "verificationStatus": "verified_current",
+              "readAt": "2026-10-05T06:06:11.774Z"
+            }
+          },
+          "lastUpdated": {
+            "value": "2026-10-04",
+            "classification": "canonical",
+            "source": {
+              "classification": "canonical",
+              "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/CASES/CASE_001_NAMYOUNG/CURRENT_STATE.md",
+              "sourceSection": "CURRENT_STATE",
+              "fingerprint": "4fff0de5173a285cc11ce5497ebc52bffca0b872f6cd7c4a23ae506152a07960",
+              "asOf": "2026-10-04",
+              "verificationStatus": "documented",
+              "readAt": "2026-10-05T06:06:12.224Z"
+            }
+          },
+          "where": {
+            "localPath": {
+              "value": "/Users/joeyaj/Documents/Codex/Projects/joey-asset-system",
+              "classification": "canonical",
+              "source": {
+                "classification": "canonical",
+                "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+                "sourceSection": "Joey Asset System",
+                "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8",
+                "asOf": "2026-10-04",
+                "verificationStatus": "verified_current",
+                "readAt": "2026-10-05T06:06:11.774Z"
+              }
+            },
+            "repository": {
+              "value": "JoeyAJ/joey-asset-system",
+              "classification": "canonical",
+              "source": {
+                "classification": "canonical",
+                "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+                "sourceSection": "Joey Asset System",
+                "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8",
+                "asOf": "2026-10-04",
+                "verificationStatus": "verified_current",
+                "readAt": "2026-10-05T06:06:11.774Z"
+              }
+            },
+            "branch": {
+              "value": "main",
+              "classification": "canonical",
+              "source": {
+                "classification": "canonical",
+                "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+                "sourceSection": "Joey Asset System",
+                "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8",
+                "asOf": "2026-10-04",
+                "verificationStatus": "verified_current",
+                "readAt": "2026-10-05T06:06:11.774Z"
+              }
+            },
+            "storedCommit": {
+              "value": "eb03e2a9d86abf8b53acfe207fb6737d255ba0d4",
+              "classification": "canonical",
+              "source": {
+                "classification": "canonical",
+                "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+                "sourceSection": "Joey Asset System",
+                "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8",
+                "asOf": "2026-10-04",
+                "verificationStatus": "verified_current",
+                "readAt": "2026-10-05T06:06:11.774Z"
+              }
+            },
+            "observedCommit": {
+              "value": "eb03e2a9d86abf8b53acfe207fb6737d255ba0d4",
+              "classification": "observed",
+              "source": {
+                "classification": "observed",
+                "sourcePath": "/Users/joeyaj/Documents/Codex/Projects/joey-asset-system",
+                "sourceSection": "Git observation",
+                "fingerprint": "66e6e8700b08d4932c7e012ddf112d16f31ba61f0a48411efcb19166e8394c92",
+                "verificationStatus": "observed",
+                "readAt": "2026-10-05T06:06:12.223Z"
+              }
+            },
+            "production": {
+              "value": "Unknown",
+              "classification": "unknown",
+              "source": {
+                "classification": "canonical",
+                "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+                "sourceSection": "Joey Asset System",
+                "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8",
+                "asOf": "2026-10-04",
+                "verificationStatus": "verified_current",
+                "readAt": "2026-10-05T06:06:11.774Z"
+              },
+              "missingReason": "not_recorded"
+            },
+            "database": {
+              "value": "Unknown",
+              "classification": "unknown",
+              "source": {
+                "classification": "canonical",
+                "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/CASES/CASE_001_NAMYOUNG/CURRENT_STATE.md",
+                "sourceSection": "CURRENT_STATE",
+                "fingerprint": "4fff0de5173a285cc11ce5497ebc52bffca0b872f6cd7c4a23ae506152a07960",
+                "asOf": "2026-10-04",
+                "verificationStatus": "documented",
+                "readAt": "2026-10-05T06:06:12.224Z"
+              },
+              "missingReason": "not_recorded"
+            },
+            "relevantDocs": {
+              "value": [
+                "SYSTEMS/JOEY_ASSET_SYSTEM/CASES/CASE_001_NAMYOUNG/CASE_MEMORY.md",
+                "SYSTEMS/JOEY_ASSET_SYSTEM/CASES/CASE_001_NAMYOUNG/NEXT_ACTIONS.md",
+                "SYSTEMS/JOEY_ASSET_SYSTEM/CASES/CASE_001_NAMYOUNG/DECISIONS.md"
+              ],
+              "classification": "derived",
+              "source": {
+                "classification": "canonical",
+                "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/MEMORY_INDEX.md",
+                "sourceSection": "Memory Index",
+                "fingerprint": "863dad67e5822c016cf52a92de73ac92ad0feaa2c7b43b69244137f9d98da8e7",
+                "asOf": "2026-10-04",
+                "verificationStatus": "verified_current",
+                "readAt": "2026-10-05T06:06:11.773Z"
+              }
+            }
+          },
+          "workspaceObservation": {
+            "path": "/Users/joeyaj/Documents/Codex/Projects/joey-asset-system",
+            "branch": "main",
+            "head": "eb03e2a9d86abf8b53acfe207fb6737d255ba0d4",
+            "origin": "https://github.com/JoeyAJ/joey-asset-system.git",
+            "upstream": "origin/main",
+            "ahead": 0,
+            "behind": 0,
+            "dirtyState": "clean",
+            "observedAt": "2026-10-05T06:06:12.223Z",
+            "observationFingerprint": "66e6e8700b08d4932c7e012ddf112d16f31ba61f0a48411efcb19166e8394c92",
+            "source": {
+              "classification": "observed",
+              "sourcePath": "/Users/joeyaj/Documents/Codex/Projects/joey-asset-system",
+              "sourceSection": "Git observation",
+              "fingerprint": "66e6e8700b08d4932c7e012ddf112d16f31ba61f0a48411efcb19166e8394c92",
+              "verificationStatus": "observed",
+              "readAt": "2026-10-05T06:06:12.223Z"
+            }
+          },
+          "session": null,
+          "approvalGates": [
+            "Do not begin Phase 2 or extract a reusable Core until separately approved.",
+            "Await Joey's explicit decision before planning or implementing Phase 2.",
+            "Do not publish or deploy to the historical ChatGPT Site.",
+            "Do not infer engineering, construction, purchasing, or manufacturer-confirmed rules from photos, concept images, exports, or synthetic calibration fixtures."
+          ],
+          "conflicts": [],
+          "sourceFingerprints": [
+            {
+              "path": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/MEMORY_INDEX.md",
+              "fingerprint": "863dad67e5822c016cf52a92de73ac92ad0feaa2c7b43b69244137f9d98da8e7"
+            },
+            {
+              "path": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+              "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8"
+            },
+            {
+              "path": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/CASES/CASE_001_NAMYOUNG/CURRENT_STATE.md",
+              "fingerprint": "4fff0de5173a285cc11ce5497ebc52bffca0b872f6cd7c4a23ae506152a07960"
+            },
+            {
+              "path": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/CASES/CASE_001_NAMYOUNG/NEXT_ACTIONS.md",
+              "fingerprint": "cd21fb550963a8bf5a91d912ea8580b3c124c6160d96c65fceafb2d4d505d647"
+            }
+          ],
+          "cases": [],
+          "derivationReason": "Conservative mapping from canonical Current Stage"
+        }
+      ],
+      "derivationReason": "Conservative mapping from canonical Current Stage"
+    }
+  ],
+  "cases": [
+    {
+      "schemaVersion": "1.0",
+      "id": "CASE_001_NAMYOUNG",
+      "entityType": "case",
+      "parentId": "JOEY_ASSET_SYSTEM",
+      "name": {
+        "value": "CASE_001_NAMYOUNG",
+        "classification": "canonical",
+        "source": {
+          "classification": "canonical",
+          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/MEMORY_INDEX.md",
+          "sourceSection": "Memory Index",
+          "fingerprint": "863dad67e5822c016cf52a92de73ac92ad0feaa2c7b43b69244137f9d98da8e7",
+          "asOf": "2026-10-04",
+          "verificationStatus": "verified_current",
+          "readAt": "2026-10-05T06:06:11.773Z"
+        }
+      },
+      "status": {
+        "value": "Completed",
+        "classification": "derived",
+        "source": {
+          "classification": "canonical",
+          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/CASES/CASE_001_NAMYOUNG/CURRENT_STATE.md",
+          "sourceSection": "CURRENT_STATE",
+          "fingerprint": "4fff0de5173a285cc11ce5497ebc52bffca0b872f6cd7c4a23ae506152a07960",
+          "asOf": "2026-10-04",
+          "verificationStatus": "documented",
+          "readAt": "2026-10-05T06:06:12.224Z"
+        }
+      },
+      "phase": {
+        "value": "TEST",
+        "classification": "derived",
+        "source": {
+          "classification": "canonical",
+          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/CASES/CASE_001_NAMYOUNG/CURRENT_STATE.md",
+          "sourceSection": "CURRENT_STATE",
+          "fingerprint": "4fff0de5173a285cc11ce5497ebc52bffca0b872f6cd7c4a23ae506152a07960",
+          "asOf": "2026-10-04",
+          "verificationStatus": "documented",
+          "readAt": "2026-10-05T06:06:12.224Z"
+        }
+      },
+      "attention": {
+        "value": "ready_to_continue",
+        "classification": "derived",
+        "source": {
+          "classification": "canonical",
+          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/CASES/CASE_001_NAMYOUNG/NEXT_ACTIONS.md",
+          "sourceSection": "NEXT_ACTIONS",
+          "fingerprint": "cd21fb550963a8bf5a91d912ea8580b3c124c6160d96c65fceafb2d4d505d647",
+          "verificationStatus": "documented",
+          "readAt": "2026-10-05T06:06:12.225Z"
+        }
+      },
+      "currentStage": {
+        "value": "Unknown",
+        "classification": "unknown",
+        "source": {
+          "classification": "canonical",
+          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/CASES/CASE_001_NAMYOUNG/CURRENT_STATE.md",
+          "sourceSection": "Current Stage",
+          "fingerprint": "4fff0de5173a285cc11ce5497ebc52bffca0b872f6cd7c4a23ae506152a07960",
+          "asOf": "2026-10-04",
+          "verificationStatus": "documented",
+          "readAt": "2026-10-05T06:06:12.224Z"
+        },
+        "missingReason": "not_recorded"
+      },
+      "management": {
+        "approvals": [],
+        "decisions": []
+      },
+      "version": {
+        "value": "Unknown",
+        "classification": "unknown",
+        "source": {
+          "classification": "canonical",
+          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/CASES/CASE_001_NAMYOUNG/CURRENT_STATE.md",
+          "sourceSection": "CURRENT_STATE",
+          "fingerprint": "4fff0de5173a285cc11ce5497ebc52bffca0b872f6cd7c4a23ae506152a07960",
+          "asOf": "2026-10-04",
+          "verificationStatus": "documented",
+          "readAt": "2026-10-05T06:06:12.224Z"
+        },
+        "missingReason": "not_recorded"
+      },
+      "lastCompleted": {
+        "value": "Unknown",
+        "classification": "unknown",
+        "source": null,
+        "missingReason": "source_unavailable"
+      },
+      "currentTask": {
+        "value": "Unknown",
+        "classification": "unknown",
+        "source": {
+          "classification": "canonical",
+          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/CASES/CASE_001_NAMYOUNG/CURRENT_STATE.md",
+          "sourceSection": "CURRENT_STATE",
+          "fingerprint": "4fff0de5173a285cc11ce5497ebc52bffca0b872f6cd7c4a23ae506152a07960",
+          "asOf": "2026-10-04",
+          "verificationStatus": "documented",
+          "readAt": "2026-10-05T06:06:12.224Z"
+        },
+        "missingReason": "not_recorded"
+      },
+      "nextAction": {
+        "value": "Preserve the published Phase 1 characterization commit and golden fixture as the regression boundary. Keep the recovered v0.15 tree unchanged as the comparison baseline. Do not begin Phase 2 or extract a reusable Core until separately approved. Await Joey's explicit decision before planning or implementing Phase 2. Do not publish or deploy to the historical ChatGPT Site. Do not infer engineering, construction, purchasing, or manufacturer-confirmed rules from photos, concept images, exports, or synthetic calibration fixtures. Treat Project JSON and localStorage data for photo projects as sensitive because they contain the embedded image payload.",
+        "classification": "canonical",
+        "source": {
+          "classification": "canonical",
+          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/CASES/CASE_001_NAMYOUNG/NEXT_ACTIONS.md",
+          "sourceSection": "NEXT_ACTIONS",
+          "fingerprint": "cd21fb550963a8bf5a91d912ea8580b3c124c6160d96c65fceafb2d4d505d647",
+          "verificationStatus": "documented",
+          "readAt": "2026-10-05T06:06:12.225Z"
+        }
+      },
+      "blocker": {
+        "value": "Unknown",
+        "classification": "unknown",
+        "source": {
+          "classification": "canonical",
+          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/CASES/CASE_001_NAMYOUNG/NEXT_ACTIONS.md",
+          "sourceSection": "NEXT_ACTIONS",
+          "fingerprint": "cd21fb550963a8bf5a91d912ea8580b3c124c6160d96c65fceafb2d4d505d647",
+          "verificationStatus": "documented",
+          "readAt": "2026-10-05T06:06:12.225Z"
+        },
+        "missingReason": "not_recorded"
+      },
+      "lastAI": {
+        "value": "Unknown",
+        "classification": "unknown",
+        "source": {
+          "classification": "canonical",
+          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/CASES/CASE_001_NAMYOUNG/CURRENT_STATE.md",
+          "sourceSection": "CURRENT_STATE",
+          "fingerprint": "4fff0de5173a285cc11ce5497ebc52bffca0b872f6cd7c4a23ae506152a07960",
+          "asOf": "2026-10-04",
+          "verificationStatus": "documented",
+          "readAt": "2026-10-05T06:06:12.224Z"
+        },
+        "missingReason": "not_recorded"
+      },
+      "model": {
+        "value": "Unknown",
+        "classification": "unknown",
+        "source": {
+          "classification": "canonical",
+          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/CASES/CASE_001_NAMYOUNG/CURRENT_STATE.md",
+          "sourceSection": "CURRENT_STATE",
+          "fingerprint": "4fff0de5173a285cc11ce5497ebc52bffca0b872f6cd7c4a23ae506152a07960",
+          "asOf": "2026-10-04",
+          "verificationStatus": "documented",
+          "readAt": "2026-10-05T06:06:12.224Z"
+        },
+        "missingReason": "not_recorded"
+      },
+      "workspace": {
+        "value": "/Users/joeyaj/Documents/Codex/Projects/joey-asset-system",
+        "classification": "canonical",
+        "source": {
+          "classification": "canonical",
+          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+          "sourceSection": "Joey Asset System",
+          "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8",
+          "asOf": "2026-10-04",
+          "verificationStatus": "verified_current",
+          "readAt": "2026-10-05T06:06:11.774Z"
+        }
+      },
+      "lastUpdated": {
+        "value": "2026-10-04",
+        "classification": "canonical",
+        "source": {
+          "classification": "canonical",
+          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/CASES/CASE_001_NAMYOUNG/CURRENT_STATE.md",
+          "sourceSection": "CURRENT_STATE",
+          "fingerprint": "4fff0de5173a285cc11ce5497ebc52bffca0b872f6cd7c4a23ae506152a07960",
+          "asOf": "2026-10-04",
+          "verificationStatus": "documented",
+          "readAt": "2026-10-05T06:06:12.224Z"
+        }
+      },
+      "where": {
+        "localPath": {
+          "value": "/Users/joeyaj/Documents/Codex/Projects/joey-asset-system",
+          "classification": "canonical",
+          "source": {
+            "classification": "canonical",
+            "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+            "sourceSection": "Joey Asset System",
+            "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8",
+            "asOf": "2026-10-04",
+            "verificationStatus": "verified_current",
+            "readAt": "2026-10-05T06:06:11.774Z"
+          }
+        },
+        "repository": {
+          "value": "JoeyAJ/joey-asset-system",
+          "classification": "canonical",
+          "source": {
+            "classification": "canonical",
+            "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+            "sourceSection": "Joey Asset System",
+            "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8",
+            "asOf": "2026-10-04",
+            "verificationStatus": "verified_current",
+            "readAt": "2026-10-05T06:06:11.774Z"
+          }
+        },
+        "branch": {
+          "value": "main",
+          "classification": "canonical",
+          "source": {
+            "classification": "canonical",
+            "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+            "sourceSection": "Joey Asset System",
+            "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8",
+            "asOf": "2026-10-04",
+            "verificationStatus": "verified_current",
+            "readAt": "2026-10-05T06:06:11.774Z"
+          }
+        },
+        "storedCommit": {
+          "value": "eb03e2a9d86abf8b53acfe207fb6737d255ba0d4",
+          "classification": "canonical",
+          "source": {
+            "classification": "canonical",
+            "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+            "sourceSection": "Joey Asset System",
+            "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8",
+            "asOf": "2026-10-04",
+            "verificationStatus": "verified_current",
+            "readAt": "2026-10-05T06:06:11.774Z"
+          }
+        },
+        "observedCommit": {
+          "value": "eb03e2a9d86abf8b53acfe207fb6737d255ba0d4",
+          "classification": "observed",
+          "source": {
+            "classification": "observed",
+            "sourcePath": "/Users/joeyaj/Documents/Codex/Projects/joey-asset-system",
+            "sourceSection": "Git observation",
+            "fingerprint": "66e6e8700b08d4932c7e012ddf112d16f31ba61f0a48411efcb19166e8394c92",
+            "verificationStatus": "observed",
+            "readAt": "2026-10-05T06:06:12.223Z"
+          }
+        },
+        "production": {
+          "value": "Unknown",
+          "classification": "unknown",
+          "source": {
+            "classification": "canonical",
+            "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+            "sourceSection": "Joey Asset System",
+            "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8",
+            "asOf": "2026-10-04",
+            "verificationStatus": "verified_current",
+            "readAt": "2026-10-05T06:06:11.774Z"
+          },
+          "missingReason": "not_recorded"
+        },
+        "database": {
+          "value": "Unknown",
+          "classification": "unknown",
+          "source": {
+            "classification": "canonical",
+            "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/CASES/CASE_001_NAMYOUNG/CURRENT_STATE.md",
+            "sourceSection": "CURRENT_STATE",
+            "fingerprint": "4fff0de5173a285cc11ce5497ebc52bffca0b872f6cd7c4a23ae506152a07960",
+            "asOf": "2026-10-04",
+            "verificationStatus": "documented",
+            "readAt": "2026-10-05T06:06:12.224Z"
+          },
+          "missingReason": "not_recorded"
+        },
+        "relevantDocs": {
+          "value": [
+            "SYSTEMS/JOEY_ASSET_SYSTEM/CASES/CASE_001_NAMYOUNG/CASE_MEMORY.md",
+            "SYSTEMS/JOEY_ASSET_SYSTEM/CASES/CASE_001_NAMYOUNG/NEXT_ACTIONS.md",
+            "SYSTEMS/JOEY_ASSET_SYSTEM/CASES/CASE_001_NAMYOUNG/DECISIONS.md"
+          ],
+          "classification": "derived",
+          "source": {
+            "classification": "canonical",
+            "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/MEMORY_INDEX.md",
+            "sourceSection": "Memory Index",
+            "fingerprint": "863dad67e5822c016cf52a92de73ac92ad0feaa2c7b43b69244137f9d98da8e7",
+            "asOf": "2026-10-04",
+            "verificationStatus": "verified_current",
+            "readAt": "2026-10-05T06:06:11.773Z"
+          }
+        }
+      },
+      "workspaceObservation": {
+        "path": "/Users/joeyaj/Documents/Codex/Projects/joey-asset-system",
+        "branch": "main",
+        "head": "eb03e2a9d86abf8b53acfe207fb6737d255ba0d4",
+        "origin": "https://github.com/JoeyAJ/joey-asset-system.git",
+        "upstream": "origin/main",
+        "ahead": 0,
+        "behind": 0,
+        "dirtyState": "clean",
+        "observedAt": "2026-10-05T06:06:12.223Z",
+        "observationFingerprint": "66e6e8700b08d4932c7e012ddf112d16f31ba61f0a48411efcb19166e8394c92",
+        "source": {
+          "classification": "observed",
+          "sourcePath": "/Users/joeyaj/Documents/Codex/Projects/joey-asset-system",
+          "sourceSection": "Git observation",
+          "fingerprint": "66e6e8700b08d4932c7e012ddf112d16f31ba61f0a48411efcb19166e8394c92",
+          "verificationStatus": "observed",
+          "readAt": "2026-10-05T06:06:12.223Z"
+        }
+      },
+      "session": null,
+      "approvalGates": [
+        "Do not begin Phase 2 or extract a reusable Core until separately approved.",
+        "Await Joey's explicit decision before planning or implementing Phase 2.",
+        "Do not publish or deploy to the historical ChatGPT Site.",
+        "Do not infer engineering, construction, purchasing, or manufacturer-confirmed rules from photos, concept images, exports, or synthetic calibration fixtures."
+      ],
+      "conflicts": [],
+      "sourceFingerprints": [
+        {
+          "path": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/MEMORY_INDEX.md",
+          "fingerprint": "863dad67e5822c016cf52a92de73ac92ad0feaa2c7b43b69244137f9d98da8e7"
+        },
+        {
+          "path": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+          "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8"
+        },
+        {
+          "path": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/CASES/CASE_001_NAMYOUNG/CURRENT_STATE.md",
+          "fingerprint": "4fff0de5173a285cc11ce5497ebc52bffca0b872f6cd7c4a23ae506152a07960"
+        },
+        {
+          "path": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/CASES/CASE_001_NAMYOUNG/NEXT_ACTIONS.md",
+          "fingerprint": "cd21fb550963a8bf5a91d912ea8580b3c124c6160d96c65fceafb2d4d505d647"
+        }
+      ],
+      "cases": [],
+      "derivationReason": "Conservative mapping from canonical Current Stage"
+    }
+  ],
+  "handoffs": {
+    "globalLatest": {
+      "schemaVersion": "1.0",
+      "timestamp": "2026-10-05T09:58:25+09:00",
+      "entityId": null,
+      "task": "Mission Control V0.1 Baseline Finalization and Remote-Access Architecture Inspection",
+      "status": "SUCCESS",
+      "executedBy": "Claude Code",
+      "model": "",
+      "summary": "Joey completed the manual Acceptance Re-Test of the three-language UI (繁體中文 / 한국어 / English).\n\nJoey Acceptance: PASSED\nMission Control V0.1: BASELINE ESTABLISHED\n\nThe accepted build was verified unchanged since the re-test (no files modified after the localization fix; files served by the running server byte-identical to disk), passed the final safety gate, was committed as the initial commit, and was pushed to a newly created private GitHub repository. A remote-access architecture inspection was completed as a proposal only; nothing was deployed and no architecture was changed.",
+      "changes": "",
+      "verification": "",
+      "commit": "9b5f477fc9506e5c3ba254640af31e02d1f79c7e",
+      "decisionRequired": "",
+      "nextAction": "Wait for Joey's approval of the remote-access architecture before changing architecture or deploying. Do not begin Mission Control V0.2.",
+      "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/HANDOFF/LATEST.md",
+      "fingerprint": "b2c5d3f4d6da7913d6000bc0b91673b5e1780a55c0556fa410c63e5eafa6e475",
+      "source": {
+        "classification": "canonical",
+        "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/HANDOFF/LATEST.md",
+        "sourceSection": "Handoff",
+        "fingerprint": "b2c5d3f4d6da7913d6000bc0b91673b5e1780a55c0556fa410c63e5eafa6e475",
+        "asOf": "2026-10-05T09:58:25+09:00",
+        "verificationStatus": "documented",
+        "readAt": "2026-10-05T06:06:11.777Z"
+      },
+      "conflict": true,
+      "conflictReasons": [
+        "Unknown or ambiguous entity"
+      ]
+    },
+    "history": [
+      {
+        "schemaVersion": "1.0",
+        "timestamp": "2026-10-04T10:59:36+09:00",
+        "entityId": "JOEY_ASSET_SYSTEM",
+        "task": "Phase 0 Recovery",
+        "status": "SUCCESS",
+        "executedBy": "",
+        "model": "",
+        "summary": "Recovered Namyoung Asset Lab v0.15 as `CASE_001_NAMYOUNG`, the Origin Prototype of the independent `JOEY_ASSET_SYSTEM`. The recovery baseline is locally committed, tagged, tested, built, smoke-tested, and registered in Canonical Memory.",
+        "changes": "Preserved the immutable v0.15 source archive and checksum metadata outside normal Git history.\nCreated the Joey Asset System Local Master with the exact 57-file recovery tree, source, `dist`, images, and historical hosting configuration.\nCreated private GitHub repository `JoeyAJ/joey-asset-system`; its baseline has not been pushed.\nCreated local root commit `134caab8d0b21d37d1469620ecebb7abb43a4c19` and annotated tag `case-001-namyoung-v0.15-recovery`.\nAdded Joey Asset System and Case 001 Canonical Memory.\nUpdated Memory Index and Project Registry mappings.\nDid not modify Namyoung Web3D, Street Visualization, ChatGPT Sites, or production deployments.",
+        "verification": "Tests: 85 passed, 0 failed, 0 skipped.  \nBuild: Passed; 89 UI control and script checks.  \nGit: Local `main` is clean at `134caab8d0b21d37d1469620ecebb7abb43a4c19`; annotated recovery tag exists; Asset System remote remains unpublished.  \nDeployment: NONE. Local browser smoke passed for the public index and v0.15 workbench; no publish, deploy, or Site rebinding occurred.",
+        "commit": "134caab8d0b21d37d1469620ecebb7abb43a4c19",
+        "decisionRequired": "Joey approval is required to push the Asset System baseline commit and tag to `JoeyAJ/joey-asset-system`.\nJoey approval is required before beginning Phase 1 characterization.",
+        "nextAction": "After explicit approval, push the existing Asset System `main` baseline and annotated tag, verify the remote SHA, and then separately decide whether to begin Phase 1. No action should be taken automatically.",
+        "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/HANDOFF/HISTORY/2026-10-04_1059_joey-asset-system_phase-0-recovery.md",
+        "fingerprint": "174c04751cce834ef67f9b427c58925f968d650c1a867d07e897bb268ce5dcc3",
+        "source": {
+          "classification": "canonical",
+          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/HANDOFF/HISTORY/2026-10-04_1059_joey-asset-system_phase-0-recovery.md",
+          "sourceSection": "Handoff",
+          "fingerprint": "174c04751cce834ef67f9b427c58925f968d650c1a867d07e897bb268ce5dcc3",
+          "asOf": "2026-10-04T10:59:36+09:00",
+          "verificationStatus": "documented",
+          "readAt": "2026-10-05T06:06:11.778Z"
+        },
+        "conflict": false,
+        "conflictReasons": []
+      },
+      {
+        "schemaVersion": "1.0",
+        "timestamp": "2026-10-04T11:23:21+09:00",
+        "entityId": "JOEY_ASSET_SYSTEM",
+        "task": "Publish Phase 0 Baseline",
+        "status": "SUCCESS",
+        "executedBy": "",
+        "model": "",
+        "summary": "Published the existing Joey Asset System Phase 0 baseline commit and annotated recovery tag to the approved private GitHub repository. Local and remote commit and tag identities match.",
+        "changes": "Pushed local `main` to private repository `JoeyAJ/joey-asset-system`.\nPushed annotated tag `case-001-namyoung-v0.15-recovery`.\nUpdated Joey Asset System Canonical Memory and Project Registry to record verified local/GitHub alignment.\nDid not change application features, begin Phase 1, or deploy anything.",
+        "verification": "Tests: Not re-run; no source or feature files changed. Existing Phase 0 result remains 85 passed, 0 failed.\nBuild: Not re-run; no source or feature files changed. Existing Phase 0 build result remains passed.\nGit: Local `main` and remote `main` both equal `134caab8d0b21d37d1469620ecebb7abb43a4c19`. Local and remote annotated tag object both equal `08ab51313580701e712de55ee779af7574d36dec`, peeling to the same baseline commit. Working tree is clean and tracks `origin/main`.\nDeployment: NONE.",
+        "commit": "134caab8d0b21d37d1469620ecebb7abb43a4c19",
+        "decisionRequired": "NONE",
+        "nextAction": "Wait for explicit Joey approval before beginning Phase 1 characterization. No action should be taken automatically.",
+        "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/HANDOFF/HISTORY/2026-10-04_1123_joey-asset-system_publish-phase-0-baseline.md",
+        "fingerprint": "ea5adf518a33bcd86b39ca5c75994e8ef4a3d7a3ea424ecbb2e04a971c561c3d",
+        "source": {
+          "classification": "canonical",
+          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/HANDOFF/HISTORY/2026-10-04_1123_joey-asset-system_publish-phase-0-baseline.md",
+          "sourceSection": "Handoff",
+          "fingerprint": "ea5adf518a33bcd86b39ca5c75994e8ef4a3d7a3ea424ecbb2e04a971c561c3d",
+          "asOf": "2026-10-04T11:23:21+09:00",
+          "verificationStatus": "documented",
+          "readAt": "2026-10-05T06:06:11.778Z"
+        },
+        "conflict": false,
+        "conflictReasons": []
+      },
+      {
+        "schemaVersion": "1.0",
+        "timestamp": "2026-10-04T15:19:55+09:00",
+        "entityId": "JOEY_ASSET_SYSTEM",
+        "task": "Complete Phase 1 Characterization",
+        "status": "SUCCESS_LOCAL_AWAITING_APPROVAL",
+        "executedBy": "",
+        "model": "",
+        "summary": "Completed and verified CASE_001_NAMYOUNG Phase 1 Characterization against the published Phase 0 baseline. The work fixes existing v0.15 behavior through tests, a golden fixture, and documentation without changing recovered production source. The application repository remains uncommitted and unpushed pending Joey approval.",
+        "changes": "Added six files under `cases/CASE_001_NAMYOUNG/characterization/phase-1/`:\n  - one golden JSON fixture;\n  - two Node characterization test files;\n  - three Phase 1 behavior/provenance documents.\nCharacterized dimensions, aligned/staggered placement, layer gap, facing, path rotation, calibration, generation identity, project save/load/migration, localStorage, and CSV/JSON/SVG/OBJ/HTML exports.\nAdded exact recovered-file manifest and Git/provenance boundary checks.\nUpdated Joey Asset System Canonical Memory and Project Registry.\nDid not modify the recovered 57-file v0.15 source set, add features, refactor, extract reusable Core, start Phase 2, or deploy.",
+        "verification": "Original recovered suite: 85 passed, 0 failed.\nPhase 1 characterization suite: 21 passed, 0 failed.\nCombined suite: 106 passed, 0 failed.\nBuild: passed; 89 UI control/script checks.\nPost-build provenance suite: 3 passed, 0 failed.\nRecovered source: exact 57-file Phase 0 manifest baseline preserved, including regular-file type, non-symlink status, modes, sizes, and SHA-256 values.\nIndependent fail-closed review: passed with no security concerns, factual/logic errors, suggestions, or scope violations.\nApplication Git: local `HEAD` and remote `main` remain `134caab8d0b21d37d1469620ecebb7abb43a4c19`; six Phase 1 files remain untracked and uncommitted.\nDeployment: NONE. No ChatGPT Site operation was performed; external production state was not authenticated or independently verified.",
+        "commit": "",
+        "decisionRequired": "Joey approval is required before committing or pushing the six Phase 1 characterization files to `JoeyAJ/joey-asset-system`.",
+        "nextAction": "Wait. If Joey approves, commit only the completed Phase 1 characterization files, push them to the private application repository, verify the remote SHA, and stop without starting Phase 2 or deploying.",
+        "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/HANDOFF/HISTORY/2026-10-04_1519_joey-asset-system_phase-1-characterization.md",
+        "fingerprint": "f077d10b89d3e15ba5bc46deaf2aee27235bd4a9b5628e71b7fae95ce2a3b352",
+        "source": {
+          "classification": "canonical",
+          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/HANDOFF/HISTORY/2026-10-04_1519_joey-asset-system_phase-1-characterization.md",
+          "sourceSection": "Handoff",
+          "fingerprint": "f077d10b89d3e15ba5bc46deaf2aee27235bd4a9b5628e71b7fae95ce2a3b352",
+          "asOf": "2026-10-04T15:19:55+09:00",
+          "verificationStatus": "documented",
+          "readAt": "2026-10-05T06:06:11.778Z"
+        },
+        "conflict": false,
+        "conflictReasons": []
+      },
+      {
+        "schemaVersion": "1.0",
+        "timestamp": "2026-10-04T15:29:27+09:00",
+        "entityId": "JOEY_ASSET_SYSTEM",
+        "task": "Publish Phase 1 Characterization",
+        "status": "SUCCESS",
+        "executedBy": "",
+        "model": "",
+        "summary": "Committed and pushed the approved CASE_001_NAMYOUNG Phase 1 Characterization to the private Joey Asset System repository. Local `main`, `origin/main`, and GitHub `main` are aligned at the final Phase 1 commit.",
+        "changes": "One golden v0.15 characterization fixture.\nTwo Node characterization test files.\nThree behavior/provenance documents.\nNo recovered production source, feature, schema, reusable Core, Phase 2, hosting binding, or deployment file was changed.",
+        "verification": "Before publication, the original recovered suite passed 85/85.\nPhase 1 characterization passed 21/21.\nCombined suite passed 106/106.\nBuild passed 89 UI control/script checks.\nPost-build provenance passed 3/3.\nIndependent fail-closed review passed with no security, logic, factual, or scope findings.\nPublication did not modify file contents after review; tests/build were not re-run solely for the Git publication step.\nLocal `HEAD`: `eb03e2a9d86abf8b53acfe207fb6737d255ba0d4`.\nRemote `main`: `eb03e2a9d86abf8b53acfe207fb6737d255ba0d4`.\nWorking tree: clean and tracking `origin/main`.\nPhase 0 annotated tag remains unchanged and peels to `134caab8d0b21d37d1469620ecebb7abb43a4c19`.\nDeployment: NONE. No ChatGPT Site operation was performed.",
+        "commit": "eb03e2a9d86abf8b53acfe207fb6737d255ba0d4",
+        "decisionRequired": "NONE for Phase 1 publication.\n\nA separate Joey approval is required before Phase 2, reusable-Core extraction, deployment, or any ChatGPT Site modification.",
+        "nextAction": "Stop and preserve the published Phase 1 regression boundary. Do not begin Phase 2 automatically.",
+        "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/HANDOFF/HISTORY/2026-10-04_1529_joey-asset-system_publish-phase-1-characterization.md",
+        "fingerprint": "1fc6c9f1232b15a40172c65143b5741712caac02b94745bb538902c20d4f4f53",
+        "source": {
+          "classification": "canonical",
+          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/HANDOFF/HISTORY/2026-10-04_1529_joey-asset-system_publish-phase-1-characterization.md",
+          "sourceSection": "Handoff",
+          "fingerprint": "1fc6c9f1232b15a40172c65143b5741712caac02b94745bb538902c20d4f4f53",
+          "asOf": "2026-10-04T15:29:27+09:00",
+          "verificationStatus": "documented",
+          "readAt": "2026-10-05T06:06:11.779Z"
+        },
+        "conflict": false,
+        "conflictReasons": []
+      },
+      {
+        "schemaVersion": "1.0",
+        "timestamp": "2026-10-05T09:05:46+09:00",
+        "entityId": null,
+        "task": "Mission Control V0.1 Final Validation and Review",
+        "status": "BLOCKED",
+        "executedBy": "",
+        "model": "",
+        "summary": "Mission Control V0.1 implementation and automated validation are complete for the current filesystem state, but the designated final independent fail-closed review returned FAIL with one blocking lifecycle-classification finding. Per Joey's instruction, no further fix/re-review cycle was started. This state is not marked Release Candidate and is not Ready for Commit.",
+        "changes": "",
+        "verification": "Automated test suite: 82/82 passed, 0 failed.\nSchema/projection validation: passed; validated 5 schemas across 4 projects, 1 case, 5 Handoffs, and 4 Continue payloads.\nStatic safety check: passed.\nDisposable-cache sync: passed.\nPost-sync validation: passed.\nTargeted lifecycle probes added before the final review passed for space-delimited negations and common contractions then covered by the test suite.",
+        "commit": "",
+        "decisionRequired": "Joey must decide whether to:\n\n1. authorize a targeted lifecycle fix and a new validation/review cycle; or\n2. explicitly accept the recorded blocking limitation and authorize commit/publication despite the failed final review.\n\nNo commit or GitHub push is authorized by this Handoff.",
+        "nextAction": "Stop here and preserve the current filesystem. Wait for Joey's decision on whether Mission Control V0.1 should be fixed before commit or accepted with the documented lifecycle limitation. Do not begin Mission Control V0.2.",
+        "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/HANDOFF/HISTORY/2026-10-05_0905_joey-mission-control_v0-1-final-validation.md",
+        "fingerprint": "95b9b410a4d3ebf357709909f2c8251c4e6b0096ca148d1b52ffdc1202a08fd1",
+        "source": {
+          "classification": "canonical",
+          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/HANDOFF/HISTORY/2026-10-05_0905_joey-mission-control_v0-1-final-validation.md",
+          "sourceSection": "Handoff",
+          "fingerprint": "95b9b410a4d3ebf357709909f2c8251c4e6b0096ca148d1b52ffdc1202a08fd1",
+          "asOf": "2026-10-05T09:05:46+09:00",
+          "verificationStatus": "documented",
+          "readAt": "2026-10-05T06:06:11.779Z"
+        },
+        "conflict": true,
+        "conflictReasons": [
+          "Unknown or ambiguous entity"
+        ]
+      },
+      {
+        "schemaVersion": "1.0",
+        "timestamp": "2026-10-05T09:18:00+09:00",
+        "entityId": null,
+        "task": "Mission Control V0.1 Lifecycle-Negation Blocker Fix and Final Validation",
+        "status": "READY FOR JOEY ACCEPTANCE TEST",
+        "executedBy": "Claude Code (takeover of Hermes session interrupted by ChatGPT/Codex rate limit)",
+        "model": "",
+        "summary": "The single blocking finding from the 2026-10-05 09:05 final review (lifecycle completion negation not fail-closed) has been fixed and verified. Hermes had already applied the fix and regression test before the rate-limit interruption; Claude Code verified it against the working tree, made no additional code changes, and ran the full validation gate. All validation passed.",
+        "changes": "",
+        "verification": "| Check | Result |\n|---|---|\n| `npm test` | PASS — 83/83 (82 previous + 1 new regression test), 0 failed |\n| `npm run validate` | PASS — 5 schemas, 4 projects, 1 case, 6 Handoffs, 4 Continue payloads |\n| `npm run check` (static safety) | PASS |\n| `npm run sync` (disposable cache) | PASS — 4 entities |\n| `npm run validate` post-sync | PASS |\n| `git diff --check` / `git diff --cached --check` | PASS |\n| Real-data lifecycle (Asset System = TEST/Paused, Case 001 = TEST/Completed) | PASS (covered by test suite) |\n\nNo new independent review loop was started, per Joey's instruction.",
+        "commit": "",
+        "decisionRequired": "",
+        "nextAction": "Joey performs the acceptance test. After acceptance, Joey decides whether to authorize the local commit, private GitHub repository, push, and Canonical Memory registration. Do not begin Mission Control V0.2.",
+        "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/HANDOFF/HISTORY/2026-10-05_0918_joey-mission-control_v0-1-blocker-fix-validation.md",
+        "fingerprint": "bc0fa1670a57fa3c9712f30a0aedee278915be82e2dc18c95228f73098876393",
+        "source": {
+          "classification": "canonical",
+          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/HANDOFF/HISTORY/2026-10-05_0918_joey-mission-control_v0-1-blocker-fix-validation.md",
+          "sourceSection": "Handoff",
+          "fingerprint": "bc0fa1670a57fa3c9712f30a0aedee278915be82e2dc18c95228f73098876393",
+          "asOf": "2026-10-05T09:18:00+09:00",
+          "verificationStatus": "documented",
+          "readAt": "2026-10-05T06:06:11.780Z"
+        },
+        "conflict": true,
+        "conflictReasons": [
+          "Unknown or ambiguous entity"
+        ]
+      },
+      {
+        "schemaVersion": "1.0",
+        "timestamp": "2026-10-05T09:50:00+09:00",
+        "entityId": null,
+        "task": "Mission Control V0.1 Localization Acceptance Fix (zh-TW / ko / en)",
+        "status": "READY FOR JOEY ACCEPTANCE RE-TEST",
+        "executedBy": "Claude Code",
+        "model": "",
+        "summary": "Joey's Acceptance Test found one V0.1 requirement: the UI was English-only. A bounded presentation-layer localization fix was implemented for exactly three UI languages — 繁體中文 (zh-TW, default), 한국어 (ko), English (en). Simplified Chinese (zh-CN) was explicitly removed from scope by Joey. No lifecycle logic, canonical parsing, project data, Handoff semantics, or architecture was changed. V0.1 is NOT marked finally accepted.",
+        "changes": "New files:\n`public/i18n.js` — centralized localization module: three dictionaries with identical stable keys, `t(key, params)`, locale persistence (`localStorage` key `mc-locale`, default `zh-TW`, try/catch-safe), render-time label mappers (status, phase, session state, dirty state, provenance classification/verification), exact-match localization of fixed backend messages (embedded technical values preserved), and `applyStaticTranslations` for `data-i18n` / `data-i18n-aria-label` shell elements.\n`tests/i18n.test.mjs` — 10 localization regression tests.\n\nModified files:\n`public/index.html` — global language selector in the header (繁體中文 / 한국어 / English); `data-i18n` keys on all shell text; English text kept as no-JS fallback; Inbox type `<option>`s carry canonical `value`s.\n`public/app.js` — all chrome rendered via `t()`; canonical values mapped to labels only at render time; filters still compare canonical status values; language switch re-renders the cached snapshot (no API call, no write); Continue result, Inbox preview and status notices re-render on switch.\n`public/styles.css` — `.locale-control` layout; `word-break:keep-all` on buttons and table headers (prevents CJK labels breaking per character); mobile-only rule placing the token label on its own row.\n`src/server.mjs` — static allowlist adds `i18n.js` (one-word change).\n`tests/ui-contract.test.mjs` — existing contract checks now read `app.js` together with `i18n.js`, since UI copy moved into the i18n module; no assertion was weakened or removed.",
+        "verification": "| Check | Result |\n|---|---|\n| `npm test` | PASS — 93/93 (83 previous + 10 localization) |\n| `npm run validate` | PASS |\n| `npm run check` | PASS |\n| `npm run sync` + post-sync validate | PASS |\n| `git diff --check` / `--cached --check` | PASS |\n| Browser: all 3 locales × Dashboard, Inbox (incl. interpretation preview), Workspaces (incl. session create), Handoffs, Project detail (4 tabs + Continue result) render | PASS — no console errors |\n| Browser: remaining Latin words in zh-TW / ko chrome | PASS — only intentionally preserved evidence listed above |\n| Browser: language switch modifies canonical data | PASS — `/api/state` projection identical before/after 5 switches; 0 network requests during switching |\n| Browser: locale survives refresh | PASS — `ko` persisted across reload |\n| Browser: default with no stored preference | PASS — `zh-TW` |\n| Browser: 375px mobile, no horizontal overflow | PASS |\n\nWrite-path browser audits ran on a separate throwaway instance (port 4311, scratch data directory, generated test token), which was stopped and deleted afterwards. Joey's real local Inbox/session data was not written.",
+        "commit": "",
+        "decisionRequired": "",
+        "nextAction": "Joey performs the Acceptance Re-Test of localization. After acceptance, Joey decides on commit / private GitHub repository / push. Do not begin Mission Control V0.2.",
+        "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/HANDOFF/HISTORY/2026-10-05_0950_joey-mission-control_v0-1-localization-acceptance-fix.md",
+        "fingerprint": "b96c1ead12a6e2a46b1bf8a6e694be01ff3d8aba532aaff3e8aaf621919d4545",
+        "source": {
+          "classification": "canonical",
+          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/HANDOFF/HISTORY/2026-10-05_0950_joey-mission-control_v0-1-localization-acceptance-fix.md",
+          "sourceSection": "Handoff",
+          "fingerprint": "b96c1ead12a6e2a46b1bf8a6e694be01ff3d8aba532aaff3e8aaf621919d4545",
+          "asOf": "2026-10-05T09:50:00+09:00",
+          "verificationStatus": "documented",
+          "readAt": "2026-10-05T06:06:11.780Z"
+        },
+        "conflict": true,
+        "conflictReasons": [
+          "Unknown or ambiguous entity"
+        ]
+      },
+      {
+        "schemaVersion": "1.0",
+        "timestamp": "2026-10-05T09:58:25+09:00",
+        "entityId": null,
+        "task": "Mission Control V0.1 Baseline Finalization and Remote-Access Architecture Inspection",
+        "status": "SUCCESS",
+        "executedBy": "Claude Code",
+        "model": "",
+        "summary": "Joey completed the manual Acceptance Re-Test of the three-language UI (繁體中文 / 한국어 / English).\n\nJoey Acceptance: PASSED\nMission Control V0.1: BASELINE ESTABLISHED\n\nThe accepted build was verified unchanged since the re-test (no files modified after the localization fix; files served by the running server byte-identical to disk), passed the final safety gate, was committed as the initial commit, and was pushed to a newly created private GitHub repository. A remote-access architecture inspection was completed as a proposal only; nothing was deployed and no architecture was changed.",
+        "changes": "",
+        "verification": "",
+        "commit": "9b5f477fc9506e5c3ba254640af31e02d1f79c7e",
+        "decisionRequired": "",
+        "nextAction": "Wait for Joey's approval of the remote-access architecture before changing architecture or deploying. Do not begin Mission Control V0.2.",
+        "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/HANDOFF/HISTORY/2026-10-05_0958_joey-mission-control_v0-1-baseline-established.md",
+        "fingerprint": "b2c5d3f4d6da7913d6000bc0b91673b5e1780a55c0556fa410c63e5eafa6e475",
+        "source": {
+          "classification": "canonical",
+          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/HANDOFF/HISTORY/2026-10-05_0958_joey-mission-control_v0-1-baseline-established.md",
+          "sourceSection": "Handoff",
+          "fingerprint": "b2c5d3f4d6da7913d6000bc0b91673b5e1780a55c0556fa410c63e5eafa6e475",
+          "asOf": "2026-10-05T09:58:25+09:00",
+          "verificationStatus": "documented",
+          "readAt": "2026-10-05T06:06:11.780Z"
+        },
+        "conflict": true,
+        "conflictReasons": [
+          "Unknown or ambiguous entity"
+        ]
+      }
+    ],
+    "byEntity": {
+      "JOEY_ASSET_SYSTEM": {
+        "schemaVersion": "1.0",
+        "timestamp": "2026-10-04T15:29:27+09:00",
+        "entityId": "JOEY_ASSET_SYSTEM",
+        "task": "Publish Phase 1 Characterization",
+        "status": "SUCCESS",
+        "executedBy": "",
+        "model": "",
+        "summary": "Committed and pushed the approved CASE_001_NAMYOUNG Phase 1 Characterization to the private Joey Asset System repository. Local `main`, `origin/main`, and GitHub `main` are aligned at the final Phase 1 commit.",
+        "changes": "One golden v0.15 characterization fixture.\nTwo Node characterization test files.\nThree behavior/provenance documents.\nNo recovered production source, feature, schema, reusable Core, Phase 2, hosting binding, or deployment file was changed.",
+        "verification": "Before publication, the original recovered suite passed 85/85.\nPhase 1 characterization passed 21/21.\nCombined suite passed 106/106.\nBuild passed 89 UI control/script checks.\nPost-build provenance passed 3/3.\nIndependent fail-closed review passed with no security, logic, factual, or scope findings.\nPublication did not modify file contents after review; tests/build were not re-run solely for the Git publication step.\nLocal `HEAD`: `eb03e2a9d86abf8b53acfe207fb6737d255ba0d4`.\nRemote `main`: `eb03e2a9d86abf8b53acfe207fb6737d255ba0d4`.\nWorking tree: clean and tracking `origin/main`.\nPhase 0 annotated tag remains unchanged and peels to `134caab8d0b21d37d1469620ecebb7abb43a4c19`.\nDeployment: NONE. No ChatGPT Site operation was performed.",
+        "commit": "eb03e2a9d86abf8b53acfe207fb6737d255ba0d4",
+        "decisionRequired": "NONE for Phase 1 publication.\n\nA separate Joey approval is required before Phase 2, reusable-Core extraction, deployment, or any ChatGPT Site modification.",
+        "nextAction": "Stop and preserve the published Phase 1 regression boundary. Do not begin Phase 2 automatically.",
+        "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/HANDOFF/HISTORY/2026-10-04_1529_joey-asset-system_publish-phase-1-characterization.md",
+        "fingerprint": "1fc6c9f1232b15a40172c65143b5741712caac02b94745bb538902c20d4f4f53",
+        "source": {
+          "classification": "canonical",
+          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/HANDOFF/HISTORY/2026-10-04_1529_joey-asset-system_publish-phase-1-characterization.md",
+          "sourceSection": "Handoff",
+          "fingerprint": "1fc6c9f1232b15a40172c65143b5741712caac02b94745bb538902c20d4f4f53",
+          "asOf": "2026-10-04T15:29:27+09:00",
+          "verificationStatus": "documented",
+          "readAt": "2026-10-05T06:06:11.779Z"
+        },
+        "conflict": false,
+        "conflictReasons": []
+      }
+    },
+    "conflictsByEntity": {}
+  },
+  "deploymentObservation": {
+    "mode": "verified_release_snapshot",
+    "readOnly": true,
+    "liveMacObservationAvailable": false
+  }
+}

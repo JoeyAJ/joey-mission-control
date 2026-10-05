@@ -42,3 +42,20 @@ export const config = {
   writeToken: process.env.MC_WRITE_TOKEN || randomBytes(24).toString('hex'),
   bodyLimit: 65536
 };
+
+// CLI-only local test settings; never exposed through the browser API.
+export function parseStartOptions(args){
+ const options={port:config.port,dataRoot:config.dataRoot};
+ for(let i=0;i<args.length;i+=2){
+  const flag=args[i],value=args[i+1];
+  if(!['--port','--data-root'].includes(flag)||!value)throw new Error('Usage: npm run start -- [--port NUMBER] [--data-root ABSOLUTE_PATH]');
+  if(flag==='--port'){
+   if(!/^\d+$/.test(value)||Number(value)<1||Number(value)>65535)throw new Error('Invalid local port');
+   options.port=Number(value);
+  }else{
+   if(!path.isAbsolute(value)||value.includes('\0'))throw new Error('Data root must be an absolute safe path');
+   options.dataRoot=value;
+  }
+ }
+ return options;
+}

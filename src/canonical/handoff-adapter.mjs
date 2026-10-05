@@ -33,6 +33,7 @@ export function parseHandoff(text,sourcePath,knownEntities=null) {
   if(!status)conflictReasons.push('Missing status');
   return {
     schemaVersion:'1.0',timestamp,entityId,task,status,
+    executedBy:field(text,'Executed by')||field(text,'Agent'),model:field(text,'Model'),
     summary:section(parsed,'Summary'),changes:section(parsed,'Changes')||section(parsed,'Content'),verification:section(parsed,'Verification'),
     commit:(text.match(/Commit:\s*`([^`]+)`/i)||[])[1]||'',decisionRequired:section(parsed,'Decision Required'),
     nextAction:section(parsed,'Next Proposed Action')||section(parsed,'Next Action'),sourcePath,fingerprint:sha256(text),source:sourceRef(sourcePath,text,'Handoff',{as_of:timestamp}),conflict:conflictReasons.length>0,conflictReasons

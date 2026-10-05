@@ -1,3 +1,8 @@
+import {verifiedDecisionItems} from './control-semantics.js';
+import {decisionButton,decisionPanel} from './decision-view.js';
+import {primaryProjectLink,createProjectLink} from './project-links.js';
+import {noAction,canonicalEvidence} from './control-semantics.js';
+import {managementSummary,missingLabel,attentionItems,sourceLines,controlFlags} from './presentation.js';
 import {t,initLocale,setLocale,getLocale,applyStaticTranslations,displayValue,statusLabel,phaseLabel,sessionStateLabel,classificationLabel,verificationLabel,dirtyLabel,localizeMessage} from './i18n.js';
 const $=selector=>document.querySelector(selector);
 const all=selector=>[...document.querySelectorAll(selector)];
@@ -8,7 +13,23 @@ let state=null,selectedProject=null,lastContinue=null,lastInterpretation=null,la
 function text(tag,content,cls){const element=document.createElement(tag);element.textContent=content;if(cls)element.className=cls;return element;}
 function list(title,items){const box=document.createElement('section');box.append(text('h4',title));const ul=document.createElement('ul');for(const item of items.length?items:[t('common.none')])ul.append(text('li',typeof item==='string'?item:(item.message||JSON.stringify(item)),'selectable'));box.append(ul);return box;}
 function provenance(claim){const source=claim?.source;if(!source)return t('provenance.unavailable',{classification:classificationLabel(claim?.classification)});return`${classificationLabel(claim.classification)} · ${source.sourcePath} · ${source.sourceSection} · ${verificationLabel(source.verificationStatus)} · ${t('provenance.read',{time:source.readAt})}`;}
-function claimText(key,claim){return key==='status'?statusLabel(value(claim)):key==='phase'?phaseLabel(value(claim)):displayValue(value(claim));}
+function claimText(key,claim){
+  if(value(claim)==='Unknown')return missingLabel(claim);
+  if(key==='blocker'&&canonicalEvidence(claim)&&noAction(value(claim)))return t('control.noAction');
+  return key==='status'?statusLabel(value(claim)):key==='phase'?phaseLabel(value(claim)):['currentTask','nextAction','blocker','lastCompleted','currentStage'].includes(key)?managementSummary(value(claim)):key==='lastUpdated'?displayTime(value(claim)):displayValue(value(claim));
+}
+function displayTime(raw){const date=new Date(raw);if(!Number.isFinite(date.getTime()))return displayValue(raw);return new Intl.DateTimeFormat(getLocale(),{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit',...(String(raw).includes('T')?{hour:'2-digit',minute:'2-digit'}:{})}).format(date);}
+function evidenceRegion(project){
+  const details=document.createElement('details');details.className='evidence';details.append(text('summary',t('evidence.title')));
+  const dl=document.createElement('dl');
+  for(const [label,key] of [...dashboardFields,['field.version','version'],['field.workspace','workspace'],['field.phase','phase']]){const dd=claimCell('dd',project[key],key);dd.firstChild.textContent=displayValue(value(project[key]));dl.append(text('dt',t(label)),dd);}
+  for(const [key,claim] of Object.entries(project.where||{})){const dd=claimCell('dd',claim,key);dd.firstChild.textContent=Array.isArray(claim.value)?claim.value.join('\n'):displayValue(value(claim));dl.append(text('dt',key),dd);}
+  if(project.projectUrls)details.append(text('p',JSON.stringify(project.projectUrls,null,2),'provenance selectable'));
+  details.append(dl,list(t('detail.sourceFingerprints'),fingerprintLines(project.sourceFingerprints)),text('p',project.derivationReason,'provenance'));
+  return details;
+}
+function managementFields(project){const dl=document.createElement('dl');dl.className='management';for(const [label,key] of dashboardFields){const dd=text('dd',claimText(key,project[key]));dd.dataset.field=key;dl.append(text('dt',t(label)),dd);}return dl;}
+
 function claimCell(tag,claim,key){const cell=document.createElement(tag);cell.append(text('span',claimText(key,claim),'selectable'),text('small',provenance(claim),'provenance selectable'));return cell;}
 function show(id){all('.view').forEach(view=>view.classList.toggle('active',view.id===id));history.replaceState(null,'',`#${id}`);}
 // Notices are kept as (key, params) or raw server text so a language switch can re-render them.
@@ -22,25 +43,51 @@ all('nav button').forEach(button=>button.addEventListener('click',()=>{show(butt
 const tokenInput=$('#write-token');tokenInput.value=token;
 $('#save-token').addEventListener('click',()=>{token=tokenInput.value.trim();if(token)sessionStorage.setItem('mc-token',token);else sessionStorage.removeItem('mc-token');notify(token?'token.saved':'token.cleared');});
 
-const dashboardFields=[['field.status','status'],['field.phase','phase'],['field.version','version'],['field.lastCompleted','lastCompleted'],['field.currentTask','currentTask'],['field.nextAction','nextAction'],['field.blocker','blocker'],['field.lastAI','lastAI'],['field.model','model'],['field.workspace','workspace'],['field.lastUpdated','lastUpdated']];
-function card(project){const article=text('article','', 'card');article.append(text('h3',displayValue(value(project.name))),text('small',provenance(project.name),'provenance selectable'));const dl=document.createElement('dl');for(const [label,key] of dashboardFields)dl.append(text('dt',t(label)),claimCell('dd',project[key],key));article.append(dl);const button=text('button',t('card.open'));button.addEventListener('click',()=>detail(project));article.append(button);return article;}
-function tableRow(project){const row=document.createElement('tr');for(const key of ['name','status','phase','version','lastCompleted','currentTask','nextAction','blocker','lastAI','model','workspace','lastUpdated'])row.append(claimCell('td',project[key],key));row.addEventListener('click',()=>detail(project));return row;}
+const dashboardFields=[['field.status','status'],['field.currentStage','currentStage'],['field.currentMission','currentTask'],['field.agent','lastAI'],['field.model','model'],['field.lastCompleted','lastCompleted'],['field.nextAction','nextAction'],['evidence.control','blocker'],['field.lastUpdated','lastUpdated']];
+function openDecision(project,item){detail(project);const panel=document.getElementById(item.id);if(panel){panel.tabIndex=-1;panel.focus();panel.scrollIntoView({block:'nearest'});}}
+function decisionIndicators(project){const items=verifiedDecisionItems(project);if(items.length)return items.map(item=>decisionButton(project,item,openDecision));return project.management?.decisions?.length?[text('p',t('decision.organizing'),'control-indicator')]:[];}
+function card(project){
+  const article=text('article','', 'card project-card');article.dataset.projectId=project.id;
+  article.append(text('h3',displayValue(value(project.name))),managementFields(project));
+  article.append(...decisionIndicators(project));
+  const button=text('button',t('card.open'));button.addEventListener('click',()=>detail(project));article.append(button);const external=createProjectLink(primaryProjectLink(project));if(external)article.append(external);article.append(evidenceRegion(project));return article;
+}
+function tableRow(project){
+  const row=document.createElement('tr');
+  const name=document.createElement('td'),open=text('button',displayValue(value(project.name)));open.addEventListener('click',()=>detail(project));name.append(open);row.append(name);
+  for(const key of ['status','currentTask','lastAI','nextAction','blocker','lastUpdated']){
+    const cell=document.createElement('td');const span=text('span',claimText(key,project[key]),'table-summary');cell.append(span);
+    if(key==='status')cell.append(text('small',claimText('phase',project.phase)));
+    if(key==='lastAI')cell.append(text('small',claimText('model',project.model)));
+    if(key==='blocker')cell.append(...decisionIndicators(project));
+    row.append(cell);
+  }
+  return row;
+}
 // Filters compare canonical status values; only the button labels are localized.
-function filterProjects(filter){activeFilter=filter;const items=filter?state.projects.filter(project=>value(project.status)===filter):state.projects;$('#project-grid').replaceChildren(...items.map(card));$('#project-table').replaceChildren(...items.map(tableRow));}
+function filterProjects(filter){activeFilter=filter;const items=filter?state.projects.filter(project=>value(project.status)===filter):state.projects;$('#project-grid').replaceChildren(...items.map(card));$('#project-table').replaceChildren(...items.map(tableRow));all('[data-filter]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.filter===(filter||''))));}
 
 function showProjectTab(name){all('[data-project-tab]').forEach(button=>button.setAttribute('aria-selected',String(button.dataset.projectTab===name)));all('.project-panel').forEach(panel=>{panel.hidden=panel.id!==`project-${name}`;});}
 all('[data-project-tab]').forEach(button=>button.addEventListener('click',()=>showProjectTab(button.dataset.projectTab)));
 
 function fingerprintLines(items){return items.map(item=>`${item.path}: ${item.fingerprint}`);}
 function projectHandoffs(project){const seen=new Set();return [state.handoffs?.globalLatest,...(state.handoffs?.history||[]),...Object.values(state.handoffs?.byEntity||{})].filter(handoff=>handoff?.entityId===project.id).filter(handoff=>{const key=handoffKey(handoff);if(seen.has(key))return false;seen.add(key);return true;});}
+function deploymentOverview(project){
+  const section=document.createElement('section'),entry=primaryProjectLink(project);
+  if(!entry)return section;
+  section.append(text('h4',t(entry.type==='canonical_production'?'url.production':'url.current')),text('p',entry.deploymentType),text('p',new URL(entry.url).hostname,'selectable'));
+  if(entry.status==='active_legacy_named')section.append(text('p',t('url.activeLegacy')),text('p',t('url.canonicalMissing')));
+  section.append(createProjectLink(entry));return section;
+}
 function renderDetailPanels(project){
   $('#project-title').textContent=t('project.title',{name:displayValue(value(project.name))});
   const overview=$('#project-overview');overview.replaceChildren(text('h3',t('tab.overview')));
-  const dl=document.createElement('dl');for(const [label,key] of dashboardFields)dl.append(text('dt',t(label)),text('dd',claimText(key,project[key]),'selectable'));overview.append(dl);
-  const cases=p=>p.cases||[];overview.append(list(t('detail.nestedCases'),cases(project).map(item=>`${item.id}: ${displayValue(value(item.currentTask))}`)));
-  const context=$('#project-context');context.replaceChildren(text('h3',t('tab.context')),text('p',t('detail.database',{value:displayValue(value(project.where.database))}),'selectable'),list(t('detail.relevantDocs'),Array.isArray(project.where.relevantDocs?.value)?project.where.relevantDocs.value:[]),list(t('detail.sourceFingerprints'),fingerprintLines(project.sourceFingerprints)),list(t('detail.approvalGates'),project.approvalGates),list(t('detail.conflicts'),(project.conflicts||[]).map(conflict=>localizeMessage(conflict.message||conflict.kind||String(conflict)))));
+  overview.append(managementFields(project),deploymentOverview(project));
+  overview.append(...decisionIndicators(project),...verifiedDecisionItems(project).map(item=>decisionPanel(project,item)));
+  const cases=p=>p.cases||[];overview.append(list(t('detail.nestedCases'),cases(project).map(item=>`${displayValue(value(item.name))}: ${statusLabel(value(item.status))}`)));
+  const context=$('#project-context');context.replaceChildren(text('h3',t('evidence.technical')),evidenceRegion(project),text('p',t('detail.database',{value:displayValue(value(project.where.database))}),'selectable'),list(t('detail.relevantDocs'),Array.isArray(project.where.relevantDocs?.value)?project.where.relevantDocs.value:[]),list(t('detail.sourceFingerprints'),fingerprintLines(project.sourceFingerprints)),list(t('detail.approvalGates'),project.approvalGates),list(t('detail.conflicts'),(project.conflicts||[]).map(conflict=>localizeMessage(conflict.message||conflict.kind||String(conflict)))));
   const observation=project.workspaceObservation||{},session=project.session||{};
-  $('#project-workspaces').replaceChildren(text('h3',t('tab.workspaces')),text('p',t('ws.path',{value:observation.path||displayValue(value(project.where.localPath))}),'selectable'),text('p',t('ws.branchCommit',{branch:observation.branch||displayValue(value(project.where.branch)),commit:displayValue(observation.head)}),'selectable'),text('p',t('detail.dirtyUpstream',{dirty:dirtyLabel(observation.dirtyState),upstream:displayValue(observation.upstream),ahead:displayValue(observation.ahead),behind:displayValue(observation.behind)})),text('p',t('detail.session',{workspaceId:session.workspaceId||t('common.none'),ai:displayValue(session.ai),model:displayValue(session.model),task:session.declaredTask||t('detail.noTask')})));
+  $('#project-workspaces').replaceChildren(text('h3',t('tab.workspaces')),text('p',t('workspace.boundary')),text('p',t('ws.path',{value:observation.path||displayValue(value(project.where.localPath))}),'selectable'),text('p',t('ws.branchCommit',{branch:observation.branch||displayValue(value(project.where.branch)),commit:displayValue(observation.head)}),'selectable'),text('p',t('detail.dirtyUpstream',{dirty:dirtyLabel(observation.dirtyState),upstream:displayValue(observation.upstream),ahead:displayValue(observation.ahead),behind:displayValue(observation.behind)})),text('p',t('detail.session',{workspaceId:session.workspaceId||t('common.none'),ai:displayValue(session.ai),model:displayValue(session.model),task:session.declaredTask||t('detail.noTask')})));
   const handoffPanel=$('#project-handoffs');handoffPanel.replaceChildren(text('h3',t('tab.handoffs')),...projectHandoffs(project).map(handoff=>handoffCard(handoff)));
 }
 function detail(project){selectedProject=project;lastContinue=null;show('project');renderDetailPanels(project);showProjectTab('overview');$('#continue-button').disabled=false;renderContinue();}
@@ -55,7 +102,7 @@ function renderContinue(){
   // The runnable prompt is a technical payload for Hermes and stays in its original form.
   if(result.canContinue&&result.hermesPrompt && result.hermesPrompt.length)box.append(text('pre',result.hermesPrompt,'selectable'));else box.append(text('p',t('continue.noPrompt')));
 }
-$('#continue-button').addEventListener('click',async()=>{if(!selectedProject)return;try{const expectedContext={sourceFingerprints:selectedProject.sourceFingerprints,workspaceObservation:selectedProject.workspaceObservation,viewedSession:selectedProject.session||null};lastContinue=await api(`/api/projects/${encodeURIComponent(selectedProject.id)}/continue`,{method:'POST',body:JSON.stringify({expectedContext})});renderContinue();}catch(error){notifyError(error);}});
+$('#continue-button').addEventListener('click',async()=>{if(!selectedProject)return;try{const expectedContext={sourceFingerprints:selectedProject.sourceFingerprints,workspaceObservation:selectedProject.workspaceObservation,viewedSession:selectedProject.session||null};lastContinue=await api(`/api/projects/${encodeURIComponent(selectedProject.id)}/continue?expectedContext=${encodeURIComponent(JSON.stringify(expectedContext))}`);renderContinue();}catch(error){notifyError(error);}});
 
 function sessionNext(session){return session.state==='starting'?'running':session.state==='running'?'waiting_for_joey':session.state==='waiting_for_joey'?'running':null;}
 function renderWorkspaces(snapshot){const box=$('#workspace-list');box.replaceChildren(...snapshot.projects.map(project=>{const observation=project.workspaceObservation||{},session=project.session||{};const article=text('article','', 'card');article.append(text('h3',displayValue(value(project.name))),text('p',t('ws.path',{value:observation.path||displayValue(value(project.where.localPath))}),'selectable'),text('p',t('ws.repository',{value:displayValue(value(project.where.repository))}),'selectable'),text('p',t('ws.branchCommit',{branch:observation.branch||displayValue(value(project.where.branch)),commit:displayValue(observation.head)}),'selectable'),text('p',t('ws.upstream',{upstream:displayValue(observation.upstream),ahead:displayValue(observation.ahead),behind:displayValue(observation.behind)})),text('p',t('ws.dirtyChecked',{dirty:dirtyLabel(observation.dirtyState),time:displayValue(observation.observedAt)})),text('p',t('ws.session',{workspaceId:session.workspaceId||t('common.none'),ai:displayValue(session.ai),model:displayValue(session.model),task:displayValue(session.declaredTask),boundary:displayValue(session.permissionBoundary),state:sessionStateLabel(session.state)})));const recheck=text('button',t('ws.recheck'));recheck.addEventListener('click',async()=>{try{const fresh=await api(`/api/workspaces/${encodeURIComponent(project.id)}/recheck`,{method:'POST',body:'{}'});await reload();notify('ws.rechecked',{time:fresh.observedAt||t('ws.currentTime')});}catch(error){notifyError(error);}});article.append(recheck);const next=sessionNext(session);if(next){const button=text('button',t('ws.updateSession',{state:sessionStateLabel(next)}));button.addEventListener('click',async()=>{try{await api(`/api/sessions/${session.id}`,{method:'PATCH',body:JSON.stringify({state:next})});await reload();notify('ws.sessionUpdated',{state:next});}catch(error){notifyError(error);}});article.append(button);}if(session.id&&!['stopped','failed'].includes(session.state)){for(const [key,target] of [['workflow.stop','stopped'],['workflow.fail','failed']]){const button=text('button',t(key));button.addEventListener('click',async()=>{button.disabled=true;try{await api(`/api/sessions/${session.id}`,{method:'PATCH',body:JSON.stringify({state:target})});await reload();notify('ws.sessionUpdated',{state:target});}catch(error){notifyError(error);}finally{button.disabled=false;}});article.append(button);}}return article;}));}
@@ -65,7 +112,30 @@ function handoffKey(handoff){return[handoff.entityId,handoff.task,handoff.status
 function handoffCard(handoff){const article=text('article','', 'card');article.append(text('h3',`${handoff.entityId||t('handoff.conflictFallback')} · ${displayValue(handoff.task)}`),text('p',t('handoff.taskStatus',{status:displayValue(handoff.status),time:handoff.timestamp||t('handoff.unknownTime')})));if(handoff.conflict)article.append(list(t('handoff.conflictTitle'),(handoff.conflictReasons||[t('handoff.malformed')]).map(reason=>localizeMessage(reason))));article.append(text('p',handoff.summary||handoff.nextAction||t('handoff.noSummary'),'selectable'),text('p',t('handoff.source',{path:displayValue(handoff.sourcePath),fingerprint:displayValue(handoff.fingerprint)}),'selectable'));return article;}
 function renderHandoffs(snapshot){const seen=new Set(),items=[snapshot.handoffs?.globalLatest,...(snapshot.handoffs?.history||[]),...Object.values(snapshot.handoffs?.byEntity||{})].filter(Boolean).filter(handoff=>{if(seen.has(handoffKey(handoff)))return false;seen.add(handoffKey(handoff));return true;});$('#handoff-list').replaceChildren(...items.map(handoffCard));}
 
-function renderAttention(snapshot){const items=[];for(const project of snapshot.projects){if(value(project.blocker)!=='Unknown')items.push(t('attention.blocker',{id:project.id,text:value(project.blocker)}));for(const conflict of project.conflicts||[])items.push(t('attention.conflict',{id:project.id,text:localizeMessage(conflict.message)}));for(const gate of project.approvalGates||[])items.push(t('attention.gate',{id:project.id,text:gate}));const observation=project.workspaceObservation||{},age=Date.now()-Date.parse(observation.observedAt||'');if(observation.error||!observation.observedAt||age>300000)items.push(t('attention.staleWorkspace',{id:project.id,text:observation.error?localizeMessage(observation.error):observation.observedAt||t('attention.missingObservation')}));if(!project.sourceFingerprints?.length)items.push(t('attention.staleFingerprints',{id:project.id}));}$('#attention').replaceChildren(text('h3',t('attention.title')),list(t('attention.listTitle'),items));}
+function attentionCard(project,item){
+  const article=text('article','', 'attention-item');article.dataset.type=item.type;
+  article.append(text('h4',displayValue(value(project.name))));
+  const fieldLabel={version:'field.version',currentTask:'field.currentMission',lastAI:'field.agent',model:'field.model',lastCompleted:'field.lastCompleted',nextAction:'field.nextAction',blocker:'control.blocker'};
+  const issue=item.decision?item.decision.what:item.issue.decisionCandidate?t('decision.organizing'):item.issue.field?t('control.missing',{field:t(fieldLabel[item.issue.field]),reason:missingLabel(item.issue)}):managementSummary(item.issue.value);
+  article.append(text('p',issue));
+  article.append(text('p',t(item.type==='approval'?'control.reviewApproval':item.type==='decision'?'control.makeDecision':'control.inspect'),'required-action'));
+  if(item.decision)article.append(decisionButton(project,item.decision,openDecision));else{const open=text('button',t('card.open'));open.addEventListener('click',()=>{detail(project);if(item.type==='warning')showProjectTab('context');});article.append(open);}
+  const evidence=document.createElement('details');evidence.className='evidence';evidence.append(text('summary',t('evidence.title')),text('p',item.issue.value,'selectable'),text('small',provenance(item.issue),'provenance'));article.append(evidence);return article;
+}
+function renderAttention(snapshot){
+  const box=$('#attention');box.replaceChildren(text('h3',t('attention.title')));
+  const groups=text('div','', 'attention-groups');
+  for(const type of ['blocker','approval','decision','warning']){
+    const section=document.createElement('section');section.className='attention-group';section.dataset.category=type;
+    const items=snapshot.projects.flatMap(project=>attentionItems(project).filter(item=>item.type===type).map(item=>({project,item})));
+    section.append(text('h4',t(type==='decision'?'decision.category':`control.${type}`)+' · '+items.length));
+    section.append(...items.slice(0,2).map(({project,item})=>attentionCard(project,item)));
+    if(items.length>2){const more=document.createElement('details');more.className='attention-more';more.append(text('summary',t('control.remaining',{count:items.length-2})),...items.slice(2).map(({project,item})=>attentionCard(project,item)));section.append(more);}
+    if(!items.length)section.append(text('p',t('control.none')));
+    groups.append(section);
+  }
+  box.append(groups);
+}
 
 async function reloadInbox(){inboxItems=await api('/api/inbox');renderInbox();}
 function inboxStateLabel(state){return t(`inboxState.${state}`);}
@@ -99,14 +169,14 @@ function renderInbox(){
 }
 $('#inbox-filter').addEventListener('change',renderInbox);
 $('#reload-inbox').addEventListener('click',()=>reloadInbox().catch(notifyError));
-function renderRelease(){if(releaseInfo)$('#release-info').textContent=t(releaseInfo.releaseStatus==='accepted'?'release.accepted':'release.info',{version:releaseInfo.version,baseline:releaseInfo.parentBaseline});}
+function renderRelease(){if(releaseInfo?.readOnly){all('#inbox-form input, #inbox-form textarea, #inbox-form select, #inbox-form button, #session-form input, #session-form select, #session-form button, #write-token, #save-token, #workspace-list button').forEach(el=>el.disabled=true);}if(releaseInfo){$('#release-info').textContent=t(releaseInfo.joeyAcceptance==='PASSED'?'release.accepted':'release.pending',{version:releaseInfo.version,baseline:releaseInfo.parentBaseline.slice(0,7)});if(releaseInfo.readOnly)$('#release-info').textContent+=' · '+t('release.snapshot',{time:displayTime(releaseInfo.snapshotGeneratedAt)});$('#parent-baseline').textContent=releaseInfo.parentBaseline;}}
 
 function renderInterpretation(){
   if(!lastInterpretation)return;const interpretation=lastInterpretation;
   $('#interpretation').replaceChildren(text('h3',t('inbox.previewTitle')),text('p',interpretation.ambiguity?t('inbox.ambiguous'):t('inbox.affected',{entity:displayValue(interpretation.affectedEntity)})),text('dl',''),list(t('inbox.proposedAction'),[interpretation.proposedAction]),list(t('inbox.expectedFiles'),interpretation.expectedCanonicalFiles),list(t('inbox.sideEffects'),interpretation.sideEffects.map(effect=>localizeMessage(effect))),text('p',localizeMessage(interpretation.approvalBoundary)));
 }
 
-function render(snapshot){state=snapshot;$('#freshness').textContent=t('freshness.generated',{time:snapshot.generatedAt});filterProjects(activeFilter);renderWorkspaces(snapshot);renderHandoffs(snapshot);renderAttention(snapshot);const select=$('#session-entity'),chosen=select.value;select.replaceChildren(...snapshot.projects.map(project=>{const option=text('option',`${project.id} · ${displayValue(value(project.name))}`);option.value=project.id;return option;}));if(chosen)select.value=chosen;if(selectedProject){selectedProject=snapshot.projects.find(project=>project.id===selectedProject.id)||null;if(selectedProject)renderDetailPanels(selectedProject);}}
+function render(snapshot){state=snapshot;$('#freshness').textContent=t('header.generated',{time:displayTime(snapshot.generatedAt)});filterProjects(activeFilter);renderWorkspaces(snapshot);renderRelease();renderHandoffs(snapshot);renderAttention(snapshot);const select=$('#session-entity'),chosen=select.value;select.replaceChildren(...snapshot.projects.map(project=>{const option=text('option',`${project.id} · ${displayValue(value(project.name))}`);option.value=project.id;return option;}));if(chosen)select.value=chosen;if(selectedProject){selectedProject=snapshot.projects.find(project=>project.id===selectedProject.id)||null;if(selectedProject)renderDetailPanels(selectedProject);}}
 
 // Switching language re-renders the cached snapshot only: no API call, no write, and no canonical value is changed.
 function applyLocale(locale){setLocale(locale);$('#locale-select').value=getLocale();applyStaticTranslations(document);if(state)render(state);renderContinue();renderInterpretation();renderInbox();renderRelease();renderNotice();}
@@ -121,3 +191,5 @@ api('/api/state').then(render).catch(error=>notifyError(error));show(location.ha
 
 reloadInbox().catch(notifyError);
 api('/api/health').then(info=>{releaseInfo=info;renderRelease();}).catch(notifyError);
+
+$('#refresh-state').addEventListener('click',()=>reload().catch(notifyError));

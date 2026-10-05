@@ -12,6 +12,13 @@ export function createRouter(deps){return async(req,res,url)=>{
   if(method==='GET'&&pathname==='/api/handoffs')return{status:200,body:await deps.getHandoffs()};
   if(method==='GET'&&pathname==='/api/inbox')return{status:200,body:await deps.getInbox()};
   let match;
+  if(method==='GET'&&(match=pathname.match(/^\/api\/projects\/([^/]+)\/continue$/))){
+    const raw=url.searchParams.get('expectedContext')||'{}';
+    if(raw.length>12000)throw Object.assign(new Error('Inspection context too large'),{status:413});
+    let context;try{context=JSON.parse(raw);}catch{throw Object.assign(new Error('Invalid inspection context'),{status:400});}
+    if(!context||typeof context!=='object'||Array.isArray(context))throw Object.assign(new Error('Inspection context object required'),{status:400});
+    return{status:200,body:await deps.continueProject(safeId(match[1]),context)};
+  }
   if(method==='PATCH'&&(match=pathname.match(/^\/api\/inbox\/([^/]+)$/))){
     const body=await readJson(req);
     if(Object.keys(body).some(key=>!['state','expectedState'].includes(key))||typeof body.state!=='string'||typeof body.expectedState!=='string')throw Object.assign(new Error('Inbox state and expectedState required; other fields forbidden'),{status:400});

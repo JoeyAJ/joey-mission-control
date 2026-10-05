@@ -1,0 +1,143 @@
+{
+  "$id": "project-urls.v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "authority",
+    "sourceDocument",
+    "projects"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0"
+    },
+    "authority": {
+      "const": "joey_confirmed_project_metadata"
+    },
+    "sourceDocument": {
+      "const": "docs/V0.2_PROJECT_URL_AUTHORITY.md"
+    },
+    "projects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "entityId",
+          "canonicalProductionStatus",
+          "entries"
+        ],
+        "properties": {
+          "entityId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "canonicalProductionStatus": {
+            "enum": [
+              "recorded",
+              "not_established"
+            ]
+          },
+          "entries": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/urlEntry"
+            }
+          }
+        }
+      }
+    },
+    "source": {
+      "$ref": "#/$defs/urlSource"
+    }
+  },
+  "$defs": {
+    "urlEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "url",
+        "type",
+        "deploymentType",
+        "status",
+        "urlVerification",
+        "deploymentVerification",
+        "deployedGitSha"
+      ],
+      "properties": {
+        "url": {
+          "type": "string",
+          "pattern": "^https://[^\\s/@]+(?:/[^\\s]*)?$"
+        },
+        "type": {
+          "enum": [
+            "canonical_production",
+            "current_application",
+            "preview_test",
+            "legacy"
+          ]
+        },
+        "deploymentType": {
+          "enum": [
+            "Production",
+            "ChatGPT Site",
+            "Preview/Test",
+            "Legacy"
+          ]
+        },
+        "status": {
+          "enum": [
+            "active",
+            "active_legacy_named",
+            "preview",
+            "historical"
+          ]
+        },
+        "urlVerification": {
+          "const": "joey_confirmed"
+        },
+        "deploymentVerification": {
+          "const": "not_verified"
+        },
+        "deployedGitSha": {
+          "type": "null"
+        }
+      }
+    },
+    "urlSource": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authority",
+        "sourcePath",
+        "sourceSection",
+        "fingerprint",
+        "verificationStatus",
+        "readAt"
+      ],
+      "properties": {
+        "authority": {
+          "const": "joey_confirmed_project_metadata"
+        },
+        "sourcePath": {
+          "type": "string"
+        },
+        "sourceSection": {
+          "type": "string"
+        },
+        "fingerprint": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "verificationStatus": {
+          "const": "joey_confirmed_url"
+        },
+        "readAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    }
+  }
+}

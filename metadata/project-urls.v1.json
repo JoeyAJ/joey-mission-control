@@ -1,0 +1,67 @@
+{
+  "schemaVersion": "1.0",
+  "authority": "joey_confirmed_project_metadata",
+  "sourceDocument": "docs/V0.2_PROJECT_URL_AUTHORITY.md",
+  "projects": [
+    {
+      "entityId": "NEXAEON",
+      "canonicalProductionStatus": "recorded",
+      "entries": [
+        {
+          "url": "https://nexaeon-web.vercel.app/",
+          "type": "canonical_production",
+          "deploymentType": "Production",
+          "status": "active",
+          "urlVerification": "joey_confirmed",
+          "deploymentVerification": "not_verified",
+          "deployedGitSha": null
+        }
+      ]
+    },
+    {
+      "entityId": "WOOSONG_BUDDY",
+      "canonicalProductionStatus": "recorded",
+      "entries": [
+        {
+          "url": "https://woosong-buddy-app.vercel.app/",
+          "type": "canonical_production",
+          "deploymentType": "Production",
+          "status": "active",
+          "urlVerification": "joey_confirmed",
+          "deploymentVerification": "not_verified",
+          "deployedGitSha": null
+        }
+      ]
+    },
+    {
+      "entityId": "NAMYOUNG_WEB3D",
+      "canonicalProductionStatus": "recorded",
+      "entries": [
+        {
+          "url": "https://namyoung-web3d.vercel.app/",
+          "type": "canonical_production",
+          "deploymentType": "Production",
+          "status": "active",
+          "urlVerification": "joey_confirmed",
+          "deploymentVerification": "not_verified",
+          "deployedGitSha": null
+        }
+      ]
+    },
+    {
+      "entityId": "JOEY_ASSET_SYSTEM",
+      "canonicalProductionStatus": "not_established",
+      "entries": [
+        {
+          "url": "https://namyoung-asset-lab.joeyaj.chatgpt.site/",
+          "type": "current_application",
+          "deploymentType": "ChatGPT Site",
+          "status": "active_legacy_named",
+          "urlVerification": "joey_confirmed",
+          "deploymentVerification": "not_verified",
+          "deployedGitSha": null
+        }
+      ]
+    }
+  ]
+}

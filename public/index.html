@@ -9,21 +9,24 @@
 </head>
 <body>
 <header>
-  <div><span class="eyebrow" data-i18n="app.eyebrow">LOCAL · SOURCE-BACKED</span><h1>Mission Control</h1></div>
-  <div class="locale-control"><label for="locale-select" data-i18n="locale.label">Language</label><select id="locale-select"><option value="zh-TW" lang="zh-TW">繁體中文</option><option value="ko" lang="ko">한국어</option><option value="en" lang="en">English</option></select></div>
-  <div class="token-control"><label for="write-token" data-i18n="token.label">Local write token</label><input id="write-token" type="password" autocomplete="off" spellcheck="false"><button id="save-token" type="button" data-i18n="token.save">Save token</button></div>
-  <p id="release-info" class="selectable"></p>
-  <p id="freshness" data-i18n="freshness.waiting">Waiting for projection</p>
+  <div class="brand"><span class="eyebrow" data-i18n="app.eyebrow">LOCAL · SOURCE-BACKED</span><h1>Mission Control</h1></div>
+  <div class="header-tools">
+    <div class="locale-control"><label for="locale-select" data-i18n="locale.label">Language</label><select id="locale-select"><option value="zh-TW" lang="zh-TW">繁體中文</option><option value="ko" lang="ko">한국어</option><option value="en" lang="en">English</option></select></div>
+    <details class="access-control"><summary data-i18n="header.access">Local write access</summary><div class="token-control"><label for="write-token" data-i18n="token.label">Local write token</label><input id="write-token" type="password" autocomplete="off" spellcheck="false"><button id="save-token" type="button" data-i18n="token.save">Save token</button></div></details>
+    <button id="refresh-state" type="button" data-i18n="header.refresh">Refresh verified data</button>
+  </div>
+  <div class="header-meta"><details id="release-evidence"><summary id="release-info"></summary><code id="parent-baseline"></code></details><p id="freshness" data-i18n="freshness.waiting">Waiting for projection</p></div>
 </header>
 <nav aria-label="Primary" data-i18n-aria-label="nav.label">
   <button data-view="dashboard" data-i18n="nav.dashboard">Dashboard</button><button data-view="inbox" data-i18n="nav.inbox">Inbox</button><button data-view="workspaces" data-i18n="nav.workspaces">Workspaces</button><button data-view="handoffs" data-i18n="nav.handoffs">Handoffs</button><button data-view="project" data-i18n="nav.project">Project detail</button>
 </nav>
 <main>
 <section id="dashboard" class="view active">
-  <div class="hero"><div><p class="eyebrow" data-i18n="dashboard.eyebrow">CONTROL PLANE</p><h2 data-i18n="nav.dashboard">Dashboard</h2><p data-i18n="dashboard.intro">WHERE the work lives. WHAT is verified. WHO touched it. NEXT safe action.</p></div><aside id="attention"><h3 data-i18n="attention.title">Attention</h3><p data-i18n="attention.loading">Loading blockers and decisions…</p></aside></div>
-  <div class="filters" aria-label="Project status filters" data-i18n-aria-label="filters.label"><button data-filter="Active" data-i18n="status.Active">Active</button><button data-filter="Paused" data-i18n="status.Paused">Paused</button><button data-filter="Idea" data-i18n="status.Idea">Idea</button><button data-filter="Planned" data-i18n="status.Planned">Planned</button><button data-filter="Completed" data-i18n="status.Completed">Completed</button></div>
+  <div class="dashboard-heading"><div><p class="eyebrow" data-i18n="dashboard.eyebrow">CONTROL PLANE</p><h2 data-i18n="nav.dashboard">Dashboard</h2><p data-i18n="evidence.summaryNote">Reviewed display summaries; original evidence remains available.</p></div></div>
+  <div class="filters" aria-label="Project status filters" data-i18n-aria-label="filters.label"><button data-filter="" data-i18n="filters.all">All projects</button><button data-filter="Active" data-i18n="status.Active">Active</button><button data-filter="Paused" data-i18n="status.Paused">Paused</button><button data-filter="Idea" data-i18n="status.Idea">Idea</button><button data-filter="Planned" data-i18n="status.Planned">Planned</button><button data-filter="Completed" data-i18n="status.Completed">Completed</button></div>
   <div id="project-grid" class="grid" aria-live="polite"></div>
-  <div class="table-wrap"><table><thead><tr><th data-i18n="field.projectName">Project Name</th><th data-i18n="field.status">Status</th><th data-i18n="field.phase">Current Phase</th><th data-i18n="field.version">Version</th><th data-i18n="field.lastCompleted">Last Completed</th><th data-i18n="field.currentTask">Current Task</th><th data-i18n="field.nextAction">Next Action</th><th data-i18n="field.blocker">Blocker</th><th data-i18n="field.lastAI">Last AI</th><th data-i18n="field.model">Model</th><th data-i18n="field.workspace">Workspace</th><th data-i18n="field.lastUpdated">Last Updated</th></tr></thead><tbody id="project-table"></tbody></table></div>
+  <div class="table-wrap"><table class="control-table"><caption data-i18n="dashboard.summary">Project control summary</caption><thead><tr><th data-i18n="field.projectName">Project Name</th><th data-i18n="field.status">Status</th><th data-i18n="field.currentMission">Current Mission</th><th data-i18n="field.agent">Current / Last Agent</th><th data-i18n="field.nextAction">Next Action</th><th data-i18n="evidence.control">Blocker / Approval Required</th><th data-i18n="field.lastUpdated">Last Updated</th></tr></thead><tbody id="project-table"></tbody></table></div>
+  <aside id="attention"><h3 data-i18n="attention.title">Attention</h3><p data-i18n="attention.loading">Loading blockers and decisions…</p></aside>
 </section>
 <section id="inbox" class="view">
   <h2 data-i18n="nav.inbox">Inbox</h2><form id="inbox-form"><label for="rawText" data-i18n="inbox.rawLabel">Natural-language idea or request</label><textarea id="rawText" required></textarea><label for="kind" data-i18n="inbox.typeLabel">Type</label><select id="kind"><option value="Request" data-i18n="inbox.type.Request">Request</option><option value="Decision" data-i18n="inbox.type.Decision">Decision</option><option value="Notice" data-i18n="inbox.type.Notice">Notice</option><option value="Problem" data-i18n="inbox.type.Problem">Problem</option></select><button type="submit" data-i18n="inbox.submit">Save and Interpret</button></form>
@@ -35,15 +38,15 @@
 </section>
 <section id="workspaces" class="view">
   <h2 data-i18n="nav.workspaces">Workspaces</h2><p data-i18n="workspaces.intro">Path · repository · branch · commit · upstream · ahead · behind · dirty state · last checked · AI/model/session</p>
-  <form id="session-form"><h3 data-i18n="session.formTitle">Create local AI workspace session</h3><label><span data-i18n="session.entity">Entity</span> <select id="session-entity" required></select></label><label><span data-i18n="session.ai">AI</span> <input id="session-ai" value="Hermes" required></label><label><span data-i18n="field.model">Model</span> <input id="session-model" required></label><label><span data-i18n="session.workspaceId">Workspace ID</span> <input id="session-workspaceId" required></label><label><span data-i18n="session.path">Path</span> <input id="session-path" required></label><label><span data-i18n="session.declaredTask">Declared task</span> <input id="session-declaredTask"></label><label><span data-i18n="session.permissionBoundary">Permission boundary</span> <input id="session-permissionBoundary" value="Local observation only"></label><button type="submit" data-i18n="session.create">Create session</button></form>
+  <p data-i18n="workspace.boundary">Workspace records work intent and execution context only; assignments do not verify completion, Agent/Model history or Acceptance, and cannot update canonical project state.</p><form id="session-form"><h3 data-i18n="session.formTitle">Create local AI workspace session</h3><label><span data-i18n="session.entity">Entity</span> <select id="session-entity" required></select></label><label><span data-i18n="session.ai">AI</span> <input id="session-ai" value="Hermes" required></label><label><span data-i18n="field.model">Model</span> <input id="session-model" required></label><label><span data-i18n="session.workspaceId">Workspace ID</span> <input id="session-workspaceId" required></label><label><span data-i18n="session.path">Path</span> <input id="session-path" required></label><label><span data-i18n="session.declaredTask">Declared task</span> <input id="session-declaredTask"></label><label><span data-i18n="session.permissionBoundary">Permission boundary</span> <input id="session-permissionBoundary" value="Local observation only"></label><button type="submit" data-i18n="session.create">Create session</button></form>
   <p data-i18n="workflow.sessionBoundary">These controls record local observations; they do not control AI processes.</p>
   <div id="workspace-list"></div>
 </section>
 <section id="handoffs" class="view"><h2 data-i18n="nav.handoffs">Handoffs</h2><p data-i18n="handoffs.intro">Global latest and complete local history. Task status is evidence; it is not project lifecycle.</p><div id="handoff-list"></div></section>
 <section id="project" class="view">
   <h2 id="project-title" data-i18n="nav.project">Project detail</h2>
-  <div class="tabs" role="tablist"><button data-project-tab="overview" data-i18n="tab.overview">Overview</button><button data-project-tab="context" data-i18n="tab.context">Context</button><button data-project-tab="workspaces" data-i18n="tab.workspaces">Workspaces</button><button data-project-tab="handoffs" data-i18n="tab.handoffs">Handoffs</button></div>
-  <article id="project-overview" class="project-panel selectable"></article>
+  <div class="tabs" role="tablist"><button data-project-tab="overview" data-i18n="tab.overview">Overview</button><button data-project-tab="context" data-i18n="tab.context">Technical / Evidence</button><button data-project-tab="workspaces" data-i18n="tab.workspaces">Workspaces</button><button data-project-tab="handoffs" data-i18n="tab.handoffs">Handoffs</button></div>
+  <article id="project-overview" class="project-panel"></article>
   <article id="project-context" class="project-panel selectable" hidden></article>
   <article id="project-workspaces" class="project-panel selectable" hidden></article>
   <article id="project-handoffs" class="project-panel selectable" hidden></article>

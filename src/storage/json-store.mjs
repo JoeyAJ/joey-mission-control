@@ -54,6 +54,20 @@ export class JsonStore {
     }
   }
 
+  async readOnly() {
+    // Inspection must not initialize a store or quarantine a damaged file.
+    const rootStat = await lstatIfExists(this.root);
+    if (!rootStat) return [];
+    if (rootStat.isSymbolicLink()) throw new Error('Store root symlink mismatch');
+    const realRoot = await fs.realpath(this.root);
+    const stat = await lstatIfExists(this.file);
+    if (!stat) return [];
+    if (stat.isSymbolicLink() || !isContained(realRoot, await fs.realpath(this.file))) throw new Error('Store file containment mismatch');
+    const data = JSON.parse(await fs.readFile(this.file, 'utf8'));
+    if (!this.validator(data)) throw new Error('Stored JSON failed validation');
+    return data;
+  }
+
   async read() {
     await this.ensure();
     try {

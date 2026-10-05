@@ -29,7 +29,9 @@ Included: Dashboard, AI/workspace tracking, Resume/Continue, natural-language In
 
 V0.2 adds persistent Inbox history/state filters, explicit local proposal confirmation, validated local progress/resolution/reopen, terminal session observations, and version/parent-baseline evidence. No data migration is required.
 
-Excluded: public deployment, cloud sync, Gantt charts, KPI/time tracking, team workflows, calendar automation, enterprise permissions, database migrations, arbitrary shell execution, commit/push/deploy actions.
+Public production is a read-only verified release snapshot on Vercel. Local authorized Inbox/session writes remain on the Mac; cloud writes are refused and live continuation inspection is unavailable remotely. See docs/V0.2_PRODUCTION_HANDOFF.md.
+
+Excluded: cloud sync, Gantt charts, KPI/time tracking, team workflows, calendar automation, enterprise permissions, database migrations, arbitrary shell execution, commit/push/deploy actions.
 
 ## Project lifecycle
 
@@ -41,6 +43,6 @@ Dashboard status is separate:
 
 ## V0.2 release and continuation
 
-See [V0.2 plan](docs/V0.2_PLAN.md) and [continuation package](docs/V0.2_CONTINUATION.md). Joey Acceptance passed on 2026-10-05. Exact publication/deployment and baseline evidence are recorded in the final output package; verify the live Git chain before continuing.
+See [V0.2 plan](docs/V0.2_PLAN.md) and [continuation package](docs/V0.2_CONTINUATION.md). Joey Acceptance is PASSED under the explicit 2026-10-05 production release instruction, superseding earlier pending gates. Historical Round 1/2 records remain historical. Exact publication/deployment and baseline evidence are recorded in the final output package; verify the live Git chain before continuing.
 
 Inbox states are local workflow records. Resolving an item does not complete a canonical task. Recording a session as stopped/failed does not stop an AI process. Reopening an Inbox item invalidates its prior interpretation and confirmation.

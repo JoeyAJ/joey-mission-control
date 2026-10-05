@@ -2,7 +2,7 @@ import http from 'node:http';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
-import {config,assertSafeDataRoot} from './config.mjs';
+import {config,assertSafeDataRoot,parseStartOptions} from './config.mjs';
 import {securityHeaders,createRouter} from './api/routes.mjs';
 import {buildProjection} from './projection/projection-service.mjs';
 import {JsonStore} from './storage/json-store.mjs';
@@ -30,7 +30,7 @@ export function createApp(deps){
       }
       if(url.pathname.startsWith('/api/')){const result=await router(req,res,url);if(!result)return send(res,404,{error:'Not found'});return send(res,result.status,result.body);}
       const name=url.pathname==='/'?'index.html':url.pathname.slice(1);
-      if(!['index.html','styles.css','app.js','i18n.js'].includes(name))return send(res,404,{error:'Not found'});
+      if(!['index.html','styles.css','app.js','i18n.js','presentation.js','source-summaries.js','control-semantics.js','project-links.js','decision-view.js'].includes(name))return send(res,404,{error:'Not found'});
       const types={html:'text/html; charset=utf-8',css:'text/css; charset=utf-8',js:'text/javascript; charset=utf-8'};
       return send(res,200,await fs.readFile(path.join(publicRoot,name),'utf8'),types[name.split('.').pop()]);
     }catch(error){send(res,error.status||500,{error:error.status?error.message:'Internal error'});}
@@ -40,8 +40,9 @@ export function createApp(deps){
 export function createDefaultDeps({canonicalRoot=config.canonicalRoot,dataRoot=config.dataRoot,writeToken=config.writeToken}={}){
   const ready=assertSafeDataRoot(canonicalRoot,dataRoot);
   const inbox=new InboxService(new JsonStore(dataRoot,'inbox.v1.json',collectionValidator(inboxSchema)));
-  const sessions=new SessionService(new JsonStore(dataRoot,'sessions.v1.json',collectionValidator(sessionSchema)));
-  async function state(){await ready;return buildProjection(canonicalRoot,{sessions:await sessions.list()});}
+  const sessionStore=new JsonStore(dataRoot,'sessions.v1.json',collectionValidator(sessionSchema));
+  const sessions=new SessionService(sessionStore);
+  async function state({readOnly=false}={}){await ready;return buildProjection(canonicalRoot,{sessions:await (readOnly?sessionStore.readOnly():sessions.list())});}
   return{
     ready,token:writeToken,
     getState:state,
@@ -65,7 +66,7 @@ export function createDefaultDeps({canonicalRoot=config.canonicalRoot,dataRoot=c
     createSession:async input=>{await ready;return sessions.start(input);},
     updateSession:async(id,input)=>{await ready;return sessions.update(id,input);},
     continueProject:async(id,expectedContext={})=>{
-      const snapshot=await state(),project=snapshot.projects.find(item=>item.id===id);
+      const snapshot=await state({readOnly:true}),project=snapshot.projects.find(item=>item.id===id);
       if(!project)throw Object.assign(new Error('Project not found'),{status:404});
       const viewedSession=expectedContext.viewedSession??null;
       const storedContext={head:project.where.storedCommit.value==='Unknown'?'':project.where.storedCommit.value,path:project.where.localPath.value==='Unknown'?'':project.where.localPath.value,branch:project.where.branch.value==='Unknown'?'':project.where.branch.value,sessionPath:viewedSession?.path||'',viewedSession,currentSession:project.session||null,viewedGit:expectedContext.workspaceObservation||null,fingerprints:expectedContext.sourceFingerprints||[]};
@@ -75,8 +76,9 @@ export function createDefaultDeps({canonicalRoot=config.canonicalRoot,dataRoot=c
 }
 
 if(process.argv[1]===fileURLToPath(import.meta.url)){
-  const deps=createDefaultDeps();
+  const runtime=parseStartOptions(process.argv.slice(2));
+  const deps=createDefaultDeps({dataRoot:runtime.dataRoot});
   await deps.ready;
   const server=http.createServer(createApp(deps));
-  server.listen(config.port,config.host,()=>console.log(`Mission Control: http://${config.host}:${config.port}\nWrite token: ${config.writeToken}`));
+  server.listen(runtime.port,config.host,()=>console.log(`Mission Control: http://${config.host}:${runtime.port}\nWrite token: ${config.writeToken}`));
 }
