@@ -1,0 +1,142 @@
+{
+  "$id": "project-projection.v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion", "id", "entityType", "name", "status", "phase",
+    "attention", "version", "lastCompleted", "currentTask", "nextAction",
+    "blocker", "lastAI", "model", "workspace", "lastUpdated", "where",
+    "workspaceObservation", "session", "approvalGates", "conflicts",
+    "sourceFingerprints", "cases", "derivationReason"
+  ],
+  "properties": {
+    "schemaVersion": {"const": "1.0"},
+    "id": {"type": "string"},
+    "entityType": {"enum": ["project", "system", "case"]},
+    "parentId": {"type": ["string", "null"]},
+    "name": {"$ref": "#/$defs/claim"},
+    "status": {"$ref": "#/$defs/statusClaim"},
+    "phase": {"$ref": "#/$defs/phaseClaim"},
+    "attention": {"$ref": "#/$defs/claim"},
+    "version": {"$ref": "#/$defs/claim"},
+    "lastCompleted": {"$ref": "#/$defs/claim"},
+    "currentTask": {"$ref": "#/$defs/claim"},
+    "nextAction": {"$ref": "#/$defs/claim"},
+    "blocker": {"$ref": "#/$defs/claim"},
+    "lastAI": {"$ref": "#/$defs/claim"},
+    "model": {"$ref": "#/$defs/claim"},
+    "workspace": {"$ref": "#/$defs/claim"},
+    "lastUpdated": {"$ref": "#/$defs/claim"},
+    "where": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["localPath", "repository", "branch", "storedCommit", "observedCommit", "production", "database", "relevantDocs"],
+      "properties": {
+        "localPath": {"$ref": "#/$defs/claim"},
+        "repository": {"$ref": "#/$defs/claim"},
+        "branch": {"$ref": "#/$defs/claim"},
+        "storedCommit": {"$ref": "#/$defs/claim"},
+        "observedCommit": {"$ref": "#/$defs/claim"},
+        "production": {"$ref": "#/$defs/claim"},
+        "database": {"$ref": "#/$defs/claim"},
+        "relevantDocs": {"$ref": "#/$defs/claim"}
+      }
+    },
+    "workspaceObservation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["observedAt"],
+      "properties": {
+        "path": {"type": "string"}, "branch": {"type": "string"},
+        "head": {"type": "string"}, "origin": {"type": "string"},
+        "upstream": {"type": "string"}, "ahead": {"type": "number"},
+        "behind": {"type": "number"}, "dirtyState": {"type": "string"},
+        "observedAt": {"type": ["string", "null"]},
+        "observationFingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "source": {"$ref": "#/$defs/source"},
+        "error": {"type": "string"}
+      }
+    },
+    "session": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["schemaVersion", "id", "entityId", "ai", "model", "workspaceId", "path", "state", "createdAt", "updatedAt"],
+      "properties": {
+        "schemaVersion": {"const": "1.0"}, "id": {"type": "string"},
+        "entityId": {"type": "string"}, "ai": {"type": "string"},
+        "model": {"type": "string"}, "workspaceId": {"type": "string"},
+        "path": {"type": "string", "safePath": true}, "repository": {"type": "string"},
+        "branch": {"type": "string"}, "startingCommit": {"type": "string"},
+        "currentCommit": {"type": "string"}, "permissionBoundary": {"type": "string"},
+        "declaredTask": {"type": "string"},
+        "state": {"enum": ["starting", "running", "waiting_for_joey", "stopped", "failed"]},
+        "createdAt": {"type": "string", "format": "date-time"},
+        "updatedAt": {"type": "string", "format": "date-time"}
+      }
+    },
+    "approvalGates": {"type": "array", "items": {"type": "string"}},
+    "conflicts": {
+      "type": "array",
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["kind", "message"],
+        "properties": {
+          "kind": {"type": "string"}, "message": {"type": "string"},
+          "values": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    },
+    "sourceFingerprints": {"type": "array", "items": {"$ref": "#/$defs/fingerprint"}},
+    "cases": {"type": "array", "items": {"$ref": "#"}},
+    "derivationReason": {"type": "string"}
+  },
+  "$defs": {
+    "source": {
+      "type": "object",
+      "required": ["classification", "sourcePath", "sourceSection", "fingerprint", "verificationStatus", "readAt"],
+      "properties": {
+        "classification": {"enum": ["canonical", "observed", "local_overlay"]},
+        "sourcePath": {"type": "string"}, "sourceSection": {"type": "string"},
+        "fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "asOf": {"type": "string"}, "verificationStatus": {"type": "string"},
+        "readAt": {"type": "string", "format": "date-time"}
+      },
+      "additionalProperties": false
+    },
+    "fingerprint": {
+      "type": "object", "additionalProperties": false,
+      "required": ["path", "fingerprint"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+      }
+    },
+    "claim": {
+      "type": "object", "additionalProperties": false,
+      "required": ["value", "classification", "source"],
+      "properties": {
+        "value": {},
+        "classification": {"enum": ["canonical", "derived", "observed", "local_overlay", "proposal", "unknown"]},
+        "source": {"type": ["object", "null"]}
+      }
+    },
+    "statusClaim": {
+      "type": "object", "additionalProperties": false,
+      "required": ["value", "classification", "source"],
+      "properties": {
+        "value": {"enum": ["Active", "Paused", "Idea", "Planned", "Completed", "Unknown"]},
+        "classification": {"enum": ["derived", "unknown"]},
+        "source": {"type": ["object", "null"]}
+      }
+    },
+    "phaseClaim": {
+      "type": "object", "additionalProperties": false,
+      "required": ["value", "classification", "source"],
+      "properties": {
+        "value": {"enum": ["IDEA", "DISCOVERY", "SPEC", "BUILD", "TEST", "DEPLOY", "MAINTAIN", "Unknown"]},
+        "classification": {"enum": ["derived", "unknown"]},
+        "source": {"type": ["object", "null"]}
+      }
+    }
+  }
+}

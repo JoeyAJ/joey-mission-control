@@ -1,0 +1,3 @@
+import fs from 'node:fs/promises'; import path from 'node:path'; import { resolveCanonicalPath } from './index-adapter.mjs'; import { parseMarkdown } from './markdown.mjs'; import { sourceRef } from './fingerprint.mjs';
+const docs=['PROJECT_MEMORY','ARCHITECTURE','DECISIONS','CURRENT_STATE','NEXT_ACTIONS'];
+export async function loadEntityMemory(root,dir){const base=await resolveCanonicalPath(root,dir);const out={};for(const name of docs){const file=path.join(base,`${name}.md`);try{const safe=await resolveCanonicalPath(root,file),text=await fs.readFile(safe,'utf8'),parsed=parseMarkdown(text);out[name]={...parsed,source:sourceRef(safe,text,name,parsed.metadata)}}catch(e){if(e.code!=='ENOENT')throw e;}}return out;}

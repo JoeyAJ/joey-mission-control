@@ -1,0 +1,34 @@
+{
+  "$id": "inbox-item.v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "id", "rawText", "type", "state", "createdAt", "idempotencyKey"],
+  "properties": {
+    "schemaVersion": {"const": "1.0"},
+    "id": {"type": "string", "minLength": 1},
+    "rawText": {"type": "string", "minLength": 1},
+    "entityHint": {"type": "string"},
+    "type": {"enum": ["Request", "Decision", "Notice", "Problem"]},
+    "state": {"enum": ["Needs review", "Ready to confirm", "In progress", "Resolved"]},
+    "createdAt": {"type": "string", "format": "date-time"},
+    "updatedAt": {"type": "string", "format": "date-time"},
+    "idempotencyKey": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "interpretation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["affectedEntity", "ambiguity", "proposedAction", "expectedCanonicalFiles", "sideEffects", "approvalBoundary", "formalPromotion"],
+      "properties": {
+        "affectedEntity": {"type": ["string", "null"]},
+        "ambiguity": {"type": "boolean"},
+        "proposedAction": {"type": "string"},
+        "expectedCanonicalFiles": {"type": "array", "items": {"type": "string"}},
+        "sideEffects": {"type": "array", "items": {"type": "string"}},
+        "approvalBoundary": {"type": "string"},
+        "formalPromotion": {"type": "boolean"}
+      }
+    },
+    "localProposalOnly": {"type": "boolean"},
+    "canonicalWritePerformed": {"type": "boolean"},
+    "confirmedAt": {"type": "string", "format": "date-time"}
+  }
+}
