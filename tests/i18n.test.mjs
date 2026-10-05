@@ -94,3 +94,5 @@ test('server serves the localization module and nothing else new',async()=>{
   const server=await fs.readFile(new URL('../src/server.mjs',import.meta.url),'utf8');
   assert.match(server,/\['index\.html','styles\.css','app\.js','i18n\.js'\]/);
 });
+
+test('new terminal failure state is translated in all three locales',()=>{assert.equal(sessionStateLabel('failed','zh-TW'),'失敗');assert.equal(sessionStateLabel('failed','ko'),'실패');assert.equal(sessionStateLabel('failed','en'),'failed');});

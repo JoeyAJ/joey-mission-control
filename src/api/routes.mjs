@@ -1,3 +1,4 @@
+import {release} from '../release.mjs';
 export const securityHeaders={'Content-Security-Policy':"default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'self'; img-src 'self' data:; object-src 'none'; base-uri 'none'; frame-ancestors 'none'",'X-Content-Type-Options':'nosniff','X-Frame-Options':'DENY','Referrer-Policy':'no-referrer','Permissions-Policy':'camera=(), microphone=(), geolocation=()'};
 
 export function safeId(raw){let id;try{id=decodeURIComponent(raw);}catch{throw Object.assign(new Error('Bad identifier'),{status:400});}if(!/^[A-Za-z0-9_-]+$/.test(id))throw Object.assign(new Error('Bad identifier'),{status:400});return id;}
@@ -5,11 +6,17 @@ export async function readJson(req,limit=65536){if(!/^application\/json(?:;|$)/i
 
 export function createRouter(deps){return async(req,res,url)=>{
   const method=req.method,pathname=url.pathname;
-  if(method==='GET'&&pathname==='/api/health')return{status:200,body:{ok:true,loopback:true}};
+  if(method==='GET'&&pathname==='/api/health')return{status:200,body:{ok:true,loopback:true,...release}};
   if(method==='GET'&&pathname==='/api/state')return{status:200,body:await deps.getState()};
   if(method==='GET'&&pathname==='/api/workspaces')return{status:200,body:await deps.getWorkspaces()};
   if(method==='GET'&&pathname==='/api/handoffs')return{status:200,body:await deps.getHandoffs()};
+  if(method==='GET'&&pathname==='/api/inbox')return{status:200,body:await deps.getInbox()};
   let match;
+  if(method==='PATCH'&&(match=pathname.match(/^\/api\/inbox\/([^/]+)$/))){
+    const body=await readJson(req);
+    if(Object.keys(body).some(key=>!['state','expectedState'].includes(key))||typeof body.state!=='string'||typeof body.expectedState!=='string')throw Object.assign(new Error('Inbox state and expectedState required; other fields forbidden'),{status:400});
+    return{status:200,body:await deps.transitionInbox(safeId(match[1]),body.state,body.expectedState)};
+  }
   if(method==='GET'&&(match=pathname.match(/^\/api\/projects\/(.+)$/))){const project=await deps.getProject(safeId(match[1]));if(!project)throw Object.assign(new Error('Project not found'),{status:404});return{status:200,body:project};}
   if(method==='POST'&&pathname==='/api/inbox')return{status:201,body:await deps.createInbox(await readJson(req))};
   if(method==='POST'&&(match=pathname.match(/^\/api\/inbox\/([^/]+)\/interpret$/)))return{status:200,body:await deps.interpretInbox(safeId(match[1]))};

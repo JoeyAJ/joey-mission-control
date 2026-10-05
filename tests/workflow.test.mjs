@@ -1,0 +1,50 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs/promises';
+import os from 'node:os';
+import path from 'node:path';
+import http from 'node:http';
+import {createApp,createDefaultDeps} from '../src/server.mjs';
+
+test('durable Inbox API preserves boundaries, protects fields, and rejects stale/terminal actions',async t=>{
+  const dataRoot=await fs.mkdtemp(path.join(os.tmpdir(),'mc-v02-workflow-'));
+  const deps=createDefaultDeps({dataRoot,writeToken:'workflow-test'});
+  const server=http.createServer(createApp(deps));
+  await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
+  t.after(()=>server.close());
+  const request=(url,body,method='POST',authorized=true)=>fetch(`http://127.0.0.1:${server.address().port}${url}`,body===undefined?{}:{method,headers:{'Content-Type':'application/json',...(authorized?{'x-mission-control-token':'workflow-test'}:{})},body:JSON.stringify(body)});
+  const item=await(await request('/api/inbox',{rawText:'NexAeon improve UI'})).json();
+  assert.equal((await request('/api/inbox')).status,200);
+  assert.equal((await(await request('/api/inbox')).json())[0].id,item.id);
+  const route=`/api/inbox/${item.id}`;
+  assert.equal((await request(route,{state:'Resolved',expectedState:'Needs review'},'PATCH',false)).status,403);
+  assert.equal((await request(route,{state:'Resolved',expectedState:'Needs review',rawText:'overwrite'},'PATCH')).status,400);
+  assert.equal((await request(route,{state:'Resolved'},'PATCH')).status,400);
+  assert.equal((await request(route,{state:'In progress',expectedState:'Needs review'},'PATCH')).status,409);
+  assert.equal((await request(`${route}/interpret`,{})).status,200);
+  assert.equal((await request(`${route}/confirm`,{explicitDecision:'approved'})).status,200);
+  const progressing=await(await request(route,{state:'In progress',expectedState:'Ready to confirm'},'PATCH')).json();
+  assert.equal(progressing.state,'In progress');
+  assert.equal(progressing.canonicalWritePerformed,false);
+  assert.equal((await request(`${route}/interpret`,{})).status,409);
+  assert.equal((await request(`${route}/confirm`,{explicitDecision:'approved'})).status,409);
+  assert.equal((await request(route,{state:'Resolved',expectedState:'Ready to confirm'},'PATCH')).status,409);
+  assert.equal((await request(route,{state:'Resolved',expectedState:'In progress'},'PATCH')).status,200);
+  assert.equal((await request(`${route}/interpret`,{})).status,409);
+  const reopened=await(await request(route,{state:'Needs review',expectedState:'Resolved'},'PATCH')).json();
+  assert.equal(reopened.confirmedAt,undefined);
+  assert.equal(reopened.interpretation,undefined);
+  assert.equal(reopened.rawText,item.rawText);
+  assert.equal((await createDefaultDeps({dataRoot}).getInbox())[0].state,'Needs review');
+  assert.equal((await request('/api/inbox/missing',{state:'Resolved',expectedState:'Needs review'},'PATCH')).status,404);
+});
+
+test('health describes human-accepted version separately from accepted V0.1 parent',async t=>{
+  const server=http.createServer(createApp({}));
+  await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));t.after(()=>server.close());
+  const health=await(await fetch(`http://127.0.0.1:${server.address().port}/api/health`)).json();
+  assert.equal(health.version,'0.2.0');
+  assert.equal(health.releaseStatus,'accepted');
+  assert.equal(health.parentBaseline,'9b5f477fc9506e5c3ba254640af31e02d1f79c7e');
+  assert.equal(Object.hasOwn(health,'token'),false);
+});

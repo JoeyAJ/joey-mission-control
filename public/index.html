@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Joey Mission Control</title>
+  <link rel="icon" href="data:,">
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
@@ -11,6 +12,7 @@
   <div><span class="eyebrow" data-i18n="app.eyebrow">LOCAL · SOURCE-BACKED</span><h1>Mission Control</h1></div>
   <div class="locale-control"><label for="locale-select" data-i18n="locale.label">Language</label><select id="locale-select"><option value="zh-TW" lang="zh-TW">繁體中文</option><option value="ko" lang="ko">한국어</option><option value="en" lang="en">English</option></select></div>
   <div class="token-control"><label for="write-token" data-i18n="token.label">Local write token</label><input id="write-token" type="password" autocomplete="off" spellcheck="false"><button id="save-token" type="button" data-i18n="token.save">Save token</button></div>
+  <p id="release-info" class="selectable"></p>
   <p id="freshness" data-i18n="freshness.waiting">Waiting for projection</p>
 </header>
 <nav aria-label="Primary" data-i18n-aria-label="nav.label">
@@ -25,11 +27,16 @@
 </section>
 <section id="inbox" class="view">
   <h2 data-i18n="nav.inbox">Inbox</h2><form id="inbox-form"><label for="rawText" data-i18n="inbox.rawLabel">Natural-language idea or request</label><textarea id="rawText" required></textarea><label for="kind" data-i18n="inbox.typeLabel">Type</label><select id="kind"><option value="Request" data-i18n="inbox.type.Request">Request</option><option value="Decision" data-i18n="inbox.type.Decision">Decision</option><option value="Notice" data-i18n="inbox.type.Notice">Notice</option><option value="Problem" data-i18n="inbox.type.Problem">Problem</option></select><button type="submit" data-i18n="inbox.submit">Save and Interpret</button></form>
+  <h3 data-i18n="workflow.title">Local Inbox history</h3>
+  <p data-i18n="workflow.boundary">Progress and resolution track this local Inbox only. Canonical project state remains separate.</p>
+  <div class="inbox-controls"><label for="inbox-filter" data-i18n="workflow.filter">Inbox state filter</label><select id="inbox-filter"><option value="" data-i18n="workflow.all">All items</option><option value="Needs review" data-i18n="inboxState.Needs review">Needs review</option><option value="Ready to confirm" data-i18n="inboxState.Ready to confirm">Ready to confirm</option><option value="In progress" data-i18n="inboxState.In progress">In progress</option><option value="Resolved" data-i18n="inboxState.Resolved">Resolved</option></select><button id="reload-inbox" type="button" data-i18n="workflow.reload">Reload local records</button></div>
+  <div id="inbox-list" class="grid" aria-live="polite"></div>
   <div id="interpretation" aria-live="polite"><h3 data-i18n="inbox.previewTitle">Interpretation preview</h3><dl><dt data-i18n="inbox.proposedAction">Proposed action</dt><dd data-i18n="inbox.waiting">Waiting</dd><dt data-i18n="inbox.expectedFiles">Expected canonical files</dt><dd data-i18n="inbox.waiting">Waiting</dd><dt data-i18n="inbox.sideEffects">Side effects</dt><dd data-i18n="inbox.waiting">Waiting</dd></dl></div>
 </section>
 <section id="workspaces" class="view">
   <h2 data-i18n="nav.workspaces">Workspaces</h2><p data-i18n="workspaces.intro">Path · repository · branch · commit · upstream · ahead · behind · dirty state · last checked · AI/model/session</p>
   <form id="session-form"><h3 data-i18n="session.formTitle">Create local AI workspace session</h3><label><span data-i18n="session.entity">Entity</span> <select id="session-entity" required></select></label><label><span data-i18n="session.ai">AI</span> <input id="session-ai" value="Hermes" required></label><label><span data-i18n="field.model">Model</span> <input id="session-model" required></label><label><span data-i18n="session.workspaceId">Workspace ID</span> <input id="session-workspaceId" required></label><label><span data-i18n="session.path">Path</span> <input id="session-path" required></label><label><span data-i18n="session.declaredTask">Declared task</span> <input id="session-declaredTask"></label><label><span data-i18n="session.permissionBoundary">Permission boundary</span> <input id="session-permissionBoundary" value="Local observation only"></label><button type="submit" data-i18n="session.create">Create session</button></form>
+  <p data-i18n="workflow.sessionBoundary">These controls record local observations; they do not control AI processes.</p>
   <div id="workspace-list"></div>
 </section>
 <section id="handoffs" class="view"><h2 data-i18n="nav.handoffs">Handoffs</h2><p data-i18n="handoffs.intro">Global latest and complete local history. Task status is evidence; it is not project lifecycle.</p><div id="handoff-list"></div></section>

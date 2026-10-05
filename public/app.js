@@ -2,6 +2,7 @@ import {t,initLocale,setLocale,getLocale,applyStaticTranslations,displayValue,st
 const $=selector=>document.querySelector(selector);
 const all=selector=>[...document.querySelectorAll(selector)];
 const value=claim=>claim?.value??'Unknown';
+let inboxItems=[],releaseInfo=null;
 let state=null,selectedProject=null,lastContinue=null,lastInterpretation=null,lastNotice=null,activeFilter,token=sessionStorage.getItem('mc-token')||'';
 
 function text(tag,content,cls){const element=document.createElement(tag);element.textContent=content;if(cls)element.className=cls;return element;}
@@ -13,11 +14,11 @@ function show(id){all('.view').forEach(view=>view.classList.toggle('active',view
 // Notices are kept as (key, params) or raw server text so a language switch can re-render them.
 function notify(key,params={}){lastNotice={key,params};renderNotice();}
 function notifyError(error){lastNotice={raw:error.message};renderNotice();}
-function renderNotice(){if(!lastNotice)return;$('#status').textContent=lastNotice.raw!==undefined?localizeMessage(lastNotice.raw):t(lastNotice.key,lastNotice.params);}
+function renderNotice(){if(!lastNotice)return;$('#status').textContent=lastNotice.raw!==undefined?localizeMessage(lastNotice.raw):t(lastNotice.key,lastNotice.key==='ws.sessionUpdated'?{...lastNotice.params,state:sessionStateLabel(lastNotice.params.state)}:lastNotice.params);}
 async function api(path,options={}){const headers={...(options.headers||{})};if(options.body){headers['content-type']='application/json';headers['x-mission-control-token']=token;}const response=await fetch(path,{...options,headers});if(!response.ok)throw new Error((await response.json()).error||response.statusText);return response.json();}
 async function reload(){render(await api('/api/state'));}
 
-all('nav button').forEach(button=>button.addEventListener('click',()=>show(button.dataset.view)));
+all('nav button').forEach(button=>button.addEventListener('click',()=>{show(button.dataset.view);if(button.dataset.view==='inbox')reloadInbox().catch(notifyError);}));
 const tokenInput=$('#write-token');tokenInput.value=token;
 $('#save-token').addEventListener('click',()=>{token=tokenInput.value.trim();if(token)sessionStorage.setItem('mc-token',token);else sessionStorage.removeItem('mc-token');notify(token?'token.saved':'token.cleared');});
 
@@ -57,7 +58,7 @@ function renderContinue(){
 $('#continue-button').addEventListener('click',async()=>{if(!selectedProject)return;try{const expectedContext={sourceFingerprints:selectedProject.sourceFingerprints,workspaceObservation:selectedProject.workspaceObservation,viewedSession:selectedProject.session||null};lastContinue=await api(`/api/projects/${encodeURIComponent(selectedProject.id)}/continue`,{method:'POST',body:JSON.stringify({expectedContext})});renderContinue();}catch(error){notifyError(error);}});
 
 function sessionNext(session){return session.state==='starting'?'running':session.state==='running'?'waiting_for_joey':session.state==='waiting_for_joey'?'running':null;}
-function renderWorkspaces(snapshot){const box=$('#workspace-list');box.replaceChildren(...snapshot.projects.map(project=>{const observation=project.workspaceObservation||{},session=project.session||{};const article=text('article','', 'card');article.append(text('h3',displayValue(value(project.name))),text('p',t('ws.path',{value:observation.path||displayValue(value(project.where.localPath))}),'selectable'),text('p',t('ws.repository',{value:displayValue(value(project.where.repository))}),'selectable'),text('p',t('ws.branchCommit',{branch:observation.branch||displayValue(value(project.where.branch)),commit:displayValue(observation.head)}),'selectable'),text('p',t('ws.upstream',{upstream:displayValue(observation.upstream),ahead:displayValue(observation.ahead),behind:displayValue(observation.behind)})),text('p',t('ws.dirtyChecked',{dirty:dirtyLabel(observation.dirtyState),time:displayValue(observation.observedAt)})),text('p',t('ws.session',{workspaceId:session.workspaceId||t('common.none'),ai:displayValue(session.ai),model:displayValue(session.model),task:displayValue(session.declaredTask),boundary:displayValue(session.permissionBoundary),state:sessionStateLabel(session.state)})));const recheck=text('button',t('ws.recheck'));recheck.addEventListener('click',async()=>{try{const fresh=await api(`/api/workspaces/${encodeURIComponent(project.id)}/recheck`,{method:'POST',body:'{}'});await reload();notify('ws.rechecked',{time:fresh.observedAt||t('ws.currentTime')});}catch(error){notifyError(error);}});article.append(recheck);const next=sessionNext(session);if(next){const button=text('button',t('ws.updateSession',{state:sessionStateLabel(next)}));button.addEventListener('click',async()=>{try{await api(`/api/sessions/${session.id}`,{method:'PATCH',body:JSON.stringify({state:next})});await reload();notify('ws.sessionUpdated',{state:sessionStateLabel(next)});}catch(error){notifyError(error);}});article.append(button);}return article;}));}
+function renderWorkspaces(snapshot){const box=$('#workspace-list');box.replaceChildren(...snapshot.projects.map(project=>{const observation=project.workspaceObservation||{},session=project.session||{};const article=text('article','', 'card');article.append(text('h3',displayValue(value(project.name))),text('p',t('ws.path',{value:observation.path||displayValue(value(project.where.localPath))}),'selectable'),text('p',t('ws.repository',{value:displayValue(value(project.where.repository))}),'selectable'),text('p',t('ws.branchCommit',{branch:observation.branch||displayValue(value(project.where.branch)),commit:displayValue(observation.head)}),'selectable'),text('p',t('ws.upstream',{upstream:displayValue(observation.upstream),ahead:displayValue(observation.ahead),behind:displayValue(observation.behind)})),text('p',t('ws.dirtyChecked',{dirty:dirtyLabel(observation.dirtyState),time:displayValue(observation.observedAt)})),text('p',t('ws.session',{workspaceId:session.workspaceId||t('common.none'),ai:displayValue(session.ai),model:displayValue(session.model),task:displayValue(session.declaredTask),boundary:displayValue(session.permissionBoundary),state:sessionStateLabel(session.state)})));const recheck=text('button',t('ws.recheck'));recheck.addEventListener('click',async()=>{try{const fresh=await api(`/api/workspaces/${encodeURIComponent(project.id)}/recheck`,{method:'POST',body:'{}'});await reload();notify('ws.rechecked',{time:fresh.observedAt||t('ws.currentTime')});}catch(error){notifyError(error);}});article.append(recheck);const next=sessionNext(session);if(next){const button=text('button',t('ws.updateSession',{state:sessionStateLabel(next)}));button.addEventListener('click',async()=>{try{await api(`/api/sessions/${session.id}`,{method:'PATCH',body:JSON.stringify({state:next})});await reload();notify('ws.sessionUpdated',{state:next});}catch(error){notifyError(error);}});article.append(button);}if(session.id&&!['stopped','failed'].includes(session.state)){for(const [key,target] of [['workflow.stop','stopped'],['workflow.fail','failed']]){const button=text('button',t(key));button.addEventListener('click',async()=>{button.disabled=true;try{await api(`/api/sessions/${session.id}`,{method:'PATCH',body:JSON.stringify({state:target})});await reload();notify('ws.sessionUpdated',{state:target});}catch(error){notifyError(error);}finally{button.disabled=false;}});article.append(button);}}return article;}));}
 
 function handoffKey(handoff){return[handoff.entityId,handoff.task,handoff.status,handoff.summary||handoff.nextAction||'',handoff.sourcePath||''].join('|');}
 // Handoff task, status, summary, source path and fingerprint are canonical evidence and render verbatim.
@@ -65,6 +66,40 @@ function handoffCard(handoff){const article=text('article','', 'card');article.a
 function renderHandoffs(snapshot){const seen=new Set(),items=[snapshot.handoffs?.globalLatest,...(snapshot.handoffs?.history||[]),...Object.values(snapshot.handoffs?.byEntity||{})].filter(Boolean).filter(handoff=>{if(seen.has(handoffKey(handoff)))return false;seen.add(handoffKey(handoff));return true;});$('#handoff-list').replaceChildren(...items.map(handoffCard));}
 
 function renderAttention(snapshot){const items=[];for(const project of snapshot.projects){if(value(project.blocker)!=='Unknown')items.push(t('attention.blocker',{id:project.id,text:value(project.blocker)}));for(const conflict of project.conflicts||[])items.push(t('attention.conflict',{id:project.id,text:localizeMessage(conflict.message)}));for(const gate of project.approvalGates||[])items.push(t('attention.gate',{id:project.id,text:gate}));const observation=project.workspaceObservation||{},age=Date.now()-Date.parse(observation.observedAt||'');if(observation.error||!observation.observedAt||age>300000)items.push(t('attention.staleWorkspace',{id:project.id,text:observation.error?localizeMessage(observation.error):observation.observedAt||t('attention.missingObservation')}));if(!project.sourceFingerprints?.length)items.push(t('attention.staleFingerprints',{id:project.id}));}$('#attention').replaceChildren(text('h3',t('attention.title')),list(t('attention.listTitle'),items));}
+
+async function reloadInbox(){inboxItems=await api('/api/inbox');renderInbox();}
+function inboxStateLabel(state){return t(`inboxState.${state}`);}
+async function inboxAction(button,action){
+  button.disabled=true;
+  try{await action();await reloadInbox();notify('workflow.updated');}catch(error){notifyError(error);}
+  finally{button.disabled=false;}
+}
+function renderInbox(){
+  const filter=$('#inbox-filter').value;
+  const items=inboxItems.filter(item=>!filter||item.state===filter).slice().sort((a,b)=>(b.updatedAt||b.createdAt).localeCompare(a.updatedAt||a.createdAt));
+  $('#inbox-list').replaceChildren(...(items.length?items.map(item=>{
+    const article=text('article','', 'card');article.dataset.inboxId=item.id;
+    article.append(text('p',t('workflow.item',{type:t(`inbox.type.${item.type}`),state:inboxStateLabel(item.state),time:item.updatedAt||item.createdAt})),text('p',item.rawText,'selectable'));
+    if(item.confirmedAt)article.append(text('p',t('workflow.confirmed')));
+    const actions=text('div','', 'inbox-actions');
+    function action(key,run){const button=text('button',t(key));button.type='button';button.addEventListener('click',()=>inboxAction(button,run));actions.append(button);return button;}
+    if(item.interpretation)action('workflow.preview',async()=>{lastInterpretation=item.interpretation;renderInterpretation();$('#interpretation').scrollIntoView({block:'nearest'});});
+    if(['Needs review','Ready to confirm'].includes(item.state))action('workflow.interpret',async()=>{const result=await api(`/api/inbox/${item.id}/interpret`,{method:'POST',body:'{}'});lastInterpretation=result.interpretation;renderInterpretation();});
+    if(item.state==='Ready to confirm'&&item.interpretation&&!item.interpretation.ambiguity&&item.interpretation.affectedEntity&&!item.confirmedAt){
+      const input=text('input','');input.id=`decision-${item.id}`;input.autocomplete='off';
+      const label=text('label',t('workflow.decision'));label.htmlFor=input.id;actions.append(label,input);
+      action('workflow.confirm',async()=>{await api(`/api/inbox/${item.id}/confirm`,{method:'POST',body:JSON.stringify({explicitDecision:input.value})});});
+    }
+    const transition=state=>api(`/api/inbox/${item.id}`,{method:'PATCH',body:JSON.stringify({state,expectedState:item.state})});
+    if(item.state==='Ready to confirm'&&item.confirmedAt)action('workflow.progress',()=>transition('In progress'));
+    if(item.state!=='Resolved')action('workflow.resolve',()=>transition('Resolved'));
+    else action('workflow.reopen',()=>transition('Needs review'));
+    article.append(actions);return article;
+  }):[text('p',t('workflow.empty'))]));
+}
+$('#inbox-filter').addEventListener('change',renderInbox);
+$('#reload-inbox').addEventListener('click',()=>reloadInbox().catch(notifyError));
+function renderRelease(){if(releaseInfo)$('#release-info').textContent=t(releaseInfo.releaseStatus==='accepted'?'release.accepted':'release.info',{version:releaseInfo.version,baseline:releaseInfo.parentBaseline});}
 
 function renderInterpretation(){
   if(!lastInterpretation)return;const interpretation=lastInterpretation;
@@ -74,12 +109,15 @@ function renderInterpretation(){
 function render(snapshot){state=snapshot;$('#freshness').textContent=t('freshness.generated',{time:snapshot.generatedAt});filterProjects(activeFilter);renderWorkspaces(snapshot);renderHandoffs(snapshot);renderAttention(snapshot);const select=$('#session-entity'),chosen=select.value;select.replaceChildren(...snapshot.projects.map(project=>{const option=text('option',`${project.id} · ${displayValue(value(project.name))}`);option.value=project.id;return option;}));if(chosen)select.value=chosen;if(selectedProject){selectedProject=snapshot.projects.find(project=>project.id===selectedProject.id)||null;if(selectedProject)renderDetailPanels(selectedProject);}}
 
 // Switching language re-renders the cached snapshot only: no API call, no write, and no canonical value is changed.
-function applyLocale(locale){setLocale(locale);$('#locale-select').value=getLocale();applyStaticTranslations(document);if(state)render(state);renderContinue();renderInterpretation();renderNotice();}
+function applyLocale(locale){setLocale(locale);$('#locale-select').value=getLocale();applyStaticTranslations(document);if(state)render(state);renderContinue();renderInterpretation();renderInbox();renderRelease();renderNotice();}
 $('#locale-select').addEventListener('change',event=>applyLocale(event.target.value));
 initLocale();applyLocale(getLocale());
 
 all('[data-filter]').forEach(button=>button.addEventListener('click',()=>filterProjects(button.dataset.filter)));
-$('#inbox-form').addEventListener('submit',async event=>{event.preventDefault();try{const item=await api('/api/inbox',{method:'POST',body:JSON.stringify({rawText:$('#rawText').value,type:$('#kind').value})});const preview=await api(`/api/inbox/${item.id}/interpret`,{method:'POST',body:'{}'});lastInterpretation=preview.interpretation;renderInterpretation();notify('inbox.saved');}catch(error){notifyError(error);}});
+$('#inbox-form').addEventListener('submit',async event=>{event.preventDefault();try{const item=await api('/api/inbox',{method:'POST',body:JSON.stringify({rawText:$('#rawText').value,type:$('#kind').value})});if(['Needs review','Ready to confirm'].includes(item.state)){const preview=await api(`/api/inbox/${item.id}/interpret`,{method:'POST',body:'{}'});lastInterpretation=preview.interpretation;renderInterpretation();}await reloadInbox();notify('workflow.saved');}catch(error){notifyError(error);}});
 $('#session-form').addEventListener('submit',async event=>{event.preventDefault();try{await api('/api/sessions',{method:'POST',body:JSON.stringify({entityId:$('#session-entity').value,ai:$('#session-ai').value,model:$('#session-model').value,workspaceId:$('#session-workspaceId').value,path:$('#session-path').value,declaredTask:$('#session-declaredTask').value,permissionBoundary:$('#session-permissionBoundary').value})});await reload();notify('session.created');}catch(error){notifyError(error);}});
 
 api('/api/state').then(render).catch(error=>notifyError(error));show(location.hash.slice(1)||'dashboard');
+
+reloadInbox().catch(notifyError);
+api('/api/health').then(info=>{releaseInfo=info;renderRelease();}).catch(notifyError);

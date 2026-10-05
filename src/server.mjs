@@ -45,13 +45,23 @@ export function createDefaultDeps({canonicalRoot=config.canonicalRoot,dataRoot=c
   return{
     ready,token:writeToken,
     getState:state,
+    getInbox:async()=>{await ready;return inbox.list();},
+    transitionInbox:async(id,state,expectedState)=>{await ready;return inbox.transition(id,state,expectedState);},
     getProject:async id=>(await state()).projects.find(project=>project.id===id)||null,
     getWorkspaces:async()=>(await state()).projects.map(project=>({id:project.id,name:project.name.value,...project.workspaceObservation,repository:project.where.repository.value,storedCommit:project.where.storedCommit.value,ai:project.lastAI.value,model:project.model.value,session:project.session})),
     recheck:async id=>{const project=(await state()).projects.find(item=>item.id===id);if(!project)throw Object.assign(new Error('Workspace not found'),{status:404});return{id,...project.workspaceObservation,storedCommit:project.where.storedCommit.value};},
     getHandoffs:async()=>(await state()).handoffs,
     createInbox:async input=>{await ready;return inbox.capture(input);},
-    interpretInbox:async id=>{await ready;const snapshot=await state(),knownEntityIds=[...snapshot.projects.map(item=>item.id),...snapshot.cases.map(item=>item.id)];return inbox.update(id,item=>({...item,state:'Ready to confirm',interpretation:interpret(item,{knownEntityIds}),updatedAt:new Date().toISOString()}));},
-    confirmInbox:async(id,body)=>{await ready;return inbox.update(id,item=>({...item,...confirmPromotion(item,body.explicitDecision),updatedAt:new Date().toISOString()}));},
+    interpretInbox:async id=>{await ready;const snapshot=await state(),knownEntityIds=[...snapshot.projects.map(item=>item.id),...snapshot.cases.map(item=>item.id)];return inbox.update(id,item=>{
+      if(!['Needs review','Ready to confirm'].includes(item.state))throw Object.assign(new Error('Reopen Inbox item before interpreting'),{status:409});
+      const result={...item,state:'Ready to confirm',interpretation:interpret(item,{knownEntityIds}),updatedAt:new Date().toISOString()};
+      for(const key of ['confirmedAt','localProposalOnly','canonicalWritePerformed'])delete result[key];
+      return result;
+    });},
+    confirmInbox:async(id,body)=>{await ready;return inbox.update(id,item=>{
+      if(item.state!=='Ready to confirm')throw Object.assign(new Error('Inbox item must be ready to confirm'),{status:409});
+      return {...item,...confirmPromotion(item,body.explicitDecision),updatedAt:new Date().toISOString()};
+    });},
     createSession:async input=>{await ready;return sessions.start(input);},
     updateSession:async(id,input)=>{await ready;return sessions.update(id,input);},
     continueProject:async(id,expectedContext={})=>{

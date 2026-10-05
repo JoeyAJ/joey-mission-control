@@ -6,3 +6,26 @@ test('untrusted entity hints cannot bypass ambiguity resolution',()=>{const know
 test('promotion requires an exact explicit Joey decision, resolved entity, and never writes canonical memory',()=>{const resolved={rawText:'Ship this',interpretation:{ambiguity:false,affectedEntity:'NEXAEON'}};assert.throws(()=>confirmPromotion(resolved,true),/exact explicit/);assert.throws(()=>confirmPromotion(resolved,'do not do it'),/exact explicit/);assert.throws(()=>confirmPromotion({rawText:'Namyoung',interpretation:{ambiguity:true,affectedEntity:null}},'要做'),/Ambiguous/);const x=confirmPromotion(resolved,'要做');assert.equal(x.localProposalOnly,true);assert.equal(x.canonicalWritePerformed,false);});
 
 test('concurrent distinct Inbox captures retain every record',async()=>{const d=await fs.mkdtemp(path.join(os.tmpdir(),'mc-inbox-concurrent-'));const svc=new InboxService(new JsonStore(d,'i.json',Array.isArray));await Promise.all(Array.from({length:40},(_,i)=>svc.capture({rawText:`Request ${i}`,type:'Request'})));const items=await svc.list();assert.equal(items.length,40);assert.equal(new Set(items.map(x=>x.id)).size,40);});
+
+test('Inbox progress survives reopening the store and cannot imply canonical promotion',async()=>{
+  const root=await fs.mkdtemp(path.join(os.tmpdir(),'mc-inbox-progress-'));
+  const schema=await loadSchema('inbox-item');
+  const service=()=>new InboxService(new JsonStore(root,'inbox.v1.json',collectionValidator(schema)));
+  const item=await service().capture({rawText:'NexAeon request'});
+  await assert.rejects(()=>service().transition(item.id,'In progress'),/Invalid Inbox transition/);
+  await service().transition(item.id,'Resolved');
+  assert.equal((await service().list())[0].state,'Resolved');
+  await service().transition(item.id,'Needs review');
+  assert.equal((await service().get(item.id)).rawText,item.rawText);
+  await assert.rejects(()=>service().transition(item.id,'Ready to confirm'),/Invalid Inbox transition/);
+  await assert.rejects(()=>service().transition('missing','Resolved'),/not found/);
+  await service().update(item.id,x=>({...x,state:'Ready to confirm'}));
+  await assert.rejects(()=>service().transition(item.id,'In progress'),/confirmation/);
+  await service().update(item.id,x=>({...x,interpretation:interpret(x,{knownEntityIds:['NEXAEON']}),confirmedAt:new Date().toISOString(),localProposalOnly:true,canonicalWritePerformed:false}));
+  await service().transition(item.id,'In progress');
+  const resolved=await service().transition(item.id,'Resolved');
+  assert.equal(resolved.canonicalWritePerformed,false);
+  const reopened=await service().transition(item.id,'Needs review');
+  assert.equal(reopened.confirmedAt,undefined);
+  assert.equal(reopened.interpretation,undefined);
+});
