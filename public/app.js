@@ -1,3 +1,8 @@
+import {presentCanonicalProject} from './project-state.js';
+import {initLiquidInteraction,initVisualChrome,renderSidebar} from './visual-system.js';
+import {humanWords} from './joey-view.js';
+import {renderJoeyView,renderCommandReadouts} from './joey-view.js';
+import {agentDetail} from './agent-detail.js';
 import {verifiedDecisionItems} from './control-semantics.js';
 import {decisionButton,decisionPanel} from './decision-view.js';
 import {primaryProjectLink,createProjectLink} from './project-links.js';
@@ -8,12 +13,18 @@ const $=selector=>document.querySelector(selector);
 const all=selector=>[...document.querySelectorAll(selector)];
 const value=claim=>claim?.value??'Unknown';
 let inboxItems=[],releaseInfo=null;
+let manifests=new Map();
+let selectedHumanProject='NEXAEON';
 let state=null,selectedProject=null,lastContinue=null,lastInterpretation=null,lastNotice=null,activeFilter,token=sessionStorage.getItem('mc-token')||'';
 
 function text(tag,content,cls){const element=document.createElement(tag);element.textContent=content;if(cls)element.className=cls;return element;}
 function list(title,items){const box=document.createElement('section');box.append(text('h4',title));const ul=document.createElement('ul');for(const item of items.length?items:[t('common.none')])ul.append(text('li',typeof item==='string'?item:(item.message||JSON.stringify(item)),'selectable'));box.append(ul);return box;}
 function provenance(claim){const source=claim?.source;if(!source)return t('provenance.unavailable',{classification:classificationLabel(claim?.classification)});return`${classificationLabel(claim.classification)} · ${source.sourcePath} · ${source.sourceSection} · ${verificationLabel(source.verificationStatus)} · ${t('provenance.read',{time:source.readAt})}`;}
-function claimText(key,claim){
+function claimText(key,claim,project){
+  const runtime=project&&manifests.get(project.id)?.runtime;
+  const mapped={currentTask:"currentMission",lastAI:"lastAgent",model:"lastModel",lastCompleted:"lastCompletedAction",nextAction:"nextAction",blocker:"blocker"}[key];
+  if(runtime&&mapped){const v=key==="lastAI"?runtime.currentAgent||runtime.lastAgent:key==="model"?runtime.currentModel||runtime.lastModel:runtime[mapped];if(v==null)return runtime.fields[mapped]?.status==="Awaiting sync"?t("runtime.awaitingSync"):key==="blocker"&&runtime.fields.blocker?.status==="Active"?t("control.noAction"):t("missing.not_recorded");if(runtime.stateSource==="local_mission_overlay")return String(v);}
+
   if(value(claim)==='Unknown')return missingLabel(claim);
   if(key==='blocker'&&canonicalEvidence(claim)&&noAction(value(claim)))return t('control.noAction');
   return key==='status'?statusLabel(value(claim)):key==='phase'?phaseLabel(value(claim)):['currentTask','nextAction','blocker','lastCompleted','currentStage'].includes(key)?managementSummary(value(claim)):key==='lastUpdated'?displayTime(value(claim)):displayValue(value(claim));
@@ -28,18 +39,20 @@ function evidenceRegion(project){
   details.append(dl,list(t('detail.sourceFingerprints'),fingerprintLines(project.sourceFingerprints)),text('p',project.derivationReason,'provenance'));
   return details;
 }
-function managementFields(project){const dl=document.createElement('dl');dl.className='management';for(const [label,key] of dashboardFields){const dd=text('dd',claimText(key,project[key]));dd.dataset.field=key;dl.append(text('dt',t(label)),dd);}return dl;}
+function managementFields(project){const dl=document.createElement('dl');dl.className='management';for(const [label,key] of dashboardFields){const dd=text('dd',claimText(key,project[key],project));dd.dataset.field=key;dl.append(text('dt',t(label)),dd);}return dl;}
 
 function claimCell(tag,claim,key){const cell=document.createElement(tag);cell.append(text('span',claimText(key,claim),'selectable'),text('small',provenance(claim),'provenance selectable'));return cell;}
-function show(id){all('.view').forEach(view=>view.classList.toggle('active',view.id===id));history.replaceState(null,'',`#${id}`);}
+function show(id){if(!['joey','dashboard','inbox','workspaces','handoffs','project'].includes(id))id='joey';document.body.classList.toggle('joey-cockpit-mode',id==='joey');all('[data-view]').forEach(button=>button.setAttribute('aria-current',button.dataset.view===id?'page':'false'));all('.view').forEach(view=>view.classList.toggle('active',view.id===id));history.replaceState(null,'',`#${id}`);renderRelease();}
 // Notices are kept as (key, params) or raw server text so a language switch can re-render them.
 function notify(key,params={}){lastNotice={key,params};renderNotice();}
 function notifyError(error){lastNotice={raw:error.message};renderNotice();}
 function renderNotice(){if(!lastNotice)return;$('#status').textContent=lastNotice.raw!==undefined?localizeMessage(lastNotice.raw):t(lastNotice.key,lastNotice.key==='ws.sessionUpdated'?{...lastNotice.params,state:sessionStateLabel(lastNotice.params.state)}:lastNotice.params);}
 async function api(path,options={}){const headers={...(options.headers||{})};if(options.body){headers['content-type']='application/json';headers['x-mission-control-token']=token;}const response=await fetch(path,{...options,headers});if(!response.ok)throw new Error((await response.json()).error||response.statusText);return response.json();}
-async function reload(){render(await api('/api/state'));}
+async function reload(){const [snapshot,list]=await Promise.all([api('/api/state'),api('/api/projects')]);manifests=new Map(list.map(m=>[m.project_id,m]));render(snapshot);}
 
 all('nav button').forEach(button=>button.addEventListener('click',()=>{show(button.dataset.view);if(button.dataset.view==='inbox')reloadInbox().catch(notifyError);}));
+const renderVisualChrome=initVisualChrome({doc:document,onNavigate:show,navLabel:id=>t({joey:'nav.joey',dashboard:'nav.dashboard',handoffs:'nav.handoffs',project:'nav.project'}[id]),onProjectChoose:id=>{show('joey');document.getElementById('mission-tab-'+id)?.click();document.getElementById('mission-tab-'+id)?.focus();}});
+initLiquidInteraction(document.body);
 const tokenInput=$('#write-token');tokenInput.value=token;
 $('#save-token').addEventListener('click',()=>{token=tokenInput.value.trim();if(token)sessionStorage.setItem('mc-token',token);else sessionStorage.removeItem('mc-token');notify(token?'token.saved':'token.cleared');});
 
@@ -56,9 +69,9 @@ function tableRow(project){
   const row=document.createElement('tr');
   const name=document.createElement('td'),open=text('button',displayValue(value(project.name)));open.addEventListener('click',()=>detail(project));name.append(open);row.append(name);
   for(const key of ['status','currentTask','lastAI','nextAction','blocker','lastUpdated']){
-    const cell=document.createElement('td');const span=text('span',claimText(key,project[key]),'table-summary');cell.append(span);
+    const cell=document.createElement('td');const span=text('span',claimText(key,project[key],project),'table-summary');cell.append(span);
     if(key==='status')cell.append(text('small',claimText('phase',project.phase)));
-    if(key==='lastAI')cell.append(text('small',claimText('model',project.model)));
+    if(key==='lastAI')cell.append(text('small',claimText('model',project.model,project)));
     if(key==='blocker')cell.append(...decisionIndicators(project));
     row.append(cell);
   }
@@ -81,8 +94,10 @@ function deploymentOverview(project){
 }
 function renderDetailPanels(project){
   $('#project-title').textContent=t('project.title',{name:displayValue(value(project.name))});
-  const overview=$('#project-overview');overview.replaceChildren(text('h3',t('tab.overview')));
-  overview.append(managementFields(project),deploymentOverview(project));
+  const overview=$('#project-overview');overview.replaceChildren(text('h3',t('tab.overview')),text('h4',t('field.currentStage')),text('p',claimText('currentStage',project.currentStage)));
+  const m=manifests.get(project.id);
+  if(m)overview.append(agentDetail(m));else overview.append(managementFields(project));
+  overview.append(deploymentOverview(project));
   overview.append(...decisionIndicators(project),...verifiedDecisionItems(project).map(item=>decisionPanel(project,item)));
   const cases=p=>p.cases||[];overview.append(list(t('detail.nestedCases'),cases(project).map(item=>`${displayValue(value(item.name))}: ${statusLabel(value(item.status))}`)));
   const context=$('#project-context');context.replaceChildren(text('h3',t('evidence.technical')),evidenceRegion(project),text('p',t('detail.database',{value:displayValue(value(project.where.database))}),'selectable'),list(t('detail.relevantDocs'),Array.isArray(project.where.relevantDocs?.value)?project.where.relevantDocs.value:[]),list(t('detail.sourceFingerprints'),fingerprintLines(project.sourceFingerprints)),list(t('detail.approvalGates'),project.approvalGates),list(t('detail.conflicts'),(project.conflicts||[]).map(conflict=>localizeMessage(conflict.message||conflict.kind||String(conflict)))));
@@ -169,14 +184,21 @@ function renderInbox(){
 }
 $('#inbox-filter').addEventListener('change',renderInbox);
 $('#reload-inbox').addEventListener('click',()=>reloadInbox().catch(notifyError));
-function renderRelease(){if(releaseInfo?.readOnly){all('#inbox-form input, #inbox-form textarea, #inbox-form select, #inbox-form button, #session-form input, #session-form select, #session-form button, #write-token, #save-token, #workspace-list button').forEach(el=>el.disabled=true);}if(releaseInfo){$('#release-info').textContent=t(releaseInfo.joeyAcceptance==='PASSED'?'release.accepted':'release.pending',{version:releaseInfo.version,baseline:releaseInfo.parentBaseline.slice(0,7)});if(releaseInfo.readOnly)$('#release-info').textContent+=' · '+t('release.snapshot',{time:displayTime(releaseInfo.snapshotGeneratedAt)});$('#parent-baseline').textContent=releaseInfo.parentBaseline;}}
+function renderRelease(){if(releaseInfo?.readOnly){all('#inbox-form input, #inbox-form textarea, #inbox-form select, #inbox-form button, #session-form input, #session-form select, #session-form button, #write-token, #save-token, #workspace-list button').forEach(el=>el.disabled=true);}if(releaseInfo){$('#release-info').textContent=t(releaseInfo.joeyAcceptance==='PASSED'?'release.accepted':'release.pending',{version:releaseInfo.version,baseline:releaseInfo.parentBaseline.slice(0,7)});if(releaseInfo.developmentVersion)$('#release-info').textContent=t('runtime.candidate');if(releaseInfo.readOnly)$('#release-info').textContent+=' · '+t('release.snapshot',{time:displayTime(releaseInfo.snapshotGeneratedAt)});if($('#joey').classList.contains('active')&&releaseInfo.developmentVersion)$('#release-info').textContent=t('human.release');$('#parent-baseline').textContent=releaseInfo.parentBaseline;}}
 
 function renderInterpretation(){
   if(!lastInterpretation)return;const interpretation=lastInterpretation;
   $('#interpretation').replaceChildren(text('h3',t('inbox.previewTitle')),text('p',interpretation.ambiguity?t('inbox.ambiguous'):t('inbox.affected',{entity:displayValue(interpretation.affectedEntity)})),text('dl',''),list(t('inbox.proposedAction'),[interpretation.proposedAction]),list(t('inbox.expectedFiles'),interpretation.expectedCanonicalFiles),list(t('inbox.sideEffects'),interpretation.sideEffects.map(effect=>localizeMessage(effect))),text('p',localizeMessage(interpretation.approvalBoundary)));
 }
 
-function render(snapshot){state=snapshot;$('#freshness').textContent=t('header.generated',{time:displayTime(snapshot.generatedAt)});filterProjects(activeFilter);renderWorkspaces(snapshot);renderRelease();renderHandoffs(snapshot);renderAttention(snapshot);const select=$('#session-entity'),chosen=select.value;select.replaceChildren(...snapshot.projects.map(project=>{const option=text('option',`${project.id} · ${displayValue(value(project.name))}`);option.value=project.id;return option;}));if(chosen)select.value=chosen;if(selectedProject){selectedProject=snapshot.projects.find(project=>project.id===selectedProject.id)||null;if(selectedProject)renderDetailPanels(selectedProject);}}
+async function mutateProjectState(manifest,command){
+ notify('state.saving');
+ try{const saved=await api(`/api/projects/${encodeURIComponent(manifest.project_id)}/project-state`,{method:'POST',body:JSON.stringify({...command,actor:'joey',confirmation:manifest.project_id,explicitDecision:'JOEY_APPROVES',expectedRevision:manifest.canonicalState.metadata.revision})});const current=manifests.get(manifest.project_id);manifests.set(manifest.project_id,{...current,canonicalState:saved,product:{...current.product,revision:saved.metadata.revision}});const disclosureClasses=['state-workbench','state-idea-entry','state-ideas','state-decision-entry','state-decision-history','state-next-entry','state-confirmations','state-project-sources','flight-recorder','state-audit'];const openPanels=[...document.querySelectorAll('.human-card')].map(card=>({id:card.id,classes:disclosureClasses.filter(cls=>card.querySelector('.'+cls)?.open)}));renderHuman();for(const panel of openPanels)for(const cls of panel.classes){const node=document.getElementById(panel.id)?.querySelector('.'+cls);if(node)node.open=true;}if(['ADD_IDEA','CONVERT_IDEA'].includes(command.type)){const card=document.getElementById('mission-panel-'+manifest.project_id);for(const cls of ['state-workbench','state-ideas']){const node=card?.querySelector('.'+cls);if(node)node.open=true;}}notify('state.saved');return saved;}
+ catch(error){notify('state.failed',{reason:error.message});throw error;}
+}
+function renderHuman(){if(!state)return;const entries=[...manifests.values()].map(m=>presentCanonicalProject(m,getLocale()));renderVisualChrome(entries,getLocale());$('#cockpit-sidebar')?.remove();document.querySelector('body>nav').append(renderSidebar(entries,{doc:document,locale:getLocale(),w:humanWords(getLocale()),onLifecycle:lifecycle=>{show('joey');const board=document.querySelector('.board-toggle');if(board){board.open=true;board.scrollIntoView({block:'start',behavior:'auto'});const lane=board.querySelector('[data-lifecycle='+lifecycle+']');lane?.scrollIntoView({block:'nearest',inline:'center',behavior:'auto'});}}}));$('#cockpit-command-readouts')?.remove();document.querySelector('header').append(renderCommandReadouts(entries,{health:releaseInfo}));$('#product-evidence').replaceChildren(...entries.map(m=>list(m.product.name,[...m.product.evidence.map(e=>e.reference),...Object.values(m.product.sourceEvidence).filter(Boolean).map(e=>e.sourcePath+' · '+e.sourceSection)])));$('#joey-content').replaceChildren(renderJoeyView(entries,{selectedProjectId:selectedHumanProject,onMutation:mutateProjectState,onSelect:id=>{selectedHumanProject=id;},readOnly:!!releaseInfo?.readOnly,onAgent:id=>{const p=state.projects.find(p=>p.id===id);if(p)detail(p);},onMove:async(m,lifecycle,words)=>{if(['COMPLETED','ARCHIVED'].includes(lifecycle)&&!window.confirm(words.finish))return;try{if(m.canonicalState){await mutateProjectState(m,{type:'SET_LIFECYCLE',lifecycle:lifecycle==='IN_PROGRESS'?'DEVELOPING':lifecycle,completionConfirmed:['COMPLETED','ARCHIVED'].includes(lifecycle)});return;}await api(`/api/projects/${encodeURIComponent(m.project_id)}/owner-decisions`,{method:'POST',body:JSON.stringify({actor:'joey',confirmation:m.project_id,explicitDecision:'JOEY_APPROVES',expectedRevision:m.product.revision,lifecycle})});await reload();notify('human.saved');}catch(e){notifyError(e);}},onProposal:async(m,input)=>{try{await api(`/api/projects/${encodeURIComponent(m.project_id)}/owner-proposals`,{method:'POST',body:JSON.stringify(input)});await reload();notify('human.proposed');}catch(e){notifyError(e);}},onApprove:async(m,proposal,words)=>{if(!window.confirm(words.confirm))return;try{await api(`/api/projects/${encodeURIComponent(m.project_id)}/owner-decisions`,{method:'POST',body:JSON.stringify({actor:'joey',confirmation:m.project_id,explicitDecision:'JOEY_APPROVES',expectedRevision:m.product.revision,proposalId:proposal.id})});await reload();notify('human.saved');}catch(e){notifyError(e);}}}));}
+
+function render(snapshot){state=snapshot;renderHuman();$('#freshness').textContent=t('header.generated',{time:displayTime(snapshot.generatedAt)});filterProjects(activeFilter);renderWorkspaces(snapshot);renderRelease();renderHandoffs(snapshot);renderAttention(snapshot);const select=$('#session-entity'),chosen=select.value;select.replaceChildren(...snapshot.projects.map(project=>{const option=text('option',`${project.id} · ${displayValue(value(project.name))}`);option.value=project.id;return option;}));if(chosen)select.value=chosen;if(selectedProject){selectedProject=snapshot.projects.find(project=>project.id===selectedProject.id)||null;if(selectedProject)renderDetailPanels(selectedProject);}}
 
 // Switching language re-renders the cached snapshot only: no API call, no write, and no canonical value is changed.
 function applyLocale(locale){setLocale(locale);$('#locale-select').value=getLocale();applyStaticTranslations(document);if(state)render(state);renderContinue();renderInterpretation();renderInbox();renderRelease();renderNotice();}
@@ -187,9 +209,9 @@ all('[data-filter]').forEach(button=>button.addEventListener('click',()=>filterP
 $('#inbox-form').addEventListener('submit',async event=>{event.preventDefault();try{const item=await api('/api/inbox',{method:'POST',body:JSON.stringify({rawText:$('#rawText').value,type:$('#kind').value})});if(['Needs review','Ready to confirm'].includes(item.state)){const preview=await api(`/api/inbox/${item.id}/interpret`,{method:'POST',body:'{}'});lastInterpretation=preview.interpretation;renderInterpretation();}await reloadInbox();notify('workflow.saved');}catch(error){notifyError(error);}});
 $('#session-form').addEventListener('submit',async event=>{event.preventDefault();try{await api('/api/sessions',{method:'POST',body:JSON.stringify({entityId:$('#session-entity').value,ai:$('#session-ai').value,model:$('#session-model').value,workspaceId:$('#session-workspaceId').value,path:$('#session-path').value,declaredTask:$('#session-declaredTask').value,permissionBoundary:$('#session-permissionBoundary').value})});await reload();notify('session.created');}catch(error){notifyError(error);}});
 
-api('/api/state').then(render).catch(error=>notifyError(error));show(location.hash.slice(1)||'dashboard');
+reload().catch(error=>notifyError(error));show(location.hash.slice(1)||'joey');
 
 reloadInbox().catch(notifyError);
-api('/api/health').then(info=>{releaseInfo=info;renderRelease();}).catch(notifyError);
+api('/api/health').then(info=>{releaseInfo=info;renderRelease();renderHuman();}).catch(notifyError);
 
 $('#refresh-state').addEventListener('click',()=>reload().catch(notifyError));

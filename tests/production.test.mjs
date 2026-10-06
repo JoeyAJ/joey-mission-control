@@ -20,3 +20,14 @@ test('static production retains security headers and visibly identifies read-onl
  const headers=Object.fromEntries(config.headers[0].headers.map(h=>[h.key,h.value]));for(const [key,value]of Object.entries(securityHeaders))assert.equal(headers[key],value);
  const ui=await fs.readFile(new URL('../public/app.js',import.meta.url),'utf8');assert.match(ui,/release\.snapshot/);assert.match(ui,/#workspace-list button/);assert.match(ui,/el\.disabled=true/);assert.match(ui,/renderWorkspaces\(snapshot\);renderRelease\(\)/);
 });
+
+test('V0.3-B production state mirrors documented missions with honest partial views and stable refresh',()=>{
+ const manifests=request('projects').body;
+ for(const m of manifests){const state=request('projects/'+m.project_id+'/project-state').body;assert.deepEqual(state,m.canonicalState);assert.deepEqual(state,request('projects/'+m.project_id+'/project-state').body);assert.equal(state.lifecycle,'UNKNOWN');assert.equal(state.metadata.missionSetReliability,'PARTIAL');assert.equal(state.decisions.length,0);assert.equal(state.ideas.length,0);assert.equal(state.auditLog.length,0);assert.ok(state.missions.length);assert.doesNotMatch(JSON.stringify(state),/\/Users\/|\/home\/|\/private\/|Bearer\s|ghp_|sk-/);assert.equal(request('projects/'+m.project_id+'/project-state','POST').status,403);}
+ assert.equal(request('projects/NOPE/project-state').status,404);
+});
+test('public state refuses private input publication and preserves missing source references',async()=>{
+ const {publicProjectState}=await import('../src/project-state/public-state.mjs');const state=structuredClone(request('projects/NEXAEON/project-state').body);
+ state.sources[0].uri='/Users/private/project';const out=publicProjectState(state);assert.equal(out.sources[0].uri,null);assert.equal(state.sources[0].uri,'/Users/private/project');
+ state.ideas.push({id:'private',projectId:state.id,content:'Private note',status:'INBOX',linkedMissionId:null,source:'JOEY',sourceRefs:[],createdAt:null,updatedAt:null});assert.throws(()=>publicProjectState(state),/publication approval/);
+});

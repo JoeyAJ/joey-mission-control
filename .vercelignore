@@ -5,3 +5,7 @@ docs
 work
 data
 *.log
+
+output
+.playwright-cli
+dist

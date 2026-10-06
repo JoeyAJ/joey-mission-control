@@ -5,6 +5,16 @@ export const LOCALE_NAMES={'zh-TW':'繁體中文',ko:'한국어',en:'English'};
 export const LOCALE_STORAGE_KEY='mc-locale';
 
 const en={
+"human.release":"V0.3 · Awaiting Joey Acceptance",
+"nav.joey":"Joey View",
+"nav.dashboard":"Agent console",
+"nav.handoffs":"Evidence / Handoffs",
+"human.saved":"Your project decision was recorded locally.",
+"human.proposed":"Proposal saved. It awaits your approval.",
+"human.readOnly":"Public snapshot; owner decisions require the authorized local console.",
+
+ "runtime.awaitingSync":"Awaiting sync",
+ "runtime.candidate":"V0.3 · Acceptance candidate · Awaiting Joey Acceptance · V0.2 baseline 2efd329",
   "sourceSummary.s0":"Production-operational multilingual Agent platform. Stage 5-4A n8n contract is accepted. Stage 5-4B Explorer w…",
   "sourceSummary.s1":"First perform a read-only operational reconciliation of Vercel runtime metadata, non-secret environment-name p…",
   "sourceSummary.s2":"n8n/Tavily configuration and canary require privileged Vercel/n8n access.",
@@ -98,7 +108,7 @@ const en={
   "header.refresh":"Refresh verified data",
   "header.generated":"Read {time}",
 
-  'release.accepted':'V{version} · Joey accepted · V0.1 parent {baseline}',
+  'release.accepted':'V{version} · Joey accepted · Parent baseline {baseline}',
 
   "workflow.title":"Local Inbox history",
   "workflow.boundary":"Progress and resolution track this local Inbox only. Canonical project state remains separate.",
@@ -124,7 +134,7 @@ const en={
   "workflow.stop":"Record session stopped",
   "workflow.fail":"Record session failed",
   "workflow.sessionBoundary":"These controls record local observations; they do not control AI processes.",
-  "release.info":"V{version} · Candidate · V0.1 parent {baseline}",
+  "release.info":"V{version} · Candidate · Parent baseline {baseline}",
   "workflow.stale":"Inbox state changed; reload before updating",
   "workflow.reopenRequired":"Reopen Inbox item before interpreting",
   "workflow.readyRequired":"Inbox item must be ready to confirm",
@@ -140,10 +150,10 @@ const en={
   'freshness.waiting':'Waiting for projection',
   'freshness.generated':'Generated {time}',
   'nav.label':'Primary',
-  'nav.dashboard':'Dashboard',
+
   'nav.inbox':'Inbox',
   'nav.workspaces':'Workspaces',
-  'nav.handoffs':'Handoffs',
+
   'nav.project':'Project detail',
   'dashboard.eyebrow':'CONTROL PLANE',
   'dashboard.intro':'WHERE the work lives. WHAT is verified. WHO touched it. NEXT safe action.',
@@ -328,6 +338,16 @@ const en={
 };
 
 const zhTW={
+"human.release":"V0.3 · 等待 Joey 驗收",
+"nav.joey":"Joey View · 專案視圖",
+"nav.dashboard":"Agent 控制台",
+"nav.handoffs":"依據／交接",
+"human.saved":"你的專案選擇已保存於本機。",
+"human.proposed":"修改已提出，等待你批准套用。",
+"human.readOnly":"公開快照；專案選擇請在本機授權後操作。",
+
+ "runtime.awaitingSync":"等待同步",
+ "runtime.candidate":"V0.3 · 驗收候選版 · 等待 Joey 驗收 · V0.2 基線 2efd329",
   "sourceSummary.s0":"多語 Agent 平台已營運；Explorer 網路搜尋尚待實際驗證",
   "sourceSummary.s1":"先以唯讀方式核對執行環境、模型就緒度與外部資料結構",
   "sourceSummary.s2":"設定與 canary 驗證需要 Vercel／n8n 的授權存取",
@@ -421,7 +441,7 @@ const zhTW={
   "header.refresh":"重新讀取專案資料",
   "header.generated":"讀取時間 {time}",
 
-  'release.accepted':'V{version} · Joey 驗收通過 · V0.1 基線 {baseline}',
+  'release.accepted':'V{version} · Joey 驗收通過 · 父版基線 {baseline}',
 
   "workflow.title":"本機收件匣紀錄",
   "workflow.boundary":"進度與結案僅記錄本機收件匣；正式專案狀態仍以 canonical 資料為準。",
@@ -447,7 +467,7 @@ const zhTW={
   "workflow.stop":"記錄工作階段已停止",
   "workflow.fail":"記錄工作階段失敗",
   "workflow.sessionBoundary":"這些操作僅記錄本機觀察；不控制 AI 程序。",
-  "release.info":"V{version} · 候選版本 · V0.1 基線 {baseline}",
+  "release.info":"V{version} · 候選版本 · 父版基線 {baseline}",
   "workflow.stale":"收件匣狀態已變更；請重新載入後再操作",
   "workflow.reopenRequired":"請先重新開啟收件匣項目，再進行解讀",
   "workflow.readyRequired":"收件匣項目必須處於等待確認狀態",
@@ -463,10 +483,10 @@ const zhTW={
   'freshness.waiting':'等待投影資料',
   'freshness.generated':'產生時間 {time}',
   'nav.label':'主要導覽',
-  'nav.dashboard':'儀表板',
+
   'nav.inbox':'收件匣',
   'nav.workspaces':'工作區',
-  'nav.handoffs':'交接紀錄',
+
   'nav.project':'專案詳情',
   'dashboard.eyebrow':'控制中樞',
   'dashboard.intro':'位置（WHERE）：工作在哪裡。現況（WHAT）：哪些已驗證。經手（WHO）：誰處理過。下一步（NEXT）：安全的下一個行動。',
@@ -651,6 +671,16 @@ const zhTW={
 };
 
 const ko={
+"human.release":"V0.3 · Joey 검수 대기",
+"nav.joey":"Joey View · 프로젝트",
+"nav.dashboard":"Agent 제어판",
+"nav.handoffs":"근거 / 인계",
+"human.saved":"프로젝트 결정이 로컬에 저장되었습니다.",
+"human.proposed":"제안을 저장했습니다. 승인을 기다립니다.",
+"human.readOnly":"공개 스냅샷입니다. 소유자 결정은 인증된 로컬에서 가능합니다.",
+
+ "runtime.awaitingSync":"동기화 대기",
+ "runtime.candidate":"V0.3 · 검수 후보 · Joey 검수 대기 · V0.2 기준 2efd329",
   "sourceSummary.s0":"다국어 Agent 플랫폼 운영 중; Explorer 웹 검색은 실제 검증 대기",
   "sourceSummary.s1":"실행 환경, 모델 준비 상태, 외부 데이터 구조를 읽기 전용으로 점검",
   "sourceSummary.s2":"설정과 canary 검증에 Vercel/n8n 접근 권한 필요",
@@ -744,7 +774,7 @@ const ko={
   "header.refresh":"프로젝트 데이터 새로 고침",
   "header.generated":"조회 시각 {time}",
 
-  'release.accepted':'V{version} · Joey 검수 통과 · V0.1 기준 {baseline}',
+  'release.accepted':'V{version} · Joey 검수 통과 · 이전 버전 기준 {baseline}',
 
   "workflow.title":"로컬 받은 편지함 기록",
   "workflow.boundary":"진행 및 해결 상태는 로컬 받은 편지함에만 적용됩니다. 공식 프로젝트 상태는 별도로 유지됩니다.",
@@ -770,7 +800,7 @@ const ko={
   "workflow.stop":"세션 중지 기록",
   "workflow.fail":"세션 실패 기록",
   "workflow.sessionBoundary":"이 버튼은 로컬 관찰만 기록하며 AI 프로세스를 제어하지 않습니다.",
-  "release.info":"V{version} · 후보 버전 · V0.1 기준 {baseline}",
+  "release.info":"V{version} · 후보 버전 · 이전 버전 기준 {baseline}",
   "workflow.stale":"받은 편지함 상태가 변경되었습니다. 새로 고침 후 다시 시도하세요",
   "workflow.reopenRequired":"해석하기 전에 받은 편지함 항목을 다시 여세요",
   "workflow.readyRequired":"받은 편지함 항목이 확인 대기 상태여야 합니다",
@@ -786,10 +816,10 @@ const ko={
   'freshness.waiting':'프로젝션 대기 중',
   'freshness.generated':'생성 시각 {time}',
   'nav.label':'주요 탐색',
-  'nav.dashboard':'대시보드',
+
   'nav.inbox':'받은편지함',
   'nav.workspaces':'작업 공간',
-  'nav.handoffs':'인수인계',
+
   'nav.project':'프로젝트 상세',
   'dashboard.eyebrow':'컨트롤 플레인',
   'dashboard.intro':'위치(WHERE): 작업이 있는 곳. 현황(WHAT): 검증된 내용. 담당(WHO): 작업한 주체. 다음(NEXT): 안전한 다음 작업.',
@@ -973,6 +1003,9 @@ const ko={
   'msg.sessionNotFound':'세션을 찾을 수 없습니다'
 };
 
+Object.assign(en,{'state.saving':'Saving project state…','state.saved':'Project state saved locally','state.failed':'Save failed; previous state retained: {reason}'});
+Object.assign(zhTW,{'state.saving':'專案狀態保存中…','state.saved':'專案狀態已保存至本機','state.failed':'保存失敗；原狀態保留：{reason}'});
+Object.assign(ko,{'state.saving':'프로젝트 상태 저장 중…','state.saved':'프로젝트 상태가 로컬에 저장됨','state.failed':'저장 실패; 기존 상태 유지: {reason}'});
 export const DICTIONARIES={'zh-TW':zhTW,ko,en};
 
 const STATUSES=['Active','Paused','Idea','Planned','Completed'];

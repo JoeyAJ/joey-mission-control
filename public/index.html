@@ -8,21 +8,23 @@
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
+<svg class="visual-filter-defs" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><defs><filter id="eye-cutout" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  .9 .6 1.8 0 -.33"/></filter></defs></svg>
 <header>
   <div class="brand"><span class="eyebrow" data-i18n="app.eyebrow">LOCAL · SOURCE-BACKED</span><h1>Mission Control</h1></div>
-  <div class="header-tools">
+  <details class="utility-menu"><summary id="utility-title" data-i18n="header.access">Local write access</summary><div class="header-tools">
     <div class="locale-control"><label for="locale-select" data-i18n="locale.label">Language</label><select id="locale-select"><option value="zh-TW" lang="zh-TW">繁體中文</option><option value="ko" lang="ko">한국어</option><option value="en" lang="en">English</option></select></div>
     <details class="access-control"><summary data-i18n="header.access">Local write access</summary><div class="token-control"><label for="write-token" data-i18n="token.label">Local write token</label><input id="write-token" type="password" autocomplete="off" spellcheck="false"><button id="save-token" type="button" data-i18n="token.save">Save token</button></div></details>
     <button id="refresh-state" type="button" data-i18n="header.refresh">Refresh verified data</button>
-  </div>
+  </div></details>
   <div class="header-meta"><details id="release-evidence"><summary id="release-info"></summary><code id="parent-baseline"></code></details><p id="freshness" data-i18n="freshness.waiting">Waiting for projection</p></div>
 </header>
 <nav aria-label="Primary" data-i18n-aria-label="nav.label">
-  <button data-view="dashboard" data-i18n="nav.dashboard">Dashboard</button><button data-view="inbox" data-i18n="nav.inbox">Inbox</button><button data-view="workspaces" data-i18n="nav.workspaces">Workspaces</button><button data-view="handoffs" data-i18n="nav.handoffs">Handoffs</button><button data-view="project" data-i18n="nav.project">Project detail</button>
+  <button data-view="joey" data-i18n="nav.joey">Joey View</button><button data-view="dashboard" data-i18n="nav.dashboard">Agent console</button><button data-view="inbox" data-i18n="nav.inbox">Inbox</button><button data-view="workspaces" data-i18n="nav.workspaces">Workspaces</button><button data-view="handoffs" data-i18n="nav.handoffs">Evidence / Handoffs</button><button data-view="project" data-i18n="nav.project">Project detail</button>
 </nav>
 <main>
-<section id="dashboard" class="view active">
-  <div class="dashboard-heading"><div><p class="eyebrow" data-i18n="dashboard.eyebrow">CONTROL PLANE</p><h2 data-i18n="nav.dashboard">Dashboard</h2><p data-i18n="evidence.summaryNote">Reviewed display summaries; original evidence remains available.</p></div></div>
+<section id="joey" class="view active"><div id="joey-content" aria-live="polite"></div></section>
+<section id="dashboard" class="view">
+  <div class="dashboard-heading"><div><p class="eyebrow" data-i18n="dashboard.eyebrow">CONTROL PLANE</p><h2 data-i18n="nav.dashboard">Agent console</h2><p data-i18n="evidence.summaryNote">Reviewed display summaries; original evidence remains available.</p></div></div>
   <div class="filters" aria-label="Project status filters" data-i18n-aria-label="filters.label"><button data-filter="" data-i18n="filters.all">All projects</button><button data-filter="Active" data-i18n="status.Active">Active</button><button data-filter="Paused" data-i18n="status.Paused">Paused</button><button data-filter="Idea" data-i18n="status.Idea">Idea</button><button data-filter="Planned" data-i18n="status.Planned">Planned</button><button data-filter="Completed" data-i18n="status.Completed">Completed</button></div>
   <div id="project-grid" class="grid" aria-live="polite"></div>
   <div class="table-wrap"><table class="control-table"><caption data-i18n="dashboard.summary">Project control summary</caption><thead><tr><th data-i18n="field.projectName">Project Name</th><th data-i18n="field.status">Status</th><th data-i18n="field.currentMission">Current Mission</th><th data-i18n="field.agent">Current / Last Agent</th><th data-i18n="field.nextAction">Next Action</th><th data-i18n="evidence.control">Blocker / Approval Required</th><th data-i18n="field.lastUpdated">Last Updated</th></tr></thead><tbody id="project-table"></tbody></table></div>
@@ -42,7 +44,7 @@
   <p data-i18n="workflow.sessionBoundary">These controls record local observations; they do not control AI processes.</p>
   <div id="workspace-list"></div>
 </section>
-<section id="handoffs" class="view"><h2 data-i18n="nav.handoffs">Handoffs</h2><p data-i18n="handoffs.intro">Global latest and complete local history. Task status is evidence; it is not project lifecycle.</p><div id="handoff-list"></div></section>
+<section id="handoffs" class="view"><h2 data-i18n="nav.handoffs">Evidence / Handoffs</h2><p data-i18n="handoffs.intro">Global latest and complete local history. Task status is evidence; it is not project lifecycle.</p><div id="product-evidence"></div><div id="handoff-list"></div></section>
 <section id="project" class="view">
   <h2 id="project-title" data-i18n="nav.project">Project detail</h2>
   <div class="tabs" role="tablist"><button data-project-tab="overview" data-i18n="tab.overview">Overview</button><button data-project-tab="context" data-i18n="tab.context">Technical / Evidence</button><button data-project-tab="workspaces" data-i18n="tab.workspaces">Workspaces</button><button data-project-tab="handoffs" data-i18n="tab.handoffs">Handoffs</button></div>

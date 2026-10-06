@@ -1,0 +1,155 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "projectId",
+    "name",
+    "revision",
+    "lifecycle",
+    "lifecycleRecorded",
+    "purpose",
+    "blueprint",
+    "blueprintProgress",
+    "humanCurrentStage",
+    "humanNextStep",
+    "technicalNextAction",
+    "evidence",
+    "proposals",
+    "bootstrapReadiness",
+    "canonicalProjectId"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "0.3"
+    },
+    "projectId": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "revision": {
+      "type": "number"
+    },
+    "lifecycle": {
+      "enum": [
+        null,
+        "IDEA",
+        "PLANNING",
+        "IN_PROGRESS",
+        "PAUSED",
+        "COMPLETED",
+        "ARCHIVED"
+      ]
+    },
+    "lifecycleRecorded": {
+      "type": "boolean"
+    },
+    "purpose": {
+      "type": "object",
+      "required": [
+        "projectId",
+        "originalPurpose",
+        "desiredOutcome",
+        "successDefinition",
+        "createdAt",
+        "lastApprovedRevision"
+      ],
+      "properties": {
+        "projectId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "originalPurpose": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "desiredOutcome": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "successDefinition": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "createdAt": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "blueprint": {
+      "type": "object",
+      "required": [
+        "projectId",
+        "status",
+        "milestones"
+      ],
+      "properties": {
+        "projectId": {
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "AWAITING_RECONSTRUCTION",
+            "RECORDED",
+            "PARTIALLY_CONFIRMED",
+            "AWAITING_JOEY_CONFIRMATION"
+          ]
+        },
+        "milestones": {
+          "type": "array"
+        }
+      }
+    },
+    "blueprintProgress": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "humanCurrentStage": {
+      "type": [
+        "string",
+        "object",
+        "null"
+      ]
+    },
+    "humanNextStep": {
+      "type": [
+        "string",
+        "object",
+        "null"
+      ]
+    },
+    "technicalNextAction": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "evidence": {
+      "type": "array"
+    },
+    "proposals": {
+      "type": "array"
+    },
+    "bootstrapReadiness": {
+      "type": "object"
+    },
+    "canonicalProjectId": {
+      "type": "string"
+    }
+  }
+}

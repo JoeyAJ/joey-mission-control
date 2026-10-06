@@ -1,0 +1,166 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "currentMission",
+    "currentAgent",
+    "lastAgent",
+    "currentModel",
+    "lastModel",
+    "lastCompletedAction",
+    "lastCompletedAt",
+    "nextAction",
+    "blocker",
+    "handoffRef",
+    "sourceRepo",
+    "sourceBranch",
+    "baselineSha",
+    "productionUrl",
+    "localWorkspace",
+    "lastSyncedAt",
+    "schemaVersion",
+    "projectId",
+    "missionStatus",
+    "approvalRequired",
+    "approvalStatus",
+    "stateSource",
+    "fields"
+  ],
+  "properties": {
+    "currentMission": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "currentAgent": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "lastAgent": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "currentModel": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "lastModel": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "lastCompletedAction": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "lastCompletedAt": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "nextAction": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "blocker": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "handoffRef": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "sourceRepo": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "sourceBranch": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "baselineSha": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "productionUrl": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "localWorkspace": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "lastSyncedAt": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "schemaVersion": {
+      "const": "0.3"
+    },
+    "projectId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "missionStatus": {
+      "enum": [
+        "Active",
+        "Not recorded",
+        "Awaiting sync",
+        "Awaiting Joey approval",
+        "Blocked",
+        "Completed"
+      ]
+    },
+    "approvalRequired": {
+      "type": "boolean"
+    },
+    "approvalStatus": {
+      "enum": [
+        "NO_APPROVAL_REQUIRED",
+        "AWAITING_JOEY_APPROVAL",
+        "APPROVED",
+        "REJECTED",
+        "BLOCKED"
+      ]
+    },
+    "stateSource": {
+      "enum": [
+        "verified_release_snapshot",
+        "canonical_projection",
+        "local_mission_overlay"
+      ]
+    },
+    "fields": {
+      "type": "object"
+    }
+  }
+}

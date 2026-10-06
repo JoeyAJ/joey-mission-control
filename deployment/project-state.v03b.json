@@ -1,0 +1,1790 @@
+{
+  "schemaVersion": "0.3-B",
+  "mode": "read_only_release_snapshot",
+  "generatedAt": "2026-10-05T13:33:19.033Z",
+  "projects": [
+    {
+      "schemaVersion": "0.3-B",
+      "id": "NEXAEON",
+      "name": "NexAeon",
+      "identity": "NexAeon",
+      "missionStatement": "把身份、研究、學習與實作整合成多語知識平台，讓專門的 AI 助手依可靠資料協助使用者。",
+      "lifecycle": "UNKNOWN",
+      "missions": [
+        {
+          "id": "nexaeon-public",
+          "projectId": "NEXAEON",
+          "title": "多語知識入口",
+          "description": "把身份、研究、學習與實作放在同一個入口。",
+          "order": 0,
+          "status": "WAITING",
+          "dependencies": [],
+          "sourceRefs": [
+            "import-nexaeon-public-memory",
+            "import-nexaeon-public-state",
+            "import-nexaeon-public-readme"
+          ],
+          "createdAt": null,
+          "updatedAt": null,
+          "kind": "FACT",
+          "linkedIdeaId": null,
+          "legacyStatus": "AWAITING_ACCEPTANCE"
+        },
+        {
+          "id": "nexaeon-assistants",
+          "projectId": "NEXAEON",
+          "title": "專門的 AI 助手",
+          "description": "依公開資料回答問題，並讓內容修改先經過確認。",
+          "order": 1,
+          "status": "WAITING",
+          "dependencies": [],
+          "sourceRefs": [
+            "import-nexaeon-assistants-state",
+            "import-nexaeon-assistants-gateway",
+            "import-nexaeon-assistants-agentTests"
+          ],
+          "createdAt": null,
+          "updatedAt": null,
+          "kind": "FACT",
+          "linkedIdeaId": null,
+          "legacyStatus": "AWAITING_ACCEPTANCE"
+        },
+        {
+          "id": "nexaeon-search",
+          "projectId": "NEXAEON",
+          "title": "外部資訊搜尋",
+          "description": "讓 Explorer 搜尋外部資訊並帶回結果。",
+          "order": 2,
+          "status": "IN_PROGRESS",
+          "dependencies": [],
+          "sourceRefs": [
+            "import-nexaeon-search-state",
+            "import-nexaeon-search-next",
+            "import-nexaeon-search-explorer"
+          ],
+          "createdAt": null,
+          "updatedAt": null,
+          "kind": "FACT",
+          "linkedIdeaId": null,
+          "legacyStatus": "IN_PROGRESS"
+        },
+        {
+          "id": "nexaeon-knowledge",
+          "projectId": "NEXAEON",
+          "title": "知識庫搜尋",
+          "description": "讓知識助手查找累積的資料；實際開放範圍待確認。",
+          "order": 3,
+          "status": "UNKNOWN",
+          "dependencies": [],
+          "sourceRefs": [
+            "import-nexaeon-knowledge-state",
+            "import-nexaeon-knowledge-next"
+          ],
+          "createdAt": null,
+          "updatedAt": null,
+          "kind": "UNKNOWN",
+          "linkedIdeaId": null,
+          "legacyStatus": "AWAITING_JOEY_CONFIRMATION"
+        }
+      ],
+      "decisions": [],
+      "ideas": [],
+      "nextActions": [],
+      "sources": [
+        {
+          "id": "import-project-identity",
+          "type": "LOCAL",
+          "label": "Existing Mission Control project registry",
+          "uri": "project:NEXAEON",
+          "commitSha": null,
+          "fingerprint": null,
+          "timestamp": null,
+          "verificationStatus": "VERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "import-memory",
+          "type": "CANONICAL_MEMORY",
+          "label": "DOCUMENT · Purpose / Stable Boundaries",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "0d3cb1baa88cc63495bfed3e0aba9d7de0ebf3b986b97ad54e361d8613397cc2",
+          "timestamp": "2026-10-05T10:32:25.128486+00:00",
+          "verificationStatus": "VERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "import-state",
+          "type": "CANONICAL_MEMORY",
+          "label": "DOCUMENT · Current Stage / Functional Map / Testing / Deployment",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "540b0d7ab1ef76a9de485374c267182aabde992a1e54d024361484f2876d56a8",
+          "timestamp": "2026-10-05T10:32:25.128486+00:00",
+          "verificationStatus": "VERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "import-next",
+          "type": "CANONICAL_MEMORY",
+          "label": "DOCUMENT · Recommended Next Step / Decisions Needed From Joey",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "8a37bf84452dc7b6df67f79e663a0e814f43b807acb8366b20f2140863e010b3",
+          "timestamp": "2026-10-05T10:32:25.128486+00:00",
+          "verificationStatus": "VERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "import-readme",
+          "type": "LOCAL",
+          "label": "DOCUMENT · Current product scope",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "ffec1176dff568d4ef8fc6949b22582c56e96df4b7fb3bbad6e5f8d548b226a8",
+          "timestamp": "2026-10-05T10:32:25.128486+00:00",
+          "verificationStatus": "VERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "import-gateway",
+          "type": "LOCAL",
+          "label": "DOCUMENT · Status / Acceptance boundary",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "22f14be4a9f9de9a6a5a6cb1a5e0dca4d2a0a8240584337e4dd0cdc4e4f920c0",
+          "timestamp": "2026-10-05T10:32:25.128486+00:00",
+          "verificationStatus": "VERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "import-explorer",
+          "type": "LOCAL",
+          "label": "DOCUMENT · Authority boundary / Canary checklist",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "45ceeea7e0fa5b30fe5c96669f4939da687e1b9d3b30bcf568577223f379f06b",
+          "timestamp": "2026-10-05T10:32:25.128486+00:00",
+          "verificationStatus": "VERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "import-agentTests",
+          "type": "LOCAL",
+          "label": "DOCUMENT · Existing tests (not rerun)",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "16d2033add236a5e4dc08bb916afed8a1ed4d0f500ed44af2f29f5be7e06d9c7",
+          "timestamp": "2026-10-05T10:32:25.128486+00:00",
+          "verificationStatus": "VERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "import-nexaeon-public-memory",
+          "type": "CANONICAL_MEMORY",
+          "label": "DOCUMENT · Purpose / Stable Boundaries",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "0d3cb1baa88cc63495bfed3e0aba9d7de0ebf3b986b97ad54e361d8613397cc2",
+          "timestamp": "2026-10-05T10:32:25.128486+00:00",
+          "verificationStatus": "VERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "import-nexaeon-public-state",
+          "type": "CANONICAL_MEMORY",
+          "label": "DOCUMENT · Current Stage / Functional Map / Testing / Deployment",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "540b0d7ab1ef76a9de485374c267182aabde992a1e54d024361484f2876d56a8",
+          "timestamp": "2026-10-05T10:32:25.128486+00:00",
+          "verificationStatus": "VERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "import-nexaeon-public-readme",
+          "type": "LOCAL",
+          "label": "DOCUMENT · Current product scope",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "ffec1176dff568d4ef8fc6949b22582c56e96df4b7fb3bbad6e5f8d548b226a8",
+          "timestamp": "2026-10-05T10:32:25.128486+00:00",
+          "verificationStatus": "VERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "import-nexaeon-assistants-state",
+          "type": "CANONICAL_MEMORY",
+          "label": "DOCUMENT · Current Stage / Functional Map / Testing / Deployment",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "540b0d7ab1ef76a9de485374c267182aabde992a1e54d024361484f2876d56a8",
+          "timestamp": "2026-10-05T10:32:25.128486+00:00",
+          "verificationStatus": "VERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "import-nexaeon-assistants-gateway",
+          "type": "LOCAL",
+          "label": "DOCUMENT · Status / Acceptance boundary",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "22f14be4a9f9de9a6a5a6cb1a5e0dca4d2a0a8240584337e4dd0cdc4e4f920c0",
+          "timestamp": "2026-10-05T10:32:25.128486+00:00",
+          "verificationStatus": "VERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "import-nexaeon-assistants-agentTests",
+          "type": "LOCAL",
+          "label": "DOCUMENT · Existing tests (not rerun)",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "16d2033add236a5e4dc08bb916afed8a1ed4d0f500ed44af2f29f5be7e06d9c7",
+          "timestamp": "2026-10-05T10:32:25.128486+00:00",
+          "verificationStatus": "VERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "import-nexaeon-search-state",
+          "type": "CANONICAL_MEMORY",
+          "label": "DOCUMENT · Current Stage / Functional Map / Testing / Deployment",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "540b0d7ab1ef76a9de485374c267182aabde992a1e54d024361484f2876d56a8",
+          "timestamp": "2026-10-05T10:32:25.128486+00:00",
+          "verificationStatus": "VERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "import-nexaeon-search-next",
+          "type": "CANONICAL_MEMORY",
+          "label": "DOCUMENT · Recommended Next Step / Decisions Needed From Joey",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "8a37bf84452dc7b6df67f79e663a0e814f43b807acb8366b20f2140863e010b3",
+          "timestamp": "2026-10-05T10:32:25.128486+00:00",
+          "verificationStatus": "VERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "import-nexaeon-search-explorer",
+          "type": "LOCAL",
+          "label": "DOCUMENT · Authority boundary / Canary checklist",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "45ceeea7e0fa5b30fe5c96669f4939da687e1b9d3b30bcf568577223f379f06b",
+          "timestamp": "2026-10-05T10:32:25.128486+00:00",
+          "verificationStatus": "VERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "import-nexaeon-knowledge-state",
+          "type": "CANONICAL_MEMORY",
+          "label": "DOCUMENT · Current Stage / Functional Map / Testing / Deployment",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "540b0d7ab1ef76a9de485374c267182aabde992a1e54d024361484f2876d56a8",
+          "timestamp": "2026-10-05T10:32:25.128486+00:00",
+          "verificationStatus": "VERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "import-nexaeon-knowledge-next",
+          "type": "CANONICAL_MEMORY",
+          "label": "DOCUMENT · Recommended Next Step / Decisions Needed From Joey",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "8a37bf84452dc7b6df67f79e663a0e814f43b807acb8366b20f2140863e010b3",
+          "timestamp": "2026-10-05T10:32:25.128486+00:00",
+          "verificationStatus": "VERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "field-source-purpose",
+          "type": "CANONICAL_MEMORY",
+          "label": "PROJECT_MEMORY",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "0d3cb1baa88cc63495bfed3e0aba9d7de0ebf3b986b97ad54e361d8613397cc2",
+          "timestamp": "2026-10-05T13:11:05.164Z",
+          "verificationStatus": "UNVERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "field-source-stage",
+          "type": "CANONICAL_MEMORY",
+          "label": "Current Stage",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "540b0d7ab1ef76a9de485374c267182aabde992a1e54d024361484f2876d56a8",
+          "timestamp": "2026-10-05T13:11:05.165Z",
+          "verificationStatus": "UNVERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "field-source-next",
+          "type": "CANONICAL_MEMORY",
+          "label": "NEXT_ACTIONS",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "8a37bf84452dc7b6df67f79e663a0e814f43b807acb8366b20f2140863e010b3",
+          "timestamp": "2026-10-05T13:11:05.165Z",
+          "verificationStatus": "UNVERIFIED",
+          "kind": "FACT"
+        }
+      ],
+      "confirmationQueue": [
+        {
+          "id": "confirm-lifecycle-NEXAEON",
+          "projectId": "NEXAEON",
+          "field": "lifecycle",
+          "entityId": null,
+          "title": "確認目前專案生命週期",
+          "proposedValue": "UNKNOWN",
+          "status": "OPEN",
+          "sourceRefs": [],
+          "resolution": null,
+          "createdAt": null,
+          "resolvedAt": null
+        },
+        {
+          "id": "confirm-missionSetReliability-NEXAEON",
+          "projectId": "NEXAEON",
+          "field": "missionSetReliability",
+          "entityId": null,
+          "title": "確認目前任務清單是否已涵蓋完整範圍",
+          "proposedValue": "PARTIAL",
+          "status": "OPEN",
+          "sourceRefs": [],
+          "resolution": null,
+          "createdAt": null,
+          "resolvedAt": null
+        },
+        {
+          "id": "confirm-missionStatus-nexaeon-knowledge",
+          "projectId": "NEXAEON",
+          "field": "missionStatus",
+          "entityId": "nexaeon-knowledge",
+          "title": "確認任務狀態：知識庫搜尋",
+          "proposedValue": "AWAITING_JOEY_CONFIRMATION",
+          "status": "OPEN",
+          "sourceRefs": [
+            "import-nexaeon-knowledge-state",
+            "import-nexaeon-knowledge-next"
+          ],
+          "resolution": null,
+          "createdAt": null,
+          "resolvedAt": null
+        },
+        {
+          "id": "confirm-nextAction-NEXAEON",
+          "projectId": "NEXAEON",
+          "field": "nextAction",
+          "entityId": null,
+          "title": "確認文件記錄的下一步是否為你的選擇",
+          "proposedValue": "讓 Explorer 能搜尋外部資訊並把結果帶回 NexAeon。",
+          "status": "OPEN",
+          "sourceRefs": [
+            "field-source-next"
+          ],
+          "resolution": null,
+          "createdAt": null,
+          "resolvedAt": null
+        }
+      ],
+      "auditLog": [],
+      "provenance": {
+        "identity": {
+          "kind": "FACT",
+          "sourceRefs": [
+            "import-project-identity"
+          ]
+        },
+        "missionStatement": {
+          "kind": "FACT",
+          "sourceRefs": [
+            "field-source-purpose"
+          ]
+        },
+        "lifecycle": {
+          "kind": "UNKNOWN",
+          "sourceRefs": []
+        }
+      },
+      "metadata": {
+        "revision": 0,
+        "sourceOwnerRevision": 0,
+        "missionSetReliability": "PARTIAL",
+        "migratedFrom": "V0.3-A",
+        "legacyQuestions": [
+          "最初建立 NexAeon 的個人動機與成功標準。",
+          "外部搜尋先維持內部驗證，還是準備公開？",
+          "知識庫搜尋是否納入目前藍圖，以及各里程碑的重要程度。"
+        ],
+        "documentedNext": "讓 Explorer 能搜尋外部資訊並把結果帶回 NexAeon。",
+        "migration": {
+          "VERIFIED": [
+            "identity",
+            "documented mission statement",
+            "recorded mission status: nexaeon-public",
+            "recorded mission status: nexaeon-assistants",
+            "recorded mission status: nexaeon-search"
+          ],
+          "DERIVED": [
+            "status enum mapping",
+            "current mission",
+            "blueprint counts",
+            "next waypoint"
+          ],
+          "UNKNOWN": [
+            "lifecycle",
+            "mission status: nexaeon-knowledge"
+          ],
+          "NEEDS_JOEY_CONFIRMATION": [
+            "確認目前專案生命週期",
+            "確認目前任務清單是否已涵蓋完整範圍",
+            "確認任務狀態：知識庫搜尋",
+            "確認文件記錄的下一步是否為你的選擇",
+            "Unclassified legacy question: 最初建立 NexAeon 的個人動機與成功標準。",
+            "Unclassified legacy question: 外部搜尋先維持內部驗證，還是準備公開？",
+            "Unclassified legacy question: 知識庫搜尋是否納入目前藍圖，以及各里程碑的重要程度。"
+          ]
+        }
+      }
+    },
+    {
+      "schemaVersion": "0.3-B",
+      "id": "WOOSONG_BUDDY",
+      "name": "Woosong Buddy",
+      "identity": "Woosong Buddy",
+      "missionStatement": "讓又松大學國際學生透過韓語學習、虛擬夥伴、校園探索與社交活動融入校園；韓語學習是夥伴成長的核心。",
+      "lifecycle": "UNKNOWN",
+      "missions": [
+        {
+          "id": "woosong_buddy-learning",
+          "projectId": "WOOSONG_BUDDY",
+          "title": "韓語學習與夥伴成長",
+          "description": "透過韓語練習獲得獎勵，照顧並培養虛擬夥伴。",
+          "order": 0,
+          "status": "WAITING",
+          "dependencies": [],
+          "sourceRefs": [
+            "import-woosong_buddy-learning-memory",
+            "import-woosong_buddy-learning-state",
+            "import-woosong_buddy-learning-plan",
+            "import-woosong_buddy-learning-learningCommit"
+          ],
+          "createdAt": null,
+          "updatedAt": null,
+          "kind": "FACT",
+          "linkedIdeaId": null,
+          "legacyStatus": "AWAITING_ACCEPTANCE"
+        },
+        {
+          "id": "woosong_buddy-campus",
+          "projectId": "WOOSONG_BUDDY",
+          "title": "校園探索與社交",
+          "description": "在校園探索、互動與分享，讓學習延伸到日常。",
+          "order": 1,
+          "status": "WAITING",
+          "dependencies": [],
+          "sourceRefs": [
+            "import-woosong_buddy-campus-state",
+            "import-woosong_buddy-campus-plan",
+            "import-woosong_buddy-campus-socialCommit"
+          ],
+          "createdAt": null,
+          "updatedAt": null,
+          "kind": "FACT",
+          "linkedIdeaId": null,
+          "legacyStatus": "AWAITING_ACCEPTANCE"
+        },
+        {
+          "id": "woosong_buddy-mobile",
+          "projectId": "WOOSONG_BUDDY",
+          "title": "穩定的手機體驗",
+          "description": "補齊安裝圖示與各語言顯示，讓手機使用更可靠。",
+          "order": 2,
+          "status": "IN_PROGRESS",
+          "dependencies": [],
+          "sourceRefs": [
+            "import-woosong_buddy-mobile-state",
+            "import-woosong_buddy-mobile-next"
+          ],
+          "createdAt": null,
+          "updatedAt": null,
+          "kind": "FACT",
+          "linkedIdeaId": null,
+          "legacyStatus": "IN_PROGRESS"
+        },
+        {
+          "id": "woosong_buddy-identity",
+          "projectId": "WOOSONG_BUDDY",
+          "title": "正式登入與跨裝置紀錄",
+          "description": "確認學生身分與哪些紀錄需要跨裝置保存。",
+          "order": 3,
+          "status": "UNKNOWN",
+          "dependencies": [],
+          "sourceRefs": [
+            "import-woosong_buddy-identity-state",
+            "import-woosong_buddy-identity-next"
+          ],
+          "createdAt": null,
+          "updatedAt": null,
+          "kind": "UNKNOWN",
+          "linkedIdeaId": null,
+          "legacyStatus": "AWAITING_JOEY_CONFIRMATION"
+        },
+        {
+          "id": "woosong_buddy-legacy",
+          "projectId": "WOOSONG_BUDDY",
+          "title": "舊規劃中的 3D 與離線能力",
+          "description": "舊文件曾規劃這些能力；是否保留仍需重新決定。",
+          "order": 4,
+          "status": "UNKNOWN",
+          "dependencies": [],
+          "sourceRefs": [
+            "import-woosong_buddy-legacy-state",
+            "import-woosong_buddy-legacy-plan"
+          ],
+          "createdAt": null,
+          "updatedAt": null,
+          "kind": "UNKNOWN",
+          "linkedIdeaId": null,
+          "legacyStatus": "AWAITING_JOEY_CONFIRMATION"
+        }
+      ],
+      "decisions": [],
+      "ideas": [],
+      "nextActions": [],
+      "sources": [
+        {
+          "id": "import-project-identity",
+          "type": "LOCAL",
+          "label": "Existing Mission Control project registry",
+          "uri": "project:WOOSONG_BUDDY",
+          "commitSha": null,
+          "fingerprint": null,
+          "timestamp": null,
+          "verificationStatus": "VERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "import-memory",
+          "type": "CANONICAL_MEMORY",
+          "label": "DOCUMENT · Purpose / Stable Boundaries",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "ffcb16e53a5cbb7ffe73949fdd7eb2f6d19cbd97d1fc93c3f027bc3601526c90",
+          "timestamp": "2026-10-05T10:32:25.128486+00:00",
+          "verificationStatus": "VERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "import-state",
+          "type": "CANONICAL_MEMORY",
+          "label": "DOCUMENT · Current Stage / Functional Map / Testing / Deployment",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "3665171d1a11b9e5c9a99c1e5cb0568c79d28735b41ac7df7504db86a191a488",
+          "timestamp": "2026-10-05T10:32:25.128486+00:00",
+          "verificationStatus": "VERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "import-next",
+          "type": "CANONICAL_MEMORY",
+          "label": "DOCUMENT · Recommended Next Step / Decisions Needed From Joey",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "1ec402f107f07ea8abe6244875c5e2702a990b060e0910180506425392dac6ac",
+          "timestamp": "2026-10-05T10:32:25.128486+00:00",
+          "verificationStatus": "VERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "import-readme",
+          "type": "LOCAL",
+          "label": "DOCUMENT · Current product scope",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "60b55ff7df79af72590f9524208e46642bc32bdc175cdad41349681c0e2f958f",
+          "timestamp": "2026-10-05T10:32:25.128486+00:00",
+          "verificationStatus": "VERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "import-plan",
+          "type": "LOCAL",
+          "label": "DOCUMENT · 2026-04-06 historical plan; superseded where current state differs",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "5f5d6cfeda750889da802e193aba119a50c61a9131f2a955d58b17dc7ff24531",
+          "timestamp": "2026-10-05T10:32:25.128486+00:00",
+          "verificationStatus": "VERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "import-learningCommit",
+          "type": "LOCAL",
+          "label": "DOCUMENT · Historical learning plan; implementation commit 253c876",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "5f5d6cfeda750889da802e193aba119a50c61a9131f2a955d58b17dc7ff24531",
+          "timestamp": "2026-10-05T10:32:25.128486+00:00",
+          "verificationStatus": "VERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "import-socialCommit",
+          "type": "LOCAL",
+          "label": "DOCUMENT · Historical campus/social plan; implementation commit 69a8c8a",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "5f5d6cfeda750889da802e193aba119a50c61a9131f2a955d58b17dc7ff24531",
+          "timestamp": "2026-10-05T10:32:25.128486+00:00",
+          "verificationStatus": "VERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "import-woosong_buddy-learning-memory",
+          "type": "CANONICAL_MEMORY",
+          "label": "DOCUMENT · Purpose / Stable Boundaries",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "ffcb16e53a5cbb7ffe73949fdd7eb2f6d19cbd97d1fc93c3f027bc3601526c90",
+          "timestamp": "2026-10-05T10:32:25.128486+00:00",
+          "verificationStatus": "VERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "import-woosong_buddy-learning-state",
+          "type": "CANONICAL_MEMORY",
+          "label": "DOCUMENT · Current Stage / Functional Map / Testing / Deployment",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "3665171d1a11b9e5c9a99c1e5cb0568c79d28735b41ac7df7504db86a191a488",
+          "timestamp": "2026-10-05T10:32:25.128486+00:00",
+          "verificationStatus": "VERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "import-woosong_buddy-learning-plan",
+          "type": "LOCAL",
+          "label": "DOCUMENT · 2026-04-06 historical plan; superseded where current state differs",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "5f5d6cfeda750889da802e193aba119a50c61a9131f2a955d58b17dc7ff24531",
+          "timestamp": "2026-10-05T10:32:25.128486+00:00",
+          "verificationStatus": "VERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "import-woosong_buddy-learning-learningCommit",
+          "type": "LOCAL",
+          "label": "DOCUMENT · Historical learning plan; implementation commit 253c876",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "5f5d6cfeda750889da802e193aba119a50c61a9131f2a955d58b17dc7ff24531",
+          "timestamp": "2026-10-05T10:32:25.128486+00:00",
+          "verificationStatus": "VERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "import-woosong_buddy-campus-state",
+          "type": "CANONICAL_MEMORY",
+          "label": "DOCUMENT · Current Stage / Functional Map / Testing / Deployment",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "3665171d1a11b9e5c9a99c1e5cb0568c79d28735b41ac7df7504db86a191a488",
+          "timestamp": "2026-10-05T10:32:25.128486+00:00",
+          "verificationStatus": "VERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "import-woosong_buddy-campus-plan",
+          "type": "LOCAL",
+          "label": "DOCUMENT · 2026-04-06 historical plan; superseded where current state differs",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "5f5d6cfeda750889da802e193aba119a50c61a9131f2a955d58b17dc7ff24531",
+          "timestamp": "2026-10-05T10:32:25.128486+00:00",
+          "verificationStatus": "VERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "import-woosong_buddy-campus-socialCommit",
+          "type": "LOCAL",
+          "label": "DOCUMENT · Historical campus/social plan; implementation commit 69a8c8a",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "5f5d6cfeda750889da802e193aba119a50c61a9131f2a955d58b17dc7ff24531",
+          "timestamp": "2026-10-05T10:32:25.128486+00:00",
+          "verificationStatus": "VERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "import-woosong_buddy-mobile-state",
+          "type": "CANONICAL_MEMORY",
+          "label": "DOCUMENT · Current Stage / Functional Map / Testing / Deployment",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "3665171d1a11b9e5c9a99c1e5cb0568c79d28735b41ac7df7504db86a191a488",
+          "timestamp": "2026-10-05T10:32:25.128486+00:00",
+          "verificationStatus": "VERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "import-woosong_buddy-mobile-next",
+          "type": "CANONICAL_MEMORY",
+          "label": "DOCUMENT · Recommended Next Step / Decisions Needed From Joey",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "1ec402f107f07ea8abe6244875c5e2702a990b060e0910180506425392dac6ac",
+          "timestamp": "2026-10-05T10:32:25.128486+00:00",
+          "verificationStatus": "VERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "import-woosong_buddy-identity-state",
+          "type": "CANONICAL_MEMORY",
+          "label": "DOCUMENT · Current Stage / Functional Map / Testing / Deployment",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "3665171d1a11b9e5c9a99c1e5cb0568c79d28735b41ac7df7504db86a191a488",
+          "timestamp": "2026-10-05T10:32:25.128486+00:00",
+          "verificationStatus": "VERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "import-woosong_buddy-identity-next",
+          "type": "CANONICAL_MEMORY",
+          "label": "DOCUMENT · Recommended Next Step / Decisions Needed From Joey",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "1ec402f107f07ea8abe6244875c5e2702a990b060e0910180506425392dac6ac",
+          "timestamp": "2026-10-05T10:32:25.128486+00:00",
+          "verificationStatus": "VERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "import-woosong_buddy-legacy-state",
+          "type": "CANONICAL_MEMORY",
+          "label": "DOCUMENT · Current Stage / Functional Map / Testing / Deployment",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "3665171d1a11b9e5c9a99c1e5cb0568c79d28735b41ac7df7504db86a191a488",
+          "timestamp": "2026-10-05T10:32:25.128486+00:00",
+          "verificationStatus": "VERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "import-woosong_buddy-legacy-plan",
+          "type": "LOCAL",
+          "label": "DOCUMENT · 2026-04-06 historical plan; superseded where current state differs",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "5f5d6cfeda750889da802e193aba119a50c61a9131f2a955d58b17dc7ff24531",
+          "timestamp": "2026-10-05T10:32:25.128486+00:00",
+          "verificationStatus": "VERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "field-source-purpose",
+          "type": "CANONICAL_MEMORY",
+          "label": "PROJECT_MEMORY",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "ffcb16e53a5cbb7ffe73949fdd7eb2f6d19cbd97d1fc93c3f027bc3601526c90",
+          "timestamp": "2026-10-05T13:11:05.265Z",
+          "verificationStatus": "UNVERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "field-source-stage",
+          "type": "CANONICAL_MEMORY",
+          "label": "Current Stage",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "3665171d1a11b9e5c9a99c1e5cb0568c79d28735b41ac7df7504db86a191a488",
+          "timestamp": "2026-10-05T13:11:05.266Z",
+          "verificationStatus": "UNVERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "field-source-next",
+          "type": "CANONICAL_MEMORY",
+          "label": "NEXT_ACTIONS",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "1ec402f107f07ea8abe6244875c5e2702a990b060e0910180506425392dac6ac",
+          "timestamp": "2026-10-05T13:11:05.266Z",
+          "verificationStatus": "UNVERIFIED",
+          "kind": "FACT"
+        }
+      ],
+      "confirmationQueue": [
+        {
+          "id": "confirm-lifecycle-WOOSONG_BUDDY",
+          "projectId": "WOOSONG_BUDDY",
+          "field": "lifecycle",
+          "entityId": null,
+          "title": "確認目前專案生命週期",
+          "proposedValue": "UNKNOWN",
+          "status": "OPEN",
+          "sourceRefs": [],
+          "resolution": null,
+          "createdAt": null,
+          "resolvedAt": null
+        },
+        {
+          "id": "confirm-missionSetReliability-WOOSONG_BUDDY",
+          "projectId": "WOOSONG_BUDDY",
+          "field": "missionSetReliability",
+          "entityId": null,
+          "title": "確認目前任務清單是否已涵蓋完整範圍",
+          "proposedValue": "PARTIAL",
+          "status": "OPEN",
+          "sourceRefs": [],
+          "resolution": null,
+          "createdAt": null,
+          "resolvedAt": null
+        },
+        {
+          "id": "confirm-missionStatus-woosong_buddy-identity",
+          "projectId": "WOOSONG_BUDDY",
+          "field": "missionStatus",
+          "entityId": "woosong_buddy-identity",
+          "title": "確認任務狀態：正式登入與跨裝置紀錄",
+          "proposedValue": "AWAITING_JOEY_CONFIRMATION",
+          "status": "OPEN",
+          "sourceRefs": [
+            "import-woosong_buddy-identity-state",
+            "import-woosong_buddy-identity-next"
+          ],
+          "resolution": null,
+          "createdAt": null,
+          "resolvedAt": null
+        },
+        {
+          "id": "confirm-missionStatus-woosong_buddy-legacy",
+          "projectId": "WOOSONG_BUDDY",
+          "field": "missionStatus",
+          "entityId": "woosong_buddy-legacy",
+          "title": "確認任務狀態：舊規劃中的 3D 與離線能力",
+          "proposedValue": "AWAITING_JOEY_CONFIRMATION",
+          "status": "OPEN",
+          "sourceRefs": [
+            "import-woosong_buddy-legacy-state",
+            "import-woosong_buddy-legacy-plan"
+          ],
+          "resolution": null,
+          "createdAt": null,
+          "resolvedAt": null
+        },
+        {
+          "id": "confirm-nextAction-WOOSONG_BUDDY",
+          "projectId": "WOOSONG_BUDDY",
+          "field": "nextAction",
+          "entityId": null,
+          "title": "確認文件記錄的下一步是否為你的選擇",
+          "proposedValue": "讓手機安裝更完整，並補齊各語言的使用體驗。",
+          "status": "OPEN",
+          "sourceRefs": [
+            "field-source-next"
+          ],
+          "resolution": null,
+          "createdAt": null,
+          "resolvedAt": null
+        }
+      ],
+      "auditLog": [],
+      "provenance": {
+        "identity": {
+          "kind": "FACT",
+          "sourceRefs": [
+            "import-project-identity"
+          ]
+        },
+        "missionStatement": {
+          "kind": "FACT",
+          "sourceRefs": [
+            "field-source-purpose"
+          ]
+        },
+        "lifecycle": {
+          "kind": "UNKNOWN",
+          "sourceRefs": []
+        }
+      },
+      "metadata": {
+        "revision": 0,
+        "sourceOwnerRevision": 0,
+        "missionSetReliability": "PARTIAL",
+        "migratedFrom": "V0.3-A",
+        "legacyQuestions": [
+          "最初動機與可衡量的學習成效。",
+          "手機網頁足夠，還是需要完整安裝與離線能力？",
+          "正式學生身分來源、跨裝置紀錄範圍及舊 3D 規劃去留。"
+        ],
+        "documentedNext": "讓手機安裝更完整，並補齊各語言的使用體驗。",
+        "migration": {
+          "VERIFIED": [
+            "identity",
+            "documented mission statement",
+            "recorded mission status: woosong_buddy-learning",
+            "recorded mission status: woosong_buddy-campus",
+            "recorded mission status: woosong_buddy-mobile"
+          ],
+          "DERIVED": [
+            "status enum mapping",
+            "current mission",
+            "blueprint counts",
+            "next waypoint"
+          ],
+          "UNKNOWN": [
+            "lifecycle",
+            "mission status: woosong_buddy-identity",
+            "mission status: woosong_buddy-legacy"
+          ],
+          "NEEDS_JOEY_CONFIRMATION": [
+            "確認目前專案生命週期",
+            "確認目前任務清單是否已涵蓋完整範圍",
+            "確認任務狀態：正式登入與跨裝置紀錄",
+            "確認任務狀態：舊規劃中的 3D 與離線能力",
+            "確認文件記錄的下一步是否為你的選擇",
+            "Unclassified legacy question: 最初動機與可衡量的學習成效。",
+            "Unclassified legacy question: 手機網頁足夠，還是需要完整安裝與離線能力？",
+            "Unclassified legacy question: 正式學生身分來源、跨裝置紀錄範圍及舊 3D 規劃去留。"
+          ]
+        }
+      }
+    },
+    {
+      "schemaVersion": "0.3-B",
+      "id": "NAMYOUNG_WEB3D",
+      "name": "Namyoung Web3D",
+      "identity": "Namyoung Web3D",
+      "missionStatement": "讓使用者在瀏覽器展示南洋的 Mesh Block 與 Stone Box，配置概念場景並匯出圖片；用途是展示與配置驗證。",
+      "lifecycle": "UNKNOWN",
+      "missions": [
+        {
+          "id": "namyoung_web3d-showcase",
+          "projectId": "NAMYOUNG_WEB3D",
+          "title": "產品與場景展示",
+          "description": "在瀏覽器中呈現 Mesh Block、Stone Box 與工程場景。",
+          "order": 0,
+          "status": "WAITING",
+          "dependencies": [],
+          "sourceRefs": [
+            "import-namyoung_web3d-showcase-memory",
+            "import-namyoung_web3d-showcase-state",
+            "import-namyoung_web3d-showcase-readme"
+          ],
+          "createdAt": null,
+          "updatedAt": null,
+          "kind": "FACT",
+          "linkedIdeaId": null,
+          "legacyStatus": "AWAITING_ACCEPTANCE"
+        },
+        {
+          "id": "namyoung_web3d-layout",
+          "projectId": "NAMYOUNG_WEB3D",
+          "title": "概念配置與圖片輸出",
+          "description": "畫出區域、排列與編輯產品，將方案輸出成展示圖片。",
+          "order": 1,
+          "status": "WAITING",
+          "dependencies": [],
+          "sourceRefs": [
+            "import-namyoung_web3d-layout-state",
+            "import-namyoung_web3d-layout-readme",
+            "import-namyoung_web3d-layout-logicTests"
+          ],
+          "createdAt": null,
+          "updatedAt": null,
+          "kind": "FACT",
+          "linkedIdeaId": null,
+          "legacyStatus": "AWAITING_ACCEPTANCE"
+        },
+        {
+          "id": "namyoung_web3d-assets",
+          "projectId": "NAMYOUNG_WEB3D",
+          "title": "可重用的產品配置",
+          "description": "整理產品與場景資料，讓配置與結果可以保存及重用。",
+          "order": 2,
+          "status": "UNKNOWN",
+          "dependencies": [],
+          "sourceRefs": [
+            "import-namyoung_web3d-assets-state",
+            "import-namyoung_web3d-assets-next"
+          ],
+          "createdAt": null,
+          "updatedAt": null,
+          "kind": "UNKNOWN",
+          "linkedIdeaId": null,
+          "legacyStatus": "AWAITING_JOEY_CONFIRMATION"
+        },
+        {
+          "id": "namyoung_web3d-language",
+          "projectId": "NAMYOUNG_WEB3D",
+          "title": "以自然語言操作",
+          "description": "文件列為選配；是否加入目前藍圖待決定。",
+          "order": 3,
+          "status": "PAUSED",
+          "dependencies": [],
+          "sourceRefs": [
+            "import-namyoung_web3d-language-state"
+          ],
+          "createdAt": null,
+          "updatedAt": null,
+          "kind": "FACT",
+          "linkedIdeaId": null,
+          "legacyStatus": "OPTIONAL"
+        }
+      ],
+      "decisions": [],
+      "ideas": [],
+      "nextActions": [],
+      "sources": [
+        {
+          "id": "import-project-identity",
+          "type": "LOCAL",
+          "label": "Existing Mission Control project registry",
+          "uri": "project:NAMYOUNG_WEB3D",
+          "commitSha": null,
+          "fingerprint": null,
+          "timestamp": null,
+          "verificationStatus": "VERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "import-memory",
+          "type": "CANONICAL_MEMORY",
+          "label": "DOCUMENT · Purpose / Stable Boundaries",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "1288846228eaacac20c1c344dedb3fa9cba908c1a5367eaada223fe7c6fb04fc",
+          "timestamp": "2026-10-05T10:32:25.128486+00:00",
+          "verificationStatus": "VERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "import-state",
+          "type": "CANONICAL_MEMORY",
+          "label": "DOCUMENT · Current Stage / Functional Map / Testing / Deployment",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "835ca188efb2ca75c37a1e4007b4f5250deb19d6b8caf7270a4d0f2e856ae172",
+          "timestamp": "2026-10-05T10:32:25.128486+00:00",
+          "verificationStatus": "VERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "import-next",
+          "type": "CANONICAL_MEMORY",
+          "label": "DOCUMENT · Recommended Next Step / Decisions Needed From Joey",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "99e26d97a65c97d3c134d4a4a5a7d401bfd7cfc5d53c4ec07822975212ef913c",
+          "timestamp": "2026-10-05T10:32:25.128486+00:00",
+          "verificationStatus": "VERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "import-readme",
+          "type": "LOCAL",
+          "label": "DOCUMENT · Current product scope",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "f8eb33cb8320d04b8b391b193f94338467e01c893cc49a336f60bfba1517cd36",
+          "timestamp": "2026-10-05T10:32:25.128486+00:00",
+          "verificationStatus": "VERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "import-logicTests",
+          "type": "LOCAL",
+          "label": "DOCUMENT · Existing logic tests; current HEAD result unknown",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "8625e6702c1bcd56badc68820c0339470a57cda47d0e8826a221c7ac258c28a5",
+          "timestamp": "2026-10-05T10:32:25.128486+00:00",
+          "verificationStatus": "VERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "import-namyoung_web3d-showcase-memory",
+          "type": "CANONICAL_MEMORY",
+          "label": "DOCUMENT · Purpose / Stable Boundaries",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "1288846228eaacac20c1c344dedb3fa9cba908c1a5367eaada223fe7c6fb04fc",
+          "timestamp": "2026-10-05T10:32:25.128486+00:00",
+          "verificationStatus": "VERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "import-namyoung_web3d-showcase-state",
+          "type": "CANONICAL_MEMORY",
+          "label": "DOCUMENT · Current Stage / Functional Map / Testing / Deployment",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "835ca188efb2ca75c37a1e4007b4f5250deb19d6b8caf7270a4d0f2e856ae172",
+          "timestamp": "2026-10-05T10:32:25.128486+00:00",
+          "verificationStatus": "VERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "import-namyoung_web3d-showcase-readme",
+          "type": "LOCAL",
+          "label": "DOCUMENT · Current product scope",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "f8eb33cb8320d04b8b391b193f94338467e01c893cc49a336f60bfba1517cd36",
+          "timestamp": "2026-10-05T10:32:25.128486+00:00",
+          "verificationStatus": "VERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "import-namyoung_web3d-layout-state",
+          "type": "CANONICAL_MEMORY",
+          "label": "DOCUMENT · Current Stage / Functional Map / Testing / Deployment",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "835ca188efb2ca75c37a1e4007b4f5250deb19d6b8caf7270a4d0f2e856ae172",
+          "timestamp": "2026-10-05T10:32:25.128486+00:00",
+          "verificationStatus": "VERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "import-namyoung_web3d-layout-readme",
+          "type": "LOCAL",
+          "label": "DOCUMENT · Current product scope",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "f8eb33cb8320d04b8b391b193f94338467e01c893cc49a336f60bfba1517cd36",
+          "timestamp": "2026-10-05T10:32:25.128486+00:00",
+          "verificationStatus": "VERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "import-namyoung_web3d-layout-logicTests",
+          "type": "LOCAL",
+          "label": "DOCUMENT · Existing logic tests; current HEAD result unknown",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "8625e6702c1bcd56badc68820c0339470a57cda47d0e8826a221c7ac258c28a5",
+          "timestamp": "2026-10-05T10:32:25.128486+00:00",
+          "verificationStatus": "VERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "import-namyoung_web3d-assets-state",
+          "type": "CANONICAL_MEMORY",
+          "label": "DOCUMENT · Current Stage / Functional Map / Testing / Deployment",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "835ca188efb2ca75c37a1e4007b4f5250deb19d6b8caf7270a4d0f2e856ae172",
+          "timestamp": "2026-10-05T10:32:25.128486+00:00",
+          "verificationStatus": "VERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "import-namyoung_web3d-assets-next",
+          "type": "CANONICAL_MEMORY",
+          "label": "DOCUMENT · Recommended Next Step / Decisions Needed From Joey",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "99e26d97a65c97d3c134d4a4a5a7d401bfd7cfc5d53c4ec07822975212ef913c",
+          "timestamp": "2026-10-05T10:32:25.128486+00:00",
+          "verificationStatus": "VERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "import-namyoung_web3d-language-state",
+          "type": "CANONICAL_MEMORY",
+          "label": "DOCUMENT · Current Stage / Functional Map / Testing / Deployment",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "835ca188efb2ca75c37a1e4007b4f5250deb19d6b8caf7270a4d0f2e856ae172",
+          "timestamp": "2026-10-05T10:32:25.128486+00:00",
+          "verificationStatus": "VERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "field-source-purpose",
+          "type": "CANONICAL_MEMORY",
+          "label": "PROJECT_MEMORY",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "1288846228eaacac20c1c344dedb3fa9cba908c1a5367eaada223fe7c6fb04fc",
+          "timestamp": "2026-10-05T13:11:05.363Z",
+          "verificationStatus": "UNVERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "field-source-stage",
+          "type": "CANONICAL_MEMORY",
+          "label": "Current Stage",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "835ca188efb2ca75c37a1e4007b4f5250deb19d6b8caf7270a4d0f2e856ae172",
+          "timestamp": "2026-10-05T13:11:05.363Z",
+          "verificationStatus": "UNVERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "field-source-next",
+          "type": "CANONICAL_MEMORY",
+          "label": "NEXT_ACTIONS",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "99e26d97a65c97d3c134d4a4a5a7d401bfd7cfc5d53c4ec07822975212ef913c",
+          "timestamp": "2026-10-05T13:11:05.364Z",
+          "verificationStatus": "UNVERIFIED",
+          "kind": "FACT"
+        }
+      ],
+      "confirmationQueue": [
+        {
+          "id": "confirm-lifecycle-NAMYOUNG_WEB3D",
+          "projectId": "NAMYOUNG_WEB3D",
+          "field": "lifecycle",
+          "entityId": null,
+          "title": "確認目前專案生命週期",
+          "proposedValue": "UNKNOWN",
+          "status": "OPEN",
+          "sourceRefs": [],
+          "resolution": null,
+          "createdAt": null,
+          "resolvedAt": null
+        },
+        {
+          "id": "confirm-missionSetReliability-NAMYOUNG_WEB3D",
+          "projectId": "NAMYOUNG_WEB3D",
+          "field": "missionSetReliability",
+          "entityId": null,
+          "title": "確認目前任務清單是否已涵蓋完整範圍",
+          "proposedValue": "PARTIAL",
+          "status": "OPEN",
+          "sourceRefs": [],
+          "resolution": null,
+          "createdAt": null,
+          "resolvedAt": null
+        },
+        {
+          "id": "confirm-missionStatus-namyoung_web3d-assets",
+          "projectId": "NAMYOUNG_WEB3D",
+          "field": "missionStatus",
+          "entityId": "namyoung_web3d-assets",
+          "title": "確認任務狀態：可重用的產品配置",
+          "proposedValue": "AWAITING_JOEY_CONFIRMATION",
+          "status": "OPEN",
+          "sourceRefs": [
+            "import-namyoung_web3d-assets-state",
+            "import-namyoung_web3d-assets-next"
+          ],
+          "resolution": null,
+          "createdAt": null,
+          "resolvedAt": null
+        },
+        {
+          "id": "confirm-nextAction-NAMYOUNG_WEB3D",
+          "projectId": "NAMYOUNG_WEB3D",
+          "field": "nextAction",
+          "entityId": null,
+          "title": "確認文件記錄的下一步是否為你的選擇",
+          "proposedValue": "讓產品與場景資料成為可重用、可保存的配置。",
+          "status": "OPEN",
+          "sourceRefs": [
+            "field-source-next"
+          ],
+          "resolution": null,
+          "createdAt": null,
+          "resolvedAt": null
+        }
+      ],
+      "auditLog": [],
+      "provenance": {
+        "identity": {
+          "kind": "FACT",
+          "sourceRefs": [
+            "import-project-identity"
+          ]
+        },
+        "missionStatement": {
+          "kind": "FACT",
+          "sourceRefs": [
+            "field-source-purpose"
+          ]
+        },
+        "lifecycle": {
+          "kind": "UNKNOWN",
+          "sourceRefs": []
+        }
+      },
+      "metadata": {
+        "revision": 0,
+        "sourceOwnerRevision": 0,
+        "missionSetReliability": "PARTIAL",
+        "migratedFrom": "V0.3-A",
+        "legacyQuestions": [
+          "第一個正式產品及其批准圖面。",
+          "完整展示互動的驗收範圍、切割與手動配置保留規則。",
+          "藍圖優先順序、保存方式與自然語言選配是否保留。"
+        ],
+        "documentedNext": "讓產品與場景資料成為可重用、可保存的配置。",
+        "migration": {
+          "VERIFIED": [
+            "identity",
+            "documented mission statement",
+            "recorded mission status: namyoung_web3d-showcase",
+            "recorded mission status: namyoung_web3d-layout",
+            "recorded mission status: namyoung_web3d-language"
+          ],
+          "DERIVED": [
+            "status enum mapping",
+            "current mission",
+            "blueprint counts",
+            "next waypoint"
+          ],
+          "UNKNOWN": [
+            "lifecycle",
+            "mission status: namyoung_web3d-assets"
+          ],
+          "NEEDS_JOEY_CONFIRMATION": [
+            "確認目前專案生命週期",
+            "確認目前任務清單是否已涵蓋完整範圍",
+            "確認任務狀態：可重用的產品配置",
+            "確認文件記錄的下一步是否為你的選擇",
+            "Unclassified legacy question: 第一個正式產品及其批准圖面。",
+            "Unclassified legacy question: 完整展示互動的驗收範圍、切割與手動配置保留規則。",
+            "Unclassified legacy question: 藍圖優先順序、保存方式與自然語言選配是否保留。"
+          ]
+        }
+      }
+    },
+    {
+      "schemaVersion": "0.3-B",
+      "id": "JOEY_ASSET_SYSTEM",
+      "name": "Joey Asset System",
+      "identity": "Joey Asset System",
+      "missionStatement": "建立可重複使用、可控制的公司與機構資產系統，同時讓各個案例保留自己的資料依據與規則。",
+      "lifecycle": "UNKNOWN",
+      "missions": [
+        {
+          "id": "joey_asset_system-recovery",
+          "projectId": "JOEY_ASSET_SYSTEM",
+          "title": "保留原始案例",
+          "description": "保留南洋原型與來源，作為後續整理的基礎。",
+          "order": 0,
+          "status": "WAITING",
+          "dependencies": [],
+          "sourceRefs": [
+            "import-joey_asset_system-recovery-memory",
+            "import-joey_asset_system-recovery-charter",
+            "import-joey_asset_system-recovery-recovery"
+          ],
+          "createdAt": null,
+          "updatedAt": null,
+          "kind": "FACT",
+          "linkedIdeaId": null,
+          "legacyStatus": "AWAITING_ACCEPTANCE"
+        },
+        {
+          "id": "joey_asset_system-baseline",
+          "projectId": "JOEY_ASSET_SYSTEM",
+          "title": "固定原型行為",
+          "description": "用測試鎖定既有行為，讓後续整理能避免破壞原型。",
+          "order": 1,
+          "status": "COMPLETED",
+          "dependencies": [],
+          "sourceRefs": [
+            "import-joey_asset_system-baseline-state",
+            "import-joey_asset_system-baseline-phase1",
+            "import-joey_asset_system-baseline-handoff"
+          ],
+          "createdAt": null,
+          "updatedAt": null,
+          "kind": "FACT",
+          "linkedIdeaId": null,
+          "legacyStatus": "COMPLETED"
+        },
+        {
+          "id": "joey_asset_system-core",
+          "projectId": "JOEY_ASSET_SYSTEM",
+          "title": "抽出可重用能力",
+          "description": "從案例中選出能供不同組織使用的共用能力。",
+          "order": 2,
+          "status": "UNKNOWN",
+          "dependencies": [],
+          "sourceRefs": [
+            "import-joey_asset_system-core-memory",
+            "import-joey_asset_system-core-next",
+            "import-joey_asset_system-core-charter"
+          ],
+          "createdAt": null,
+          "updatedAt": null,
+          "kind": "UNKNOWN",
+          "linkedIdeaId": null,
+          "legacyStatus": "AWAITING_JOEY_CONFIRMATION"
+        }
+      ],
+      "decisions": [],
+      "ideas": [],
+      "nextActions": [],
+      "sources": [
+        {
+          "id": "import-project-identity",
+          "type": "LOCAL",
+          "label": "Existing Mission Control project registry",
+          "uri": "project:JOEY_ASSET_SYSTEM",
+          "commitSha": null,
+          "fingerprint": null,
+          "timestamp": null,
+          "verificationStatus": "VERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "import-memory",
+          "type": "CANONICAL_MEMORY",
+          "label": "DOCUMENT · Purpose / Stable Boundaries",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "04bfb58380b31c5eb6a928da7979d304d030474481a903bbe4cf61b7384b1895",
+          "timestamp": "2026-10-05T10:32:25.128486+00:00",
+          "verificationStatus": "VERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "import-state",
+          "type": "CANONICAL_MEMORY",
+          "label": "DOCUMENT · Current Stage / Functional Map / Testing / Deployment",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "13cda352e0b17a6755b1bea83712a7488d7286974a0bf5d7fcc43c48f2e9ae67",
+          "timestamp": "2026-10-05T10:32:25.128486+00:00",
+          "verificationStatus": "VERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "import-next",
+          "type": "CANONICAL_MEMORY",
+          "label": "DOCUMENT · Recommended Next Step / Decisions Needed From Joey",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "a6d33a09f5ed538ac13aee34215cac6344ac254a14bd045a5abb720873b8fdeb",
+          "timestamp": "2026-10-05T10:32:25.128486+00:00",
+          "verificationStatus": "VERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "import-readme",
+          "type": "LOCAL",
+          "label": "DOCUMENT · Current product scope",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "3bcef8d7df392380d328097a3d32476976fd295222fe79977ac52e6f5fe6d066",
+          "timestamp": "2026-10-05T10:32:25.128486+00:00",
+          "verificationStatus": "VERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "import-charter",
+          "type": "LOCAL",
+          "label": "DOCUMENT · Stable Boundaries",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "e8874ac42979778ff4c0961843b480a8544fc61d5cfa3d4263a9c0892b3c38fa",
+          "timestamp": "2026-10-05T10:32:25.128486+00:00",
+          "verificationStatus": "VERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "import-recovery",
+          "type": "LOCAL",
+          "label": "DOCUMENT · Recovery provenance",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "d981d29f40ecc319f3d84d853684d5705c85d0a78248808b486f7a17acae3e52",
+          "timestamp": "2026-10-05T10:32:25.128486+00:00",
+          "verificationStatus": "VERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "import-phase1",
+          "type": "LOCAL",
+          "label": "DOCUMENT · Verification Commands / Boundary",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "1d2492e806d6e67d0ff6e42f908aa46abdc1a85a8afc2bcd4fec10d0dbdfb954",
+          "timestamp": "2026-10-05T10:32:25.128486+00:00",
+          "verificationStatus": "VERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "import-handoff",
+          "type": "HANDOFF",
+          "label": "HANDOFF · Summary / Verification / Decision Required",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "1fc6c9f1232b15a40172c65143b5741712caac02b94745bb538902c20d4f4f53",
+          "timestamp": "2026-10-05T10:32:25.128486+00:00",
+          "verificationStatus": "VERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "import-joey_asset_system-recovery-memory",
+          "type": "CANONICAL_MEMORY",
+          "label": "DOCUMENT · Purpose / Stable Boundaries",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "04bfb58380b31c5eb6a928da7979d304d030474481a903bbe4cf61b7384b1895",
+          "timestamp": "2026-10-05T10:32:25.128486+00:00",
+          "verificationStatus": "VERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "import-joey_asset_system-recovery-charter",
+          "type": "LOCAL",
+          "label": "DOCUMENT · Stable Boundaries",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "e8874ac42979778ff4c0961843b480a8544fc61d5cfa3d4263a9c0892b3c38fa",
+          "timestamp": "2026-10-05T10:32:25.128486+00:00",
+          "verificationStatus": "VERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "import-joey_asset_system-recovery-recovery",
+          "type": "LOCAL",
+          "label": "DOCUMENT · Recovery provenance",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "d981d29f40ecc319f3d84d853684d5705c85d0a78248808b486f7a17acae3e52",
+          "timestamp": "2026-10-05T10:32:25.128486+00:00",
+          "verificationStatus": "VERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "import-joey_asset_system-baseline-state",
+          "type": "CANONICAL_MEMORY",
+          "label": "DOCUMENT · Current Stage / Functional Map / Testing / Deployment",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "13cda352e0b17a6755b1bea83712a7488d7286974a0bf5d7fcc43c48f2e9ae67",
+          "timestamp": "2026-10-05T10:32:25.128486+00:00",
+          "verificationStatus": "VERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "import-joey_asset_system-baseline-phase1",
+          "type": "LOCAL",
+          "label": "DOCUMENT · Verification Commands / Boundary",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "1d2492e806d6e67d0ff6e42f908aa46abdc1a85a8afc2bcd4fec10d0dbdfb954",
+          "timestamp": "2026-10-05T10:32:25.128486+00:00",
+          "verificationStatus": "VERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "import-joey_asset_system-baseline-handoff",
+          "type": "HANDOFF",
+          "label": "HANDOFF · Summary / Verification / Decision Required",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "1fc6c9f1232b15a40172c65143b5741712caac02b94745bb538902c20d4f4f53",
+          "timestamp": "2026-10-05T10:32:25.128486+00:00",
+          "verificationStatus": "VERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "import-joey_asset_system-core-memory",
+          "type": "CANONICAL_MEMORY",
+          "label": "DOCUMENT · Purpose / Stable Boundaries",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "04bfb58380b31c5eb6a928da7979d304d030474481a903bbe4cf61b7384b1895",
+          "timestamp": "2026-10-05T10:32:25.128486+00:00",
+          "verificationStatus": "VERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "import-joey_asset_system-core-next",
+          "type": "CANONICAL_MEMORY",
+          "label": "DOCUMENT · Recommended Next Step / Decisions Needed From Joey",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "a6d33a09f5ed538ac13aee34215cac6344ac254a14bd045a5abb720873b8fdeb",
+          "timestamp": "2026-10-05T10:32:25.128486+00:00",
+          "verificationStatus": "VERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "import-joey_asset_system-core-charter",
+          "type": "LOCAL",
+          "label": "DOCUMENT · Stable Boundaries",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "e8874ac42979778ff4c0961843b480a8544fc61d5cfa3d4263a9c0892b3c38fa",
+          "timestamp": "2026-10-05T10:32:25.128486+00:00",
+          "verificationStatus": "VERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "field-source-purpose",
+          "type": "CANONICAL_MEMORY",
+          "label": "PROJECT_MEMORY",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "04bfb58380b31c5eb6a928da7979d304d030474481a903bbe4cf61b7384b1895",
+          "timestamp": "2026-10-05T13:11:05.410Z",
+          "verificationStatus": "UNVERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "field-source-stage",
+          "type": "CANONICAL_MEMORY",
+          "label": "Current Stage",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "13cda352e0b17a6755b1bea83712a7488d7286974a0bf5d7fcc43c48f2e9ae67",
+          "timestamp": "2026-10-05T13:11:05.411Z",
+          "verificationStatus": "UNVERIFIED",
+          "kind": "FACT"
+        },
+        {
+          "id": "field-source-next",
+          "type": "CANONICAL_MEMORY",
+          "label": "NEXT_ACTIONS",
+          "uri": null,
+          "commitSha": null,
+          "fingerprint": "a6d33a09f5ed538ac13aee34215cac6344ac254a14bd045a5abb720873b8fdeb",
+          "timestamp": "2026-10-05T13:11:05.411Z",
+          "verificationStatus": "UNVERIFIED",
+          "kind": "FACT"
+        }
+      ],
+      "confirmationQueue": [
+        {
+          "id": "confirm-lifecycle-JOEY_ASSET_SYSTEM",
+          "projectId": "JOEY_ASSET_SYSTEM",
+          "field": "lifecycle",
+          "entityId": null,
+          "title": "確認目前專案生命週期",
+          "proposedValue": "UNKNOWN",
+          "status": "OPEN",
+          "sourceRefs": [],
+          "resolution": null,
+          "createdAt": null,
+          "resolvedAt": null
+        },
+        {
+          "id": "confirm-missionSetReliability-JOEY_ASSET_SYSTEM",
+          "projectId": "JOEY_ASSET_SYSTEM",
+          "field": "missionSetReliability",
+          "entityId": null,
+          "title": "確認目前任務清單是否已涵蓋完整範圍",
+          "proposedValue": "PARTIAL",
+          "status": "OPEN",
+          "sourceRefs": [],
+          "resolution": null,
+          "createdAt": null,
+          "resolvedAt": null
+        },
+        {
+          "id": "confirm-missionStatus-joey_asset_system-core",
+          "projectId": "JOEY_ASSET_SYSTEM",
+          "field": "missionStatus",
+          "entityId": "joey_asset_system-core",
+          "title": "確認任務狀態：抽出可重用能力",
+          "proposedValue": "AWAITING_JOEY_CONFIRMATION",
+          "status": "OPEN",
+          "sourceRefs": [
+            "import-joey_asset_system-core-memory",
+            "import-joey_asset_system-core-next",
+            "import-joey_asset_system-core-charter"
+          ],
+          "resolution": null,
+          "createdAt": null,
+          "resolvedAt": null
+        },
+        {
+          "id": "confirm-nextAction-JOEY_ASSET_SYSTEM",
+          "projectId": "JOEY_ASSET_SYSTEM",
+          "field": "nextAction",
+          "entityId": null,
+          "title": "確認文件記錄的下一步是否為你的選擇",
+          "proposedValue": "選定第一批可重用能力，再決定是否啟動第二階段。",
+          "status": "OPEN",
+          "sourceRefs": [
+            "field-source-next"
+          ],
+          "resolution": null,
+          "createdAt": null,
+          "resolvedAt": null
+        }
+      ],
+      "auditLog": [],
+      "provenance": {
+        "identity": {
+          "kind": "FACT",
+          "sourceRefs": [
+            "import-project-identity"
+          ]
+        },
+        "missionStatement": {
+          "kind": "FACT",
+          "sourceRefs": [
+            "field-source-purpose"
+          ]
+        },
+        "lifecycle": {
+          "kind": "UNKNOWN",
+          "sourceRefs": []
+        }
+      },
+      "metadata": {
+        "revision": 0,
+        "sourceOwnerRevision": 0,
+        "missionSetReliability": "PARTIAL",
+        "migratedFrom": "V0.3-A",
+        "legacyQuestions": [
+          "最初動機與系統成功標準。",
+          "第二階段是否啟動，以及哪些能力適合共用。",
+          "案例保存里程碑的驗收範圍，以及整體藍圖權重。"
+        ],
+        "documentedNext": "選定第一批可重用能力，再決定是否啟動第二階段。",
+        "migration": {
+          "VERIFIED": [
+            "identity",
+            "documented mission statement",
+            "recorded mission status: joey_asset_system-recovery",
+            "recorded mission status: joey_asset_system-baseline"
+          ],
+          "DERIVED": [
+            "status enum mapping",
+            "current mission",
+            "blueprint counts",
+            "next waypoint"
+          ],
+          "UNKNOWN": [
+            "lifecycle",
+            "mission status: joey_asset_system-core"
+          ],
+          "NEEDS_JOEY_CONFIRMATION": [
+            "確認目前專案生命週期",
+            "確認目前任務清單是否已涵蓋完整範圍",
+            "確認任務狀態：抽出可重用能力",
+            "確認文件記錄的下一步是否為你的選擇",
+            "Unclassified legacy question: 最初動機與系統成功標準。",
+            "Unclassified legacy question: 第二階段是否啟動，以及哪些能力適合共用。",
+            "Unclassified legacy question: 案例保存里程碑的驗收範圍，以及整體藍圖權重。"
+          ]
+        }
+      }
+    }
+  ]
+}

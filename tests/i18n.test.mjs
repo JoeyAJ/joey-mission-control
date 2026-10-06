@@ -92,7 +92,7 @@ test('rendering labels in every locale never mutates canonical projection data',
 
 test('server serves only the explicitly allowlisted presentation modules',async()=>{
   const server=await fs.readFile(new URL('../src/server.mjs',import.meta.url),'utf8');
-  assert.match(server,/\['index\.html','styles\.css','app\.js','i18n\.js','presentation\.js','source-summaries\.js','control-semantics\.js','project-links\.js','decision-view\.js'\]/);
+  assert.match(server,/\['index\.html','styles\.css','app\.js','i18n\.js','presentation\.js','source-summaries\.js','control-semantics\.js','project-links\.js','decision-view\.js','agent-detail\.js','joey-view\.js','joey-cockpit\.js','joey-controls\.js','visual-system\.js','brand-eye-source\.png','project-state\.js','project-state-controls\.js'\]/);
 });
 
 test('new terminal failure state is translated in all three locales',()=>{assert.equal(sessionStateLabel('failed','zh-TW'),'失敗');assert.equal(sessionStateLabel('failed','ko'),'실패');assert.equal(sessionStateLabel('failed','en'),'failed');});

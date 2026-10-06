@@ -5,3 +5,10 @@ coverage/
 *.log
 data/*.json
 !data/.gitkeep
+
+dist/
+
+.playwright-cli/
+output/
+.vercel
+.env*

@@ -1,6 +1,6 @@
 {
   "name": "joey-mission-control",
-  "version": "0.2.0",
+  "version": "0.3.0-b",
   "private": true,
   "type": "module",
   "description": "Local Multi-AI Project Control Center for Joey",
@@ -10,7 +10,8 @@
     "sync": "node src/cli.mjs sync",
     "validate": "node src/cli.mjs validate",
     "check": "node src/cli.mjs check",
-    "start": "node src/server.mjs"
+    "start": "node src/server.mjs",
+    "build": "node scripts/build.mjs"
   },
   "engines": {
     "node": ">=22"

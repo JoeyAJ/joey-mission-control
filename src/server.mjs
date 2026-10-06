@@ -1,3 +1,6 @@
+import {ProjectStateRepository} from './project-state/repository.mjs';
+import {ProductService,validOwners} from './product/service.mjs';
+import {MissionService,validLedger} from './agent/mission-service.mjs';
 import http from 'node:http';
 import fs from 'node:fs/promises';
 import path from 'node:path';
@@ -30,9 +33,9 @@ export function createApp(deps){
       }
       if(url.pathname.startsWith('/api/')){const result=await router(req,res,url);if(!result)return send(res,404,{error:'Not found'});return send(res,result.status,result.body);}
       const name=url.pathname==='/'?'index.html':url.pathname.slice(1);
-      if(!['index.html','styles.css','app.js','i18n.js','presentation.js','source-summaries.js','control-semantics.js','project-links.js','decision-view.js'].includes(name))return send(res,404,{error:'Not found'});
-      const types={html:'text/html; charset=utf-8',css:'text/css; charset=utf-8',js:'text/javascript; charset=utf-8'};
-      return send(res,200,await fs.readFile(path.join(publicRoot,name),'utf8'),types[name.split('.').pop()]);
+      if(!['index.html','styles.css','app.js','i18n.js','presentation.js','source-summaries.js','control-semantics.js','project-links.js','decision-view.js','agent-detail.js','joey-view.js','joey-cockpit.js','joey-controls.js','visual-system.js','brand-eye-source.png','project-state.js','project-state-controls.js'].includes(name))return send(res,404,{error:'Not found'});
+      const types={html:'text/html; charset=utf-8',css:'text/css; charset=utf-8',js:'text/javascript; charset=utf-8',png:'image/png'};
+      return send(res,200,await fs.readFile(path.join(publicRoot,name),name.endsWith('.png')?undefined:'utf8'),types[name.split('.').pop()]);
     }catch(error){send(res,error.status||500,{error:error.status?error.message:'Internal error'});}
   };
 }
@@ -43,8 +46,10 @@ export function createDefaultDeps({canonicalRoot=config.canonicalRoot,dataRoot=c
   const sessionStore=new JsonStore(dataRoot,'sessions.v1.json',collectionValidator(sessionSchema));
   const sessions=new SessionService(sessionStore);
   async function state({readOnly=false}={}){await ready;return buildProjection(canonicalRoot,{sessions:await (readOnly?sessionStore.readOnly():sessions.list())});}
+  const products=new ProductService(new JsonStore(dataRoot,'product-owner.v03.json',validOwners));
+  const projectStates=new ProjectStateRepository(products.store,async id=>{const snapshot=await state(),p=snapshot.projects.find(p=>p.id===id);if(!p)throw Object.assign(new Error('Project not found'),{status:404});const {productView}=await import('./product/view.mjs');const owners=await products.list();return productView(p,{owner:owners.find(o=>o.projectId===id),document:snapshot.productDocuments?.[id]});});
   return{
-    ready,token:writeToken,
+    ready,token:writeToken,products,projectStates,missions:new MissionService(new JsonStore(dataRoot,'missions.v03.json',validLedger)),
     getState:state,
     getInbox:async()=>{await ready;return inbox.list();},
     transitionInbox:async(id,state,expectedState)=>{await ready;return inbox.transition(id,state,expectedState);},

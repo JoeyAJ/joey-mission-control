@@ -4,7 +4,7 @@
   "outputDirectory": "public",
   "functions": {
     "api/index.mjs": {
-      "includeFiles": "deployment/production-snapshot.json"
+      "includeFiles": "deployment/*.json"
     }
   },
   "rewrites": [

@@ -1,0 +1,793 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": {
+      "const": "0.3-B",
+      "type": "string"
+    },
+    "id": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "identity": {
+      "type": "string"
+    },
+    "missionStatement": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "lifecycle": {
+      "type": "string",
+      "enum": [
+        "IDEA",
+        "PLANNING",
+        "DEVELOPING",
+        "PAUSED",
+        "COMPLETED",
+        "ARCHIVED",
+        "UNKNOWN"
+      ]
+    },
+    "missions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Mission"
+      }
+    },
+    "decisions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Decision"
+      }
+    },
+    "ideas": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Idea"
+      }
+    },
+    "nextActions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/NextAction"
+      }
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/SourceRef"
+      }
+    },
+    "confirmationQueue": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ConfirmationItem"
+      }
+    },
+    "auditLog": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/AuditEntry"
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "identity": {
+          "$ref": "#/$defs/Provenance"
+        },
+        "missionStatement": {
+          "$ref": "#/$defs/Provenance"
+        },
+        "lifecycle": {
+          "$ref": "#/$defs/Provenance"
+        }
+      },
+      "required": [
+        "identity",
+        "missionStatement",
+        "lifecycle"
+      ]
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "revision": {
+          "type": "number"
+        },
+        "missionSetReliability": {
+          "type": "string",
+          "enum": [
+            "CONFIRMED",
+            "PARTIAL",
+            "UNKNOWN"
+          ]
+        },
+        "sourceOwnerRevision": {
+          "type": "number"
+        },
+        "migratedFrom": {
+          "const": "V0.3-A",
+          "type": "string"
+        },
+        "legacyQuestions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "documentedNext": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "migration": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "VERIFIED": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "uniqueItems": true
+            },
+            "DERIVED": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "uniqueItems": true
+            },
+            "UNKNOWN": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "uniqueItems": true
+            },
+            "NEEDS_JOEY_CONFIRMATION": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "uniqueItems": true
+            }
+          },
+          "required": [
+            "VERIFIED",
+            "DERIVED",
+            "UNKNOWN",
+            "NEEDS_JOEY_CONFIRMATION"
+          ]
+        }
+      },
+      "required": [
+        "revision",
+        "missionSetReliability",
+        "sourceOwnerRevision",
+        "migratedFrom",
+        "legacyQuestions",
+        "documentedNext",
+        "migration"
+      ]
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "id",
+    "name",
+    "identity",
+    "missionStatement",
+    "lifecycle",
+    "missions",
+    "decisions",
+    "ideas",
+    "nextActions",
+    "sources",
+    "confirmationQueue",
+    "auditLog",
+    "provenance",
+    "metadata"
+  ],
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Canonical Project State V0.3-B",
+  "$defs": {
+    "SourceRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "JOEY",
+            "GITHUB",
+            "HANDOFF",
+            "CANONICAL_MEMORY",
+            "LOCAL",
+            "SYSTEM_DERIVED",
+            "UNKNOWN"
+          ]
+        },
+        "label": {
+          "type": "string"
+        },
+        "uri": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "commitSha": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "fingerprint": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "timestamp": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "verificationStatus": {
+          "type": "string",
+          "enum": [
+            "VERIFIED",
+            "UNVERIFIED",
+            "UNKNOWN"
+          ]
+        },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "FACT",
+            "USER_INPUT",
+            "UNKNOWN",
+            "DERIVED"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "type",
+        "label",
+        "uri",
+        "commitSha",
+        "fingerprint",
+        "timestamp",
+        "verificationStatus",
+        "kind"
+      ]
+    },
+    "Mission": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "projectId": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "order": {
+          "type": "number"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "NOT_STARTED",
+            "IN_PROGRESS",
+            "WAITING",
+            "WAITING_JOEY",
+            "BLOCKED",
+            "COMPLETED",
+            "PAUSED",
+            "UNKNOWN"
+          ]
+        },
+        "dependencies": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "sourceRefs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "createdAt": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "updatedAt": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "FACT",
+            "USER_INPUT",
+            "UNKNOWN",
+            "DERIVED"
+          ]
+        },
+        "linkedIdeaId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "legacyStatus": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "projectId",
+        "title",
+        "description",
+        "order",
+        "status",
+        "dependencies",
+        "sourceRefs",
+        "createdAt",
+        "updatedAt",
+        "kind",
+        "linkedIdeaId",
+        "legacyStatus"
+      ]
+    },
+    "Decision": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "projectId": {
+          "type": "string"
+        },
+        "missionId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "OPEN",
+            "RESOLVED",
+            "DEFERRED",
+            "CANCELLED",
+            "UNKNOWN"
+          ]
+        },
+        "options": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "selectedOption": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "response": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "blocksMission": {
+          "type": "boolean"
+        },
+        "sourceRefs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "createdAt": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "resolvedAt": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "updatedAt": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "USER_INPUT",
+            "FACT",
+            "UNKNOWN"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "projectId",
+        "missionId",
+        "title",
+        "description",
+        "status",
+        "options",
+        "selectedOption",
+        "response",
+        "blocksMission",
+        "sourceRefs",
+        "createdAt",
+        "resolvedAt",
+        "updatedAt",
+        "kind"
+      ]
+    },
+    "Idea": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "projectId": {
+          "type": "string"
+        },
+        "content": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "INBOX",
+            "REVIEWED",
+            "PLANNED",
+            "CONVERTED_TO_MISSION",
+            "DISMISSED"
+          ]
+        },
+        "linkedMissionId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "source": {
+          "const": "JOEY",
+          "type": "string"
+        },
+        "sourceRefs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "createdAt": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "updatedAt": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "projectId",
+        "content",
+        "status",
+        "linkedMissionId",
+        "source",
+        "sourceRefs",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "NextAction": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "projectId": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "missionId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "OPEN",
+            "CANCELLED",
+            "COMPLETED"
+          ]
+        },
+        "confirmed": {
+          "type": "boolean"
+        },
+        "source": {
+          "type": "string",
+          "enum": [
+            "JOEY",
+            "CANONICAL_MEMORY",
+            "LOCAL",
+            "UNKNOWN"
+          ]
+        },
+        "sourceRefs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "createdAt": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "updatedAt": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "FACT",
+            "USER_INPUT",
+            "UNKNOWN"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "projectId",
+        "title",
+        "description",
+        "missionId",
+        "status",
+        "confirmed",
+        "source",
+        "sourceRefs",
+        "createdAt",
+        "updatedAt",
+        "kind"
+      ]
+    },
+    "ConfirmationItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "projectId": {
+          "type": "string"
+        },
+        "field": {
+          "type": "string",
+          "enum": [
+            "lifecycle",
+            "missionStatus",
+            "missionSetReliability",
+            "nextAction"
+          ]
+        },
+        "entityId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "title": {
+          "type": "string"
+        },
+        "proposedValue": {},
+        "status": {
+          "type": "string",
+          "enum": [
+            "OPEN",
+            "CONFIRMED",
+            "CORRECTED"
+          ]
+        },
+        "sourceRefs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "resolution": {},
+        "createdAt": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "resolvedAt": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "projectId",
+        "field",
+        "entityId",
+        "title",
+        "proposedValue",
+        "status",
+        "sourceRefs",
+        "resolution",
+        "createdAt",
+        "resolvedAt"
+      ]
+    },
+    "AuditEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "timestamp": {
+          "type": "string"
+        },
+        "projectId": {
+          "type": "string"
+        },
+        "entityType": {
+          "type": "string",
+          "enum": [
+            "PROJECT",
+            "MISSION",
+            "DECISION",
+            "IDEA",
+            "NEXT_ACTION",
+            "CONFIRMATION"
+          ]
+        },
+        "entityId": {
+          "type": "string"
+        },
+        "field": {
+          "type": "string"
+        },
+        "oldValue": {},
+        "newValue": {},
+        "actor": {
+          "const": "JOEY",
+          "type": "string"
+        },
+        "revision": {
+          "type": "number"
+        },
+        "sourceRefs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "id",
+        "timestamp",
+        "projectId",
+        "entityType",
+        "entityId",
+        "field",
+        "oldValue",
+        "newValue",
+        "actor",
+        "revision",
+        "sourceRefs"
+      ]
+    },
+    "Provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": [
+            "FACT",
+            "USER_INPUT",
+            "UNKNOWN",
+            "DERIVED"
+          ]
+        },
+        "sourceRefs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "kind",
+        "sourceRefs"
+      ]
+    }
+  }
+}

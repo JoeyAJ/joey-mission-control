@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "missionId",
+    "agent",
+    "model",
+    "startedAt",
+    "completedAt",
+    "commitSha",
+    "handoffRef",
+    "projectId",
+    "action",
+    "status",
+    "requiresApproval",
+    "stateSource"
+  ],
+  "properties": {
+    "missionId": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "agent": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "model": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "startedAt": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "completedAt": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "commitSha": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "handoffRef": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "projectId": {
+      "type": "string"
+    },
+    "action": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "requiresApproval": {
+      "type": "boolean"
+    },
+    "stateSource": {
+      "enum": [
+        "canonical_handoff",
+        "local_mission_overlay"
+      ]
+    }
+  }
+}

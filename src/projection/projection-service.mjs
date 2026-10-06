@@ -1,5 +1,6 @@
 import {loadProjectUrls,resolveProjectUrls} from '../canonical/project-url-metadata.mjs';
 import path from 'node:path';
+import {reconcileProject} from '../product/reconciliation.mjs';
 import {loadMemoryIndex} from '../canonical/index-adapter.mjs';
 import {loadRegistry} from '../canonical/registry-adapter.mjs';
 import {loadEntityMemory} from '../canonical/memory-adapter.mjs';
@@ -28,11 +29,12 @@ export async function buildProjection(root,{sessions=[],projectUrlMetadata}={}){
     const parentChain=chains.find(chain=>chain.id===entity.parentId)||{};
     cases.push(buildProjectProjection({id:entity.id,name:entity.name,entityType:'case',parentId:entity.parentId,indexSource:index.source,memoryPath:entity.memoryPath,relevantDocs:relevantDocs(entity),state:memory.CURRENT_STATE,next:memory.NEXT_ACTIONS,registry:parentChain,handoff:handoffs.byEntity[entity.id],handoffConflicts:handoffs.conflictsByEntity[entity.id]||[],session:newestSession(sessions,entity.id),git:observations.get(entity.parentId)||{error:'Parent workspace unavailable',observedAt:new Date().toISOString()}}));
   }
-  const projects=[];
+  const projects=[],productDocuments={};
   for(const entity of index.entities.filter(item=>item.entityType!=='case')){
     const memory=await loadEntityMemory(root,memoryDirectory(entity.memoryPath));
     const chain=chains.find(item=>item.id===entity.id)||{};
+    productDocuments[entity.id]={purpose:memory.PROJECT_MEMORY?.sections?.Purpose||null,source:memory.PROJECT_MEMORY?.source||null,reconciliation:await reconcileProject(root,chain)};
     projects.push(buildProjectProjection({id:entity.id,name:entity.name,entityType:entity.entityType,indexSource:index.source,memoryPath:entity.memoryPath,relevantDocs:relevantDocs(entity),state:memory.CURRENT_STATE,next:memory.NEXT_ACTIONS,registry:chain,handoff:handoffs.byEntity[entity.id],handoffConflicts:handoffs.conflictsByEntity[entity.id]||[],session:newestSession(sessions,entity.id),git:observations.get(entity.id)||{error:'Workspace registry entry missing',observedAt:new Date().toISOString()},projectUrls:resolveProjectUrls(entity.id,chain,urlMetadata),cases:cases.filter(item=>item.parentId===entity.id)}));
   }
-  return{schemaVersion:'1.0',generatedAt:new Date().toISOString(),projects,cases,handoffs};
+  return{schemaVersion:'1.0',generatedAt:new Date().toISOString(),projects,cases,handoffs,productDocuments};
 }

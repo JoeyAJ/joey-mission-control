@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "0.3",
+  "note": "Reviewed presentation summaries from current canonical documents; not original-intent approval or a historical blueprint. Fingerprint mismatch fails to pending reconstruction.",
+  "projects": {
+    "NEXAEON": {
+      "purposeFingerprint": "0d3cb1baa88cc63495bfed3e0aba9d7de0ebf3b986b97ad54e361d8613397cc2",
+      "nextFingerprint": "8a37bf84452dc7b6df67f79e663a0e814f43b807acb8366b20f2140863e010b3",
+      "stageFingerprint": "540b0d7ab1ef76a9de485374c267182aabde992a1e54d024361484f2876d56a8",
+      "purpose": {
+        "zh-TW": "把身份、研究、學習與實作整合成多語知識平台，讓專門的 AI 助手依可靠資料協助使用者。",
+        "en": "Organize identity, research, learning and practice in a multilingual knowledge platform with grounded AI assistants.",
+        "ko": "정체성, 연구, 학습과 실습을 다국어 지식 플랫폼으로 모으고 신뢰할 수 있는 AI 도우미를 제공합니다."
+      },
+      "stage": {
+        "zh-TW": "平台已上線；下一階段是讓搜尋助手能使用外部資訊。",
+        "en": "The platform is live; external information search is the next area of work.",
+        "ko": "플랫폼이 운영 중이며 다음 단계는 외부 정보 검색입니다."
+      },
+      "next": {
+        "zh-TW": "讓 Explorer 能搜尋外部資訊並回傳結果；公開使用前需要你確認開放範圍。",
+        "en": "Enable Explorer to search external information and return results; confirm the rollout scope first.",
+        "ko": "Explorer가 외부 정보를 검색하고 결과를 반환하도록 합니다. 공개 범위는 먼저 확인해야 합니다."
+      }
+    },
+    "WOOSONG_BUDDY": {
+      "purposeFingerprint": "ffcb16e53a5cbb7ffe73949fdd7eb2f6d19cbd97d1fc93c3f027bc3601526c90",
+      "nextFingerprint": "1ec402f107f07ea8abe6244875c5e2702a990b060e0910180506425392dac6ac",
+      "stageFingerprint": "3665171d1a11b9e5c9a99c1e5cb0568c79d28735b41ac7df7504db86a191a488",
+      "purpose": {
+        "zh-TW": "讓又松大學國際學生透過韓語學習、虛擬夥伴、校園探索與社交活動融入校園；韓語學習是夥伴成長的核心。",
+        "en": "Help Woosong international students through Korean learning, virtual companions, campus exploration and social interaction.",
+        "ko": "한국어 학습, 가상 친구, 캠퍼스 탐험과 소셜 활동으로 우송대학교 유학생의 생활을 돕습니다."
+      },
+      "stage": {
+        "zh-TW": "多項核心體驗已上線；目前先改善日常使用的穩定性。",
+        "en": "Core experiences are live; focus now on everyday reliability.",
+        "ko": "핵심 기능이 운영 중이며 현재는 일상 사용의 안정성을 개선합니다."
+      },
+      "next": {
+        "zh-TW": "先讓安裝圖示與各語言的使用體驗更一致，再規劃更大的功能改動。",
+        "en": "Improve installation icons and consistency across languages before larger feature changes.",
+        "ko": "설치 아이콘과 언어별 경험을 먼저 일관되게 개선합니다."
+      }
+    },
+    "NAMYOUNG_WEB3D": {
+      "purposeFingerprint": "1288846228eaacac20c1c344dedb3fa9cba908c1a5367eaada223fe7c6fb04fc",
+      "nextFingerprint": "99e26d97a65c97d3c134d4a4a5a7d401bfd7cfc5d53c4ec07822975212ef913c",
+      "stageFingerprint": "835ca188efb2ca75c37a1e4007b4f5250deb19d6b8caf7270a4d0f2e856ae172",
+      "purpose": {
+        "zh-TW": "讓使用者在瀏覽器展示南洋的 Mesh Block 與 Stone Box，配置概念場景並匯出圖片；用途是展示與配置驗證。",
+        "en": "Present Namyoung Mesh Block and Stone Box in a browser, configure conceptual scenes and export images.",
+        "ko": "브라우저에서 남영 Mesh Block과 Stone Box를 보여 주고 개념 배치를 구성해 이미지를 내보냅니다."
+      },
+      "stage": {
+        "zh-TW": "互動展示原型已上線；正式工程用途仍需確認產品與圖面依據。",
+        "en": "The interactive prototype is live; engineering use still requires approved product and drawing evidence.",
+        "ko": "대화형 시제품이 운영 중이며 공식 엔지니어링 사용에는 제품과 도면 확인이 필요합니다."
+      },
+      "next": {
+        "zh-TW": "先整理產品與場景的標準資料格式，為可重複使用的配置功能打底。",
+        "en": "Define standard product and scene data for reusable configuration features.",
+        "ko": "재사용 가능한 배치 기능을 위해 제품과 장면의 표준 데이터 형식을 정리합니다."
+      }
+    },
+    "JOEY_ASSET_SYSTEM": {
+      "purposeFingerprint": "04bfb58380b31c5eb6a928da7979d304d030474481a903bbe4cf61b7384b1895",
+      "nextFingerprint": "a6d33a09f5ed538ac13aee34215cac6344ac254a14bd045a5abb720873b8fdeb",
+      "stageFingerprint": "13cda352e0b17a6755b1bea83712a7488d7286974a0bf5d7fcc43c48f2e9ae67",
+      "purpose": {
+        "zh-TW": "建立可重複使用、可控制的公司與機構資產系統，同時讓各個案例保留自己的資料依據與規則。",
+        "en": "Build reusable, controllable organization assets while preserving each case’s evidence and rules.",
+        "ko": "각 사례의 근거와 규칙을 유지하며 조직의 재사용 가능하고 제어 가능한 자산 시스템을 만듭니다."
+      },
+      "stage": {
+        "zh-TW": "第一階段的既有行為驗證已完成；可重複使用的共用核心尚未開始。",
+        "en": "Phase 1 behavior characterization is complete; reusable shared-core development has not started.",
+        "ko": "1단계 동작 검증은 완료되었으며 재사용 공통 코어 개발은 아직 시작하지 않았습니다."
+      },
+      "next": {
+        "zh-TW": "先決定是否開始第二階段，再選擇哪些資產能力要整理成共用工具。",
+        "en": "Decide whether to begin Phase 2 and which asset capabilities should become shared tools.",
+        "ko": "2단계 시작 여부를 결정하고 공통 도구로 만들 자산 기능을 선택합니다."
+      }
+    }
+  }
+}
