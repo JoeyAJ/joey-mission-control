@@ -1,3 +1,4 @@
+import {operationalView} from './operations/reconcile.mjs';
 import {ProjectStateRepository} from './project-state/repository.mjs';
 import {ProductService,validOwners} from './product/service.mjs';
 import {MissionService,validLedger} from './agent/mission-service.mjs';
@@ -33,7 +34,7 @@ export function createApp(deps){
       }
       if(url.pathname.startsWith('/api/')){const result=await router(req,res,url);if(!result)return send(res,404,{error:'Not found'});return send(res,result.status,result.body);}
       const name=url.pathname==='/'?'index.html':url.pathname.slice(1);
-      if(!['index.html','styles.css','app.js','i18n.js','presentation.js','source-summaries.js','control-semantics.js','project-links.js','decision-view.js','agent-detail.js','joey-view.js','joey-cockpit.js','joey-controls.js','visual-system.js','brand-eye-source.png','project-state.js','project-state-controls.js'].includes(name))return send(res,404,{error:'Not found'});
+      if(!['index.html','styles.css','app.js','i18n.js','presentation.js','source-summaries.js','control-semantics.js','project-links.js','decision-view.js','agent-detail.js','joey-view.js','joey-operations.js','joey-cockpit.js','joey-controls.js','visual-system.js','brand-eye-source.png','project-state.js','project-state-controls.js'].includes(name))return send(res,404,{error:'Not found'});
       const types={html:'text/html; charset=utf-8',css:'text/css; charset=utf-8',js:'text/javascript; charset=utf-8',png:'image/png'};
       return send(res,200,await fs.readFile(path.join(publicRoot,name),name.endsWith('.png')?undefined:'utf8'),types[name.split('.').pop()]);
     }catch(error){send(res,error.status||500,{error:error.status?error.message:'Internal error'});}
@@ -51,6 +52,7 @@ export function createDefaultDeps({canonicalRoot=config.canonicalRoot,dataRoot=c
   return{
     ready,token:writeToken,products,projectStates,missions:new MissionService(new JsonStore(dataRoot,'missions.v03.json',validLedger)),
     getState:state,
+    operationalView:(p,r,snapshot)=>operationalView(p,r,snapshot,canonicalRoot),
     getInbox:async()=>{await ready;return inbox.list();},
     transitionInbox:async(id,state,expectedState)=>{await ready;return inbox.transition(id,state,expectedState);},
     getProject:async id=>(await state()).projects.find(project=>project.id===id)||null,

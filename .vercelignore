@@ -9,3 +9,7 @@ data
 output
 .playwright-cli
 dist
+
+evidence/
+
+metadata/operational-reconciliation.v03c.json

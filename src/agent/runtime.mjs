@@ -3,7 +3,7 @@ export const approvalStatuses=['NO_APPROVAL_REQUIRED','AWAITING_JOEY_APPROVAL','
 export const runtimeStatuses=['Active','Not recorded','Awaiting sync','Awaiting Joey approval','Blocked','Completed'];
 const known=v=>!missingOrUnverified(v);
 // One runtime projection; the ledger is explicitly a local observation, never a second registry.
-export function runtimeState(p,{handoff=null,history=[],generatedAt=null,publicRead=false}={}){
+export function runtimeState(p,{handoff=null,history=[],handoffs=[],generatedAt=null,publicRead=false}={}){
  const fields={};
  function read(key,claim,fallback){
   const value=known(claim?.value)?claim.value:known(fallback?.value)?fallback.value:null;
@@ -13,6 +13,7 @@ export function runtimeState(p,{handoff=null,history=[],generatedAt=null,publicR
   return value;
  }
  const ref=handoff&&!handoff.conflict?handoff:null;
+ const completion=[...handoffs,ref].filter(h=>h&&!h.conflict&&h.entityId===p.id&&/^(SUCCESS|COMPLETED|DONE)$/i.test(h.status||'')&&h.timestamp).sort((a,b)=>Date.parse(a.timestamp)-Date.parse(b.timestamp)).at(-1)||null;
  const r={schemaVersion:'0.3',projectId:p.id,currentMission:read('currentMission',p.currentTask),missionStatus:'Not recorded',currentAgent:null,lastAgent:read('lastAgent',p.lastAI),currentModel:null,lastModel:read('lastModel',p.model),lastCompletedAction:read('lastCompletedAction',p.lastCompleted),lastCompletedAt:ref&&/^(SUCCESS|COMPLETED|DONE)$/i.test(ref.status)?ref.timestamp:null,nextAction:read('nextAction',p.nextAction,ref?{value:ref.nextAction,source:ref.source}:null),blocker:read('blocker',p.blocker),approvalRequired:false,approvalStatus:'NO_APPROVAL_REQUIRED',approvalItems:verifiedDecisionItems(p).map(v=>({what:v.what,why:v.why,source:v.source})),restrictions:p.approvalGates||[],handoffRef:ref?.sourcePath||null,sourceRepo:read('sourceRepo',p.where.repository),sourceBranch:read('sourceBranch',p.where.branch),baselineSha:read('baselineSha',p.where.storedCommit),productionUrl:read('productionUrl',p.where.production,p.projectUrls?.entries?.find(v=>v.type==='canonical_production')?{value:p.projectUrls.entries.find(v=>v.type==='canonical_production').url,source:p.projectUrls.source}:null),localWorkspace:publicRead?null:read('localWorkspace',p.where.localPath),lastSyncedAt:generatedAt||null,stateSource:publicRead?'verified_release_snapshot':'canonical_projection',fields};
  if(/^[\w.-]+\/[\w.-]+$/.test(r.sourceRepo||''))r.sourceRepo='https://github.com/'+r.sourceRepo;
  if(r.blocker&&noAction(r.blocker))r.blocker=null;
@@ -21,14 +22,19 @@ export function runtimeState(p,{handoff=null,history=[],generatedAt=null,publicR
  r.missionStatus=r.approvalRequired?'Awaiting Joey approval':r.blocker?'Blocked':r.currentMission?'Active':fields.currentMission.status;
  if(p.conflicts?.length){r.missionStatus=p.conflicts.some(v=>!['git_observation_error','handoff_conflict'].includes(v.kind))?'Blocked':'Awaiting sync';r.conflicts=p.conflicts.map(v=>v.message||v.kind);}
  if(!r.lastCompletedAction&&!ref&&generatedAt)fields.lastCompletedAction={status:'Not recorded',reason:'Handoff scan completed; no validated completion record for this project',source:null};
- const latest=history.at(-1),completed=history.filter(v=>v.completed_at).at(-1);
+ // Documents and Git events are not live execution or Agent identity.
+ r.currentMission=null;r.currentAgent=null;r.currentModel=null;r.lastAgent=completion?.executedBy||null;r.lastModel=completion?.model||null;
+ r.lastCompletedAction=completion?[completion.task,completion.summary].filter(Boolean).join(' — '):null;r.lastCompletedAt=completion?.timestamp||null;r.missionStatus=p.conflicts?.length?p.conflicts.some(v=>!['git_observation_error','handoff_conflict'].includes(v.kind))?'Blocked':'Awaiting sync':'Not recorded';
+ for(const key of ['currentMission','currentAgent','currentModel'])fields[key]={status:'Not recorded',reason:'No fresh verified execution report; canonical task is a plan, not live execution',source:null};
+ for(const key of ['lastAgent','lastModel','lastCompletedAction','lastCompletedAt'])fields[key]={status:r[key]?'Completed':!completion&&!p.lastAI?.source?'Awaiting sync':'Not recorded',reason:r[key]?null:completion?'Completion record omits this field':'No validated completion handoff',source:completion?.source||null};
+ const latest=history.at(-1),completed=history.filter(v=>v.completed_at&&['COMPLETED','ACCEPTED','CLOSED'].includes(v.status)).sort((a,b)=>Date.parse(a.completed_at)-Date.parse(b.completed_at)).at(-1);
  if(latest){
-  const running=latest.status==='RUNNING';
-  Object.assign(r,{currentMission:latest.task,currentAgent:running?latest.assigned_agent:null,currentModel:running?latest.model:null,lastAgent:latest.started_at?latest.assigned_agent:r.lastAgent,lastModel:latest.started_at?latest.model:r.lastModel,nextAction:latest.next_action||r.nextAction,blocker:latest.blockers?.length?latest.blockers.join('\n'):null,approvalRequired:latest.status==='AWAITING_APPROVAL'||latest.approval?.required===true,approvalStatus:latest.approval?.status||(latest.status==='AWAITING_APPROVAL'?'AWAITING_JOEY_APPROVAL':latest.approval?.required?'AWAITING_JOEY_APPROVAL':'NO_APPROVAL_REQUIRED'),stateSource:'local_mission_overlay',missionId:latest.mission_id});
-  r.missionStatus=latest.status==='BLOCKED'||r.approvalStatus==='BLOCKED'?'Blocked':r.approvalRequired&&r.approvalStatus==='AWAITING_JOEY_APPROVAL'?'Awaiting Joey approval':['COMPLETED','ACCEPTED','CLOSED'].includes(latest.status)?'Completed':'Active';
+  const running=latest.status==='RUNNING'&&latest.check_in?.verified===true&&Date.parse(latest.updated_at||latest.started_at)>Date.parse(generatedAt||new Date().toISOString())-30*60*1000;
+  Object.assign(r,{currentMission:running?latest.task:null,currentAgent:running?latest.assigned_agent:null,currentModel:running?latest.model:null,lastAgent:r.lastAgent,lastModel:r.lastModel,nextAction:latest.next_action||r.nextAction,blocker:latest.blockers?.length?latest.blockers.join('\n'):null,approvalRequired:latest.status==='AWAITING_APPROVAL'||latest.approval?.required===true,approvalStatus:latest.approval?.status||(latest.status==='AWAITING_APPROVAL'?'AWAITING_JOEY_APPROVAL':latest.approval?.required?'AWAITING_JOEY_APPROVAL':'NO_APPROVAL_REQUIRED'),stateSource:'local_mission_overlay',missionId:latest.mission_id});
+  r.missionStatus=latest.status==='BLOCKED'||r.approvalStatus==='BLOCKED'?'Blocked':r.approvalRequired&&r.approvalStatus==='AWAITING_JOEY_APPROVAL'?'Awaiting Joey approval':['COMPLETED','ACCEPTED','CLOSED'].includes(latest.status)?'Completed':running?'Active':'Not recorded';
   for(const key of ['currentMission','currentAgent','currentModel','lastAgent','lastModel','nextAction','blocker'])fields[key]={status:r[key]?'Active':'Not recorded',reason:r[key]?null:'Not recorded in local mission',source:{kind:'local_overlay',sourcePath:'local://missions/'+latest.mission_id,readAt:latest.updated_at||latest.created_at}};
  }
- if(completed){r.lastCompletedAction=completed.result;r.lastCompletedAt=completed.completed_at;fields.lastCompletedAction={status:'Completed',reason:null,source:{kind:'local_overlay',sourcePath:'local://missions/'+completed.mission_id}};}
+ if(completed){for(const key of ['lastAgent','lastModel','lastCompletedAction','lastCompletedAt'])fields[key]={status:'Completed',reason:null,source:{kind:'local_overlay',sourcePath:'local://missions/'+completed.mission_id,readAt:completed.updated_at||completed.completed_at,asOf:completed.completed_at}};r.lastAgent=completed.assigned_agent||null;r.lastModel=completed.model||null;r.lastCompletedAction=completed.result;r.lastCompletedAt=completed.completed_at;fields.lastCompletedAction={status:'Completed',reason:null,source:{kind:'local_overlay',sourcePath:'local://missions/'+completed.mission_id}};}
  for(const key of ['currentAgent','currentModel','lastCompletedAt','handoffRef','lastSyncedAt'])if(!fields[key])fields[key]={status:r[key]?'Active':key==='lastSyncedAt'?'Awaiting sync':'Not recorded',reason:r[key]?null:'No verified record for this field',source:key==='handoffRef'||key==='lastCompletedAt'?ref?.source||null:null};
  return r;
 }

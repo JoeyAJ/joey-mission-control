@@ -1,5 +1,10 @@
 # Joey Mission Control
 
+V0.3-C accepted 2026-10-06: source-backed Operations in Joey View.
+Parent baseline `d8b3fdf4f786228a35a485fab39ba30d00084566`; Joey acceptance **PASSED**.
+C commit/push/deploy explicitly authorized. Production remains read-only.
+See [current release checkpoint](docs/V0.3-C_RELEASE_CHECKPOINT.md). Earlier acceptance reports remain historical evidence.
+
 Mission Control V0.2 is Joey's local Multi-AI Project Control Center. It answers four questions:
 
 - **WHERE** — canonical Local Master, repository, branch, commit, production, database, and relevant documents.

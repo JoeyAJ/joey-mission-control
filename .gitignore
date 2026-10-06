@@ -12,3 +12,5 @@ dist/
 output/
 .vercel
 .env*
+
+evidence/

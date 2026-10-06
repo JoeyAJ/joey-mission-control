@@ -1,3 +1,4 @@
+import {renderOperations} from './joey-operations.js';
 import {projectStateLabels} from './project-state.js';
 import {attachProjectStateControls} from './project-state-controls.js';
 import {visualLabels} from './visual-system.js';
@@ -29,7 +30,7 @@ export function renderCommandReadouts(projects,{doc=document,locale=getLocale(),
  const w=humanWords(locale),{commandReadouts}=createCockpitComponents({doc,w,locale,localized});
  return commandReadouts(projects,health);
 }
-export function renderJoeyView(projects,{doc=document,locale=getLocale(),onAgent=()=>{},onMove=()=>{},onProposal=()=>{},onApprove=()=>{},readOnly=false,selectedProjectId='NEXAEON',onSelect=()=>{},onMutation=async()=>{}}={}){
+export function renderJoeyView(projects,{doc=document,locale=getLocale(),onAgent=()=>{},onMove=()=>{},onProposal=()=>{},onApprove=()=>{},readOnly=false,selectedProjectId='NEXAEON',onSelect=()=>{},onRefresh=()=>{},onMutation=async()=>{}}={}){
  const w=humanWords(locale),components=createCockpitComponents({doc,w,locale,localized}),{el,itemLabel}=components;
  const v=visualLabels(locale);const root=el('div',undefined,'joey-surface cockpit-v1 visual-a');
  const scrollBehavior=()=>globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches?'auto':'smooth';
@@ -43,7 +44,7 @@ export function renderJoeyView(projects,{doc=document,locale=getLocale(),onAgent
   tab.addEventListener('click',()=>selectMission(p.projectId));tab.addEventListener('keydown',event=>{const keys=['ArrowRight','ArrowLeft','Home','End'];if(!keys.includes(event.key))return;event.preventDefault();const next=event.key==='Home'?0:event.key==='End'?projects.length-1:(index+(event.key==='ArrowRight'?1:-1)+projects.length)%projects.length;selectMission(projects[next].project_id,true);});tabs.set(p.projectId,tab);fleet.append(tab);
   const card=el('article',undefined,'human-card cockpit-card');card.dataset.humanProject=p.projectId;card.id='mission-panel-'+p.projectId;card.setAttribute('role','tabpanel');card.setAttribute('aria-labelledby',tab.id);panels.set(p.projectId,card);
   const layout=el('div',undefined,'cockpit-layout');
-  const hero=el('section',undefined,'mission-hero liquid-glass');hero.append(components.missionHeader(p),components.missionPurpose(p));if(p.projectId==='NEXAEON'){const identity=el('div',undefined,'hero-identity');identity.append(components.brandEye());hero.append(identity);}const projectAction=el('button',components.projectActionLabel,'hero-action button-glass');projectAction.append(components.lineIcon('arrow'));projectAction.addEventListener('click',()=>{const target=card.querySelector('.intent-detail');if(target){target.open=!target.open;projectAction.setAttribute('aria-expanded',String(target.open));}});projectAction.setAttribute('aria-expanded','false');hero.append(projectAction);card.append(hero);
+  const hero=el('section',undefined,'mission-hero liquid-glass');hero.append(components.missionHeader(p),components.missionPurpose(p));if(p.projectId==='NEXAEON'){const identity=el('div',undefined,'hero-identity');identity.append(components.brandEye());hero.append(identity);}const projectAction=el('button',components.projectActionLabel,'hero-action button-glass');projectAction.append(components.lineIcon('arrow'));projectAction.addEventListener('click',()=>{const target=card.querySelector('.intent-detail');if(target){target.open=!target.open;projectAction.setAttribute('aria-expanded',String(target.open));}});projectAction.setAttribute('aria-expanded','false');hero.append(projectAction);card.append(hero);card.append(renderOperations(m,{el,locale,readOnly,onInspect:onAgent,onRefresh}));
   layout.append(components.currentPhase(p),components.blueprintInstrument(p),components.nextCapability(p),components.flightPath(p));card.append(layout);const rail=el('aside',undefined,'mission-right-rail');const statusPanel=el('section',undefined,'project-status-panel liquid-glass');statusPanel.append(el('h4',components.projectStatusLabel),el('span','PROJECT STATUS','instrument-micro'),components.statusStrip(p));rail.append(statusPanel);
   const editors=renderOwnerEditors(m.legacyProduct?{...m,product:{...m.legacyProduct,revision:p.revision}}:m,{el,w,localized,locale,itemLabel,onProposal,onApprove,readOnly});
   const decisions=components.decisionPanel(p,{onPurpose:()=>openEditor('.purpose-editor'),onBlueprint:()=>openEditor('.blueprint-editor'),onNext:()=>openEditor('.next-editor'),onPending:()=>openEditor('.pending-proposals')});

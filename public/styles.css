@@ -139,3 +139,20 @@ body>header{position:relative;z-index:40}
 @media(max-width:1100px){.visual-a .mission-track{grid-template-columns:repeat(3,minmax(0,1fr))}}@media(max-width:850px){.visual-a .mission-track{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:768px){.visual-a .mission-track{display:block}.state-input-actions{display:grid;grid-template-columns:1fr}.state-mission-editor select,.state-mission-editor button{min-height:44px;font-size:12px}.state-provenance summary{min-height:44px;font-size:12px}.state-confirmation form{grid-template-columns:1fr}.state-workbench{padding:0 14px}.state-workbench button{min-height:44px}}
 
 .state-derivation-caption{display:block;color:var(--visual-muted);font-size:10px;line-height:1.5;margin-top:5px}
+
+/* V0.3-C recorded operations, retaining the existing liquid glass surface. */
+.joey-operations{grid-column:1 / -1;padding:20px;min-width:0}
+.operations-facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:16px 0}
+.operation-fact{min-width:0;border-bottom:1px solid var(--glass-border,rgba(255,255,255,.12));padding-bottom:10px}
+.operation-fact dt{font-size:.75rem;opacity:.7}.operation-fact dd{margin:6px 0;overflow-wrap:anywhere;white-space:pre-wrap}
+.operation-source{font-size:.7rem;opacity:.75;overflow-wrap:anywhere}.operation-source p{margin:5px 0}
+.operations-boundary,.joey-operations>p,.joey-operations>small{font-size:.75rem;opacity:.75;overflow-wrap:anywhere}
+.operations-approval{overflow-wrap:anywhere}.operations-inspect{margin:10px 10px 10px 0}
+@media(max-width:850px){.operations-facts{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:480px){.operations-facts{grid-template-columns:minmax(0,1fr)}}
+
+.joey-operations{border:1px solid rgba(170,196,255,.14);border-radius:18px;background:linear-gradient(145deg,rgba(26,36,63,.65),rgba(9,14,29,.7))}
+.operation-fact dd{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+@media(min-width:1101px){.visual-a .joey-operations{grid-row:2}.visual-a .cockpit-layout{grid-row:3}.visual-a .mission-right-rail{grid-row:3/5}.visual-a .mission-command-zone{grid-row:4}}
+
+.operations-conflict,.operations-refresh-failed{color:var(--status-waiting);border-left:2px solid currentColor;padding-left:10px}.operations-stage{font-size:1rem!important;opacity:1!important}.operations-repo-event{font-size:.8rem;margin:12px 0;overflow-wrap:anywhere}

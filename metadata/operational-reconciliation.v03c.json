@@ -1,0 +1,133 @@
+{
+  "schemaVersion": "0.3-c",
+  "projects": {
+    "NEXAEON": {
+      "baseline": "8271e1bbae78eb7fc4fc86c06feaa50d6fa82c39",
+      "remote": {
+        "sha": "8271e1bbae78eb7fc4fc86c06feaa50d6fa82c39",
+        "branch": "main",
+        "observedAt": "2026-10-06T01:43:06.345Z"
+      },
+      "summaries": {
+        "stage": {
+          "valueHash": "9e1cb47f5807fabd532519c797847c3b304e82e44144d97932e52b08400a8f68",
+          "zh": "多語 Agent 平台已上線；外部搜尋的實際運作仍待確認。"
+        },
+        "nextAction": {
+          "valueHash": "1516f3126b500fe6cfbb4f62cd516552b3fe15251a1d7748005359a23552805f",
+          "zh": "先核對部署設定、模型與外部服務，建立一份可信的運作狀態。"
+        },
+        "blocker": {
+          "valueHash": "f3d2a4f86c86ea2538f48d2c60eeb92cd8a875852b02e47c79190199ae63f04a",
+          "zh": "外部搜尋、管理功能及流量限制仍缺設定／實測證據。"
+        }
+      },
+      "repoSummary": "驗證流程改為各階段獨立執行。",
+      "conflicts": [
+        {
+          "summary": "5-4C 階段來源衝突：技能摘要稱已完成，canonical state／main runbook 尚未確認。",
+          "reason": "需要可追溯的工作流／部署／驗收證據，不能以重新讀取日期升級舊說法。",
+          "sources": [
+            "PROJECTS/NEXAEON/CURRENT_STATE.md",
+            "docs/STAGE_5_4_B_EXPLORER_N8N_CONFIGURATION.md",
+            "docs/architecture/ADR-0054-n8n-tool-runtime.md",
+            "nexaeon-development-checkpoint/current-checkpoint (2026-09-01)"
+          ]
+        }
+      ],
+      "confirmedReview": {
+        "summary": "10/3 正式來源與部署對齊已記錄；運作細節仍有待核對項。",
+        "eventDate": "2026-10-03",
+        "registryFingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8"
+      }
+    },
+    "WOOSONG_BUDDY": {
+      "baseline": "23d58a1f56a76a8198569df345b3d4d09ee3de09",
+      "remote": {
+        "sha": "23d58a1f56a76a8198569df345b3d4d09ee3de09",
+        "branch": "main",
+        "observedAt": "2026-10-06T01:43:06.345Z"
+      },
+      "summaries": {
+        "stage": {
+          "valueHash": "28ceb57b88e815a2523e5f869f9c67c0b6e67c92b004e3a59172b6be238d8186",
+          "zh": "學習、寵物與社交 MVP 已上線；下一階段是穩定性與安全。"
+        },
+        "nextAction": {
+          "valueHash": "40780b04c13bc0d451297b8d8284035bfc8cc4e65a609e363f68848d3c0765f8",
+          "zh": "先修文件、PWA 圖示、語言一致性與測試流程；不改資料庫。"
+        },
+        "blocker": {
+          "valueHash": "c256d8bfba8b0e3d410f7e178d2d48475bd9c75b7992522eaf7d3ed9e65baa4e",
+          "zh": "登入與資料同步方案尚待設計；遠端 schema／RLS 修改需先獲授權。"
+        }
+      },
+      "repoSummary": "保留已驗證的正式來源與可攜重建文件，整合至 main。",
+      "confirmedReview": {
+        "summary": "10/3 production 來源保留與部署對齊已記錄；後續穩定化交接完整。",
+        "eventDate": "2026-10-03",
+        "registryFingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8"
+      }
+    },
+    "NAMYOUNG_WEB3D": {
+      "baseline": "92c17b8adeec5eaa80d27b8facad532e6ff61d59",
+      "remote": {
+        "sha": "92c17b8adeec5eaa80d27b8facad532e6ff61d59",
+        "branch": "main",
+        "observedAt": "2026-10-06T01:43:06.345Z"
+      },
+      "summaries": {
+        "stage": {
+          "valueHash": "0b6db3aa894271e28977bbe57a9837279a39351394f9bdb8277001272521a610",
+          "zh": "Web3D 視覺化 PoC 已上線；尚非經驗證的工程／報價工具。"
+        },
+        "nextAction": {
+          "valueHash": "34ce3b5a4fd56e3dd26fdf2c43ef06cc67e8d89b10774448e4c47b8fbdd2acc6",
+          "zh": "先建立資產與場地資料規格及範例，不改現有 UI。"
+        },
+        "blocker": {
+          "valueHash": "9c4357e0db5849e599099d49e699a5c5999b79575b4fee239728c8cdb53f2fca",
+          "zh": "首項正式產品、圖紙與施工規則尚未確認，不能作工程數量承諾。"
+        }
+      },
+      "repoSummary": "保留 Web3D 開發資產，移除僅供影片用途的材料。",
+      "confirmedReview": {
+        "summary": "10/3 Web3D 正式來源、資產恢復與部署對齊已記錄。",
+        "eventDate": "2026-10-03",
+        "registryFingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8"
+      }
+    },
+    "JOEY_ASSET_SYSTEM": {
+      "baseline": "eb03e2a9d86abf8b53acfe207fb6737d255ba0d4",
+      "remote": {
+        "sha": "eb03e2a9d86abf8b53acfe207fb6737d255ba0d4",
+        "branch": "main",
+        "observedAt": "2026-10-06T01:43:06.345Z"
+      },
+      "summaries": {
+        "stage": {
+          "valueHash": "4855cddf138b648c715add574ee4ebef46dfaa7e326be73cf39822ce51c26eac",
+          "zh": "Phase 1 特徵測試已發布；Phase 2 尚未開始。"
+        },
+        "nextAction": {
+          "valueHash": "91f6d6b7923e2c869b7801123308703a98bf67bd2f293d502c72e204f0f33974",
+          "zh": "保留 Phase 1 與回復來源；下一階段需另行取得批准。"
+        },
+        "blocker": {
+          "valueHash": "b764cdc0eab7137467211272fa539f1260d1bf2e71bcf6ff3bdc960f5c16aa14",
+          "zh": "未記錄當前執行阻礙；Phase 2 是授權邊界，不是已送出的批准請求。"
+        },
+        "lastCompletedAction": {
+          "valueHash": "84eb4d4e207d66de3bcc66e8973686a7d05a5a5acf97b5c859d49ac8ebb5d979",
+          "zh": "Phase 1 特徵測試已提交並推送，local／GitHub 一致。"
+        }
+      },
+      "repoSummary": "新增 Case 001 v0.15 特徵測試與行為基準。",
+      "confirmedReview": {
+        "summary": "10/4 Phase 1 已發布到 GitHub；此系統沒有 production 部署。",
+        "eventDate": "2026-10-04",
+        "registryFingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8"
+      }
+    }
+  }
+}

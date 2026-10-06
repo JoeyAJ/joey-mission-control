@@ -1,3 +1,4 @@
+import {candidate} from '../src/candidate.mjs';
 import {release} from '../src/release.mjs';
 import {assertProjectState} from '../src/project-state/model.mjs';
 import {publicProjectState} from '../src/project-state/public-state.mjs';
@@ -20,5 +21,5 @@ const published=JSON.parse(await fs.readFile(path.join(root,'deployment/project-
 if(published.projects.length!==snapshot.projects.length)throw new Error('Release project count mismatch');
 for(const p of snapshot.projects){const state=published.projects.find(s=>s.id===p.id);assertProjectState(state);publicProjectState(state);deriveProjectSummary(state);}
 const dest=path.join(root,'dist');await fs.mkdir(dest,{recursive:true});await fs.cp(path.join(root,'public'),path.join(dest,'public'),{recursive:true});
-await fs.writeFile(path.join(dest,'build.json'),JSON.stringify({version:release.version,baseline:release.parentBaseline,acceptance:release.joeyAcceptance,deployAuthorized:true},null,2));
+await fs.writeFile(path.join(dest,'build.json'),JSON.stringify({version:release.version,baseline:release.parentBaseline,acceptance:release.joeyAcceptance,...candidate},null,2));
 console.log('V0.3 static bundle, module syntax and runtime/activity/product/canonical schemas verified. No deployment performed.');

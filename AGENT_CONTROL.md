@@ -1,8 +1,8 @@
 # Mission Control V0.3 agent entry
 
-This checkout develops V0.3 from accepted production V0.2 SHA
-`2efd329c56d0eaae36ab78f5a820b778a6a10dbb` on `codex/mission-control-v0.3`.
-Production remains V0.2. No V0.3 release authority exists until Joey Acceptance.
+This checkout develops V0.3 from accepted V0.3-B SHA
+`d8b3fdf4f786228a35a485fab39ba30d00084566` on `codex/mission-control-v0.3`.
+Joey accepted V0.3-C on 2026-10-06 and authorized its release. Later stages require their own acceptance.
 
 ## Discover and inspect
 GET /api/projects lists normalized project manifests. GET /api/projects/:id/manifest
@@ -89,7 +89,7 @@ pending, rejected or blocked requests. ACCEPTED needs actual Joey acceptance att
 with joey_accepted=true. This is a local attestation, not authenticated Joey identity.
 Optional handoff_ref is a recorded reference, never an arbitrary file-read request.
 
-A planned assignment is not historical execution; only a started mission supplies
+A planned assignment is not historical execution; only an explicit completed result supplies
 last Agent/model. Canonical activity backfill uses validated entity Handoffs with
 explicit Agent/model only, preserving timestamps, commit/reference and source.
 Missing Agent/model stays null. Public runtime/activity omit private paths and use

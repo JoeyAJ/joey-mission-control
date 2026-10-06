@@ -39,12 +39,16 @@ test('durable Inbox API preserves boundaries, protects fields, and rejects stale
   assert.equal((await request('/api/inbox/missing',{state:'Resolved',expectedState:'Needs review'},'PATCH')).status,404);
 });
 
-test('health describes released V0.3-B separately from accepted V0.2 parent',async t=>{
+test('health describes accepted V0.3-C separately from its V0.3-B parent',async t=>{
   const server=http.createServer(createApp({}));
   await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));t.after(()=>server.close());
   const health=await(await fetch(`http://127.0.0.1:${server.address().port}/api/health`)).json();
-  assert.equal(health.version,'0.3.0-b');
+  assert.equal(health.version,'0.3.0-c');
+  assert.equal(health.developmentVersion,'0.3.0-c');
+  assert.equal(health.candidateAcceptance,'PASSED');
+  assert.equal(health.candidateBaseline,'d8b3fdf4f786228a35a485fab39ba30d00084566');
+  assert.equal(health.deployAuthorized,true);
   assert.equal(health.releaseStatus,'accepted');
-  assert.equal(health.parentBaseline,'2efd329c56d0eaae36ab78f5a820b778a6a10dbb');
+  assert.equal(health.parentBaseline,'d8b3fdf4f786228a35a485fab39ba30d00084566');
   assert.equal(Object.hasOwn(health,'token'),false);
 });

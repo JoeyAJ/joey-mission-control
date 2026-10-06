@@ -1,2 +1,2 @@
-// Joey explicitly authorized V0.3-B production closeout on 2026-10-05.
-export const release=Object.freeze({version:'0.3.0-b',releaseStatus:'accepted',joeyAcceptance:'PASSED',acceptanceDate:'2026-10-05',parentBaseline:'2efd329c56d0eaae36ab78f5a820b778a6a10dbb',releaseStage:'V0.3-B',persistenceMode:'local-first',productionMode:'read-only'});
+// Joey explicitly accepted C and authorized commit/push/deploy on 2026-10-06.
+export const release=Object.freeze({version:'0.3.0-c',releaseStatus:'accepted',joeyAcceptance:'PASSED',acceptanceDate:'2026-10-06',parentBaseline:'d8b3fdf4f786228a35a485fab39ba30d00084566',releaseStage:'V0.3-C',persistenceMode:'local-first',productionMode:'read-only'});
