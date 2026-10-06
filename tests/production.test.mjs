@@ -31,3 +31,9 @@ test('public state refuses private input publication and preserves missing sourc
  state.sources[0].uri='/Users/private/project';const out=publicProjectState(state);assert.equal(out.sources[0].uri,null);assert.equal(state.sources[0].uri,'/Users/private/project');
  state.ideas.push({id:'private',projectId:state.id,content:'Private note',status:'INBOX',linkedMissionId:null,source:'JOEY',sourceRefs:[],createdAt:null,updatedAt:null});assert.throws(()=>publicProjectState(state),/publication approval/);
 });
+
+test('every public release route withholds private filesystem and credential references',()=>{
+ const ids=request('projects').body.map(p=>p.project_id);
+ const routes=['health','state','projects','inbox','handoffs','workspaces',...ids.flatMap(id=>['projects/'+id,'projects/'+id+'/continue',...['state','manifest','runtime','activity','product','project-state'].map(s=>'projects/'+id+'/'+s)])];
+ for(const route of routes){const response=request(route);assert.equal(response.status,200,route);assert.doesNotMatch(JSON.stringify(response.body),/\/Users\/|\/home\/|\/private\/|Bearer\s|gh[pousr]_|sk-[A-Za-z0-9]|PRIVATE KEY/,route);}
+});

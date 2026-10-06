@@ -19,7 +19,7 @@
         ],
         "source": {
           "authority": "joey_confirmed_project_metadata",
-          "sourcePath": "/Users/joeyaj/Documents/Codex/Projects/joey-mission-control/metadata/project-urls.v1.json",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "Joey confirmed project URL metadata",
           "fingerprint": "b1bb9a026a0abeec9fe3920b6c5dac419cf63d56531902955a0e30fe2d382001",
           "verificationStatus": "joey_confirmed_url",
@@ -34,7 +34,7 @@
         "classification": "canonical",
         "source": {
           "classification": "canonical",
-          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/MEMORY_INDEX.md",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "Memory Index",
           "fingerprint": "863dad67e5822c016cf52a92de73ac92ad0feaa2c7b43b69244137f9d98da8e7",
           "asOf": "2026-10-04",
@@ -47,7 +47,7 @@
         "classification": "derived",
         "source": {
           "classification": "canonical",
-          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/NEXAEON/CURRENT_STATE.md",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "CURRENT_STATE",
           "fingerprint": "540b0d7ab1ef76a9de485374c267182aabde992a1e54d024361484f2876d56a8",
           "asOf": "2026-10-03",
@@ -60,7 +60,7 @@
         "classification": "derived",
         "source": {
           "classification": "canonical",
-          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/NEXAEON/CURRENT_STATE.md",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "CURRENT_STATE",
           "fingerprint": "540b0d7ab1ef76a9de485374c267182aabde992a1e54d024361484f2876d56a8",
           "asOf": "2026-10-03",
@@ -73,7 +73,7 @@
         "classification": "derived",
         "source": {
           "classification": "canonical",
-          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/NEXAEON/NEXT_ACTIONS.md",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "NEXT_ACTIONS",
           "fingerprint": "8a37bf84452dc7b6df67f79e663a0e814f43b807acb8366b20f2140863e010b3",
           "verificationStatus": "documented",
@@ -85,7 +85,7 @@
         "classification": "canonical",
         "source": {
           "classification": "canonical",
-          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/NEXAEON/CURRENT_STATE.md",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "Current Stage",
           "fingerprint": "540b0d7ab1ef76a9de485374c267182aabde992a1e54d024361484f2876d56a8",
           "asOf": "2026-10-03",
@@ -101,7 +101,7 @@
             "classification": "canonical",
             "source": {
               "classification": "canonical",
-              "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/NEXAEON/NEXT_ACTIONS.md",
+              "sourcePath": "[Local reference withheld]",
               "sourceSection": "Decisions Needed From Joey",
               "fingerprint": "8a37bf84452dc7b6df67f79e663a0e814f43b807acb8366b20f2140863e010b3",
               "verificationStatus": "documented",
@@ -113,7 +113,7 @@
             "classification": "canonical",
             "source": {
               "classification": "canonical",
-              "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/NEXAEON/NEXT_ACTIONS.md",
+              "sourcePath": "[Local reference withheld]",
               "sourceSection": "Decisions Needed From Joey",
               "fingerprint": "8a37bf84452dc7b6df67f79e663a0e814f43b807acb8366b20f2140863e010b3",
               "verificationStatus": "documented",
@@ -125,7 +125,7 @@
             "classification": "canonical",
             "source": {
               "classification": "canonical",
-              "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/NEXAEON/NEXT_ACTIONS.md",
+              "sourcePath": "[Local reference withheld]",
               "sourceSection": "Decisions Needed From Joey",
               "fingerprint": "8a37bf84452dc7b6df67f79e663a0e814f43b807acb8366b20f2140863e010b3",
               "verificationStatus": "documented",
@@ -137,7 +137,7 @@
             "classification": "canonical",
             "source": {
               "classification": "canonical",
-              "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/NEXAEON/NEXT_ACTIONS.md",
+              "sourcePath": "[Local reference withheld]",
               "sourceSection": "Decisions Needed From Joey",
               "fingerprint": "8a37bf84452dc7b6df67f79e663a0e814f43b807acb8366b20f2140863e010b3",
               "verificationStatus": "documented",
@@ -149,7 +149,7 @@
             "classification": "canonical",
             "source": {
               "classification": "canonical",
-              "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/NEXAEON/NEXT_ACTIONS.md",
+              "sourcePath": "[Local reference withheld]",
               "sourceSection": "Decisions Needed From Joey",
               "fingerprint": "8a37bf84452dc7b6df67f79e663a0e814f43b807acb8366b20f2140863e010b3",
               "verificationStatus": "documented",
@@ -163,7 +163,7 @@
         "classification": "unknown",
         "source": {
           "classification": "canonical",
-          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/NEXAEON/CURRENT_STATE.md",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "CURRENT_STATE",
           "fingerprint": "540b0d7ab1ef76a9de485374c267182aabde992a1e54d024361484f2876d56a8",
           "asOf": "2026-10-03",
@@ -183,7 +183,7 @@
         "classification": "unknown",
         "source": {
           "classification": "canonical",
-          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/NEXAEON/CURRENT_STATE.md",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "CURRENT_STATE",
           "fingerprint": "540b0d7ab1ef76a9de485374c267182aabde992a1e54d024361484f2876d56a8",
           "asOf": "2026-10-03",
@@ -197,7 +197,7 @@
         "classification": "canonical",
         "source": {
           "classification": "canonical",
-          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/NEXAEON/NEXT_ACTIONS.md",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "NEXT_ACTIONS",
           "fingerprint": "8a37bf84452dc7b6df67f79e663a0e814f43b807acb8366b20f2140863e010b3",
           "verificationStatus": "documented",
@@ -209,7 +209,7 @@
         "classification": "canonical",
         "source": {
           "classification": "canonical",
-          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/NEXAEON/NEXT_ACTIONS.md",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "NEXT_ACTIONS",
           "fingerprint": "8a37bf84452dc7b6df67f79e663a0e814f43b807acb8366b20f2140863e010b3",
           "verificationStatus": "documented",
@@ -221,7 +221,7 @@
         "classification": "unknown",
         "source": {
           "classification": "canonical",
-          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/NEXAEON/CURRENT_STATE.md",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "CURRENT_STATE",
           "fingerprint": "540b0d7ab1ef76a9de485374c267182aabde992a1e54d024361484f2876d56a8",
           "asOf": "2026-10-03",
@@ -235,7 +235,7 @@
         "classification": "unknown",
         "source": {
           "classification": "canonical",
-          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/NEXAEON/CURRENT_STATE.md",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "CURRENT_STATE",
           "fingerprint": "540b0d7ab1ef76a9de485374c267182aabde992a1e54d024361484f2876d56a8",
           "asOf": "2026-10-03",
@@ -245,11 +245,11 @@
         "missingReason": "not_recorded"
       },
       "workspace": {
-        "value": "/Users/joeyaj/Documents/Codex/Projects/nexaeon-web",
+        "value": "[Local reference withheld]",
         "classification": "canonical",
         "source": {
           "classification": "canonical",
-          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "NexAeon",
           "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8",
           "asOf": "2026-10-04",
@@ -262,7 +262,7 @@
         "classification": "canonical",
         "source": {
           "classification": "canonical",
-          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/NEXAEON/CURRENT_STATE.md",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "CURRENT_STATE",
           "fingerprint": "540b0d7ab1ef76a9de485374c267182aabde992a1e54d024361484f2876d56a8",
           "asOf": "2026-10-03",
@@ -272,11 +272,11 @@
       },
       "where": {
         "localPath": {
-          "value": "/Users/joeyaj/Documents/Codex/Projects/nexaeon-web",
+          "value": "[Local reference withheld]",
           "classification": "canonical",
           "source": {
             "classification": "canonical",
-            "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+            "sourcePath": "[Local reference withheld]",
             "sourceSection": "NexAeon",
             "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8",
             "asOf": "2026-10-04",
@@ -289,7 +289,7 @@
           "classification": "canonical",
           "source": {
             "classification": "canonical",
-            "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+            "sourcePath": "[Local reference withheld]",
             "sourceSection": "NexAeon",
             "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8",
             "asOf": "2026-10-04",
@@ -302,7 +302,7 @@
           "classification": "canonical",
           "source": {
             "classification": "canonical",
-            "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+            "sourcePath": "[Local reference withheld]",
             "sourceSection": "NexAeon",
             "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8",
             "asOf": "2026-10-04",
@@ -315,7 +315,7 @@
           "classification": "canonical",
           "source": {
             "classification": "canonical",
-            "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+            "sourcePath": "[Local reference withheld]",
             "sourceSection": "NexAeon",
             "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8",
             "asOf": "2026-10-04",
@@ -328,7 +328,7 @@
           "classification": "observed",
           "source": {
             "classification": "observed",
-            "sourcePath": "/Users/joeyaj/Documents/Codex/Projects/nexaeon-web",
+            "sourcePath": "[Local reference withheld]",
             "sourceSection": "Git observation",
             "fingerprint": "2789c1a000186082adb46632efc61b2a80862fa2a251202411b3018691407a1c",
             "verificationStatus": "observed",
@@ -340,7 +340,7 @@
           "classification": "canonical",
           "source": {
             "classification": "canonical",
-            "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+            "sourcePath": "[Local reference withheld]",
             "sourceSection": "NexAeon",
             "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8",
             "asOf": "2026-10-04",
@@ -353,7 +353,7 @@
           "classification": "canonical",
           "source": {
             "classification": "canonical",
-            "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/NEXAEON/CURRENT_STATE.md",
+            "sourcePath": "[Local reference withheld]",
             "sourceSection": "CURRENT_STATE",
             "fingerprint": "540b0d7ab1ef76a9de485374c267182aabde992a1e54d024361484f2876d56a8",
             "asOf": "2026-10-03",
@@ -371,7 +371,7 @@
           "classification": "derived",
           "source": {
             "classification": "canonical",
-            "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/MEMORY_INDEX.md",
+            "sourcePath": "[Local reference withheld]",
             "sourceSection": "Memory Index",
             "fingerprint": "863dad67e5822c016cf52a92de73ac92ad0feaa2c7b43b69244137f9d98da8e7",
             "asOf": "2026-10-04",
@@ -381,7 +381,7 @@
         }
       },
       "workspaceObservation": {
-        "path": "/Users/joeyaj/Documents/Codex/Projects/nexaeon-web",
+        "path": "[Local reference withheld]",
         "branch": "main",
         "head": "8271e1bbae78eb7fc4fc86c06feaa50d6fa82c39",
         "origin": "git@github.com:JoeyAJ/nexaeon-web.git",
@@ -393,7 +393,7 @@
         "observationFingerprint": "2789c1a000186082adb46632efc61b2a80862fa2a251202411b3018691407a1c",
         "source": {
           "classification": "observed",
-          "sourcePath": "/Users/joeyaj/Documents/Codex/Projects/nexaeon-web",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "Git observation",
           "fingerprint": "2789c1a000186082adb46632efc61b2a80862fa2a251202411b3018691407a1c",
           "verificationStatus": "observed",
@@ -411,19 +411,19 @@
       "conflicts": [],
       "sourceFingerprints": [
         {
-          "path": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/MEMORY_INDEX.md",
+          "path": "[Local reference withheld]",
           "fingerprint": "863dad67e5822c016cf52a92de73ac92ad0feaa2c7b43b69244137f9d98da8e7"
         },
         {
-          "path": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+          "path": "[Local reference withheld]",
           "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8"
         },
         {
-          "path": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/NEXAEON/CURRENT_STATE.md",
+          "path": "[Local reference withheld]",
           "fingerprint": "540b0d7ab1ef76a9de485374c267182aabde992a1e54d024361484f2876d56a8"
         },
         {
-          "path": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/NEXAEON/NEXT_ACTIONS.md",
+          "path": "[Local reference withheld]",
           "fingerprint": "8a37bf84452dc7b6df67f79e663a0e814f43b807acb8366b20f2140863e010b3"
         }
       ],
@@ -447,7 +447,7 @@
         ],
         "source": {
           "authority": "joey_confirmed_project_metadata",
-          "sourcePath": "/Users/joeyaj/Documents/Codex/Projects/joey-mission-control/metadata/project-urls.v1.json",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "Joey confirmed project URL metadata",
           "fingerprint": "b1bb9a026a0abeec9fe3920b6c5dac419cf63d56531902955a0e30fe2d382001",
           "verificationStatus": "joey_confirmed_url",
@@ -462,7 +462,7 @@
         "classification": "canonical",
         "source": {
           "classification": "canonical",
-          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/MEMORY_INDEX.md",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "Memory Index",
           "fingerprint": "863dad67e5822c016cf52a92de73ac92ad0feaa2c7b43b69244137f9d98da8e7",
           "asOf": "2026-10-04",
@@ -475,7 +475,7 @@
         "classification": "derived",
         "source": {
           "classification": "canonical",
-          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/WOOSONG_BUDDY/CURRENT_STATE.md",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "CURRENT_STATE",
           "fingerprint": "3665171d1a11b9e5c9a99c1e5cb0568c79d28735b41ac7df7504db86a191a488",
           "asOf": "2026-10-03",
@@ -488,7 +488,7 @@
         "classification": "derived",
         "source": {
           "classification": "canonical",
-          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/WOOSONG_BUDDY/CURRENT_STATE.md",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "CURRENT_STATE",
           "fingerprint": "3665171d1a11b9e5c9a99c1e5cb0568c79d28735b41ac7df7504db86a191a488",
           "asOf": "2026-10-03",
@@ -501,7 +501,7 @@
         "classification": "derived",
         "source": {
           "classification": "canonical",
-          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/WOOSONG_BUDDY/NEXT_ACTIONS.md",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "NEXT_ACTIONS",
           "fingerprint": "1ec402f107f07ea8abe6244875c5e2702a990b060e0910180506425392dac6ac",
           "verificationStatus": "documented",
@@ -513,7 +513,7 @@
         "classification": "canonical",
         "source": {
           "classification": "canonical",
-          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/WOOSONG_BUDDY/CURRENT_STATE.md",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "Current Stage",
           "fingerprint": "3665171d1a11b9e5c9a99c1e5cb0568c79d28735b41ac7df7504db86a191a488",
           "asOf": "2026-10-03",
@@ -529,7 +529,7 @@
             "classification": "canonical",
             "source": {
               "classification": "canonical",
-              "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/WOOSONG_BUDDY/NEXT_ACTIONS.md",
+              "sourcePath": "[Local reference withheld]",
               "sourceSection": "Decisions Needed From Joey",
               "fingerprint": "1ec402f107f07ea8abe6244875c5e2702a990b060e0910180506425392dac6ac",
               "verificationStatus": "documented",
@@ -541,7 +541,7 @@
             "classification": "canonical",
             "source": {
               "classification": "canonical",
-              "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/WOOSONG_BUDDY/NEXT_ACTIONS.md",
+              "sourcePath": "[Local reference withheld]",
               "sourceSection": "Decisions Needed From Joey",
               "fingerprint": "1ec402f107f07ea8abe6244875c5e2702a990b060e0910180506425392dac6ac",
               "verificationStatus": "documented",
@@ -553,7 +553,7 @@
             "classification": "canonical",
             "source": {
               "classification": "canonical",
-              "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/WOOSONG_BUDDY/NEXT_ACTIONS.md",
+              "sourcePath": "[Local reference withheld]",
               "sourceSection": "Decisions Needed From Joey",
               "fingerprint": "1ec402f107f07ea8abe6244875c5e2702a990b060e0910180506425392dac6ac",
               "verificationStatus": "documented",
@@ -565,7 +565,7 @@
             "classification": "canonical",
             "source": {
               "classification": "canonical",
-              "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/WOOSONG_BUDDY/NEXT_ACTIONS.md",
+              "sourcePath": "[Local reference withheld]",
               "sourceSection": "Decisions Needed From Joey",
               "fingerprint": "1ec402f107f07ea8abe6244875c5e2702a990b060e0910180506425392dac6ac",
               "verificationStatus": "documented",
@@ -577,7 +577,7 @@
             "classification": "canonical",
             "source": {
               "classification": "canonical",
-              "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/WOOSONG_BUDDY/NEXT_ACTIONS.md",
+              "sourcePath": "[Local reference withheld]",
               "sourceSection": "Decisions Needed From Joey",
               "fingerprint": "1ec402f107f07ea8abe6244875c5e2702a990b060e0910180506425392dac6ac",
               "verificationStatus": "documented",
@@ -589,7 +589,7 @@
             "classification": "canonical",
             "source": {
               "classification": "canonical",
-              "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/WOOSONG_BUDDY/NEXT_ACTIONS.md",
+              "sourcePath": "[Local reference withheld]",
               "sourceSection": "Decisions Needed From Joey",
               "fingerprint": "1ec402f107f07ea8abe6244875c5e2702a990b060e0910180506425392dac6ac",
               "verificationStatus": "documented",
@@ -601,7 +601,7 @@
             "classification": "canonical",
             "source": {
               "classification": "canonical",
-              "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/WOOSONG_BUDDY/NEXT_ACTIONS.md",
+              "sourcePath": "[Local reference withheld]",
               "sourceSection": "Decisions Needed From Joey",
               "fingerprint": "1ec402f107f07ea8abe6244875c5e2702a990b060e0910180506425392dac6ac",
               "verificationStatus": "documented",
@@ -615,7 +615,7 @@
         "classification": "unknown",
         "source": {
           "classification": "canonical",
-          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/WOOSONG_BUDDY/CURRENT_STATE.md",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "CURRENT_STATE",
           "fingerprint": "3665171d1a11b9e5c9a99c1e5cb0568c79d28735b41ac7df7504db86a191a488",
           "asOf": "2026-10-03",
@@ -635,7 +635,7 @@
         "classification": "unknown",
         "source": {
           "classification": "canonical",
-          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/WOOSONG_BUDDY/CURRENT_STATE.md",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "CURRENT_STATE",
           "fingerprint": "3665171d1a11b9e5c9a99c1e5cb0568c79d28735b41ac7df7504db86a191a488",
           "asOf": "2026-10-03",
@@ -649,7 +649,7 @@
         "classification": "canonical",
         "source": {
           "classification": "canonical",
-          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/WOOSONG_BUDDY/NEXT_ACTIONS.md",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "NEXT_ACTIONS",
           "fingerprint": "1ec402f107f07ea8abe6244875c5e2702a990b060e0910180506425392dac6ac",
           "verificationStatus": "documented",
@@ -661,7 +661,7 @@
         "classification": "canonical",
         "source": {
           "classification": "canonical",
-          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/WOOSONG_BUDDY/NEXT_ACTIONS.md",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "NEXT_ACTIONS",
           "fingerprint": "1ec402f107f07ea8abe6244875c5e2702a990b060e0910180506425392dac6ac",
           "verificationStatus": "documented",
@@ -673,7 +673,7 @@
         "classification": "unknown",
         "source": {
           "classification": "canonical",
-          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/WOOSONG_BUDDY/CURRENT_STATE.md",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "CURRENT_STATE",
           "fingerprint": "3665171d1a11b9e5c9a99c1e5cb0568c79d28735b41ac7df7504db86a191a488",
           "asOf": "2026-10-03",
@@ -687,7 +687,7 @@
         "classification": "unknown",
         "source": {
           "classification": "canonical",
-          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/WOOSONG_BUDDY/CURRENT_STATE.md",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "CURRENT_STATE",
           "fingerprint": "3665171d1a11b9e5c9a99c1e5cb0568c79d28735b41ac7df7504db86a191a488",
           "asOf": "2026-10-03",
@@ -697,11 +697,11 @@
         "missingReason": "not_recorded"
       },
       "workspace": {
-        "value": "/Users/joeyaj/Documents/Codex/Projects/woosongbuddy",
+        "value": "[Local reference withheld]",
         "classification": "canonical",
         "source": {
           "classification": "canonical",
-          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "Woosong Buddy",
           "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8",
           "asOf": "2026-10-04",
@@ -714,7 +714,7 @@
         "classification": "canonical",
         "source": {
           "classification": "canonical",
-          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/WOOSONG_BUDDY/CURRENT_STATE.md",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "CURRENT_STATE",
           "fingerprint": "3665171d1a11b9e5c9a99c1e5cb0568c79d28735b41ac7df7504db86a191a488",
           "asOf": "2026-10-03",
@@ -724,11 +724,11 @@
       },
       "where": {
         "localPath": {
-          "value": "/Users/joeyaj/Documents/Codex/Projects/woosongbuddy",
+          "value": "[Local reference withheld]",
           "classification": "canonical",
           "source": {
             "classification": "canonical",
-            "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+            "sourcePath": "[Local reference withheld]",
             "sourceSection": "Woosong Buddy",
             "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8",
             "asOf": "2026-10-04",
@@ -741,7 +741,7 @@
           "classification": "canonical",
           "source": {
             "classification": "canonical",
-            "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+            "sourcePath": "[Local reference withheld]",
             "sourceSection": "Woosong Buddy",
             "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8",
             "asOf": "2026-10-04",
@@ -754,7 +754,7 @@
           "classification": "canonical",
           "source": {
             "classification": "canonical",
-            "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+            "sourcePath": "[Local reference withheld]",
             "sourceSection": "Woosong Buddy",
             "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8",
             "asOf": "2026-10-04",
@@ -767,7 +767,7 @@
           "classification": "canonical",
           "source": {
             "classification": "canonical",
-            "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+            "sourcePath": "[Local reference withheld]",
             "sourceSection": "Woosong Buddy",
             "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8",
             "asOf": "2026-10-04",
@@ -780,7 +780,7 @@
           "classification": "observed",
           "source": {
             "classification": "observed",
-            "sourcePath": "/Users/joeyaj/Documents/Codex/Projects/woosongbuddy",
+            "sourcePath": "[Local reference withheld]",
             "sourceSection": "Git observation",
             "fingerprint": "7000c5be9f0bef7d6962ae6bb501021c054474410138ec8a8471f43e1745013c",
             "verificationStatus": "observed",
@@ -792,7 +792,7 @@
           "classification": "canonical",
           "source": {
             "classification": "canonical",
-            "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+            "sourcePath": "[Local reference withheld]",
             "sourceSection": "Woosong Buddy",
             "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8",
             "asOf": "2026-10-04",
@@ -805,7 +805,7 @@
           "classification": "canonical",
           "source": {
             "classification": "canonical",
-            "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/WOOSONG_BUDDY/CURRENT_STATE.md",
+            "sourcePath": "[Local reference withheld]",
             "sourceSection": "CURRENT_STATE",
             "fingerprint": "3665171d1a11b9e5c9a99c1e5cb0568c79d28735b41ac7df7504db86a191a488",
             "asOf": "2026-10-03",
@@ -823,7 +823,7 @@
           "classification": "derived",
           "source": {
             "classification": "canonical",
-            "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/MEMORY_INDEX.md",
+            "sourcePath": "[Local reference withheld]",
             "sourceSection": "Memory Index",
             "fingerprint": "863dad67e5822c016cf52a92de73ac92ad0feaa2c7b43b69244137f9d98da8e7",
             "asOf": "2026-10-04",
@@ -833,7 +833,7 @@
         }
       },
       "workspaceObservation": {
-        "path": "/Users/joeyaj/Documents/Codex/Projects/woosongbuddy",
+        "path": "[Local reference withheld]",
         "branch": "main",
         "head": "23d58a1f56a76a8198569df345b3d4d09ee3de09",
         "origin": "https://github.com/JoeyAJ/woosongbuddy.git",
@@ -845,7 +845,7 @@
         "observationFingerprint": "7000c5be9f0bef7d6962ae6bb501021c054474410138ec8a8471f43e1745013c",
         "source": {
           "classification": "observed",
-          "sourcePath": "/Users/joeyaj/Documents/Codex/Projects/woosongbuddy",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "Git observation",
           "fingerprint": "7000c5be9f0bef7d6962ae6bb501021c054474410138ec8a8471f43e1745013c",
           "verificationStatus": "observed",
@@ -865,19 +865,19 @@
       "conflicts": [],
       "sourceFingerprints": [
         {
-          "path": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/MEMORY_INDEX.md",
+          "path": "[Local reference withheld]",
           "fingerprint": "863dad67e5822c016cf52a92de73ac92ad0feaa2c7b43b69244137f9d98da8e7"
         },
         {
-          "path": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+          "path": "[Local reference withheld]",
           "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8"
         },
         {
-          "path": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/WOOSONG_BUDDY/CURRENT_STATE.md",
+          "path": "[Local reference withheld]",
           "fingerprint": "3665171d1a11b9e5c9a99c1e5cb0568c79d28735b41ac7df7504db86a191a488"
         },
         {
-          "path": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/WOOSONG_BUDDY/NEXT_ACTIONS.md",
+          "path": "[Local reference withheld]",
           "fingerprint": "1ec402f107f07ea8abe6244875c5e2702a990b060e0910180506425392dac6ac"
         }
       ],
@@ -901,7 +901,7 @@
         ],
         "source": {
           "authority": "joey_confirmed_project_metadata",
-          "sourcePath": "/Users/joeyaj/Documents/Codex/Projects/joey-mission-control/metadata/project-urls.v1.json",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "Joey confirmed project URL metadata",
           "fingerprint": "b1bb9a026a0abeec9fe3920b6c5dac419cf63d56531902955a0e30fe2d382001",
           "verificationStatus": "joey_confirmed_url",
@@ -916,7 +916,7 @@
         "classification": "canonical",
         "source": {
           "classification": "canonical",
-          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/MEMORY_INDEX.md",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "Memory Index",
           "fingerprint": "863dad67e5822c016cf52a92de73ac92ad0feaa2c7b43b69244137f9d98da8e7",
           "asOf": "2026-10-04",
@@ -929,7 +929,7 @@
         "classification": "derived",
         "source": {
           "classification": "canonical",
-          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/NAMYOUNG/CURRENT_STATE.md",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "CURRENT_STATE",
           "fingerprint": "835ca188efb2ca75c37a1e4007b4f5250deb19d6b8caf7270a4d0f2e856ae172",
           "asOf": "2026-10-03",
@@ -942,7 +942,7 @@
         "classification": "derived",
         "source": {
           "classification": "canonical",
-          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/NAMYOUNG/CURRENT_STATE.md",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "CURRENT_STATE",
           "fingerprint": "835ca188efb2ca75c37a1e4007b4f5250deb19d6b8caf7270a4d0f2e856ae172",
           "asOf": "2026-10-03",
@@ -955,7 +955,7 @@
         "classification": "derived",
         "source": {
           "classification": "canonical",
-          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/NAMYOUNG/NEXT_ACTIONS.md",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "NEXT_ACTIONS",
           "fingerprint": "99e26d97a65c97d3c134d4a4a5a7d401bfd7cfc5d53c4ec07822975212ef913c",
           "verificationStatus": "documented",
@@ -967,7 +967,7 @@
         "classification": "canonical",
         "source": {
           "classification": "canonical",
-          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/NAMYOUNG/CURRENT_STATE.md",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "Current Stage",
           "fingerprint": "835ca188efb2ca75c37a1e4007b4f5250deb19d6b8caf7270a4d0f2e856ae172",
           "asOf": "2026-10-03",
@@ -983,7 +983,7 @@
             "classification": "canonical",
             "source": {
               "classification": "canonical",
-              "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/NAMYOUNG/NEXT_ACTIONS.md",
+              "sourcePath": "[Local reference withheld]",
               "sourceSection": "Decisions Needed From Joey",
               "fingerprint": "99e26d97a65c97d3c134d4a4a5a7d401bfd7cfc5d53c4ec07822975212ef913c",
               "verificationStatus": "documented",
@@ -995,7 +995,7 @@
             "classification": "canonical",
             "source": {
               "classification": "canonical",
-              "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/NAMYOUNG/NEXT_ACTIONS.md",
+              "sourcePath": "[Local reference withheld]",
               "sourceSection": "Decisions Needed From Joey",
               "fingerprint": "99e26d97a65c97d3c134d4a4a5a7d401bfd7cfc5d53c4ec07822975212ef913c",
               "verificationStatus": "documented",
@@ -1007,7 +1007,7 @@
             "classification": "canonical",
             "source": {
               "classification": "canonical",
-              "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/NAMYOUNG/NEXT_ACTIONS.md",
+              "sourcePath": "[Local reference withheld]",
               "sourceSection": "Decisions Needed From Joey",
               "fingerprint": "99e26d97a65c97d3c134d4a4a5a7d401bfd7cfc5d53c4ec07822975212ef913c",
               "verificationStatus": "documented",
@@ -1019,7 +1019,7 @@
             "classification": "canonical",
             "source": {
               "classification": "canonical",
-              "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/NAMYOUNG/NEXT_ACTIONS.md",
+              "sourcePath": "[Local reference withheld]",
               "sourceSection": "Decisions Needed From Joey",
               "fingerprint": "99e26d97a65c97d3c134d4a4a5a7d401bfd7cfc5d53c4ec07822975212ef913c",
               "verificationStatus": "documented",
@@ -1031,7 +1031,7 @@
             "classification": "canonical",
             "source": {
               "classification": "canonical",
-              "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/NAMYOUNG/NEXT_ACTIONS.md",
+              "sourcePath": "[Local reference withheld]",
               "sourceSection": "Decisions Needed From Joey",
               "fingerprint": "99e26d97a65c97d3c134d4a4a5a7d401bfd7cfc5d53c4ec07822975212ef913c",
               "verificationStatus": "documented",
@@ -1045,7 +1045,7 @@
         "classification": "unknown",
         "source": {
           "classification": "canonical",
-          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/NAMYOUNG/CURRENT_STATE.md",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "CURRENT_STATE",
           "fingerprint": "835ca188efb2ca75c37a1e4007b4f5250deb19d6b8caf7270a4d0f2e856ae172",
           "asOf": "2026-10-03",
@@ -1065,7 +1065,7 @@
         "classification": "unknown",
         "source": {
           "classification": "canonical",
-          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/NAMYOUNG/CURRENT_STATE.md",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "CURRENT_STATE",
           "fingerprint": "835ca188efb2ca75c37a1e4007b4f5250deb19d6b8caf7270a4d0f2e856ae172",
           "asOf": "2026-10-03",
@@ -1079,7 +1079,7 @@
         "classification": "canonical",
         "source": {
           "classification": "canonical",
-          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/NAMYOUNG/NEXT_ACTIONS.md",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "NEXT_ACTIONS",
           "fingerprint": "99e26d97a65c97d3c134d4a4a5a7d401bfd7cfc5d53c4ec07822975212ef913c",
           "verificationStatus": "documented",
@@ -1091,7 +1091,7 @@
         "classification": "canonical",
         "source": {
           "classification": "canonical",
-          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/NAMYOUNG/NEXT_ACTIONS.md",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "NEXT_ACTIONS",
           "fingerprint": "99e26d97a65c97d3c134d4a4a5a7d401bfd7cfc5d53c4ec07822975212ef913c",
           "verificationStatus": "documented",
@@ -1103,7 +1103,7 @@
         "classification": "unknown",
         "source": {
           "classification": "canonical",
-          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/NAMYOUNG/CURRENT_STATE.md",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "CURRENT_STATE",
           "fingerprint": "835ca188efb2ca75c37a1e4007b4f5250deb19d6b8caf7270a4d0f2e856ae172",
           "asOf": "2026-10-03",
@@ -1117,7 +1117,7 @@
         "classification": "unknown",
         "source": {
           "classification": "canonical",
-          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/NAMYOUNG/CURRENT_STATE.md",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "CURRENT_STATE",
           "fingerprint": "835ca188efb2ca75c37a1e4007b4f5250deb19d6b8caf7270a4d0f2e856ae172",
           "asOf": "2026-10-03",
@@ -1127,11 +1127,11 @@
         "missingReason": "not_recorded"
       },
       "workspace": {
-        "value": "/Users/joeyaj/Documents/Codex/Projects/namyoung-web3d",
+        "value": "[Local reference withheld]",
         "classification": "canonical",
         "source": {
           "classification": "canonical",
-          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "Namyoung Web3D",
           "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8",
           "asOf": "2026-10-04",
@@ -1144,7 +1144,7 @@
         "classification": "canonical",
         "source": {
           "classification": "canonical",
-          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/NAMYOUNG/CURRENT_STATE.md",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "CURRENT_STATE",
           "fingerprint": "835ca188efb2ca75c37a1e4007b4f5250deb19d6b8caf7270a4d0f2e856ae172",
           "asOf": "2026-10-03",
@@ -1154,11 +1154,11 @@
       },
       "where": {
         "localPath": {
-          "value": "/Users/joeyaj/Documents/Codex/Projects/namyoung-web3d",
+          "value": "[Local reference withheld]",
           "classification": "canonical",
           "source": {
             "classification": "canonical",
-            "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+            "sourcePath": "[Local reference withheld]",
             "sourceSection": "Namyoung Web3D",
             "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8",
             "asOf": "2026-10-04",
@@ -1171,7 +1171,7 @@
           "classification": "canonical",
           "source": {
             "classification": "canonical",
-            "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+            "sourcePath": "[Local reference withheld]",
             "sourceSection": "Namyoung Web3D",
             "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8",
             "asOf": "2026-10-04",
@@ -1184,7 +1184,7 @@
           "classification": "canonical",
           "source": {
             "classification": "canonical",
-            "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+            "sourcePath": "[Local reference withheld]",
             "sourceSection": "Namyoung Web3D",
             "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8",
             "asOf": "2026-10-04",
@@ -1197,7 +1197,7 @@
           "classification": "canonical",
           "source": {
             "classification": "canonical",
-            "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+            "sourcePath": "[Local reference withheld]",
             "sourceSection": "Namyoung Web3D",
             "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8",
             "asOf": "2026-10-04",
@@ -1210,7 +1210,7 @@
           "classification": "observed",
           "source": {
             "classification": "observed",
-            "sourcePath": "/Users/joeyaj/Documents/Codex/Projects/namyoung-web3d",
+            "sourcePath": "[Local reference withheld]",
             "sourceSection": "Git observation",
             "fingerprint": "a51e346488524b2d83844e1d15834879540c9a8e1943768608aa0da97a47c242",
             "verificationStatus": "observed",
@@ -1222,7 +1222,7 @@
           "classification": "canonical",
           "source": {
             "classification": "canonical",
-            "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+            "sourcePath": "[Local reference withheld]",
             "sourceSection": "Namyoung Web3D",
             "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8",
             "asOf": "2026-10-04",
@@ -1235,7 +1235,7 @@
           "classification": "canonical",
           "source": {
             "classification": "canonical",
-            "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/NAMYOUNG/CURRENT_STATE.md",
+            "sourcePath": "[Local reference withheld]",
             "sourceSection": "CURRENT_STATE",
             "fingerprint": "835ca188efb2ca75c37a1e4007b4f5250deb19d6b8caf7270a4d0f2e856ae172",
             "asOf": "2026-10-03",
@@ -1253,7 +1253,7 @@
           "classification": "derived",
           "source": {
             "classification": "canonical",
-            "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/MEMORY_INDEX.md",
+            "sourcePath": "[Local reference withheld]",
             "sourceSection": "Memory Index",
             "fingerprint": "863dad67e5822c016cf52a92de73ac92ad0feaa2c7b43b69244137f9d98da8e7",
             "asOf": "2026-10-04",
@@ -1263,7 +1263,7 @@
         }
       },
       "workspaceObservation": {
-        "path": "/Users/joeyaj/Documents/Codex/Projects/namyoung-web3d",
+        "path": "[Local reference withheld]",
         "branch": "main",
         "head": "92c17b8adeec5eaa80d27b8facad532e6ff61d59",
         "origin": "git@github.com:JoeyAJ/namyoung-web3d.git",
@@ -1275,7 +1275,7 @@
         "observationFingerprint": "a51e346488524b2d83844e1d15834879540c9a8e1943768608aa0da97a47c242",
         "source": {
           "classification": "observed",
-          "sourcePath": "/Users/joeyaj/Documents/Codex/Projects/namyoung-web3d",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "Git observation",
           "fingerprint": "a51e346488524b2d83844e1d15834879540c9a8e1943768608aa0da97a47c242",
           "verificationStatus": "observed",
@@ -1293,19 +1293,19 @@
       "conflicts": [],
       "sourceFingerprints": [
         {
-          "path": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/MEMORY_INDEX.md",
+          "path": "[Local reference withheld]",
           "fingerprint": "863dad67e5822c016cf52a92de73ac92ad0feaa2c7b43b69244137f9d98da8e7"
         },
         {
-          "path": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+          "path": "[Local reference withheld]",
           "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8"
         },
         {
-          "path": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/NAMYOUNG/CURRENT_STATE.md",
+          "path": "[Local reference withheld]",
           "fingerprint": "835ca188efb2ca75c37a1e4007b4f5250deb19d6b8caf7270a4d0f2e856ae172"
         },
         {
-          "path": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECTS/NAMYOUNG/NEXT_ACTIONS.md",
+          "path": "[Local reference withheld]",
           "fingerprint": "99e26d97a65c97d3c134d4a4a5a7d401bfd7cfc5d53c4ec07822975212ef913c"
         }
       ],
@@ -1329,7 +1329,7 @@
         ],
         "source": {
           "authority": "joey_confirmed_project_metadata",
-          "sourcePath": "/Users/joeyaj/Documents/Codex/Projects/joey-mission-control/metadata/project-urls.v1.json",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "Joey confirmed project URL metadata",
           "fingerprint": "b1bb9a026a0abeec9fe3920b6c5dac419cf63d56531902955a0e30fe2d382001",
           "verificationStatus": "joey_confirmed_url",
@@ -1344,7 +1344,7 @@
         "classification": "canonical",
         "source": {
           "classification": "canonical",
-          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/MEMORY_INDEX.md",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "Memory Index",
           "fingerprint": "863dad67e5822c016cf52a92de73ac92ad0feaa2c7b43b69244137f9d98da8e7",
           "asOf": "2026-10-04",
@@ -1357,7 +1357,7 @@
         "classification": "derived",
         "source": {
           "classification": "canonical",
-          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/CURRENT_STATE.md",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "CURRENT_STATE",
           "fingerprint": "13cda352e0b17a6755b1bea83712a7488d7286974a0bf5d7fcc43c48f2e9ae67",
           "asOf": "2026-10-04",
@@ -1370,7 +1370,7 @@
         "classification": "derived",
         "source": {
           "classification": "canonical",
-          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/CURRENT_STATE.md",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "CURRENT_STATE",
           "fingerprint": "13cda352e0b17a6755b1bea83712a7488d7286974a0bf5d7fcc43c48f2e9ae67",
           "asOf": "2026-10-04",
@@ -1383,7 +1383,7 @@
         "classification": "derived",
         "source": {
           "classification": "canonical",
-          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/NEXT_ACTIONS.md",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "NEXT_ACTIONS",
           "fingerprint": "a6d33a09f5ed538ac13aee34215cac6344ac254a14bd045a5abb720873b8fdeb",
           "verificationStatus": "documented",
@@ -1395,7 +1395,7 @@
         "classification": "canonical",
         "source": {
           "classification": "canonical",
-          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/CURRENT_STATE.md",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "Current Stage",
           "fingerprint": "13cda352e0b17a6755b1bea83712a7488d7286974a0bf5d7fcc43c48f2e9ae67",
           "asOf": "2026-10-04",
@@ -1410,7 +1410,7 @@
             "classification": "canonical",
             "source": {
               "classification": "canonical",
-              "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/NEXT_ACTIONS.md",
+              "sourcePath": "[Local reference withheld]",
               "sourceSection": "Not Authorized Yet",
               "fingerprint": "a6d33a09f5ed538ac13aee34215cac6344ac254a14bd045a5abb720873b8fdeb",
               "verificationStatus": "documented",
@@ -1422,7 +1422,7 @@
             "classification": "canonical",
             "source": {
               "classification": "canonical",
-              "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/NEXT_ACTIONS.md",
+              "sourcePath": "[Local reference withheld]",
               "sourceSection": "Not Authorized Yet",
               "fingerprint": "a6d33a09f5ed538ac13aee34215cac6344ac254a14bd045a5abb720873b8fdeb",
               "verificationStatus": "documented",
@@ -1436,7 +1436,7 @@
             "classification": "canonical",
             "source": {
               "classification": "canonical",
-              "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/NEXT_ACTIONS.md",
+              "sourcePath": "[Local reference withheld]",
               "sourceSection": "Decisions Needed From Joey",
               "fingerprint": "a6d33a09f5ed538ac13aee34215cac6344ac254a14bd045a5abb720873b8fdeb",
               "verificationStatus": "documented",
@@ -1448,7 +1448,7 @@
             "classification": "canonical",
             "source": {
               "classification": "canonical",
-              "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/NEXT_ACTIONS.md",
+              "sourcePath": "[Local reference withheld]",
               "sourceSection": "Decisions Needed From Joey",
               "fingerprint": "a6d33a09f5ed538ac13aee34215cac6344ac254a14bd045a5abb720873b8fdeb",
               "verificationStatus": "documented",
@@ -1462,7 +1462,7 @@
         "classification": "unknown",
         "source": {
           "classification": "canonical",
-          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/CURRENT_STATE.md",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "CURRENT_STATE",
           "fingerprint": "13cda352e0b17a6755b1bea83712a7488d7286974a0bf5d7fcc43c48f2e9ae67",
           "asOf": "2026-10-04",
@@ -1476,7 +1476,7 @@
         "classification": "canonical",
         "source": {
           "classification": "canonical",
-          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/HANDOFF/HISTORY/2026-10-04_1529_joey-asset-system_publish-phase-1-characterization.md",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "Handoff",
           "fingerprint": "1fc6c9f1232b15a40172c65143b5741712caac02b94745bb538902c20d4f4f53",
           "asOf": "2026-10-04T15:29:27+09:00",
@@ -1489,7 +1489,7 @@
         "classification": "unknown",
         "source": {
           "classification": "canonical",
-          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/CURRENT_STATE.md",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "CURRENT_STATE",
           "fingerprint": "13cda352e0b17a6755b1bea83712a7488d7286974a0bf5d7fcc43c48f2e9ae67",
           "asOf": "2026-10-04",
@@ -1503,7 +1503,7 @@
         "classification": "canonical",
         "source": {
           "classification": "canonical",
-          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/NEXT_ACTIONS.md",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "NEXT_ACTIONS",
           "fingerprint": "a6d33a09f5ed538ac13aee34215cac6344ac254a14bd045a5abb720873b8fdeb",
           "verificationStatus": "documented",
@@ -1515,7 +1515,7 @@
         "classification": "unknown",
         "source": {
           "classification": "canonical",
-          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/NEXT_ACTIONS.md",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "NEXT_ACTIONS",
           "fingerprint": "a6d33a09f5ed538ac13aee34215cac6344ac254a14bd045a5abb720873b8fdeb",
           "verificationStatus": "documented",
@@ -1528,7 +1528,7 @@
         "classification": "unknown",
         "source": {
           "classification": "canonical",
-          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/CURRENT_STATE.md",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "CURRENT_STATE",
           "fingerprint": "13cda352e0b17a6755b1bea83712a7488d7286974a0bf5d7fcc43c48f2e9ae67",
           "asOf": "2026-10-04",
@@ -1542,7 +1542,7 @@
         "classification": "unknown",
         "source": {
           "classification": "canonical",
-          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/CURRENT_STATE.md",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "CURRENT_STATE",
           "fingerprint": "13cda352e0b17a6755b1bea83712a7488d7286974a0bf5d7fcc43c48f2e9ae67",
           "asOf": "2026-10-04",
@@ -1552,11 +1552,11 @@
         "missingReason": "not_recorded"
       },
       "workspace": {
-        "value": "/Users/joeyaj/Documents/Codex/Projects/joey-asset-system",
+        "value": "[Local reference withheld]",
         "classification": "canonical",
         "source": {
           "classification": "canonical",
-          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "Joey Asset System",
           "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8",
           "asOf": "2026-10-04",
@@ -1569,7 +1569,7 @@
         "classification": "canonical",
         "source": {
           "classification": "canonical",
-          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/CURRENT_STATE.md",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "CURRENT_STATE",
           "fingerprint": "13cda352e0b17a6755b1bea83712a7488d7286974a0bf5d7fcc43c48f2e9ae67",
           "asOf": "2026-10-04",
@@ -1579,11 +1579,11 @@
       },
       "where": {
         "localPath": {
-          "value": "/Users/joeyaj/Documents/Codex/Projects/joey-asset-system",
+          "value": "[Local reference withheld]",
           "classification": "canonical",
           "source": {
             "classification": "canonical",
-            "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+            "sourcePath": "[Local reference withheld]",
             "sourceSection": "Joey Asset System",
             "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8",
             "asOf": "2026-10-04",
@@ -1596,7 +1596,7 @@
           "classification": "canonical",
           "source": {
             "classification": "canonical",
-            "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+            "sourcePath": "[Local reference withheld]",
             "sourceSection": "Joey Asset System",
             "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8",
             "asOf": "2026-10-04",
@@ -1609,7 +1609,7 @@
           "classification": "canonical",
           "source": {
             "classification": "canonical",
-            "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+            "sourcePath": "[Local reference withheld]",
             "sourceSection": "Joey Asset System",
             "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8",
             "asOf": "2026-10-04",
@@ -1622,7 +1622,7 @@
           "classification": "canonical",
           "source": {
             "classification": "canonical",
-            "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+            "sourcePath": "[Local reference withheld]",
             "sourceSection": "Joey Asset System",
             "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8",
             "asOf": "2026-10-04",
@@ -1635,7 +1635,7 @@
           "classification": "observed",
           "source": {
             "classification": "observed",
-            "sourcePath": "/Users/joeyaj/Documents/Codex/Projects/joey-asset-system",
+            "sourcePath": "[Local reference withheld]",
             "sourceSection": "Git observation",
             "fingerprint": "66e6e8700b08d4932c7e012ddf112d16f31ba61f0a48411efcb19166e8394c92",
             "verificationStatus": "observed",
@@ -1647,7 +1647,7 @@
           "classification": "unknown",
           "source": {
             "classification": "canonical",
-            "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+            "sourcePath": "[Local reference withheld]",
             "sourceSection": "Joey Asset System",
             "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8",
             "asOf": "2026-10-04",
@@ -1661,7 +1661,7 @@
           "classification": "unknown",
           "source": {
             "classification": "canonical",
-            "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/CURRENT_STATE.md",
+            "sourcePath": "[Local reference withheld]",
             "sourceSection": "CURRENT_STATE",
             "fingerprint": "13cda352e0b17a6755b1bea83712a7488d7286974a0bf5d7fcc43c48f2e9ae67",
             "asOf": "2026-10-04",
@@ -1680,7 +1680,7 @@
           "classification": "derived",
           "source": {
             "classification": "canonical",
-            "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/MEMORY_INDEX.md",
+            "sourcePath": "[Local reference withheld]",
             "sourceSection": "Memory Index",
             "fingerprint": "863dad67e5822c016cf52a92de73ac92ad0feaa2c7b43b69244137f9d98da8e7",
             "asOf": "2026-10-04",
@@ -1690,7 +1690,7 @@
         }
       },
       "workspaceObservation": {
-        "path": "/Users/joeyaj/Documents/Codex/Projects/joey-asset-system",
+        "path": "[Local reference withheld]",
         "branch": "main",
         "head": "eb03e2a9d86abf8b53acfe207fb6737d255ba0d4",
         "origin": "https://github.com/JoeyAJ/joey-asset-system.git",
@@ -1702,7 +1702,7 @@
         "observationFingerprint": "66e6e8700b08d4932c7e012ddf112d16f31ba61f0a48411efcb19166e8394c92",
         "source": {
           "classification": "observed",
-          "sourcePath": "/Users/joeyaj/Documents/Codex/Projects/joey-asset-system",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "Git observation",
           "fingerprint": "66e6e8700b08d4932c7e012ddf112d16f31ba61f0a48411efcb19166e8394c92",
           "verificationStatus": "observed",
@@ -1719,23 +1719,23 @@
       "conflicts": [],
       "sourceFingerprints": [
         {
-          "path": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/HANDOFF/HISTORY/2026-10-04_1529_joey-asset-system_publish-phase-1-characterization.md",
+          "path": "[Local reference withheld]",
           "fingerprint": "1fc6c9f1232b15a40172c65143b5741712caac02b94745bb538902c20d4f4f53"
         },
         {
-          "path": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/MEMORY_INDEX.md",
+          "path": "[Local reference withheld]",
           "fingerprint": "863dad67e5822c016cf52a92de73ac92ad0feaa2c7b43b69244137f9d98da8e7"
         },
         {
-          "path": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+          "path": "[Local reference withheld]",
           "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8"
         },
         {
-          "path": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/CURRENT_STATE.md",
+          "path": "[Local reference withheld]",
           "fingerprint": "13cda352e0b17a6755b1bea83712a7488d7286974a0bf5d7fcc43c48f2e9ae67"
         },
         {
-          "path": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/NEXT_ACTIONS.md",
+          "path": "[Local reference withheld]",
           "fingerprint": "a6d33a09f5ed538ac13aee34215cac6344ac254a14bd045a5abb720873b8fdeb"
         }
       ],
@@ -1750,7 +1750,7 @@
             "classification": "canonical",
             "source": {
               "classification": "canonical",
-              "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/MEMORY_INDEX.md",
+              "sourcePath": "[Local reference withheld]",
               "sourceSection": "Memory Index",
               "fingerprint": "863dad67e5822c016cf52a92de73ac92ad0feaa2c7b43b69244137f9d98da8e7",
               "asOf": "2026-10-04",
@@ -1763,7 +1763,7 @@
             "classification": "derived",
             "source": {
               "classification": "canonical",
-              "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/CASES/CASE_001_NAMYOUNG/CURRENT_STATE.md",
+              "sourcePath": "[Local reference withheld]",
               "sourceSection": "CURRENT_STATE",
               "fingerprint": "4fff0de5173a285cc11ce5497ebc52bffca0b872f6cd7c4a23ae506152a07960",
               "asOf": "2026-10-04",
@@ -1776,7 +1776,7 @@
             "classification": "derived",
             "source": {
               "classification": "canonical",
-              "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/CASES/CASE_001_NAMYOUNG/CURRENT_STATE.md",
+              "sourcePath": "[Local reference withheld]",
               "sourceSection": "CURRENT_STATE",
               "fingerprint": "4fff0de5173a285cc11ce5497ebc52bffca0b872f6cd7c4a23ae506152a07960",
               "asOf": "2026-10-04",
@@ -1789,7 +1789,7 @@
             "classification": "derived",
             "source": {
               "classification": "canonical",
-              "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/CASES/CASE_001_NAMYOUNG/NEXT_ACTIONS.md",
+              "sourcePath": "[Local reference withheld]",
               "sourceSection": "NEXT_ACTIONS",
               "fingerprint": "cd21fb550963a8bf5a91d912ea8580b3c124c6160d96c65fceafb2d4d505d647",
               "verificationStatus": "documented",
@@ -1801,7 +1801,7 @@
             "classification": "unknown",
             "source": {
               "classification": "canonical",
-              "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/CASES/CASE_001_NAMYOUNG/CURRENT_STATE.md",
+              "sourcePath": "[Local reference withheld]",
               "sourceSection": "Current Stage",
               "fingerprint": "4fff0de5173a285cc11ce5497ebc52bffca0b872f6cd7c4a23ae506152a07960",
               "asOf": "2026-10-04",
@@ -1819,7 +1819,7 @@
             "classification": "unknown",
             "source": {
               "classification": "canonical",
-              "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/CASES/CASE_001_NAMYOUNG/CURRENT_STATE.md",
+              "sourcePath": "[Local reference withheld]",
               "sourceSection": "CURRENT_STATE",
               "fingerprint": "4fff0de5173a285cc11ce5497ebc52bffca0b872f6cd7c4a23ae506152a07960",
               "asOf": "2026-10-04",
@@ -1839,7 +1839,7 @@
             "classification": "unknown",
             "source": {
               "classification": "canonical",
-              "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/CASES/CASE_001_NAMYOUNG/CURRENT_STATE.md",
+              "sourcePath": "[Local reference withheld]",
               "sourceSection": "CURRENT_STATE",
               "fingerprint": "4fff0de5173a285cc11ce5497ebc52bffca0b872f6cd7c4a23ae506152a07960",
               "asOf": "2026-10-04",
@@ -1853,7 +1853,7 @@
             "classification": "canonical",
             "source": {
               "classification": "canonical",
-              "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/CASES/CASE_001_NAMYOUNG/NEXT_ACTIONS.md",
+              "sourcePath": "[Local reference withheld]",
               "sourceSection": "NEXT_ACTIONS",
               "fingerprint": "cd21fb550963a8bf5a91d912ea8580b3c124c6160d96c65fceafb2d4d505d647",
               "verificationStatus": "documented",
@@ -1865,7 +1865,7 @@
             "classification": "unknown",
             "source": {
               "classification": "canonical",
-              "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/CASES/CASE_001_NAMYOUNG/NEXT_ACTIONS.md",
+              "sourcePath": "[Local reference withheld]",
               "sourceSection": "NEXT_ACTIONS",
               "fingerprint": "cd21fb550963a8bf5a91d912ea8580b3c124c6160d96c65fceafb2d4d505d647",
               "verificationStatus": "documented",
@@ -1878,7 +1878,7 @@
             "classification": "unknown",
             "source": {
               "classification": "canonical",
-              "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/CASES/CASE_001_NAMYOUNG/CURRENT_STATE.md",
+              "sourcePath": "[Local reference withheld]",
               "sourceSection": "CURRENT_STATE",
               "fingerprint": "4fff0de5173a285cc11ce5497ebc52bffca0b872f6cd7c4a23ae506152a07960",
               "asOf": "2026-10-04",
@@ -1892,7 +1892,7 @@
             "classification": "unknown",
             "source": {
               "classification": "canonical",
-              "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/CASES/CASE_001_NAMYOUNG/CURRENT_STATE.md",
+              "sourcePath": "[Local reference withheld]",
               "sourceSection": "CURRENT_STATE",
               "fingerprint": "4fff0de5173a285cc11ce5497ebc52bffca0b872f6cd7c4a23ae506152a07960",
               "asOf": "2026-10-04",
@@ -1902,11 +1902,11 @@
             "missingReason": "not_recorded"
           },
           "workspace": {
-            "value": "/Users/joeyaj/Documents/Codex/Projects/joey-asset-system",
+            "value": "[Local reference withheld]",
             "classification": "canonical",
             "source": {
               "classification": "canonical",
-              "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+              "sourcePath": "[Local reference withheld]",
               "sourceSection": "Joey Asset System",
               "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8",
               "asOf": "2026-10-04",
@@ -1919,7 +1919,7 @@
             "classification": "canonical",
             "source": {
               "classification": "canonical",
-              "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/CASES/CASE_001_NAMYOUNG/CURRENT_STATE.md",
+              "sourcePath": "[Local reference withheld]",
               "sourceSection": "CURRENT_STATE",
               "fingerprint": "4fff0de5173a285cc11ce5497ebc52bffca0b872f6cd7c4a23ae506152a07960",
               "asOf": "2026-10-04",
@@ -1929,11 +1929,11 @@
           },
           "where": {
             "localPath": {
-              "value": "/Users/joeyaj/Documents/Codex/Projects/joey-asset-system",
+              "value": "[Local reference withheld]",
               "classification": "canonical",
               "source": {
                 "classification": "canonical",
-                "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+                "sourcePath": "[Local reference withheld]",
                 "sourceSection": "Joey Asset System",
                 "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8",
                 "asOf": "2026-10-04",
@@ -1946,7 +1946,7 @@
               "classification": "canonical",
               "source": {
                 "classification": "canonical",
-                "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+                "sourcePath": "[Local reference withheld]",
                 "sourceSection": "Joey Asset System",
                 "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8",
                 "asOf": "2026-10-04",
@@ -1959,7 +1959,7 @@
               "classification": "canonical",
               "source": {
                 "classification": "canonical",
-                "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+                "sourcePath": "[Local reference withheld]",
                 "sourceSection": "Joey Asset System",
                 "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8",
                 "asOf": "2026-10-04",
@@ -1972,7 +1972,7 @@
               "classification": "canonical",
               "source": {
                 "classification": "canonical",
-                "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+                "sourcePath": "[Local reference withheld]",
                 "sourceSection": "Joey Asset System",
                 "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8",
                 "asOf": "2026-10-04",
@@ -1985,7 +1985,7 @@
               "classification": "observed",
               "source": {
                 "classification": "observed",
-                "sourcePath": "/Users/joeyaj/Documents/Codex/Projects/joey-asset-system",
+                "sourcePath": "[Local reference withheld]",
                 "sourceSection": "Git observation",
                 "fingerprint": "66e6e8700b08d4932c7e012ddf112d16f31ba61f0a48411efcb19166e8394c92",
                 "verificationStatus": "observed",
@@ -1997,7 +1997,7 @@
               "classification": "unknown",
               "source": {
                 "classification": "canonical",
-                "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+                "sourcePath": "[Local reference withheld]",
                 "sourceSection": "Joey Asset System",
                 "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8",
                 "asOf": "2026-10-04",
@@ -2011,7 +2011,7 @@
               "classification": "unknown",
               "source": {
                 "classification": "canonical",
-                "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/CASES/CASE_001_NAMYOUNG/CURRENT_STATE.md",
+                "sourcePath": "[Local reference withheld]",
                 "sourceSection": "CURRENT_STATE",
                 "fingerprint": "4fff0de5173a285cc11ce5497ebc52bffca0b872f6cd7c4a23ae506152a07960",
                 "asOf": "2026-10-04",
@@ -2029,7 +2029,7 @@
               "classification": "derived",
               "source": {
                 "classification": "canonical",
-                "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/MEMORY_INDEX.md",
+                "sourcePath": "[Local reference withheld]",
                 "sourceSection": "Memory Index",
                 "fingerprint": "863dad67e5822c016cf52a92de73ac92ad0feaa2c7b43b69244137f9d98da8e7",
                 "asOf": "2026-10-04",
@@ -2039,7 +2039,7 @@
             }
           },
           "workspaceObservation": {
-            "path": "/Users/joeyaj/Documents/Codex/Projects/joey-asset-system",
+            "path": "[Local reference withheld]",
             "branch": "main",
             "head": "eb03e2a9d86abf8b53acfe207fb6737d255ba0d4",
             "origin": "https://github.com/JoeyAJ/joey-asset-system.git",
@@ -2051,7 +2051,7 @@
             "observationFingerprint": "66e6e8700b08d4932c7e012ddf112d16f31ba61f0a48411efcb19166e8394c92",
             "source": {
               "classification": "observed",
-              "sourcePath": "/Users/joeyaj/Documents/Codex/Projects/joey-asset-system",
+              "sourcePath": "[Local reference withheld]",
               "sourceSection": "Git observation",
               "fingerprint": "66e6e8700b08d4932c7e012ddf112d16f31ba61f0a48411efcb19166e8394c92",
               "verificationStatus": "observed",
@@ -2068,19 +2068,19 @@
           "conflicts": [],
           "sourceFingerprints": [
             {
-              "path": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/MEMORY_INDEX.md",
+              "path": "[Local reference withheld]",
               "fingerprint": "863dad67e5822c016cf52a92de73ac92ad0feaa2c7b43b69244137f9d98da8e7"
             },
             {
-              "path": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+              "path": "[Local reference withheld]",
               "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8"
             },
             {
-              "path": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/CASES/CASE_001_NAMYOUNG/CURRENT_STATE.md",
+              "path": "[Local reference withheld]",
               "fingerprint": "4fff0de5173a285cc11ce5497ebc52bffca0b872f6cd7c4a23ae506152a07960"
             },
             {
-              "path": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/CASES/CASE_001_NAMYOUNG/NEXT_ACTIONS.md",
+              "path": "[Local reference withheld]",
               "fingerprint": "cd21fb550963a8bf5a91d912ea8580b3c124c6160d96c65fceafb2d4d505d647"
             }
           ],
@@ -2102,7 +2102,7 @@
         "classification": "canonical",
         "source": {
           "classification": "canonical",
-          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/MEMORY_INDEX.md",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "Memory Index",
           "fingerprint": "863dad67e5822c016cf52a92de73ac92ad0feaa2c7b43b69244137f9d98da8e7",
           "asOf": "2026-10-04",
@@ -2115,7 +2115,7 @@
         "classification": "derived",
         "source": {
           "classification": "canonical",
-          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/CASES/CASE_001_NAMYOUNG/CURRENT_STATE.md",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "CURRENT_STATE",
           "fingerprint": "4fff0de5173a285cc11ce5497ebc52bffca0b872f6cd7c4a23ae506152a07960",
           "asOf": "2026-10-04",
@@ -2128,7 +2128,7 @@
         "classification": "derived",
         "source": {
           "classification": "canonical",
-          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/CASES/CASE_001_NAMYOUNG/CURRENT_STATE.md",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "CURRENT_STATE",
           "fingerprint": "4fff0de5173a285cc11ce5497ebc52bffca0b872f6cd7c4a23ae506152a07960",
           "asOf": "2026-10-04",
@@ -2141,7 +2141,7 @@
         "classification": "derived",
         "source": {
           "classification": "canonical",
-          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/CASES/CASE_001_NAMYOUNG/NEXT_ACTIONS.md",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "NEXT_ACTIONS",
           "fingerprint": "cd21fb550963a8bf5a91d912ea8580b3c124c6160d96c65fceafb2d4d505d647",
           "verificationStatus": "documented",
@@ -2153,7 +2153,7 @@
         "classification": "unknown",
         "source": {
           "classification": "canonical",
-          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/CASES/CASE_001_NAMYOUNG/CURRENT_STATE.md",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "Current Stage",
           "fingerprint": "4fff0de5173a285cc11ce5497ebc52bffca0b872f6cd7c4a23ae506152a07960",
           "asOf": "2026-10-04",
@@ -2171,7 +2171,7 @@
         "classification": "unknown",
         "source": {
           "classification": "canonical",
-          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/CASES/CASE_001_NAMYOUNG/CURRENT_STATE.md",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "CURRENT_STATE",
           "fingerprint": "4fff0de5173a285cc11ce5497ebc52bffca0b872f6cd7c4a23ae506152a07960",
           "asOf": "2026-10-04",
@@ -2191,7 +2191,7 @@
         "classification": "unknown",
         "source": {
           "classification": "canonical",
-          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/CASES/CASE_001_NAMYOUNG/CURRENT_STATE.md",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "CURRENT_STATE",
           "fingerprint": "4fff0de5173a285cc11ce5497ebc52bffca0b872f6cd7c4a23ae506152a07960",
           "asOf": "2026-10-04",
@@ -2205,7 +2205,7 @@
         "classification": "canonical",
         "source": {
           "classification": "canonical",
-          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/CASES/CASE_001_NAMYOUNG/NEXT_ACTIONS.md",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "NEXT_ACTIONS",
           "fingerprint": "cd21fb550963a8bf5a91d912ea8580b3c124c6160d96c65fceafb2d4d505d647",
           "verificationStatus": "documented",
@@ -2217,7 +2217,7 @@
         "classification": "unknown",
         "source": {
           "classification": "canonical",
-          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/CASES/CASE_001_NAMYOUNG/NEXT_ACTIONS.md",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "NEXT_ACTIONS",
           "fingerprint": "cd21fb550963a8bf5a91d912ea8580b3c124c6160d96c65fceafb2d4d505d647",
           "verificationStatus": "documented",
@@ -2230,7 +2230,7 @@
         "classification": "unknown",
         "source": {
           "classification": "canonical",
-          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/CASES/CASE_001_NAMYOUNG/CURRENT_STATE.md",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "CURRENT_STATE",
           "fingerprint": "4fff0de5173a285cc11ce5497ebc52bffca0b872f6cd7c4a23ae506152a07960",
           "asOf": "2026-10-04",
@@ -2244,7 +2244,7 @@
         "classification": "unknown",
         "source": {
           "classification": "canonical",
-          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/CASES/CASE_001_NAMYOUNG/CURRENT_STATE.md",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "CURRENT_STATE",
           "fingerprint": "4fff0de5173a285cc11ce5497ebc52bffca0b872f6cd7c4a23ae506152a07960",
           "asOf": "2026-10-04",
@@ -2254,11 +2254,11 @@
         "missingReason": "not_recorded"
       },
       "workspace": {
-        "value": "/Users/joeyaj/Documents/Codex/Projects/joey-asset-system",
+        "value": "[Local reference withheld]",
         "classification": "canonical",
         "source": {
           "classification": "canonical",
-          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "Joey Asset System",
           "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8",
           "asOf": "2026-10-04",
@@ -2271,7 +2271,7 @@
         "classification": "canonical",
         "source": {
           "classification": "canonical",
-          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/CASES/CASE_001_NAMYOUNG/CURRENT_STATE.md",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "CURRENT_STATE",
           "fingerprint": "4fff0de5173a285cc11ce5497ebc52bffca0b872f6cd7c4a23ae506152a07960",
           "asOf": "2026-10-04",
@@ -2281,11 +2281,11 @@
       },
       "where": {
         "localPath": {
-          "value": "/Users/joeyaj/Documents/Codex/Projects/joey-asset-system",
+          "value": "[Local reference withheld]",
           "classification": "canonical",
           "source": {
             "classification": "canonical",
-            "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+            "sourcePath": "[Local reference withheld]",
             "sourceSection": "Joey Asset System",
             "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8",
             "asOf": "2026-10-04",
@@ -2298,7 +2298,7 @@
           "classification": "canonical",
           "source": {
             "classification": "canonical",
-            "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+            "sourcePath": "[Local reference withheld]",
             "sourceSection": "Joey Asset System",
             "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8",
             "asOf": "2026-10-04",
@@ -2311,7 +2311,7 @@
           "classification": "canonical",
           "source": {
             "classification": "canonical",
-            "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+            "sourcePath": "[Local reference withheld]",
             "sourceSection": "Joey Asset System",
             "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8",
             "asOf": "2026-10-04",
@@ -2324,7 +2324,7 @@
           "classification": "canonical",
           "source": {
             "classification": "canonical",
-            "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+            "sourcePath": "[Local reference withheld]",
             "sourceSection": "Joey Asset System",
             "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8",
             "asOf": "2026-10-04",
@@ -2337,7 +2337,7 @@
           "classification": "observed",
           "source": {
             "classification": "observed",
-            "sourcePath": "/Users/joeyaj/Documents/Codex/Projects/joey-asset-system",
+            "sourcePath": "[Local reference withheld]",
             "sourceSection": "Git observation",
             "fingerprint": "66e6e8700b08d4932c7e012ddf112d16f31ba61f0a48411efcb19166e8394c92",
             "verificationStatus": "observed",
@@ -2349,7 +2349,7 @@
           "classification": "unknown",
           "source": {
             "classification": "canonical",
-            "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+            "sourcePath": "[Local reference withheld]",
             "sourceSection": "Joey Asset System",
             "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8",
             "asOf": "2026-10-04",
@@ -2363,7 +2363,7 @@
           "classification": "unknown",
           "source": {
             "classification": "canonical",
-            "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/CASES/CASE_001_NAMYOUNG/CURRENT_STATE.md",
+            "sourcePath": "[Local reference withheld]",
             "sourceSection": "CURRENT_STATE",
             "fingerprint": "4fff0de5173a285cc11ce5497ebc52bffca0b872f6cd7c4a23ae506152a07960",
             "asOf": "2026-10-04",
@@ -2381,7 +2381,7 @@
           "classification": "derived",
           "source": {
             "classification": "canonical",
-            "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/MEMORY_INDEX.md",
+            "sourcePath": "[Local reference withheld]",
             "sourceSection": "Memory Index",
             "fingerprint": "863dad67e5822c016cf52a92de73ac92ad0feaa2c7b43b69244137f9d98da8e7",
             "asOf": "2026-10-04",
@@ -2391,7 +2391,7 @@
         }
       },
       "workspaceObservation": {
-        "path": "/Users/joeyaj/Documents/Codex/Projects/joey-asset-system",
+        "path": "[Local reference withheld]",
         "branch": "main",
         "head": "eb03e2a9d86abf8b53acfe207fb6737d255ba0d4",
         "origin": "https://github.com/JoeyAJ/joey-asset-system.git",
@@ -2403,7 +2403,7 @@
         "observationFingerprint": "66e6e8700b08d4932c7e012ddf112d16f31ba61f0a48411efcb19166e8394c92",
         "source": {
           "classification": "observed",
-          "sourcePath": "/Users/joeyaj/Documents/Codex/Projects/joey-asset-system",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "Git observation",
           "fingerprint": "66e6e8700b08d4932c7e012ddf112d16f31ba61f0a48411efcb19166e8394c92",
           "verificationStatus": "observed",
@@ -2420,19 +2420,19 @@
       "conflicts": [],
       "sourceFingerprints": [
         {
-          "path": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/MEMORY_INDEX.md",
+          "path": "[Local reference withheld]",
           "fingerprint": "863dad67e5822c016cf52a92de73ac92ad0feaa2c7b43b69244137f9d98da8e7"
         },
         {
-          "path": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/PROJECT_REGISTRY_V1.0.md",
+          "path": "[Local reference withheld]",
           "fingerprint": "9e5d1216a53544131eec468c4774269a45b95a70267a988797927f9e827cbcb8"
         },
         {
-          "path": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/CASES/CASE_001_NAMYOUNG/CURRENT_STATE.md",
+          "path": "[Local reference withheld]",
           "fingerprint": "4fff0de5173a285cc11ce5497ebc52bffca0b872f6cd7c4a23ae506152a07960"
         },
         {
-          "path": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/SYSTEMS/JOEY_ASSET_SYSTEM/CASES/CASE_001_NAMYOUNG/NEXT_ACTIONS.md",
+          "path": "[Local reference withheld]",
           "fingerprint": "cd21fb550963a8bf5a91d912ea8580b3c124c6160d96c65fceafb2d4d505d647"
         }
       ],
@@ -2455,11 +2455,11 @@
       "commit": "9b5f477fc9506e5c3ba254640af31e02d1f79c7e",
       "decisionRequired": "",
       "nextAction": "Wait for Joey's approval of the remote-access architecture before changing architecture or deploying. Do not begin Mission Control V0.2.",
-      "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/HANDOFF/LATEST.md",
+      "sourcePath": "[Local reference withheld]",
       "fingerprint": "b2c5d3f4d6da7913d6000bc0b91673b5e1780a55c0556fa410c63e5eafa6e475",
       "source": {
         "classification": "canonical",
-        "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/HANDOFF/LATEST.md",
+        "sourcePath": "[Local reference withheld]",
         "sourceSection": "Handoff",
         "fingerprint": "b2c5d3f4d6da7913d6000bc0b91673b5e1780a55c0556fa410c63e5eafa6e475",
         "asOf": "2026-10-05T09:58:25+09:00",
@@ -2486,11 +2486,11 @@
         "commit": "134caab8d0b21d37d1469620ecebb7abb43a4c19",
         "decisionRequired": "Joey approval is required to push the Asset System baseline commit and tag to `JoeyAJ/joey-asset-system`.\nJoey approval is required before beginning Phase 1 characterization.",
         "nextAction": "After explicit approval, push the existing Asset System `main` baseline and annotated tag, verify the remote SHA, and then separately decide whether to begin Phase 1. No action should be taken automatically.",
-        "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/HANDOFF/HISTORY/2026-10-04_1059_joey-asset-system_phase-0-recovery.md",
+        "sourcePath": "[Local reference withheld]",
         "fingerprint": "174c04751cce834ef67f9b427c58925f968d650c1a867d07e897bb268ce5dcc3",
         "source": {
           "classification": "canonical",
-          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/HANDOFF/HISTORY/2026-10-04_1059_joey-asset-system_phase-0-recovery.md",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "Handoff",
           "fingerprint": "174c04751cce834ef67f9b427c58925f968d650c1a867d07e897bb268ce5dcc3",
           "asOf": "2026-10-04T10:59:36+09:00",
@@ -2514,11 +2514,11 @@
         "commit": "134caab8d0b21d37d1469620ecebb7abb43a4c19",
         "decisionRequired": "NONE",
         "nextAction": "Wait for explicit Joey approval before beginning Phase 1 characterization. No action should be taken automatically.",
-        "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/HANDOFF/HISTORY/2026-10-04_1123_joey-asset-system_publish-phase-0-baseline.md",
+        "sourcePath": "[Local reference withheld]",
         "fingerprint": "ea5adf518a33bcd86b39ca5c75994e8ef4a3d7a3ea424ecbb2e04a971c561c3d",
         "source": {
           "classification": "canonical",
-          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/HANDOFF/HISTORY/2026-10-04_1123_joey-asset-system_publish-phase-0-baseline.md",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "Handoff",
           "fingerprint": "ea5adf518a33bcd86b39ca5c75994e8ef4a3d7a3ea424ecbb2e04a971c561c3d",
           "asOf": "2026-10-04T11:23:21+09:00",
@@ -2542,11 +2542,11 @@
         "commit": "",
         "decisionRequired": "Joey approval is required before committing or pushing the six Phase 1 characterization files to `JoeyAJ/joey-asset-system`.",
         "nextAction": "Wait. If Joey approves, commit only the completed Phase 1 characterization files, push them to the private application repository, verify the remote SHA, and stop without starting Phase 2 or deploying.",
-        "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/HANDOFF/HISTORY/2026-10-04_1519_joey-asset-system_phase-1-characterization.md",
+        "sourcePath": "[Local reference withheld]",
         "fingerprint": "f077d10b89d3e15ba5bc46deaf2aee27235bd4a9b5628e71b7fae95ce2a3b352",
         "source": {
           "classification": "canonical",
-          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/HANDOFF/HISTORY/2026-10-04_1519_joey-asset-system_phase-1-characterization.md",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "Handoff",
           "fingerprint": "f077d10b89d3e15ba5bc46deaf2aee27235bd4a9b5628e71b7fae95ce2a3b352",
           "asOf": "2026-10-04T15:19:55+09:00",
@@ -2570,11 +2570,11 @@
         "commit": "eb03e2a9d86abf8b53acfe207fb6737d255ba0d4",
         "decisionRequired": "NONE for Phase 1 publication.\n\nA separate Joey approval is required before Phase 2, reusable-Core extraction, deployment, or any ChatGPT Site modification.",
         "nextAction": "Stop and preserve the published Phase 1 regression boundary. Do not begin Phase 2 automatically.",
-        "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/HANDOFF/HISTORY/2026-10-04_1529_joey-asset-system_publish-phase-1-characterization.md",
+        "sourcePath": "[Local reference withheld]",
         "fingerprint": "1fc6c9f1232b15a40172c65143b5741712caac02b94745bb538902c20d4f4f53",
         "source": {
           "classification": "canonical",
-          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/HANDOFF/HISTORY/2026-10-04_1529_joey-asset-system_publish-phase-1-characterization.md",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "Handoff",
           "fingerprint": "1fc6c9f1232b15a40172c65143b5741712caac02b94745bb538902c20d4f4f53",
           "asOf": "2026-10-04T15:29:27+09:00",
@@ -2598,11 +2598,11 @@
         "commit": "",
         "decisionRequired": "Joey must decide whether to:\n\n1. authorize a targeted lifecycle fix and a new validation/review cycle; or\n2. explicitly accept the recorded blocking limitation and authorize commit/publication despite the failed final review.\n\nNo commit or GitHub push is authorized by this Handoff.",
         "nextAction": "Stop here and preserve the current filesystem. Wait for Joey's decision on whether Mission Control V0.1 should be fixed before commit or accepted with the documented lifecycle limitation. Do not begin Mission Control V0.2.",
-        "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/HANDOFF/HISTORY/2026-10-05_0905_joey-mission-control_v0-1-final-validation.md",
+        "sourcePath": "[Local reference withheld]",
         "fingerprint": "95b9b410a4d3ebf357709909f2c8251c4e6b0096ca148d1b52ffdc1202a08fd1",
         "source": {
           "classification": "canonical",
-          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/HANDOFF/HISTORY/2026-10-05_0905_joey-mission-control_v0-1-final-validation.md",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "Handoff",
           "fingerprint": "95b9b410a4d3ebf357709909f2c8251c4e6b0096ca148d1b52ffdc1202a08fd1",
           "asOf": "2026-10-05T09:05:46+09:00",
@@ -2628,11 +2628,11 @@
         "commit": "",
         "decisionRequired": "",
         "nextAction": "Joey performs the acceptance test. After acceptance, Joey decides whether to authorize the local commit, private GitHub repository, push, and Canonical Memory registration. Do not begin Mission Control V0.2.",
-        "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/HANDOFF/HISTORY/2026-10-05_0918_joey-mission-control_v0-1-blocker-fix-validation.md",
+        "sourcePath": "[Local reference withheld]",
         "fingerprint": "bc0fa1670a57fa3c9712f30a0aedee278915be82e2dc18c95228f73098876393",
         "source": {
           "classification": "canonical",
-          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/HANDOFF/HISTORY/2026-10-05_0918_joey-mission-control_v0-1-blocker-fix-validation.md",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "Handoff",
           "fingerprint": "bc0fa1670a57fa3c9712f30a0aedee278915be82e2dc18c95228f73098876393",
           "asOf": "2026-10-05T09:18:00+09:00",
@@ -2658,11 +2658,11 @@
         "commit": "",
         "decisionRequired": "",
         "nextAction": "Joey performs the Acceptance Re-Test of localization. After acceptance, Joey decides on commit / private GitHub repository / push. Do not begin Mission Control V0.2.",
-        "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/HANDOFF/HISTORY/2026-10-05_0950_joey-mission-control_v0-1-localization-acceptance-fix.md",
+        "sourcePath": "[Local reference withheld]",
         "fingerprint": "b96c1ead12a6e2a46b1bf8a6e694be01ff3d8aba532aaff3e8aaf621919d4545",
         "source": {
           "classification": "canonical",
-          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/HANDOFF/HISTORY/2026-10-05_0950_joey-mission-control_v0-1-localization-acceptance-fix.md",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "Handoff",
           "fingerprint": "b96c1ead12a6e2a46b1bf8a6e694be01ff3d8aba532aaff3e8aaf621919d4545",
           "asOf": "2026-10-05T09:50:00+09:00",
@@ -2688,11 +2688,11 @@
         "commit": "9b5f477fc9506e5c3ba254640af31e02d1f79c7e",
         "decisionRequired": "",
         "nextAction": "Wait for Joey's approval of the remote-access architecture before changing architecture or deploying. Do not begin Mission Control V0.2.",
-        "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/HANDOFF/HISTORY/2026-10-05_0958_joey-mission-control_v0-1-baseline-established.md",
+        "sourcePath": "[Local reference withheld]",
         "fingerprint": "b2c5d3f4d6da7913d6000bc0b91673b5e1780a55c0556fa410c63e5eafa6e475",
         "source": {
           "classification": "canonical",
-          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/HANDOFF/HISTORY/2026-10-05_0958_joey-mission-control_v0-1-baseline-established.md",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "Handoff",
           "fingerprint": "b2c5d3f4d6da7913d6000bc0b91673b5e1780a55c0556fa410c63e5eafa6e475",
           "asOf": "2026-10-05T09:58:25+09:00",
@@ -2720,11 +2720,11 @@
         "commit": "eb03e2a9d86abf8b53acfe207fb6737d255ba0d4",
         "decisionRequired": "NONE for Phase 1 publication.\n\nA separate Joey approval is required before Phase 2, reusable-Core extraction, deployment, or any ChatGPT Site modification.",
         "nextAction": "Stop and preserve the published Phase 1 regression boundary. Do not begin Phase 2 automatically.",
-        "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/HANDOFF/HISTORY/2026-10-04_1529_joey-asset-system_publish-phase-1-characterization.md",
+        "sourcePath": "[Local reference withheld]",
         "fingerprint": "1fc6c9f1232b15a40172c65143b5741712caac02b94745bb538902c20d4f4f53",
         "source": {
           "classification": "canonical",
-          "sourcePath": "/Users/joeyaj/JOEY_CANONICAL_MEMORY/HANDOFF/HISTORY/2026-10-04_1529_joey-asset-system_publish-phase-1-characterization.md",
+          "sourcePath": "[Local reference withheld]",
           "sourceSection": "Handoff",
           "fingerprint": "1fc6c9f1232b15a40172c65143b5741712caac02b94745bb538902c20d4f4f53",
           "asOf": "2026-10-04T15:29:27+09:00",
