@@ -39,16 +39,16 @@ test('durable Inbox API preserves boundaries, protects fields, and rejects stale
   assert.equal((await request('/api/inbox/missing',{state:'Resolved',expectedState:'Needs review'},'PATCH')).status,404);
 });
 
-test('health describes accepted V0.3-D separately from its V0.3-C parent',async t=>{
+test('health describes authorized V0.3-E public testing separately from its accepted D parent',async t=>{
   const server=http.createServer(createApp({}));
   await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));t.after(()=>server.close());
   const health=await(await fetch(`http://127.0.0.1:${server.address().port}/api/health`)).json();
-  assert.equal(health.version,'0.3.0-d');
-  assert.equal(health.developmentVersion,'0.3.0-d');
-  assert.equal(health.candidateAcceptance,'PASSED');
-  assert.equal(health.candidateBaseline,'150adbf7263b572465f4645869edda7be76e0f11');
+  assert.equal(health.version,'0.3.0-e');
+  assert.equal(health.developmentVersion,'0.3.0-e');
+  assert.equal(health.candidateAcceptance,'PUBLIC_TEST_AUTHORIZED');
+  assert.equal(health.candidateBaseline,'c9aad518d277de36a50ea3aab30f6cea6c212b80');
   assert.equal(health.deployAuthorized,true);
-  assert.equal(health.releaseStatus,'accepted');
-  assert.equal(health.parentBaseline,'150adbf7263b572465f4645869edda7be76e0f11');
+  assert.equal(health.releaseStatus,'public-test');
+  assert.equal(health.parentBaseline,'c9aad518d277de36a50ea3aab30f6cea6c212b80');
   assert.equal(Object.hasOwn(health,'token'),false);
 });

@@ -1,3 +1,5 @@
+> V0.3-E public-test release authorized 2026-10-06: shared liquid-glass UI and four-project navigation. Public Production stays read-only and excludes private Ideas/proposals/Asset classification; local registration and same-record editing remain on Joey Mac. Public testing approval is recorded separately from final Joey feedback. See docs/V0.3-E_RELEASE_CHECKPOINT.md; the pre-release acceptance report is historical.
+
 > V0.3-D accepted 2026-10-06: handoff-first five project readouts, last-confirmed stage Fleet navigation and any-Agent continuation guide. Parent accepted C 150adbf7263b572465f4645869edda7be76e0f11. See docs/V0.3-D_RELEASE_CHECKPOINT.md.
 
 # Joey Mission Control

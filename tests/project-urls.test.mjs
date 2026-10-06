@@ -35,7 +35,7 @@ test('URL fields do not change project canonical truth or acceptance',async()=>{
  const root='/Users/joeyaj/JOEY_CANONICAL_MEMORY';const a=await buildProjection(root),b=await buildProjection(root,{projectUrlMetadata:{schemaVersion:'1.0',projects:[]}});
  const stable=v=>JSON.parse(JSON.stringify(v,(k,x)=>k==='readAt'?undefined:x));
  for(const p of a.projects){const q=b.projects.find(x=>x.id===p.id);for(const key of ['status','phase','currentTask','lastAI','model','lastCompleted','sourceFingerprints'])assert.deepEqual(stable(p[key]),stable(q[key]));assert.equal(primaryProjectLink(q),null);}
- assert.equal(release.releaseStatus,'accepted');
+ assert.equal(release.releaseStatus,'public-test');
 });
 test('URL metadata schema rejects malformed records and supports preview and legacy without promoting them',async()=>{
  const {validate,loadSchema}=await import('../src/api/validation.mjs');const schema=await loadSchema('project-urls');const metadata=await loadProjectUrls();assert.equal(validate(schema,metadata).valid,true);

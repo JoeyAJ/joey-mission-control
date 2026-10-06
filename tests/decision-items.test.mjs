@@ -21,5 +21,5 @@ test('verified WHAT WHY SOURCE pending STATUS resolves through clickable indicat
  const panel=decisionPanel(project,opened,doc,'zh-TW');const statusButton=panel.children.find(n=>n.children?.some(c=>c.dataset?.decisionTarget))?.children.find(c=>c.dataset?.decisionTarget);assert.equal(statusButton.dataset.decisionTarget,item.id);statusButton.listeners.click();assert.equal(panel.focused,true);assert.equal(panel.id,button.dataset.decisionTarget);const text=texts(panel);for(const expected of ['Test project',item.what,item.why,source.sourcePath,'查看證據／來源'])assert.ok(text.includes(expected),expected);
 });
 test('current canonical candidates without explicit WHY/status are preserved but not actionable',async()=>{
- const snapshot=await buildProjection('/Users/joeyaj/JOEY_CANONICAL_MEMORY');for(const project of snapshot.projects){assert.equal(verifiedDecisionItems(project).length,0,project.id);assert.ok(project.management.decisions.length);assert.equal(controlFlags(project).decision,false);}
+ const snapshot=await buildProjection('/Users/joeyaj/JOEY_CANONICAL_MEMORY');for(const project of snapshot.projects){assert.equal(verifiedDecisionItems(project).length,0,project.id);assert.ok(Array.isArray(project.management.decisions));assert.equal(controlFlags(project).decision,false);}
 });

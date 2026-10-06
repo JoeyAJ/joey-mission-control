@@ -6,7 +6,7 @@ import fs from 'node:fs/promises';
 import {securityHeaders} from '../src/api/routes.mjs';
 const request=(route,method='GET')=>productionResponse(method,new URL('https://fixture/api/index?route='+route));
 test('production exposes verified snapshot and accepted UI APIs with fail-closed continuation',()=>{
- const health=request('health').body;assert.equal(health.readOnly,true);assert.equal(health.joeyAcceptance,'PASSED');
+ const health=request('health').body;assert.equal(health.readOnly,true);assert.equal(health.version,'0.3.0-e');assert.equal(health.candidateStage,'V0.3-E');assert.equal(health.joeyAcceptance,'PUBLIC_TEST_AUTHORIZED');
  const state=request('state').body;assert.equal(state.projects.length,4);assert.equal(state.deploymentObservation.mode,'verified_release_snapshot');
  for(const route of ['inbox','workspaces','handoffs','projects/NEXAEON'])assert.equal(request(route).status,200);
  for(const project of state.projects){assert.equal(verifiedDecisionItems(project).length,0);const result=request('projects/'+project.id+'/continue').body;assert.equal(result.canContinue,false);assert.equal(result.hermesPrompt,null);assert.match(result.conflicts.join(' '),/cannot inspect live Mac/);}
@@ -37,3 +37,5 @@ test('every public release route withholds private filesystem and credential ref
  const routes=['health','state','projects','inbox','handoffs','workspaces',...ids.flatMap(id=>['projects/'+id,'projects/'+id+'/continue',...['state','manifest','runtime','activity','product','project-state'].map(s=>'projects/'+id+'/'+s)])];
  for(const route of routes){const response=request(route);assert.equal(response.status,200,route);assert.doesNotMatch(JSON.stringify(response.body),/\/Users\/|\/home\/|\/private\/|Bearer\s|gh[pousr]_|sk-[A-Za-z0-9]|PRIVATE KEY/,route);}
 });
+
+test('public E withholds local registration and asset catalog endpoints',()=>{for(const route of ['proposals','asset-catalog']){assert.equal(request(route).status,404);assert.equal(request(route,'POST').status,403);}});

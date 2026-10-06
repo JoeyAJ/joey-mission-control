@@ -39,7 +39,7 @@ test('workspace create/edit/transition preserves canonical truth, missions, phas
  await deps.updateSession(session.id,{state:'waiting_for_joey'});
  const after=await deps.getState();assert.deepEqual(truth(after.projects.find(x=>x.id===p.id)),truth(p));
  assert.deepEqual(stable(after.handoffs),stable(before.handoffs));
- assert.equal(release.releaseStatus,'accepted');
+ assert.equal(release.releaseStatus,'public-test');
  for(const patch of [{status:'Completed'},{phase:'DEPLOY'},{acceptance:'passed'},{verifiedAgentHistory:['x']},{state:'completed'}])await assert.rejects(()=>deps.updateSession(session.id,patch));
  assert.deepEqual((await fs.readdir(dataRoot)).sort(),['sessions.v1.json']);
 });

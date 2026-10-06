@@ -1,6 +1,6 @@
 {
   "name": "joey-mission-control",
-  "version": "0.3.0-d",
+  "version": "0.3.0-e",
   "private": true,
   "type": "module",
   "description": "Local Multi-AI Project Control Center for Joey",

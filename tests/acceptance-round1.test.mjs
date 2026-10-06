@@ -6,7 +6,7 @@ import {release} from '../src/release.mjs';
 const source={classification:'canonical',sourcePath:'/canonical/CURRENT_STATE.md',sourceSection:'CURRENT_STATE',fingerprint:'a'.repeat(64),verificationStatus:'verified_current',readAt:'2026-10-05T00:00:00.000Z'};
 const project=(overrides={})=>buildProjectProjection({id:'X',name:'X',entityType:'project',state:{sections:{'Current Stage':'Building'},source},next:{source,sections:{'Recommended Next Step':'Review release'}},...overrides});
 
-test('V0.2 release status reflects the latest explicit Joey release authorization',()=>assert.equal(release.releaseStatus,'accepted'));
+test('V0.2 release status reflects the latest explicit Joey release authorization',()=>assert.equal(release.releaseStatus,'public-test'));
 test('current mission is separate from next action and retains its own source',()=>{
   const p=project({state:{source,sections:{'Current Stage':'Building','Current Mission':'Implement review UI'}}});
   assert.equal(p.currentTask.value,'Implement review UI');assert.equal(p.nextAction.value,'Review release');

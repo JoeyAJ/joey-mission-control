@@ -4,6 +4,7 @@ import {manifest} from '../src/agent/control.mjs';
 import fs from 'node:fs/promises';
 import {securityHeaders,safeId} from '../src/api/routes.mjs';
 import {release} from '../src/release.mjs';
+import {candidate} from '../src/candidate.mjs';
 import {composeContinue} from '../src/continue/continue-composer.mjs';
 const snapshot=JSON.parse(await fs.readFile(new URL('../deployment/production-snapshot.json',import.meta.url),'utf8'));
 const projectStates=JSON.parse(await fs.readFile(new URL('../deployment/project-state.v03b.json',import.meta.url),'utf8'));
@@ -12,7 +13,7 @@ const projectManifest=p=>{const m=manifest(p,{handoff:snapshot.handoffs.byEntity
 export function productionResponse(method,url){
  if(method!=='GET')return{status:403,body:{error:'Public production is read-only. Use authorized local Mission Control for writes.'}};
  const route=url.searchParams.get('route')||'';
- if(route==='health')return{status:200,body:{ok:true,...release,mode:'verified_release_snapshot',readOnly:true,snapshotGeneratedAt:snapshot.generatedAt}};
+ if(route==='health')return{status:200,body:{ok:true,...release,...candidate,mode:'verified_release_snapshot',readOnly:true,snapshotGeneratedAt:snapshot.generatedAt}};
  if(route==='state')return{status:200,body:snapshot};
  if(route==='projects')return{status:200,body:snapshot.projects.map(p=>projectManifest(p))};
  const canonical=route.match(/^projects\/([^/]+)\/project-state$/);if(canonical){const state=projectStates.projects.find(s=>s.id===safeId(canonical[1]));return state?{status:200,body:state}:{status:404,body:{error:'Project not found'}};}

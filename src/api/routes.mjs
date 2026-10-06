@@ -11,6 +11,8 @@ export async function readJson(req,limit=65536){if(!/^application\/json(?:;|$)/i
 export function createRouter(deps){return async(req,res,url)=>{
   const method=req.method,pathname=url.pathname;
   if(method==='GET'&&pathname==='/api/health')return{status:200,body:{ok:true,loopback:true,...release,...candidate,localWriteSupport:true}};
+  if(method==='GET'&&pathname==='/api/asset-catalog'&&deps.getAssetCatalog)return{status:200,body:await deps.getAssetCatalog()};
+  if(pathname==='/api/proposals'&&deps.proposals){await deps.ready;if(method==='GET')return{status:200,body:await deps.proposals.list()};if(method==='POST')return{status:201,body:await deps.proposals.create(await readJson(req))};}
   if(method==='GET'&&pathname==='/api/state')return{status:200,body:await deps.getState()};
   if(method==='GET'&&pathname==='/api/workspaces')return{status:200,body:await deps.getWorkspaces()};
   if(method==='GET'&&pathname==='/api/handoffs')return{status:200,body:await deps.getHandoffs()};
