@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-06T23:50:44.660174+00:00",
+  "repository": "JoeyAJ/joey-mission-control",
+  "visibility": "private",
+  "visibilityEvidence": "authorized GitHub get_repo structuredContent visibility private",
+  "branch": "codex/mc-command-center-checkpoint-20261006",
+  "stageContentCommit": "39846c133fa01956bc6317b6223b4ceb4e9a19f4",
+  "tree": "7bbabfe7c3fa670c95fe50b972e0294f61c5d583",
+  "push": "NON_FORCE_NEW_BRANCH_SUCCEEDED",
+  "remoteRefVerification": "EXACT_SHA",
+  "fetchBack": "EXACT_SHA_AND_TREE_FROM_INDEPENDENT_SHALLOW_BARE_CLONE",
+  "readbackRoot": "/workspace/mc-remote-checkpoint-readback",
+  "status": "REMOTE_SAFE_CHECKPOINT_VERIFIED",
+  "preservedRefs": {
+    "main": "9b5f477fc9506e5c3ba254640af31e02d1f79c7e",
+    "acceptedMigration": "8b4945b16a0b23f2e72033aa976fa34f94eabec0",
+    "savedOriginal": "32b77ee593d4dbc38d07a9f92982f5c0750ccba9"
+  },
+  "preview": {
+    "id": "dpl_FzMCqLD4CiuDHjQSD9F6u5f6P9nu",
+    "url": "https://joey-mission-control-jw6nsle9u-joeyajs-projects.vercel.app",
+    "state": "READY",
+    "sha": "39846c133fa01956bc6317b6223b4ceb4e9a19f4",
+    "target": "preview (Vercel target null)",
+    "deploymentMetadataVerified": true,
+    "appHttpQA": "NOT_RUN_NETWORK_HOST_BLOCKED",
+    "networkResult": "curl CONNECT tunnel failed response403; HTTP000, not an application/SSO response",
+    "protection": "existing project SSO all_except_custom_domains remains enabled",
+    "bypassKeyCreated": false,
+    "promoted": false
+  },
+  "ownerAcceptance": "PENDING"
+}

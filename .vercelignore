@@ -20,3 +20,4 @@ metadata/mc-dependency-matrix.json
 .env*
 *.zip
 metadata/mc-stage-evidence.json
+metadata/mc-remote-checkpoint-receipt.json

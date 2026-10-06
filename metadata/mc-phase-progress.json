@@ -113,6 +113,12 @@
     {
       "type": "P1_COMPACT_WORKSPACE_RECONCILIATION_COMPLETE",
       "result": "Independent reviewer cleared navigation identity and source-set P2 findings. Source migration P0 remains partial."
+    },
+    {
+      "at": "2026-10-06T23:50:44.660174+00:00",
+      "type": "PRIVATE_STAGE_CHECKPOINT_FETCHBACK_VERIFIED",
+      "commit": "39846c133fa01956bc6317b6223b4ceb4e9a19f4",
+      "ownerAcceptance": "PENDING"
     }
   ],
   "migrationPriority": {
@@ -127,11 +133,15 @@
   },
   "checkpoint": {
     "branch": "codex/mc-command-center-checkpoint-20261006",
-    "localCommit": "ea2c90c16339df8dce9445a38e21e905dd9cf503",
-    "status": "LOCAL_STAGE_CONTENT_SAVED_REMOTE_UNVERIFIED",
-    "remoteReceipt": null,
-    "parentSingleWriterCoordination": "PENDING",
+    "localCommit": "39846c133fa01956bc6317b6223b4ceb4e9a19f4",
+    "status": "REMOTE_SAFE_CHECKPOINT_VERIFIED",
+    "remoteReceipt": {
+      "path": "metadata/mc-remote-checkpoint-receipt.json",
+      "stageContentCommit": "39846c133fa01956bc6317b6223b4ceb4e9a19f4",
+      "fetchBack": "EXACT_SHA_AND_TREE"
+    },
+    "parentSingleWriterCoordination": "AUTHORIZED_THIS_AGENT_ONLY",
     "previewRisk": "Automatic Vercel preview possible on push; public bundle/API/private-original exclusion must be checked.",
-    "localCommitNote": "Previous checkpoint SHA; current stage commit is recorded in external deliverable manifest to avoid self-referential commit IDs."
+    "localCommitNote": "Stage content SHA verified remotely; later receipt-only commit SHA resides in external delivery manifest."
   }
 }

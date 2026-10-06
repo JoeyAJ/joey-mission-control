@@ -156,5 +156,68 @@
       "migrationBlocker": "Private canonical/owner authority and continuous synchronization not migrated",
       "status": "CODE_TIP_AND_SAFE_RECEIPTS_VERIFIED_PRIVATE_AUTHORITY_PENDING"
     }
+  ],
+  "closureRequests": [
+    {
+      "id": "canonical-inventory",
+      "blockingData": [
+        "MEMORY_INDEX.md",
+        "PROJECT_REGISTRY_V1.0.md",
+        "index-linked PROJECT_MEMORY.md/ARCHITECTURE.md/DECISIONS.md/CURRENT_STATE.md/NEXT_ACTIONS.md for four projects and Asset child-case",
+        "handoff LATEST.md and applicable HISTORY/*.md"
+      ],
+      "source": "Mac authoritative canonical root; not present in cloud, safe index is not replacement",
+      "minimalPermission": "Parent-authorized read-only export of exact inventory plus file SHA256/version/timestamp; exclude secrets/cookies and unrelated project content",
+      "destination": "Recommend owner-controlled private Library versioned custody; private handoff Git stores sanitized inventory/hashes only; no raw canonical tree in deploy-linked MC repo",
+      "status": "MAC_OFFLINE_EXPORT_AND_DESTINATION_CONFIRMATION_PENDING"
+    },
+    {
+      "id": "owner-ledger",
+      "blockingData": [
+        "product-owner.v03.json (per-owner canonicalState, revisions, decisions and audit)",
+        "missions.v03.json",
+        "proposals.v03e.json",
+        "inbox.v1.json and sessions.v1.json if explicitly required for continuity"
+      ],
+      "source": "Mac MC_DATA_ROOT; absent here. Accepted deployment JSONs are historical presentation, not writable authority",
+      "minimalPermission": "Read-only schema-valid versioned export; secrets removed; preserve IDs/revisions/links and require explicit single-writer cutover before any mutation",
+      "destination": "Same private Library snapshot custody; isolated cloud staging outside repo/public and outside canonicalRoot only after exact transfer scope authorized",
+      "status": "EXPORT_INVENTORY_HASH_AND_WRITER_CUTOVER_PENDING"
+    },
+    {
+      "id": "asset-catalog",
+      "blockingData": [
+        "catalog/industries.json",
+        "catalog/assets.json",
+        "cases/CASE_001_NAMYOUNG/classification.json",
+        "matching Asset catalog acceptance/version and source fingerprints"
+      ],
+      "source": "Mac Asset root; safe University receipt does not replace private catalog",
+      "minimalPermission": "Read sanitized catalog/index export only; no asset raw source ZIP publication",
+      "destination": "Existing private Asset repo or private Library by owner choice; MC receives safe projection only",
+      "status": "EXACT_CATALOG_EXPORT_AND_SOURCE_AUTHORITY_PENDING"
+    },
+    {
+      "id": "buddy-formal-actor",
+      "blockingData": [
+        "formal SUCCESS lastExecutedBy/model/time/commit from Library social-release-v2"
+      ],
+      "source": "libfile_6920bec1768c8191b9a301c0ae721bd4 version2",
+      "minimalPermission": "Authorized consumer transfer or parent read of exact nonsecret receipt fields; no cookies or fullZIP sharing",
+      "destination": "Versioned safe receipt overlay only, with explicit provenance; actor stays null until evidence read",
+      "status": "OFFICIAL_CONSUMER_TRANSFER_FAILED"
+    },
+    {
+      "id": "sync-cutover",
+      "blockingData": [
+        "per-store authority/version/writer tuple",
+        "Mac-offline conflict policy and restoration checkpoint",
+        "parent-approved cloud-versus-Mac writer ownership"
+      ],
+      "source": "No continuous producer or shared canonical authority in this cloud",
+      "minimalPermission": "Owner/parent destination and single-writer decision; no DB/Auth/OAuth/keys/paidresource creation",
+      "destination": "Recommend retain Mac authority until restore/read-only reconciliation succeeds; cloud remains fixed receipt view meanwhile",
+      "status": "DEPENDENT_WRITES_CONTROL_SYNC_BLOCKED"
+    }
   ]
 }
