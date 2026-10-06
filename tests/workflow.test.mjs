@@ -46,7 +46,7 @@ test('health describes authorized V0.3-E public testing separately from its acce
   assert.equal(health.version,'0.3.0-e');
   assert.equal(health.developmentVersion,'0.3.0-e');
   assert.equal(health.candidateAcceptance,'PUBLIC_TEST_AUTHORIZED');
-  assert.equal(health.candidateBaseline,'c9aad518d277de36a50ea3aab30f6cea6c212b80');
+  assert.equal(health.candidateBaseline,'32b77ee593d4dbc38d07a9f92982f5c0750ccba9');
   assert.equal(health.deployAuthorized,true);
   assert.equal(health.releaseStatus,'public-test');
   assert.equal(health.parentBaseline,'c9aad518d277de36a50ea3aab30f6cea6c212b80');
