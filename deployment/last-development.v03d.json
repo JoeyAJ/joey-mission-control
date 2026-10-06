@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "0.3-d",
+  "projects": {
+    "NEXAEON": {
+      "stageFingerprint": "540b0d7ab1ef76a9de485374c267182aabde992a1e54d024361484f2876d56a8",
+      "stageDate": "2026-10-03",
+      "stage": "多語 Agent 平台已上線；外部搜尋的實際運作仍待確認。",
+      "nextFingerprint": "8a37bf84452dc7b6df67f79e663a0e814f43b807acb8366b20f2140863e010b3",
+      "next": "先核對部署設定、模型與外部服務，建立一份可信的運作狀態。",
+      "lastAgent": {
+        "value": "Hermes",
+        "source": {
+          "kind": "joey_confirmed_stage_executor",
+          "eventDate": "2026-10-03",
+          "reference": "Joey explicitly confirmed Hermes completed the October 3 project handoff/source/deployment reconciliation",
+          "scope": "October 3 reconciliation stage; not current execution"
+        }
+      }
+    },
+    "WOOSONG_BUDDY": {
+      "stageFingerprint": "3665171d1a11b9e5c9a99c1e5cb0568c79d28735b41ac7df7504db86a191a488",
+      "stageDate": "2026-10-03",
+      "stage": "學習、寵物與社交 MVP 已上線；下一階段是穩定性與安全。",
+      "nextFingerprint": "1ec402f107f07ea8abe6244875c5e2702a990b060e0910180506425392dac6ac",
+      "next": "先修文件、PWA 圖示、語言一致性與測試流程；不改資料庫。",
+      "lastAgent": {
+        "value": "Hermes",
+        "source": {
+          "kind": "joey_confirmed_stage_executor",
+          "eventDate": "2026-10-03",
+          "reference": "Joey explicitly confirmed Hermes completed the October 3 project handoff/source/deployment reconciliation",
+          "scope": "October 3 reconciliation stage; not current execution"
+        }
+      }
+    },
+    "NAMYOUNG_WEB3D": {
+      "stageFingerprint": "835ca188efb2ca75c37a1e4007b4f5250deb19d6b8caf7270a4d0f2e856ae172",
+      "stageDate": "2026-10-03",
+      "stage": "Web3D 視覺化 PoC 已上線；尚非經驗證的工程／報價工具。",
+      "nextFingerprint": "99e26d97a65c97d3c134d4a4a5a7d401bfd7cfc5d53c4ec07822975212ef913c",
+      "next": "先建立資產與場地資料規格及範例，不改現有 UI。",
+      "lastAgent": {
+        "value": "Hermes",
+        "source": {
+          "kind": "joey_confirmed_stage_executor",
+          "eventDate": "2026-10-03",
+          "reference": "Joey explicitly confirmed Hermes completed the October 3 project handoff/source/deployment reconciliation",
+          "scope": "October 3 reconciliation stage; not current execution"
+        }
+      }
+    },
+    "JOEY_ASSET_SYSTEM": {
+      "stageFingerprint": "13cda352e0b17a6755b1bea83712a7488d7286974a0bf5d7fcc43c48f2e9ae67",
+      "stageDate": "2026-10-04",
+      "stage": "Phase 1 特徵測試已發布；Phase 2 尚未開始。",
+      "nextFingerprint": "a6d33a09f5ed538ac13aee34215cac6344ac254a14bd045a5abb720873b8fdeb",
+      "next": "保留 Phase 1 與回復來源；下一階段需另行取得批准。",
+      "lastAgent": null
+    }
+  }
+}

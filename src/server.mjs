@@ -1,3 +1,4 @@
+import {phaseSummary} from '../public/phase-summary.js';
 import {operationalView} from './operations/reconcile.mjs';
 import {ProjectStateRepository} from './project-state/repository.mjs';
 import {ProductService,validOwners} from './product/service.mjs';
@@ -17,6 +18,7 @@ import {confirmPromotion} from './inbox/promotion-service.mjs';
 import {composeContinue} from './continue/continue-composer.mjs';
 import {loadSchema,collectionValidator} from './api/validation.mjs';
 
+const phaseRecords=JSON.parse(await fs.readFile(new URL('../deployment/last-development.v03d.json',import.meta.url),'utf8')).projects;
 const publicRoot=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../public');
 const [inboxSchema,sessionSchema]=await Promise.all([loadSchema('inbox-item'),loadSchema('ai-workspace-session')]);
 function send(res,status,body,type='application/json; charset=utf-8'){res.writeHead(status,{...securityHeaders,'Content-Type':type,'Cache-Control':'no-store'});res.end(type.startsWith('application/json')?JSON.stringify(body):body);}
@@ -34,7 +36,7 @@ export function createApp(deps){
       }
       if(url.pathname.startsWith('/api/')){const result=await router(req,res,url);if(!result)return send(res,404,{error:'Not found'});return send(res,result.status,result.body);}
       const name=url.pathname==='/'?'index.html':url.pathname.slice(1);
-      if(!['index.html','styles.css','app.js','i18n.js','presentation.js','source-summaries.js','control-semantics.js','project-links.js','decision-view.js','agent-detail.js','joey-view.js','joey-operations.js','joey-cockpit.js','joey-controls.js','visual-system.js','brand-eye-source.png','project-state.js','project-state-controls.js'].includes(name))return send(res,404,{error:'Not found'});
+      if(!['index.html','styles.css','app.js','i18n.js','presentation.js','source-summaries.js','control-semantics.js','project-links.js','decision-view.js','agent-detail.js','joey-view.js','joey-operations.js','phase-summary.js','joey-cockpit.js','joey-controls.js','visual-system.js','brand-eye-source.png','project-state.js','project-state-controls.js'].includes(name))return send(res,404,{error:'Not found'});
       const types={html:'text/html; charset=utf-8',css:'text/css; charset=utf-8',js:'text/javascript; charset=utf-8',png:'image/png'};
       return send(res,200,await fs.readFile(path.join(publicRoot,name),name.endsWith('.png')?undefined:'utf8'),types[name.split('.').pop()]);
     }catch(error){send(res,error.status||500,{error:error.status?error.message:'Internal error'});}
@@ -52,6 +54,7 @@ export function createDefaultDeps({canonicalRoot=config.canonicalRoot,dataRoot=c
   return{
     ready,token:writeToken,products,projectStates,missions:new MissionService(new JsonStore(dataRoot,'missions.v03.json',validLedger)),
     getState:state,
+    phaseView:(p,m,snapshot)=>phaseSummary(p,m,{records:phaseRecords,handoffs:[snapshot.handoffs?.globalLatest,...(snapshot.handoffs?.history||[])].filter(Boolean)}),
     operationalView:(p,r,snapshot)=>operationalView(p,r,snapshot,canonicalRoot),
     getInbox:async()=>{await ready;return inbox.list();},
     transitionInbox:async(id,state,expectedState)=>{await ready;return inbox.transition(id,state,expectedState);},

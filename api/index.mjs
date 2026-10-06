@@ -1,3 +1,4 @@
+import {phaseSummary} from '../public/phase-summary.js';
 import {productView} from '../src/product/view.mjs';
 import {manifest} from '../src/agent/control.mjs';
 import fs from 'node:fs/promises';
@@ -6,7 +7,8 @@ import {release} from '../src/release.mjs';
 import {composeContinue} from '../src/continue/continue-composer.mjs';
 const snapshot=JSON.parse(await fs.readFile(new URL('../deployment/production-snapshot.json',import.meta.url),'utf8'));
 const projectStates=JSON.parse(await fs.readFile(new URL('../deployment/project-state.v03b.json',import.meta.url),'utf8'));
-const projectManifest=p=>{const m=manifest(p,{handoff:snapshot.handoffs.byEntity[p.id],handoffs:[snapshot.handoffs.globalLatest,...snapshot.handoffs.history].filter(Boolean),generatedAt:snapshot.generatedAt,publicRead:true});m.product=productView(p,{publicRead:true});m.canonicalState=projectStates.projects.find(s=>s.id===p.id);m.product.documentedPurpose=m.canonicalState?.missionStatement||m.product.documentedPurpose;return m;};
+const phaseRecords=JSON.parse(await fs.readFile(new URL('../deployment/last-development.v03d.json',import.meta.url),'utf8')).projects;
+const projectManifest=p=>{const m=manifest(p,{handoff:snapshot.handoffs.byEntity[p.id],handoffs:[snapshot.handoffs.globalLatest,...snapshot.handoffs.history].filter(Boolean),generatedAt:snapshot.generatedAt,publicRead:true});m.product=productView(p,{publicRead:true});m.canonicalState=projectStates.projects.find(s=>s.id===p.id);m.product.documentedPurpose=m.canonicalState?.missionStatement||m.product.documentedPurpose;m.phase=phaseSummary(p,m,{records:phaseRecords,handoffs:[snapshot.handoffs.globalLatest,...snapshot.handoffs.history].filter(Boolean),readOnly:true});return m;};
 export function productionResponse(method,url){
  if(method!=='GET')return{status:403,body:{error:'Public production is read-only. Use authorized local Mission Control for writes.'}};
  const route=url.searchParams.get('route')||'';

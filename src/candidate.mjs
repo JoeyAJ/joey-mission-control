@@ -1,1 +1,1 @@
-export const candidate=Object.freeze({developmentVersion:'0.3.0-c',candidateStage:'V0.3-C',candidateAcceptance:'PASSED',candidateBaseline:'d8b3fdf4f786228a35a485fab39ba30d00084566',deployAuthorized:true});
+export const candidate=Object.freeze({developmentVersion:'0.3.0-d',candidateStage:'V0.3-D',candidateAcceptance:'PASSED',candidateBaseline:'150adbf7263b572465f4645869edda7be76e0f11',deployAuthorized:true});

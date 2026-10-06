@@ -156,3 +156,7 @@ body>header{position:relative;z-index:40}
 @media(min-width:1101px){.visual-a .joey-operations{grid-row:2}.visual-a .cockpit-layout{grid-row:3}.visual-a .mission-right-rail{grid-row:3/5}.visual-a .mission-command-zone{grid-row:4}}
 
 .operations-conflict,.operations-refresh-failed{color:var(--status-waiting);border-left:2px solid currentColor;padding-left:10px}.operations-stage{font-size:1rem!important;opacity:1!important}.operations-repo-event{font-size:.8rem;margin:12px 0;overflow-wrap:anywhere}
+
+.phase-overview .operations-facts{grid-template-columns:repeat(2,minmax(0,1fr))}.phase-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.phase-actions a{display:inline-flex;align-items:center;padding:8px 12px;text-decoration:none}.fleet-readout{display:flex;flex-direction:column;align-items:stretch;gap:4px}.fleet-agent,.fleet-project{text-align:left;white-space:normal}.fleet-project{font-size:11px;padding:5px 8px}.phase-agent-guide{padding:14px;border:1px solid var(--glass-border);border-radius:14px}.phase-agent-guide p{overflow-wrap:anywhere}.phase-date{font-size:11px;color:var(--muted)}
+@media(max-width:600px){.phase-overview .operations-facts{grid-template-columns:1fr}}
+.phase-result-link{color:var(--text,#eaf3ff);text-decoration:none;display:inline-flex;align-items:center;min-height:40px;padding:10px 14px;}

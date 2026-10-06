@@ -1,3 +1,5 @@
+> V0.3-D accepted 2026-10-06: handoff-first five project readouts, last-confirmed stage Fleet navigation and any-Agent continuation guide. Parent accepted C 150adbf7263b572465f4645869edda7be76e0f11. See docs/V0.3-D_RELEASE_CHECKPOINT.md.
+
 # Joey Mission Control
 
 V0.3-C accepted 2026-10-06: source-backed Operations in Joey View.
