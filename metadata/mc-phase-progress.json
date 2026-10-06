@@ -14,20 +14,21 @@
   "phases": [
     {
       "id": "P0",
-      "status": "ENGINEERING_COMPLETE",
-      "result": "Exact baseline/custody/source boundary verified.",
+      "status": "PARTIAL_PRIVATE_AUTHORITY_MIGRATION_PENDING",
+      "result": "Verified code/receipt custody; private canonical/owner and continuous sync remain incomplete.",
       "definitionOfDoneRef": "docs/MC_PHASE_PLAN.md",
       "ownerAcceptance": "BASELINE_ONLY",
       "sources": [
         "docs/COMMAND_WORKSPACE_HANDOFF.md",
-        "docs/COMMAND_WORKSPACE_REVIEW.md"
+        "docs/COMMAND_WORKSPACE_REVIEW.md",
+        "metadata/mc-dependency-matrix.json"
       ],
       "tests": null
     },
     {
       "id": "P1",
       "status": "ENGINEERING_COMPLETE_OWNER_ACCEPTANCE_PENDING",
-      "result": "Reviewed linked evidence workspace; 256 tests/browser PASS.",
+      "result": "Independent Workspace, compact mobile panels, reconciled versioned receipt layers; full262 and browser PASS; reviewed new P2 fixes.",
       "definitionOfDoneRef": "docs/MC_PHASE_PLAN.md",
       "ownerAcceptance": "NOT_RECORDED",
       "sources": [
@@ -35,7 +36,7 @@
         "docs/COMMAND_WORKSPACE_REVIEW.md"
       ],
       "tests": {
-        "pass": 256,
+        "pass": 262,
         "fail": 0,
         "browserWidths": [
           1440,
@@ -46,8 +47,8 @@
     },
     {
       "id": "P2A",
-      "status": "IN_PROGRESS",
-      "result": "Implement bounded local execution-report receiver using existing local token/store.",
+      "status": "DEPENDENCY_GATED_BEFORE_NEW_PRIVATE_WRITES",
+      "result": "No new receiver/private writes implemented; requires P0 single-authority migration closure.",
       "definitionOfDoneRef": "docs/MC_PHASE_PLAN.md",
       "ownerAcceptance": "NOT_RECORDED",
       "sources": [],
@@ -103,6 +104,34 @@
     {
       "type": "P2A_STARTED",
       "boundary": "isolated local receiver/tests; no live producer claim"
+    },
+    {
+      "at": "2026-10-06T23:30:43Z",
+      "type": "MIGRATION_PRIORITY_APPLIED",
+      "result": "P0 corrected to partial; new private writes/agent control/cross-project sync gated. Independent UI/source checks proceed."
+    },
+    {
+      "type": "P1_COMPACT_WORKSPACE_RECONCILIATION_COMPLETE",
+      "result": "Independent reviewer cleared navigation identity and source-set P2 findings. Source migration P0 remains partial."
     }
-  ]
+  ],
+  "migrationPriority": {
+    "source": "Sentinel_854815e8de7c81919df16bc277b14a59",
+    "at": "2026-10-06T23:30:43Z",
+    "original": "对，我。目前如果说单是开设核心开发AP的话，那么你昨天整理的这些资料和上传到云端的一些迁移工作，会不会match？如果说有冲突，你必须得为了之后考虑。我的这个需求需要跟每个项目数据同步的话，你要先做迁移的话，那么你必须得先把迁移很干净地整理收尾，以后再开始AP的开发。如果不是的情况，你可以同步进行。"
+  },
+  "stageCheckpointInstruction": {
+    "source": "Sentinel_db4db12642c4819181de0e45e84e549e",
+    "at": "2026-10-06T23:33:47Z",
+    "original": "但是如果 MC的project如果开始进入开发当中的话，每个核心阶段的开发，然后把所有的data全部unload到Data或者去Cloud相关存放地。"
+  },
+  "checkpoint": {
+    "branch": "codex/mc-command-center-checkpoint-20261006",
+    "localCommit": "ea2c90c16339df8dce9445a38e21e905dd9cf503",
+    "status": "LOCAL_STAGE_CONTENT_SAVED_REMOTE_UNVERIFIED",
+    "remoteReceipt": null,
+    "parentSingleWriterCoordination": "PENDING",
+    "previewRisk": "Automatic Vercel preview possible on push; public bundle/API/private-original exclusion must be checked.",
+    "localCommitNote": "Previous checkpoint SHA; current stage commit is recorded in external deliverable manifest to avoid self-referential commit IDs."
+  }
 }

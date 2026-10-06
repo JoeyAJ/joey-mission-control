@@ -13,3 +13,10 @@ dist
 evidence/
 
 metadata/operational-reconciliation.v03c.json
+
+# Private candidate checkpoint metadata; never required by the application.
+metadata/mc-phase-progress.json
+metadata/mc-dependency-matrix.json
+.env*
+*.zip
+metadata/mc-stage-evidence.json

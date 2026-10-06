@@ -13,7 +13,8 @@
     "start": "node src/server.mjs",
     "build": "node scripts/build.mjs",
     "verify:portable": "node scripts/verify-portable.mjs",
-    "qa:public-case": "node tests/browser/public-case-fixture.mjs"
+    "qa:public-case": "node tests/browser/public-case-fixture.mjs",
+    "check:migration": "node scripts/check-migration-sources.mjs"
   },
   "engines": {
     "node": ">=22"

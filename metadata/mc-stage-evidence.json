@@ -1,0 +1,72 @@
+{
+  "scope": "private stage checkpoint; no runtime/owner acceptance claim",
+  "libraryScreenshots": [
+    {
+      "operation": "create_library_file",
+      "status": "succeeded",
+      "path": "/MC-independent-workspace-desktop-1440-20261006.png",
+      "file_id": "file_00000000f1088230b07e6d10f44f247d",
+      "library_file_id": "libfile_0fea8fdd01148191a95dd1e289600fd9",
+      "file_name": "MC-independent-workspace-desktop-1440-20261006.png",
+      "current_version_number": 0,
+      "restored_from_version_number": null,
+      "xattrs": [
+        {
+          "name": "user.library-file-version",
+          "value": "0"
+        }
+      ],
+      "directory_id": "libdir_c670af8bc5a4819186bd8d7a6c7e95e4",
+      "mime_type": "image/png",
+      "library_artifact_type": "image",
+      "file_size_bytes": 403556
+    },
+    {
+      "operation": "create_library_file",
+      "status": "succeeded",
+      "path": "/MC-independent-workspace-mobile-390-20261006.png",
+      "file_id": "file_00000000d30c81fd823b78c2370a02d9",
+      "library_file_id": "libfile_aa901a843a688191b178abb56964ed81",
+      "file_name": "MC-independent-workspace-mobile-390-20261006.png",
+      "current_version_number": 0,
+      "restored_from_version_number": null,
+      "xattrs": [
+        {
+          "name": "user.library-file-version",
+          "value": "0"
+        }
+      ],
+      "directory_id": "libdir_c670af8bc5a4819186bd8d7a6c7e95e4",
+      "mime_type": "image/png",
+      "library_artifact_type": "image",
+      "file_size_bytes": 189009
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "/workspace/mc-final-portable.log",
+      "sha256": "6c479779bd78b319f8b8210dfa4dcf5a520699bc3feb24caa57c8ee880fcc965",
+      "bytes": 27806
+    },
+    {
+      "path": "/workspace/mc-final-build.log",
+      "sha256": "ef73291b0694aa3dd25a8d6bdf7b3d7587843063a78d1c665be758204702c836",
+      "bytes": 388
+    },
+    {
+      "path": "/workspace/mc-qa/report.json",
+      "sha256": "baa5621bae0d4d2d941ea835bdc5507a8f5db4a79df90ec9bb2ebd44b1b2f0af",
+      "bytes": 2427
+    },
+    {
+      "path": "/workspace/mc-qa/privacy-report.json",
+      "sha256": "4383624896b880260993fae6a0372720d84e15b16c510f6472f45e4f0d1e9061",
+      "bytes": 811
+    },
+    {
+      "path": "/workspace/mc-deliverables/dependency-verification.json",
+      "sha256": "26b8f73ebcba46bf66036f81ca2aa51df42b86a1e44da08a7f504ff1e349c4f6",
+      "bytes": 2400
+    }
+  ]
+}

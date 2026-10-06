@@ -1,0 +1,160 @@
+{
+  "schemaVersion": 1,
+  "receiptVersion": "mc-safe-receipts-20261006-v2",
+  "receiptFile": "deployment/command-source-readouts.json",
+  "receiptSha256": "3b20f96651d131f5f6089ef738e72740bcfe3f3a428e060034aedc3945980745",
+  "publicSnapshotLayers": [
+    {
+      "file": "deployment/production-snapshot.json",
+      "sha256": "9d131510f7da470d87d4869c54de2ce08daad02fc41615778a717de7bbfc64e5",
+      "generatedAt": "2026-10-05T06:06:12.241Z",
+      "role": "ACCEPTED_PUBLIC_PRESENTATION_LAYER",
+      "writeAuthority": "none",
+      "sync": "immutable release snapshot reread"
+    },
+    {
+      "file": "deployment/project-state.v03b.json",
+      "sha256": "916561448ca13e98bc582df9fd961e8e53b544551b44e4adf954084e0df543c8",
+      "generatedAt": "2026-10-05T13:33:19.033Z",
+      "role": "ACCEPTED_PUBLIC_PRESENTATION_LAYER",
+      "writeAuthority": "none",
+      "sync": "immutable release snapshot reread"
+    },
+    {
+      "file": "deployment/last-development.v03d.json",
+      "sha256": "d604b1907d336a47fe3473568020f40dc2fa54e701b023212fa673756bbd45eb",
+      "generatedAt": null,
+      "role": "ACCEPTED_PUBLIC_PRESENTATION_LAYER",
+      "writeAuthority": "none",
+      "sync": "immutable release snapshot reread"
+    },
+    {
+      "file": "deployment/public-cases.v03e.json",
+      "sha256": "97903559708ccfcbe265d0971d9090c6477ee7faf18494a202412a609cca28fc",
+      "generatedAt": "2026-10-06T08:53:49Z",
+      "role": "ACCEPTED_PUBLIC_PRESENTATION_LAYER",
+      "writeAuthority": "none",
+      "sync": "immutable release snapshot reread"
+    }
+  ],
+  "sourcePriority": "approved fact-specific receipt provenance; immutable historical public presentation never becomes private write authority",
+  "privateAuthority": {
+    "canonicalMemory": "NOT_RESTORED_IN_THIS_CLOUD",
+    "ownerLedger": "MAC_AUTHORITY_NOT_MIGRATED",
+    "continuousSync": "NOT_CONNECTED",
+    "newPrivateWritesAllowed": false,
+    "agentControlAllowed": false,
+    "crossProjectSyncAllowed": false,
+    "singleWriter": "parent coordinates; Joey owns final promotion"
+  },
+  "sources": [
+    {
+      "id": "safe-index-1578b10d",
+      "kind": "PRIVATE_SANITIZED_HANDOFF",
+      "repository": "JoeyAJ/nexaeon-hermes-handoff",
+      "branch": "migration/safe-project-handoffs-20261006",
+      "commit": "1578b10d3d41fe9167104b9e9557bc5f6674a891",
+      "document": "handoffs/migration-20261006/PROJECT_HANDOFFS.md",
+      "sha256": "b0d9aab08638cd8efe5068d06932392822767d2f7c425e9fa716d92190e6b2ab"
+    },
+    {
+      "id": "owner-custody-receipt-233043",
+      "kind": "PARENT_OWNER_RECEIPT",
+      "recordedAt": "2026-10-06T23:30:43Z",
+      "facts": [
+        "Nam original v0.15 Library custody recovered; hash identity verified",
+        "M0930 custody hash verified"
+      ],
+      "privateLibraryRefs": [
+        "libfile_13725d71eed48191818e9c0ba408aab8",
+        "libfile_936ca802182c8191a5ee3439649aa9b2"
+      ]
+    },
+    {
+      "id": "buddy-release-v2",
+      "kind": "PRIVATE_LIBRARY_SAFE_RELEASE",
+      "libraryFileId": "libfile_6920bec1768c8191b9a301c0ae721bd4",
+      "fileId": "file_000000008e2881f488cf7c88a7a467af",
+      "version": 2,
+      "filename": "WoosongBuddy-social-candidate-2026-10-06.zip",
+      "status": "CONSUMER_MATERIALIZATION_BLOCKED",
+      "readResult": "No readable content in full ZIP read",
+      "materializeError": "library file transfer failed: download failed",
+      "containsPrivateCookies": "parent states excluded; no cookie file read"
+    }
+  ],
+  "projects": [
+    {
+      "projectId": "NEXAEON",
+      "canonicalRepository": "JoeyAJ/nexaeon-web",
+      "branch": "main",
+      "latestVerifiedSha": "8271e1bbae78eb7fc4fc86c06feaa50d6fa82c39",
+      "publicDeployment": "https://nexaeon-web.vercel.app/",
+      "childDeployment": null,
+      "deploymentEvidence": "existing owner receipt/approved URL, no new production probe",
+      "safeHandoff": "safe-index-1578b10d",
+      "additionalSources": [],
+      "dataAuthority": "private canonical/owner on Mac; cloud safe read-only receipt overlay only",
+      "accessMode": "private code read; public approved projection read-only",
+      "refreshSemantics": "fixed versioned receipt and public snapshot reread; no live sync/remote revalidation",
+      "writeOwner": "Joey/authorized per-project writer; parent coordinates cloud checkpoint",
+      "migrationBlocker": "Private canonical/owner authority and continuous synchronization not migrated",
+      "status": "CODE_TIP_AND_SAFE_RECEIPTS_VERIFIED_PRIVATE_AUTHORITY_PENDING"
+    },
+    {
+      "projectId": "WOOSONG_BUDDY",
+      "canonicalRepository": "JoeyAJ/woosongbuddy",
+      "branch": "main",
+      "latestVerifiedSha": "e41bd1b7d8a481fdf6402881f382605278d229af",
+      "publicDeployment": "https://woosong-buddy-app.vercel.app/",
+      "childDeployment": null,
+      "deploymentEvidence": "existing owner receipt/approved URL, no new production probe",
+      "safeHandoff": "safe-index-1578b10d",
+      "additionalSources": [
+        "buddy-release-v2"
+      ],
+      "dataAuthority": "private canonical/owner on Mac; cloud safe read-only receipt overlay only",
+      "accessMode": "private code read; public approved projection read-only",
+      "refreshSemantics": "fixed versioned receipt and public snapshot reread; no live sync/remote revalidation",
+      "writeOwner": "Joey/authorized per-project writer; parent coordinates cloud checkpoint",
+      "migrationBlocker": "Private canonical/owner authority and continuous synchronization not migrated",
+      "status": "CODE_TIP_AND_SAFE_RECEIPTS_VERIFIED_PRIVATE_AUTHORITY_PENDING"
+    },
+    {
+      "projectId": "NAMYOUNG_WEB3D",
+      "canonicalRepository": "JoeyAJ/namyoung-web3d",
+      "branch": "main",
+      "latestVerifiedSha": "92c17b8adeec5eaa80d27b8facad532e6ff61d59",
+      "publicDeployment": "https://namyoung-web3d.vercel.app/",
+      "childDeployment": null,
+      "deploymentEvidence": "existing owner receipt/approved URL, no new production probe",
+      "safeHandoff": "safe-index-1578b10d",
+      "additionalSources": [
+        "owner-custody-receipt-233043"
+      ],
+      "dataAuthority": "private canonical/owner on Mac; cloud safe read-only receipt overlay only",
+      "accessMode": "private code read; public approved projection read-only",
+      "refreshSemantics": "fixed versioned receipt and public snapshot reread; no live sync/remote revalidation",
+      "writeOwner": "Joey/authorized per-project writer; parent coordinates cloud checkpoint",
+      "migrationBlocker": "Private canonical/owner authority and continuous synchronization not migrated",
+      "status": "CODE_TIP_AND_SAFE_RECEIPTS_VERIFIED_PRIVATE_AUTHORITY_PENDING"
+    },
+    {
+      "projectId": "JOEY_ASSET_SYSTEM",
+      "canonicalRepository": "JoeyAJ/joey-asset-system",
+      "branch": "migration/university-v04-portable",
+      "latestVerifiedSha": "77b6766e790c7794bb1fc691f3f3dd3f4a4fe5c6",
+      "publicDeployment": null,
+      "childDeployment": "https://joey-woosong-admissions-demo.vercel.app/",
+      "deploymentEvidence": "existing owner receipt/approved URL, no new production probe",
+      "safeHandoff": "safe-index-1578b10d",
+      "additionalSources": [],
+      "dataAuthority": "private canonical/owner on Mac; cloud safe read-only receipt overlay only",
+      "accessMode": "private code read; public approved projection read-only",
+      "refreshSemantics": "fixed versioned receipt and public snapshot reread; no live sync/remote revalidation",
+      "writeOwner": "Joey/authorized per-project writer; parent coordinates cloud checkpoint",
+      "migrationBlocker": "Private canonical/owner authority and continuous synchronization not migrated",
+      "status": "CODE_TIP_AND_SAFE_RECEIPTS_VERIFIED_PRIVATE_AUTHORITY_PENDING"
+    }
+  ]
+}

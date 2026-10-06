@@ -7,6 +7,7 @@ export const LOCALE_STORAGE_KEY='mc-locale';
 const en={
 "human.release":"V0.3 · Awaiting Joey Acceptance",
 "nav.joey":"Joey View",
+"nav.workspace":"Command workspace",
 "nav.dashboard":"Agent console",
 "nav.handoffs":"Evidence / Handoffs",
 "human.saved":"Your project decision was recorded locally.",
@@ -340,6 +341,7 @@ const en={
 const zhTW={
 "human.release":"V0.3 · 等待 Joey 驗收",
 "nav.joey":"Joey View · 專案視圖",
+"nav.workspace":"開發工作台",
 "nav.dashboard":"Agent 控制台",
 "nav.handoffs":"依據／交接",
 "human.saved":"你的專案選擇已保存於本機。",
@@ -673,6 +675,7 @@ const zhTW={
 const ko={
 "human.release":"V0.3 · Joey 검수 대기",
 "nav.joey":"Joey View · 프로젝트",
+"nav.workspace":"개발 작업 공간",
 "nav.dashboard":"Agent 제어판",
 "nav.handoffs":"근거 / 인계",
 "human.saved":"프로젝트 결정이 로컬에 저장되었습니다.",

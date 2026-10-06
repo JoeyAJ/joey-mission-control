@@ -1,12 +1,14 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "provenance": {
     "repository": "JoeyAJ/nexaeon-hermes-handoff",
     "branch": "migration/safe-project-handoffs-20261006",
     "commit": "1578b10d3d41fe9167104b9e9557bc5f6674a891",
     "document": "handoffs/migration-20261006/PROJECT_HANDOFFS.md",
     "verifiedAt": "2026-10-06",
-    "kind": "sanitized_receipt_not_live"
+    "kind": "sanitized_receipt_not_live",
+    "supplementalReceiptRecordedAt": "2026-10-06T23:30:43Z",
+    "supplementalSourceKind": "parent_owner_custody_receipt"
   },
   "projects": [
     {
@@ -37,7 +39,10 @@
       "recentCompletion": "Owner receipt: lint, 636 unit, 132 eval, build PASS; E2E 102 pass + one flaky retry pass; initial failure retained.",
       "nextAction": null,
       "limits": "Next action, current task, actor/model and current production verification are absent from safe receipt.",
-      "blocker": null
+      "blocker": null,
+      "readoutVersion": "mc-safe-receipts-20261006-v2",
+      "recordedSourcesAsOf": "2026-10-06",
+      "syncMode": "FIXED_RECEIPT_REREAD"
     },
     {
       "sourceKind": "sanitized_owner_receipt",
@@ -48,9 +53,9 @@
       "lastConfirmedActor": null,
       "lastConfirmedModel": null,
       "identityReason": {
-        "zh-TW": "安全摘要未記錄執行 Agent／模型；不能從 Git 作者推測。",
-        "en": "Safe receipt omits executing agent/model; Git authors are not identity evidence.",
-        "ko": "안전 요약에 실행 Agent/모델이 없습니다. Git 작성자로 추정하지 않습니다."
+        "zh-TW": "正式 release actor 的來源在私人 custody 中存在；此環境尚未能讀取安全 ZIP，待取得正式欄位，不從 Git 作者推測。",
+        "en": "Formal release actor evidence exists in private custody; the safe ZIP cannot yet be read in this environment. Await its explicit field; do not infer from Git author.",
+        "ko": "공식 release Agent 근거는 비공개 보관에 있습니다. 이 환경에서 안전 ZIP을 아직 읽을 수 없어 명시적 필드를 기다립니다."
       },
       "approvalRequest": null,
       "runtimeConnected": false,
@@ -71,7 +76,11 @@
         "ko": "실기기 GPS / capture EXP / PWA 검증 필요."
       },
       "limits": "Actual iPhone GPS, capture EXP and PWA acceptance remain unverified. Production agreement is an owner receipt, not a new deployment probe.",
-      "blocker": null
+      "blocker": null,
+      "readoutVersion": "mc-safe-receipts-20261006-v2",
+      "recordedSourcesAsOf": "2026-10-06",
+      "syncMode": "FIXED_RECEIPT_REREAD",
+      "actorEvidenceStatus": "SOURCE_EXISTS_CONSUMER_READ_BLOCKED"
     },
     {
       "sourceKind": "sanitized_owner_receipt",
@@ -94,18 +103,19 @@
       "branch": "main",
       "verifiedRemoteSha": "92c17b8adeec5eaa80d27b8facad532e6ff61d59",
       "stage": {
-        "zh-TW": "網站驗證已記錄；原始 v0.15 custody 待核對",
-        "en": "Website validation recorded; original v0.15 custody lookup open",
-        "ko": "웹사이트 검증 기록; 원본 v0.15 보관 확인 대기"
+        "zh-TW": "網站驗證已記錄；原始 v0.15 custody 已核實",
+        "en": "Website validation recorded; original v0.15 custody verified",
+        "ko": "웹사이트 검증 기록; 원본 v0.15 보관 확인됨"
       },
-      "recentCompletion": "Owner receipt: 72 tests / build / runtime / hash / source-clean PASS.",
-      "nextAction": {
-        "zh-TW": "核對原始 v0.15 的 exact-hash custody。",
-        "en": "Check exact-hash custody of original v0.15 asset.",
-        "ko": "원본 v0.15 자산의 exact-hash 보관 확인."
-      },
-      "limits": "No new original-asset backup or runtime test was performed in this candidate.",
-      "blocker": null
+      "recentCompletion": "Owner receipt: 72 tests / build / runtime / hash / source-clean PASS. Latest parent owner receipt confirms original v0.15 archive recovery and matching SHA identity.",
+      "nextAction": null,
+      "limits": "Custody is verified by the 2026-10-06T23:30:43Z parent owner receipt. Restoration/runtime retest and the next product action are not established by that receipt.",
+      "blocker": null,
+      "readoutVersion": "mc-safe-receipts-20261006-v2",
+      "recordedSourcesAsOf": "2026-10-06",
+      "syncMode": "FIXED_RECEIPT_REREAD",
+      "custodyStatus": "OWNER_RECEIPT_HASH_VERIFIED",
+      "custodyReceiptRecordedAt": "2026-10-06T23:30:43Z"
     },
     {
       "sourceKind": "sanitized_owner_receipt",
@@ -139,7 +149,12 @@
         "ko": "Joey admissions 0.4 후보 재검수."
       },
       "limits": "Private migration branch is unmerged; main baseline remains eb03e2a. Later lifecycle modules planned. Original documents excluded from review export.",
-      "blocker": null
+      "blocker": null,
+      "readoutVersion": "mc-safe-receipts-20261006-v2",
+      "recordedSourcesAsOf": "2026-10-06",
+      "syncMode": "FIXED_RECEIPT_REREAD"
     }
-  ]
+  ],
+  "readoutVersion": "mc-safe-receipts-20261006-v2",
+  "supersedesReadoutVersion": "mc-safe-receipts-20261006-v1"
 }
