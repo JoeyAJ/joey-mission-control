@@ -1,3 +1,4 @@
+import {canonicalRoot} from './helpers/fixtures.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
@@ -8,7 +9,7 @@ import {release} from '../src/release.mjs';
 const expected={NEXAEON:'https://nexaeon-web.vercel.app/',WOOSONG_BUDDY:'https://woosong-buddy-app.vercel.app/',NAMYOUNG_WEB3D:'https://namyoung-web3d.vercel.app/',JOEY_ASSET_SYSTEM:'https://namyoung-asset-lab.joeyaj.chatgpt.site/'};
 test('verified URL metadata survives real project reload with distinct classifications',async()=>{
  const metadata=await loadProjectUrls();assert.equal(metadata.projects.length,4);
- const first=await buildProjection('/Users/joeyaj/JOEY_CANONICAL_MEMORY');const second=await buildProjection('/Users/joeyaj/JOEY_CANONICAL_MEMORY');
+ const first=await buildProjection(canonicalRoot);const second=await buildProjection(canonicalRoot);
  for(const [id,url] of Object.entries(expected)){
   const p=first.projects.find(x=>x.id===id),again=second.projects.find(x=>x.id===id),link=primaryProjectLink(p);
   assert.equal(link.url,url);const rendered=createProjectLink(link,{createElement:()=>({})},'zh-TW');assert.match(rendered.textContent,id==='JOEY_ASSET_SYSTEM'?/開啟目前網站/:/開啟正式網站/);assert.equal(rendered.href,url);assert.equal(primaryProjectLink(again).url,url);
@@ -32,7 +33,7 @@ test('safe links use exact verified URL and new-tab isolation; missing or unsafe
  assert.equal(createProjectLink({url:expected.NEXAEON,type:'canonical_production',urlVerification:'unverified'},doc),null);
 });
 test('URL fields do not change project canonical truth or acceptance',async()=>{
- const root='/Users/joeyaj/JOEY_CANONICAL_MEMORY';const a=await buildProjection(root),b=await buildProjection(root,{projectUrlMetadata:{schemaVersion:'1.0',projects:[]}});
+ const root=canonicalRoot;const a=await buildProjection(root),b=await buildProjection(root,{projectUrlMetadata:{schemaVersion:'1.0',projects:[]}});
  const stable=v=>JSON.parse(JSON.stringify(v,(k,x)=>k==='readAt'?undefined:x));
  for(const p of a.projects){const q=b.projects.find(x=>x.id===p.id);for(const key of ['status','phase','currentTask','lastAI','model','lastCompleted','sourceFingerprints'])assert.deepEqual(stable(p[key]),stable(q[key]));assert.equal(primaryProjectLink(q),null);}
  assert.equal(release.releaseStatus,'public-test');
@@ -48,5 +49,5 @@ test('conflicting Registry suppresses production navigation and cases never inhe
  const {resolveProjectUrls}=await import('../src/canonical/project-url-metadata.mjs');const metadata=await loadProjectUrls();
  const p={projectUrls:resolveProjectUrls('NEXAEON',{production:'https://different.example/'},metadata)};
  assert.equal(primaryProjectLink(p),null);assert.equal(p.projectUrls.issues.length,1);
- const projection=await buildProjection('/Users/joeyaj/JOEY_CANONICAL_MEMORY');for(const c of projection.cases)assert.equal(primaryProjectLink(c),null);
+ const projection=await buildProjection(canonicalRoot);for(const c of projection.cases)assert.equal(primaryProjectLink(c),null);
 });

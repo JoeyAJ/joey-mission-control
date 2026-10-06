@@ -1,8 +1,8 @@
 import fs from 'node:fs/promises';
 import {emptyOwner,blueprintProgress,bootstrapReadiness} from './model.mjs';
 const language=JSON.parse(await fs.readFile(new URL('../../metadata/product-language.v03.json',import.meta.url),'utf8'));
-export function productView(p,{owner=null,document=null,runtime=null,publicRead=false}={}){
- const o=owner||emptyOwner(p.id),copy=language.projects[p.id];
+export function productView(p,{owner=null,document=null,runtime=null,publicRead=false,languageMetadata=language}={}){
+ const o=owner||emptyOwner(p.id),copy=languageMetadata.projects[p.id];
  const supported=copy&&document?.source?.fingerprint===copy.purposeFingerprint;
  const nextSupported=copy&&p.nextAction?.source?.fingerprint===copy.nextFingerprint;
  const stageSupported=copy&&p.currentStage?.source?.fingerprint===copy.stageFingerprint;

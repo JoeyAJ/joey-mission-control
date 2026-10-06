@@ -1,22 +1,26 @@
+import {canonicalRoot} from './helpers/fixtures.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
-import {reconcileProject} from '../src/product/reconciliation.mjs';
+import {reconcileProject as reconcileSource} from '../src/product/reconciliation.mjs';
+import {reconciliationMetadata as baseline,chains} from './helpers/fixtures.mjs';
+const reconcileProject=(root,chain)=>reconcileSource(root,chain,{metadata:baseline});
 import {blueprintProgress,validateBlueprint,emptyOwner} from '../src/product/model.mjs';
 import {productView} from '../src/product/view.mjs';
-import {buildProjection} from '../src/projection/projection-service.mjs';
+import {buildProjection as projectSource} from '../src/projection/projection-service.mjs';
+const buildProjection=root=>projectSource(root,{reconciliationMetadata:baseline});
 import {runtimeState} from '../src/agent/runtime.mjs';
 import {ProductService,validOwners} from '../src/product/service.mjs';
 import {JsonStore} from '../src/storage/json-store.mjs';
-const baseline=JSON.parse(await fs.readFile(new URL('../metadata/project-reconciliation.v03.json',import.meta.url)));
+
 const snapshot=JSON.parse(await fs.readFile(new URL('../deployment/production-snapshot.json',import.meta.url)));
-const canonical='/Users/joeyaj/JOEY_CANONICAL_MEMORY';
-const chain=id=>({id,storedHead:baseline.projects[id].baselineSha,localMaster:'/Users/joeyaj/Documents/Codex/Projects/'+baseline.projects[id].repository});
+const canonical=canonicalRoot;
+const chain=id=>chains[id];
 test('matched canonical sources reconstruct; changed registry/source evidence withdraws historical claims',async()=>{
  const state=await buildProjection(canonical);assert.equal(Object.keys(baseline.projects).length,4);
- for(const p of state.projects){const r=state.productDocuments[p.id].reconciliation;if(r.sourceState!=='MATCHED'){assert.ok(['SOURCE_UNAVAILABLE','SOURCE_CHANGED_OR_UNAVAILABLE'].includes(r.sourceState));assert.equal(r.result,'AWAITING_JOEY_CONFIRMATION');assert.deepEqual(r.evidence,[]);const withdrawn=productView(p,{document:state.productDocuments[p.id]});assert.equal(withdrawn.documentedPurpose,null);assert.deepEqual(withdrawn.blueprint.milestones,[]);continue;}assert.equal(r.sourceState,'MATCHED',p.id);assert.equal(r.result,'PARTIALLY_CONFIRMED');const v=productView(p,{document:state.productDocuments[p.id],runtime:runtimeState(p)});assert.equal(v.lifecycle,null);assert.equal(v.blueprintProgress,null);assert.equal(v.purpose.lastApprovedRevision,null);assert.equal(v.reconciliation.purposeEvidenceStatus,'DOCUMENTED_BUT_INCOMPLETE');assert.ok(v.blueprint.milestones.length>=3);assert.equal(validateBlueprint(v.blueprint,v.evidence),true);
+ for(const p of state.projects){const r=state.productDocuments[p.id].reconciliation;assert.equal(r.sourceState,'MATCHED',p.id+' synthetic baseline');if(r.sourceState!=='MATCHED'){assert.ok(['SOURCE_UNAVAILABLE','SOURCE_CHANGED_OR_UNAVAILABLE'].includes(r.sourceState));assert.equal(r.result,'AWAITING_JOEY_CONFIRMATION');assert.deepEqual(r.evidence,[]);const withdrawn=productView(p,{document:state.productDocuments[p.id]});assert.equal(withdrawn.documentedPurpose,null);assert.deepEqual(withdrawn.blueprint.milestones,[]);continue;}assert.equal(r.sourceState,'MATCHED',p.id);assert.equal(r.result,'PARTIALLY_CONFIRMED');const v=productView(p,{document:state.productDocuments[p.id],runtime:runtimeState(p)});assert.equal(v.lifecycle,null);assert.equal(v.blueprintProgress,null);assert.equal(v.purpose.lastApprovedRevision,null);assert.equal(v.reconciliation.purposeEvidenceStatus,'DOCUMENTED_BUT_INCOMPLETE');assert.ok(v.blueprint.milestones.length>=3);assert.equal(validateBlueprint(v.blueprint,v.evidence),true);
  for(const m of v.blueprint.milestones){assert.ok(m.confidence);assert.ok(m.evidenceState);for(const f of m.features){assert.ok(f.evidenceRefs.length);for(const ref of f.evidenceRefs)assert.ok(v.evidence.find(e=>e.id===ref&&e.fingerprint));if(f.status==='COMPLETED'){assert.equal(p.id,'JOEY_ASSET_SYSTEM');assert.ok(f.evidenceRefs.some(ref=>v.evidence.find(e=>e.id===ref)?.verificationScope==='RECORDED_APPROVED_PHASE_PUBLICATION'));}}}
  }
 });

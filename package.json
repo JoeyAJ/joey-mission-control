@@ -5,13 +5,15 @@
   "type": "module",
   "description": "Local Multi-AI Project Control Center for Joey",
   "scripts": {
-    "test": "node --test --test-concurrency=1 tests/*.test.mjs",
-    "test:watch": "node --test --watch --test-concurrency=1 tests/*.test.mjs",
+    "test": "node --import ./tests/test-environment.mjs --test --test-concurrency=1 tests/*.test.mjs",
+    "test:watch": "node --import ./tests/test-environment.mjs --test --watch --test-concurrency=1 tests/*.test.mjs",
     "sync": "node src/cli.mjs sync",
     "validate": "node src/cli.mjs validate",
     "check": "node src/cli.mjs check",
     "start": "node src/server.mjs",
-    "build": "node scripts/build.mjs"
+    "build": "node scripts/build.mjs",
+    "verify:portable": "node scripts/verify-portable.mjs",
+    "qa:public-case": "node tests/browser/public-case-fixture.mjs"
   },
   "engines": {
     "node": ">=22"

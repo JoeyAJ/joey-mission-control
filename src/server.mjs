@@ -39,14 +39,14 @@ export function createApp(deps){
       }
       if(url.pathname.startsWith('/api/')){const result=await router(req,res,url);if(!result)return send(res,404,{error:'Not found'});return send(res,result.status,result.body);}
       const name=url.pathname==='/'?'index.html':url.pathname.slice(1);
-      if(!['index.html','styles.css','app.js','i18n.js','presentation.js','source-summaries.js','control-semantics.js','project-links.js','decision-view.js','agent-detail.js','joey-view.js','joey-operations.js','phase-summary.js','proposals.js','proposal-navigation.js','joey-cockpit.js','joey-controls.js','visual-system.js','brand-eye-source.png','project-state.js','project-state-controls.js'].includes(name))return send(res,404,{error:'Not found'});
+      if(!['index.html','styles.css','app.js','i18n.js','presentation.js','source-summaries.js','control-semantics.js','project-links.js','decision-view.js','agent-detail.js','joey-view.js','joey-operations.js','phase-summary.js','proposals.js','public-cases.js','proposal-navigation.js','joey-cockpit.js','joey-controls.js','visual-system.js','brand-eye-source.png','project-state.js','project-state-controls.js'].includes(name))return send(res,404,{error:'Not found'});
       const types={html:'text/html; charset=utf-8',css:'text/css; charset=utf-8',js:'text/javascript; charset=utf-8',png:'image/png'};
       return send(res,200,await fs.readFile(path.join(publicRoot,name),name.endsWith('.png')?undefined:'utf8'),types[name.split('.').pop()]);
     }catch(error){send(res,error.status||500,{error:error.status?error.message:'Internal error'});}
   };
 }
 
-export function createDefaultDeps({canonicalRoot=config.canonicalRoot,dataRoot=config.dataRoot,writeToken=config.writeToken}={}){
+export function createDefaultDeps({canonicalRoot=config.canonicalRoot,dataRoot=config.dataRoot,writeToken=config.writeToken,assetCatalogRoot=process.env.MC_ASSET_CATALOG_ROOT||'/Users/joeyaj/Documents/Codex/Projects/joey-asset-system'}={}){
   const ready=assertSafeDataRoot(canonicalRoot,dataRoot);
   const inbox=new InboxService(new JsonStore(dataRoot,'inbox.v1.json',collectionValidator(inboxSchema)));
   const sessionStore=new JsonStore(dataRoot,'sessions.v1.json',collectionValidator(sessionSchema));
@@ -56,7 +56,7 @@ export function createDefaultDeps({canonicalRoot=config.canonicalRoot,dataRoot=c
   const proposals=new ProposalService(new JsonStore(dataRoot,'proposals.v03e.json',validProposals),()=>products.store.readOnly());
   const projectStates=new ProjectStateRepository(products.store,async id=>{const snapshot=await state(),p=snapshot.projects.find(p=>p.id===id);if(!p)throw Object.assign(new Error('Project not found'),{status:404});const {productView}=await import('./product/view.mjs');const owners=await products.list();return productView(p,{owner:owners.find(o=>o.projectId===id),document:snapshot.productDocuments?.[id]});});
   return{
-    ready,token:writeToken,products,projectStates,proposals,getAssetCatalog:()=>readAssetCatalog('/Users/joeyaj/Documents/Codex/Projects/joey-asset-system'),missions:new MissionService(new JsonStore(dataRoot,'missions.v03.json',validLedger)),
+    ready,token:writeToken,products,projectStates,proposals,getAssetCatalog:()=>readAssetCatalog(assetCatalogRoot),missions:new MissionService(new JsonStore(dataRoot,'missions.v03.json',validLedger)),
     getState:state,
     phaseView:(p,m,snapshot)=>phaseSummary(p,m,{records:phaseRecords,handoffs:[snapshot.handoffs?.globalLatest,...(snapshot.handoffs?.history||[])].filter(Boolean)}),
     operationalView:(p,r,snapshot)=>operationalView(p,r,snapshot,canonicalRoot),

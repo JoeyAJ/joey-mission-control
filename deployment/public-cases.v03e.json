@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "public-child-cases.v1",
+  "generatedAt": "2026-10-06T08:53:49Z",
+  "syncMode": "manually_verified_public_release_snapshot",
+  "cases": [{
+    "id": "CASE_002_UNIVERSITY",
+    "parentProjectId": "JOEY_ASSET_SYSTEM",
+    "name": "Woosong University Admissions MVP",
+    "industry": "education",
+    "educationCaseSequence": 1,
+    "institutionId": "WOOSONG_UNIVERSITY",
+    "assetId": "education.university_lifecycle",
+    "assetVersion": "0.4.0-admissions-candidate",
+    "developmentStatus": "InDevelopment",
+    "joeyAcceptance": "PENDING_RETEST",
+    "priorAcceptance": "0.3_NOT_PASSED",
+    "updatedAt": "2026-10-06T08:37:37Z",
+    "completedSteps": ["basic", "pdf", "submit", "review", "handoff"],
+    "laterLifecycle": "PLANNED",
+    "publicURL": "https://joey-woosong-admissions-demo.vercel.app/",
+    "pdfMaxBytes": 20971520,
+    "storage": "current_browser_only",
+    "officialService": false,
+    "verification": {"kind": "verified_child_release_report", "functionalTestsPassed": 37, "baselineTestsPassed": 111, "publicSyntheticFlow": "PASS", "previousRecordPDFCompatibility": "PASS"},
+    "source": {"kind": "verified_public_demo_and_owner_confirmed_classification", "releaseURL": "https://joey-woosong-admissions-demo.vercel.app/release.json", "deploymentId": "dpl_7mE4n4MyR9DXn51xK2S8iKJuoDgf", "verifiedAt": "2026-10-06T08:53:49Z"}
+  }]
+}

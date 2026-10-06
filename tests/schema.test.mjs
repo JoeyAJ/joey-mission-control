@@ -49,7 +49,7 @@ test('persisted record collection validator rejects malformed Inbox and session 
 test('date-time format rejects date-only and impossible calendar strings',async()=>{const schema=await loadSchema('handoff-projection');for(const timestamp of ['2026-10-04','2026-02-30T12:00:00Z','2026-13-01T00:00:00Z','2026-01-01T25:00:00Z']){const result=validate(schema,{schemaVersion:'1.0',timestamp,entityId:'NEXAEON',task:'X',status:'SUCCESS',sourcePath:'x',conflict:false,conflictReasons:[]});assert.equal(result.valid,false,timestamp);assert.match(result.errors.join(' '),/date-time/);}});
 
 test('CLI validate checks every generated projection artifact',()=>{
- const result=spawnSync(process.execPath,['src/cli.mjs','validate'],{cwd:new URL('..',import.meta.url),encoding:'utf8'});
+ const result=spawnSync(process.execPath,['--import','./tests/test-environment.mjs','src/cli.mjs','validate'],{cwd:new URL('..',import.meta.url),encoding:'utf8'});
  assert.equal(result.status,0,result.stderr);
  assert.match(result.stdout,/4 projects, 1 cases, \d+ handoffs, and 4 Continue payloads/);
 });

@@ -1,3 +1,4 @@
+import {canonicalRoot} from './helpers/fixtures.mjs';
 import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs/promises';
 import {LOCALES,DEFAULT_LOCALE,LOCALE_NAMES,LOCALE_STORAGE_KEY,DICTIONARIES,t,readStoredLocale,setLocale,initLocale,getLocale,statusLabel,phaseLabel,displayValue,dirtyLabel,sessionStateLabel,classificationLabel,localizeMessage} from '../public/i18n.js';
 import {buildProjection} from '../src/projection/projection-service.mjs';
@@ -80,7 +81,7 @@ test('fixed backend messages are localized but embedded technical evidence is pr
 });
 
 test('rendering labels in every locale never mutates canonical projection data',async()=>{
-  const projection=await buildProjection('/Users/joeyaj/JOEY_CANONICAL_MEMORY');const snapshot=JSON.stringify(projection);
+  const projection=await buildProjection(canonicalRoot);const snapshot=JSON.stringify(projection);
   for(const locale of LOCALES)for(const project of [...projection.projects,...projection.cases]){statusLabel(project.status.value,locale);phaseLabel(project.phase.value,locale);for(const conflict of project.conflicts)localizeMessage(conflict.message,locale);dirtyLabel(project.workspaceObservation?.dirtyState,locale);t('project.title',{name:project.name.value},locale);}
   assert.equal(JSON.stringify(projection),snapshot);
   const js=await read('app.js');
@@ -92,7 +93,7 @@ test('rendering labels in every locale never mutates canonical projection data',
 
 test('server serves only the explicitly allowlisted presentation modules',async()=>{
   const server=await fs.readFile(new URL('../src/server.mjs',import.meta.url),'utf8');
-  assert.match(server,/\['index\.html','styles\.css','app\.js','i18n\.js','presentation\.js','source-summaries\.js','control-semantics\.js','project-links\.js','decision-view\.js','agent-detail\.js','joey-view\.js','joey-operations\.js','phase-summary\.js','proposals\.js','proposal-navigation\.js','joey-cockpit\.js','joey-controls\.js','visual-system\.js','brand-eye-source\.png','project-state\.js','project-state-controls\.js'\]/);
+  assert.match(server,/\['index\.html','styles\.css','app\.js','i18n\.js','presentation\.js','source-summaries\.js','control-semantics\.js','project-links\.js','decision-view\.js','agent-detail\.js','joey-view\.js','joey-operations\.js','phase-summary\.js','proposals\.js','public-cases\.js','proposal-navigation\.js','joey-cockpit\.js','joey-controls\.js','visual-system\.js','brand-eye-source\.png','project-state\.js','project-state-controls\.js'\]/);
 });
 
 test('new terminal failure state is translated in all three locales',()=>{assert.equal(sessionStateLabel('failed','zh-TW'),'失敗');assert.equal(sessionStateLabel('failed','ko'),'실패');assert.equal(sessionStateLabel('failed','en'),'failed');});

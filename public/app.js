@@ -1,3 +1,4 @@
+import {renderPublicCases} from './public-cases.js';
 import {readContext,contextHash,renderAssetCatalog,contextWords,renderLinkageStatus} from './proposal-navigation.js';
 import {renderProposals} from './proposals.js';
 import {retainLastConfirmed} from './joey-operations.js';
@@ -15,7 +16,7 @@ import {t,initLocale,setLocale,getLocale,applyStaticTranslations,displayValue,st
 const $=selector=>document.querySelector(selector);
 const all=selector=>[...document.querySelectorAll(selector)];
 const value=claim=>claim?.value??'Unknown';
-let inboxItems=[],releaseInfo=null,pendingProposals=[];
+let inboxItems=[],releaseInfo=null,pendingProposals=[],publicCaseSnapshot=null;
 let manifests=new Map();
 let viewContext=readContext(location.hash),selectedHumanProject=viewContext.project,assetCatalog=null;
 let lastSuccessfulRead=null,readFailed=false,externalDataChange=false,readingData=false;
@@ -55,7 +56,7 @@ function notifyError(error){lastNotice={raw:error.message};renderNotice();}
 function renderNotice(){if(!lastNotice)return;$('#status').textContent=lastNotice.raw!==undefined?localizeMessage(lastNotice.raw):t(lastNotice.key,lastNotice.key==='ws.sessionUpdated'?{...lastNotice.params,state:sessionStateLabel(lastNotice.params.state)}:lastNotice.params);}
 function renderDataStatus(){const node=renderLinkageStatus({locale:getLocale(),readOnly:releaseInfo?!!releaseInfo.readOnly:null,lastReadAt:lastSuccessfulRead,failed:readFailed,externalChange:externalDataChange,reading:readingData,onRefresh:()=>reload().catch(notifyError)});const old=$('#data-link-status');if(old)old.replaceWith(node);else document.querySelector('body>header').append(node);}
 async function api(path,options={}){const headers={...(options.headers||{})};if(options.body){headers['content-type']='application/json';headers['x-mission-control-token']=token;}const response=await fetch(path,{...options,headers});if(!response.ok)throw new Error((await response.json()).error||response.statusText);const result=await response.json();if(['POST','PATCH'].includes(options.method)&&releaseInfo?.candidateStage==='V0.3-E'&&!releaseInfo.readOnly)localDataChannel?.postMessage({type:'local-data-changed'});return result;}
-async function reload(){readingData=true;renderDataStatus();try{const [snapshot,list]=await Promise.all([api('/api/state'),api('/api/projects')]);let nextProposals=pendingProposals,nextCatalog=assetCatalog,nextInbox=inboxItems;const activeInbox=$('#inbox').classList.contains('active');if(releaseInfo?.candidateStage==='V0.3-E'&&!releaseInfo.readOnly){[nextProposals,nextCatalog]=await Promise.all([api('/api/proposals'),api('/api/asset-catalog')]);}if(activeInbox&&!releaseInfo?.readOnly)nextInbox=await api('/api/inbox');manifests=new Map(list.map(m=>[m.project_id,m]));pendingProposals=nextProposals;assetCatalog=nextCatalog;inboxItems=nextInbox;lastSuccessfulRead=new Date().toISOString();readFailed=false;externalDataChange=false;render(snapshot);if(activeInbox)renderInbox();}catch(error){readFailed=true;manifests=retainLastConfirmed(manifests,new Date().toISOString());if(state)renderHuman();throw error;}finally{readingData=false;renderDataStatus();}}
+async function reload(){readingData=true;renderDataStatus();try{if(!releaseInfo){releaseInfo=await api('/api/health');renderRelease();}const [snapshot,list]=await Promise.all([api('/api/state'),api('/api/projects')]);let nextProposals=pendingProposals,nextCatalog=assetCatalog,nextInbox=inboxItems,nextPublicCases=publicCaseSnapshot;const activeInbox=$('#inbox').classList.contains('active');if(releaseInfo?.candidateStage==='V0.3-E'&&!releaseInfo.readOnly){[nextProposals,nextCatalog]=await Promise.all([api('/api/proposals'),api('/api/asset-catalog')]);}if(releaseInfo?.readOnly)nextPublicCases=await api('/api/public-cases');if(activeInbox&&!releaseInfo?.readOnly)nextInbox=await api('/api/inbox');manifests=new Map(list.map(m=>[m.project_id,m]));pendingProposals=nextProposals;assetCatalog=nextCatalog;inboxItems=nextInbox;publicCaseSnapshot=nextPublicCases;lastSuccessfulRead=new Date().toISOString();readFailed=false;externalDataChange=false;render(snapshot);if(activeInbox)renderInbox();}catch(error){readFailed=true;manifests=retainLastConfirmed(manifests,new Date().toISOString());if(state)renderHuman();throw error;}finally{readingData=false;renderDataStatus();}}
 
 
 all('nav button').forEach(button=>button.addEventListener('click',()=>{show(button.dataset.view);if(button.dataset.view==='inbox')reloadInbox().catch(notifyError);}));
@@ -208,7 +209,7 @@ async function mutateProjectState(manifest,command){
 function navigateContext(context,{push=true,render=true}={}){viewContext={project:context.project||selectedHumanProject,module:context.module||'overview',item:context.item||null};selectedHumanProject=viewContext.project;history[push?'pushState':'replaceState'](null,'',contextHash(viewContext));show('joey');if(render)renderHuman();}
 function proposalContext(p){return{project:p.parentAsset||p.sourceProjectId||selectedHumanProject,module:'proposal',item:p.id};}
 function renderPendingProposals(){
- if(releaseInfo?.readOnly){$('#joey-content').prepend(text('p',contextWords(getLocale()).privateBoundary,'public-privacy-note'));document.getElementById('mission-panel-JOEY_ASSET_SYSTEM')?.append(renderAssetCatalog(null,[],{locale:getLocale()}));return;}
+ if(releaseInfo?.readOnly){$('#joey-content').prepend(text('p',contextWords(getLocale()).privateBoundary,'public-privacy-note'));const panel=document.getElementById('mission-panel-JOEY_ASSET_SYSTEM');panel?.insertBefore(renderPublicCases(publicCaseSnapshot,{locale:getLocale(),item:viewContext.item,onNavigate:navigateContext}),panel.children[1]||null);panel?.append(renderAssetCatalog(null,[],{locale:getLocale()}));return;}
  if(releaseInfo?.candidateStage!=='V0.3-E')return;
  const selected=viewContext.module==='proposal'?pendingProposals.filter(p=>p.id===viewContext.item):pendingProposals;
  const panel=renderProposals(selected,{locale:getLocale(),onOpen:p=>navigateContext(proposalContext(p)),onCreate:async input=>{const p=await api('/api/proposals',{method:'POST',body:JSON.stringify(input)});if(!pendingProposals.some(item=>item.id===p.id))pendingProposals=[...pendingProposals,p];try{await reload();}catch{/* Saving succeeded; keep the returned record while refresh remains unconfirmed. */}navigateContext(proposalContext(p));},onRefresh:()=>reload().catch(notifyError)});
@@ -235,9 +236,6 @@ all('[data-filter]').forEach(button=>button.addEventListener('click',()=>filterP
 $('#inbox-form').addEventListener('submit',async event=>{event.preventDefault();try{const item=await api('/api/inbox',{method:'POST',body:JSON.stringify({rawText:$('#rawText').value,type:$('#kind').value})});if(['Needs review','Ready to confirm'].includes(item.state)){const preview=await api(`/api/inbox/${item.id}/interpret`,{method:'POST',body:'{}'});lastInterpretation=preview.interpretation;renderInterpretation();}await reloadInbox();notify('workflow.saved');}catch(error){notifyError(error);}});
 $('#session-form').addEventListener('submit',async event=>{event.preventDefault();try{await api('/api/sessions',{method:'POST',body:JSON.stringify({entityId:$('#session-entity').value,ai:$('#session-ai').value,model:$('#session-model').value,workspaceId:$('#session-workspaceId').value,path:$('#session-path').value,declaredTask:$('#session-declaredTask').value,permissionBoundary:$('#session-permissionBoundary').value})});await reload();notify('session.created');}catch(error){notifyError(error);}});
 
-reload().catch(error=>notifyError(error));show(location.hash.slice(1)||'joey');
-
-reloadInbox().catch(notifyError);
-api('/api/health').then(async info=>{releaseInfo=info;if(info.candidateStage==='V0.3-E'&&!info.readOnly){const result=await Promise.all([api('/api/proposals'),api('/api/asset-catalog')]);pendingProposals=result[0];assetCatalog=result[1];}renderRelease();renderHuman();}).catch(notifyError);
+reload().then(()=>reloadInbox()).catch(notifyError);show(location.hash.slice(1)||'joey');
 
 $('#refresh-state').addEventListener('click',()=>reload().catch(notifyError));

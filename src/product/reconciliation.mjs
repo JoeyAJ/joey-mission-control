@@ -10,8 +10,8 @@ async function gitBytes(repo,sha,file){const key=JSON.stringify([repo,sha,file])
 const hash=bytes=>createHash('sha256').update(bytes).digest('hex');
 // Registry roots only; immutable Git blobs and fingerprint-bound canonical files.
 // Fail closed to missing history, never to a technical blocker or a completion claim.
-export async function reconcileProject(root,chain){
- const baseline=data.projects[chain.id];
+export async function reconcileProject(root,chain,{metadata=data}={}){
+ const baseline=metadata.projects[chain.id];
  if(!baseline)return null;
  const pending={projectId:chain.id,result:'AWAITING_JOEY_CONFIRMATION',sourceState:'SOURCE_UNAVAILABLE',invalidSources:[],evidence:[]};
  if(chain.storedHead!==baseline.baselineSha||path.basename(chain.localMaster||'')!==baseline.repository)return{...pending,invalidSources:['registry-baseline']};

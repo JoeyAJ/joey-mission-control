@@ -12,7 +12,7 @@ function memoryDirectory(memoryPath){return path.posix.dirname(memoryPath);}
 function relevantDocs(entity){const dir=memoryDirectory(entity.memoryPath);return[entity.currentStatePath,`${dir}/NEXT_ACTIONS.md`,`${dir}/DECISIONS.md`].filter(Boolean);}
 function newestSession(sessions,id){return sessions.filter(session=>session.entityId===id).sort((a,b)=>Date.parse(b.updatedAt)-Date.parse(a.updatedAt))[0];}
 
-export async function buildProjection(root,{sessions=[],projectUrlMetadata}={}){
+export async function buildProjection(root,{sessions=[],projectUrlMetadata,reconciliationMetadata}={}){
   const [index,registry,urlMetadata]=await Promise.all([loadMemoryIndex(root),loadRegistry(root),projectUrlMetadata||loadProjectUrls()]);
   const knownEntities=new Set(index.entities.map(entity=>entity.id));
   const handoffs=await loadHandoffs(`${root}/HANDOFF`,{knownEntities});
@@ -33,7 +33,7 @@ export async function buildProjection(root,{sessions=[],projectUrlMetadata}={}){
   for(const entity of index.entities.filter(item=>item.entityType!=='case')){
     const memory=await loadEntityMemory(root,memoryDirectory(entity.memoryPath));
     const chain=chains.find(item=>item.id===entity.id)||{};
-    productDocuments[entity.id]={purpose:memory.PROJECT_MEMORY?.sections?.Purpose||null,source:memory.PROJECT_MEMORY?.source||null,reconciliation:await reconcileProject(root,chain)};
+    productDocuments[entity.id]={purpose:memory.PROJECT_MEMORY?.sections?.Purpose||null,source:memory.PROJECT_MEMORY?.source||null,reconciliation:await reconcileProject(root,chain,{metadata:reconciliationMetadata})};
     projects.push(buildProjectProjection({id:entity.id,name:entity.name,entityType:entity.entityType,indexSource:index.source,memoryPath:entity.memoryPath,relevantDocs:relevantDocs(entity),state:memory.CURRENT_STATE,next:memory.NEXT_ACTIONS,registry:chain,handoff:handoffs.byEntity[entity.id],handoffConflicts:handoffs.conflictsByEntity[entity.id]||[],session:newestSession(sessions,entity.id),git:observations.get(entity.id)||{error:'Workspace registry entry missing',observedAt:new Date().toISOString()},projectUrls:resolveProjectUrls(entity.id,chain,urlMetadata),cases:cases.filter(item=>item.parentId===entity.id)}));
   }
   return{schemaVersion:'1.0',generatedAt:new Date().toISOString(),projects,cases,handoffs,productDocuments};

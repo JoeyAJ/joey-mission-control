@@ -1,5 +1,7 @@
 > V0.3-E public-test release authorized 2026-10-06: shared liquid-glass UI and four-project navigation. Public Production stays read-only and excludes private Ideas/proposals/Asset classification; local registration and same-record editing remain on Joey Mac. Public testing approval is recorded separately from final Joey feedback. See docs/V0.3-E_RELEASE_CHECKPOINT.md; the pre-release acceptance report is historical.
 
+> E public progress correction: JoeyAsset now shows the separately approved university child-case 0.4 summary. This manually curated public snapshot is separate from private Ideas and does not auto-sync local data. See docs/V0.3-E_PUBLIC_CASE_PROGRESS.md.
+
 > V0.3-D accepted 2026-10-06: handoff-first five project readouts, last-confirmed stage Fleet navigation and any-Agent continuation guide. Parent accepted C 150adbf7263b572465f4645869edda7be76e0f11. See docs/V0.3-D_RELEASE_CHECKPOINT.md.
 
 # Joey Mission Control
@@ -117,3 +119,11 @@ confirmed local-first operation: authenticated mutations and durable JSON histor
 remain local; Vercel serves a sanitized, immutable canonical-state snapshot.
 Production writes stay disabled. Prior acceptance-candidate notes describe historical
 checkpoints and are superseded by this release authorization.
+
+### Portable verification and public case QA
+
+`npm test` now uses authored synthetic canonical documents, planned/registered Asset catalogs and four temporary Git repositories. No Joey workstation canonical files, owner records or sessions are needed. Fixtures clean up only their own temporary directory. Runtime defaults remain unchanged.
+
+Run `npm run verify:portable` for the complete guarded test suite, build, schema validation and static safety check. The guard rejects workstation canonical/project/local-data reads and Git subprocess working directories; each process reports `PORTABILITY_GUARD forbiddenAttempts=0` on success. Direct `npm run validate` remains the local runtime inspection command; use the portable harness for isolated verification.
+
+For actual-server browser QA, start `node --import ./tests/test-environment.mjs src/server.mjs --port 4352` with synthetic roots, and `npm run qa:public-case` for the saved public API adapter on port 4353. In one dedicated Playwright session run `tests/browser/actual-server-startup-flow.js`, then `tests/browser/public-case-flow.js`. Static modules and the UI come from the actual local server; the public phase substitutes saved API responses. Tests cover native local initialization, delayed health, first case-source failure/recovery, 1440/390/320 layouts, three languages, privacy and confirmed-refresh retention. Formal owner/session data is not read. Stop both QA servers and close the session afterward. See [portable verification handoff](docs/V0.3-E_PORTABLE_PUBLIC_CASE_HANDOFF.md).

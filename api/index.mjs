@@ -5,16 +5,19 @@ import fs from 'node:fs/promises';
 import {securityHeaders,safeId} from '../src/api/routes.mjs';
 import {release} from '../src/release.mjs';
 import {candidate} from '../src/candidate.mjs';
+import {assertPublicCases} from '../src/public-cases.mjs';
 import {composeContinue} from '../src/continue/continue-composer.mjs';
 const snapshot=JSON.parse(await fs.readFile(new URL('../deployment/production-snapshot.json',import.meta.url),'utf8'));
 const projectStates=JSON.parse(await fs.readFile(new URL('../deployment/project-state.v03b.json',import.meta.url),'utf8'));
 const phaseRecords=JSON.parse(await fs.readFile(new URL('../deployment/last-development.v03d.json',import.meta.url),'utf8')).projects;
+const publicCases=assertPublicCases(JSON.parse(await fs.readFile(new URL('../deployment/public-cases.v03e.json',import.meta.url),'utf8')));
 const projectManifest=p=>{const m=manifest(p,{handoff:snapshot.handoffs.byEntity[p.id],handoffs:[snapshot.handoffs.globalLatest,...snapshot.handoffs.history].filter(Boolean),generatedAt:snapshot.generatedAt,publicRead:true});m.product=productView(p,{publicRead:true});m.canonicalState=projectStates.projects.find(s=>s.id===p.id);m.product.documentedPurpose=m.canonicalState?.missionStatement||m.product.documentedPurpose;m.phase=phaseSummary(p,m,{records:phaseRecords,handoffs:[snapshot.handoffs.globalLatest,...snapshot.handoffs.history].filter(Boolean),readOnly:true});return m;};
 export function productionResponse(method,url){
  if(method!=='GET')return{status:403,body:{error:'Public production is read-only. Use authorized local Mission Control for writes.'}};
  const route=url.searchParams.get('route')||'';
  if(route==='health')return{status:200,body:{ok:true,...release,...candidate,mode:'verified_release_snapshot',readOnly:true,snapshotGeneratedAt:snapshot.generatedAt}};
  if(route==='state')return{status:200,body:snapshot};
+ if(route==='public-cases')return{status:200,body:publicCases};
  if(route==='projects')return{status:200,body:snapshot.projects.map(p=>projectManifest(p))};
  const canonical=route.match(/^projects\/([^/]+)\/project-state$/);if(canonical){const state=projectStates.projects.find(s=>s.id===safeId(canonical[1]));return state?{status:200,body:state}:{status:404,body:{error:'Project not found'}};}
  const normalized=route.match(/^projects\/([^/]+)\/(state|manifest|runtime|activity|product)$/);
