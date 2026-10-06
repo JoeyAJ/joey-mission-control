@@ -119,6 +119,11 @@
       "type": "PRIVATE_STAGE_CHECKPOINT_FETCHBACK_VERIFIED",
       "commit": "39846c133fa01956bc6317b6223b4ceb4e9a19f4",
       "ownerAcceptance": "PENDING"
+    },
+    {
+      "type": "P0_EXISTING_SOURCE_INVENTORY_CORRECTED",
+      "source": "parent Mac inventory receipt plus cloud verified Asset Git catalog77b6766",
+      "result": "Never-created independent missions/proposals not missing. Actual owner payload/inbox identified; catalog accepted from existing private Git. Gate is scoped source completeness and authority cutover."
     }
   ],
   "migrationPriority": {

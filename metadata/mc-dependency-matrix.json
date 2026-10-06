@@ -45,7 +45,8 @@
     "newPrivateWritesAllowed": false,
     "agentControlAllowed": false,
     "crossProjectSyncAllowed": false,
-    "singleWriter": "parent coordinates; Joey owns final promotion"
+    "singleWriter": "parent coordinates; Joey owns final promotion",
+    "gateDefinition": "Source-complete scoped existing payload and authority cutover; never-created optional ledgers are not missing-data blockers."
   },
   "sources": [
     {
@@ -81,6 +82,34 @@
       "readResult": "No readable content in full ZIP read",
       "materializeError": "library file transfer failed: download failed",
       "containsPrivateCookies": "parent states excluded; no cookie file read"
+    },
+    {
+      "repository": "JoeyAJ/joey-asset-system",
+      "commit": "77b6766e790c7794bb1fc691f3f3dd3f4a4fe5c6",
+      "sources": [
+        {
+          "file": "catalog/industries.json",
+          "sha256": "7923cfd0c5d5ad4794b53ab1ee92c12658f4e9c481d1592801b3c05843a57b79",
+          "bytes": 2330
+        },
+        {
+          "file": "catalog/assets.json",
+          "sha256": "de6839ef706e3595fed9551e055d5aab09ee8375d338f000224f48465d87235f",
+          "bytes": 2395
+        },
+        {
+          "file": "cases/CASE_001_NAMYOUNG/classification.json",
+          "sha256": "23ae67df17e939fd4502d62ce0c569148d54e1d34024000a0cdb526a4c38864a",
+          "bytes": 817
+        }
+      ],
+      "id": "asset-catalog-77b6766",
+      "kind": "PRIVATE_GIT_SOURCE_HASH_AND_READER_VERIFIED",
+      "readerResult": "LOCAL_ACCEPTED",
+      "acceptance": "accepted",
+      "industryCount": 2,
+      "assetCount": 2,
+      "caseCount": 1
     }
   ],
   "projects": [
@@ -148,12 +177,14 @@
       "childDeployment": "https://joey-woosong-admissions-demo.vercel.app/",
       "deploymentEvidence": "existing owner receipt/approved URL, no new production probe",
       "safeHandoff": "safe-index-1578b10d",
-      "additionalSources": [],
+      "additionalSources": [
+        "asset-catalog-77b6766"
+      ],
       "dataAuthority": "private canonical/owner on Mac; cloud safe read-only receipt overlay only",
       "accessMode": "private code read; public approved projection read-only",
       "refreshSemantics": "fixed versioned receipt and public snapshot reread; no live sync/remote revalidation",
       "writeOwner": "Joey/authorized per-project writer; parent coordinates cloud checkpoint",
-      "migrationBlocker": "Private canonical/owner authority and continuous synchronization not migrated",
+      "migrationBlocker": "Existing catalog verified in private Git; scoped owner/canonical source completeness and authority cutover remain pending",
       "status": "CODE_TIP_AND_SAFE_RECEIPTS_VERIFIED_PRIVATE_AUTHORITY_PENDING"
     }
   ],
@@ -166,36 +197,35 @@
         "index-linked PROJECT_MEMORY.md/ARCHITECTURE.md/DECISIONS.md/CURRENT_STATE.md/NEXT_ACTIONS.md for four projects and Asset child-case",
         "handoff LATEST.md and applicable HISTORY/*.md"
       ],
-      "source": "Mac authoritative canonical root; not present in cloud, safe index is not replacement",
+      "source": "Mac authority now available to parent; exact minimal document inventory being prepared. Safe index is not complete private authority.",
       "minimalPermission": "Parent-authorized read-only export of exact inventory plus file SHA256/version/timestamp; exclude secrets/cookies and unrelated project content",
       "destination": "Recommend owner-controlled private Library versioned custody; private handoff Git stores sanitized inventory/hashes only; no raw canonical tree in deploy-linked MC repo",
-      "status": "MAC_OFFLINE_EXPORT_AND_DESTINATION_CONFIRMATION_PENDING"
+      "status": "MAC_OWNER_DEFINING_MINIMAL_INVENTORY_EXPORT_AND_DESTINATION_APPROVAL_PENDING"
     },
     {
       "id": "owner-ledger",
       "blockingData": [
-        "product-owner.v03.json (per-owner canonicalState, revisions, decisions and audit)",
-        "missions.v03.json",
-        "proposals.v03e.json",
-        "inbox.v1.json and sessions.v1.json if explicitly required for continuity"
+        "product-owner.v03.json exact existing179558-byte payload (WB rev3, Asset rev10 canonicalState/decisions/audit)",
+        "inbox.v1.json existing empty []2-byte payload, only for inventory/continuity"
       ],
-      "source": "Mac MC_DATA_ROOT; absent here. Accepted deployment JSONs are historical presentation, not writable authority",
+      "source": "Parent reports formal Mac dataRoot schema0.3-B reference validation PASS; raw payload not yet transferred",
       "minimalPermission": "Read-only schema-valid versioned export; secrets removed; preserve IDs/revisions/links and require explicit single-writer cutover before any mutation",
       "destination": "Same private Library snapshot custody; isolated cloud staging outside repo/public and outside canonicalRoot only after exact transfer scope authorized",
-      "status": "EXPORT_INVENTORY_HASH_AND_WRITER_CUTOVER_PENDING"
+      "status": "EXISTING_PAYLOAD_ISOLATED_RESTORE_HASH_AND_EXACT_LIBRARY_TRANSFER_APPROVAL_PENDING",
+      "notRequiredToRecover": [
+        "missions.v03.json: never created; canonical missions exist inside owner payload",
+        "proposals.v03e.json: never created; not lost",
+        "sessions.v1.json: not established as required by this receipt"
+      ]
     },
     {
       "id": "asset-catalog",
-      "blockingData": [
-        "catalog/industries.json",
-        "catalog/assets.json",
-        "cases/CASE_001_NAMYOUNG/classification.json",
-        "matching Asset catalog acceptance/version and source fingerprints"
-      ],
-      "source": "Mac Asset root; safe University receipt does not replace private catalog",
-      "minimalPermission": "Read sanitized catalog/index export only; no asset raw source ZIP publication",
-      "destination": "Existing private Asset repo or private Library by owner choice; MC receives safe projection only",
-      "status": "EXACT_CATALOG_EXPORT_AND_SOURCE_AUTHORITY_PENDING"
+      "blockingData": [],
+      "source": "Existing private Git JoeyAJ/joey-asset-system migration/university-v04-portable77b6766; three exact files fetched/hash-pinned and MC reader accepted",
+      "minimalPermission": "No new grant or Mac export required for this catalog; authorized private Git read already succeeded",
+      "destination": "Pinned private Git source; temporary consumer-local read-only input outside MC/public; keep original catalog in Asset repo",
+      "status": "EXISTING_GIT_CATALOG_HASH_AND_READER_VERIFIED",
+      "evidenceSource": "asset-catalog-77b6766"
     },
     {
       "id": "buddy-formal-actor",
@@ -210,14 +240,45 @@
     {
       "id": "sync-cutover",
       "blockingData": [
-        "per-store authority/version/writer tuple",
-        "Mac-offline conflict policy and restoration checkpoint",
-        "parent-approved cloud-versus-Mac writer ownership"
+        "source-complete scoped inventory with exact versions/hashes",
+        "per-existing-store authority/version/writer tuple and restoration checkpoint",
+        "parent-approved cloud-versus-Mac writer cutover and conflict policy"
       ],
-      "source": "No continuous producer or shared canonical authority in this cloud",
+      "source": "Mac now available to parent; source completeness and authority cutover remain undefined, not missing never-created ledgers",
       "minimalPermission": "Owner/parent destination and single-writer decision; no DB/Auth/OAuth/keys/paidresource creation",
       "destination": "Recommend retain Mac authority until restore/read-only reconciliation succeeds; cloud remains fixed receipt view meanwhile",
-      "status": "DEPENDENT_WRITES_CONTROL_SYNC_BLOCKED"
+      "status": "SOURCE_COMPLETENESS_AND_AUTHORITY_CUTOVER_PENDING"
     }
-  ]
+  ],
+  "macInventoryReceipt": {
+    "source": "parent delegated Mac formal-dataRoot receipt; no cloud read of raw payload",
+    "recordedByCloudAt": "2026-10-06T23:54:34.256392+00:00",
+    "ownerBytes": 179558,
+    "owners": [
+      {
+        "projectId": "WOOSONG_BUDDY",
+        "revision": 3,
+        "auditCount": 3,
+        "ideaCount": 2,
+        "canonicalMissionCount": 5
+      },
+      {
+        "projectId": "JOEY_ASSET_SYSTEM",
+        "revision": 10,
+        "auditCount": 10,
+        "ideaCount": 1,
+        "canonicalMissionCount": 3
+      }
+    ],
+    "schema": "0.3-B",
+    "referenceValidation": "PARENT_REPORTED_PASS",
+    "inbox": {
+      "bytes": 2,
+      "value": "[]"
+    },
+    "independentMissionsLedger": "NOT_CREATED_NOT_LOST",
+    "independentProposalsLedger": "NOT_CREATED_NOT_LOST",
+    "MacRestore": "ISOLATED_EXPORT_HASH_RESTORE_IN_PROGRESS_NO_EXTERNAL_TRANSFER",
+    "rawLibraryTransfer": "EXACT_PAYLOAD_APPROVAL_PENDING"
+  }
 }
