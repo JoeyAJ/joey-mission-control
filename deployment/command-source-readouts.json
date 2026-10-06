@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 1,
+  "provenance": {
+    "repository": "JoeyAJ/nexaeon-hermes-handoff",
+    "branch": "migration/safe-project-handoffs-20261006",
+    "commit": "1578b10d3d41fe9167104b9e9557bc5f6674a891",
+    "document": "handoffs/migration-20261006/PROJECT_HANDOFFS.md",
+    "verifiedAt": "2026-10-06",
+    "kind": "sanitized_receipt_not_live"
+  },
+  "projects": [
+    {
+      "sourceKind": "sanitized_owner_receipt",
+      "sourceDate": "2026-10-06",
+      "currentTask": null,
+      "currentAgent": null,
+      "currentModel": null,
+      "lastConfirmedActor": null,
+      "lastConfirmedModel": null,
+      "identityReason": {
+        "zh-TW": "安全摘要未記錄執行 Agent／模型；不能從 Git 作者推測。",
+        "en": "Safe receipt omits executing agent/model; Git authors are not identity evidence.",
+        "ko": "안전 요약에 실행 Agent/모델이 없습니다. Git 작성자로 추정하지 않습니다."
+      },
+      "approvalRequest": null,
+      "runtimeConnected": false,
+      "productionVerification": "owner_receipt_not_new_probe",
+      "projectId": "NEXAEON",
+      "repository": "JoeyAJ/nexaeon-web",
+      "branch": "main",
+      "verifiedRemoteSha": "8271e1bbae78eb7fc4fc86c06feaa50d6fa82c39",
+      "stage": {
+        "zh-TW": "已記錄 cloud pilot 驗證",
+        "en": "Cloud pilot validation recorded",
+        "ko": "Cloud pilot 검증 기록"
+      },
+      "recentCompletion": "Owner receipt: lint, 636 unit, 132 eval, build PASS; E2E 102 pass + one flaky retry pass; initial failure retained.",
+      "nextAction": null,
+      "limits": "Next action, current task, actor/model and current production verification are absent from safe receipt.",
+      "blocker": null
+    },
+    {
+      "sourceKind": "sanitized_owner_receipt",
+      "sourceDate": "2026-10-06",
+      "currentTask": null,
+      "currentAgent": null,
+      "currentModel": null,
+      "lastConfirmedActor": null,
+      "lastConfirmedModel": null,
+      "identityReason": {
+        "zh-TW": "安全摘要未記錄執行 Agent／模型；不能從 Git 作者推測。",
+        "en": "Safe receipt omits executing agent/model; Git authors are not identity evidence.",
+        "ko": "안전 요약에 실행 Agent/모델이 없습니다. Git 작성자로 추정하지 않습니다."
+      },
+      "approvalRequest": null,
+      "runtimeConnected": false,
+      "productionVerification": "owner_receipt_not_new_probe",
+      "projectId": "WOOSONG_BUDDY",
+      "repository": "JoeyAJ/woosongbuddy",
+      "branch": "main",
+      "verifiedRemoteSha": "e41bd1b7d8a481fdf6402881f382605278d229af",
+      "stage": {
+        "zh-TW": "Social PK／visits 已發布；手機驗收待確認",
+        "en": "Social PK / visits released; mobile acceptance open",
+        "ko": "Social PK / visits 게시; 모바일 검수 대기"
+      },
+      "recentCompletion": "Owner receipt: main/production agree; real JWT / PK / visits / concurrency synthetic-player checks PASS. SQL migration 20261006151514 recorded.",
+      "nextAction": {
+        "zh-TW": "確認實機 GPS／capture EXP／PWA；尚未驗證。",
+        "en": "Verify actual-device GPS / capture EXP / PWA; not yet verified.",
+        "ko": "실기기 GPS / capture EXP / PWA 검증 필요."
+      },
+      "limits": "Actual iPhone GPS, capture EXP and PWA acceptance remain unverified. Production agreement is an owner receipt, not a new deployment probe.",
+      "blocker": null
+    },
+    {
+      "sourceKind": "sanitized_owner_receipt",
+      "sourceDate": "2026-10-06",
+      "currentTask": null,
+      "currentAgent": null,
+      "currentModel": null,
+      "lastConfirmedActor": null,
+      "lastConfirmedModel": null,
+      "identityReason": {
+        "zh-TW": "安全摘要未記錄執行 Agent／模型；不能從 Git 作者推測。",
+        "en": "Safe receipt omits executing agent/model; Git authors are not identity evidence.",
+        "ko": "안전 요약에 실행 Agent/모델이 없습니다. Git 작성자로 추정하지 않습니다."
+      },
+      "approvalRequest": null,
+      "runtimeConnected": false,
+      "productionVerification": "owner_receipt_not_new_probe",
+      "projectId": "NAMYOUNG_WEB3D",
+      "repository": "JoeyAJ/namyoung-web3d",
+      "branch": "main",
+      "verifiedRemoteSha": "92c17b8adeec5eaa80d27b8facad532e6ff61d59",
+      "stage": {
+        "zh-TW": "網站驗證已記錄；原始 v0.15 custody 待核對",
+        "en": "Website validation recorded; original v0.15 custody lookup open",
+        "ko": "웹사이트 검증 기록; 원본 v0.15 보관 확인 대기"
+      },
+      "recentCompletion": "Owner receipt: 72 tests / build / runtime / hash / source-clean PASS.",
+      "nextAction": {
+        "zh-TW": "核對原始 v0.15 的 exact-hash custody。",
+        "en": "Check exact-hash custody of original v0.15 asset.",
+        "ko": "원본 v0.15 자산의 exact-hash 보관 확인."
+      },
+      "limits": "No new original-asset backup or runtime test was performed in this candidate.",
+      "blocker": null
+    },
+    {
+      "sourceKind": "sanitized_owner_receipt",
+      "sourceDate": "2026-10-06",
+      "currentTask": null,
+      "currentAgent": null,
+      "currentModel": null,
+      "lastConfirmedActor": null,
+      "lastConfirmedModel": null,
+      "identityReason": {
+        "zh-TW": "安全摘要未記錄執行 Agent／模型；不能從 Git 作者推測。",
+        "en": "Safe receipt omits executing agent/model; Git authors are not identity evidence.",
+        "ko": "안전 요약에 실행 Agent/모델이 없습니다. Git 작성자로 추정하지 않습니다."
+      },
+      "approvalRequest": null,
+      "runtimeConnected": false,
+      "productionVerification": "owner_receipt_not_new_probe",
+      "projectId": "JOEY_ASSET_SYSTEM",
+      "repository": "JoeyAJ/joey-asset-system",
+      "branch": "migration/university-v04-portable",
+      "verifiedRemoteSha": "77b6766e790c7794bb1fc691f3f3dd3f4a4fe5c6",
+      "stage": {
+        "zh-TW": "University 0.4 候選；Joey 重測待完成",
+        "en": "University 0.4 candidate; Joey retest pending",
+        "ko": "University 0.4 후보; Joey 재검수 대기"
+      },
+      "recentCompletion": "Owner receipt: 152 tests/build PASS. Public admissions 0.4.0 candidate is distinct from private metadata/library/source custody.",
+      "nextAction": {
+        "zh-TW": "Joey 重測 admissions 0.4 候選。",
+        "en": "Joey retest of admissions 0.4 candidate.",
+        "ko": "Joey admissions 0.4 후보 재검수."
+      },
+      "limits": "Private migration branch is unmerged; main baseline remains eb03e2a. Later lifecycle modules planned. Original documents excluded from review export.",
+      "blocker": null
+    }
+  ]
+}

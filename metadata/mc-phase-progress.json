@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "scope": "private development progress; not public runtime or canonical owner state",
+  "owner": "Joey",
+  "finalApprover": "Joey",
+  "authorization": {
+    "source": "Sentinel_e71d9f08882881918fa7d5de3a0383aa",
+    "at": "2026-10-06T23:28:59Z",
+    "original": "OK，现在你的主要核心任务就是肉，MC开发成我最后需要的样子，没有达到最后需要的样子你就不要停。然后你得做一个阶段的话 breakdown，然后就把 breakdown 的这个保存到实时传到云端或者是 git，anyway你自己安排，反正就是跑到开发成最终我需要的样子你就不要停。",
+    "parentScope": "Private isolated branch checkpoints permitted; exact push manifest/preview risk and single-writer coordination precede push. No new paid resources/grants/keys or production promotion."
+  },
+  "baseline": "8b4945b16a0b23f2e72033aa976fa34f94eabec0",
+  "savedOriginal": "32b77ee593d4dbc38d07a9f92982f5c0750ccba9",
+  "phases": [
+    {
+      "id": "P0",
+      "status": "ENGINEERING_COMPLETE",
+      "result": "Exact baseline/custody/source boundary verified.",
+      "definitionOfDoneRef": "docs/MC_PHASE_PLAN.md",
+      "ownerAcceptance": "BASELINE_ONLY",
+      "sources": [
+        "docs/COMMAND_WORKSPACE_HANDOFF.md",
+        "docs/COMMAND_WORKSPACE_REVIEW.md"
+      ],
+      "tests": null
+    },
+    {
+      "id": "P1",
+      "status": "ENGINEERING_COMPLETE_OWNER_ACCEPTANCE_PENDING",
+      "result": "Reviewed linked evidence workspace; 256 tests/browser PASS.",
+      "definitionOfDoneRef": "docs/MC_PHASE_PLAN.md",
+      "ownerAcceptance": "NOT_RECORDED",
+      "sources": [
+        "docs/COMMAND_WORKSPACE_HANDOFF.md",
+        "docs/COMMAND_WORKSPACE_REVIEW.md"
+      ],
+      "tests": {
+        "pass": 256,
+        "fail": 0,
+        "browserWidths": [
+          1440,
+          390,
+          320
+        ]
+      }
+    },
+    {
+      "id": "P2A",
+      "status": "IN_PROGRESS",
+      "result": "Implement bounded local execution-report receiver using existing local token/store.",
+      "definitionOfDoneRef": "docs/MC_PHASE_PLAN.md",
+      "ownerAcceptance": "NOT_RECORDED",
+      "sources": [],
+      "tests": null
+    },
+    {
+      "id": "P2B",
+      "status": "DEPENDENCY_PENDING",
+      "result": "No actual authorized producer/source bridge is connected.",
+      "definitionOfDoneRef": "docs/MC_PHASE_PLAN.md",
+      "ownerAcceptance": "NOT_RECORDED",
+      "sources": [],
+      "tests": null
+    },
+    {
+      "id": "P3",
+      "status": "PLANNED",
+      "result": "Supported control adapters and permissions required; no universal dispatch.",
+      "definitionOfDoneRef": "docs/MC_PHASE_PLAN.md",
+      "ownerAcceptance": "NOT_RECORDED",
+      "sources": [],
+      "tests": null
+    },
+    {
+      "id": "P4",
+      "status": "PARTIAL_EXISTING_LOCAL_STORE",
+      "result": "Private cloud/Mac canonical continuity not established.",
+      "definitionOfDoneRef": "docs/MC_PHASE_PLAN.md",
+      "ownerAcceptance": "NOT_RECORDED",
+      "sources": [],
+      "tests": null
+    },
+    {
+      "id": "P5",
+      "status": "NOT_COMPLETE",
+      "result": "Parent review/Joey usability acceptance and authorized promotion remain required.",
+      "definitionOfDoneRef": "docs/MC_PHASE_PLAN.md",
+      "ownerAcceptance": "NOT_RECORDED",
+      "sources": [],
+      "tests": null
+    }
+  ],
+  "events": [
+    {
+      "at": "2026-10-06T23:28:59Z",
+      "type": "OWNER_CONTINUING_DELIVERY_DIRECTION",
+      "source": "Sentinel_e71d9f08882881918fa7d5de3a0383aa"
+    },
+    {
+      "type": "P1_INDEPENDENT_REVIEW_COMPLETE",
+      "result": "Two P2 fixed; no remaining P1/P2 reported; source/runtime truth retained."
+    },
+    {
+      "type": "P2A_STARTED",
+      "boundary": "isolated local receiver/tests; no live producer claim"
+    }
+  ]
+}

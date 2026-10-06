@@ -1,3 +1,4 @@
+import {commandReadout,commandWorkspaceHealth} from '../src/operations/command-readouts.mjs';
 import {phaseSummary} from '../public/phase-summary.js';
 import {productView} from '../src/product/view.mjs';
 import {manifest} from '../src/agent/control.mjs';
@@ -11,11 +12,11 @@ const snapshot=JSON.parse(await fs.readFile(new URL('../deployment/production-sn
 const projectStates=JSON.parse(await fs.readFile(new URL('../deployment/project-state.v03b.json',import.meta.url),'utf8'));
 const phaseRecords=JSON.parse(await fs.readFile(new URL('../deployment/last-development.v03d.json',import.meta.url),'utf8')).projects;
 const publicCases=assertPublicCases(JSON.parse(await fs.readFile(new URL('../deployment/public-cases.v03e.json',import.meta.url),'utf8')));
-const projectManifest=p=>{const m=manifest(p,{handoff:snapshot.handoffs.byEntity[p.id],handoffs:[snapshot.handoffs.globalLatest,...snapshot.handoffs.history].filter(Boolean),generatedAt:snapshot.generatedAt,publicRead:true});m.product=productView(p,{publicRead:true});m.canonicalState=projectStates.projects.find(s=>s.id===p.id);m.product.documentedPurpose=m.canonicalState?.missionStatement||m.product.documentedPurpose;m.phase=phaseSummary(p,m,{records:phaseRecords,handoffs:[snapshot.handoffs.globalLatest,...snapshot.handoffs.history].filter(Boolean),readOnly:true});return m;};
+const projectManifest=p=>{const m=manifest(p,{handoff:snapshot.handoffs.byEntity[p.id],handoffs:[snapshot.handoffs.globalLatest,...snapshot.handoffs.history].filter(Boolean),generatedAt:snapshot.generatedAt,publicRead:true});m.product=productView(p,{publicRead:true});m.canonicalState=projectStates.projects.find(s=>s.id===p.id);m.product.documentedPurpose=m.canonicalState?.missionStatement||m.product.documentedPurpose;m.phase=phaseSummary(p,m,{records:phaseRecords,handoffs:[snapshot.handoffs.globalLatest,...snapshot.handoffs.history].filter(Boolean),readOnly:true});m.sourceReadout=commandReadout(p.id,{publicRead:true});return m;};
 export function productionResponse(method,url){
  if(method!=='GET')return{status:403,body:{error:'Public production is read-only. Use authorized local Mission Control for writes.'}};
  const route=url.searchParams.get('route')||'';
- if(route==='health')return{status:200,body:{ok:true,...release,...candidate,mode:'verified_release_snapshot',readOnly:true,snapshotGeneratedAt:snapshot.generatedAt}};
+ if(route==='health')return{status:200,body:{ok:true,...release,...candidate,mode:'verified_release_snapshot',readOnly:true,commandWorkspace:commandWorkspaceHealth,snapshotGeneratedAt:snapshot.generatedAt}};
  if(route==='state')return{status:200,body:snapshot};
  if(route==='public-cases')return{status:200,body:publicCases};
  if(route==='projects')return{status:200,body:snapshot.projects.map(p=>projectManifest(p))};

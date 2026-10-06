@@ -1,3 +1,4 @@
+import {commandWorkspaceHealth} from '../operations/command-readouts.mjs';
 import {candidate} from '../candidate.mjs';
 import {bootstrapReadiness} from '../product/model.mjs';
 import {productView} from '../product/view.mjs';
@@ -10,14 +11,14 @@ export async function readJson(req,limit=65536){if(!/^application\/json(?:;|$)/i
 
 export function createRouter(deps){return async(req,res,url)=>{
   const method=req.method,pathname=url.pathname;
-  if(method==='GET'&&pathname==='/api/health')return{status:200,body:{ok:true,loopback:true,...release,...candidate,localWriteSupport:true}};
+  if(method==='GET'&&pathname==='/api/health')return{status:200,body:{ok:true,loopback:true,...release,...candidate,localWriteSupport:true,commandWorkspace:commandWorkspaceHealth}};
   if(method==='GET'&&pathname==='/api/asset-catalog'&&deps.getAssetCatalog)return{status:200,body:await deps.getAssetCatalog()};
   if(pathname==='/api/proposals'&&deps.proposals){await deps.ready;if(method==='GET')return{status:200,body:await deps.proposals.list()};if(method==='POST')return{status:201,body:await deps.proposals.create(await readJson(req))};}
   if(method==='GET'&&pathname==='/api/state')return{status:200,body:await deps.getState()};
   if(method==='GET'&&pathname==='/api/workspaces')return{status:200,body:await deps.getWorkspaces()};
   if(method==='GET'&&pathname==='/api/handoffs')return{status:200,body:await deps.getHandoffs()};
   if(method==='GET'&&pathname==='/api/inbox')return{status:200,body:await deps.getInbox()};
-  async function normalized(){const state=await deps.getState(),ledger=deps.missions?await deps.missions.list():[],owners=deps.products?await deps.products.list():[];return Promise.all(state.projects.map(async p=>{const m=manifest(p,{handoff:state.handoffs?.byEntity?.[p.id],handoffs:[state.handoffs?.globalLatest,...(state.handoffs?.history||[])].filter(Boolean),history:ledger.filter(v=>v.project_id===p.id),generatedAt:state.generatedAt});if(deps.operationalView)m.operations=await deps.operationalView(p,m.runtime,state);m.product=productView(p,{owner:owners.find(o=>o.projectId===p.id),document:state.productDocuments?.[p.id],runtime:m.runtime});if(deps.projectStates)m.canonicalState=await deps.projectStates.getProject(m.product,owners.find(o=>o.projectId===p.id));if(deps.phaseView)m.phase=await deps.phaseView(p,m,state);return m;}));}
+  async function normalized(){const state=await deps.getState(),ledger=deps.missions?await deps.missions.list():[],owners=deps.products?await deps.products.list():[];return Promise.all(state.projects.map(async p=>{const m=manifest(p,{handoff:state.handoffs?.byEntity?.[p.id],handoffs:[state.handoffs?.globalLatest,...(state.handoffs?.history||[])].filter(Boolean),history:ledger.filter(v=>v.project_id===p.id),generatedAt:state.generatedAt});if(deps.operationalView)m.operations=await deps.operationalView(p,m.runtime,state);m.product=productView(p,{owner:owners.find(o=>o.projectId===p.id),document:state.productDocuments?.[p.id],runtime:m.runtime});if(deps.projectStates)m.canonicalState=await deps.projectStates.getProject(m.product,owners.find(o=>o.projectId===p.id));if(deps.phaseView)m.phase=await deps.phaseView(p,m,state);if(deps.commandReadout)m.sourceReadout=deps.commandReadout(p.id);return m;}));}
   if(method==='GET'&&pathname==='/api/projects')return{status:200,body:await normalized()};
   if(method==='GET'&&pathname==='/api/missions')return{status:200,body:await deps.missions.list()};
   if(method==='POST'&&pathname==='/api/missions'){const input=await readJson(req);if(!await deps.getProject(input.project_id))throw Object.assign(new Error('Project not found'),{status:404});const owner=(await deps.products?.list()||[]).find(v=>v.projectId===input.project_id);if(owner&&(owner.lifecycle==='IDEA'||owner.decisions.some(v=>v.lifecycle==='IDEA'))&&!bootstrapReadiness(owner).ready)throw Object.assign(new Error('Formal development bootstrap incomplete'),{status:409});if(owner?.lifecycle==='IDEA')throw Object.assign(new Error('Formalize the idea before Mission #001'),{status:409});return{status:201,body:await deps.missions.create(input)};}
