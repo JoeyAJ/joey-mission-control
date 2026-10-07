@@ -18,7 +18,7 @@ these current rows supersede their capability status without creating authority.
 | P2A/P2B evidence | Isolated bounded candidate observer, CAS/replay/expiry; parent status observation | No authenticated current-task tool/code/diff producer or live transport |
 | P3 decision/control | Approved management-only proposal/result journal; real CAS/retry/ACL; one genuine proposal and result | Actual Mac NexAeon journal revision2/read and 1440/390 UX PASS; accept/reject in-memory draft prepared; final decision server grant remains unapproved |
 | P4 continuity | Existing Owner Auth/frozen four-project read and private export integrity | Current journal two-device/revocation acceptance, canonical writeback and continuous synchronization absent |
-| P5 usability | Actual reference frames inspected; responsive pane checks; parent Mac layout QA | iPhone actual failure diagnostic pending; final target acceptance and production promotion separate |
+| P5 usability | Actual reference frames inspected; responsive pane checks; parent Mac layout QA | Joey13:10 real phone login working (user report); private phone RPC/revocation not separately proved; final target acceptance and production promotion separate |
 
 Independent next step completed in isolated branch
 `codex/mc-owner-review-prepared-20261007`: exact Owner accept/reject review
@@ -27,7 +27,7 @@ Owner/AAL2/membership and binds proposal/result/context/baseline/journal revisio
 It stays in page memory and cannot submit, queue, persist or dispatch.
 See [prepared handoff](MC_OWNER_REVIEW_PREPARED_HANDOFF.md) and
 [exact unapproved server authority](MC_OWNER_DECISION_GRANT_SCOPE.md).
-The fixed917d preview remains unchanged. Parent actual Mac journal/UX QA now PASS; phone Auth remains unverified.
+The fixed917d preview remains unchanged. Parent actual Mac journal/UX QA now PASS; Joey13:10 reported real phone login working; no separate RPC/revocation proof.
 
 ## Historical definitions and phase receipts
 

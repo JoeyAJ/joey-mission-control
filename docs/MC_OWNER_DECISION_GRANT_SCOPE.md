@@ -6,6 +6,16 @@ it did not grant a new browser-to-database decision write path. Current journal
 schema permits only proposal/result and returns `ownerDecisionEnabled=false`.
 The prepared review UI has no decision RPC, queue, persistence or submit method.
 
+Prepared next functional subset: `contracts/owner-coordinator-decision.mjs`
+defines the exact bounded request (operation ID, review binding/digest and expected
+decision revision) and immutable stable content for a future server append.
+It is a pure offline planner accepting synthetic actors only. Tests cover exact
+replay after response loss, changed-content refusal, stale two-device revision,
+immutable final-outcome refusal, expired evidence, scope/actor/assurance loss,
+shared capacity and corrupt receipt custody. It never emits a verified provider
+claim, executes SQL, persists a decision or imports into the browser bundle.
+These are protocol reference checks, not actual Postgres/CAS/Auth acceptance.
+
 Concrete smallest future permission: allow Joey's existing verified Owner session
 at AAL2 to append one immutable ACCEPT or REJECT decision for one exact current
 coordinator proposal/result pair in the existing private MC database, then read

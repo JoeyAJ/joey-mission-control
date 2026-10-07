@@ -48,3 +48,31 @@ verify both choices, exact binding, clear/locale/project purge, no write RPC or
 draft persistence, existing private-context isolation and no overflow. Existing
 SDK lifecycle9 and fresh-touch official pinned SDK5 regressions PASS, zero live
 Auth requests; actual Safari not run. No screenshots of private content captured.
+
+Phone success follow-up: Joey13:10 replied "可以了" after the existing MFA code
+instruction, relayed by parent source `Sentinel_3718616f709c8191b533a240aee15889`.
+Real phone login is user-reported working and no longer a current blocker.
+No Auth/factor/code change was published during that flow, no retry/reset asked.
+The earlier "Phone Auth remains unverified" receipt describes its earlier time;
+this report does not prove a separate phone RPC/revocation/two-device test.
+
+Next independent functional subset completed: offline Owner decision protocol
+preparation binds the review ticket plus a distinct expected decision revision.
+Synthetic two-device stale revision refuses; the first immutable outcome cannot
+be overwritten by a new operation. A same-content lost-response retry returns
+the original revision/time without another row/charge, even after proposal expiry,
+while still requiring a current synthetic Owner/AAL2/member session. New decisions
+require unexpired current evidence. Server identity/lock/commit fields remain
+required and unknown. No actual request, decision, SQL or authority is emitted.
+
+Protocol reference source: `docs/contracts/owner-coordinator-decision.mjs`.
+Actual server implementation and new decision grants remain unapproved/unapplied.
+Review page/source client bytes are unchanged from543357d, and the fixed917d
+user session/release is preserved. This development checkpoint is source/protocol
+readiness, not final decision activation or production promotion.
+
+Protocol-stage validation: focused10/10 review/protocol checks and full portable
+476/476 plus build/schema/static safety PASS, forbiddenAttempts0. Public client,
+Auth config, Recovery client, API/CSP and app source are byte-unchanged from the
+543357d source stage. Browser evidence remains its prior verified9/9; no UI
+rerun or real DB/Auth/decision claim is added for this source/docs-only phase.

@@ -96,7 +96,7 @@
     {
       "id": "P3",
       "status": "COORDINATOR_RECEIPTS_LIVE_OWNER_REVIEW_PREPARED_DECISION_GRANT_GATED",
-      "result": "Approved management-only proposal/result append applied; one genuine proposal and one result, CAS/retry/ACL verified. Exact Owner accept/reject review draft prepared in isolated source/tests; no server decision grant applied. Parent actual Mac917d NexAeon journal read PASS: proposal1/result1/revision2/pendingJoey; no final decision.",
+      "result": "Approved management-only proposal/result append applied; one genuine proposal and one result, CAS/retry/ACL verified. Exact Owner accept/reject review draft prepared in isolated source/tests; no server decision grant applied. Parent actual Mac917d NexAeon journal read PASS: proposal1/result1/revision2/pendingJoey; no final decision. Offline decision request/CAS/replay/expiry/custody protocol prepared with synthetic-only actor; actual server implementation remains unapproved/unapplied.",
       "definitionOfDoneRef": "docs/MC_PHASE_PLAN.md",
       "ownerAcceptance": "PENDING_FINAL_TARGET_ACCEPTANCE",
       "sources": [
@@ -118,7 +118,7 @@
     {
       "id": "P5",
       "status": "REFERENCE_INSPECTED_PANES_VERIFIED_OWNER_ACCEPTANCE_PENDING",
-      "result": "Three actual reference frames inspected; responsive persistent panes/graph/filter/mobile Explorer verified. Actual iPhone sign-in cause unresolved, final usable-target acceptance and production promotion remain pending.",
+      "result": "Three actual reference frames inspected; responsive persistent panes/graph/filter/mobile Explorer verified. Joey13:10 reported real phone login working; separate phone RPC/revocation proof not recorded, final usable-target acceptance and production promotion remain pending.",
       "definitionOfDoneRef": "docs/MC_PHASE_PLAN.md",
       "ownerAcceptance": "PENDING_FINAL_TARGET_ACCEPTANCE",
       "sources": [],
@@ -213,6 +213,18 @@
       "eventTime": null,
       "timeQualification": "PARENT_REPORT_NO_EXACT_EVENT_TIME",
       "result": "NEXAEON one proposal + one result, journal revision2, pending Joey final judgment; filter/Explorer/duplicate qualification/mobile navigation1440/390 PASS. Owned QA tab closed; no approval/Auth mutation. iPhone Auth remains unverified."
+    },
+    {
+      "type": "OWNER_REPORTED_REAL_PHONE_LOGIN_WORKING",
+      "at": "2026-10-07T13:10Z",
+      "timePrecision": "minute",
+      "source": "Sentinel_3718616f709c8191b533a240aee15889",
+      "reply": "可以了",
+      "result": "Existing MFA instruction followed by user success report. Mobile login removed as current blocker; no code/Auth/factor change, reset or retry request. Separate RPC/revocation/two-device acceptance not inferred."
+    },
+    {
+      "type": "OWNER_DECISION_OFFLINE_PROTOCOL_PREPARED",
+      "result": "No IO or real provider assertion; distinct decision CAS, immutable final outcome, lost-response exact replay after proposal expiry, scope/actor/expiry/quota/custody refusal validated with synthetic fixtures. UI/fixed release unchanged; no server implementation or new grant applied."
     }
   ],
   "migrationPriority": {
@@ -307,8 +319,17 @@
     "implementationAnchor": "917d7c1fd766b7694fe63e06db338cf765689280",
     "preparedBranch": "codex/mc-owner-review-prepared-20261007",
     "evidenceRef": "docs/MC_COMMAND_CENTER_ACCEPTANCE.md",
-    "publishedPreview": "FIXED_917D_UNCHANGED_ACTUAL_MAC_JOURNAL_UX_PASS_PHONE_AUTH_UNVERIFIED",
+    "publishedPreview": "FIXED_917D_MAC_JOURNAL_UX_PASS_PHONE_LOGIN_USER_REPORTED_WORKING",
     "finalPrototype": "INCOMPLETE",
-    "scope": "Generic phase/capability state only; private payloads and custody exports remain outside Git/public."
+    "scope": "Generic phase/capability state only; private payloads and custody exports remain outside Git/public.",
+    "phoneLogin": {
+      "status": "USER_REPORTED_REAL_PHONE_LOGIN_WORKING",
+      "at": "2026-10-07T13:10Z",
+      "timePrecision": "minute",
+      "source": "Sentinel_3718616f709c8191b533a240aee15889",
+      "reply": "可以了",
+      "separateRpcOrRevocationProof": false,
+      "currentBlocker": false
+    }
   }
 }
