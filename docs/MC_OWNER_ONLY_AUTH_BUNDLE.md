@@ -18,3 +18,5 @@ Minimal user inputs: Joey handles her one account/password/TOTP setup in officia
 Official references: https://supabase.com/docs/guides/auth/sessions ; https://supabase.com/docs/guides/auth/auth-mfa/totp ; https://supabase.com/docs/guides/auth/general-configuration ; https://supabase.com/docs/guides/getting-started/api-keys . Exact project API origin read via official get_project_url; no direct client call or host grant was made.
 
 Current implementation and shortest manual handoff are in MC_OWNER_SESSION_HANDOFF.md. Approved scope is not a claim that Auth configuration, safe key retrieval, user creation or app TOTP have occurred. No repeat permission request is needed for the same bundle.
+
+Latest checkpoint: existing modern publishable key is now supplied/configured; unique confirmed Owner UUID6f0ca2ae-83e0-4684-af12-0b37d08182db verified after Joey user creation. Earlier absent-key/user statements above are historical. Auth closure, official SDK/browser screen and prepared exact-UUID bridge activation remain incomplete; see latest section of MC_OWNER_SESSION_HANDOFF.md.
