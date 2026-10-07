@@ -1,8 +1,9 @@
 Current correction hold: preview submission is disabled; read views remain.
 See [guarded handoff](MC_OWNER_DECISION_GUARDED_HANDOFF.md). The3814c61 receipt
 below does not establish the two deployed RPC correctness fixes. The isolated
-[correction candidate](MC_OWNER_DECISION_RPC_CORRECTION_HANDOFF.md) passes native
-two-connection checks; deployment is blocked by existing function-owner rights.
+[correction checkpoint](MC_OWNER_DECISION_RPC_CORRECTION_HANDOFF.md) passes native
+two-connection checks; both deployed bodies now match their predicted definitions
+and the specifically approved temporary INHERIT option is fully restored.
 
 # Owner coordinator final-decision persistence
 

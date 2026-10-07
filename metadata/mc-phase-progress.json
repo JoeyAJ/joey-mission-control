@@ -95,8 +95,8 @@
     },
     {
       "id": "P3",
-      "status": "PREVIEW_SUBMIT_GUARDED_NATIVE_CORRECTION_PASS_DEPLOYMENT_OWNER_BLOCKED",
-      "result": "Two-body source correction passes native PostgreSQL17.10 two-connection snapshot/CAS/idempotency verification. Fixed preview submission remains disabled with reads preserved. Live RPC definitions remain old because existing management principal lacks owner/SET rights; no permission expansion or real decision. Deployed replacement and actual integration acceptance pending.",
+      "status": "DEPLOYED_RPC_CORRECTION_VERIFIED_SUBMIT_GUARDED_OWNER_SMOKE_PENDING",
+      "result": "Joey21:51:44 specifically approved temporary postgres-grantor INHERIT. Migration20261007215457 corrects two RPC bodies and matches predicted hashes; both memberships, CREATE/SET, all owners/ACL/settings, other six functions and counts preserved. Bounded management and anonymous HTTPS refusal paths PASS. Submission remains false pending fresh existing Owner-session projection read; actual AAL2 final decision/cross-device acceptance not claimed.",
       "definitionOfDoneRef": "docs/MC_PHASE_PLAN.md",
       "ownerAcceptance": "PENDING_FINAL_TARGET_ACCEPTANCE",
       "sources": [
@@ -119,7 +119,16 @@
           "driverExitStatus": 0,
           "syntheticAuthOnly": true,
           "actualSupabaseRuntime": false,
-          "reviewOnlyPermissionWrapper": "PASS_SYNTHETIC_TWO_GRANTOR_GRAPH_NOT_APPROVED_OR_APPLIED"
+          "reviewOnlyPermissionWrapper": "PASS_SYNTHETIC_TWO_GRANTOR_GRAPH_EXACT_WRAPPER_LATER_APPROVED_AND_APPLIED"
+        },
+        "deployedCorrection": {
+          "migrationVersion": "20261007215457",
+          "exactPredictedDefinitions": "PASS",
+          "bothGrantorRowsRestored": "PASS",
+          "ownerAclConfigAndCounts": "UNCHANGED",
+          "managementRefusals": "PASS_READ_ONLY",
+          "anonymousHttpsRead": "401_42501_PERMISSION_DENIED",
+          "existingOwnerAuthenticatedProjection": "PENDING"
         }
       }
     },
@@ -270,6 +279,16 @@
     {
       "type": "OWNER_DECISION_MINIMUM_PERMISSION_PACKET_PREPARED",
       "result": "One-transaction existing postgres-grantor INHERIT true then false restores both membership rows exactly; no SET or schema CREATE expansion. Native non-superuser and exact review-only wrapper pass; wrapper remains unapproved/unapplied. Grant-free operator path is unsupported by current connected principal."
+    },
+    {
+      "type": "OWNER_DECISION_EXACT_TEMP_PERMISSION_APPROVED_AND_APPLIED",
+      "at": "2026-10-07T21:51:44Z",
+      "source": "Sentinel_0135da6ab9d081918dee1bd94e1102ad",
+      "replyTo": "Sentinel_74d2e6a85bf481919dea55e63f38557a",
+      "reply": "允許",
+      "migrationVersion": "20261007215457",
+      "sqlSha256": "243dd77a82b6b267cda2d9fe9c243d7d6d3f1ac14864b16025e6d35859eb7844",
+      "result": "Exact two-body replacement first attempt success,5s DO. INHERIT restored; no new CREATE/SET, role or credential. Exact definitions/metadata/both grants/data and bounded refusal integration PASS. Real decisions0, submit remains false."
     }
   ],
   "migrationPriority": {
@@ -360,11 +379,11 @@
     ]
   },
   "currentReconciliation": {
-    "at": "2026-10-07T21:26:50.939397+00:00",
+    "at": "2026-10-07T22:00:59.738100+00:00",
     "implementationAnchor": "917d7c1fd766b7694fe63e06db338cf765689280",
     "preparedBranch": "codex/mc-owner-decision-correction-20261007",
     "evidenceRef": "docs/MC_OWNER_DECISION_RPC_CORRECTION_HANDOFF.md",
-    "publishedPreview": "GUARDED_7AE2C06_READY_FIXED_ALIAS_CORRECTION_CANDIDATE_ISOLATED",
+    "publishedPreview": "APPLIED_CORRECTION_SAME_FIXED_ALIAS_READY_RECEIPT_EXTERNAL",
     "finalPrototype": "INCOMPLETE",
     "scope": "Generic phase/capability state only; private payloads and custody exports remain outside Git/public.",
     "phoneLogin": {
@@ -376,6 +395,6 @@
       "separateRpcOrRevocationProof": false,
       "currentBlocker": false
     },
-    "ownerDecisionScope": "AUTHORIZED_SUBMIT_DISABLED_NATIVE_CORRECTION_PASS_LIVE_OWNER_RIGHTS_BLOCKED"
+    "ownerDecisionScope": "AUTHORIZED_TWO_BODY_CORRECTION_APPLIED_SUBMIT_GUARDED_EXISTING_OWNER_SMOKE_PENDING"
   }
 }

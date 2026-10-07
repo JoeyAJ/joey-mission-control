@@ -1,3 +1,12 @@
+# Applied two-body correction
+
+Migration `mc_owner_decision_rpc_correction_20261007`, version `20261007215457`,
+replaced only the two decision RPC bodies after Joey's21:51:44 exact approval.
+Temporary postgres-grantor INHERIT was restored in the same5s-bounded DO block;
+both membership rows, CREATE/SET, owners/ACL/settings and data counts are unchanged.
+See [current correction handoff](MC_OWNER_DECISION_RPC_CORRECTION_HANDOFF.md).
+The original installation receipt below remains historical; do not reapply it.
+
 # Owner final-decision authority — approved and applied
 
 Joey approved the narrow Owner decision persistence scope at 2026-10-07
