@@ -1,13 +1,29 @@
-// Inactive preparation for a separate recovery route. Not registered with the app.
+// Separate callback adapter. No automatic email or password mutation.
 // Caller supplies reviewed configuration; these client gates never replace provider auth.
-const callbackPath='/owner-password-recovery.html';
+export const passwordRecoveryPath='/owner-password-recovery.html';
+const callbackPath=passwordRecoveryPath;
 const uuid=/^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 const safeView=(status,extra={})=>Object.freeze({status,privateAccessEnabled:false,executionAuthorized:false,...extra});
 const safeErrors=new WeakSet();
 const failure=code=>{const error=Error(code);safeErrors.add(error);return error;};
 function policyValid(p){
  if(!p||typeof p!=='object'||Object.values(Object.getOwnPropertyDescriptors(p)).some(d=>d.get||d.set))return false;
- try{return p.recoveryEnabled===true&&p.urlConfigurationVerified===true&&new URL(p.stageOrigin).origin===p.stageOrigin&&new URL(p.stageOrigin).protocol==='https:'&&new URL(p.providerOrigin).origin===p.providerOrigin&&new URL(p.providerOrigin).protocol==='https:'&&/^sb_publishable_/.test(p.publishableKey)&&uuid.test(p.ownerSubject)&&/^[A-Za-z0-9_-]{1,80}$/.test(p.projectId)&&typeof p.allowedEmail==='string'&&p.allowedEmail.includes('@');}catch{return false;}
+ try{return p.recoveryEnabled===true&&p.urlConfigurationVerified===true&&new URL(p.stageOrigin).origin===p.stageOrigin&&new URL(p.stageOrigin).protocol==='https:'&&new URL(p.providerOrigin).origin===p.providerOrigin&&new URL(p.providerOrigin).protocol==='https:'&&/^sb_publishable_/.test(p.publishableKey)&&uuid.test(p.ownerSubject)&&/^[A-Za-z0-9_-]{1,80}$/.test(p.projectId);}catch{return false;}
+}
+const emailRequestValid=p=>p.emailSendingApproved===true&&typeof p.allowedEmail==='string'&&/^[^\s@]+@[^\s@]+$/.test(p.allowedEmail);
+// Public recovery requests cannot prove email ownership before the link is used.
+// Owner identity is verified separately by the callback before any password update.
+export function createPasswordRecoveryRequest({policy,createClient,location=globalThis.location}={}){
+ if(!policyValid(policy)||policy.emailSendingApproved!==true||location?.origin!==policy.stageOrigin||location?.pathname!==callbackPath||typeof createClient!=='function')return Object.freeze({configured:false,capabilities:Object.freeze({requestEmail:false}),dispose(){}});
+ const config=Object.freeze({...policy}),auth=createClient(config.providerOrigin,config.publishableKey,{auth:{skipAutoInitialize:true,persistSession:false,autoRefreshToken:false,detectSessionInUrl:false,storageKey:'mc-password-recovery-request-v1'}}).auth;
+ let disposed=false,busy=false,status='link_required';
+ const view=()=>safeView(disposed?'closed':status);
+ return Object.freeze({configured:true,capabilities:Object.freeze({requestEmail:true}),view,
+  async requestEmail({email,explicit=false}={}){
+   if(disposed||busy||status!=='link_required'||explicit!==true||typeof email!=='string'||email.length>320||!/^([^\s@]+)@[^\s@]+\.[^\s@]+$/.test(email.trim()))throw failure('EXPLICIT_RECOVERY_EMAIL_REQUIRED');
+   busy=true;try{const response=await auth.resetPasswordForEmail(email.trim(),{redirectTo:config.stageOrigin+callbackPath});if(disposed)throw failure('RECOVERY_CLOSED');if(response.error){status='operation_unconfirmed';throw failure('RECOVERY_REQUEST_UNCONFIRMED');}status='request_completed';return view();}catch(error){if(!disposed)status='operation_unconfirmed';if(safeErrors.has(error))throw error;throw failure('RECOVERY_REQUEST_UNCONFIRMED');}finally{busy=false;}
+  },dispose(){disposed=true;auth.stopAutoRefresh();}
+ });
 }
 export function createPasswordRecovery({policy,createClient,verifyCurrentSession,location=globalThis.location,history=globalThis.history,now=Date.now}={}){
  const scrub=()=>{if(location?.pathname===callbackPath)try{history?.replaceState(null,'',location.origin+callbackPath);}catch{}};
@@ -15,7 +31,7 @@ export function createPasswordRecovery({policy,createClient,verifyCurrentSession
   scrub();return Object.freeze({configured:false,view:()=>safeView('unconfigured'),capabilities:Object.freeze({requestEmail:false,changePassword:false}),dispose(){}});
  }
  const config=Object.freeze({...policy}),client=createClient(config.providerOrigin,config.publishableKey,{auth:{skipAutoInitialize:true,persistSession:false,autoRefreshToken:false,detectSessionInUrl:true,flowType:'implicit',storageKey:'mc-password-recovery-isolated-v1'}}),auth=client.auth;
- let generation=0,disposed=false,recoverySeen=false,status='link_required',mutations=Promise.resolve();const listeners=new Set();
+ let generation=0,disposed=false,recoverySeen=false,status='checking',mutations=Promise.resolve();const listeners=new Set();
  const view=()=>safeView(status),notify=()=>{const current=view();for(const listener of listeners)queueMicrotask(()=>{if(!disposed&&listeners.has(listener))listener(current);});};
  const subscription=auth.onAuthStateChange(event=>{
   if(disposed)return;
@@ -37,7 +53,7 @@ export function createPasswordRecovery({policy,createClient,verifyCurrentSession
  }
  function mutate(action){if(disposed)return Promise.reject(failure('RECOVERY_CLOSED'));const g=generation,job=mutations.then(async()=>{if(disposed||g!==generation)throw failure('RECOVERY_SESSION_CHANGED');try{return await action(g);}catch(error){if(safeErrors.has(error))throw error;setStatus('operation_unconfirmed');throw failure('RECOVERY_OPERATION_UNCONFIRMED');}});mutations=job.catch(()=>{});return job;}
  async function requestEmail({email,explicit=false}={}){
-  if(config.emailSendingApproved!==true||explicit!==true||typeof email!=='string'||email.trim().toLowerCase()!==config.allowedEmail.toLowerCase())throw failure('EXPLICIT_APPROVED_RECOVERY_REQUEST_REQUIRED');
+  if(!emailRequestValid(config)||explicit!==true||typeof email!=='string'||email.trim().toLowerCase()!==config.allowedEmail.toLowerCase())throw failure('EXPLICIT_APPROVED_RECOVERY_REQUEST_REQUIRED');
   return mutate(async g=>{const r=await auth.resetPasswordForEmail(email.trim(),{redirectTo:config.stageOrigin+callbackPath});if(disposed||g!==generation)throw failure('RECOVERY_SESSION_CHANGED');if(r.error){setStatus('operation_unconfirmed');throw failure('RECOVERY_REQUEST_UNCONFIRMED');}return setStatus('request_completed');});
  }
  async function changePassword({password,confirmation,explicit=false}={}){
@@ -61,7 +77,7 @@ export function createPasswordRecovery({policy,createClient,verifyCurrentSession
   });
  }
  return Object.freeze({configured:true,view,inspect,requestEmail,changePassword,verifyAuthenticator,
-  capabilities:Object.freeze({requestEmail:config.emailSendingApproved===true,changePassword:config.passwordChangeApproved===true}),
+  capabilities:Object.freeze({requestEmail:emailRequestValid(config),changePassword:config.passwordChangeApproved===true}),
   subscribe(listener){listeners.add(listener);return()=>listeners.delete(listener);},
   dispose(){if(disposed)return;disposed=true;generation++;recoverySeen=false;status='closed';listeners.clear();subscription.unsubscribe();auth.stopAutoRefresh();scrub();}});
 }
