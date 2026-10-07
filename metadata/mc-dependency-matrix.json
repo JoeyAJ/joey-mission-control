@@ -192,13 +192,12 @@
     {
       "id": "canonical-inventory",
       "blockingData": [
-        "four-project filtered-canonical-context.v1.json using agreed minimal field/source contract",
-        "producer Library ID/version/outer package hash and exact payload manifest"
+        "official consumer-local bytes for saved producer context bundle + bundled actual JSON Schema"
       ],
       "source": "Mac authority now available to parent; exact minimal document inventory being prepared. Safe index is not complete private authority.",
-      "minimalPermission": "Exact filtered export/read-only restore now parent-reported authorized; no new grant required within approved scope",
-      "destination": "Existing private Library custody, isolated read-only cloud staging; whole Memory excluded",
-      "status": "PRODUCER_LOCAL_CONTEXT22486_BYTES_REPORTED_NOT_UPLOADED_SCHEMA_ALIGNMENT_PENDING"
+      "minimalPermission": "Exact transfer/read-only restore already approved; no new payload or permission requested",
+      "destination": "Existing private Library custody →isolated read-only cloud staging only",
+      "status": "PRODUCER_LIBRARY_SAVED_FORMAT_MAPPING_SUPPORTED_CONSUMER_BYTE_TRANSFER_BLOCKED"
     },
     {
       "id": "owner-ledger",
@@ -237,14 +236,13 @@
     {
       "id": "sync-cutover",
       "blockingData": [
-        "source-complete scoped inventory with exact versions/hashes",
-        "per-existing-store authority/version/writer tuple and restoration checkpoint",
-        "parent-approved cloud-versus-Mac writer cutover and conflict policy"
+        "actual consumer byte/hash/schema/reference validation of approved saved exports",
+        "per-field source authority/version and explicit read-only-versus-writer cutover/conflict policy"
       ],
       "source": "Mac now available to parent; source completeness and authority cutover remain undefined, not missing never-created ledgers",
       "minimalPermission": "Owner/parent destination and single-writer decision; no DB/Auth/OAuth/keys/paidresource creation",
       "destination": "Recommend retain Mac authority until restore/read-only reconciliation succeeds; cloud remains fixed receipt view meanwhile",
-      "status": "SOURCE_COMPLETENESS_AND_AUTHORITY_CUTOVER_PENDING"
+      "status": "READONLY_RESTORE_BYTE_CAPABILITY_PENDING_WRITER_CUTOVER_NOT_APPLIED"
     }
   ],
   "macInventoryReceipt": {
@@ -279,18 +277,19 @@
     "rawLibraryTransfer": "AUTHORIZED_TWO_LEDGER_BUNDLE_SAVED_PRIVATE_LIBRARY_V0_CLOUD_BYTE_TRANSFER_BLOCKED"
   },
   "filteredContextContract": {
-    "status": "PROPOSAL_SCHEMA_READY_SYNTHETIC7PASS_PRODUCER_STRUCTURE_ALIGNMENT_PENDING",
+    "status": "PRODUCER_AUTHORITATIVE_SHAPE_SUPPORTED_SYNTHETIC10PASS",
     "schemaVersion": "mc.filtered-canonical-context.v1",
-    "schemaRef": "docs/contracts/filtered-canonical-context.v1.schema.json",
-    "schemaSha256": "aef4f17395526ee7254d73c7d1b6b1e20a28cb0897bc730714ffa9332e5e7859",
+    "schemaRef": "Actual bundled producer JSON Schema; pending official consumer-local bytes",
+    "schemaSha256": null,
     "contractRef": "docs/contracts/FILTERED_CANONICAL_CONTEXT_V1.md",
     "scope": "exact two existing ledgers + four-project filtered context; private Library/read-only restore; no live writer",
     "authorization": "parent-reported Joey23:59 approval; original receipt held by parent/Mac owner",
     "singlePublisher": "Mac MC owner",
     "consumer": "saved cloud isolated read-only staging",
     "restoreRoot": "/workspace/mc-private-restore",
-    "syntheticProof": "7/7 PASS outside repo/public; current approved-custody readonly gate prepared; no real payload import",
-    "realRestore": "NEW_LEDGER_BUNDLE_CURRENT_HELPER_FAILED_TWICE_NO_LOCAL_BYTES"
+    "syntheticProof": "10/10 PASS and independent review no remaining P1/P2; actual producer key/type structure supported",
+    "realRestore": "NOT_RUN_BOTH_NEW_PACKAGES_NO_LOCAL_BYTES",
+    "consumerCodeRef": "docs/contracts/consumer/producer-reader.mjs"
   },
   "ledgerCustodyReceipt": {
     "libraryFileId": "libfile_3a89df3853c08191b410d78a291d0d96",
@@ -318,5 +317,51 @@
     "localBytes": "NOT_AVAILABLE",
     "packageHash": "NOT_RUN",
     "unpackFileHashSchemaReferenceReadonlyRestore": "NOT_RUN_NO_LOCAL_BYTES"
+  },
+  "contextCustodyReceipt": {
+    "libraryFileId": "libfile_90f1d7b2c0d48191b48f1ec8cf0bd384",
+    "fileId": "file_00000000bfa48209af4aaf60d54ee385",
+    "filename": "MC_private_filtered_context_restore_20261007.zip",
+    "version": 0,
+    "expectedBytes": 8252,
+    "expectedSha256": "64f668b507fd4a9540aefbe37e0b52e1cd782a079f2dec60d3118e10de2f4c31",
+    "expectedPayloadBytes": 22486,
+    "expectedPayloadSha256": "5d34aa9ffb9bbb5cc1d2a3de54c13faeb128f04f9d972391ee9abb230e593988",
+    "prepareMaterialize": "SUCCEEDED",
+    "workspacePath": null,
+    "attempts": [
+      {
+        "mode": "default",
+        "exitCode": 1,
+        "error": "library file transfer failed: download failed",
+        "httpStatus": null
+      },
+      {
+        "mode": "existing official proxy CA certificate",
+        "exitCode": 1,
+        "error": "library file transfer failed: download failed",
+        "httpStatus": null
+      }
+    ],
+    "localBytes": "NOT_AVAILABLE",
+    "hashUnpackSchemaRefsRealReadonlyRestore": "NOT_RUN_NO_LOCAL_BYTES"
+  },
+  "consumerMaterialization": {
+    "checkedAt": "2026-10-07T00:16:40.242099+00:00",
+    "localZipCount": 0,
+    "helperSource": "skill://plugin_connector_1p_1b8ff8edfc1481918b252c8277e23125/library/scripts/library_file_transfer.py",
+    "helperSha256": "5e1557817be17db06e2375f8c34ed83e948d520242e5ee4cb50a30c7a4c83378",
+    "transferHosts": {
+      "ledger": "oaisdmntprjapaneast.blob.core.windows.net",
+      "context": "oaisdmntprjapaneast.blob.core.windows.net"
+    },
+    "error": "library file transfer failed: download failed",
+    "exitCode": 1,
+    "httpStatus": null,
+    "lastKnownPrepareActivity": {
+      "ledger": "2026-10-07T00:05:27Z",
+      "context": "2026-10-07T00:09:07Z"
+    },
+    "nextDependency": "Supported official consumer-local byte delivery for two approved packages; no new data permission or nonexistent file required"
   }
 }
