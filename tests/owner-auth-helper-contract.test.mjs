@@ -61,3 +61,12 @@ test('future direct-call denial fixture requires an installed helper and rolls b
  assert.equal((fixture.match(/PERFORM \* FROM mc_private\.owner_auth_verification\(\)/g)||[]).length,3);
  assert.match(fixture,/ROLLBACK;/);assert.doesNotMatch(fixture,/COMMIT;|GRANT\s|CREATE FUNCTION|INSERT\s|UPDATE\s|DELETE\s/);
 });
+test('synthetic positive wiring creates no Auth/private rows and restores real helper source',()=>{
+ const fixture=fs.readFileSync(base+'private-continuity.owner-auth-helper-wiring-validation.sql','utf8').replace(/^\s*--.*$/gm,'');
+ assert.match(fixture,/ROLLBACK;/);assert.doesNotMatch(fixture,/COMMIT;|INSERT\s|UPDATE\s|DELETE\s|CREATE ROLE|CREATE USER|\bauth\./);
+ assert.match(fixture,/SYNTHETIC_HELPER_ROLLBACK_NOT_RESTORED/);
+ assert.match(fixture,/SYNTHETIC_ACTOR_WIRING_FAILED/);
+ assert.match(fixture,/SYNTHETIC_IDENTITY_EXPIRY_WIRING_FAILED/);
+ assert.match(fixture,/'memberActive'<>'false'/);
+ assert.match(fixture,/false AS real_provider_auth_verified,false AS real_aal2_verified/);
+});

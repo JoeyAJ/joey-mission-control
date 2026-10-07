@@ -1,0 +1,429 @@
+{
+  "approval": {
+    "time": "2026-10-07T06:18:36Z",
+    "messageId": "Sentinel_9be2be282e488191b6f823562c8963a7",
+    "value": "\u5141\u8a31",
+    "scope": "Exact limited private Auth helper"
+  },
+  "sourceCommit": "ed21a57385a441d052e2367b1f95cf82bf440051",
+  "projectRef": "scmvedfqwlhkyvljymjj",
+  "approvedSHA256": "5f5ccdbc132f5531f8be000d716e881d09718fc17ad412b95c022fcf46ffa554",
+  "rollbackSHA256": "31149c39bd2ac220dd21d148a0cc59345fad5ec6b8d44d1d271c273590e21de6",
+  "migrationVersion": "20261007062024",
+  "migrationName": "mc_owner_private_auth_verifier",
+  "applyCalls": 1,
+  "applyTool": {
+    "success": true
+  },
+  "externalPreflight": {
+    "status": "FAILED_SYNTAX_42601",
+    "detail": "Read-only summary query missing final closing parenthesis; preserved as failure. Migration's own preconditions passed; post-apply catalog and final counts verified."
+  },
+  "effectiveReadback": [
+    {
+      "effective_helper_readback": {
+        "time": "2026-10-07T06:21:55.49043+00:00",
+        "authAcl": "{supabase_admin=UC/supabase_admin,anon=U/supabase_admin,authenticated=U/supabase_admin,service_role=U/supabase_admin,supabase_auth_admin=UC/supabase_admin,dashboard_user=UC/supabase_admin,postgres=U/supabase_admin}",
+        "coreRls": [
+          {
+            "rls": true,
+            "force": true,
+            "table": "members"
+          },
+          {
+            "rls": true,
+            "force": true,
+            "table": "heads"
+          },
+          {
+            "rls": true,
+            "force": true,
+            "table": "storage_budget"
+          },
+          {
+            "rls": true,
+            "force": true,
+            "table": "contexts"
+          },
+          {
+            "rls": true,
+            "force": true,
+            "table": "checkpoints"
+          },
+          {
+            "rls": true,
+            "force": true,
+            "table": "events"
+          }
+        ],
+        "coreRows": {
+          "heads": 0,
+          "budget": 0,
+          "events": 0,
+          "members": 0,
+          "contexts": 0,
+          "checkpoints": 0,
+          "ownerSessions": 0,
+          "enabledWriters": 0
+        },
+        "executor": {
+          "login": false,
+          "inherit": false,
+          "authUsage": false,
+          "bypassRls": false,
+          "superuser": false,
+          "publicCreate": false,
+          "privateCreate": false
+        },
+        "functions": [
+          {
+            "acl": "{mc_continuity_executor=X/mc_continuity_executor,authenticated=X/mc_continuity_executor}",
+            "name": "mc_owner_session(text)",
+            "owner": "mc_continuity_executor",
+            "schema": "public",
+            "definer": true,
+            "anonExec": false,
+            "settings": [
+              "search_path=\"\""
+            ],
+            "volatile": "v",
+            "executorExec": true,
+            "directAuthRead": false,
+            "serviceRoleExec": false,
+            "authenticatedExec": true
+          },
+          {
+            "acl": "{mc_continuity_executor=X/mc_continuity_executor}",
+            "name": "mc_private.current_actor()",
+            "owner": "mc_continuity_executor",
+            "schema": "mc_private",
+            "definer": false,
+            "anonExec": false,
+            "settings": [
+              "search_path=\"\""
+            ],
+            "volatile": "v",
+            "executorExec": true,
+            "directAuthRead": false,
+            "serviceRoleExec": false,
+            "authenticatedExec": false
+          },
+          {
+            "acl": "{postgres=X/postgres,mc_continuity_executor=X/postgres}",
+            "name": "mc_private.owner_auth_verification()",
+            "owner": "postgres",
+            "schema": "mc_private",
+            "definer": true,
+            "anonExec": false,
+            "settings": [
+              "search_path=\"\""
+            ],
+            "volatile": "v",
+            "executorExec": true,
+            "directAuthRead": true,
+            "serviceRoleExec": false,
+            "authenticatedExec": false
+          }
+        ],
+        "memberships": [
+          {
+            "set": false,
+            "admin": true,
+            "grantor": "supabase_admin",
+            "inherit": false
+          },
+          {
+            "set": false,
+            "admin": false,
+            "grantor": "postgres",
+            "inherit": false
+          }
+        ],
+        "authPolicies": []
+      }
+    }
+  ],
+  "denialClaims": [
+    {
+      "validation": "PASS_SYNTHETIC_SQL_ADMIN_OWNER_BRIDGE_DENIALS",
+      "synthetic_claim_cases": 13,
+      "real_provider_auth_verified": false,
+      "real_aal2_verified": false,
+      "real_revocation_verified": false
+    }
+  ],
+  "helperAclDenials": [
+    {
+      "validation": "PASS_OWNER_HELPER_DIRECT_ACCESS_DENIALS",
+      "rejected_caller_roles": 3,
+      "real_provider_auth_verified": false,
+      "real_aal2_verified": false,
+      "real_revocation_verified": false
+    }
+  ],
+  "privateAccessDenials": [
+    {
+      "validation": "PASS_EXISTING_ROLE_SQL_ACCESS_DENIAL",
+      "owner_writer_rls_verified": false
+    }
+  ],
+  "syntheticPositiveWiring": [
+    {
+      "validation": "PASS_SYNTHETIC_HELPER_CALL_CHAIN_ROLLBACK",
+      "positive_wiring_cases": 4,
+      "original_helper_source_restored": true,
+      "private_seed_used": false,
+      "real_provider_auth_verified": false,
+      "real_aal2_verified": false,
+      "real_revocation_verified": false
+    }
+  ],
+  "advisors": {
+    "lints": [
+      {
+        "name": "authenticated_security_definer_function_executable",
+        "title": "Signed-In Users Can Execute SECURITY DEFINER Function",
+        "level": "WARN",
+        "facing": "EXTERNAL",
+        "categories": [
+          "SECURITY"
+        ],
+        "description": "Detects `SECURITY DEFINER` functions that are callable by signed-in users. Revoke `EXECUTE`, switch the function to `SECURITY INVOKER`, or move it out of your exposed API schema if signed-in users should not call it.",
+        "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0029_authenticated_security_definer_function_executable",
+        "count": 1,
+        "findings": [
+          {
+            "detail": "Function `public.mc_owner_session(project text)` can be executed by the `authenticated` role as a `SECURITY DEFINER` function via `/rest/v1/rpc/mc_owner_session`. Revoke `EXECUTE` or switch it to `SECURITY INVOKER` if that is not intentional.",
+            "metadata": {
+              "name": "mc_owner_session",
+              "schema": "public",
+              "language": "plpgsql",
+              "arguments": "project text",
+              "security_definer": true
+            },
+            "observed_at": "2026-10-07T06:21:56.601Z"
+          }
+        ]
+      },
+      {
+        "name": "auth_leaked_password_protection",
+        "title": "Leaked Password Protection Disabled",
+        "level": "WARN",
+        "facing": "EXTERNAL",
+        "categories": [
+          "SECURITY"
+        ],
+        "description": "Leaked password protection is currently disabled.",
+        "remediation": "https://supabase.com/docs/guides/auth/password-security#password-strength-and-leaked-password-protection",
+        "count": 1,
+        "findings": [
+          {
+            "detail": "Supabase Auth prevents the use of compromised passwords by checking against HaveIBeenPwned.org. Enable this feature to enhance security.",
+            "metadata": {
+              "type": "auth",
+              "entity": "Auth"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "metadata401Diagnosis": {
+    "result": [
+      {
+        "error_code": "UNAUTHORIZED_INVALID_API_KEY_TYPE",
+        "http_status": "401",
+        "method": "GET",
+        "path": "/rest/v1/",
+        "safe_error_message": "Secret API key required",
+        "safe_hint": "Only secret API keys can be used for this endpoint."
+      },
+      {
+        "error_code": "UNAUTHORIZED_INVALID_API_KEY_TYPE",
+        "http_status": "401",
+        "method": "GET",
+        "path": "/rest/v1/",
+        "safe_error_message": "Secret API key required",
+        "safe_hint": "Only secret API keys can be used for this endpoint."
+      }
+    ]
+  },
+  "realProviderAuthVerified": false,
+  "realAal2Verified": false,
+  "realRevocationVerified": false,
+  "exposureStatus": "UNKNOWN_ROOT_METADATA_REQUIRES_SECRET_KEY_ACTION_STOPPED",
+  "newCredentials": false,
+  "newIdentities": false,
+  "privateSeed": false,
+  "writerActivation": false,
+  "portableChecks": {
+    "testsPassed": 407,
+    "testsFailed": 0,
+    "testsSkipped": 0,
+    "build": "PASS",
+    "validate": "PASS",
+    "check": "PASS",
+    "forbiddenAttempts": 0
+  },
+  "localBrowserMatrix": {
+    "pass": true,
+    "source": "CURRENT_LOCAL_FILES_AT_SIMULATED_FROZEN_ORIGIN",
+    "actualProtectedPreviewBrowserVerified": false,
+    "realOwnerAuthVerified": false,
+    "realAal2Verified": false,
+    "cases": [
+      {
+        "width": 1440,
+        "locale": "zh-TW",
+        "identityFormAvailable": true,
+        "blankCredentials": true,
+        "noQrBeforeOwnerAuth": true,
+        "reloadAndRepeatedRefresh": true,
+        "noOverflow": true,
+        "simulatedFrozenOrigin": true,
+        "realAuthVerified": false
+      },
+      {
+        "width": 1440,
+        "locale": "en",
+        "identityFormAvailable": true,
+        "blankCredentials": true,
+        "noQrBeforeOwnerAuth": true,
+        "reloadAndRepeatedRefresh": true,
+        "noOverflow": true,
+        "simulatedFrozenOrigin": true,
+        "realAuthVerified": false
+      },
+      {
+        "width": 1440,
+        "locale": "ko",
+        "identityFormAvailable": true,
+        "blankCredentials": true,
+        "noQrBeforeOwnerAuth": true,
+        "reloadAndRepeatedRefresh": true,
+        "noOverflow": true,
+        "simulatedFrozenOrigin": true,
+        "realAuthVerified": false
+      },
+      {
+        "width": 390,
+        "locale": "zh-TW",
+        "identityFormAvailable": true,
+        "blankCredentials": true,
+        "noQrBeforeOwnerAuth": true,
+        "reloadAndRepeatedRefresh": true,
+        "noOverflow": true,
+        "simulatedFrozenOrigin": true,
+        "realAuthVerified": false
+      },
+      {
+        "width": 390,
+        "locale": "en",
+        "identityFormAvailable": true,
+        "blankCredentials": true,
+        "noQrBeforeOwnerAuth": true,
+        "reloadAndRepeatedRefresh": true,
+        "noOverflow": true,
+        "simulatedFrozenOrigin": true,
+        "realAuthVerified": false
+      },
+      {
+        "width": 390,
+        "locale": "ko",
+        "identityFormAvailable": true,
+        "blankCredentials": true,
+        "noQrBeforeOwnerAuth": true,
+        "reloadAndRepeatedRefresh": true,
+        "noOverflow": true,
+        "simulatedFrozenOrigin": true,
+        "realAuthVerified": false
+      },
+      {
+        "width": 320,
+        "locale": "zh-TW",
+        "identityFormAvailable": true,
+        "blankCredentials": true,
+        "noQrBeforeOwnerAuth": true,
+        "reloadAndRepeatedRefresh": true,
+        "noOverflow": true,
+        "simulatedFrozenOrigin": true,
+        "realAuthVerified": false
+      },
+      {
+        "width": 320,
+        "locale": "en",
+        "identityFormAvailable": true,
+        "blankCredentials": true,
+        "noQrBeforeOwnerAuth": true,
+        "reloadAndRepeatedRefresh": true,
+        "noOverflow": true,
+        "simulatedFrozenOrigin": true,
+        "realAuthVerified": false
+      },
+      {
+        "width": 320,
+        "locale": "ko",
+        "identityFormAvailable": true,
+        "blankCredentials": true,
+        "noQrBeforeOwnerAuth": true,
+        "reloadAndRepeatedRefresh": true,
+        "noOverflow": true,
+        "simulatedFrozenOrigin": true,
+        "realAuthVerified": false
+      }
+    ],
+    "productionOriginNoCredentialForm": true,
+    "privateBoundary": [
+      {
+        "path": "/docs/contracts/sql/private-continuity.owner-auth-helper-pending.sql",
+        "status": 404
+      },
+      {
+        "path": "/docs/contracts/MC_OWNER_AUTH_HELPER_REVIEW_RECEIPT.json",
+        "status": 404
+      },
+      {
+        "path": "/src/continuity/owner-browser-entry.mjs",
+        "status": 404
+      }
+    ],
+    "pageErrors": [],
+    "liveAuthAttempts": []
+  },
+  "actualUnauthenticatedHttpDenial": {
+    "time": "2026-10-07T06:26:31.832Z",
+    "origin": "https://scmvedfqwlhkyvljymjj.supabase.co",
+    "path": "/rest/v1/rpc/mc_owner_session",
+    "method": "POST",
+    "readOnlyIdentityRpc": true,
+    "project": "NEXAEON",
+    "credentials": "EXISTING_PUBLISHABLE_ONLY_NO_USER_JWT",
+    "sdkVersion": "2.117.2",
+    "methodUsed": "rpc",
+    "queriesPrivateRows": false,
+    "retries": 0,
+    "redirects": 0,
+    "endpointCalls": 1,
+    "processStatus": 0,
+    "httpStatus": 401,
+    "proxyConnectStatus": 200,
+    "tlsVerifyResult": 0,
+    "officialSdkApiKeyBearerFallback": true,
+    "providerCode": "42501",
+    "status": "PASS_REAL_UNAUTHENTICATED_IDENTITY_RPC_DENIAL",
+    "rawResponseRetained": false,
+    "authClientInitialized": false,
+    "realProviderOwnerAuthVerified": false
+  },
+  "finalBoundaryReadback": {
+    "time": "2026-10-07T06:31:09.746101Z",
+    "helperSourceRestored": true,
+    "postgresExecutorSetFalse": true,
+    "temporarySchemaCreateRemoved": true,
+    "coreRows": 0,
+    "enabledWriters": 0,
+    "managedAuthPoliciesUnchanged": true,
+    "metadataSelectColumnCount": 12,
+    "privateCallerAccessDenied": true
+  }
+}

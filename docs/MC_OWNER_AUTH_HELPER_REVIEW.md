@@ -1,5 +1,7 @@
 # MC private Owner Auth verifier — exact unapplied review
 
+**Superseded execution state:** Joey approved this exact frozen candidate at 06:18:36 UTC; migration20261007062024 was applied once. Read [the actual execution/identity entry handoff](MC_OWNER_AUTH_HELPER_EXECUTION_HANDOFF.md) and scoped receipt. The review narrative below is historical; do not replay pending SQL or treat its prior NOT APPLIED state as current. Exposure remains UNKNOWN, with metadata401 now diagnosed as a secret-key-only root endpoint.
+
 This proposal supersedes the managed-owner policy repair route. Parent requested this concrete limited delegation for Joey's review; it is **NOT APPROVED / NOT APPLIED**. Login flags remain off. Original migration `20261007053940` and its safe error receipt remain unchanged.
 
 Candidate: `docs/contracts/sql/private-continuity.owner-auth-helper-pending.sql`, SHA-256 **5f5ccdbc132f5531f8be000d716e881d09718fc17ad412b95c022fcf46ffa554**.

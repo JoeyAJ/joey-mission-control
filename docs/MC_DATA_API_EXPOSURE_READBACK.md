@@ -1,5 +1,7 @@
 # Data API exposure — actual readback remains inconclusive
 
+> Current superseding result: Joey approved the exact narrow helper at 06:18:36 UTC; migration 20261007062024 applied once and effective ACL/denial/wiring checks passed. The identity-only fixed-stage entry is enabled; private workflow remains closed. Official logs diagnose both root metadata 401s as UNAUTHORIZED_INVALID_API_KEY_TYPE / Secret API key required. That action is stopped without acquiring a secret key; exposed-schema configuration remains UNKNOWN. See [current execution handoff](MC_OWNER_AUTH_HELPER_EXECUTION_HANDOFF.md) and its safe receipt. The investigation below is historical and retains its original pending state and errors.
+
 Exact project `scmvedfqwlhkyvljymjj`; helper approval is pending and its SQL is not applied. Prepared candidate SHA-256 stays `5f5ccdbc132f5531f8be000d716e881d09718fc17ad412b95c022fcf46ffa554`, rollback `31149c39bd2ac220dd21d148a0cc59345fad5ec6b8d44d1d271c273590e21de6`.
 
 ## Read evidence and correct conclusion

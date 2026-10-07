@@ -208,6 +208,7 @@ body[data-active-module=workspace] #data-link-status small,body[data-active-modu
 
 .command-handoff-capsule{max-height:420px;overflow:auto;white-space:pre-wrap;word-break:break-word;font-size:11px}.command-context-actions{flex-wrap:wrap}
 .command-context-actions button{white-space:normal;overflow-wrap:anywhere;max-width:100%}
+.owner-auth-entry{min-width:0;overflow-wrap:anywhere}.owner-auth-entry form,.owner-auth-entry label{display:grid;min-width:0;max-width:100%;box-sizing:border-box;gap:8px}.owner-auth-entry input,.owner-auth-entry button{max-width:100%;width:100%;box-sizing:border-box;white-space:normal;overflow-wrap:anywhere}.owner-auth-entry img{max-width:100%;height:auto}
 /* Command console: one viewport, three independently scrolling panes. */
 body[data-active-module=workspace]{grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(0,1fr);grid-template-areas:'header' 'main';height:100dvh;min-height:0;overflow:hidden;padding-bottom:0}
 body[data-active-module=workspace]>nav{display:none}

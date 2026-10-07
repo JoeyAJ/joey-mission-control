@@ -1,5 +1,7 @@
 # Owner session candidate and approved setup handoff
 
+Current status: [approved helper execution and Owner identity entry](MC_OWNER_AUTH_HELPER_EXECUTION_HANDOFF.md). Account/key/closure setup is complete; helper62024 applied and verified; first fixed-stage login is available after checkpoint deployment. Joey alone performs real login/TOTP; private workflow and production cutover remain closed. Earlier pending statements below are historical.
+
 Historical stage narrative below is superseded by [the latest helper review](MC_OWNER_AUTH_HELPER_REVIEW.md) and [actual Data API exposure readback](MC_DATA_API_EXPOSURE_READBACK.md). Owner UUID, publishable configuration and closed Auth settings are already confirmed; the SDK is implemented. Helper approval/application and exposure evidence remain pending. Do not ask Joey to repeat account/key/closure setup, or treat the historical NOT APPLIED paragraphs as the current migration state.
 
 Implemented: private synthetic owner-session coordinator and zh-TW/en/ko DOM renderer, integrated with the private continuity repository. Public MC remains honestly unconfigured; no credential form or synthetic state is reachable through its route/query/hash. These modules are outside public imports and served assets.

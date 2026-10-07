@@ -130,5 +130,18 @@
   "sqlMutation": false,
   "exposureConfigurationChanged": false,
   "realAuthVerified": false,
-  "remainingEvidence": "Read existing exposed-schema/OpenAPI config through official owner-authorized Management API/Dashboard; current MCP lacks the config-read action. Do not infer effective exposure from absent connector GUC settings, HTTP401 or nonexistent RPC404."
+  "remainingEvidence": "Read existing exposed-schema/OpenAPI config through official owner-authorized Management API/Dashboard; current MCP lacks the config-read action. Do not infer effective exposure from absent connector GUC settings, HTTP401 or nonexistent RPC404.",
+  "currentSupplement": {
+    "helperStatus": "APPROVED_APPLIED_VERIFIED",
+    "migrationVersion": "20261007062024",
+    "rootMetadataError": "UNAUTHORIZED_INVALID_API_KEY_TYPE",
+    "message": "Secret API key required",
+    "hint": "Only secret API keys can be used for this endpoint.",
+    "metadataActionStopped": true,
+    "exposureStatus": "UNKNOWN",
+    "fixedStageIdentityEntryEnabled": true,
+    "privateWorkflowActivated": false,
+    "currentReceipt": "MC_OWNER_AUTH_HELPER_EXECUTION_RECEIPT.json",
+    "historicalInvestigationRetained": true
+  }
 }

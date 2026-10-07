@@ -1,5 +1,7 @@
 # MC Owner bridge — applied migration, effective access blocked
 
+Historical bridge-error receipt below is superseded by [the approved helper execution](MC_OWNER_AUTH_HELPER_EXECUTION_HANDOFF.md), migration20261007062024. The original42501 and unapplied policy proposal remain historical evidence; both direct Auth-read call sites are now delegated to the exact approved private verifier. Current identity-only stage entry does not activate private workflow authority.
+
 Sole writer transferred by parent on 2026-10-07; continued exact private branch `codex/mc-command-center-checkpoint-20261006` from `2dfd7b532f9e3a4f8494a492052d2ec0a57e049d`. Old writer stopped. Existing saved checkout at `32b77ee` was preserved. Candidate is `/workspace/mc-owner-candidate`.
 
 ## Actual progress and evidence

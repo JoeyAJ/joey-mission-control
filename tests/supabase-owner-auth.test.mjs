@@ -13,3 +13,16 @@ test('logout/dispose serialize cleanup after late signin and reject revived resu
 test('dispose during MFA withholds late secret enrollment response and clears session',async()=>{const f=fixture();let resolve;f.auth.mfa.enroll=()=>new Promise(r=>resolve=()=>r({data:{totp:{secret:'SYNTHETIC_PRIVATE_SEED'}}}));const port=createSupabaseOwnerAuth(f.options),enrollment=port.enrollTotp({projectId});const rejected=assert.rejects(enrollment,/SESSION_INVALIDATED/);await new Promise(r=>setImmediate(r));const cleanup=port.dispose();resolve();await rejected;await cleanup;assert.ok(f.calls.includes('out'));});
 test('owner identity verification without membership never becomes private project access',async()=>{const f=fixture();const verify=f.options.verifyCurrentSession;f.options.verifyCurrentSession=async()=>({...await verify(),memberActive:false});const port=createSupabaseOwnerAuth(f.options);const ownerView=await port.inspectOwnerSession(projectId);assert.equal(ownerView.status,'authenticated');assert.equal(ownerView.memberActive,false);assert.equal((await port.inspectSession(projectId)).status,'denied');});
 test('explicit interrupted TOTP cancellation rechecks unverified MC factor and refuses verified factors',async()=>{const f=fixture();let status='unverified',removed=0;f.auth.mfa.listFactors=async()=>({data:{all:[{id:owner,factor_type:'totp',status,friendly_name:'MC owner'}]}});f.auth.mfa.unenroll=async()=>{removed++;return{};};const port=createSupabaseOwnerAuth(f.options);assert.deepEqual(await port.listTotp({projectId}),[{id:owner,status:'unverified',createdHere:true}]);await assert.rejects(port.cancelUnverifiedTotp({projectId,factorId:owner}),/EXPLICIT/);status='verified';await assert.rejects(port.cancelUnverifiedTotp({projectId,factorId:owner,explicit:true}),/UNVERIFIED_FACTOR_CHANGED/);assert.equal(removed,0);status='unverified';await port.cancelUnverifiedTotp({projectId,factorId:owner,explicit:true});assert.equal(removed,1);});
+test('approved identity entry is frozen-stage only and never activates private authority',()=>{
+ const saved=Object.getOwnPropertyDescriptor(globalThis,'location');
+ try{
+  for(const origin of [ownerAuthConfig.stageOrigin,'https://joey-mission-control-joeyajs-projects.vercel.app','http://127.0.0.1:4353']){
+   Object.defineProperty(globalThis,'location',{configurable:true,value:{origin}});
+   const status=ownerAuthSetupStatus();
+   assert.equal(status.ownerIdentityEntryAvailable,origin===ownerAuthConfig.stageOrigin);
+   assert.equal(status.status,'unconfigured');assert.equal(status.authenticated,false);
+   assert.equal(status.runtimeConnected,false);assert.equal(status.executionAuthorized,false);
+  }
+  assert.equal(ownerAuthConfig.ownerSubject,'6f0ca2ae-83e0-4684-af12-0b37d08182db');
+ }finally{if(saved)Object.defineProperty(globalThis,'location',saved);else delete globalThis.location;}
+});
