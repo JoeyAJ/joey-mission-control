@@ -1,0 +1,27 @@
+{
+  "purpose": "Private visual reference only; keep outside public and build output.",
+  "source": {
+    "library_file_id": "libfile_88ddc0dc2078819183c8e4f135ed579b",
+    "filename": "F63B3479-B0F6-43A5-9F0C-B4E0CAA54730.mp4"
+  },
+  "frames": [
+    {
+      "file": "reference-frame-02s.png",
+      "timestamp_seconds": 2,
+      "bytes": 153067,
+      "sha256": "b3b0f68d54c6388928a8087cc8b68a98ab16f82dd1bb6ce9a226305efad19eb6"
+    },
+    {
+      "file": "reference-frame-18s.png",
+      "timestamp_seconds": 18,
+      "bytes": 276106,
+      "sha256": "63dd938b7b7566c058ed7455d71d1bd86df7ae698065b29a8d2ad866fd8fdd26"
+    },
+    {
+      "file": "reference-frame-34s.png",
+      "timestamp_seconds": 34,
+      "bytes": 247128,
+      "sha256": "c996b9aae08516adb44173e906acd2fed008873570694ac3af82f2808b61a1ae"
+    }
+  ]
+}

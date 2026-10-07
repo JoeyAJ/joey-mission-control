@@ -39,5 +39,10 @@
         }
       ]
     }
-  ]
+  ],
+  "git": {
+    "deploymentEnabled": {
+      "docs/mc-reference-frames-20261007": false
+    }
+  }
 }
