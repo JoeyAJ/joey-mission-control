@@ -7,6 +7,7 @@ import {securityHeaders} from '../../../src/api/routes.mjs';
 import {createCandidateObserver} from '../candidate-observer.mjs';
 import {readTaskObservation} from './task-observation-reader.mjs';
 import {readStageChanges} from './stage-changes.mjs';
+import {readonlyHandoff} from './readonly-handoff.mjs';
 import {readPrivateRestore} from './private-restore.mjs';
 export function privateProjects(publicProjects,restored){return publicProjects.map(m=>{
  const v=restored.views.find(v=>v.projectId===m.project_id);
@@ -16,7 +17,7 @@ export function privateProjects(publicProjects,restored){return publicProjects.m
    verificationStatus:v.phase.stageVerificationStatus,sourceRevision:v.sourceRevision,sourceTimestamp:v.sourceTimestamp,
    extractedAt:v.extractedAt,readAt:v.readAt,baseline:v.baseline,sourceRefs:v.claimEvidence.stage.sourceRefs,
    actor:v.lastConfirmed.actor,model:v.lastConfirmed.model,identityReason:v.lastConfirmed.actorMissingReason},
-  runtime:{...m.runtime,currentAgent:null,currentModel:null,currentMission:null},privateReadonlyRestore:true,privateRecordedMissions:(v.ownerCanonicalState?.missions||[]).map(mission=>({id:mission.id,title:mission.title,status:mission.status,sourceRefs:[...mission.sourceRefs],dependencies:[...mission.dependencies],createdAt:mission.createdAt,updatedAt:mission.updatedAt,ownerRevision:v.ownerCanonicalState.metadata.revision,actor:null,model:null}))};
+  runtime:{...m.runtime,currentAgent:null,currentModel:null,currentMission:null},privateReadonlyRestore:true,privateHandoffCapsule:['NEXAEON','WOOSONG_BUDDY','NAMYOUNG_WEB3D','JOEY_ASSET_SYSTEM'].includes(v.projectId)?readonlyHandoff(v):null,privateRecordedMissions:(v.ownerCanonicalState?.missions||[]).map(mission=>({id:mission.id,title:mission.title,status:mission.status,sourceRefs:[...mission.sourceRefs],dependencies:[...mission.dependencies],createdAt:mission.createdAt,updatedAt:mission.updatedAt,ownerRevision:v.ownerCanonicalState.metadata.revision,actor:null,model:null}))};
 });}
 export function createPrivatePreview({root,observer=null,taskObservationRoot=null,clock=()=>new Date().toISOString()}){
  const staticHandler=createApp({});
@@ -32,6 +33,7 @@ export function createPrivatePreview({root,observer=null,taskObservationRoot=nul
    if(route==='task-observation'&&taskObservationRoot)return send(200,await readTaskObservation({root:taskObservationRoot,readAt:clock()}));
    if(route==='stage-changes')return send(200,await readStageChanges({readAt:clock()}));
    if(route==='observer'&&observer)return send(200,await observer.inspect(clock()));
+   const capsule=route.match(/^projects\/([A-Z0-9_]+)\/readonly-handoff$/);if(capsule){const {restored}=await readPrivateRestore({root,readAt:clock()}),v=restored.views.find(v=>v.projectId===capsule[1]);return v?send(200,readonlyHandoff(v)):send(404,{error:'Project not found'});}
    if(route==='projects'){const {restored}=await readPrivateRestore({root,readAt:clock()});return send(200,privateProjects(productionResponse('GET',url).body,restored));}
    if(route==='health'){const base=productionResponse('GET',url).body;return send(200,{...base,mode:'private_readonly_restore',privateReadonlyRestore:true,candidateObserver:!!observer,taskObservation:!!taskObservationRoot,localWriteSupport:false});}
    // Only already-safe public routes remain available; no private archive/path API.

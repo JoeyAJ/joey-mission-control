@@ -269,5 +269,22 @@
     },
     "browser": "1440/390/320/3locales; failedrefresh expiry PASS",
     "firstLoadRouting": "Cold delayed-module Joey-active flash reproduced and default active removed; regression PASS; full external cause unproven"
+  },
+  "readonlyHandoff": {
+    "state": "PRIVATE_READONLY_SOURCE_CONTEXT_IMPLEMENTED",
+    "publicPayload": false,
+    "permissionGrant": false,
+    "authorityCutover": false,
+    "remoteReverified": false,
+    "tests": {
+      "portable": 310,
+      "independentAffected": 18
+    },
+    "browser": "4projects/1440/390/320/3locales/PASS",
+    "nextGaps": [
+      "automatic verified tool stream",
+      "canonical per-store result writer/final-approval authority",
+      "protected cross-device private transport"
+    ]
   }
 }

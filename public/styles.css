@@ -205,3 +205,6 @@ body[data-active-module=workspace] #data-link-status small,body[data-active-modu
 .command-observer{padding:10px 12px;margin:10px 0;border:1px solid rgba(130,160,190,.25);border-radius:12px;overflow-wrap:anywhere}.command-observer summary{cursor:pointer;font-size:12px}.command-observer p{font-size:11px}.command-observer button{min-height:44px;margin:4px;max-width:100%;white-space:normal;overflow-wrap:anywhere}
 
 .command-changes{padding:10px 12px;margin:10px 0;border:1px solid rgba(130,160,190,.25);border-radius:12px;overflow-wrap:anywhere}.command-changes summary{cursor:pointer;font-size:12px}.command-changes p{font-size:11px}.command-change-files{display:flex;flex-wrap:wrap;gap:6px}.command-changes button{min-height:44px;max-width:100%;font-size:11px;white-space:normal;overflow-wrap:anywhere}.command-changes pre{max-height:420px;overflow:auto;white-space:pre-wrap;word-break:break-word;font-size:11px;padding:12px;background:rgba(0,0,0,.06)}
+
+.command-handoff-capsule{max-height:420px;overflow:auto;white-space:pre-wrap;word-break:break-word;font-size:11px}.command-context-actions{flex-wrap:wrap}
+.command-context-actions button{white-space:normal;overflow-wrap:anywhere;max-width:100%}
