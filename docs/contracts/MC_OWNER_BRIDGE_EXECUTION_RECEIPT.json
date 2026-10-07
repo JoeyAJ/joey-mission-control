@@ -1,0 +1,281 @@
+{
+  "projectRef": "scmvedfqwlhkyvljymjj",
+  "ownerSubject": "6f0ca2ae-83e0-4684-af12-0b37d08182db",
+  "sourceCommit": "2dfd7b532f9e3a4f8494a492052d2ec0a57e049d",
+  "approvedSqlSHA256": "37aca08d8c601a6af0b695f14da0e0a2ebd796dffd6b1ed29ef450bd9b2a284e",
+  "migrationVersion": "20261007053940",
+  "migrationName": "mc_owner_identity_current_session_bridge",
+  "applyToolStatus": "SUCCESS",
+  "effectiveBridgeStatus": "BLOCKED_AUTH_METADATA_PERMISSIONS",
+  "authSetupEnabled": false,
+  "settingsReadback": {
+    "time": "2026-10-07T05:35:19.727603Z",
+    "httpStatus": 200,
+    "disableSignup": true,
+    "anonymousUsers": false,
+    "email": true
+  },
+  "ownerRecheck": [
+    {
+      "id": "6f0ca2ae-83e0-4684-af12-0b37d08182db",
+      "email_confirmed": true,
+      "is_anonymous": false,
+      "is_deleted": false,
+      "is_banned": false
+    }
+  ],
+  "privilegeDiagnostic": [
+    {
+      "privilege_diagnostic": {
+        "authAcl": "{supabase_admin=UC/supabase_admin,anon=U/supabase_admin,authenticated=U/supabase_admin,service_role=U/supabase_admin,supabase_auth_admin=UC/supabase_admin,dashboard_user=UC/supabase_admin,postgres=U/supabase_admin}",
+        "rpcOwner": "mc_continuity_executor",
+        "authUsage": false,
+        "rpcDefiner": true,
+        "columnAccess": {
+          "usersId": true,
+          "sessionId": true,
+          "factorStatus": true
+        },
+        "authTablesRls": [
+          {
+            "rls": true,
+            "force": false,
+            "owner": "supabase_auth_admin",
+            "table": "mfa_factors"
+          },
+          {
+            "rls": true,
+            "force": false,
+            "owner": "supabase_auth_admin",
+            "table": "sessions"
+          },
+          {
+            "rls": true,
+            "force": false,
+            "owner": "supabase_auth_admin",
+            "table": "users"
+          }
+        ],
+        "functionSettings": [
+          "search_path=\"\""
+        ]
+      }
+    }
+  ],
+  "permissionOptions": [
+    {
+      "permission_options": {
+        "postgres": {
+          "inherit": true,
+          "bypassRls": true,
+          "superuser": false
+        },
+        "tableAcl": [
+          {
+            "acl": "{supabase_auth_admin=arwdDxtm/supabase_auth_admin,dashboard_user=arwdDxtm/supabase_auth_admin,postgres=ar*wdDxtm/supabase_auth_admin}",
+            "table": "users"
+          },
+          {
+            "acl": "{postgres=ar*wdDxtm/supabase_auth_admin,supabase_auth_admin=arwdDxtm/supabase_auth_admin,dashboard_user=arwdDxtm/supabase_auth_admin}",
+            "table": "sessions"
+          },
+          {
+            "acl": "{postgres=ar*wdDxtm/supabase_auth_admin,supabase_auth_admin=arwdDxtm/supabase_auth_admin,dashboard_user=arwdDxtm/supabase_auth_admin}",
+            "table": "mfa_factors"
+          }
+        ],
+        "currentRole": "postgres",
+        "sessionRole": "postgres",
+        "authPolicies": [],
+        "ownerMemberships": [
+          {
+            "set": false,
+            "role": "supabase_admin",
+            "usage": false,
+            "member": false
+          },
+          {
+            "set": false,
+            "role": "supabase_auth_admin",
+            "usage": false,
+            "member": false
+          }
+        ]
+      }
+    }
+  ],
+  "afterApply": [
+    {
+      "verification": {
+        "counts": {
+          "heads": 0,
+          "budget": 0,
+          "events": 0,
+          "members": 0,
+          "contexts": 0,
+          "checkpoints": 0,
+          "ownerSessions": 0,
+          "enabledWriters": 0
+        },
+        "coreRls": [
+          {
+            "rls": true,
+            "table": "members",
+            "forceRls": true
+          },
+          {
+            "rls": true,
+            "table": "heads",
+            "forceRls": true
+          },
+          {
+            "rls": true,
+            "table": "storage_budget",
+            "forceRls": true
+          },
+          {
+            "rls": true,
+            "table": "contexts",
+            "forceRls": true
+          },
+          {
+            "rls": true,
+            "table": "checkpoints",
+            "forceRls": true
+          },
+          {
+            "rls": true,
+            "table": "events",
+            "forceRls": true
+          }
+        ],
+        "executor": {
+          "login": false,
+          "inherit": false,
+          "bypassRls": false,
+          "superuser": false,
+          "createPublic": false,
+          "createPrivate": false
+        },
+        "functions": [
+          {
+            "acl": "{mc_continuity_executor=X/mc_continuity_executor}",
+            "name": "current_actor",
+            "owner": "mc_continuity_executor",
+            "config": [
+              "search_path=\"\""
+            ],
+            "schema": "mc_private",
+            "definer": false,
+            "anonExecute": false,
+            "serviceRoleExecute": false,
+            "authenticatedExecute": false
+          },
+          {
+            "acl": "{mc_continuity_executor=X/mc_continuity_executor,authenticated=X/mc_continuity_executor}",
+            "name": "mc_owner_session",
+            "owner": "mc_continuity_executor",
+            "config": [
+              "search_path=\"\""
+            ],
+            "schema": "public",
+            "definer": true,
+            "anonExecute": false,
+            "serviceRoleExecute": false,
+            "authenticatedExecute": true
+          }
+        ],
+        "memberships": [
+          {
+            "set": false,
+            "admin": true,
+            "member": "postgres",
+            "grantor": "supabase_admin",
+            "inherit": false
+          },
+          {
+            "set": false,
+            "admin": false,
+            "member": "postgres",
+            "grantor": "postgres",
+            "inherit": false
+          }
+        ],
+        "grantedAuthColumns": [
+          {
+            "table": "mfa_factors",
+            "column": "factor_type",
+            "privilege": "SELECT"
+          },
+          {
+            "table": "mfa_factors",
+            "column": "status",
+            "privilege": "SELECT"
+          },
+          {
+            "table": "mfa_factors",
+            "column": "user_id",
+            "privilege": "SELECT"
+          },
+          {
+            "table": "sessions",
+            "column": "aal",
+            "privilege": "SELECT"
+          },
+          {
+            "table": "sessions",
+            "column": "id",
+            "privilege": "SELECT"
+          },
+          {
+            "table": "sessions",
+            "column": "not_after",
+            "privilege": "SELECT"
+          },
+          {
+            "table": "sessions",
+            "column": "user_id",
+            "privilege": "SELECT"
+          },
+          {
+            "table": "users",
+            "column": "banned_until",
+            "privilege": "SELECT"
+          },
+          {
+            "table": "users",
+            "column": "deleted_at",
+            "privilege": "SELECT"
+          },
+          {
+            "table": "users",
+            "column": "email_confirmed_at",
+            "privilege": "SELECT"
+          },
+          {
+            "table": "users",
+            "column": "id",
+            "privilege": "SELECT"
+          },
+          {
+            "table": "users",
+            "column": "is_anonymous",
+            "privilege": "SELECT"
+          }
+        ]
+      }
+    }
+  ],
+  "denialValidationStatus": "FAILED_BEFORE_EXPECTED_28000_AUTH_SCHEMA_PERMISSION_42501",
+  "realOwnerLogin": "NOT_RUN",
+  "realAAL2": "NOT_RUN",
+  "realRevocation": "NOT_RUN",
+  "privateSeed": false,
+  "workflowWriterEnabled": false,
+  "advisorStatus": "TWO_WARNINGS",
+  "advisorFindings": [
+    "authenticated SECURITY DEFINER identity-only RPC is intentional but effective metadata access is blocked",
+    "leaked password protection disabled; not changed within this scope"
+  ],
+  "nextAction": "Managed schema/table owner executes reviewed bounded USAGE and exact-Owner metadata SELECT policies; re-read all effective privileges/RLS and denial tests before enabling stage config"
+}

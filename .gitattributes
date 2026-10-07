@@ -1,0 +1,2 @@
+# esbuild preserves intentional whitespace inside upstream SDK template strings.
+public/owner-auth-client.js whitespace=-blank-at-eol
