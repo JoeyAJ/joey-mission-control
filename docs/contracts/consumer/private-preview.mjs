@@ -4,6 +4,7 @@ import {fileURLToPath} from 'node:url';
 import {createApp} from '../../../src/server.mjs';
 import {productionResponse} from '../../../api/index.mjs';
 import {securityHeaders} from '../../../src/api/routes.mjs';
+import {createCandidateObserver} from '../candidate-observer.mjs';
 import {readPrivateRestore} from './private-restore.mjs';
 export function privateProjects(publicProjects,restored){return publicProjects.map(m=>{
  const v=restored.views.find(v=>v.projectId===m.project_id);
@@ -15,7 +16,7 @@ export function privateProjects(publicProjects,restored){return publicProjects.m
    actor:v.lastConfirmed.actor,model:v.lastConfirmed.model,identityReason:v.lastConfirmed.actorMissingReason},
   runtime:{...m.runtime,currentAgent:null,currentModel:null,currentMission:null},privateReadonlyRestore:true,privateRecordedMissions:(v.ownerCanonicalState?.missions||[]).map(mission=>({id:mission.id,title:mission.title,status:mission.status,sourceRefs:[...mission.sourceRefs],dependencies:[...mission.dependencies],createdAt:mission.createdAt,updatedAt:mission.updatedAt,ownerRevision:v.ownerCanonicalState.metadata.revision,actor:null,model:null}))};
 });}
-export function createPrivatePreview({root,clock=()=>new Date().toISOString()}){
+export function createPrivatePreview({root,observer=null,clock=()=>new Date().toISOString()}){
  const staticHandler=createApp({});
  return async(req,res)=>{
   const send=(status,body)=>{res.writeHead(status,{...securityHeaders,'Content-Type':'application/json','Cache-Control':'no-store'});res.end(JSON.stringify(body));};
@@ -26,8 +27,9 @@ export function createPrivatePreview({root,clock=()=>new Date().toISOString()}){
   if(!u.pathname.startsWith('/api/'))return staticHandler(req,res);
   try{
    const route=u.pathname.slice(5),url=new URL('https://fixture/api/index?route='+route);
+   if(route==='observer'&&observer)return send(200,await observer.inspect(clock()));
    if(route==='projects'){const {restored}=await readPrivateRestore({root,readAt:clock()});return send(200,privateProjects(productionResponse('GET',url).body,restored));}
-   if(route==='health'){const base=productionResponse('GET',url).body;return send(200,{...base,mode:'private_readonly_restore',privateReadonlyRestore:true,localWriteSupport:false});}
+   if(route==='health'){const base=productionResponse('GET',url).body;return send(200,{...base,mode:'private_readonly_restore',privateReadonlyRestore:true,candidateObserver:!!observer,localWriteSupport:false});}
    // Only already-safe public routes remain available; no private archive/path API.
    const result=productionResponse('GET',url);return send(result.status,result.body);
   }catch{return send(503,{error:'Private restore source unavailable or integrity invalid'});}
@@ -36,5 +38,6 @@ export function createPrivatePreview({root,clock=()=>new Date().toISOString()}){
 if(process.argv[1]===fileURLToPath(import.meta.url)){
  const root=process.argv[2],port=Number(process.argv[3]||4354);
  await readPrivateRestore({root,readAt:new Date().toISOString()});
- http.createServer(createPrivatePreview({root})).listen(port,'127.0.0.1',()=>console.log('Private read-only QA listening on loopback'));
+ const observer=process.argv[4]?await createCandidateObserver({root:process.argv[4],qualification:process.argv[5]||'UNVERIFIED_IMPORTED_JSONL'}):null;
+ http.createServer(createPrivatePreview({root,observer})).listen(port,'127.0.0.1',()=>console.log('Private read-only QA listening on loopback'));
 }
