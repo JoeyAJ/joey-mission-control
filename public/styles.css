@@ -274,3 +274,11 @@ body[data-active-module=workspace] #workspace,body[data-active-module=workspace]
 #workspace .command-workspace-head{align-self:stretch;width:100%}
 
 .private-continuity-status{border-top:1px solid #52658444;margin-top:12px;padding-top:10px;overflow-wrap:anywhere}.private-continuity-status h5{font-size:11px;margin:4px 0}.private-continuity-status p{font-size:10px;line-height:1.6}.private-continuity-status button{min-height:44px;white-space:normal}
+.command-owner-access{flex-shrink:0;border-bottom:1px solid #52658444;margin:0;background:#12253b88;min-width:0}
+.command-owner-access>summary{min-height:44px;padding:8px 14px;box-sizing:border-box;display:flex;align-items:center;flex-wrap:wrap;gap:6px 12px;cursor:pointer;font-size:12px;list-style:none;overflow-wrap:anywhere}
+.command-owner-access>summary:before{content:'›';font-size:20px}.command-owner-access[open]>summary:before{content:'⌄'}
+.command-owner-access>summary span{font-size:11px;color:#bdd4e6}.command-owner-access>summary span:last-child{margin-left:auto;color:#aabbd0}
+.command-owner-access>summary:focus-visible,.owner-auth-entry button:focus-visible,.owner-auth-entry input:focus-visible{outline:2px solid #82dcff;outline-offset:-2px}
+.owner-auth-body{padding:8px 14px 14px;max-height:45dvh;overflow:auto;min-width:0;box-sizing:border-box}
+.owner-auth-body p{font-size:12px;line-height:1.6}.owner-auth-body form,.owner-auth-body section{max-width:420px}.owner-auth-body input,.owner-auth-body button{min-height:44px}.owner-auth-body>button{max-width:420px;display:block}.owner-auth-body img{max-width:200px}.owner-auth-body [hidden]{display:none!important}
+@media(max-width:768px){.command-owner-access>summary{padding:8px;font-size:12px;gap:4px 8px}.command-owner-access>summary strong{flex-basis:calc(100% - 24px)}.command-owner-access>summary span:last-child{margin-left:0}.owner-auth-body{padding:8px;max-height:42dvh}}
