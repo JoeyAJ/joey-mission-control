@@ -1,0 +1,134 @@
+{
+  "scope": "scmvedfqwlhkyvljymjj only; no user JWT/private rows/RPC/Auth mutation",
+  "result": "EXPOSURE_INCONCLUSIVE_METADATA_HTTP401",
+  "helperStatus": "NOT_APPROVED_NOT_APPLIED",
+  "reads": [
+    {
+      "time": "2026-10-07T06:11:46.778Z",
+      "method": "GET",
+      "path": "/rest/v1/",
+      "profile": "mc_private",
+      "accept": "application/openapi+json",
+      "mode": "STANDARD_HTTPS_PUBLISHABLE_APIKEY_ONLY",
+      "httpStatus": 401,
+      "proxyConnectStatus": 200,
+      "tlsVerifyResult": 0,
+      "providerCode": null,
+      "effectiveExposedSchemas": null,
+      "retries": 0,
+      "redirects": 0
+    },
+    {
+      "time": "2026-10-07T06:13:31.406Z",
+      "method": "GET",
+      "path": "/rest/v1/",
+      "profile": "mc_private",
+      "accept": "application/openapi+json",
+      "mode": "PINNED_OFFICIAL_SDK_GET_OPENAPI_SPEC",
+      "sdkVersion": "2.117.2",
+      "officialSdkApiKeyBearerFallback": true,
+      "userJwt": false,
+      "authClientInitialized": false,
+      "httpStatus": 401,
+      "proxyConnectStatus": 200,
+      "tlsVerifyResult": 0,
+      "providerCode": null,
+      "effectiveExposedSchemas": null,
+      "retries": 0,
+      "redirects": 0
+    }
+  ],
+  "catalog": {
+    "time": "2026-10-07T06:14:52.651312+00:00",
+    "settings": [],
+    "helperExists": false,
+    "roleSettings": [],
+    "schemaPrivileges": [
+      {
+        "role": "anon",
+        "usage": false,
+        "create": false,
+        "schema": "mc_private"
+      },
+      {
+        "role": "anon",
+        "usage": false,
+        "create": false,
+        "schema": "mc_api"
+      },
+      {
+        "role": "authenticated",
+        "usage": false,
+        "create": false,
+        "schema": "mc_private"
+      },
+      {
+        "role": "authenticated",
+        "usage": false,
+        "create": false,
+        "schema": "mc_api"
+      },
+      {
+        "role": "service_role",
+        "usage": false,
+        "create": false,
+        "schema": "mc_private"
+      },
+      {
+        "role": "service_role",
+        "usage": false,
+        "create": false,
+        "schema": "mc_api"
+      }
+    ],
+    "functionPrivileges": [
+      {
+        "owner": "mc_continuity_executor",
+        "anonExec": false,
+        "function": "mc_private.current_actor()",
+        "serviceRoleExec": false,
+        "authenticatedExec": false
+      },
+      {
+        "owner": "mc_continuity_executor",
+        "anonExec": false,
+        "function": "mc_api.append_operation(jsonb)",
+        "serviceRoleExec": false,
+        "authenticatedExec": false
+      },
+      {
+        "owner": "mc_continuity_executor",
+        "anonExec": false,
+        "function": "mc_api.read_events(text,bigint,integer)",
+        "serviceRoleExec": false,
+        "authenticatedExec": false
+      },
+      {
+        "owner": "mc_continuity_executor",
+        "anonExec": false,
+        "function": "mc_api.read_context(text,text)",
+        "serviceRoleExec": false,
+        "authenticatedExec": false
+      },
+      {
+        "owner": "mc_continuity_executor",
+        "anonExec": false,
+        "function": "mc_owner_session(text)",
+        "serviceRoleExec": false,
+        "authenticatedExec": true
+      }
+    ],
+    "effectiveConnectorSettings": {
+      "schemas": null,
+      "preConfig": null,
+      "openapiMode": null
+    }
+  },
+  "rawResponsesRetained": false,
+  "rowsQueried": false,
+  "rpcInvoked": false,
+  "sqlMutation": false,
+  "exposureConfigurationChanged": false,
+  "realAuthVerified": false,
+  "remainingEvidence": "Read existing exposed-schema/OpenAPI config through official owner-authorized Management API/Dashboard; current MCP lacks the config-read action. Do not infer effective exposure from absent connector GUC settings, HTTP401 or nonexistent RPC404."
+}
