@@ -1,0 +1,19 @@
+// Private local pending-draft storage only. Not a canonical ledger or credential store.
+import fs from 'node:fs/promises';import path from 'node:path';import {fileURLToPath} from 'node:url';
+import {JsonStore} from '../storage/json-store.mjs';import {queueContinuity} from '../../docs/contracts/private-continuity.mjs';
+const productRoot=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../..');
+const projects=new Set(['NEXAEON','WOOSONG_BUDDY','NAMYOUNG_WEB3D','JOEY_ASSET_SYSTEM']);
+function scopeValid(s){return s&&Object.keys(s).length===2&&projects.has(s.projectId)&&typeof s.subject==='string'&&/^[A-Za-z0-9_-]{1,80}$/.test(s.subject);}
+function pendingValid(s,pending){if(!Array.isArray(pending)||pending.length>256)return false;try{queueContinuity(pending,pending[0]||{id:'validation',epoch:'validation',projectId:s.projectId,baselineSha:'a'.repeat(40),expectedRevision:0,kind:'proposal',payload:{proposalId:'validation',contextHash:'a'.repeat(64),acceptanceHash:'a'.repeat(64),expiresAt:1}});return pending.every(p=>p.projectId===s.projectId);}catch{return false;}}
+function valid(records){return Array.isArray(records)&&records.length<=8&&new Set(records.map(r=>r.subject+'|'+r.projectId)).size===records.length&&records.every(r=>r&&Object.keys(r).length===5&&r.schemaVersion===1&&scopeValid({projectId:r.projectId,subject:r.subject})&&Number.isSafeInteger(r.revision)&&r.revision>=1&&pendingValid(r,r.pending));}
+
+async function verifyPlannedRoot(root){
+ let ancestor=root;const suffix=[];
+ for(;;){try{const real=await fs.realpath(ancestor),planned=path.join(real,...suffix);if(planned===productRoot||planned.startsWith(productRoot+path.sep))throw Error('PENDING_ROOT_INSIDE_PRODUCT');return;}catch(e){if(e.code!=='ENOENT')throw e;const parent=path.dirname(ancestor);if(parent===ancestor)throw e;suffix.unshift(path.basename(ancestor));ancestor=parent;}}
+}
+export class PrivatePendingStore {
+ #store;#root;
+ constructor(root){this.#root=path.resolve(root);if(this.#root===productRoot||this.#root.startsWith(productRoot+path.sep))throw Error('PENDING_ROOT_INSIDE_PRODUCT');this.#store=new JsonStore(this.#root,'mc-pending-drafts.v1.json',valid);}
+ async load(scope){try{const real=await fs.realpath(this.#root),stat=await fs.lstat(this.#root);if(real===productRoot||real.startsWith(productRoot+path.sep)||stat.isSymbolicLink()||(stat.mode&0o077))throw Error('PENDING_ROOT_PERMISSIONS');}catch(e){if(e.code!=='ENOENT')throw e;}if(!scopeValid(scope))throw Error('PENDING_SCOPE');const records=await this.#store.readOnly(),entry=records.find(r=>r.projectId===scope.projectId&&r.subject===scope.subject);return entry?{revision:entry.revision,pending:structuredClone(entry.pending)}:{revision:0,pending:[]};}
+ async save(scope,pending,expectedRevision){if(!scopeValid(scope)||!pendingValid(scope,pending)||!Number.isSafeInteger(expectedRevision)||expectedRevision<0)throw Error('PENDING_INPUT');await verifyPlannedRoot(this.#root);await fs.mkdir(this.#root,{recursive:true,mode:0o700});const stat=await fs.lstat(this.#root);if(stat.isSymbolicLink()||(stat.mode&0o077))throw Error('PENDING_ROOT_PERMISSIONS');const real=await fs.realpath(this.#root);if(real===productRoot||real.startsWith(productRoot+path.sep))throw Error('PENDING_ROOT_INSIDE_PRODUCT');await this.#store.ensure();const release=await this.#store.acquireUpdateLock();try{const records=await this.#store.readOnly(),index=records.findIndex(r=>r.projectId===scope.projectId&&r.subject===scope.subject),revision=index<0?0:records[index].revision;if(revision!==expectedRevision)throw Error('PENDING_REVISION_CONFLICT');if(index<0&&records.length>=8)throw Error('PENDING_SCOPE_CAPACITY');const next={schemaVersion:1,...scope,revision:revision+1,pending:structuredClone(pending)};if(index<0)records.push(next);else records[index]=next;await this.#store.write(records);return{revision:next.revision,pending:structuredClone(pending)};}finally{await release();}}
+}

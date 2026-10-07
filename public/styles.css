@@ -271,3 +271,5 @@ body[data-active-module=workspace] #workspace,body[data-active-module=workspace]
 #workspace .command-context[data-observer-selection=true] .command-inspector{display:none}
 #workspace .command-context>.command-observer{overflow:auto;min-height:0;flex:1}
 #workspace .command-workspace-head{align-self:stretch;width:100%}
+
+.private-continuity-status{border-top:1px solid #52658444;margin-top:12px;padding-top:10px;overflow-wrap:anywhere}.private-continuity-status h5{font-size:11px;margin:4px 0}.private-continuity-status p{font-size:10px;line-height:1.6}.private-continuity-status button{min-height:44px;white-space:normal}
