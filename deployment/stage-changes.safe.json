@@ -1,0 +1,12 @@
+{
+ "schemaVersion":"mc.stage-changes.v1",
+ "scope":"MISSION_CONTROL_CANDIDATE",
+ "kind":"HISTORICAL_GIT_COMPARISON_NOT_TOOL_EVENTS",
+ "range":{"from":"8b478f0d8c017defdd2a5f5dab92ea9972479c78","to":"91b171beddeddc2b69d26143fae5a2e4285f0539"},
+ "sourceTime":"2026-10-07T02:47:52Z",
+ "privateContent":false,
+ "currentActor":null,
+ "runtimeConnected":false,
+ "files":[],
+ "summary":{"changedFiles":16,"added":5,"modified":11,"areas":["workspace","observer contract","verification","private handoff"]}
+}

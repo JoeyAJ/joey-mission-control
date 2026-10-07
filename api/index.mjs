@@ -8,6 +8,7 @@ import {release} from '../src/release.mjs';
 import {candidate} from '../src/candidate.mjs';
 import {assertPublicCases} from '../src/public-cases.mjs';
 import {composeContinue} from '../src/continue/continue-composer.mjs';
+const stageChanges=JSON.parse(await fs.readFile(new URL('../deployment/stage-changes.safe.json',import.meta.url),'utf8'));
 const snapshot=JSON.parse(await fs.readFile(new URL('../deployment/production-snapshot.json',import.meta.url),'utf8'));
 const projectStates=JSON.parse(await fs.readFile(new URL('../deployment/project-state.v03b.json',import.meta.url),'utf8'));
 const phaseRecords=JSON.parse(await fs.readFile(new URL('../deployment/last-development.v03d.json',import.meta.url),'utf8')).projects;
@@ -16,7 +17,8 @@ const projectManifest=p=>{const m=manifest(p,{handoff:snapshot.handoffs.byEntity
 export function productionResponse(method,url){
  if(method!=='GET')return{status:403,body:{error:'Public production is read-only. Use authorized local Mission Control for writes.'}};
  const route=url.searchParams.get('route')||'';
- if(route==='health')return{status:200,body:{ok:true,...release,...candidate,mode:'verified_release_snapshot',readOnly:true,commandWorkspace:commandWorkspaceHealth,snapshotGeneratedAt:snapshot.generatedAt}};
+ if(route==='health')return{status:200,body:{ok:true,...release,...candidate,mode:'verified_release_snapshot',readOnly:true,stageChanges:true,commandWorkspace:commandWorkspaceHealth,snapshotGeneratedAt:snapshot.generatedAt}};
+ if(route==='stage-changes')return{status:200,body:stageChanges};
  if(route==='state')return{status:200,body:snapshot};
  if(route==='public-cases')return{status:200,body:publicCases};
  if(route==='projects')return{status:200,body:snapshot.projects.map(p=>projectManifest(p))};

@@ -1,0 +1,14 @@
+// Historical comparison only. Rendering uses text nodes; never HTML or raw downloads.
+const words={
+ 'zh-TW':{title:'已確認變更 · Explorer',history:'歷史 Git 比較，不是當前工具事件',safe:'公開安全摘要；私人原始碼與 diff 不公開',files:'變更檔案',compare:'比較版本',unavailable:'Diff 未取得或超出限制；保留來源版本',truncated:'顯示受限節錄，未顯示全部 diff',read:'Consumer 讀取時間',source:'提交時間'},
+ en:{title:'Confirmed changes · Explorer',history:'Historical Git comparison, not current tool events',safe:'Safe public summary; private source and diffs are withheld',files:'Changed files',compare:'Compare versions',unavailable:'Diff unavailable or exceeds limit; source versions retained',truncated:'Bounded excerpt; full diff is not displayed',read:'Consumer read time',source:'Commit time'},
+ ko:{title:'확인된 변경 · Explorer',history:'과거 Git 비교, 현재 도구 이벤트 아님',safe:'공개 안전 요약. 비공개 소스와 diff는 제공하지 않음',files:'변경 파일',compare:'버전 비교',unavailable:'Diff 없음 또는 제한 초과. 출처 버전 유지',truncated:'제한된 발췌. 전체 diff 아님',read:'Consumer 읽기 시간',source:'커밋 시간'}
+};
+export function renderStageChanges(view,{doc=document,locale='zh-TW',item=null,onNavigate=()=>{}}={}){
+ const w=words[locale]||words['zh-TW'],el=(tag,text)=>{const n=doc.createElement(tag);if(text!=null)n.textContent=String(text);return n;},box=el('details');box.className='command-changes';box.dataset.stageChanges=view.privateContent?'private':'safe';box.open=(item||'').startsWith('stage-');box.append(el('summary',w.title),el('p',w.history),el('p',view.range.from+' → '+view.range.to));
+ if(view.sourceTime)box.append(el('p',w.source+' · '+view.sourceTime));if(view.readAt)box.append(el('p',w.read+' · '+view.readAt));
+ const overview=el('button',w.compare);overview.type='button';overview.dataset.stageCompare='overview';overview.addEventListener('click',()=>onNavigate('stage-overview'));box.append(overview);
+ if(!view.privateContent){box.append(el('p',w.safe),el('p',w.files+' · '+view.summary.changedFiles),el('p',view.summary.areas.join(' / ')));return box;}
+ const explorer=el('nav');explorer.setAttribute('aria-label',w.files);explorer.className='command-change-files';for(const f of view.files){const b=el('button',f.status+' · '+f.path);b.type='button';b.dataset.stageFile=f.id;b.setAttribute('aria-pressed',String(item===f.id));b.addEventListener('click',()=>onNavigate(f.id));explorer.append(b);}box.append(explorer);
+ const selected=view.files.find(f=>f.id===item);if(selected){const detail=el('section');detail.dataset.stageInspector=selected.id;detail.append(el('h4',selected.path));if(selected.availability!=='AVAILABLE')detail.append(el('p',w.unavailable));else{if(selected.truncated)detail.append(el('p',w.truncated));detail.append(el('pre',selected.diff));}box.append(detail);}return box;
+}

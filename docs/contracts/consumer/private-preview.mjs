@@ -5,6 +5,7 @@ import {createApp} from '../../../src/server.mjs';
 import {productionResponse} from '../../../api/index.mjs';
 import {securityHeaders} from '../../../src/api/routes.mjs';
 import {createCandidateObserver} from '../candidate-observer.mjs';
+import {readStageChanges} from './stage-changes.mjs';
 import {readPrivateRestore} from './private-restore.mjs';
 export function privateProjects(publicProjects,restored){return publicProjects.map(m=>{
  const v=restored.views.find(v=>v.projectId===m.project_id);
@@ -27,6 +28,7 @@ export function createPrivatePreview({root,observer=null,clock=()=>new Date().to
   if(!u.pathname.startsWith('/api/'))return staticHandler(req,res);
   try{
    const route=u.pathname.slice(5),url=new URL('https://fixture/api/index?route='+route);
+   if(route==='stage-changes')return send(200,await readStageChanges({readAt:clock()}));
    if(route==='observer'&&observer)return send(200,await observer.inspect(clock()));
    if(route==='projects'){const {restored}=await readPrivateRestore({root,readAt:clock()});return send(200,privateProjects(productionResponse('GET',url).body,restored));}
    if(route==='health'){const base=productionResponse('GET',url).body;return send(200,{...base,mode:'private_readonly_restore',privateReadonlyRestore:true,candidateObserver:!!observer,localWriteSupport:false});}
