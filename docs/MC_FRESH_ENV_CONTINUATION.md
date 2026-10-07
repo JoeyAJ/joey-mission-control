@@ -4,9 +4,10 @@
 at `3e9b78ff1f350f002165fb8afe57df8b42ec4694`; its approved frozen import and
 Owner-only RPC scope were applied and verified. Do not replay historical SQL or
 collect Owner credentials. Follow-on source-qualified continuation UI is isolated
-in [this candidate](MC_OWNER_CONTEXT_CONTINUATION.md). Parent's 10:49 UTC native
-review confirms actual NexAeon Owner UI read; other project reads are not inferred.
-Independent development does not wait for manual checks of every project.
+in [this candidate](MC_OWNER_CONTEXT_CONTINUATION.md). Parent's native review
+confirms NexAeon Owner UI read; subsequent task-owned Mac QA confirms the other
+three actual private reads and project-switch isolation. All four reads are
+verified; no writer/runtime/revocation/two-device proof is inferred.
 
 **Latest:** [Approved helper execution and fixed-stage Owner identity entry](MC_OWNER_AUTH_HELPER_EXECUTION_HANDOFF.md) supersedes the historical pending/blocked continuation below. Exact helper migration20261007062024 applied once; effective ACL/denial/rollback-only wiring verified. Exposure remains UNKNOWN, root metadata401 diagnosed as UNAUTHORIZED_INVALID_API_KEY_TYPE / Secret API key required; no secret obtained or endpoint bypass. Real Owner Auth/AAL2 awaits Joey. No private seed/writer/production cutover.
 

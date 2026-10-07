@@ -52,10 +52,12 @@ Browser tests use synthetic SDK responses and make zero live Auth/DB requests.
 Live server metadata independently showed one unexpired Owner AAL2 session;
 no JWT, password, authenticator code, QR content, or raw Auth row was collected.
 Parent reported actual NexAeon Owner UI read acceptance at 10:49 UTC, based on
-native review of four scroll sections of that one project showing verified
-identity and loaded private content without read errors. Missing completion facts
-remain unknown. This does not establish live reads for the other three projects,
-writes, runtime, two-device or revocation acceptance. Effective Data API
+native review of four scroll sections of that one project. Subsequent task-owned
+Mac browser QA successfully read the remaining three projects through the actual
+private RPC path: correct project bindings, seven fields per panel and loaded
+status, with prior private content cleared on project switch. All four Owner
+private reads are now verified. Missing completion facts remain unknown. This
+does not establish writes, runtime, two-device or revocation acceptance. Effective Data API
 exposed-schema configuration was not available
 from supported readback; no schema-exposure setting was changed. Two-device and
 provider revocation acceptance remain separate future checks.

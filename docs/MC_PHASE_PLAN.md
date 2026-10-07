@@ -7,9 +7,10 @@ Joey remains Product Owner and Final Approver. This is the continuing core task,
 The Owner-only cloud read release at `3e9b78ff1f350f002165fb8afe57df8b42ec4694`
 supersedes the historical resource/Auth/import-pending statements below. Actual
 NexAeon Owner content-read acceptance was reported by parent at 10:49 UTC after
-native review of four screenshots showing different scroll sections of that one
-project. Other projects' real reads are not inferred. This does not gate independent
-source-qualified UI implementation. The protected fixed preview and
+native review of four scroll sections of that one project. Subsequent task-owned
+Mac QA verified actual private reads and project-switch isolation for the other
+three projects. All four reads are now verified, without write/runtime/revocation
+or two-device acceptance. The protected fixed preview and
 its normal session behavior stay at that release while Joey tests it.
 
 | Phase | Current evidence | Independent next step / exact dependency |
@@ -18,7 +19,7 @@ its normal session behavior stay at that release while Joey tests it.
 | P1 useful workspace | Linked recorded console and explicit Owner cloud read implemented | Candidate adds each field's source event time, reference, missing reason, and read-only continuation summary using that same authorized context |
 | P2A/P2B execution evidence | Isolated bounded observer complete; no verified live producer | Actual tool/code/diff events require a documented feed for this exact existing task with emitter/task/time/baseline binding |
 | P3 decisions and control | Existing local controls and inactive contracts retained | New result/decision persistence needs exact named writer, CAS/cutover and action authority; no append grant or dispatch is active |
-| P4 private continuity | Owner Auth, frozen private import, bounded read RPCs and actual NexAeon Owner UI read complete | Other project bindings are engineering-tested; their real reads, two-device and revocation acceptance are not inferred |
+| P4 private continuity | Owner Auth, frozen private import, bounded read RPCs and all four actual Owner private reads complete; project switching purges previous content | New writer, writeback, two-device and revocation acceptance remain distinct; no user retest of all projects is needed |
 | P5 usable target/promotion | Existing protected preview available; production unchanged | Visual reference bytes remain unavailable here; no visual-match claim. Promotion remains separately scoped |
 
 The isolated follow-on branch is `codex/mc-owner-continuation-20261007`, based on

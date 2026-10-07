@@ -45,10 +45,12 @@ All three languages preserve that distinction.
 
 At 10:49 UTC parent reported native visual review of four screenshots from
 different scroll sections of NexAeon: verified identity, loaded private data, and
-actual project claims without read errors. This establishes NexAeon Owner UI read
-acceptance only. Missing completion facts remain unknown. No four-project live
-read, runtime, write, two-device or revocation acceptance is inferred, and no
-additional manual project testing is requested from Joey.
+actual project claims without read errors. Subsequent task-owned Mac browser QA
+successfully performed the remaining three actual private RPC reads, with correct
+project bindings, seven fields per panel, loaded status and old private content
+purged before each new read. All four reads are now verified. Missing completion
+facts remain unknown. No runtime, write, two-device or revocation acceptance is
+inferred, and no additional manual project testing is requested from Joey.
 
 Validation: seven targeted continuation/existing handoff tests passed; final
 portable verification passed all 449 tests plus build/schema/safety checks.
@@ -75,8 +77,8 @@ not Owner sign-in/read QA. The fixed preview remains at the accepted live SHA.
 Next priorities after this independent step:
 
 1. Integrate this isolated source-qualified UI after the current live test, using
-   the existing release path. NexAeon actual read evidence is already recorded;
-   other project bindings are checked without asking Joey to test each project.
+   the existing release path. All four actual Owner reads are already verified;
+   no additional manual project testing is requested from Joey.
 2. Supply a documented read-only event feed for this exact authorized existing
    task to complete real producer attachment. Parent status snapshots cannot
    establish tool/code/diff events or emitter identity.
