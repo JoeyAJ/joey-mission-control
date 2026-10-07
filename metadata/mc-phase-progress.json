@@ -28,14 +28,15 @@
         "manifestFilesPass": 4,
         "actualSchemaReferences": "PASS",
         "dualLedgerAndFourProjects": "PASS",
-        "focusedPass": 19,
+        "focusedPass": 21,
         "producerSyntheticPass": 11,
-        "fullPortablePass": 288,
+        "fullPortablePass": 290,
         "build": "PASS",
         "validate": "PASS",
         "check": "PASS",
         "privateAndPublicBrowser": "PASS_1440_390_320_THREE_LOCALES_HISTORY_REFRESH_FIRST_ERROR_RECOVERY_PRIVACY",
-        "independentReview": "NO_REMAINING_P1_P2"
+        "independentReview": "NO_REMAINING_P1_P2",
+        "recordedOwnerMissions": 8
       }
     },
     {
@@ -187,6 +188,16 @@
       "at": "2026-10-07T02:26:35.264426+00:00",
       "type": "PRIVATE_READONLY_UI_STAGE_REVIEW_VERIFIED",
       "result": "Actual private +public regression browser PASS; full288/affected19/producer11 PASS; perClaim qualification and historical/current custody P2s fixed. No writer cutover/live producer."
+    },
+    {
+      "at": "2026-10-07T02:32:40.339237+00:00",
+      "type": "PRIVATE_OWNER_MISSION_HISTORY_NAVIGATION_IMPLEMENTED",
+      "result": "Eight restored recorded missions, stableID/filter/graph/history; recordtimes notexecution, actor/modelnull. InstalledCLI --json capability helpverified, currentMC producer unconnected; no newAgent run."
+    },
+    {
+      "at": "2026-10-07T02:33:59.358182+00:00",
+      "type": "PRIVATE_OWNER_HISTORY_REVIEW_VERIFIED",
+      "result": "Real8mission navigation/browser PASS; graph distinct labels fixed; focused21/full290/producer11 PASS; finalindependentreview noP1/P2. Producer/writer notactivated."
     }
   ],
   "migrationPriority": {

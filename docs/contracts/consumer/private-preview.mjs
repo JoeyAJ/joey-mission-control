@@ -13,7 +13,7 @@ export function privateProjects(publicProjects,restored){return publicProjects.m
    verificationStatus:v.phase.stageVerificationStatus,sourceRevision:v.sourceRevision,sourceTimestamp:v.sourceTimestamp,
    extractedAt:v.extractedAt,readAt:v.readAt,baseline:v.baseline,sourceRefs:v.claimEvidence.stage.sourceRefs,
    actor:v.lastConfirmed.actor,model:v.lastConfirmed.model,identityReason:v.lastConfirmed.actorMissingReason},
-  runtime:{...m.runtime,currentAgent:null,currentModel:null,currentMission:null},privateReadonlyRestore:true};
+  runtime:{...m.runtime,currentAgent:null,currentModel:null,currentMission:null},privateReadonlyRestore:true,privateRecordedMissions:(v.ownerCanonicalState?.missions||[]).map(mission=>({id:mission.id,title:mission.title,status:mission.status,sourceRefs:[...mission.sourceRefs],dependencies:[...mission.dependencies],createdAt:mission.createdAt,updatedAt:mission.updatedAt,ownerRevision:v.ownerCanonicalState.metadata.revision,actor:null,model:null}))};
 });}
 export function createPrivatePreview({root,clock=()=>new Date().toISOString()}){
  const staticHandler=createApp({});
