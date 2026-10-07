@@ -116,3 +116,9 @@ this preparation stage.
 Official design references:
 https://supabase.com/docs/guides/database/functions
 https://supabase.com/docs/guides/database/postgres/row-level-security
+
+Approved implementation follow-up: Joey allowed the product scope at
+2026-10-07T11:49:15Z. The source-only preparation above is historical; current
+applied boundaries, real SQL evidence and remaining device checks are recorded
+in MC_OWNER_COORDINATOR_HANDOFF.md. The offline planner continues to grant no
+transport or execution authority.

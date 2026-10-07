@@ -37,3 +37,10 @@ test('approved identity entry is frozen-stage only and never activates private a
   assert.equal(ownerAuthConfig.ownerSubject,'6f0ca2ae-83e0-4684-af12-0b37d08182db');
  }finally{if(saved)Object.defineProperty(globalThis,'location',saved);else delete globalThis.location;}
 });
+test('safe Auth failure stages distinguish provider lookup, assurance and MC RPC without exposing response data',async()=>{
+ for(const [stage,mutate]of [['AUTH_USER_REQUEST',f=>f.auth.getUser=async()=>({error:{status:503,message:'SYNTHETIC_SECRET_RESPONSE'}})],['AUTH_ASSURANCE_REQUEST',f=>f.auth.mfa.getAuthenticatorAssuranceLevel=async()=>({error:{status:500,message:'SYNTHETIC_SECRET_RESPONSE'}})],['OWNER_SESSION_REQUEST',f=>f.options.verifyCurrentSession=async()=>{const e=Error('SYNTHETIC_SECRET_RESPONSE');e.status=403;throw e;}]]){const f=fixture();mutate(f);const result=await createSupabaseOwnerAuth(f.options).inspectOwnerSession(projectId);assert.equal(result.status,'session_unconfirmed');assert.equal(result.failureStage,stage);assert.equal(result.authenticated,false);assert.doesNotMatch(JSON.stringify(result),/SYNTHETIC_SECRET_RESPONSE|11111111/);assert.equal(f.calls.includes('out'),false);}
+});
+test('sign-in classifies service rejection/rate/network and keeps missing session signed out',async()=>{
+ for(const [error,expected]of [[{status:400},'AUTH_SIGNIN_REJECTED'],[{status:429},'AUTH_SIGNIN_RATE_LIMITED'],[{name:'AuthRetryableFetchError',status:0},'AUTH_SIGNIN_NETWORK']]){const f=fixture();f.auth.signInWithPassword=async()=>({error});await assert.rejects(createSupabaseOwnerAuth(f.options).signIn({email:'synthetic@example.invalid',password:'SYNTHETIC'}),new RegExp(expected));}
+ const f=fixture();f.auth.getUser=async()=>({error:{name:'AuthSessionMissingError'}});assert.equal((await createSupabaseOwnerAuth(f.options).inspectOwnerSession(projectId)).status,'signed_out');
+});
