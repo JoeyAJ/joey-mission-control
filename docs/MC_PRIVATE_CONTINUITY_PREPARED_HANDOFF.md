@@ -1,5 +1,8 @@
 # Private continuity: prepared candidate, not connected
 
+This document records the earlier inactive preparation. Current approved
+Owner-only import/read status is in [the private read handoff](MC_OWNER_PRIVATE_READ_HANDOFF.md).
+
 Owner resource approval received from parent: Joey 2026-10-07 04:02:42Z「允許」for one MC-only Free Seoul project, US$0, stop if no free slot. Parent owns official resource creation; this executor has not created a project, account, credential, host grant or DB. Organization/cost confirmation remains with parent. Resource approval does not authorize owner password/MFA handling, worker credential transmission, persistent privilege grants, live SQL or authority cutover.
 
 Implemented source is portable and inactive. The public Workspace exposes only the truthful **unconfigured** status inside the existing runtime details, localized in Chinese/English/Korean. No sign-in form, credential field, login endpoint, public private-context fetch or fake session exists. Future status component supports unsigned/denied/offline pending/conflict/retry/review callbacks; those callbacks are tested only with isolated synthetic views. Existing project, Joey/Asset views, source history and production URL remain intact.
