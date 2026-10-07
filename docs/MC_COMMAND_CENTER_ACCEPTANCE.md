@@ -26,3 +26,6 @@ Reference is an operating-console direction, not a replacement product. Consumer
 Do not stop at visual acceptance or offline contract success and call the final console complete. Continue independent authorized phases, save private receipts, and report exact platform/resource gaps. Mobile and three-language usability, source truth, existing four projects/Assetcase/privacy and production URL remain acceptance requirements.
 
 Parent-supplied cloud_threads.read snapshot is now usable as a recent observation only. Source qualification/receipt transport remain explicit; app does not read that connector. Snapshot status is never proof of per-tool execution, current actor/model or automatic sync.
+
+
+Functional-first update: compact persistent panes and URL-backed Context/Changes/Graph are implemented as usability changes; mobile tab round trips preserve inspector choice. Central field qualification/time prevents mixed source interpretation. Final visual conformance remains pending: parent inspected private reference frames; this executor has no reference bytes. No verified live tool producer, canonical control writer or protected cross-device private transport is established. Joey's03:20:19 direction preserves functionality-first order; do not treat the compact layout as full product or appearance acceptance.
