@@ -1,3 +1,4 @@
+import './build-owner-client.mjs';
 import {candidate} from '../src/candidate.mjs';
 import {release} from '../src/release.mjs';
 import {assertProjectState} from '../src/project-state/model.mjs';
