@@ -124,6 +124,10 @@
       "type": "P0_EXISTING_SOURCE_INVENTORY_CORRECTED",
       "source": "parent Mac inventory receipt plus cloud verified Asset Git catalog77b6766",
       "result": "Never-created independent missions/proposals not missing. Actual owner payload/inbox identified; catalog accepted from existing private Git. Gate is scoped source completeness and authority cutover."
+    },
+    {
+      "type": "P0_FILTERED_CONTRACT_AND_READONLY_STAGING_PREPARED",
+      "result": "Parent-reported Joey2359 exact scope approval; two-ledger Library save succeeded; current consumer helper two attempts failed. Synthetic schema/reader proof7PASS, no actual private restore or writer."
     }
   ],
   "migrationPriority": {

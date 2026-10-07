@@ -120,11 +120,11 @@
       "latestVerifiedSha": "8271e1bbae78eb7fc4fc86c06feaa50d6fa82c39",
       "publicDeployment": "https://nexaeon-web.vercel.app/",
       "childDeployment": null,
-      "deploymentEvidence": "existing owner receipt/approved URL, no new production probe",
+      "deploymentEvidence": "existing owner source/deployment receipt; parent reports private/auth read verified; cloud did not reprobe",
       "safeHandoff": "safe-index-1578b10d",
       "additionalSources": [],
       "dataAuthority": "private canonical/owner on Mac; cloud safe read-only receipt overlay only",
-      "accessMode": "private code read; public approved projection read-only",
+      "accessMode": "private/authenticated read parent-verified; safe read-only projection in MC; not awaiting public-to-private migration",
       "refreshSemantics": "fixed versioned receipt and public snapshot reread; no live sync/remote revalidation",
       "writeOwner": "Joey/authorized per-project writer; parent coordinates cloud checkpoint",
       "migrationBlocker": "Private canonical/owner authority and continuous synchronization not migrated",
@@ -192,26 +192,23 @@
     {
       "id": "canonical-inventory",
       "blockingData": [
-        "MEMORY_INDEX.md",
-        "PROJECT_REGISTRY_V1.0.md",
-        "index-linked PROJECT_MEMORY.md/ARCHITECTURE.md/DECISIONS.md/CURRENT_STATE.md/NEXT_ACTIONS.md for four projects and Asset child-case",
-        "handoff LATEST.md and applicable HISTORY/*.md"
+        "four-project filtered-canonical-context.v1.json using agreed minimal field/source contract",
+        "producer Library ID/version/outer package hash and exact payload manifest"
       ],
       "source": "Mac authority now available to parent; exact minimal document inventory being prepared. Safe index is not complete private authority.",
-      "minimalPermission": "Parent-authorized read-only export of exact inventory plus file SHA256/version/timestamp; exclude secrets/cookies and unrelated project content",
-      "destination": "Recommend owner-controlled private Library versioned custody; private handoff Git stores sanitized inventory/hashes only; no raw canonical tree in deploy-linked MC repo",
-      "status": "MAC_OWNER_DEFINING_MINIMAL_INVENTORY_EXPORT_AND_DESTINATION_APPROVAL_PENDING"
+      "minimalPermission": "Exact filtered export/read-only restore now parent-reported authorized; no new grant required within approved scope",
+      "destination": "Existing private Library custody, isolated read-only cloud staging; whole Memory excluded",
+      "status": "PRODUCER_LOCAL_CONTEXT22486_BYTES_REPORTED_NOT_UPLOADED_SCHEMA_ALIGNMENT_PENDING"
     },
     {
       "id": "owner-ledger",
       "blockingData": [
-        "product-owner.v03.json exact existing179558-byte payload (WB rev3, Asset rev10 canonicalState/decisions/audit)",
-        "inbox.v1.json existing empty []2-byte payload, only for inventory/continuity"
+        "authorized current Library consumer-local bytes for saved two-ledger bundle; no extra ledger file requested"
       ],
       "source": "Parent reports formal Mac dataRoot schema0.3-B reference validation PASS; raw payload not yet transferred",
-      "minimalPermission": "Read-only schema-valid versioned export; secrets removed; preserve IDs/revisions/links and require explicit single-writer cutover before any mutation",
+      "minimalPermission": "Existing exact scope approved; no new data permission needed. Supported official materialization capability must deliver bytes.",
       "destination": "Same private Library snapshot custody; isolated cloud staging outside repo/public and outside canonicalRoot only after exact transfer scope authorized",
-      "status": "EXISTING_PAYLOAD_ISOLATED_RESTORE_HASH_AND_EXACT_LIBRARY_TRANSFER_APPROVAL_PENDING",
+      "status": "MAC_RESTORE_AND_LIBRARY_SAVE_PASS_CLOUD_MATERIALIZATION_NO_LOCAL_BYTES",
       "notRequiredToRecover": [
         "missions.v03.json: never created; canonical missions exist inside owner payload",
         "proposals.v03e.json: never created; not lost",
@@ -279,6 +276,47 @@
     "independentMissionsLedger": "NOT_CREATED_NOT_LOST",
     "independentProposalsLedger": "NOT_CREATED_NOT_LOST",
     "MacRestore": "ISOLATED_EXPORT_HASH_RESTORE_IN_PROGRESS_NO_EXTERNAL_TRANSFER",
-    "rawLibraryTransfer": "EXACT_PAYLOAD_APPROVAL_PENDING"
+    "rawLibraryTransfer": "AUTHORIZED_TWO_LEDGER_BUNDLE_SAVED_PRIVATE_LIBRARY_V0_CLOUD_BYTE_TRANSFER_BLOCKED"
+  },
+  "filteredContextContract": {
+    "status": "PROPOSAL_SCHEMA_READY_SYNTHETIC7PASS_PRODUCER_STRUCTURE_ALIGNMENT_PENDING",
+    "schemaVersion": "mc.filtered-canonical-context.v1",
+    "schemaRef": "docs/contracts/filtered-canonical-context.v1.schema.json",
+    "schemaSha256": "aef4f17395526ee7254d73c7d1b6b1e20a28cb0897bc730714ffa9332e5e7859",
+    "contractRef": "docs/contracts/FILTERED_CANONICAL_CONTEXT_V1.md",
+    "scope": "exact two existing ledgers + four-project filtered context; private Library/read-only restore; no live writer",
+    "authorization": "parent-reported Joey23:59 approval; original receipt held by parent/Mac owner",
+    "singlePublisher": "Mac MC owner",
+    "consumer": "saved cloud isolated read-only staging",
+    "restoreRoot": "/workspace/mc-private-restore",
+    "syntheticProof": "7/7 PASS outside repo/public; current approved-custody readonly gate prepared; no real payload import",
+    "realRestore": "NEW_LEDGER_BUNDLE_CURRENT_HELPER_FAILED_TWICE_NO_LOCAL_BYTES"
+  },
+  "ledgerCustodyReceipt": {
+    "libraryFileId": "libfile_3a89df3853c08191b410d78a291d0d96",
+    "fileId": "file_0000000044088209b9431cd887ffbe09",
+    "filename": "MC_private_operational_restore_20261007.zip",
+    "version": 0,
+    "expectedBytes": 23640,
+    "expectedSha256": "a6417c10be98ff1577de5cfafdfcd187447e7eacefaccace4a8dc02cd8b81720",
+    "prepareMaterialize": "SUCCEEDED",
+    "helperSha256": "5e1557817be17db06e2375f8c34ed83e948d520242e5ee4cb50a30c7a4c83378",
+    "attempts": [
+      {
+        "mode": "default",
+        "exitCode": 1,
+        "error": "library file transfer failed: download failed",
+        "httpStatus": null
+      },
+      {
+        "mode": "existing official proxy CA certificate",
+        "exitCode": 1,
+        "error": "library file transfer failed: download failed",
+        "httpStatus": null
+      }
+    ],
+    "localBytes": "NOT_AVAILABLE",
+    "packageHash": "NOT_RUN",
+    "unpackFileHashSchemaReferenceReadonlyRestore": "NOT_RUN_NO_LOCAL_BYTES"
   }
 }
