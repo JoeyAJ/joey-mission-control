@@ -41,7 +41,7 @@
   },
   "pendingAccess": {
     "path": "docs/contracts/sql/private-continuity.access-pending.sql",
-    "sha256": "fcd4a6ed1e1a890386409364bc9c4bebad80e92704193347ce7b4588304921f4",
+    "sha256": "5a9862e2ca5e64ebd6ba5215c3802572e93fb533f986a8dcb7526446fc1b0f73",
     "applied": false,
     "approval": "REQUIRED_PERSISTENT_ROLE_PRIVILEGE_OWNERSHIP_SECURITY_EXPANSION"
   },

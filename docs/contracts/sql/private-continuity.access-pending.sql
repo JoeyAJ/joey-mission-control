@@ -2,6 +2,9 @@
 -- Exact MC-only target scmvedfqwlhkyvljymjj. No login/member identities/Auth/keys.
 BEGIN;
 CREATE ROLE mc_continuity_executor NOLOGIN NOSUPERUSER NOBYPASSRLS NOINHERIT;
+-- Existing connector postgres gets temporary ownership-transfer capability only.
+GRANT mc_continuity_executor TO postgres WITH INHERIT FALSE;
+GRANT mc_continuity_executor TO postgres WITH SET TRUE;
 GRANT USAGE, CREATE ON SCHEMA mc_private, mc_api TO mc_continuity_executor;
 GRANT SELECT ON mc_private.members, mc_private.heads, mc_private.storage_budget, mc_private.contexts, mc_private.events, mc_private.checkpoints TO mc_continuity_executor;
 GRANT INSERT ON mc_private.events TO mc_continuity_executor;
@@ -16,6 +19,10 @@ CREATE POLICY core_context_read ON mc_private.contexts FOR SELECT TO mc_continui
 CREATE POLICY core_events_read ON mc_private.events FOR SELECT TO mc_continuity_executor USING(true);
 CREATE POLICY core_events_append ON mc_private.events FOR INSERT TO mc_continuity_executor WITH CHECK(true);
 CREATE POLICY core_checkpoints_read ON mc_private.checkpoints FOR SELECT TO mc_continuity_executor USING(true);
+ALTER FUNCTION mc_private.reserve_context_budget() SECURITY DEFINER;
+ALTER FUNCTION mc_api.append_operation(jsonb) SECURITY DEFINER;
+ALTER FUNCTION mc_api.read_events(text,bigint,integer) SECURITY DEFINER;
+ALTER FUNCTION mc_api.read_context(text,text) SECURITY DEFINER;
 ALTER FUNCTION mc_private.current_actor() OWNER TO mc_continuity_executor;
 ALTER FUNCTION mc_private.canonical_json(jsonb) OWNER TO mc_continuity_executor;
 ALTER FUNCTION mc_private.exact_keys(jsonb,text[]) OWNER TO mc_continuity_executor;
@@ -25,8 +32,7 @@ ALTER FUNCTION mc_api.append_operation(jsonb) OWNER TO mc_continuity_executor;
 ALTER FUNCTION mc_api.read_events(text,bigint,integer) OWNER TO mc_continuity_executor;
 ALTER FUNCTION mc_api.read_context(text,text) OWNER TO mc_continuity_executor;
 REVOKE CREATE ON SCHEMA mc_private, mc_api FROM mc_continuity_executor;
-ALTER FUNCTION mc_private.reserve_context_budget() SECURITY DEFINER;
-ALTER FUNCTION mc_api.append_operation(jsonb) SECURITY DEFINER;
-ALTER FUNCTION mc_api.read_events(text,bigint,integer) SECURITY DEFINER;
-ALTER FUNCTION mc_api.read_context(text,text) SECURITY DEFINER;
+-- Remove ordinary assume/inheritance; creator ADMIN membership remains for administration.
+GRANT mc_continuity_executor TO postgres WITH SET FALSE;
+GRANT mc_continuity_executor TO postgres WITH INHERIT FALSE;
 COMMIT;
