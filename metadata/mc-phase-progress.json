@@ -14,10 +14,10 @@
   "phases": [
     {
       "id": "P0",
-      "status": "SCOPED_READONLY_CUSTODY_PASS_AUTHORITY_CUTOVER_PENDING",
-      "result": "Actual approved Git same packages outer2/manifest4/schema/refs/2ledger/4project readonly restore PASS; private candidate Workspace integrated. No writer cutover/live producer.",
+      "status": "FROZEN_READ_CUSTODY_VERIFIED_CANONICAL_CUTOVER_GATED",
+      "result": "Approved frozen four-project import, integrity, Owner membership and actual four-context reads verified. Canonical per-store writers and continuous sync remain unassigned.",
       "definitionOfDoneRef": "docs/MC_PHASE_PLAN.md",
-      "ownerAcceptance": "BASELINE_ONLY",
+      "ownerAcceptance": "PENDING_FINAL_TARGET_ACCEPTANCE",
       "sources": [
         "docs/COMMAND_WORKSPACE_HANDOFF.md",
         "docs/COMMAND_WORKSPACE_REVIEW.md",
@@ -41,10 +41,10 @@
     },
     {
       "id": "P1",
-      "status": "ENGINEERING_COMPLETE_OWNER_ACCEPTANCE_PENDING",
-      "result": "Independent Workspace, compact mobile panels, reconciled versioned receipt layers; full262 and browser PASS; reviewed new P2 fixes.",
+      "status": "IMPLEMENTED_VERIFIED_OWNER_USABILITY_PENDING",
+      "result": "Recorded linked panes, claim-specific evidence and continuation, desktop/mobile Explorer/filter history implemented and verified. Parent actual Mac P5 layout QA passed; final Joey usability remains separate.",
       "definitionOfDoneRef": "docs/MC_PHASE_PLAN.md",
-      "ownerAcceptance": "NOT_RECORDED",
+      "ownerAcceptance": "PENDING_FINAL_TARGET_ACCEPTANCE",
       "sources": [
         "docs/COMMAND_WORKSPACE_HANDOFF.md",
         "docs/COMMAND_WORKSPACE_REVIEW.md"
@@ -61,10 +61,10 @@
     },
     {
       "id": "P2A",
-      "status": "PURE_OFFLINE_SUBSET_IMPLEMENTED_INGRESS_GATED",
-      "result": "Offline exact-binding, CAS/sequence/dedupe, time/lifecycle/replay/inspection contract; synthetic only. No receiver/store/hook/current-live claims.",
+      "status": "ISOLATED_CANDIDATE_OBSERVER_VERIFIED",
+      "result": "Bounded candidate ingress/store/reducer/CAS/replay/expiry browser and synthetic checks implemented. No authenticated current-task transport attached.",
       "definitionOfDoneRef": "docs/MC_PHASE_PLAN.md",
-      "ownerAcceptance": "NOT_RECORDED",
+      "ownerAcceptance": "PENDING_FINAL_TARGET_ACCEPTANCE",
       "sources": [
         "docs/MC_EXECUTION_REPORT_PROPOSAL.md",
         "docs/contracts/execution-report.mjs",
@@ -86,37 +86,41 @@
     },
     {
       "id": "P2B",
-      "status": "DEPENDENCY_PENDING",
-      "result": "No actual authorized producer/source bridge is connected.",
+      "status": "UNSUPPORTED_CURRENT_TASK_EVENT_FEED",
+      "result": "Parent task-status snapshot is a bounded observation only. Current-task tool/code/diff feed and authenticated emitter binding are unavailable.",
       "definitionOfDoneRef": "docs/MC_PHASE_PLAN.md",
-      "ownerAcceptance": "NOT_RECORDED",
+      "ownerAcceptance": "PENDING_FINAL_TARGET_ACCEPTANCE",
       "sources": [],
       "tests": null
     },
     {
       "id": "P3",
-      "status": "PLANNED",
-      "result": "Supported control adapters and permissions required; no universal dispatch.",
+      "status": "COORDINATOR_RECEIPTS_LIVE_OWNER_REVIEW_PREPARED_DECISION_GRANT_GATED",
+      "result": "Approved management-only proposal/result append applied; one genuine proposal and one result, CAS/retry/ACL verified. Exact Owner accept/reject review draft prepared in isolated source/tests; no server decision grant applied. Parent actual Mac917d NexAeon journal read PASS: proposal1/result1/revision2/pendingJoey; no final decision.",
       "definitionOfDoneRef": "docs/MC_PHASE_PLAN.md",
-      "ownerAcceptance": "NOT_RECORDED",
-      "sources": [],
+      "ownerAcceptance": "PENDING_FINAL_TARGET_ACCEPTANCE",
+      "sources": [
+        "docs/MC_OWNER_COORDINATOR_HANDOFF.md",
+        "docs/MC_OWNER_REVIEW_PREPARED_HANDOFF.md",
+        "docs/MC_OWNER_DECISION_GRANT_SCOPE.md"
+      ],
       "tests": null
     },
     {
       "id": "P4",
-      "status": "PARTIAL_EXISTING_LOCAL_STORE",
-      "result": "Private cloud/Mac canonical continuity not established.",
+      "status": "FROZEN_OWNER_READ_VERIFIED_JOURNAL_DEVICE_QA_PENDING",
+      "result": "Private Auth/frozen read/continuation verified for all four projects. P3 export integrity verified. New journal actual Mac NexAeon revision2 QA PASS; two-device/revocation/continuous sync and canonical writeback not accepted.",
       "definitionOfDoneRef": "docs/MC_PHASE_PLAN.md",
-      "ownerAcceptance": "NOT_RECORDED",
+      "ownerAcceptance": "PENDING_FINAL_TARGET_ACCEPTANCE",
       "sources": [],
       "tests": null
     },
     {
       "id": "P5",
-      "status": "NOT_COMPLETE",
-      "result": "Parent review/Joey usability acceptance and authorized promotion remain required.",
+      "status": "REFERENCE_INSPECTED_PANES_VERIFIED_OWNER_ACCEPTANCE_PENDING",
+      "result": "Three actual reference frames inspected; responsive persistent panes/graph/filter/mobile Explorer verified. Actual iPhone sign-in cause unresolved, final usable-target acceptance and production promotion remain pending.",
       "definitionOfDoneRef": "docs/MC_PHASE_PLAN.md",
-      "ownerAcceptance": "NOT_RECORDED",
+      "ownerAcceptance": "PENDING_FINAL_TARGET_ACCEPTANCE",
       "sources": [],
       "tests": null
     }
@@ -198,6 +202,17 @@
       "at": "2026-10-07T02:33:59.358182+00:00",
       "type": "PRIVATE_OWNER_HISTORY_REVIEW_VERIFIED",
       "result": "Real8mission navigation/browser PASS; graph distinct labels fixed; focused21/full290/producer11 PASS; finalindependentreview noP1/P2. Producer/writer notactivated."
+    },
+    {
+      "at": "2026-10-07T12:53:00Z",
+      "type": "POST_917D_CAPABILITY_RECONCILIATION",
+      "result": "Current evidence replaces stale phase labels; Owner review prepared only. Fixed preview917d stays unchanged for ongoing Mac/phone QA. No new SQL, grants, machine writer, native decision event or production action."
+    },
+    {
+      "type": "PARENT_ACTUAL_917D_MAC_JOURNAL_UX_PASS",
+      "eventTime": null,
+      "timeQualification": "PARENT_REPORT_NO_EXACT_EVENT_TIME",
+      "result": "NEXAEON one proposal + one result, journal revision2, pending Joey final judgment; filter/Explorer/duplicate qualification/mobile navigation1440/390 PASS. Owned QA tab closed; no approval/Auth mutation. iPhone Auth remains unverified."
     }
   ],
   "migrationPriority": {
@@ -286,5 +301,14 @@
       "canonical per-store result writer/final-approval authority",
       "protected cross-device private transport"
     ]
+  },
+  "currentReconciliation": {
+    "at": "2026-10-07T12:53:00Z",
+    "implementationAnchor": "917d7c1fd766b7694fe63e06db338cf765689280",
+    "preparedBranch": "codex/mc-owner-review-prepared-20261007",
+    "evidenceRef": "docs/MC_COMMAND_CENTER_ACCEPTANCE.md",
+    "publishedPreview": "FIXED_917D_UNCHANGED_ACTUAL_MAC_JOURNAL_UX_PASS_PHONE_AUTH_UNVERIFIED",
+    "finalPrototype": "INCOMPLETE",
+    "scope": "Generic phase/capability state only; private payloads and custody exports remain outside Git/public."
   }
 }

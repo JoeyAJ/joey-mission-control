@@ -5,8 +5,10 @@ Joey allowed the minimum four-project proposal/result append scope on
 existing MC Supabase management connection. No autonomous writer, credential,
 account, role, public append, final decision or project-production change exists.
 
-Applied migrations: `mc_coordinator_tool_receipts_20261007` and
-`mc_coordinator_tool_receipts_acl_20261007`. The first reviewed install attempt
+Applied migrations: `mc_coordinator_tool_receipts_20261007` version
+`20261007120315` and `mc_coordinator_tool_receipts_acl_20261007` version
+`20261007120637`. Applied SQL hashes and current ACL summary are recorded in
+`MC_COMMAND_CENTER_ACCEPTANCE.md`. The first reviewed install attempt
 rolled back on the existing canonical helper ACL; the one approved retry used
 the existing executor for its integrity check. Post-install readback found
 function-owner default ACLs, so a narrow repair executed the revocations as the
@@ -31,6 +33,13 @@ without a second row. Four-project synthetic SQL validation was rollback-only;
 no synthetic receipt or budget change remains. A completion result may be appended
 only after its exact code/check/publication evidence exists, and stays pending
 Joey's final review. No final decision operation is accepted.
+
+The published917d result has now been appended with verified publication evidence.
+Final custody contains one genuine proposal and one result, no synthetic rows,
+two budget events, four frozen heads, zero native Auth events and machine writers.
+Owner acceptance is still pending. The subsequent isolated Owner review stage
+prepares memory-only choices; its exact unapproved server decision grant is in
+`MC_OWNER_DECISION_GRANT_SCOPE.md`. It changes no applied P3 authority.
 
 The protected fixed preview offers an explicit **Read coordinator records** button
 inside the existing Owner entry. It uses the same SDK/session, validates the

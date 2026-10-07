@@ -1,0 +1,50 @@
+# Owner coordinator review preparation
+
+Base/published fixed preview: `917d7c1fd766b7694fe63e06db338cf765689280`.
+Isolated source branch: `codex/mc-owner-review-prepared-20261007`.
+Joey remains final approver; the current fixed preview stays unchanged during
+phone diagnosis QA. Parent actual Mac917d journal/UX acceptance is now PASS.
+No server mutation in this stage.
+
+The existing private coordinator result card now offers preparation of an ACCEPT
+or REJECT review draft, labelled as page-local and unsubmitted. It revalidates the
+current Owner/AAL2/session/member, verifies the already loaded journal page and
+requires one matching proposal/result pair on that page. A later page without
+its proposal cannot create a partial decision. No automatic extra journal read.
+
+The bound draft contains exact project/epoch/baseline/context/journal revision,
+proposal/result operation IDs and content digests, acceptance/result/evidence
+hashes, submitter qualification, chosen outcome and the earlier of session/proposal
+expiry. Its own canonical digest can be inspected. Caller input is snapshotted
+before async checks; late invalidated results cannot return. No result becomes
+Owner-accepted merely by loading or choosing a draft.
+
+Drafts use memory only; no local/session storage, cookie, export, offline queue,
+write RPC or submission endpoint. Clearing, reread, logout, membership loss,
+project switch, expiry, pagehide and disposal invalidate/purge the draft.
+Locale changes preserve the same authorized reading. Three-language text-node
+rendering and mobile wrapping preserve privacy/layout. Same SDK/session and
+original Auth origin/key/config remain unchanged.
+
+Exact unapproved server capability is documented in
+`MC_OWNER_DECISION_GRANT_SCOPE.md`. The proposal/result management writer is not
+an Owner decision writer; imported canonical heads remain frozen. No SQL was
+applied, no server privileges expanded, no real final decision or producer created.
+
+Current acceptance matrix: `MC_COMMAND_CENTER_ACCEPTANCE.md`.
+Current phase ledger: `metadata/mc-phase-progress.json`.
+New stage validation and precise commit/tree/manifest belong in the external
+safe checkpoint; this file does not self-claim a future commit or deployment.
+Synthetic browser checks do not establish phone/Safari or real Owner decision
+success. Parent reported actual Mac917d NexAeon journal read PASS: one proposal and one
+result, revision2, pending Joey final judgment; Timeline filter/Explorer/mobile
+navigation at1440/390 PASS. The owned QA tab was closed, with no approval/Auth
+changes. Phone Auth remains unverified. This separate receipt verifies the
+published917d flow, not the isolated review candidate or a final decision.
+
+Validation: 471/471 portable tests plus build/schema/safety PASS, zero forbidden
+workstation reads. Nine synthetic browser cases at1440/390/320 in three locales
+verify both choices, exact binding, clear/locale/project purge, no write RPC or
+draft persistence, existing private-context isolation and no overflow. Existing
+SDK lifecycle9 and fresh-touch official pinned SDK5 regressions PASS, zero live
+Auth requests; actual Safari not run. No screenshots of private content captured.

@@ -1,31 +1,48 @@
-# Command Center: reference and functional acceptance
+# Command Center current capability acceptance
 
-Owner: Joey, Product Owner and Final Approver. Candidate task derives from approved 8b478f0d8c017defdd2a5f5dab92ea9972479c78; preserved deployment baseline remains 8b4945b16a0b23f2e72033aa976fa34f94eabec0. No production acceptance or release implied.
+Reviewed against `PRODUCT_CHARTER.md`, `MC_PHASE_PLAN.md`,
+`COMMAND_WORKSPACE_CONTINUATION.md`, the three actual reference frames, and the
+917d publication/readback receipt. The repo contains the operative product contract;
+no separate newer PRD file was found. Joey remains Product Owner and Final Approver.
+Published fixed preview: `917d7c1fd766b7694fe63e06db338cf765689280`.
+Prepared follow-up is isolated; it does not replace the fixed preview during QA.
 
-Reference is an operating-console direction, not a replacement product. Consumer-local video materialization previously failed; parent independently inspected representative frames. This matrix uses the supplied reference description, not a claim that this executor viewed unavailable video bytes.
-
-| Core | UI acceptance | Functional acceptance | Candidate state / gap |
+| Product capability | Implemented and verified | Implemented, awaiting actual acceptance | Unsupported or permission bound |
 |---|---|---|---|
-| Sessions / projects | Responsive persistent project entries, explicit session qualification | Selection links evidence/context/history; current session must have authenticated task binding | Four project entries implemented; MC observer history implemented separately. Parent-supplied actual task status snapshot implemented, with observed time and stale→unknown. Actual Claude/Codex/Terminal session roster and tool stream still unavailable |
-| Central task workflow | Evidence list, event selection, reading/error/recovery state | Standard JSONL → pure reducer → single writer atomic/CAS receipt → refresh/history | Candidate isolated flow implemented; imported/synthetic identity stays unverified, current runtime disconnected |
-| Explorer / inspector | Source/context detail with stable navigation | Claim-specific provenance, baseline, next/blocker/approval, unknown reasons | Real private restore and safe source receipts mapped. Fixed16file historical Explorer implemented; arbitrary private code browsing/tool output not exposed |
-| Code / diff | Show source revision and context without false operations | Show only supported approved evidence; never invent reads/writes/diff | Historical8b478→91b171b Explorer and bounded diff implemented privately; public safe counts/version only. No live file/diff source: **missing platform evidence** |
-| Relationship graph | Selectable graph shares selected evidence | Source and mission relationships are grounded and distinct | Implemented; relationship does not claim file operation telemetry |
-| Joey decision entry | Existing decision view remains reachable | Preserve owner authority and final-approval workflow | Existing owner decision paths preserved. Private restore preview remains GET-only; formal writer cutover not done |
-| Any-agent continuation | Handoff/Continue entry and private Git checkpoints | New agent can reconstruct source/revision/authority and resume safely | Repo handoff plus private source-qualified per-project readonly capsule (claims/versions/missions/checks/result requirements), linked selection/graph/history implemented. No automatic dispatch/runtime attachment or permission grant |
-| Work-result writeback | Clearly qualified candidate receipts visible after reread | Idempotence, CAS, restart, corruption/failure recovery, expiry, no self-auth promotion | Candidate report writeback implemented. Canonical mission/owner writeback requires formal authority/cutover |
-| Cloud storage | Private source checkpoint, no raw public payload | Private non-force Git checkpoint with independent SHA/tree readback | Existing authorized private branch; no new DB/Auth/keys/paid storage |
+| Four-project workspace | Linked recorded sessions/events/context/graph; stable URLs/filter/history/reload; three locales; 1440/870/390/320 layouts; parent actual Mac pane QA | Final Joey usable-target acceptance | A project entry/history does not establish a current running agent |
+| Private Owner context / Explorer | Existing authenticated read of all four frozen contexts verified on task-owned Mac; per-field source/time/missing reason; scoped continuation; purge on project/session changes | New-release phone route acceptance | Arbitrary private source/log browsing and continuous canonical sync unavailable |
+| Proposal / result continuity | Management-only private append, one real proposal and result; CAS concurrency and exact replay; integrity export; authenticated read wrapper with Owner/AAL2/current session; parent actual Mac NEXAEON journal read PASS (one proposal + one result, revision2, pending Joey) | iPhone and two-device journal acceptance remain unverified | Autonomous agent/app write transport not granted; submitter attestation is not an Owner decision |
+| Joey accept / reject | Existing local/synthetic exact-decision contracts retained. Isolated follow-up prepares exact in-memory choices using current Owner/AAL2 and immutable proposal/result bindings | Prepared UI browser checks only; no live final-decision test possible | Final decision RPC/store/grants, CAS and readback not approved or applied; canonical promotion/dispatch remain separate |
+| Current work / tool / code events | Bounded isolated observer/reducer/store/replay/expiry and qualified parent task snapshot | A real bound producer trial has not run | Exact-task authenticated event feed unavailable; no fabricated live status or tool stream |
+| Code / diff evidence | Approved fixed historical Explorer/diff and source revision qualification | No additional real event acceptance | Current file/tool/diff events require the missing producer; historical diffs cannot supply them |
+| Any-agent handoff | Source-qualified private continuation, approved private Git checkpoint, bounded P3 custody export; raw private data excluded from public build | Restart handoff is document/custody based; new reader must verify current scope | Automatic dispatch, canonical writeback and continuous Mac/cloud synchronization unavailable |
+| Owner identity / recovery | Existing Owner/AAL2 bridge and four real context reads; safe sign-in phase/code/http/request/time diagnostics; 5 fresh official-SDK synthetic touch flows; recovery/lifecycle regressions | Actual iPhone post-sign-in cause still unestablished; Safari/WebKit not run here; two-device/revocation acceptance pending | No credential collection, factor reset, new account or authentication success inferred from synthetic checks |
+| Reference/UI target and release | Actual 2s/18s/34s frames inspected and hashes verified; persistent panes/split inspector/graph; mobile Explorer/filter fixes; no overflow in supported checks | Final Joey reference/usability acceptance | Production promotion not authorized by a development checkpoint; protection remains enabled |
 
-## Continuation and phase acceptance
+917d engineering evidence: 466/466 portable tests, build/schema/safety PASS;
+journal/private/lifecycle/Recovery browser regressions; fresh-touch official SDK
+5 synthetic cases; real Postgres management CAS/replay and rollback-only denial
+tests. Zero live Auth requests in synthetic browser checks. These do not prove
+actual phone Auth, AAL2, Owner journal read or final decision persistence.
 
-1. Recorded-source console and exact private restore: implemented and browser verified; history is not current runtime.
-2. Bounded observer: standard-event filtering, isolated candidate store, read-only history, true qualification; synthetic interruption/replay/integrity tests and browser checks required before checkpoint.
-3. Real current-task attachment: blocked only by a supported platform event feed. Smallest option: platform provides a read-only feed for this exact authorized task, or parent supplies JSONL from an already-approved existing invocation with transport/session binding evidence. CLI `--json` availability is not this thread's event hook. No extra model invocation or session-path/auth read.
-4. Verified producer and formal result/approval loop: requires authenticated transport evidence plus named canonical per-store writer authority. Persistent credential, canonical cutover, new invocation or production release remains a distinct decision.
+P3 migrations applied, not merely prepared:
 
-Do not stop at visual acceptance or offline contract success and call the final console complete. Continue independent authorized phases, save private receipts, and report exact platform/resource gaps. Mobile and three-language usability, source truth, existing four projects/Assetcase/privacy and production URL remain acceptance requirements.
+| Migration | Version | Applied SQL SHA256 |
+|---|---|---|
+| `mc_coordinator_tool_receipts_20261007` | `20261007120315` | `721f645022502b180a1dd61bef50dfac473fcf9e0e5cfe29f6a460c00946178c` |
+| `mc_coordinator_tool_receipts_acl_20261007` | `20261007120637` | `eedc6e2d8b382221822f8efdad58d68c961e589629703a84fe2567dcc5d2ee46` |
 
-Parent-supplied cloud_threads.read snapshot is now usable as a recent observation only. Source qualification/receipt transport remain explicit; app does not read that connector. Snapshot status is never proof of per-tool execution, current actor/model or automatic sync.
+Final ACL readback: `postgres` alone may execute private management append;
+PUBLIC/anon/authenticated/service_role append denied. Owner read wrapper execute
+is authenticated-only and separately checks actual Owner/AAL2/session/membership
+and frozen scope. App roles have no direct private-table access; forced RLS is
+enabled. Temporary CREATE and role SET are restored. Original three Owner
+functions are byte-identical; four imported heads remain revision0/write-disabled.
+One proposal + one result persist, synthetic rows0, native Auth events0, active
+machine writers0. Owner final review remains pending.
 
-
-Functional-first update: compact persistent panes and URL-backed Context/Changes/Graph are implemented as usability changes; mobile tab round trips preserve inspector choice. Central field qualification/time prevents mixed source interpretation. Final visual conformance remains pending: parent inspected private reference frames; this executor has no reference bytes. No verified live tool producer, canonical control writer or protected cross-device private transport is established. Joey's03:20:19 direction preserves functionality-first order; do not treat the compact layout as full product or appearance acceptance.
+Next capability boundaries are exact: a supported current-task event source;
+Owner-only decision append authority in `MC_OWNER_DECISION_GRANT_SCOPE.md`;
+canonical per-store cutover/synchronization and supported execution adapters.
+No invented modules, universal control, new credential or autonomous authority
+is needed or claimed for the prepared local review feature.

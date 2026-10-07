@@ -2,33 +2,34 @@
 
 Joey remains Product Owner and Final Approver. This is the continuing core task, not a claim that the first command workspace is the final product. Joey's original instruction is retained verbatim in the private progress ledger, with its source identity/time. The existing public product URL is unchanged.
 
-## Current reconciliation — 2026-10-07
+## Current reconciliation — 2026-10-07 after 917d
 
-The Owner-only cloud read release at `3e9b78ff1f350f002165fb8afe57df8b42ec4694`
-supersedes the historical resource/Auth/import-pending statements below. Actual
-NexAeon Owner content-read acceptance was reported by parent at 10:49 UTC after
-native review of four scroll sections of that one project. Subsequent task-owned
-Mac QA verified actual private reads and project-switch isolation for the other
-three projects. All four reads are now verified, without write/runtime/revocation
-or two-device acceptance. The protected fixed preview and
-its normal session behavior stay at that release while Joey tests it.
+Published fixed-preview anchor: `917d7c1fd766b7694fe63e06db338cf765689280`.
+Production stays at `8b4945b16a0b23f2e72033aa976fa34f94eabec0`; SSO unchanged.
+This is the continuing development target, not final Joey acceptance.
+The current evidence matrix is [MC_COMMAND_CENTER_ACCEPTANCE.md](MC_COMMAND_CENTER_ACCEPTANCE.md).
+Earlier resource/Auth/import/reference-pending statements below are historical;
+these current rows supersede their capability status without creating authority.
 
-| Phase | Current evidence | Independent next step / exact dependency |
+| Phase | Implemented and verified | Remaining capability / acceptance |
 |---|---|---|
-| P0 authority and custody | Approved frozen import, four Owner mappings, row integrity and restored privileges verified; zero writers | Canonical per-store writer and cutover remain unassigned; read approval grants no writes |
-| P1 useful workspace | Linked recorded console and explicit Owner cloud read implemented | Candidate adds each field's source event time, reference, missing reason, and read-only continuation summary using that same authorized context |
-| P2A/P2B execution evidence | Isolated bounded observer complete; no verified live producer | Actual tool/code/diff events require a documented feed for this exact existing task with emitter/task/time/baseline binding |
-| P3 decisions and control | Existing local controls and inactive contracts retained | New result/decision persistence needs exact named writer, CAS/cutover and action authority; no append grant or dispatch is active |
-| P4 private continuity | Owner Auth, frozen private import, bounded read RPCs and all four actual Owner private reads complete; project switching purges previous content | New writer, writeback, two-device and revocation acceptance remain distinct; no user retest of all projects is needed |
-| P5 usable target/promotion | Existing protected preview available; production unchanged | Visual reference bytes remain unavailable here; no visual-match claim. Promotion remains separately scoped |
+| P0 authority and custody | Exact frozen four-project import, integrity, Owner mapping and actual four-context reads | Canonical per-store writer/cutover and continuous sync unassigned |
+| P1 useful workspace | Linked panes, source-qualified context/continuation, selectable graph, desktop/mobile Explorer, filter/history/reload | Final Joey usability acceptance |
+| P2A/P2B evidence | Isolated bounded candidate observer, CAS/replay/expiry; parent status observation | No authenticated current-task tool/code/diff producer or live transport |
+| P3 decision/control | Approved management-only proposal/result journal; real CAS/retry/ACL; one genuine proposal and result | Actual Mac NexAeon journal revision2/read and 1440/390 UX PASS; accept/reject in-memory draft prepared; final decision server grant remains unapproved |
+| P4 continuity | Existing Owner Auth/frozen four-project read and private export integrity | Current journal two-device/revocation acceptance, canonical writeback and continuous synchronization absent |
+| P5 usability | Actual reference frames inspected; responsive pane checks; parent Mac layout QA | iPhone actual failure diagnostic pending; final target acceptance and production promotion separate |
 
-The isolated follow-on branch is `codex/mc-owner-continuation-20261007`, based on
-the exact `3e9b78f` release. The existing Explorer and any-agent continuation
-requirements explicitly call for claim-specific evidence and a qualified capsule.
-The first cloud-read view showed values and qualifications only. Completing this
-read-only projection introduces no new database access, authority, persistence,
-producer, source fallback or private public payload. See
-[the candidate handoff](MC_OWNER_CONTEXT_CONTINUATION.md).
+Independent next step completed in isolated branch
+`codex/mc-owner-review-prepared-20261007`: exact Owner accept/reject review
+preparation inside the existing journal reading flow. The draft checks current
+Owner/AAL2/membership and binds proposal/result/context/baseline/journal revision.
+It stays in page memory and cannot submit, queue, persist or dispatch.
+See [prepared handoff](MC_OWNER_REVIEW_PREPARED_HANDOFF.md) and
+[exact unapproved server authority](MC_OWNER_DECISION_GRANT_SCOPE.md).
+The fixed917d preview remains unchanged. Parent actual Mac journal/UX QA now PASS; phone Auth remains unverified.
+
+## Historical definitions and phase receipts
 
 P0 — Source-of-truth/dependency and migration closure. Definition of done: per-project repo/branch/exact tip/deployment receipt/handoff source/data authority/access/sync semantics/write owner matrix verified; immutable public snapshots versioned separately from latest safe receipts; raw private canonical/owner custody and single-writer authority established before dependent writes or sync; recovery/version-integrity evidence recorded. Code custody and safe receipt alignment are verified (`8b4945b`, saved `32b77ee`, index `1578b10d`, four current tips). P0 is PARTIAL: approved filtered-context/two-ledger custody and this consumer readonly readback now PASS; canonical authority/writer cutover and continuous synchronization remain incomplete. No new private-write/agent-control/cross-project-sync implementation may activate against duplicate/conflicting authority. Independent UI/source inspection can continue. Sources: `metadata/mc-dependency-matrix.json` and `docs/MC_DEPENDENCY_MATRIX.md`.
 
