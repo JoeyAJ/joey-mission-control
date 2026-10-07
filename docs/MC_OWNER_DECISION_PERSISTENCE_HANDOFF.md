@@ -1,3 +1,7 @@
+Current correction hold: preview submission is disabled; read views remain.
+See [guarded handoff](MC_OWNER_DECISION_GUARDED_HANDOFF.md). The3814c61 receipt
+below does not establish the two unresolved RPC correctness fixes.
+
 # Owner coordinator final-decision persistence
 
 This stage implements Joey's13:24:03 approved private ACCEPT/REJECT persistence

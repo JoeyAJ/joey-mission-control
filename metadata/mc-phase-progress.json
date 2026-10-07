@@ -95,15 +95,16 @@
     },
     {
       "id": "P3",
-      "status": "OWNER_DECISION_APPROVED_APPLIED_LOCAL_VERIFIED_REAL_OWNER_ACCEPTANCE_PENDING",
-      "result": "Joey13:24:03 approved narrow append-only final decision scope; migration20261007133100/ACL verified. Explicit two-step Owner decision confirmation/readback implemented; full482, browser9, local isolated PostgreSQL four-project checks pass. Actual Supabase rollback fixture completion unconfirmed; real Joey final decision/revocation/two-device acceptance pending. Genuine proposal1/result1/decision0; no autonomous approval or execution.",
+      "status": "PREVIEW_SUBMIT_GUARDED_TWO_RPC_CORRECTIONS_PENDING",
+      "result": "Guarded source disables only Owner final decision submission and preserves authenticated reads/session. Two deployed SQL defects remain: split metadata/page snapshots and missing three ID string/format guards. No real decision or live SQL/grant change. Real local two-connection PostgreSQL and deployed correction verification pending.",
       "definitionOfDoneRef": "docs/MC_PHASE_PLAN.md",
       "ownerAcceptance": "PENDING_FINAL_TARGET_ACCEPTANCE",
       "sources": [
         "docs/MC_OWNER_COORDINATOR_HANDOFF.md",
         "docs/MC_OWNER_REVIEW_PREPARED_HANDOFF.md",
         "docs/MC_OWNER_DECISION_GRANT_SCOPE.md",
-        "docs/MC_OWNER_DECISION_PERSISTENCE_HANDOFF.md"
+        "docs/MC_OWNER_DECISION_PERSISTENCE_HANDOFF.md",
+        "docs/MC_OWNER_DECISION_GUARDED_HANDOFF.md"
       ],
       "tests": {
         "portablePass": 482,
@@ -246,6 +247,12 @@
       "migrationVersion": "20261007133100",
       "sqlSha256": "3634e70009f533b4518b85c1716bb72a082ef8eac467128fc369f8fced3c0b0b",
       "result": "Decision0/journal2/native0/frozenHeads4/machineWriters0; temporary CREATE/SET restored. Exact stage/deployment external; actual runtime and Joey decision acceptance remain pending."
+    },
+    {
+      "type": "OWNER_DECISION_PREVIEW_SUBMIT_GUARD",
+      "setupFlag": false,
+      "readViewsPreserved": true,
+      "reason": "Prior premature publication; both RPC defects remain uncorrected; authorized correction release follows verified guard."
     }
   ],
   "migrationPriority": {
@@ -338,7 +345,7 @@
   "currentReconciliation": {
     "at": "2026-10-07T20:19:02.439692+00:00",
     "implementationAnchor": "917d7c1fd766b7694fe63e06db338cf765689280",
-    "preparedBranch": "codex/mc-owner-review-prepared-20261007",
+    "preparedBranch": "codex/mc-owner-decision-correction-20261007",
     "evidenceRef": "docs/MC_OWNER_DECISION_PERSISTENCE_HANDOFF.md",
     "publishedPreview": "EXACT_SOURCE_TREE_AND_FIXED_READY_IN_EXTERNAL_OWNER_DECISION_CHECKPOINT",
     "finalPrototype": "INCOMPLETE",
@@ -352,6 +359,6 @@
       "separateRpcOrRevocationProof": false,
       "currentBlocker": false
     },
-    "ownerDecisionScope": "APPROVED_APPLIED_REAL_OWNER_ACCEPTANCE_PENDING"
+    "ownerDecisionScope": "AUTHORIZED_SUBMIT_DISABLED_RPC_CORRECTION_PENDING"
   }
 }
