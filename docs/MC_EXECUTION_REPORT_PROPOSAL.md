@@ -20,7 +20,7 @@ Mac's actual approved owner snapshot embeds canonical missions for WB and Asset.
 
 | Gate | Required proof / authority | Current status |
 |---|---|---|
-| P0 source readback | Official consumer-local bytes for the two already approved Library packages; actual outer/payload hashes, bundled schema/refs, immutable restore and authority comparison | BLOCKED; no more download attempts without a concrete supported fix |
+| P0 source readback | Exact approved Git custody of the same two packages; outer/payload hashes, actual bundled schema/refs, immutable readonly restore and authority comparison | PASS scoped snapshot; no Library retry needed. Original raw-source reread and writer cutover not inferred |
 | Source cutover | Parent/Mac owner identifies authoritative per-field mission/state version, single writer, offline conflict rule and rollback checkpoint | PENDING; readonly transfer approval is not writer cutover |
 | Real producer | Parent names one available authorized runtime and documented event hook; exact binding/task/baseline and privacy-safe evidence | NOT IDENTIFIED; cannot call it live |
 | Local ingress activation | Exact existing token/root, bounded private report persistence and supported adapter scope explicitly authorized after the above gates | NOT AUTHORIZED; no Agent execution/control, DB/Auth or network change included |

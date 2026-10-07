@@ -14,8 +14,8 @@
   "phases": [
     {
       "id": "P0",
-      "status": "PARTIAL_PRIVATE_AUTHORITY_MIGRATION_PENDING",
-      "result": "Verified code/receipt custody; private canonical/owner and continuous sync remain incomplete.",
+      "status": "SCOPED_READONLY_CUSTODY_PASS_AUTHORITY_CUTOVER_PENDING",
+      "result": "Actual approved Git same packages outer2/manifest4/schema/refs/2ledger/4project readonly restore PASS; private candidate Workspace integrated. No writer cutover/live producer.",
       "definitionOfDoneRef": "docs/MC_PHASE_PLAN.md",
       "ownerAcceptance": "BASELINE_ONLY",
       "sources": [
@@ -23,7 +23,20 @@
         "docs/COMMAND_WORKSPACE_REVIEW.md",
         "metadata/mc-dependency-matrix.json"
       ],
-      "tests": null
+      "tests": {
+        "outerPackagesPass": 2,
+        "manifestFilesPass": 4,
+        "actualSchemaReferences": "PASS",
+        "dualLedgerAndFourProjects": "PASS",
+        "focusedPass": 19,
+        "producerSyntheticPass": 11,
+        "fullPortablePass": 288,
+        "build": "PASS",
+        "validate": "PASS",
+        "check": "PASS",
+        "privateAndPublicBrowser": "PASS_1440_390_320_THREE_LOCALES_HISTORY_REFRESH_FIRST_ERROR_RECOVERY_PRIVACY",
+        "independentReview": "NO_REMAINING_P1_P2"
+      }
     },
     {
       "id": "P1",
@@ -164,6 +177,16 @@
       "at": "2026-10-07T02:00:59.731311+00:00",
       "type": "P2A_PURE_OFFLINE_REVIEW_VERIFIED",
       "result": "20 synthetic + full282 PASS; build/validate/check PASS; consumer10 regression PASS. Serialization and mutable replay P2s fixed; independent review clear. No activation."
+    },
+    {
+      "at": "2026-10-07T02:23:56.044392+00:00",
+      "type": "P0_ACTUAL_PRIVATE_READONLY_MAPPING_INTEGRATED",
+      "result": "Read/extract/event times and project revision/timestamp mapped; individual Claim qualification preserved. Public adapter unchanged. Real private data remains outside product tree."
+    },
+    {
+      "at": "2026-10-07T02:26:35.264426+00:00",
+      "type": "PRIVATE_READONLY_UI_STAGE_REVIEW_VERIFIED",
+      "result": "Actual private +public regression browser PASS; full288/affected19/producer11 PASS; perClaim qualification and historical/current custody P2s fixed. No writer cutover/live producer."
     }
   ],
   "migrationPriority": {

@@ -5,7 +5,7 @@ const freeze=v=>{if(v&&typeof v==='object'){Object.values(v).forEach(freeze);Obj
 export function assertReadonlyLedgerRestore(r){if(!validatedRestores.has(r)||!Object.isFrozen(r)||r.readOnly!==true||r.authorityCutover!==false)throw Error('Use original immutable validated ledger restore result');return r;}
 const hash=b=>createHash('sha256').update(b).digest('hex');
 export function loadTwoLedgersReadonly({ownerBytes,inboxBytes,expected,synthetic=false,verifiedCustody=false}){
- if(!synthetic&&!verifiedCustody)throw Error('Official authorized Library byte custody must be verified first');
+ if(!synthetic&&!verifiedCustody)throw Error('Authorized private byte custody must be verified first');
  for(const [name,b]of [['product-owner.v03.json',ownerBytes],['inbox.v1.json',inboxBytes]])if(!expected[name]||expected[name].bytes!==b.length||expected[name].sha256!==hash(b))throw Error('Ledger byte/hash mismatch');
  if(!synthetic&&(ownerBytes.length!==179558||inboxBytes.length!==2||inboxBytes.toString()!=='[]'))throw Error('Exact approved ledger scope mismatch');
  const owners=JSON.parse(ownerBytes),inbox=JSON.parse(inboxBytes);if(!validOwners(owners)||owners.length!==2||new Set(owners.map(o=>o.projectId)).size!==2||!owners.some(o=>o.projectId==='WOOSONG_BUDDY')||!owners.some(o=>o.projectId==='JOEY_ASSET_SYSTEM')||!Array.isArray(inbox)||inbox.length!==0)throw Error('Existing owner/inbox schema or project scope mismatch');
