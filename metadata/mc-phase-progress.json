@@ -95,16 +95,23 @@
     },
     {
       "id": "P3",
-      "status": "COORDINATOR_RECEIPTS_LIVE_OWNER_REVIEW_PREPARED_DECISION_GRANT_GATED",
-      "result": "Approved management-only proposal/result append applied; one genuine proposal and one result, CAS/retry/ACL verified. Exact Owner accept/reject review draft prepared in isolated source/tests; no server decision grant applied. Parent actual Mac917d NexAeon journal read PASS: proposal1/result1/revision2/pendingJoey; no final decision. Offline decision request/CAS/replay/expiry/custody protocol prepared with synthetic-only actor; actual server implementation remains unapproved/unapplied.",
+      "status": "OWNER_DECISION_APPROVED_APPLIED_LOCAL_VERIFIED_REAL_OWNER_ACCEPTANCE_PENDING",
+      "result": "Joey13:24:03 approved narrow append-only final decision scope; migration20261007133100/ACL verified. Explicit two-step Owner decision confirmation/readback implemented; full482, browser9, local isolated PostgreSQL four-project checks pass. Actual Supabase rollback fixture completion unconfirmed; real Joey final decision/revocation/two-device acceptance pending. Genuine proposal1/result1/decision0; no autonomous approval or execution.",
       "definitionOfDoneRef": "docs/MC_PHASE_PLAN.md",
       "ownerAcceptance": "PENDING_FINAL_TARGET_ACCEPTANCE",
       "sources": [
         "docs/MC_OWNER_COORDINATOR_HANDOFF.md",
         "docs/MC_OWNER_REVIEW_PREPARED_HANDOFF.md",
-        "docs/MC_OWNER_DECISION_GRANT_SCOPE.md"
+        "docs/MC_OWNER_DECISION_GRANT_SCOPE.md",
+        "docs/MC_OWNER_DECISION_PERSISTENCE_HANDOFF.md"
       ],
-      "tests": null
+      "tests": {
+        "portablePass": 482,
+        "syntheticBrowserPass": 9,
+        "localPostgresAlgorithm": "PASS_SYNTHETIC_FOUR_PROJECTS",
+        "actualSupabaseRollbackFixture": "UNCONFIRMED_INTERRUPTED_WITHOUT_RECEIPT",
+        "realOwnerFinalDecision": "PENDING_JOEY_EXPLICIT_CLICK"
+      }
     },
     {
       "id": "P4",
@@ -225,6 +232,20 @@
     {
       "type": "OWNER_DECISION_OFFLINE_PROTOCOL_PREPARED",
       "result": "No IO or real provider assertion; distinct decision CAS, immutable final outcome, lost-response exact replay after proposal expiry, scope/actor/expiry/quota/custody refusal validated with synthetic fixtures. UI/fixed release unchanged; no server implementation or new grant applied."
+    },
+    {
+      "type": "OWNER_DECISION_NARROW_SCOPE_APPROVED",
+      "at": "2026-10-07T13:24:03Z",
+      "source": "Sentinel_2aba8eeec5e0819196da5d4585feb01f",
+      "precedingScopeSource": "Sentinel_7393d4fb3eac819198f59a283bc6660b",
+      "reply": "可以",
+      "result": "Joey-only existing AAL2 explicit private ACCEPT/REJECT with version/audit; no agent approval or automatic execution."
+    },
+    {
+      "type": "OWNER_DECISION_MIGRATION_APPLIED_AND_LOCAL_FLOW_VERIFIED",
+      "migrationVersion": "20261007133100",
+      "sqlSha256": "3634e70009f533b4518b85c1716bb72a082ef8eac467128fc369f8fced3c0b0b",
+      "result": "Decision0/journal2/native0/frozenHeads4/machineWriters0; temporary CREATE/SET restored. Exact stage/deployment external; actual runtime and Joey decision acceptance remain pending."
     }
   ],
   "migrationPriority": {
@@ -315,11 +336,11 @@
     ]
   },
   "currentReconciliation": {
-    "at": "2026-10-07T12:53:00Z",
+    "at": "2026-10-07T20:19:02.439692+00:00",
     "implementationAnchor": "917d7c1fd766b7694fe63e06db338cf765689280",
     "preparedBranch": "codex/mc-owner-review-prepared-20261007",
-    "evidenceRef": "docs/MC_COMMAND_CENTER_ACCEPTANCE.md",
-    "publishedPreview": "FIXED_917D_MAC_JOURNAL_UX_PASS_PHONE_LOGIN_USER_REPORTED_WORKING",
+    "evidenceRef": "docs/MC_OWNER_DECISION_PERSISTENCE_HANDOFF.md",
+    "publishedPreview": "EXACT_SOURCE_TREE_AND_FIXED_READY_IN_EXTERNAL_OWNER_DECISION_CHECKPOINT",
     "finalPrototype": "INCOMPLETE",
     "scope": "Generic phase/capability state only; private payloads and custody exports remain outside Git/public.",
     "phoneLogin": {
@@ -330,6 +351,7 @@
       "reply": "可以了",
       "separateRpcOrRevocationProof": false,
       "currentBlocker": false
-    }
+    },
+    "ownerDecisionScope": "APPROVED_APPLIED_REAL_OWNER_ACCEPTANCE_PENDING"
   }
 }

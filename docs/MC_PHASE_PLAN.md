@@ -16,18 +16,19 @@ these current rows supersede their capability status without creating authority.
 | P0 authority and custody | Exact frozen four-project import, integrity, Owner mapping and actual four-context reads | Canonical per-store writer/cutover and continuous sync unassigned |
 | P1 useful workspace | Linked panes, source-qualified context/continuation, selectable graph, desktop/mobile Explorer, filter/history/reload | Final Joey usability acceptance |
 | P2A/P2B evidence | Isolated bounded candidate observer, CAS/replay/expiry; parent status observation | No authenticated current-task tool/code/diff producer or live transport |
-| P3 decision/control | Approved management-only proposal/result journal; real CAS/retry/ACL; one genuine proposal and result | Actual Mac NexAeon journal revision2/read and 1440/390 UX PASS; accept/reject in-memory draft prepared; final decision server grant remains unapproved |
+| P3 decision/control | Approved management-only proposal/result journal; real CAS/retry/ACL; one genuine proposal and result | Actual Mac NexAeon journal revision2/read and 1440/390 UX PASS; accept/reject in-memory draft prepared; Owner decision scope approved13:24:03 and migration20261007133100 applied; explicit final UI/local tests verified; actual Joey decision and runtime/two-device acceptance pending |
 | P4 continuity | Existing Owner Auth/frozen four-project read and private export integrity | Current journal two-device/revocation acceptance, canonical writeback and continuous synchronization absent |
 | P5 usability | Actual reference frames inspected; responsive pane checks; parent Mac layout QA | Joey13:10 real phone login working (user report); private phone RPC/revocation not separately proved; final target acceptance and production promotion separate |
 
-Independent next step completed in isolated branch
-`codex/mc-owner-review-prepared-20261007`: exact Owner accept/reject review
-preparation inside the existing journal reading flow. The draft checks current
-Owner/AAL2/membership and binds proposal/result/context/baseline/journal revision.
-It stays in page memory and cannot submit, queue, persist or dispatch.
-See [prepared handoff](MC_OWNER_REVIEW_PREPARED_HANDOFF.md) and
-[exact unapproved server authority](MC_OWNER_DECISION_GRANT_SCOPE.md).
-The fixed917d preview remains unchanged. Parent actual Mac journal/UX QA now PASS; Joey13:10 reported real phone login working; no separate RPC/revocation proof.
+The next Owner decision stage uses `codex/mc-owner-review-prepared-20261007`,
+based on917d/prepared0d44. Joey13:24:03 approved append-only private final decisions
+with version/audit and existing Owner/AAL2. Migration20261007133100 is applied;
+explicit preparation plus separate confirmation/readback UI is implemented.
+See [persistence handoff](MC_OWNER_DECISION_PERSISTENCE_HANDOFF.md) and
+[applied grant scope](MC_OWNER_DECISION_GRANT_SCOPE.md). Exact published SHA/tree
+and fixed-preview READY are recorded in the external stage checkpoint.
+Actual Joey decision/readback, revocation and two-device runtime acceptance remain
+pending. Local PostgreSQL and synthetic checks do not establish those results.
 
 ## Historical definitions and phase receipts
 

@@ -1,4 +1,10 @@
-# Owner coordinator review preparation
+Current continuation: Joey13:24:03 approved the narrow final-decision scope.
+Migration20261007133100 is applied; the current implementation and precise remaining
+acceptance are in [persistence handoff](MC_OWNER_DECISION_PERSISTENCE_HANDOFF.md).
+The preparation/protocol receipts below describe their earlier stage, not current
+grant state. No real final decision was made by the agent.
+
+# Historical Owner coordinator review preparation
 
 Base/published fixed preview: `917d7c1fd766b7694fe63e06db338cf765689280`.
 Isolated source branch: `codex/mc-owner-review-prepared-20261007`.

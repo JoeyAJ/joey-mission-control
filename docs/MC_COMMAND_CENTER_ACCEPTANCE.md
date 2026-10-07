@@ -4,15 +4,16 @@ Reviewed against `PRODUCT_CHARTER.md`, `MC_PHASE_PLAN.md`,
 `COMMAND_WORKSPACE_CONTINUATION.md`, the three actual reference frames, and the
 917d publication/readback receipt. The repo contains the operative product contract;
 no separate newer PRD file was found. Joey remains Product Owner and Final Approver.
-Published fixed preview: `917d7c1fd766b7694fe63e06db338cf765689280`.
-Prepared follow-up is isolated; it does not replace the fixed preview during QA.
+Previous fixed-preview anchor: `917d7c1fd766b7694fe63e06db338cf765689280`.
+Current final-decision stage source/tree/fixed READY receipt is recorded externally
+in `owner-decision-persistence-checkpoint.json`; production is unchanged.
 
 | Product capability | Implemented and verified | Implemented, awaiting actual acceptance | Unsupported or permission bound |
 |---|---|---|---|
 | Four-project workspace | Linked recorded sessions/events/context/graph; stable URLs/filter/history/reload; three locales; 1440/870/390/320 layouts; parent actual Mac pane QA | Final Joey usable-target acceptance | A project entry/history does not establish a current running agent |
 | Private Owner context / Explorer | Existing authenticated read of all four frozen contexts verified on task-owned Mac; per-field source/time/missing reason; scoped continuation; purge on project/session changes | Phone private RPC reading not separately evidenced | Arbitrary private source/log browsing and continuous canonical sync unavailable |
 | Proposal / result continuity | Management-only private append, one real proposal and result; CAS concurrency and exact replay; integrity export; authenticated read wrapper with Owner/AAL2/current session; parent actual Mac NEXAEON journal read PASS (one proposal + one result, revision2, pending Joey) | iPhone and two-device journal acceptance remain unverified | Autonomous agent/app write transport not granted; submitter attestation is not an Owner decision |
-| Joey accept / reject | Existing local/synthetic exact-decision contracts retained. Isolated follow-up prepares exact in-memory choices and bounded offline decision protocol with immutable proposal/result bindings, distinct decision CAS and exact retry | Prepared UI/protocol checks only; no live final-decision test possible | Final decision RPC/store/grants, Postgres CAS and readback not approved or applied; canonical promotion/dispatch remain separate |
+| Joey accept / reject | Joey13:24:03 approved narrow private persistence; migration20261007133100 and ACL readback verified. Explicit two-step confirmation/readback UI, immutable CAS/replay/expiry, local isolated PostgreSQL and synthetic browser checks pass | Real Joey AAL2 commit/readback, revocation, concurrent two-device/lost-response verification pending; actual Supabase rollback fixture completion unconfirmed | No agent decision, automatic execution, canonical promotion or dispatch authority |
 | Current work / tool / code events | Bounded isolated observer/reducer/store/replay/expiry and qualified parent task snapshot | A real bound producer trial has not run | Exact-task authenticated event feed unavailable; no fabricated live status or tool stream |
 | Code / diff evidence | Approved fixed historical Explorer/diff and source revision qualification | No additional real event acceptance | Current file/tool/diff events require the missing producer; historical diffs cannot supply them |
 | Any-agent handoff | Source-qualified private continuation, approved private Git checkpoint, bounded P3 custody export; raw private data excluded from public build | Restart handoff is document/custody based; new reader must verify current scope | Automatic dispatch, canonical writeback and continuous Mac/cloud synchronization unavailable |
@@ -39,10 +40,11 @@ and frozen scope. App roles have no direct private-table access; forced RLS is
 enabled. Temporary CREATE and role SET are restored. Original three Owner
 functions are byte-identical; four imported heads remain revision0/write-disabled.
 One proposal + one result persist, synthetic rows0, native Auth events0, active
-machine writers0. Owner final review remains pending.
+machine writers0. Owner final review remains pending. Owner-only decision migration20261007133100
+is now applied, decision rows0, with exact scope in MC_OWNER_DECISION_GRANT_SCOPE.md.
 
 Next capability boundaries are exact: a supported current-task event source;
-Owner-only decision append authority in `MC_OWNER_DECISION_GRANT_SCOPE.md`;
+actual Owner decision acceptance in `MC_OWNER_DECISION_GRANT_SCOPE.md`;
 canonical per-store cutover/synchronization and supported execution adapters.
 No invented modules, universal control, new credential or autonomous authority
 is needed or claimed for the prepared local review feature.
@@ -52,3 +54,8 @@ Joey phone receipt: parent relayed `Sentinel_3718616f709c8191b533a240aee15889`,
 MFA code instruction. This is USER_REPORTED_REAL_PHONE_LOGIN_WORKING. Mobile
 login is no longer a current blocker. It is not a separate RPC, AAL2 SQL,
 revocation or two-device concurrency proof; no reset/retry is requested.
+
+Current decision-stage evidence: full482/482 plus build/schema/static safety PASS;
+synthetic final-decision browser9, lifecycle9, fresh-touch SDK5 and Recovery9 PASS,
+zero live Auth requests. Local PostgreSQL four-project fixtures PASS; actual
+Supabase fixture runtime UNCONFIRMED. These do not prove a real Owner decision.

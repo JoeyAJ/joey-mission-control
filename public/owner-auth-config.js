@@ -3,7 +3,7 @@ export const ownerAuthConfig=Object.freeze({
  origin:'https://scmvedfqwlhkyvljymjj.supabase.co',
  publishableKey:'sb_publishable_K4V5zIiJQasjbKPtmsV6XA_oDtcCbrS',
  stageOrigin:'https://joey-mission-control-git-codex-mc-comma-fceec2-joeyajs-projects.vercel.app',
- ownerSubject:'6f0ca2ae-83e0-4684-af12-0b37d08182db',authSetupVerified:true,sessionBridgeVerified:true,privateReadSetupVerified:true,coordinatorReadSetupVerified:true
+ ownerSubject:'6f0ca2ae-83e0-4684-af12-0b37d08182db',authSetupVerified:true,sessionBridgeVerified:true,privateReadSetupVerified:true,coordinatorReadSetupVerified:true,ownerDecisionSetupVerified:true
 });
 export function ownerAuthSetupStatus(config=ownerAuthConfig){
  if(config!==ownerAuthConfig)return Object.freeze({status:'unconfigured',reason:'UNTRUSTED_CONFIGURATION'});
