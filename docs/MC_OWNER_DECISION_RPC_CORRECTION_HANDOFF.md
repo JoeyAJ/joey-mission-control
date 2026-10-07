@@ -24,7 +24,7 @@ source drift or repeated application. These pending files have not been applied
 to Supabase.
 
 Validation uses native PostgreSQL17.10 with two distinct Unix-socket backend
-connections, not in-memory emulation. Ten bounded check groups pass with driver
+connections, not in-memory emulation. Twelve bounded check groups pass with driver
 exit0 and initdb/start/stop exit0. The old numeric-ID coercions and split-snapshot
 race reproduce; corrected type/format rejection, actual concurrent CAS conflict,
 exact concurrent replay, single budget charge, expiry/quota,100 reads alongside
@@ -40,8 +40,10 @@ Supabase Auth, Joey AAL2 or two-device behavior. Live Auth/Supabase test request
 the native server stops after verification. Test-only packages are pinned outside
 product dependencies: `@embedded-postgres/linux-x64@17.10.0-beta.17` and
 `pg@8.16.3`. Product package.json/lock, API, CSP and Auth configuration are unchanged.
-Reproduce with `node scripts/verify-owner-decision-native-postgres.mjs <prefix>`
-after installing those exact packages in an isolated prefix. Portable485/485,
+Reproduce the core eleven groups with
+`node scripts/verify-owner-decision-native-postgres.mjs <prefix>`; an optional
+third argument names the private review-only permission wrapper for group12.
+Install the exact packages in an isolated prefix. Portable485/485,
 build/schema/static safety and forbidden workstation attempts0 also pass.
 
 Live readback is still blocked for replacement: current_user/session_user are
@@ -52,11 +54,29 @@ is80e2e69e1038153e0b698105759b759a. Decision rows0, journal rows2, native events
 frozen heads4 and active machine writers0. No live DDL or permission expansion
 was attempted in this correction stage.
 
-Next requires an existing authorized function-owner execution path or separately
-approved exact temporary ownership/schema permission mechanics. The current
-instruction forbids expanding CREATE/SET without that approval. Do not obtain
-another credential, repeat the original migration, bypass ownership or enable
-submission. After an authorized replacement, read back exact definitions,
+The smallest proposed permission change is one existing membership option:
+postgres, using its existing ADMIN authority, changes only its own grantor row
+for mc_continuity_executor to INHERIT=true, then back to false within the same
+bounded transaction. Its pre-existing schema CREATE is sufficient; SET stays
+false and no schema grant is required. The separate supabase_admin grantor row
+retains ADMIN=true/INHERIT=false/SET=false. Native non-superuser tests reproduce
+this two-grantor graph and verify exact restoration. A separately saved wrapper
+adds original-definition, membership, owner/ACL/settings and unchanged-count
+checks, with one5s DO block,2s lock timeout and5s idle-transaction timeout.
+It is review-only, not approved or applied. Its exact SHA256 and the single
+approval request are in the private external permission packet.
+
+INHERIT temporarily confers the executor role's privileges; PostgreSQL does not
+offer an individual-function replacement grant. The approved execution manifest
+must be restricted to these two bodies and restoration before commit. The
+grant-free PostgreSQL alternative is an already authorized operator with both
+existing owner privileges and schema CREATE, or an existing superuser. Such a
+principal is unavailable through the current connected management channel;
+switching to the ordinary dashboard is not evidence of different authority.
+
+The current instruction requires separate approval for this authority expansion.
+Do not obtain another credential, repeat the original migration, bypass ownership
+or enable submission. After an authorized replacement, read back exact definitions,
 owner/ACL/search_path and unchanged data counts using bounded read-only queries;
 complete applicable integration verification before enabling submission. Actual
 Supabase rollback fixtures remain interrupted without a receipt; real Joey
@@ -65,5 +85,6 @@ decision commit/readback, revocation and two-device acceptance remain pending.
 PostgreSQL documents that replacement requires ownership and preserves existing
 owner/permissions, and that volatile queries can acquire separate snapshots:
 [CREATE FUNCTION](https://www.postgresql.org/docs/17/sql-createfunction.html),
-[volatility](https://www.postgresql.org/docs/17/xfunc-volatility.html).
+[volatility](https://www.postgresql.org/docs/17/xfunc-volatility.html),
+[GRANT](https://www.postgresql.org/docs/17/sql-grant.html).
 Supabase guidance reviewed: [database functions](https://supabase.com/docs/guides/database/functions).

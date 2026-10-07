@@ -115,10 +115,11 @@
         "realOwnerFinalDecision": "PENDING_JOEY_EXPLICIT_CLICK",
         "nativePostgresTwoConnections": {
           "version": "17.10",
-          "checkGroups": 10,
+          "checkGroups": 12,
           "driverExitStatus": 0,
           "syntheticAuthOnly": true,
-          "actualSupabaseRuntime": false
+          "actualSupabaseRuntime": false,
+          "reviewOnlyPermissionWrapper": "PASS_SYNTHETIC_TWO_GRANTOR_GRAPH_NOT_APPROVED_OR_APPLIED"
         }
       }
     },
@@ -265,6 +266,10 @@
     {
       "type": "OWNER_DECISION_NATIVE_TWO_CONNECTION_CORRECTION_VERIFIED",
       "result": "Bounded original-defect reproductions, corrected snapshot/CAS/idempotency and pending-patch owner/ACL/settings preservation PASS; synthetic local Auth only. Live replacement blocked: non-superuser postgres has existing owner USAGE=false and SET=false; no new CREATE/SET or live DDL. Submit flag remains false."
+    },
+    {
+      "type": "OWNER_DECISION_MINIMUM_PERMISSION_PACKET_PREPARED",
+      "result": "One-transaction existing postgres-grantor INHERIT true then false restores both membership rows exactly; no SET or schema CREATE expansion. Native non-superuser and exact review-only wrapper pass; wrapper remains unapproved/unapplied. Grant-free operator path is unsupported by current connected principal."
     }
   ],
   "migrationPriority": {
@@ -355,7 +360,7 @@
     ]
   },
   "currentReconciliation": {
-    "at": "2026-10-07T21:18:00Z",
+    "at": "2026-10-07T21:26:50.939397+00:00",
     "implementationAnchor": "917d7c1fd766b7694fe63e06db338cf765689280",
     "preparedBranch": "codex/mc-owner-decision-correction-20261007",
     "evidenceRef": "docs/MC_OWNER_DECISION_RPC_CORRECTION_HANDOFF.md",

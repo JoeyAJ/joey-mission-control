@@ -39,6 +39,7 @@ try{
  CREATE TABLE mc_fixture.members(subject uuid,project_id text,member_role text,active boolean);
  CREATE TABLE mc_fixture.storage_budget(singleton boolean PRIMARY KEY,used_bytes bigint,event_count bigint);
  CREATE TABLE mc_fixture.coordinator_receipts(project_id text,epoch text,revision bigint,operation_id text,digest text,content jsonb);
+ CREATE TABLE mc_fixture.events(revision bigint);
  CREATE TABLE mc_fixture.coordinator_owner_decisions(project_id text,epoch text,revision bigint,operation_id text,digest text,owner_subject uuid,owner_session_id uuid,owner_aal text,committed_at bigint,content jsonb,charged_bytes bigint,PRIMARY KEY(project_id,epoch,revision),UNIQUE(project_id,epoch,operation_id));
  CREATE UNIQUE INDEX fixture_one_final ON mc_fixture.coordinator_owner_decisions(project_id,epoch,(content->>'proposalId'));
  ALTER TABLE mc_fixture.coordinator_owner_decisions ENABLE ROW LEVEL SECURITY;ALTER TABLE mc_fixture.coordinator_owner_decisions FORCE ROW LEVEL SECURITY;
@@ -86,9 +87,36 @@ try{
  const reader=(async()=>{for(let i=0;i<100;i++){checkPage(await read(a));reads++;}})(),writer=(async()=>{for(let revision=2;revision<=101;revision++)await appendSnapshotRow(revision,seed.committedAt+revision);})();await Promise.all([reader,writer]);const finalPage=await read(a);checkPage(finalPage);assert.equal(finalPage.revision,101);assert.equal(finalPage.decisions.length,50);const next=await read(a,50);checkPage(next);assert.equal(next.decisions.length,50);const last=await read(a,100);checkPage(last);assert.equal(last.decisions.length,1);const empty=await read(a,101);checkPage(empty);assert.equal(empty.decisions.length,0);receipt.checks.push({case:'unmodifiedCorrectedReadRpcConcurrentAppendsAndBoundedPages',pass:true,reads,concurrentAppends:100,boundedPageSizes:[50,50,1,0]});
  await reset();
  const definitionsBefore=(await a.query("SELECT oid::text,md5(pg_get_functiondef(oid)) AS fingerprint,proowner::text,proacl::text,proconfig FROM pg_proc WHERE oid IN ('mc_fixture.mc_owner_coordinator_decisions(text,bigint,integer)'::regprocedure,'mc_fixture.mc_owner_decide_coordinator_result(jsonb)'::regprocedure) ORDER BY oid")).rows;
- await a.query('CREATE ROLE mc_fixture_manager NOLOGIN NOSUPERUSER NOBYPASSRLS;GRANT USAGE,CREATE ON SCHEMA mc_fixture TO mc_fixture_manager;SET ROLE mc_fixture_manager');
+ await a.query('CREATE ROLE mc_fixture_manager NOLOGIN NOSUPERUSER NOBYPASSRLS;GRANT USAGE,CREATE ON SCHEMA mc_fixture TO mc_fixture_manager;GRANT SELECT ON ALL TABLES IN SCHEMA mc_fixture TO mc_fixture_manager;SET ROLE mc_fixture_manager');
  for(const kind of ['read','write']){const sql=ownerDecisionCorrectionSql(kind).replaceAll('public.','mc_fixture.').replaceAll("'public'","'mc_fixture'");await denied(a.query(sql),'OWNER_DECISION_CORRECTION_OWNER_DENIED');await a.query('ROLLBACK');}
  await a.query('RESET ROLE');const definitionsAfter=(await a.query("SELECT oid::text,md5(pg_get_functiondef(oid)) AS fingerprint,proowner::text,proacl::text,proconfig FROM pg_proc WHERE oid IN ('mc_fixture.mc_owner_coordinator_decisions(text,bigint,integer)'::regprocedure,'mc_fixture.mc_owner_decide_coordinator_result(jsonb)'::regprocedure) ORDER BY oid")).rows;assert.deepEqual(definitionsAfter,definitionsBefore);assert.equal((await counts()).rows,0);
- receipt.checks.push({case:'replacementPreflightRefusesMissingOwnerRightsWithoutDefinitionAclOrRowsChange',pass:true,localFixtureOnly:true});receipt.pass=true;
+ receipt.checks.push({case:'replacementPreflightRefusesMissingOwnerRightsWithoutDefinitionAclOrRowsChange',pass:true,localFixtureOnly:true});
+ // Reproduce the live two-grantor membership graph without using any live role.
+ await a.query(oldWrite);await a.query(oldRead);
+ await a.query('GRANT mc_fixture_executor TO mc_fixture_manager WITH ADMIN TRUE,INHERIT FALSE,SET FALSE;SET ROLE mc_fixture_manager;GRANT mc_fixture_executor TO mc_fixture_manager WITH ADMIN FALSE,INHERIT FALSE,SET FALSE GRANTED BY mc_fixture_manager;RESET ROLE');
+ const membershipSql="SELECT grantor::text,admin_option,inherit_option,set_option FROM pg_auth_members WHERE roleid='mc_fixture_executor'::regrole AND member='mc_fixture_manager'::regrole ORDER BY grantor";
+ const membersBefore=(await a.query(membershipSql)).rows;
+ const ownedBefore=(await a.query("SELECT proname,md5(pg_get_functiondef(oid)) AS fingerprint,proowner::text,proacl::text,proconfig FROM pg_proc WHERE oid IN ('mc_fixture.mc_owner_coordinator_decisions(text,bigint,integer)'::regprocedure,'mc_fixture.mc_owner_decide_coordinator_result(jsonb)'::regprocedure) ORDER BY proname")).rows;
+ await a.query('SET ROLE mc_fixture_manager;BEGIN;GRANT mc_fixture_executor TO mc_fixture_manager WITH INHERIT TRUE GRANTED BY mc_fixture_manager');
+ const effective=(await a.query("SELECT current_user,pg_has_role(current_user,'mc_fixture_executor','USAGE') AS owner_usage,pg_has_role(current_user,'mc_fixture_executor','SET') AS role_set,(SELECT rolsuper FROM pg_roles WHERE rolname=current_user) AS superuser")).rows[0];assert.equal(effective.owner_usage,true);assert.equal(effective.role_set,false);assert.equal(effective.superuser,false);
+ for(const kind of ['read','write']){const name=kind==='read'?'mc_owner_coordinator_decisions':'mc_owner_decide_coordinator_result',fingerprint=ownedBefore.find(r=>r.proname===name).fingerprint;
+  const sql=ownerDecisionCorrectionSql(kind).replaceAll('public.','mc_fixture.').replaceAll("'public'","'mc_fixture'").replaceAll('mc_private.','mc_fixture.').replace(kind==='read'?'43bcb9bbda9e44b2f675188abbf46b24':'80e2e69e1038153e0b698105759b759a',fingerprint);
+  await a.query(sql.slice(sql.indexOf('DO $patch$'),sql.lastIndexOf('COMMIT;')));
+ }
+ await a.query('GRANT mc_fixture_executor TO mc_fixture_manager WITH INHERIT FALSE GRANTED BY mc_fixture_manager;COMMIT;RESET ROLE');
+ assert.deepEqual((await a.query(membershipSql)).rows,membersBefore);
+ const ownedAfter=(await a.query("SELECT proname,md5(pg_get_functiondef(oid)) AS fingerprint,proowner::text,proacl::text,proconfig FROM pg_proc WHERE oid IN ('mc_fixture.mc_owner_coordinator_decisions(text,bigint,integer)'::regprocedure,'mc_fixture.mc_owner_decide_coordinator_result(jsonb)'::regprocedure) ORDER BY proname")).rows;
+ for(let i=0;i<ownedBefore.length;i++){assert.notEqual(ownedAfter[i].fingerprint,ownedBefore[i].fingerprint);assert.deepEqual({...ownedAfter[i],fingerprint:null},{...ownedBefore[i],fingerprint:null});}
+ assert.equal((await counts()).rows,0);receipt.checks.push({case:'nonSuperuserExistingAdminMembershipOneTransactionInheritOnlyPatchRestoresBothGrantors',pass:true,localFixtureOnly:true,roleSet:false,newSchemaCreate:false});
+ if(process.argv[3]){
+  await a.query(oldWrite);await a.query(oldRead);
+  const originals=(await a.query("SELECT proname,md5(pg_get_functiondef(oid)) AS fingerprint FROM pg_proc WHERE oid IN ('mc_fixture.mc_owner_coordinator_decisions(text,bigint,integer)'::regprocedure,'mc_fixture.mc_owner_decide_coordinator_result(jsonb)'::regprocedure)")).rows;
+  const originalSql=await fs.readFile(process.argv[3],'utf8');
+  const fixtureSql=originalSql.replaceAll('supabase_admin','__LOCAL_BOOTSTRAP__').replaceAll('postgres','mc_fixture_manager').replaceAll('__LOCAL_BOOTSTRAP__','postgres').replace("session_user<>'mc_fixture_manager'","session_user<>'postgres'").replaceAll('mc_continuity_executor','mc_fixture_executor').replaceAll('mc_private.','mc_fixture.').replaceAll('public.','mc_fixture.').replaceAll("'public'","'mc_fixture'").replaceAll("'mc_private'","'mc_fixture'").replaceAll('43bcb9bbda9e44b2f675188abbf46b24',originals.find(r=>r.proname==='mc_owner_coordinator_decisions').fingerprint).replaceAll('80e2e69e1038153e0b698105759b759a',originals.find(r=>r.proname==='mc_owner_decide_coordinator_result').fingerprint);
+  await a.query('SET ROLE mc_fixture_manager');await a.query(fixtureSql);await denied(a.query(fixtureSql),'OWNER_DECISION_CORRECTION_SOURCE_DRIFT');await a.query('ROLLBACK;RESET ROLE');
+  assert.deepEqual((await a.query(membershipSql)).rows,membersBefore);assert.equal((await counts()).rows,0);
+  receipt.checks.push({case:'exactReviewOnlyPermissionWrapperSuccessAndRepeatedRefusal',pass:true,localFixtureOnly:true,originalSqlSha256:createHash('sha256').update(originalSql).digest('hex'),adaptations:['fixtureRolesAndGrantors','fixtureSchemas','fixtureOriginalDefinitionFingerprints','localSessionUser']});
+ }
+ receipt.pass=true;
 }catch(e){receipt.pass=false;receipt.error={code:e.code||null,message:e.message};process.exitCode=1;}
 finally{for(const client of [a,b])if(client)await client.end().catch(()=>{});if(started)try{native('pg_ctl',['-D',data,'-m','fast','-w','-t','5','stop']);}catch(e){receipt.pass=false;receipt.shutdownError=e.message;process.exitCode=1;}receipt.serverStopped=started&&receipt.nativeCommands.at(-1)?.name==='pg_ctl'&&receipt.nativeCommands.at(-1)?.exitStatus===0;receipt.driverExitStatus=process.exitCode||0;await fs.writeFile('/workspace/mc-deliverables/owner-decision-native-postgres.json',JSON.stringify(receipt,null,2)+'\n');console.log(JSON.stringify(receipt));}
