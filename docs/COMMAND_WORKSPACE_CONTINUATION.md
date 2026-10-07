@@ -1,5 +1,13 @@
 # Command workspace continuation / PRD delta
 
+Current historical review stage restores the actual sixteen-file historical
+comparison response and links Explorer/file selectors/path/numbered bounded diff
+with the scoped MC membership graph. Public output keeps approved categories and
+count only. Full requirement reconciliation and the remaining actual integration
+versus visual work are in [MC_FINAL_REQUIREMENTS_GAP_MAP.md](MC_FINAL_REQUIREMENTS_GAP_MAP.md).
+No current Agent/tool feed, canonical writeback or Owner acceptance is inferred.
+
+
 Current reading-flow delta: same-project Timeline/Explorer/Graph operations,
 refresh, failure/recovery, browser history, mobile pane switches and Workspace
 return retain independent reading positions. New inspector content starts at

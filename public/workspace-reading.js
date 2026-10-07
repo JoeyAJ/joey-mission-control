@@ -1,7 +1,7 @@
 // One active project's transient UI geometry. Never stores content, forms or Auth state.
 const states=new WeakMap();
-const panes={projects:'.command-projects',events:'.command-events',explorer:'.command-layout>.command-explorer',mobileExplorer:'.command-explorer-mobile',inspector:'.command-inspector',graph:'.command-graph',changes:'.command-changes',observer:'.command-context>.command-observer'};
-const controls=['data-command-project','data-command-event','data-explorer-item','data-mobile-explorer-item','data-explorer-compare','data-mobile-explorer-compare','data-graph-event','data-inspector-tab','data-workspace-panel','data-command-refresh','data-command-filter','data-observer-event'];
+const panes={projects:'.command-projects',events:'.command-events',explorer:'.command-layout>.command-explorer',mobileExplorer:'.command-explorer-mobile',inspector:'.command-inspector',graph:'.command-graph',changes:'.command-changes',fileTabs:'.command-file-tabs',observer:'.command-context>.command-observer'};
+const controls=['data-command-project','data-command-event','data-explorer-item','data-mobile-explorer-item','data-explorer-compare','data-mobile-explorer-compare','data-graph-event','data-graph-file','data-graph-compare','data-graph-area','data-stage-file','data-inspector-tab','data-workspace-panel','data-command-refresh','data-command-filter','data-observer-event'];
 const visible=node=>!!node&&node.getClientRects().length>0&&(!node.checkVisibility||node.checkVisibility({visibilityProperty:true}));
 const bounded=value=>Number.isFinite(value)?Math.min(10000000,Math.max(0,value)):0;
 function controlKey(root,node){
@@ -33,6 +33,7 @@ export function replaceCommandWorkspace(holder,renderNext){
  if(!sameReading){delete nextPositions.inspector;delete nextPositions.changes;}
  const proof=next.querySelector('.command-source-details');if(proof&&sameReading)proof.open=sourceOpen;
  for(const [key,selector]of Object.entries(panes)){const node=next.querySelector(selector),saved=nextPositions[key];if(node&&saved&&visible(node)){node.scrollTop=saved.top;node.scrollLeft=saved.left;}}
+ const selectedTab=next.querySelector('.command-file-tabs [aria-pressed=true]');if(visible(selectedTab)){const n=selectedTab.getBoundingClientRect(),p=selectedTab.parentElement.getBoundingClientRect();if(n.right>p.right)selectedTab.parentElement.scrollLeft+=Math.ceil(n.right-p.right)+1;else if(n.left<p.left)selectedTab.parentElement.scrollLeft+=Math.floor(n.left-p.left)-1;}
  states.set(holder,{project:next.dataset.project,positions:nextPositions,visiblePanes:visiblePanes(next)});
  // Only continue an operation initiated inside this workspace, never steal outside/Auth focus.
  if(focus&&visible(next)){
@@ -43,6 +44,9 @@ export function replaceCommandWorkspace(holder,renderNext){
    target.tabIndex=-1;
   }
   target.focus({preventScroll:true});
+  // Graph-to-diff navigation shrinks this pane; keep its selected control in view.
+  const graph=target.closest('.command-graph');
+  if(graph&&graph!==target){const n=target.getBoundingClientRect(),p=graph.getBoundingClientRect();if(n.bottom>p.bottom)graph.scrollTop+=Math.ceil(n.bottom-p.bottom)+1;else if(n.top<p.top)graph.scrollTop+=Math.floor(n.top-p.top)-1;}
  }
  return next;
 }

@@ -42,13 +42,14 @@
     {
       "id": "P1",
       "status": "IMPLEMENTED_VERIFIED_OWNER_USABILITY_PENDING",
-      "result": "Recorded linked panes, qualified evidence and continuation plus active-project reading position and keyboard focus verified through real public controller. Final Joey usability remains separate.",
+      "result": "Four-project evidence workspace plus actual approved sixteen-file historical review: private load regression repaired, Explorer/file selectors/path/numbered literal diff/membership graph linked. No current tool stream or writer introduced.",
       "definitionOfDoneRef": "docs/MC_PHASE_PLAN.md",
       "ownerAcceptance": "PENDING_FINAL_TARGET_ACCEPTANCE",
       "sources": [
         "docs/COMMAND_WORKSPACE_HANDOFF.md",
         "docs/COMMAND_WORKSPACE_REVIEW.md",
-        "docs/MC_WORKSPACE_READING_HANDOFF.md"
+        "docs/MC_WORKSPACE_READING_HANDOFF.md",
+        "docs/MC_HISTORICAL_FILE_REVIEW_HANDOFF.md"
       ],
       "tests": {
         "pass": 262,
@@ -58,7 +59,9 @@
           390,
           320
         ],
-        "readingBrowserCases": 12
+        "readingBrowserCases": 12,
+        "historicalFileReviewBrowserCases": 12,
+        "portablePass": 486
       }
     },
     {
@@ -146,17 +149,19 @@
     {
       "id": "P5",
       "status": "REFERENCE_INSPECTED_PANES_VERIFIED_OWNER_ACCEPTANCE_PENDING",
-      "result": "Three approved reference frames inspected; responsive persistent panes and reading-flow selection/refresh/failure/history/mobile/return/focus verified. Actual Owner smoke blocked by Mac Transport closed; final usable-target acceptance separate.",
+      "result": "Three real reference frames inspected; persistent panes, reading/focus and approved historical file review counterpart verified. Genuine live transcript/editor/usage data absent; final reference/Owner acceptance separate.",
       "definitionOfDoneRef": "docs/MC_PHASE_PLAN.md",
       "ownerAcceptance": "PENDING_FINAL_TARGET_ACCEPTANCE",
       "sources": [
-        "docs/MC_WORKSPACE_READING_HANDOFF.md"
+        "docs/MC_WORKSPACE_READING_HANDOFF.md",
+        "docs/MC_FINAL_REQUIREMENTS_GAP_MAP.md"
       ],
       "tests": {
         "readingBrowserCases": 12,
-        "portablePass": 485,
+        "portablePass": 486,
         "guardedOwnerWithReadingHelperSyntheticCases": 9,
-        "liveAuthRequests": 0
+        "liveAuthRequests": 0,
+        "historicalFileReviewBrowserCases": 12
       }
     }
   ],
@@ -308,6 +313,23 @@
       "ownerDecisionSubmit": false,
       "ownerMacAcceptance": "TRANSPORT_CLOSED_NO_UI_VERIFICATION",
       "productionPromotion": false
+    },
+    {
+      "type": "ACTUAL_HISTORICAL_FILE_REVIEW_RESTORED_AND_LINKED",
+      "at": "2026-10-07T23:01:07.149160+00:00",
+      "baseline": "0a32eaefa79173a5e8ed3b155ccd15c3f1373ef9",
+      "result": "Actual raw comparison without summary reproduced full Workspace render failure. Repaired count and connected actual16files via Explorer/tab/path/literal numbered diff/membership graph, URL/history/mobile/failure recovery. Public graph exposes existing safe areas/count only. Complete contract/integration/visual gap map saved.",
+      "tests": {
+        "portable": 486,
+        "realHistoricalFileBrowserCases": 12,
+        "readingBrowserCases": 12,
+        "guardedOwnerSyntheticCases": 9,
+        "externalRequests": 0,
+        "apiMutations": 0
+      },
+      "ownerDecisionSubmit": false,
+      "productionPromotion": false,
+      "checkpointRef": "historical-file-review-checkpoint.json"
     }
   ],
   "migrationPriority": {
@@ -398,11 +420,11 @@
     ]
   },
   "currentReconciliation": {
-    "at": "2026-10-07T22:34:16.410114+00:00",
-    "implementationAnchor": "b189aa11226eb9b4cdcdbbab935d7bf857b50dc7",
-    "preparedBranch": "codex/mc-reading-continuity-20261007",
-    "evidenceRef": "docs/MC_WORKSPACE_READING_HANDOFF.md",
-    "publishedPreview": "PRIOR_B189_VERIFIED_NEW_READING_CHECKPOINT_EXACT_READY_RECEIPT_EXTERNAL",
+    "at": "2026-10-07T23:01:07.149160+00:00",
+    "implementationAnchor": "0a32eaefa79173a5e8ed3b155ccd15c3f1373ef9",
+    "preparedBranch": "codex/mc-historical-filegraph-20261007",
+    "evidenceRef": "docs/MC_FINAL_REQUIREMENTS_GAP_MAP.md",
+    "publishedPreview": "HISTORICAL_FILE_REVIEW_EXACT_READY_RECEIPT_EXTERNAL",
     "finalPrototype": "INCOMPLETE",
     "scope": "Generic phase/capability state only; private payloads and custody exports remain outside Git/public.",
     "phoneLogin": {

@@ -376,3 +376,16 @@ body[data-active-module=workspace] main{padding:6px}
 .owner-auth-diagnostic{white-space:pre-wrap;overflow-wrap:anywhere;user-select:text;font:11px/1.6 ui-monospace,monospace;padding:10px;border:1px solid #63757a66;border-radius:4px;color:#ccd9ce;background:#101816;max-width:100%;box-sizing:border-box}
 
 .owner-saved-decisions{min-width:0;padding:10px;border:1px solid #acbfae55}.owner-saved-decisions pre{font:10px/1.6 ui-monospace,monospace;white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%}.owner-saved-decisions p,.owner-saved-decisions small{overflow-wrap:anywhere}
+
+#workspace .command-graph-group{position:absolute;transform:translate(-50%,-50%);max-width:22%;font:9px/1.3 ui-monospace,monospace;overflow-wrap:anywhere;padding:3px 5px;border:1px solid #496052;background:#142018;z-index:1}
+#workspace .command-file-tabs{display:flex;position:static;gap:3px;max-width:100%;min-width:0;overflow-x:auto;padding:5px 0;margin:8px 0;border:0;background:transparent}
+#workspace .command-file-tabs button{flex:0 0 auto;max-width:220px;min-height:34px;white-space:nowrap;font:10px/1.4 ui-monospace,monospace;padding:5px 8px;border:1px solid var(--console-line);border-radius:3px;background:#121a15;color:var(--console-text)}
+#workspace .command-file-tabs button[aria-pressed=true]{border-color:var(--console-accent);background:#253021}
+#workspace .command-file-breadcrumb{font:10px/1.6 ui-monospace,monospace;overflow-wrap:anywhere;color:#bac9b0;margin:10px 0}
+#workspace .command-changes pre.command-diff{padding:8px 0;white-space:pre-wrap;overflow-wrap:anywhere;border:1px solid var(--console-line)}
+#workspace .command-diff-line{display:block;position:relative;padding:0 8px 0 9ch;min-height:1.7em;white-space:pre-wrap;overflow-wrap:anywhere}
+#workspace .command-diff-line:before{content:attr(data-old-line) "  " attr(data-new-line);position:absolute;left:0;top:0;width:8ch;padding-right:1ch;box-sizing:border-box;text-align:right;white-space:pre;color:#8c9a89;background:#0d150f}
+#workspace .command-diff-line[data-diff-kind=added]{background:#20472d77;color:#d2e7c7}
+#workspace .command-diff-line[data-diff-kind=removed]{background:#50272466;color:#e4b7ad}
+#workspace .command-diff-line[data-diff-kind=metadata]{color:#aab89e;background:#17221c}
+@media(max-width:768px){#workspace .command-file-tabs button{min-height:44px}}

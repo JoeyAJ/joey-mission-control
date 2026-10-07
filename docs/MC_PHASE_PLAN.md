@@ -2,13 +2,15 @@
 
 Joey remains Product Owner and Final Approver. This is the continuing core task, not a claim that the first command workspace is the final product. Joey's original instruction is retained verbatim in the private progress ledger, with its source identity/time. The existing public product URL is unchanged.
 
-## Current reconciliation — 2026-10-07 reading continuity
+## Current reconciliation — 2026-10-07 source-bound file review
 
-Verified prior fixed-preview anchor:
-`b189aa11226eb9b4cdcdbbab935d7bf857b50dc7`, applied Owner RPC correction.
-The new independent stage is `codex/mc-reading-continuity-20261007`;
-exact candidate/fixed SHA, tree and READY receipts are saved externally in
-`workspace-reading-checkpoint.json`. The same fixed preview alias is retained.
+Verified prior fixed-preview anchor:0a32eaefa79173a5e8ed3b155ccd15c3f1373ef9.
+The current independent stage is `codex/mc-historical-filegraph-20261007`;
+exact source/tree and same fixed READY receipt are external in
+`historical-file-review-checkpoint.json`. Actual private comparison loading is
+restored; sixteen approved files now link Explorer, file selectors, path,
+numbered bounded diff and comparison-membership graph. No data/source scope grows.
+The complete remaining requirements are [MC_FINAL_REQUIREMENTS_GAP_MAP.md](MC_FINAL_REQUIREMENTS_GAP_MAP.md).
 Production stays at `8b4945b16a0b23f2e72033aa976fa34f94eabec0`; SSO remains enabled.
 The current evidence matrix is [MC_COMMAND_CENTER_ACCEPTANCE.md](MC_COMMAND_CENTER_ACCEPTANCE.md).
 Historical statements below are superseded by these current capability rows.
@@ -16,7 +18,7 @@ Historical statements below are superseded by these current capability rows.
 | Phase | Implemented and verified | Remaining capability / acceptance |
 |---|---|---|
 | P0 authority and custody | Frozen four-project import, integrity, Owner mapping and actual four-context reads | Canonical per-store writer/cutover and continuous sync unassigned |
-| P1 useful workspace | Linked panes, qualified context/continuation, Explorer/Graph, stable routes, reading position and keyboard focus continuity | Final Joey usability acceptance |
+| P1 useful workspace | Linked panes, qualified context/continuation, Explorer/Graph, stable routes, reading/focus continuity and real historical file review | Final Joey usability acceptance |
 | P2A/P2B evidence | Bounded candidate observer, CAS/replay/expiry and parent status observation | No authenticated current-task tool/code/diff producer or live transport |
 | P3 decision/control | Proposal/result journal; approved final-decision scope; applied two-body RPC correction and real refusal readback | Submit remains false. Fresh corrected projection smoke on Mac returned Transport closed; no new Owner UI verification. Actual Joey AAL2 commit/readback, revocation and two-device acceptance pending |
 | P4 continuity | Existing Owner Auth, frozen context reads and export integrity | Current decision runtime/device acceptance, canonical writeback and continuous sync absent |

@@ -9,6 +9,14 @@ The applied RPC correction and current reading-flow source/tree/fixed READY
 receipts are external: `owner-decision-applied-correction-checkpoint.json` and
 `workspace-reading-checkpoint.json`. Production remains8b4945b.
 
+Complete requirement reconciliation, including real integration blockers and the
+actual reference visual delta, is [MC_FINAL_REQUIREMENTS_GAP_MAP.md](MC_FINAL_REQUIREMENTS_GAP_MAP.md).
+Current independent historical file review is documented in
+[MC_HISTORICAL_FILE_REVIEW_HANDOFF.md](MC_HISTORICAL_FILE_REVIEW_HANDOFF.md).
+The complete private comparison response previously crashed the Explorer; this
+stage fixes that shape mismatch and links sixteen actual bounded diffs with file
+tabs/path/line offsets and graph. Exact new checkpoint identity is external.
+
 Current Owner acceptance dependency: parent Mac smoke returned Transport closed;
 there is no new UI/Owner readback proof. Decision submission stays false. This
 transport failure does not block the independently verified reading-flow stage.
@@ -21,7 +29,7 @@ transport failure does not block the independently verified reading-flow stage.
 | Proposal / result continuity | Management-only private append, one real proposal and result; CAS concurrency and exact replay; integrity export; authenticated read wrapper with Owner/AAL2/current session; parent actual Mac NEXAEON journal read PASS (one proposal + one result, revision2, pending Joey) | iPhone and two-device journal acceptance remain unverified | Autonomous agent/app write transport not granted; submitter attestation is not an Owner decision |
 | Joey accept / reject | Joey13:24:03 approved narrow private persistence; migration20261007133100 and applied RPC correction20261007215457 verified. Submit remains false pending actual corrected projection smoke. Explicit two-step confirmation/readback UI, immutable CAS/replay/expiry, local isolated PostgreSQL and synthetic browser checks pass | Real Joey AAL2 commit/readback, revocation, concurrent two-device/lost-response verification pending; actual Supabase rollback fixture completion unconfirmed | No agent decision, automatic execution, canonical promotion or dispatch authority |
 | Current work / tool / code events | Bounded isolated observer/reducer/store/replay/expiry and qualified parent task snapshot | A real bound producer trial has not run | Exact-task authenticated event feed unavailable; no fabricated live status or tool stream |
-| Code / diff evidence | Approved fixed historical Explorer/diff and source revision qualification | No additional real event acceptance | Current file/tool/diff events require the missing producer; historical diffs cannot supply them |
+| Code / diff evidence | Approved real sixteen-file historical Explorer/tab/path/numbered diff and membership graph; source revision qualification | No additional real event acceptance | Current file/tool/diff events require the missing producer; historical diffs cannot supply them |
 | Any-agent handoff | Source-qualified private continuation, approved private Git checkpoint, bounded P3 custody export; raw private data excluded from public build | Restart handoff is document/custody based; new reader must verify current scope | Automatic dispatch, canonical writeback and continuous Mac/cloud synchronization unavailable |
 | Owner identity / recovery | Existing Owner/AAL2 bridge and four real context reads; Joey reported real phone login working at13:10 after existing MFA instruction; safe diagnostics and synthetic SDK/recovery/lifecycle regressions | Phone private RPC and revocation/two-device acceptance not separately evidenced; executor Safari/WebKit not run | No credential collection, factor reset, new account or authentication success inferred from synthetic checks |
 | Reference/UI target and release | Actual 2s/18s/34s frames inspected and hashes verified; persistent panes/split inspector/graph; mobile Explorer/filter fixes; no overflow in supported checks | Final Joey reference/usability acceptance | Production promotion not authorized by a development checkpoint; protection remains enabled |
