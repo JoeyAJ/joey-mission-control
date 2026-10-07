@@ -28,3 +28,7 @@ This makes one real producer observable locally while retaining the existing pub
 ## Candidate reproduction
 
 `node docs/contracts/observer-stdin.mjs /workspace/mc-observer-candidate-import candidate-session-1` consumes stdin standard JSONL, never launches an agent. It is UNVERIFIED_IMPORTED_JSONL; candidate-session IDs are explicit development bindings, not platform identities. For delivery-aware replay use the tested ingest API with original deliverySequence and expectedRevision; the convenience stdin reader is a single stream, not automatic reconnect. Raw commands/messages/outputs are discarded. Capacity is 1000 accepted receipts; no truncation. Private preview may receive candidate root as argument4 and qualification as argument5. Only the two unverified/test qualifications exist; there is no verified/current option.
+
+## Subsequent supported snapshot evidence
+
+Parent now supplied actual cloud_threads.read bounded metadata observation (02:52Z, minute precision preserved). Provider-neutral snapshot adapter implemented privately: no role/text/items, no tool stream, parent-provided transport qualification, five-minute stale→unknown and client expiry. This partially supplies task status; it does not close missing automatic/live tool source or authenticate an agent identity. No connector call is claimed by this app. Private raw task identifiers remain outside Git/public payloads.

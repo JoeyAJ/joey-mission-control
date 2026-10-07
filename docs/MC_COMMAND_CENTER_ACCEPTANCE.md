@@ -6,7 +6,7 @@ Reference is an operating-console direction, not a replacement product. Consumer
 
 | Core | UI acceptance | Functional acceptance | Candidate state / gap |
 |---|---|---|---|
-| Sessions / projects | Responsive persistent project entries, explicit session qualification | Selection links evidence/context/history; current session must have authenticated task binding | Four project entries implemented; MC observer history implemented separately. Actual Claude/Codex/Terminal session roster: **platform event source missing** |
+| Sessions / projects | Responsive persistent project entries, explicit session qualification | Selection links evidence/context/history; current session must have authenticated task binding | Four project entries implemented; MC observer history implemented separately. Parent-supplied actual task status snapshot implemented, with observed time and stale→unknown. Actual Claude/Codex/Terminal session roster and tool stream still unavailable |
 | Central task workflow | Evidence list, event selection, reading/error/recovery state | Standard JSONL → pure reducer → single writer atomic/CAS receipt → refresh/history | Candidate isolated flow implemented; imported/synthetic identity stays unverified, current runtime disconnected |
 | Explorer / inspector | Source/context detail with stable navigation | Claim-specific provenance, baseline, next/blocker/approval, unknown reasons | Real private restore and safe source receipts mapped. Fixed16file historical Explorer implemented; arbitrary private code browsing/tool output not exposed |
 | Code / diff | Show source revision and context without false operations | Show only supported approved evidence; never invent reads/writes/diff | Historical8b478→91b171b Explorer and bounded diff implemented privately; public safe counts/version only. No live file/diff source: **missing platform evidence** |
@@ -24,3 +24,5 @@ Reference is an operating-console direction, not a replacement product. Consumer
 4. Verified producer and formal result/approval loop: requires authenticated transport evidence plus named canonical per-store writer authority. Persistent credential, canonical cutover, new invocation or production release remains a distinct decision.
 
 Do not stop at visual acceptance or offline contract success and call the final console complete. Continue independent authorized phases, save private receipts, and report exact platform/resource gaps. Mobile and three-language usability, source truth, existing four projects/Assetcase/privacy and production URL remain acceptance requirements.
+
+Parent-supplied cloud_threads.read snapshot is now usable as a recent observation only. Source qualification/receipt transport remain explicit; app does not read that connector. Snapshot status is never proof of per-tool execution, current actor/model or automatic sync.

@@ -251,5 +251,23 @@
     "review": "Independent no P1/P2",
     "stageAlias": "https://joey-mission-control-git-codex-mc-comma-fceec2-joeyajs-projects.vercel.app/#workspace",
     "authenticatedAccess": "NOT_VERIFIED"
+  },
+  "taskObservation": {
+    "state": "PARENT_SUPPLIED_PLATFORM_SNAPSHOT_IMPLEMENTED",
+    "source": "cloud_threads.read",
+    "receiptBody": "EXCLUDED_FROM_REPO",
+    "mode": "snapshot",
+    "live": false,
+    "appConnectorRead": false,
+    "automaticHook": false,
+    "toolEvents": false,
+    "staleAfterMs": 300000,
+    "clientExpiryInvalidation": true,
+    "tests": {
+      "portable": 307,
+      "independentFocused": 8
+    },
+    "browser": "1440/390/320/3locales; failedrefresh expiry PASS",
+    "firstLoadRouting": "Cold delayed-module Joey-active flash reproduced and default active removed; regression PASS; full external cause unproven"
   }
 }
