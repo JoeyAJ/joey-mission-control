@@ -1,0 +1,33 @@
+# P2A / P2B execution-report proposal — not implemented or authorized to activate
+
+Selected next stage after P1: one bounded producer report linked to existing Workspace evidence. P1 provenance, source/event/read time, stable task-history selection, Back/Forward/reload, repeated refresh and failure recovery are engineering complete. Evidence: `tests/command-workspace.test.mjs`, `tests/browser/run-command-qa.cjs`, private `/workspace/mc-qa/report.json`. Joey usability acceptance remains pending. Do not add another module or manufacture a runtime to make the UI move.
+
+## Existing boundaries
+
+`src/server.mjs` has a loopback Host check and existing write token; possession of that token does not authenticate a named agent. `src/storage/json-store.mjs` provides atomic replacement and serialized update locking, not automatic application revision/sequence checks. `src/api/routes.mjs` exposes existing mission/owner operations locally; the production adapter remains read-only. No report endpoint, report store, producer binding or runtime observer exists.
+
+Mac's actual approved owner snapshot embeds canonical missions for WB and Asset. Separate missions/proposals ledgers were never created. Future lookup must resolve the restored authoritative mission representation explicitly; it must not initialize an empty ledger and treat that as migration or create a duplicate mission authority. Filtered context has no producer identity/runtime fields and cannot supply them.
+
+## Proposed bounded path
+
+1. Parent selects one existing authorized local producer and the exact project/mission representation, baseline SHA, process/session identity binding, writer and custody root. The selected producer must expose real events through an available documented hook; do not infer hooks from this proposal. A verified process observation and a producer self-report are different evidence classes.
+2. A pure private reducer validates a proposed `mc.execution-report.v1` envelope: report/event IDs, project/mission IDs, baseline SHA, producer binding ID, session ID, integer sequence, expected store revision, UTC event time, issued time and expiry, event kind and bounded safe evidence reference. Proposed kinds are started, progress, permission-needed, completed, failed and disconnected. These are contract candidates, not current supported telemetry or permission grants. No command/output/chat/path/diff/free-form log body is accepted.
+3. Exact project/mission/baseline and producer binding must match authoritative readback. Same event ID and same digest is idempotent; same ID with different bytes is conflict. Nonincreasing sequences, unknown sessions, revision mismatch, future/expired times and completion from another session fail closed. Define timing limits with the real producer before activation; producer-supplied expiry cannot extend its approved maximum. Validate and CAS within the same store update. Rejected reports do not replace the last trusted snapshot or mark anything running.
+4. Only after P0 closure and explicit writer authorization, integrate that reducer with the existing private local store and loopback boundary. The exact filename and token availability are unresolved; neither a new key nor a new operational ledger is created by this proposal. Token possession plus a caller-supplied allowlisted binding ID is only `AUTHORIZED_CALLER_DECLARED_IDENTITY` (self-attestation): another token holder could impersonate that producer/session. It must never produce verified emitter identity. Stronger identity requires the selected real hook to verify binding/session against the actual report emitter; that mechanism is not identified and no new keys are introduced. Process observation remains a separate evidence class.
+5. Existing Workspace event selection/inspector consumes a bounded private projection. Label reported activity with identity-evidence class, source event time, consumer read time, source revision and validity. Expired reports display last reported state plus expired/disconnected; no timer invents completion. Permission-needed is a recorded request only. Completion does not update owner acceptance, baseline or canonical mission state. Public snapshot/API remains disconnected and excludes reports.
+
+## Gates and minimum authorization
+
+| Gate | Required proof / authority | Current status |
+|---|---|---|
+| P0 source readback | Official consumer-local bytes for the two already approved Library packages; actual outer/payload hashes, bundled schema/refs, immutable restore and authority comparison | BLOCKED; no more download attempts without a concrete supported fix |
+| Source cutover | Parent/Mac owner identifies authoritative per-field mission/state version, single writer, offline conflict rule and rollback checkpoint | PENDING; readonly transfer approval is not writer cutover |
+| Real producer | Parent names one available authorized runtime and documented event hook; exact binding/task/baseline and privacy-safe evidence | NOT IDENTIFIED; cannot call it live |
+| Local ingress activation | Exact existing token/root, bounded private report persistence and supported adapter scope explicitly authorized after the above gates | NOT AUTHORIZED; no Agent execution/control, DB/Auth or network change included |
+| Public release | Parent/Joey separately accept the candidate and authorize production promotion | PENDING; existing URL unchanged |
+
+Pure contract/reducer synthetic work can proceed under existing isolated-development scope after review of this proposal; any receiver/store activation stops at the gates. A new network host, external resource, token/key, live writer or Agent execution needs a concrete separate proposal before implementation/activation. No continuous sync, heartbeat/dispatch or terminal runner is needed for this stage.
+
+## Acceptance and recovery to implement when selected
+
+Synthetic tests must cover exact matching, identity-evidence labels, a valid-token caller impersonating another producer/session never gaining verified identity, unknown mission, duplicate/id conflict, sequence/revision conflict, future/expiry, forbidden private payload, failed import retaining previous view, restart replay without renewed validity and public GET404/non-GET403. A real producer end-to-end check must separately prove one genuine report, source/identity/task/time/version drilldown, disconnect/expiry and reconnection with a new approved session; synthetic PASS cannot satisfy it. Existing 262 portable tests and three-language 1440/390/320 Workspace navigation/recovery must remain intact when runtime/UI code changes. Current proposal changes docs/private progress only; no new runtime tests or deployed browser results are claimed.

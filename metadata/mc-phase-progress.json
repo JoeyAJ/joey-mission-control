@@ -48,10 +48,12 @@
     {
       "id": "P2A",
       "status": "DEPENDENCY_GATED_BEFORE_NEW_PRIVATE_WRITES",
-      "result": "No new receiver/private writes implemented; requires P0 single-authority migration closure.",
+      "result": "Concrete producer/identity/mission/time/revision/privacy/activation proposal prepared; no receiver/store writes or live producer implemented.",
       "definitionOfDoneRef": "docs/MC_PHASE_PLAN.md",
       "ownerAcceptance": "NOT_RECORDED",
-      "sources": [],
+      "sources": [
+        "docs/MC_EXECUTION_REPORT_PROPOSAL.md"
+      ],
       "tests": null
     },
     {
@@ -102,8 +104,8 @@
       "result": "Two P2 fixed; no remaining P1/P2 reported; source/runtime truth retained."
     },
     {
-      "type": "P2A_STARTED",
-      "boundary": "isolated local receiver/tests; no live producer claim"
+      "type": "P2A_EARLY_INTENT_SUPERSEDED_BY_MIGRATION_GATE",
+      "boundary": "Historical plan only; no receiver implemented or active. Current stage is docs-only proposal, gated by P0 authority/readback."
     },
     {
       "at": "2026-10-06T23:30:43Z",
@@ -133,6 +135,11 @@
       "type": "P0_PRODUCER_V1_MAPPING_AND_INDEPENDENT_REVIEW_COMPLETE",
       "at": "2026-10-07T00:18:24.162356+00:00",
       "result": "Producer authoritative actual key/types mapped;10 synthetic tests PASS;3 review gaps fixed. Both approved saved packages official transfer failed fresh default+CA attempts;0localZIP, actual readback NOT RUN. No private data or writer in product tree."
+    },
+    {
+      "at": "2026-10-07T00:24:40.209061+00:00",
+      "type": "NEXT_STAGE_EXECUTION_REPORT_PROPOSAL_PREPARED",
+      "result": "P1 existing provenance/history/recovery evidence reviewed; docs-only P2A/P2B plan, P0 still blocked. No new runtime/resource/permission or download."
     }
   ],
   "migrationPriority": {
