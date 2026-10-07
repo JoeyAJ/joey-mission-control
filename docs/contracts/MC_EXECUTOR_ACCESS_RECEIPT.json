@@ -1,0 +1,50 @@
+{
+  "projectRef": "scmvedfqwlhkyvljymjj",
+  "approvedSHA256": "5a9862e2ca5e64ebd6ba5215c3802572e93fb533f986a8dcb7526446fc1b0f73",
+  "approval": {
+    "userSentinel": "Sentinel_42f390a9a96c8191a846b2e8bf239439",
+    "at": "2026-10-07T04:40:25Z",
+    "text": "\u4f60\u53bb\u4f60\u6700\u4f73\u53bb\u5efa\u7acb\u5427\u3002",
+    "scope": "LIMITED_EXECUTOR_ACCESS_ONLY"
+  },
+  "officialMigration": {
+    "version": "20261007044131",
+    "name": "mc_private_continuity_scoped_executor"
+  },
+  "apply": "SUCCESS_ONCE",
+  "validation": {
+    "roleAttributes": "NOLOGIN_NOSUPERUSER_NOBYPASSRLS_NOINHERIT_NOCREATEROLE_NOCREATEDB",
+    "memberships": [
+      {
+        "member": "postgres",
+        "grantor": "supabase_admin",
+        "admin": true,
+        "set": false,
+        "inherit": false
+      },
+      {
+        "member": "postgres",
+        "grantor": "postgres",
+        "admin": false,
+        "set": false,
+        "inherit": false
+      }
+    ],
+    "corePolicies": 9,
+    "executorOwnedFunctions": 8,
+    "definerFunctions": 4,
+    "allSearchPathsEmpty": true,
+    "schemaCreate": false,
+    "tablePrivileges": "EXACT_SIX_SELECT_EVENTS_INSERT_FIVE_COUNTER_COLUMNS_UPDATE_ONLY",
+    "anonAuthenticatedServiceRole": "SCHEMA_AND_READ_APPEND_EXECUTE_DENIED",
+    "syntheticExecutorRollback": "PASS_AFTER_TWO_FIXTURE_ROLE_DENIAL_CORRECTIONS",
+    "CASAtomicityIdempotency": "PASS_SINGLE_TRANSACTION_SYNTHETIC",
+    "allSixTablesEmpty": true,
+    "authIdentityCount": 0,
+    "bridgeRefuses": true,
+    "writerActivationCount": 0,
+    "securityAdvisors": [],
+    "realAuthOwnerRLSParallelCASTwoDevice": "NOT_RUN",
+    "appConnection": "UNCONFIGURED"
+  }
+}
