@@ -19,10 +19,12 @@ existing SDK lifecycle9, build and static safety checks PASS. The browser endpoi
 are synthetic only, with zero live Auth/DB requests. This is submit protection,
 not acceptance of the unchanged SQL or actual Owner decision flow.
 
-Next: correct only the two RPC bodies in this isolated candidate. Verify real
-local PostgreSQL with two distinct connections, including read snapshot integrity,
-concurrent CAS and exact idempotent replay. Keep the preview submit flag false
-until deployed definitions and applicable bounded integration checks are verified.
-No temporary CREATE/SET grant expansion is authorized. Preserve the original
-migration; do not rerun it. Exact source/deployment/manifest and subsequent
-correction results belong in the external guarded checkpoint.
+The two-body source correction and real local PostgreSQL two-connection checks
+now pass. See [correction handoff](MC_OWNER_DECISION_RPC_CORRECTION_HANDOFF.md).
+The deployed definitions remain unchanged because the current management caller
+lacks existing function-owner privileges. Keep preview submission disabled until
+deployed definitions and applicable bounded integration checks are verified.
+Temporary CREATE/SET grant expansion requires separate authorization. Preserve
+the original migration and historical checkpoint; do not rerun the migration.
+Exact candidate source/tree, deployment and file digests remain in the external
+correction checkpoint rather than self-referencing this commit.

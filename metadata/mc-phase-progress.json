@@ -95,8 +95,8 @@
     },
     {
       "id": "P3",
-      "status": "PREVIEW_SUBMIT_GUARDED_TWO_RPC_CORRECTIONS_PENDING",
-      "result": "Guarded source disables only Owner final decision submission and preserves authenticated reads/session. Two deployed SQL defects remain: split metadata/page snapshots and missing three ID string/format guards. No real decision or live SQL/grant change. Real local two-connection PostgreSQL and deployed correction verification pending.",
+      "status": "PREVIEW_SUBMIT_GUARDED_NATIVE_CORRECTION_PASS_DEPLOYMENT_OWNER_BLOCKED",
+      "result": "Two-body source correction passes native PostgreSQL17.10 two-connection snapshot/CAS/idempotency verification. Fixed preview submission remains disabled with reads preserved. Live RPC definitions remain old because existing management principal lacks owner/SET rights; no permission expansion or real decision. Deployed replacement and actual integration acceptance pending.",
       "definitionOfDoneRef": "docs/MC_PHASE_PLAN.md",
       "ownerAcceptance": "PENDING_FINAL_TARGET_ACCEPTANCE",
       "sources": [
@@ -104,14 +104,22 @@
         "docs/MC_OWNER_REVIEW_PREPARED_HANDOFF.md",
         "docs/MC_OWNER_DECISION_GRANT_SCOPE.md",
         "docs/MC_OWNER_DECISION_PERSISTENCE_HANDOFF.md",
-        "docs/MC_OWNER_DECISION_GUARDED_HANDOFF.md"
+        "docs/MC_OWNER_DECISION_GUARDED_HANDOFF.md",
+        "docs/MC_OWNER_DECISION_RPC_CORRECTION_HANDOFF.md"
       ],
       "tests": {
-        "portablePass": 482,
+        "portablePass": 485,
         "syntheticBrowserPass": 9,
         "localPostgresAlgorithm": "PASS_SYNTHETIC_FOUR_PROJECTS",
         "actualSupabaseRollbackFixture": "UNCONFIRMED_INTERRUPTED_WITHOUT_RECEIPT",
-        "realOwnerFinalDecision": "PENDING_JOEY_EXPLICIT_CLICK"
+        "realOwnerFinalDecision": "PENDING_JOEY_EXPLICIT_CLICK",
+        "nativePostgresTwoConnections": {
+          "version": "17.10",
+          "checkGroups": 10,
+          "driverExitStatus": 0,
+          "syntheticAuthOnly": true,
+          "actualSupabaseRuntime": false
+        }
       }
     },
     {
@@ -253,6 +261,10 @@
       "setupFlag": false,
       "readViewsPreserved": true,
       "reason": "Prior premature publication; both RPC defects remain uncorrected; authorized correction release follows verified guard."
+    },
+    {
+      "type": "OWNER_DECISION_NATIVE_TWO_CONNECTION_CORRECTION_VERIFIED",
+      "result": "Bounded original-defect reproductions, corrected snapshot/CAS/idempotency and pending-patch owner/ACL/settings preservation PASS; synthetic local Auth only. Live replacement blocked: non-superuser postgres has existing owner USAGE=false and SET=false; no new CREATE/SET or live DDL. Submit flag remains false."
     }
   ],
   "migrationPriority": {
@@ -343,11 +355,11 @@
     ]
   },
   "currentReconciliation": {
-    "at": "2026-10-07T20:19:02.439692+00:00",
+    "at": "2026-10-07T21:18:00Z",
     "implementationAnchor": "917d7c1fd766b7694fe63e06db338cf765689280",
     "preparedBranch": "codex/mc-owner-decision-correction-20261007",
-    "evidenceRef": "docs/MC_OWNER_DECISION_PERSISTENCE_HANDOFF.md",
-    "publishedPreview": "EXACT_SOURCE_TREE_AND_FIXED_READY_IN_EXTERNAL_OWNER_DECISION_CHECKPOINT",
+    "evidenceRef": "docs/MC_OWNER_DECISION_RPC_CORRECTION_HANDOFF.md",
+    "publishedPreview": "GUARDED_7AE2C06_READY_FIXED_ALIAS_CORRECTION_CANDIDATE_ISOLATED",
     "finalPrototype": "INCOMPLETE",
     "scope": "Generic phase/capability state only; private payloads and custody exports remain outside Git/public.",
     "phoneLogin": {
@@ -359,6 +371,6 @@
       "separateRpcOrRevocationProof": false,
       "currentBlocker": false
     },
-    "ownerDecisionScope": "AUTHORIZED_SUBMIT_DISABLED_RPC_CORRECTION_PENDING"
+    "ownerDecisionScope": "AUTHORIZED_SUBMIT_DISABLED_NATIVE_CORRECTION_PASS_LIVE_OWNER_RIGHTS_BLOCKED"
   }
 }
