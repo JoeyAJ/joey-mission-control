@@ -1,5 +1,21 @@
 # Command workspace continuation / PRD delta
 
+Current reading-flow delta: same-project Timeline/Explorer/Graph operations,
+refresh, failure/recovery, browser history, mobile pane switches and Workspace
+return retain independent reading positions. New inspector content starts at
+the top, same-content disclosure is retained, and keyboard focus follows the
+visible control/new pane. Changing project or fully reloading clears this
+transient state. No Owner input, private content or Auth state is captured.
+The source-backed gap and acceptance are in
+[MC_WORKSPACE_READING_HANDOFF.md](MC_WORKSPACE_READING_HANDOFF.md).
+Prior published source isb189; the exact new checkpoint is external. The applied
+RPC correction remains guarded; parent Mac smoke returned Transport closed.
+
+Reference custody is now resolved: the three approved frames were read from
+private Gitdfa1cfc7843a02d9cd6935911426eea5482d06fc and inspected again for this
+stage. Earlier missing-frame statements below are historical. Static frames
+support parallel reading; they do not prove live agents or dynamic behavior.
+
 Current follow-on: [Owner context continuation](MC_OWNER_CONTEXT_CONTINUATION.md)
 implements the existing Explorer/any-agent requirements for the newly authorized
 cloud-read path. Each claim keeps its own event time, references and missing

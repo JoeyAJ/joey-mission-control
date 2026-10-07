@@ -1,19 +1,25 @@
 # Command Center current capability acceptance
 
 Reviewed against `PRODUCT_CHARTER.md`, `MC_PHASE_PLAN.md`,
-`COMMAND_WORKSPACE_CONTINUATION.md`, the three actual reference frames, and the
-917d publication/readback receipt. The repo contains the operative product contract;
-no separate newer PRD file was found. Joey remains Product Owner and Final Approver.
-Previous fixed-preview anchor: `917d7c1fd766b7694fe63e06db338cf765689280`.
-Current final-decision stage source/tree/fixed READY receipt is recorded externally
-in `owner-decision-persistence-checkpoint.json`; production is unchanged.
+`COMMAND_WORKSPACE_CONTINUATION.md` and the three actual approved reference frames.
+The repository contains the operative product contract; no newer separate PRD
+was found. Joey remains Product Owner and Final Approver.
+Prior verified fixed source is `b189aa11226eb9b4cdcdbbab935d7bf857b50dc7`.
+The applied RPC correction and current reading-flow source/tree/fixed READY
+receipts are external: `owner-decision-applied-correction-checkpoint.json` and
+`workspace-reading-checkpoint.json`. Production remains8b4945b.
+
+Current Owner acceptance dependency: parent Mac smoke returned Transport closed;
+there is no new UI/Owner readback proof. Decision submission stays false. This
+transport failure does not block the independently verified reading-flow stage.
 
 | Product capability | Implemented and verified | Implemented, awaiting actual acceptance | Unsupported or permission bound |
 |---|---|---|---|
 | Four-project workspace | Linked recorded sessions/events/context/graph; stable URLs/filter/history/reload; three locales; 1440/870/390/320 layouts; parent actual Mac pane QA | Final Joey usable-target acceptance | A project entry/history does not establish a current running agent |
+| Workspace reading flow | Independent pane positions, keyboard focus, refresh failure/recovery, history, mobile switches and Workspace return; 12 recorded-public-app browser cases, external requests0/API writes0 | Actual Joey usability acceptance pending | Transient page state only; reload/project change clears it. No live execution feed added |
 | Private Owner context / Explorer | Existing authenticated read of all four frozen contexts verified on task-owned Mac; per-field source/time/missing reason; scoped continuation; purge on project/session changes | Phone private RPC reading not separately evidenced | Arbitrary private source/log browsing and continuous canonical sync unavailable |
 | Proposal / result continuity | Management-only private append, one real proposal and result; CAS concurrency and exact replay; integrity export; authenticated read wrapper with Owner/AAL2/current session; parent actual Mac NEXAEON journal read PASS (one proposal + one result, revision2, pending Joey) | iPhone and two-device journal acceptance remain unverified | Autonomous agent/app write transport not granted; submitter attestation is not an Owner decision |
-| Joey accept / reject | Joey13:24:03 approved narrow private persistence; migration20261007133100 and ACL readback verified. Explicit two-step confirmation/readback UI, immutable CAS/replay/expiry, local isolated PostgreSQL and synthetic browser checks pass | Real Joey AAL2 commit/readback, revocation, concurrent two-device/lost-response verification pending; actual Supabase rollback fixture completion unconfirmed | No agent decision, automatic execution, canonical promotion or dispatch authority |
+| Joey accept / reject | Joey13:24:03 approved narrow private persistence; migration20261007133100 and applied RPC correction20261007215457 verified. Submit remains false pending actual corrected projection smoke. Explicit two-step confirmation/readback UI, immutable CAS/replay/expiry, local isolated PostgreSQL and synthetic browser checks pass | Real Joey AAL2 commit/readback, revocation, concurrent two-device/lost-response verification pending; actual Supabase rollback fixture completion unconfirmed | No agent decision, automatic execution, canonical promotion or dispatch authority |
 | Current work / tool / code events | Bounded isolated observer/reducer/store/replay/expiry and qualified parent task snapshot | A real bound producer trial has not run | Exact-task authenticated event feed unavailable; no fabricated live status or tool stream |
 | Code / diff evidence | Approved fixed historical Explorer/diff and source revision qualification | No additional real event acceptance | Current file/tool/diff events require the missing producer; historical diffs cannot supply them |
 | Any-agent handoff | Source-qualified private continuation, approved private Git checkpoint, bounded P3 custody export; raw private data excluded from public build | Restart handoff is document/custody based; new reader must verify current scope | Automatic dispatch, canonical writeback and continuous Mac/cloud synchronization unavailable |

@@ -2,33 +2,40 @@
 
 Joey remains Product Owner and Final Approver. This is the continuing core task, not a claim that the first command workspace is the final product. Joey's original instruction is retained verbatim in the private progress ledger, with its source identity/time. The existing public product URL is unchanged.
 
-## Current reconciliation — 2026-10-07 after 917d
+## Current reconciliation — 2026-10-07 reading continuity
 
-Published fixed-preview anchor: `917d7c1fd766b7694fe63e06db338cf765689280`.
-Production stays at `8b4945b16a0b23f2e72033aa976fa34f94eabec0`; SSO unchanged.
-This is the continuing development target, not final Joey acceptance.
+Verified prior fixed-preview anchor:
+`b189aa11226eb9b4cdcdbbab935d7bf857b50dc7`, applied Owner RPC correction.
+The new independent stage is `codex/mc-reading-continuity-20261007`;
+exact candidate/fixed SHA, tree and READY receipts are saved externally in
+`workspace-reading-checkpoint.json`. The same fixed preview alias is retained.
+Production stays at `8b4945b16a0b23f2e72033aa976fa34f94eabec0`; SSO remains enabled.
 The current evidence matrix is [MC_COMMAND_CENTER_ACCEPTANCE.md](MC_COMMAND_CENTER_ACCEPTANCE.md).
-Earlier resource/Auth/import/reference-pending statements below are historical;
-these current rows supersede their capability status without creating authority.
+Historical statements below are superseded by these current capability rows.
 
 | Phase | Implemented and verified | Remaining capability / acceptance |
 |---|---|---|
-| P0 authority and custody | Exact frozen four-project import, integrity, Owner mapping and actual four-context reads | Canonical per-store writer/cutover and continuous sync unassigned |
-| P1 useful workspace | Linked panes, source-qualified context/continuation, selectable graph, desktop/mobile Explorer, filter/history/reload | Final Joey usability acceptance |
-| P2A/P2B evidence | Isolated bounded candidate observer, CAS/replay/expiry; parent status observation | No authenticated current-task tool/code/diff producer or live transport |
-| P3 decision/control | Approved management-only proposal/result journal; real CAS/retry/ACL; one genuine proposal and result | Actual Mac NexAeon journal revision2/read and 1440/390 UX PASS; accept/reject in-memory draft prepared; Owner decision scope approved13:24:03 and migration20261007133100 applied; explicit final UI/local tests verified; actual Joey decision and runtime/two-device acceptance pending |
-| P4 continuity | Existing Owner Auth/frozen four-project read and private export integrity | Current journal two-device/revocation acceptance, canonical writeback and continuous synchronization absent |
-| P5 usability | Actual reference frames inspected; responsive pane checks; parent Mac layout QA | Joey13:10 real phone login working (user report); private phone RPC/revocation not separately proved; final target acceptance and production promotion separate |
+| P0 authority and custody | Frozen four-project import, integrity, Owner mapping and actual four-context reads | Canonical per-store writer/cutover and continuous sync unassigned |
+| P1 useful workspace | Linked panes, qualified context/continuation, Explorer/Graph, stable routes, reading position and keyboard focus continuity | Final Joey usability acceptance |
+| P2A/P2B evidence | Bounded candidate observer, CAS/replay/expiry and parent status observation | No authenticated current-task tool/code/diff producer or live transport |
+| P3 decision/control | Proposal/result journal; approved final-decision scope; applied two-body RPC correction and real refusal readback | Submit remains false. Fresh corrected projection smoke on Mac returned Transport closed; no new Owner UI verification. Actual Joey AAL2 commit/readback, revocation and two-device acceptance pending |
+| P4 continuity | Existing Owner Auth, frozen context reads and export integrity | Current decision runtime/device acceptance, canonical writeback and continuous sync absent |
+| P5 usability | Three actual reference frames inspected; persistent panes; 12 reading-flow browser cases at1440/870/390/320 in three locales | Final Joey reference/usability acceptance and production promotion separate |
 
-The next Owner decision stage uses `codex/mc-owner-review-prepared-20261007`,
-based on917d/prepared0d44. Joey13:24:03 approved append-only private final decisions
-with version/audit and existing Owner/AAL2. Migration20261007133100 is applied;
-explicit preparation plus separate confirmation/readback UI is implemented.
-See [persistence handoff](MC_OWNER_DECISION_PERSISTENCE_HANDOFF.md) and
-[applied grant scope](MC_OWNER_DECISION_GRANT_SCOPE.md). Exact published SHA/tree
-and fixed-preview READY are recorded in the external stage checkpoint.
-Actual Joey decision/readback, revocation and two-device runtime acceptance remain
-pending. Local PostgreSQL and synthetic checks do not establish those results.
+The independent reading-flow stage fixes a reproduced UI reset without depending
+on Owner login or a new source. It retains active-project pane positions across
+selection, refresh, history, mobile pane switches and Workspace return. New
+inspector content starts at the top; a new project and full reload clear transient
+geometry. Same-content source disclosure is retained. Keyboard operations retain
+focus or move to the new visible pane; outside/Auth focus is never restored by
+this helper. Only bounded geometry/control identifiers are held in memory; no
+content, forms, storage, network or execution event is added.
+
+See [reading handoff](MC_WORKSPACE_READING_HANDOFF.md) and
+[applied RPC correction](MC_OWNER_DECISION_RPC_CORRECTION_HANDOFF.md).
+Owner decision submission remains disabled pending actual acceptance; synthetic
+and native PostgreSQL checks do not establish Joey Auth/AAL2 or two-device success.
+Independent UI development can continue while the Mac transport dependency is open.
 
 ## Historical definitions and phase receipts
 

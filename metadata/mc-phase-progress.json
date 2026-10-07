@@ -42,12 +42,13 @@
     {
       "id": "P1",
       "status": "IMPLEMENTED_VERIFIED_OWNER_USABILITY_PENDING",
-      "result": "Recorded linked panes, claim-specific evidence and continuation, desktop/mobile Explorer/filter history implemented and verified. Parent actual Mac P5 layout QA passed; final Joey usability remains separate.",
+      "result": "Recorded linked panes, qualified evidence and continuation plus active-project reading position and keyboard focus verified through real public controller. Final Joey usability remains separate.",
       "definitionOfDoneRef": "docs/MC_PHASE_PLAN.md",
       "ownerAcceptance": "PENDING_FINAL_TARGET_ACCEPTANCE",
       "sources": [
         "docs/COMMAND_WORKSPACE_HANDOFF.md",
-        "docs/COMMAND_WORKSPACE_REVIEW.md"
+        "docs/COMMAND_WORKSPACE_REVIEW.md",
+        "docs/MC_WORKSPACE_READING_HANDOFF.md"
       ],
       "tests": {
         "pass": 262,
@@ -56,7 +57,8 @@
           1440,
           390,
           320
-        ]
+        ],
+        "readingBrowserCases": 12
       }
     },
     {
@@ -144,11 +146,18 @@
     {
       "id": "P5",
       "status": "REFERENCE_INSPECTED_PANES_VERIFIED_OWNER_ACCEPTANCE_PENDING",
-      "result": "Three actual reference frames inspected; responsive persistent panes/graph/filter/mobile Explorer verified. Joey13:10 reported real phone login working; separate phone RPC/revocation proof not recorded, final usable-target acceptance and production promotion remain pending.",
+      "result": "Three approved reference frames inspected; responsive persistent panes and reading-flow selection/refresh/failure/history/mobile/return/focus verified. Actual Owner smoke blocked by Mac Transport closed; final usable-target acceptance separate.",
       "definitionOfDoneRef": "docs/MC_PHASE_PLAN.md",
       "ownerAcceptance": "PENDING_FINAL_TARGET_ACCEPTANCE",
-      "sources": [],
-      "tests": null
+      "sources": [
+        "docs/MC_WORKSPACE_READING_HANDOFF.md"
+      ],
+      "tests": {
+        "readingBrowserCases": 12,
+        "portablePass": 485,
+        "guardedOwnerWithReadingHelperSyntheticCases": 9,
+        "liveAuthRequests": 0
+      }
     }
   ],
   "events": [
@@ -289,6 +298,16 @@
       "migrationVersion": "20261007215457",
       "sqlSha256": "243dd77a82b6b267cda2d9fe9c243d7d6d3f1ac14864b16025e6d35859eb7844",
       "result": "Exact two-body replacement first attempt success,5s DO. INHERIT restored; no new CREATE/SET, role or credential. Exact definitions/metadata/both grants/data and bounded refusal integration PASS. Real decisions0, submit remains false."
+    },
+    {
+      "type": "INDEPENDENT_WORKSPACE_READING_CONTINUITY_VERIFIED",
+      "at": "2026-10-07T22:34:16.410114+00:00",
+      "baseline": "b189aa11226eb9b4cdcdbbab935d7bf857b50dc7",
+      "result": "Actual Explorer keyboard selection reproduced Timeline180 to0/focus body. Independent pane scroll, same-source disclosure and keyboard focus now retain through selection/refresh/failure/recovery/history/mobile/Workspace return. Only transient geometry; no live source or Owner/Auth/SQL change. Portable485 and actual public browser12 PASS; protected Owner helper synthetic9 PASS/network0.",
+      "privateEvidenceRef": "workspace-reading-checkpoint.json",
+      "ownerDecisionSubmit": false,
+      "ownerMacAcceptance": "TRANSPORT_CLOSED_NO_UI_VERIFICATION",
+      "productionPromotion": false
     }
   ],
   "migrationPriority": {
@@ -379,11 +398,11 @@
     ]
   },
   "currentReconciliation": {
-    "at": "2026-10-07T22:00:59.738100+00:00",
-    "implementationAnchor": "917d7c1fd766b7694fe63e06db338cf765689280",
-    "preparedBranch": "codex/mc-owner-decision-correction-20261007",
-    "evidenceRef": "docs/MC_OWNER_DECISION_RPC_CORRECTION_HANDOFF.md",
-    "publishedPreview": "APPLIED_CORRECTION_SAME_FIXED_ALIAS_READY_RECEIPT_EXTERNAL",
+    "at": "2026-10-07T22:34:16.410114+00:00",
+    "implementationAnchor": "b189aa11226eb9b4cdcdbbab935d7bf857b50dc7",
+    "preparedBranch": "codex/mc-reading-continuity-20261007",
+    "evidenceRef": "docs/MC_WORKSPACE_READING_HANDOFF.md",
+    "publishedPreview": "PRIOR_B189_VERIFIED_NEW_READING_CHECKPOINT_EXACT_READY_RECEIPT_EXTERNAL",
     "finalPrototype": "INCOMPLETE",
     "scope": "Generic phase/capability state only; private payloads and custody exports remain outside Git/public.",
     "phoneLogin": {
@@ -395,6 +414,7 @@
       "separateRpcOrRevocationProof": false,
       "currentBlocker": false
     },
-    "ownerDecisionScope": "AUTHORIZED_TWO_BODY_CORRECTION_APPLIED_SUBMIT_GUARDED_EXISTING_OWNER_SMOKE_PENDING"
+    "ownerDecisionScope": "AUTHORIZED_TWO_BODY_CORRECTION_APPLIED_SUBMIT_GUARDED_EXISTING_OWNER_SMOKE_PENDING",
+    "ownerMacSmoke": "TRANSPORT_CLOSED_NO_NEW_UI_VERIFICATION"
   }
 }
