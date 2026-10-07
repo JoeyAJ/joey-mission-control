@@ -1,5 +1,13 @@
 # Fresh saved-cloud continuation — single writer
 
+**Current:** [Owner private read](MC_OWNER_PRIVATE_READ_HANDOFF.md) is published
+at `3e9b78ff1f350f002165fb8afe57df8b42ec4694`; its approved frozen import and
+Owner-only RPC scope were applied and verified. Do not replay historical SQL or
+collect Owner credentials. Follow-on source-qualified continuation UI is isolated
+in [this candidate](MC_OWNER_CONTEXT_CONTINUATION.md). Parent's 10:49 UTC native
+review confirms actual NexAeon Owner UI read; other project reads are not inferred.
+Independent development does not wait for manual checks of every project.
+
 **Latest:** [Approved helper execution and fixed-stage Owner identity entry](MC_OWNER_AUTH_HELPER_EXECUTION_HANDOFF.md) supersedes the historical pending/blocked continuation below. Exact helper migration20261007062024 applied once; effective ACL/denial/rollback-only wiring verified. Exposure remains UNKNOWN, root metadata401 diagnosed as UNAUTHORIZED_INVALID_API_KEY_TYPE / Secret API key required; no secret obtained or endpoint bypass. Real Owner Auth/AAL2 awaits Joey. No private seed/writer/production cutover.
 
 Latest execution supersedes prior pending status: fresh settings readback PASS, approved Owner bridge migration applied as version20261007053940, but effective executor Auth metadata access is BLOCKED by managed schema/table permissions. Do not enable forms or claim bridge/AAL2 PASS. Read [actual execution and repair handoff](MC_OWNER_BRIDGE_EXECUTION_HANDOFF.md), its scoped receipt and [the latest exact unapplied helper review](MC_OWNER_AUTH_HELPER_REVIEW.md) before continuing. Parent retired the managed-owner policy repair path and is requesting approval for the limited private verifier delegation. No helper SQL is applied without that exact approval. The previous writer has stopped; parent formally transferred the sole writer to this fresh task.

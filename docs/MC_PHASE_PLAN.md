@@ -2,6 +2,33 @@
 
 Joey remains Product Owner and Final Approver. This is the continuing core task, not a claim that the first command workspace is the final product. Joey's original instruction is retained verbatim in the private progress ledger, with its source identity/time. The existing public product URL is unchanged.
 
+## Current reconciliation — 2026-10-07
+
+The Owner-only cloud read release at `3e9b78ff1f350f002165fb8afe57df8b42ec4694`
+supersedes the historical resource/Auth/import-pending statements below. Actual
+NexAeon Owner content-read acceptance was reported by parent at 10:49 UTC after
+native review of four screenshots showing different scroll sections of that one
+project. Other projects' real reads are not inferred. This does not gate independent
+source-qualified UI implementation. The protected fixed preview and
+its normal session behavior stay at that release while Joey tests it.
+
+| Phase | Current evidence | Independent next step / exact dependency |
+|---|---|---|
+| P0 authority and custody | Approved frozen import, four Owner mappings, row integrity and restored privileges verified; zero writers | Canonical per-store writer and cutover remain unassigned; read approval grants no writes |
+| P1 useful workspace | Linked recorded console and explicit Owner cloud read implemented | Candidate adds each field's source event time, reference, missing reason, and read-only continuation summary using that same authorized context |
+| P2A/P2B execution evidence | Isolated bounded observer complete; no verified live producer | Actual tool/code/diff events require a documented feed for this exact existing task with emitter/task/time/baseline binding |
+| P3 decisions and control | Existing local controls and inactive contracts retained | New result/decision persistence needs exact named writer, CAS/cutover and action authority; no append grant or dispatch is active |
+| P4 private continuity | Owner Auth, frozen private import, bounded read RPCs and actual NexAeon Owner UI read complete | Other project bindings are engineering-tested; their real reads, two-device and revocation acceptance are not inferred |
+| P5 usable target/promotion | Existing protected preview available; production unchanged | Visual reference bytes remain unavailable here; no visual-match claim. Promotion remains separately scoped |
+
+The isolated follow-on branch is `codex/mc-owner-continuation-20261007`, based on
+the exact `3e9b78f` release. The existing Explorer and any-agent continuation
+requirements explicitly call for claim-specific evidence and a qualified capsule.
+The first cloud-read view showed values and qualifications only. Completing this
+read-only projection introduces no new database access, authority, persistence,
+producer, source fallback or private public payload. See
+[the candidate handoff](MC_OWNER_CONTEXT_CONTINUATION.md).
+
 P0 — Source-of-truth/dependency and migration closure. Definition of done: per-project repo/branch/exact tip/deployment receipt/handoff source/data authority/access/sync semantics/write owner matrix verified; immutable public snapshots versioned separately from latest safe receipts; raw private canonical/owner custody and single-writer authority established before dependent writes or sync; recovery/version-integrity evidence recorded. Code custody and safe receipt alignment are verified (`8b4945b`, saved `32b77ee`, index `1578b10d`, four current tips). P0 is PARTIAL: approved filtered-context/two-ledger custody and this consumer readonly readback now PASS; canonical authority/writer cutover and continuous synchronization remain incomplete. No new private-write/agent-control/cross-project-sync implementation may activate against duplicate/conflicting authority. Independent UI/source inspection can continue. Sources: `metadata/mc-dependency-matrix.json` and `docs/MC_DEPENDENCY_MATRIX.md`.
 
 

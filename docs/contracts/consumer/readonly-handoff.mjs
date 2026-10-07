@@ -9,5 +9,5 @@ export function readonlyHandoff(view){
   missionTimes:'OWNER_RECORD_CREATION_UPDATE_NOT_EXECUTION',actor:null,model:null,runtimeConnected:false,authorityCutover:false,remoteReverified:false,automaticExecution:false,permissionGrant:false,
   continuationChecks:['Reconcile snapshot baseline with approved project remote/source before dependent work','Preserve per-claim qualification and existing Joey final approval','Establish named per-store writer authority before canonical result writeback'],
   resultRequirements:['sourceRefs','verified completion evidence','selected baseline SHA','expected canonical owner revision','Joey final approval where required']};
- if(Buffer.byteLength(JSON.stringify(result))>65536)throw Error('Capsule size exceeded');return result;
+ if(new TextEncoder().encode(JSON.stringify(result)).length>65536)throw Error('Capsule size exceeded');return result;
 }

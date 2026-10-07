@@ -1,5 +1,13 @@
 # Command workspace continuation / PRD delta
 
+Current follow-on: [Owner context continuation](MC_OWNER_CONTEXT_CONTINUATION.md)
+implements the existing Explorer/any-agent requirements for the newly authorized
+cloud-read path. Each claim keeps its own event time, references and missing
+reason; a bounded read-only capsule carries source versions and historical
+mission records without execution authority. This is isolated from the live
+`3e9b78f` preview while Joey tests it. Historical pending resource/Auth statements
+below are superseded by [the actual Owner read handoff](MC_OWNER_PRIVATE_READ_HANDOFF.md).
+
 Baseline: remote `migration/mc-e-public-case-portable-20261006` fetched and verified at `8b4945b16a0b23f2e72033aa976fa34f94eabec0`. Candidate: isolated worktree on the private checkpoint branch `/workspace/mc-command-candidate`; original saved checkout remains `32b77ee`. Joey's 2026-10-06T23:10:51Z approval authorizes parallel MC development; Joey remains Product Owner and Final Approver. Initial scope authorized no push/deploy or new infrastructure. Later parent-coordinated approval permits non-force checkpoints on the same private isolated branch; production promotion and new infrastructure remain outside scope. Existing product URL remains unchanged.
 
 Preserve: Joey View, four Registry project identities, Asset child-case, liquid-glass design, all existing local controls/Continue gates, published snapshot bytes and public read-only privacy boundary.
