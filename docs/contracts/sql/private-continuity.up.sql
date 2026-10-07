@@ -107,7 +107,7 @@ CREATE FUNCTION mc_private.validate_operation(op jsonb) RETURNS void
 LANGUAGE plpgsql IMMUTABLE SECURITY INVOKER SET search_path='' AS $$
 DECLARE p jsonb; k text; n numeric; BEGIN
  IF NOT coalesce(mc_private.exact_keys(op,ARRAY['id','epoch','projectId','baselineSha','expectedRevision','kind','payload']),false) THEN RAISE EXCEPTION 'OPERATION_FIELDS'; END IF;
- IF EXISTS(SELECT 1 FROM unnest(ARRAY['id','epoch','projectId','baselineSha','kind']) k WHERE jsonb_typeof(op->k) IS DISTINCT FROM 'string') THEN RAISE EXCEPTION 'OPERATION_CONTEXT'; END IF;
+ IF EXISTS(SELECT 1 FROM unnest(ARRAY['id','epoch','projectId','baselineSha','kind']) AS field_names(field_name) WHERE jsonb_typeof(op->field_names.field_name) IS DISTINCT FROM 'string') THEN RAISE EXCEPTION 'OPERATION_CONTEXT'; END IF;
  IF jsonb_typeof(op->'id')<>'string' OR jsonb_typeof(op->'epoch')<>'string' OR op->>'id'!~'^[A-Za-z0-9_-]{1,80}$' OR op->>'epoch'!~'^[A-Za-z0-9_-]{1,80}$' OR op->>'projectId' NOT IN ('NEXAEON','WOOSONG_BUDDY','NAMYOUNG_WEB3D','JOEY_ASSET_SYSTEM') OR op->>'baselineSha'!~'^[a-f0-9]{40}$' OR jsonb_typeof(op->'expectedRevision')<>'number' THEN RAISE EXCEPTION 'OPERATION_CONTEXT'; END IF;
  n:=(op->>'expectedRevision')::numeric; IF n<>trunc(n) OR n<0 OR n>10000 THEN RAISE EXCEPTION 'OPERATION_CONTEXT'; END IF;
  p:=op->'payload'; k:=op->>'kind';

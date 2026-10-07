@@ -1,0 +1,49 @@
+{
+  "projectRef": "scmvedfqwlhkyvljymjj",
+  "name": "joey-mission-control",
+  "organization": "zarzjtzwcssihbpjycjj",
+  "region": "ap-northeast-2",
+  "status": "ACTIVE_HEALTHY",
+  "postgresVersion": "17.11.0.003",
+  "createdBy": "JOEY_PERSONALLY",
+  "parentConfirmedAt": "2026-10-07T04:20:45Z",
+  "passwordAccessByAgent": false,
+  "apiKeysLookedUp": false,
+  "officialMigrations": [
+    {
+      "version": "20261007042316",
+      "name": "mc_private_continuity_default_deny_foundation"
+    },
+    {
+      "version": "20261007042432",
+      "name": "mc_private_validate_qualified_field_alias"
+    }
+  ],
+  "verification": {
+    "realSQLSyntheticRollback": "PASS_AFTER_QUALIFIED_ALIAS_FIX",
+    "hashVectors": {
+      "matched": 3,
+      "total": 3
+    },
+    "existingRoleAccessDenial": "PASS_ANON_AUTHENTICATED_SERVICE_ROLE",
+    "forcedRLSTables": 6,
+    "invokerFunctions": 8,
+    "allSixTablesEmptyAfterRollback": true,
+    "currentActorRefuses": true,
+    "executorRoleCount": 0,
+    "policyCount": 0,
+    "publicRelationCount": 0,
+    "advisor": "SIX_EXPECTED_RLS_ENABLED_NO_POLICY_INFO",
+    "realAuth": "NOT_RUN",
+    "ownerWriterRLS": "NOT_RUN",
+    "parallelCAS": "NOT_RUN",
+    "applicationConnected": false
+  },
+  "pendingAccess": {
+    "path": "docs/contracts/sql/private-continuity.access-pending.sql",
+    "sha256": "fcd4a6ed1e1a890386409364bc9c4bebad80e92704193347ce7b4588304921f4",
+    "applied": false,
+    "approval": "REQUIRED_PERSISTENT_ROLE_PRIVILEGE_OWNERSHIP_SECURITY_EXPANSION"
+  },
+  "recordedAt": "2026-10-07T04:27:34.700696+00:00"
+}

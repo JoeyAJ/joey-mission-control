@@ -1,0 +1,32 @@
+-- NOT APPROVED / NOT APPLIED. Persistent role/privilege enlargement separated from foundation.
+-- Exact MC-only target scmvedfqwlhkyvljymjj. No login/member identities/Auth/keys.
+BEGIN;
+CREATE ROLE mc_continuity_executor NOLOGIN NOSUPERUSER NOBYPASSRLS NOINHERIT;
+GRANT USAGE, CREATE ON SCHEMA mc_private, mc_api TO mc_continuity_executor;
+GRANT SELECT ON mc_private.members, mc_private.heads, mc_private.storage_budget, mc_private.contexts, mc_private.events, mc_private.checkpoints TO mc_continuity_executor;
+GRANT INSERT ON mc_private.events TO mc_continuity_executor;
+GRANT UPDATE(revision,used_bytes,last_committed_at) ON mc_private.heads TO mc_continuity_executor;
+GRANT UPDATE(used_bytes,event_count) ON mc_private.storage_budget TO mc_continuity_executor;
+CREATE POLICY core_budget_read ON mc_private.storage_budget FOR SELECT TO mc_continuity_executor USING(true);
+CREATE POLICY core_budget_advance ON mc_private.storage_budget FOR UPDATE TO mc_continuity_executor USING(true) WITH CHECK(true);
+CREATE POLICY core_members_read ON mc_private.members FOR SELECT TO mc_continuity_executor USING(true);
+CREATE POLICY core_heads_read ON mc_private.heads FOR SELECT TO mc_continuity_executor USING(true);
+CREATE POLICY core_heads_advance ON mc_private.heads FOR UPDATE TO mc_continuity_executor USING(true) WITH CHECK(true);
+CREATE POLICY core_context_read ON mc_private.contexts FOR SELECT TO mc_continuity_executor USING(true);
+CREATE POLICY core_events_read ON mc_private.events FOR SELECT TO mc_continuity_executor USING(true);
+CREATE POLICY core_events_append ON mc_private.events FOR INSERT TO mc_continuity_executor WITH CHECK(true);
+CREATE POLICY core_checkpoints_read ON mc_private.checkpoints FOR SELECT TO mc_continuity_executor USING(true);
+ALTER FUNCTION mc_private.current_actor() OWNER TO mc_continuity_executor;
+ALTER FUNCTION mc_private.canonical_json(jsonb) OWNER TO mc_continuity_executor;
+ALTER FUNCTION mc_private.exact_keys(jsonb,text[]) OWNER TO mc_continuity_executor;
+ALTER FUNCTION mc_private.validate_operation(jsonb) OWNER TO mc_continuity_executor;
+ALTER FUNCTION mc_private.reserve_context_budget() OWNER TO mc_continuity_executor;
+ALTER FUNCTION mc_api.append_operation(jsonb) OWNER TO mc_continuity_executor;
+ALTER FUNCTION mc_api.read_events(text,bigint,integer) OWNER TO mc_continuity_executor;
+ALTER FUNCTION mc_api.read_context(text,text) OWNER TO mc_continuity_executor;
+REVOKE CREATE ON SCHEMA mc_private, mc_api FROM mc_continuity_executor;
+ALTER FUNCTION mc_private.reserve_context_budget() SECURITY DEFINER;
+ALTER FUNCTION mc_api.append_operation(jsonb) SECURITY DEFINER;
+ALTER FUNCTION mc_api.read_events(text,bigint,integer) SECURITY DEFINER;
+ALTER FUNCTION mc_api.read_context(text,text) SECURITY DEFINER;
+COMMIT;
