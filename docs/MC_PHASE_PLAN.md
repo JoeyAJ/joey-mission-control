@@ -1,5 +1,19 @@
 # MC continuing delivery phase plan
 
+## Subsequent inactive cloud supervisor candidate
+
+Isolated branch `codex/mc-cloud-supervisor-candidate-20261007` derives from
+cfb3d7e. Provider-neutral safe observation/supervisor v2, one Codex JSONL codec,
+exact inactive read-only launch plan and private bounded single-writer journal
+are implemented with labelled synthetic fixtures. This is local to a selected
+cloud runner/container; no always-on Mac is required. Real child/session source,
+durable host, model transport and cloud/canonical writer remain unactivated.
+No app/UI/Auth/API/SQL/deployment changes; submit=false, Owner acceptance deferred.
+Source, full verification and first exact activation boundary are in
+MC_CLOUD_SUPERVISOR_CANDIDATE_HANDOFF.md and its external checkpoint receipt.
+Independent candidate preparation remains within approval. New machine credential
+creation requires Joey's separate exact scope approval; none has been created.
+
 Joey remains Product Owner and Final Approver. This is the continuing core task, not a claim that the first command workspace is the final product. Joey's original instruction is retained verbatim in the private progress ledger, with its source identity/time. The existing public product URL is unchanged.
 
 ## Current reconciliation — 2026-10-07 source-bound file review

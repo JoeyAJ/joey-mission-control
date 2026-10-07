@@ -91,12 +91,27 @@
     },
     {
       "id": "P2B",
-      "status": "UNSUPPORTED_CURRENT_TASK_EVENT_FEED",
-      "result": "Parent task-status snapshot is a bounded observation only. Current-task tool/code/diff feed and authenticated emitter binding are unavailable.",
+      "status": "INACTIVE_CLOUD_SUPERVISOR_SYNTHETIC_VERIFIED_REAL_SOURCE_UNBOUND",
+      "result": "Provider-neutral inactive cloud-runner-local supervisor, process-observation v2 and Codex JSONL candidate implemented. No always-on Mac required. Synthetic/imported provenance only; real child/session binding, durable host and canonical/cloud writer remain unactivated.",
       "definitionOfDoneRef": "docs/MC_PHASE_PLAN.md",
-      "ownerAcceptance": "PENDING_FINAL_TARGET_ACCEPTANCE",
-      "sources": [],
-      "tests": null
+      "ownerAcceptance": "DEFERRED_BY_JOEY_SUBMIT_FALSE",
+      "sources": [
+        "docs/MC_CLOUD_SUPERVISOR_CANDIDATE_HANDOFF.md",
+        "docs/contracts/supervisor/PROCESS_OBSERVATION_V2.md",
+        "docs/contracts/supervisor/supervisor.mjs",
+        "docs/contracts/supervisor/candidate.mjs",
+        "tests/supervisor-candidate.test.mjs"
+      ],
+      "tests": {
+        "focusedSyntheticPass": 35,
+        "fullPortablePass": 521,
+        "fail": 0,
+        "build": "PASS",
+        "validate": "PASS",
+        "check": "PASS",
+        "realProducer": "NOT_RUN_NO_ACTIVATION",
+        "browser": "NOT_RERUN_NO_APP_UI_AUTH_CHANGES"
+      }
     },
     {
       "id": "P3",
@@ -420,11 +435,11 @@
     ]
   },
   "currentReconciliation": {
-    "at": "2026-10-07T23:01:07.149160+00:00",
-    "implementationAnchor": "0a32eaefa79173a5e8ed3b155ccd15c3f1373ef9",
-    "preparedBranch": "codex/mc-historical-filegraph-20261007",
-    "evidenceRef": "docs/MC_FINAL_REQUIREMENTS_GAP_MAP.md",
-    "publishedPreview": "HISTORICAL_FILE_REVIEW_EXACT_READY_RECEIPT_EXTERNAL",
+    "at": "2026-10-07T23:44:09.531782+00:00",
+    "implementationAnchor": "cfb3d7e20dae2e2ecc39e8efe1adb4bc1d8a6a00",
+    "preparedBranch": "codex/mc-cloud-supervisor-candidate-20261007",
+    "evidenceRef": "docs/MC_CLOUD_SUPERVISOR_CANDIDATE_HANDOFF.md",
+    "publishedPreview": "UNCHANGED_FIXED_CFB3D7E_NO_NEW_DEPLOYMENT",
     "finalPrototype": "INCOMPLETE",
     "scope": "Generic phase/capability state only; private payloads and custody exports remain outside Git/public.",
     "phoneLogin": {
@@ -438,5 +453,32 @@
     },
     "ownerDecisionScope": "AUTHORIZED_TWO_BODY_CORRECTION_APPLIED_SUBMIT_GUARDED_EXISTING_OWNER_SMOKE_PENDING",
     "ownerMacSmoke": "TRANSPORT_CLOSED_NO_NEW_UI_VERIFICATION"
+  },
+  "cloudSupervisorCandidate": {
+    "at": "2026-10-07T23:44:09.531782+00:00",
+    "parentSha": "cfb3d7e20dae2e2ecc39e8efe1adb4bc1d8a6a00",
+    "branch": "codex/mc-cloud-supervisor-candidate-20261007",
+    "state": "INACTIVE_LOCAL_PRIVATE_CHECKPOINT",
+    "handoff": "docs/MC_CLOUD_SUPERVISOR_CANDIDATE_HANDOFF.md",
+    "qualifiedSources": [
+      "SYNTHETIC_FIXTURE",
+      "UNVERIFIED_IMPORTED_JSONL"
+    ],
+    "cloudRunnerLocal": true,
+    "alwaysOnMacRequired": false,
+    "durableHostVerified": false,
+    "actualAgentActivated": false,
+    "machineCredentialCreated": false,
+    "databaseWrite": false,
+    "canonicalCutover": false,
+    "publicEventPublication": false,
+    "dispatch": false,
+    "submit": false,
+    "ownerAcceptance": "DEFERRED",
+    "testPass": {
+      "focusedSynthetic": 35,
+      "fullPortable": 521
+    },
+    "remoteCheckpoint": "NOT_PUSHED_PARENT_SINGLE_WRITER_COORDINATION_REQUIRED"
   }
 }

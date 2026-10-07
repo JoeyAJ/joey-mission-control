@@ -1,5 +1,13 @@
 # Command workspace continuation / PRD delta
 
+Latest private candidate stage adds an inactive provider-neutral cloud-runner
+supervisor, process-observation v2 and Codex JSONL adapter with synthetic checks.
+“Local” refers to the selected runner/container, with no always-on Mac required.
+No child/credential/network/database/public write/dispatch or app wiring exists.
+See [MC_CLOUD_SUPERVISOR_CANDIDATE_HANDOFF.md](MC_CLOUD_SUPERVISOR_CANDIDATE_HANDOFF.md)
+for exact source/verification and the first real cloud activation boundary.
+Owner acceptance is deferred; submit=false. Prior published preview stayscfb3d7e.
+
 Current historical review stage restores the actual sixteen-file historical
 comparison response and links Explorer/file selectors/path/numbered bounded diff
 with the scoped MC membership graph. Public output keeps approved categories and

@@ -1,5 +1,12 @@
 # Final MC requirement reconciliation
 
+Subsequent isolated cloud-supervisor candidate implements provider-neutral v2
+safe event/receipt/recovery and Codex JSONL contracts with labelled synthetic
+fixtures. It requires no running Mac. It remains inactive and outside the app;
+actual child/session binding, durable cloud host, web control and canonical
+cutover are unproved. See MC_CLOUD_SUPERVISOR_CANDIDATE_HANDOFF.md for this scope;
+the historical review/public release evidence below remains dated and separate.
+
 Current baseline:0a32eaefa79173a5e8ed3b155ccd15c3f1373ef9.
 This reconciliation includes the approved historical file-review follow-on;
 its exact source/tree and fixed READY identity are external in
