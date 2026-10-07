@@ -1,4 +1,4 @@
-# P2A / P2B execution-report proposal — not implemented or authorized to activate
+# P2A / P2B execution-report proposal — pure subset implemented, activation gated
 
 Selected next stage after P1: one bounded producer report linked to existing Workspace evidence. P1 provenance, source/event/read time, stable task-history selection, Back/Forward/reload, repeated refresh and failure recovery are engineering complete. Evidence: `tests/command-workspace.test.mjs`, `tests/browser/run-command-qa.cjs`, private `/workspace/mc-qa/report.json`. Joey usability acceptance remains pending. Do not add another module or manufacture a runtime to make the UI move.
 
@@ -31,3 +31,5 @@ Pure contract/reducer synthetic work can proceed under existing isolated-develop
 ## Acceptance and recovery to implement when selected
 
 Synthetic tests must cover exact matching, identity-evidence labels, a valid-token caller impersonating another producer/session never gaining verified identity, unknown mission, duplicate/id conflict, sequence/revision conflict, future/expiry, forbidden private payload, failed import retaining previous view, restart replay without renewed validity and public GET404/non-GET403. A real producer end-to-end check must separately prove one genuine report, source/identity/task/time/version drilldown, disconnect/expiry and reconnection with a new approved session; synthetic PASS cannot satisfy it. Existing 262 portable tests and three-language 1440/390/320 Workspace navigation/recovery must remain intact when runtime/UI code changes. Current proposal changes docs/private progress only; no new runtime tests or deployed browser results are claimed.
+
+Implementation update: pure offline validation/reducer/restore/inspection subset now exists in `contracts/execution-report.mjs`; exact contract and limitations in `contracts/EXECUTION_REPORT_V1.md`. No receiver/store/hook/UI activation. Synthetic fixtures are the only exercised source.

@@ -47,14 +47,28 @@
     },
     {
       "id": "P2A",
-      "status": "DEPENDENCY_GATED_BEFORE_NEW_PRIVATE_WRITES",
-      "result": "Concrete producer/identity/mission/time/revision/privacy/activation proposal prepared; no receiver/store writes or live producer implemented.",
+      "status": "PURE_OFFLINE_SUBSET_IMPLEMENTED_INGRESS_GATED",
+      "result": "Offline exact-binding, CAS/sequence/dedupe, time/lifecycle/replay/inspection contract; synthetic only. No receiver/store/hook/current-live claims.",
       "definitionOfDoneRef": "docs/MC_PHASE_PLAN.md",
       "ownerAcceptance": "NOT_RECORDED",
       "sources": [
-        "docs/MC_EXECUTION_REPORT_PROPOSAL.md"
+        "docs/MC_EXECUTION_REPORT_PROPOSAL.md",
+        "docs/contracts/execution-report.mjs",
+        "docs/contracts/EXECUTION_REPORT_V1.md",
+        "tests/execution-report.test.mjs"
       ],
-      "tests": null
+      "tests": {
+        "syntheticPass": 20,
+        "fail": 0,
+        "fullPortablePass": 282,
+        "build": "PASS",
+        "validate": "PASS",
+        "check": "PASS",
+        "consumerRegressionPass": 10,
+        "independentReview": "NO_REMAINING_P1_P2",
+        "realProducer": "NOT_RUN_NOT_CONNECTED",
+        "browser": "NOT_RERUN_UNCHANGED_UI"
+      }
     },
     {
       "id": "P2B",
@@ -140,6 +154,16 @@
       "at": "2026-10-07T00:24:40.209061+00:00",
       "type": "NEXT_STAGE_EXECUTION_REPORT_PROPOSAL_PREPARED",
       "result": "P1 existing provenance/history/recovery evidence reviewed; docs-only P2A/P2B plan, P0 still blocked. No new runtime/resource/permission or download."
+    },
+    {
+      "at": "2026-10-07T01:59:41.430995+00:00",
+      "type": "P2A_PURE_OFFLINE_IMPLEMENTATION",
+      "result": "Contract/reducer/restore/inspection only; P0 blocked and all producer/writer gates unchanged."
+    },
+    {
+      "at": "2026-10-07T02:00:59.731311+00:00",
+      "type": "P2A_PURE_OFFLINE_REVIEW_VERIFIED",
+      "result": "20 synthetic + full282 PASS; build/validate/check PASS; consumer10 regression PASS. Serialization and mutable replay P2s fixed; independent review clear. No activation."
     }
   ],
   "migrationPriority": {
