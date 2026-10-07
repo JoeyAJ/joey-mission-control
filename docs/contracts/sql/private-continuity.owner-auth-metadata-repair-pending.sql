@@ -1,4 +1,6 @@
 -- REVIEWABLE / NOT APPLIED: requires managed auth schema/table owner authority.
+-- RETIRED 2026-10-07: parent explicitly rejected the managed-owner repair path.
+-- Historical proposal only. Do not execute; review owner-auth-helper-pending.sql.
 -- Exact MC project only. Existing official connector role postgres lacks this authority.
 -- No owner transfer, superuser/bypass-RLS, role membership, secret columns or Auth writes.
 BEGIN;

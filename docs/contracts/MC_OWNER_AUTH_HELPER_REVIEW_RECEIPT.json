@@ -1,0 +1,71 @@
+{
+  "evidenceCreatedAt": "2026-10-07T06:07:03.848636+00:00",
+  "projectRef": "scmvedfqwlhkyvljymjj",
+  "ownerSubject": "6f0ca2ae-83e0-4684-af12-0b37d08182db",
+  "sourceCommit": "a183db650f8e5fc186cf206aab665047f3eca289",
+  "candidateStatus": "PREPARED_NOT_APPROVED_NOT_APPLIED",
+  "files": {
+    "candidate": {
+      "path": "docs/contracts/sql/private-continuity.owner-auth-helper-pending.sql",
+      "sha256": "5f5ccdbc132f5531f8be000d716e881d09718fc17ad412b95c022fcf46ffa554"
+    },
+    "rollback": {
+      "path": "docs/contracts/sql/private-continuity.owner-auth-helper-rollback.sql",
+      "sha256": "31149c39bd2ac220dd21d148a0cc59345fad5ec6b8d44d1d271c273590e21de6"
+    },
+    "futureAclValidation": {
+      "path": "docs/contracts/sql/private-continuity.owner-auth-helper-denial-validation.sql",
+      "sha256": "e91234905b7a999d9f096fb034b1ee22b8ae82c5abc9cce7d9e7f624cb98d936"
+    }
+  },
+  "originalBridgeMigration": "20261007053940",
+  "originalError": {
+    "sqlstate": "42501",
+    "message": "permission denied for schema auth",
+    "action": "public.mc_owner_session(text) -> mc_private.current_actor()",
+    "schema": "auth",
+    "tables": [
+      "users",
+      "sessions",
+      "mfa_factors"
+    ],
+    "identityRpcHasSeparateSessionRead": true
+  },
+  "readOnlyCatalogObservation": {
+    "currentRole": "postgres",
+    "postgresAuthUsage": true,
+    "executorAuthUsage": false,
+    "privateSchemaOwner": "postgres",
+    "executorPrivateUsage": true,
+    "existingFunctionOwner": "mc_continuity_executor",
+    "helperExists": false,
+    "dataApiSchemaExposure": "NOT_INDEPENDENTLY_CONFIRMED_DATABASE_ROLE_SETTINGS_ABSENT"
+  },
+  "newLimitedPrivilegeDelegation": "private postgres-owned parameterless verifier EXECUTE to mc_continuity_executor",
+  "managedAuthObjectChanges": false,
+  "newCredentials": false,
+  "privateSeeds": false,
+  "writerActivation": false,
+  "browserLoginFlagsEnabled": false,
+  "sqlTrialExecuted": false,
+  "realAuthVerified": false,
+  "realAal2Verified": false,
+  "realRevocationVerified": false,
+  "offlineContractChecks": {
+    "pass": 7,
+    "fail": 0,
+    "qualification": "STATIC_ONLY_NOT_SQL_EXECUTION"
+  },
+  "productionSha": "8b4945b16a0b23f2e72033aa976fa34f94eabec0",
+  "continuation": "docs/MC_OWNER_AUTH_HELPER_REVIEW.md",
+  "portableVerification": {
+    "pass": 405,
+    "fail": 0,
+    "skipped": 0,
+    "build": "PASS",
+    "validate": "PASS",
+    "check": "PASS",
+    "forbiddenAttempts": 0,
+    "qualification": "OFFLINE_NOT_REAL_AUTH"
+  }
+}

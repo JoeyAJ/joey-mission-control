@@ -1,0 +1,47 @@
+# MC private Owner Auth verifier — exact unapplied review
+
+This proposal supersedes the managed-owner policy repair route. Parent requested this concrete limited delegation for Joey's review; it is **NOT APPROVED / NOT APPLIED**. Login flags remain off. Original migration `20261007053940` and its safe error receipt remain unchanged.
+
+Candidate: `docs/contracts/sql/private-continuity.owner-auth-helper-pending.sql`, SHA-256 **5f5ccdbc132f5531f8be000d716e881d09718fc17ad412b95c022fcf46ffa554**.
+
+Rollback: `docs/contracts/sql/private-continuity.owner-auth-helper-rollback.sql`, SHA-256 **31149c39bd2ac220dd21d148a0cc59345fad5ec6b8d44d1d271c273590e21de6**. It restores the frozen original two function bodies and ACLs, then drops only the new helper, without CASCADE. This deliberately returns to the recorded blocked bridge. If browser flags were later enabled, reset them and rebuild before rollback; no Auth/private data deletion is involved.
+
+## Exact error and both affected call sites
+
+Actual SQLSTATE **42501**, message **permission denied for schema auth**, when `public.mc_owner_session('NEXAEON')` invoked `mc_private.current_actor()`. The executor's direct `auth.users`, `auth.sessions`, `auth.mfa_factors` reads cannot run. Expected synthetic session rejection 28000 was never reached. `mc_owner_session` independently reads `auth.sessions.not_after`, so repairing only `current_actor` would still fail.
+
+Read-only catalog recheck: current role postgres; postgres auth USAGE=true; executor auth USAGE=false; private schema owner postgres; executor private USAGE=true; both existing bridge functions owner executor; proposed helper absent. Earlier evidence proves postgres already has SELECT on the twelve safe columns and BYPASSRLS. No managed-owner role was assumed, no policy was attempted, and no additional credential was requested.
+
+Do not overstate the managed-schema restriction: the [Supabase announcement](https://github.com/orgs/supabase/discussions/34270) explicitly permits policies/triggers on listed tables including auth.users and auth.sessions; mfa_factors is absent from that list. That is not proof this three-table repair would work through this connector. The actual schema USAGE denial remains the relevant observed blocker.
+
+## Minimal privilege delegation and call chain
+
+One new `mc_private.owner_auth_verification()` function, owned by existing postgres, SECURITY DEFINER, VOLATILE, empty search_path. It has **no arguments** and reads only server `request.jwt.claims`. PostgREST's verified JWT establishes those claims; no client subject/session/AAL argument or user-editable metadata is accepted. SQL management admins can still spoof settings/change functions; this does not protect against an administrator.
+
+The helper returns at most one verified tuple `(subject, session_id, aal, expires_at)`. The clipped expiry is required to preserve the current public RPC response without its second direct Auth read. It rejects with the same safe 28000 error rather than returning raw Auth rows or secret fields.
+
+`public.mc_owner_session(project)` remains executor-owned and bounded to the same four projects. It obtains the tuple from the helper, then checks `mc_private.members` under the original NOBYPASSRLS executor and emits the unchanged JSON fields. `mc_private.current_actor()` remains executor-owned SECURITY INVOKER, delegates to the helper, and keeps its original three-column return type. Existing private workflow functions still call current_actor; their membership, FORCE RLS, after-head-lock session recheck, epoch/CAS, digest, backup, capacity and writes_enabled gates are unchanged. The postgres helper never reads or modifies the six private workflow tables.
+
+The helper preserves every original gate: fixed Owner UUID; exact issuer; authenticated role/audience; integer unexpired JWT exp; AAL1/AAL2; confirmed/nonanonymous/undeleted/unbanned Owner; current session ownership/existence; not_after; stored session AAL matching JWT; verified TOTP for AAL2. Expiry is still min(JWT exp, session not_after). The same twelve non-secret metadata columns are used; no password, token, TOTP secret, arbitrary owner-data export or Auth write.
+
+Persistent enlargement is **EXECUTE on this one helper to mc_continuity_executor**. It is a new limited privilege delegation, not a no-permission-change fix. PUBLIC, anon, authenticated and service_role receive no helper EXECUTE. Creation/revoke/grant happen in one transaction; postconditions reject any unexpected helper grantee. Existing postgres owner authority is implicit. The transaction temporarily restores postgres SET capability and executor CREATE on public/mc_private solely to replace its existing functions, then restores SET=false and removes CREATE before commit, as the earlier approved bridge did. Preconditions refuse a different prior state.
+
+No managed Auth USAGE/SELECT/policy/owner grant, new role/credential/key, service-role use, provider change, exposed-schema change, seed, workflow API permission or writer activation is part of this candidate. The older executor column grants remain as recorded; they gain no direct schema access.
+
+## Supported pattern, revocation and remaining verification
+
+Supabase documents a [private SECURITY DEFINER authorization helper](https://supabase.com/docs/guides/database/postgres/row-level-security#use-security-definer-functions), with empty search_path and private placement. PostgreSQL documents [transactional PUBLIC revocation and selective EXECUTE](https://www.postgresql.org/docs/current/sql-createfunction.html#SQL-CREATEFUNCTION-SECURITY). Those support the pattern; they do not certify these unexecuted bytes.
+
+The [SSR advanced guide](https://supabase.com/docs/guides/auth/server-side/advanced-guide) distinguishes server getUser from signature/expiry-only getClaims for detecting ended sessions. Current official Auth [authentication middleware](https://github.com/supabase/auth/blob/master/internal/api/auth.go) and [routing](https://github.com/supabase/auth/blob/master/internal/api/api.go) load user/session for GET /user. That makes getUser useful, but a browser check or BFF check followed by an independently callable public RPC can be bypassed. Neither that architecture nor claims-only plus an application denylist is silently substituted here.
+
+The candidate checks live provider metadata at the DB boundary on each call. A provider logout/deletion committed before the validation read rejects; a removed factor/stored-AAL downgrade rejects under the original predicates. It is not atomic with a concurrently committing provider change after the last read. The existing private append rechecks current_actor after taking its workflow head lock; this proposal preserves that behavior and does not lock or modify managed Auth rows. No instantaneous cancellation of already-running transactions is claimed. Provider inactivity/timebox enforcement beyond the original stored not_after predicate is also not newly claimed. Those stronger semantics would require separate design and acceptance.
+
+Private schema Data API exposure is **not independently confirmed**: pgrst.db_schemas and database/role catalog settings are absent in this connector. The helper's executor-only ACL denies visitor execution even if a schema were exposed; still verify existing exposed-schema configuration before recording private/unexposed deployment acceptance. No schema exposure is changed by the candidate.
+
+Offline security contract checks: 7/7 PASS. They check restricted inputs/outputs, all original gates, both Auth-read call sites, ACL/transaction boundaries, no managed/private mutation, exact original rollback bodies/hash, and a future direct-call denial fixture that refuses a missing helper. These are static constraints, not SQL execution or positive Auth proof. No local PostgreSQL executable is available; no DDL or transactionally rolled-back helper trial was attempted before approval.
+
+Full portable verification: 405/405 PASS, zero fail/skipped; build/validate/check PASS and forbiddenAttempts=0. No runtime code/config flag or generated bundle changed in this review checkpoint. Private docs/SQL stay outside the served artifact. Existing synthetic browser results remain historical evidence; no fresh real protected-preview/Auth/AAL2 browser acceptance is claimed.
+
+After parent transmits Joey's exact approval, hash-check and apply this candidate once through official migration. Re-read owners, ACLs, search_path, helper-only privilege, existing role attributes/CREATE/SET, twelve Auth-column access, unchanged managed ACL/policies, six FORCE RLS tables/zero seeds/writers, and actual migration version. Run the existing 13-case SQL-admin synthetic denial fixture plus `private-continuity.owner-auth-helper-denial-validation.sql` (SHA-256 `e91234905b7a999d9f096fb034b1ee22b8ae82c5abc9cce7d9e7f624cb98d936`) and prior raw/private access-denial checks. Do not fabricate users, provider JWTs, factors or a positive session. Only then consider frozen preview login flags; actual Owner login, AAL2, provider revocation and two-device acceptance remain for Joey's browser and must be recorded separately.
+
+Production stays at `8b4945b16a0b23f2e72033aa976fa34f94eabec0`. No private member/head/context/event/checkpoint/budget seed or workflow writer cutover is authorized by this review.
