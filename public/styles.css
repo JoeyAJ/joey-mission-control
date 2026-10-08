@@ -463,3 +463,17 @@ body[data-active-module=workspace] main{padding:0}
  #workspace .command-work-summary h5,#workspace .command-inspector h5{font-size:14px}#workspace .command-inspector>p{font-size:11px;line-height:1.7}#workspace .command-inspector-tabs button,#workspace .command-context-actions button,#workspace .command-file-tabs button{min-height:44px}
  #workspace .command-graph{flex:0 0 38%;min-height:150px}#workspace .command-graph button{min-height:44px}#workspace .command-context[data-inspector-tab=changes] .command-graph{display:none}#workspace .command-source-bar{gap:9px;flex-basis:24px;font-size:9px}#workspace .command-source-bar>span:nth-child(2){display:none}#workspace .command-source-readtime{display:block;max-width:50%;overflow:hidden;text-overflow:ellipsis}
 }
+
+/* Existing Owner-qualified pilot data; private summary is absent when signed out. */
+.owner-worker-summary[hidden]{display:none!important}
+.owner-worker-summary{padding:12px;border:1px solid var(--console-line,#3b493b);background:#182219;min-width:0;overflow-wrap:anywhere}
+.owner-worker-summary-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:8px 0}
+.owner-worker-summary h5{margin:0 0 5px;font-size:12px}
+.owner-worker-summary p{margin:4px 0;font-size:12px;line-height:1.5}
+.owner-worker-summary small{display:block;font-size:10px;color:#b4c1b1}
+.owner-worker-summary details{margin:8px 0;font-size:10px;min-width:0}
+.owner-worker-summary summary,.owner-worker-summary button{min-height:44px;box-sizing:border-box}
+.owner-worker-summary summary{display:flex;align-items:center;cursor:pointer}
+.owner-worker-summary button{width:100%;font:inherit;background:#243326;color:#e7ede4;border:1px solid #52644d;cursor:pointer}
+.owner-worker-summary :focus-visible{outline:2px solid #a8d396;outline-offset:2px}
+@media(max-width:768px){.owner-worker-summary{padding:10px}.owner-worker-summary-grid{grid-template-columns:1fr;gap:8px}}

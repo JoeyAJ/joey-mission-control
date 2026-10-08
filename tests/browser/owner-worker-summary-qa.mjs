@@ -1,0 +1,88 @@
+// Synthetic SDK and pilot views only. External requests are blocked.
+import {build} from 'esbuild';
+import {createRequire} from 'node:module';
+import fs from 'node:fs/promises';
+import http from 'node:http';
+import assert from 'node:assert/strict';
+const require=createRequire(import.meta.url),{chromium}=require(process.env.CODEX_PRIMARY_RUNTIME_NODE_MODULES+'/playwright');
+const owner='11111111-1111-4111-8111-111111111111';
+const bundle=await build({stdin:{contents:"export {renderCommandWorkspace} from './public/command-workspace.js';export {mountOwnerWorkerSummary} from './src/continuity/owner-worker-summary-ui.mjs';",resolveDir:process.cwd()},bundle:true,format:'iife',globalName:'fixture',write:false,plugins:[{name:'synthetic-private-summary',setup(b){
+ b.onLoad({filter:/public\/owner-auth-client\.js$/},()=>({contents:"export {mountOwnerBrowserEntry} from '../src/continuity/owner-browser-entry.mjs';",resolveDir:process.cwd()+'/public'}));
+ b.onLoad({filter:/public\/vm-link-config\.js$/},()=>({contents:"export const vmLinkConfig={enabled:true,projectId:'NEXAEON',release:'0.1.1',policyDigest:'a'.repeat(64),artifactDigest:'b'.repeat(64)};"}));
+ b.onLoad({filter:/public\/owner-auth-config\.js$/},()=>({contents:`export const ownerAuthConfig={origin:'https://synthetic.invalid',publishableKey:'sb_publishable_SYNTHETIC_TEST_ONLY',stageOrigin:location.origin,ownerSubject:'${owner}',authSetupVerified:true,sessionBridgeVerified:true};export const ownerAuthSetupStatus=()=>({status:'unconfigured'});`}));
+ b.onResolve({filter:/^@supabase\/supabase-js$/},()=>({path:'sdk',namespace:'synthetic'}));
+ b.onLoad({filter:/.*/,namespace:'synthetic'},()=>({contents:`export function createClient(){metrics.clients++;return{auth:{getUser:async()=>({data:{user:signedIn?{id:'${owner}'}:null}}),onAuthStateChange:f=>{globalThis.signal=f;return{data:{subscription:{unsubscribe(){}}}};},stopAutoRefresh(){},mfa:{listFactors:async()=>({data:{all:[{id:'${owner}',factor_type:'totp',status:'verified',friendly_name:'MC owner'}]}}),getAuthenticatorAssuranceLevel:async()=>({data:{currentLevel:'aal2'}})}},rpc:async(name,args)=>{if(name==='mc_vm_link_owner'){metrics.actions.push(args.request.action);if(failRead)return{error:{}};if(blockRead)return new Promise(resolve=>{globalThis.finishRead=()=>resolve({data:structuredClone(nextView)});});return{data:structuredClone(nextView)};}metrics.sessionReads++;return{data:{subject:'${owner}',role:'OWNER',projectId:args.project,sessionActive:true,memberActive:true,aal:'aal2',expiresAt:Date.now()+60000}};}}}`}));
+}}]});
+const setup=`
+globalThis.virtualNow=1700000000000;Date.now=()=>virtualNow;globalThis.signedIn=true;globalThis.failRead=false;globalThis.blockRead=false;
+globalThis.metrics={clients:0,sessionReads:0,actions:[]};globalThis.syntheticHidden=false;
+Object.defineProperty(document,'hidden',{configurable:true,get:()=>syntheticHidden});
+globalThis.hide=value=>{syntheticHidden=value;document.dispatchEvent(new Event('visibilitychange'));};
+const event=(kind,seq,fields={})=>({eventId:'synthetic_event_'+seq,seq,observedAt:1700000000000-1000+seq,payload:{kind,threadId:null,itemId:null,itemType:null,itemStatus:null,commandExitCode:null,processExitCode:null,signal:null,errorClass:null,...fields}});
+const job=(fence,patch={})=>({jobId:'synthetic_job_'+fence,attemptId:'synthetic_attempt_'+fence,workerId:'synthetic_worker',fence,task:'SMOKE_CONNECTION_V1',claimed:true,spawnIntent:true,cancel:false,terminal:false,outcome:null,leaseUntil:virtualNow+10000,expiresAt:virtualNow+60000,events:[event('turn_started',1)],...patch});
+globalThis.make=(running=false)=>({enabled:true,release:'0.1.1',policyDigest:'a'.repeat(64),artifactDigest:'b'.repeat(64),worker:{workerId:'synthetic_worker',enabled:true,revoked:false,paired:true,keyDigest:'c'.repeat(64)},jobs:[job(1,{terminal:true,outcome:'COMPLETED',events:[event('turn_completed',1),event('process_exit',2,{processExitCode:0})]}),...(running?[job(2)]:[])]});
+globalThis.nextView=make(true);globalThis.selectedLocale='zh-TW';globalThis.selectedProject='NEXAEON';
+globalThis.renderWorkspace=()=>{document.querySelector('#workspace-content').replaceChildren(fixture.renderCommandWorkspace([{project_id:selectedProject,product:{name:'Synthetic project'},sourceReadout:{stage:'Recorded synthetic stage',nextAction:'Recorded synthetic next'}}],{locale:selectedLocale,readOnly:true,context:{project:selectedProject},panel:'events'}));};
+globalThis.refreshPilot=()=>{const button=Array.from(document.querySelectorAll('.owner-vm-link button')).find(b=>b.textContent==='重新整理');if(!button)throw Error('NO_REFRESH_BUTTON '+JSON.stringify({dialogs:document.querySelectorAll('.owner-vm-link').length,owner:document.querySelector('.owner-auth-entry')?.dataset.ownerAuth,buttons:Array.from(document.querySelectorAll('.owner-vm-link button'),b=>b.textContent),metrics}));button.click();};
+`;
+const styles=await fs.readFile('public/styles.css','utf8');
+const server=http.createServer((_req,res)=>{res.writeHead(200,{'Content-Type':'text/html; charset=utf-8'});res.end('<html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>'+styles+'</style><body data-active-module="workspace"><main><section id="workspace" class="active"><div id="workspace-content"></div></section></main><script>'+setup+bundle.outputFiles[0].text+'</script></body></html>');});
+await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));const origin='http://127.0.0.1:'+server.address().port;
+await fs.mkdir('/tmp/mc-worker-summary-qa',{recursive:true});
+const browser=await chromium.launch({headless:true,executablePath:'/usr/bin/chromium',args:['--no-sandbox']});const cases=[];let externalRequests=0;
+try{for(const width of [1440,390,320])for(const locale of ['zh-TW','en','ko']){
+ const page=await browser.newPage({viewport:{width,height:900}}),errors=[];
+ page.on('pageerror',e=>errors.push(e.message));await page.route('**/*',r=>{if(!r.request().url().startsWith(origin)){externalRequests++;return r.abort();}return r.continue();});
+ await page.goto(origin);await page.evaluate(locale=>{selectedLocale=locale;renderWorkspace();},locale);
+ const summary=page.locator('.owner-worker-summary'),state=()=>summary.getAttribute('data-current-work');
+ await page.waitForFunction(()=>document.querySelector('.owner-worker-summary')?.dataset.currentWork==='RUNNING_REPORTED');
+ assert(await summary.isVisible());assert.equal(await summary.locator('xpath=..').getAttribute('class'),'command-events');
+ assert.equal(await summary.getAttribute('data-last-confirmed'),'COMPLETED_CONFIRMED');assert.deepEqual(await page.evaluate(()=>metrics.actions),['read']);
+ assert((await summary.innerText()).includes('Agent'));assert(!(await summary.innerText()).includes('synthetic_worker'));
+ await summary.locator('summary').click();await summary.locator('summary').focus();await page.evaluate(()=>renderWorkspace());
+ assert(await summary.locator('details').evaluate(e=>e.open));assert(await summary.locator('summary').evaluate(e=>e===document.activeElement));
+ assert((await summary.locator('details').innerText()).includes('2023-11-14T22:13:19.002Z'));
+ const readTime=await summary.locator('summary').innerText();await page.evaluate(()=>{virtualNow+=15000;document.activeElement.blur();renderWorkspace();});
+ assert.equal(await state(),'READBACK_EXPIRED');assert.equal(await summary.getAttribute('data-last-confirmed'),'COMPLETED_CONFIRMED');
+ assert.equal(await summary.locator('summary').innerText(),readTime);assert.deepEqual(await page.evaluate(()=>metrics.actions),['read']);
+ await page.evaluate(()=>{nextView=make();refreshPilot();});await page.waitForFunction(()=>document.querySelector('.owner-worker-summary').dataset.currentWork==='NO_ACTIVE_JOB_REPORTED');
+ await page.evaluate(()=>{failRead=true;refreshPilot();});await page.waitForFunction(()=>document.querySelector('.owner-worker-summary').dataset.workReadState==='unconfirmed');
+ assert.equal(await state(),'READ_UNCONFIRMED');assert.equal(await summary.getAttribute('data-last-confirmed'),'COMPLETED_CONFIRMED');
+ await page.evaluate(()=>renderWorkspace());assert.equal(await state(),'READ_UNCONFIRMED');
+ await page.evaluate(()=>{failRead=false;refreshPilot();});await page.waitForFunction(()=>document.querySelector('.owner-worker-summary').dataset.workReadState==='confirmed');
+ assert.equal(await state(),'NO_ACTIVE_JOB_REPORTED');
+ await page.evaluate(()=>{nextView=make();nextView.jobs[0].events[0].payload.output='SYNTHETIC_PRIVATE_CANARY';refreshPilot();});
+ await page.waitForFunction(()=>document.querySelector('.owner-worker-summary').dataset.workReadState==='unconfirmed');
+ assert(!(await summary.innerText()).includes('CANARY'));assert.equal(await summary.getAttribute('data-last-confirmed'),'COMPLETED_CONFIRMED');
+ await page.evaluate(()=>{nextView=make();nextView.jobs[0].events[0].observedAt=-1;refreshPilot();});await page.waitForFunction(()=>document.querySelector('.owner-worker-summary').dataset.workReadState==='invalid');
+ assert.equal(await summary.getAttribute('data-last-confirmed'),'COMPLETED_CONFIRMED');assert.equal(await state(),'READ_UNCONFIRMED');
+ await page.evaluate(()=>{nextView=make();refreshPilot();});await page.waitForFunction(()=>document.querySelector('.owner-worker-summary').dataset.workReadState==='confirmed');
+ await page.evaluate(()=>hide(true));assert.equal(await state(),'READ_UNCONFIRMED');assert.equal(await summary.getAttribute('data-last-confirmed'),'COMPLETED_CONFIRMED');
+ await page.evaluate(()=>hide(false));await page.waitForFunction(()=>document.querySelector('.owner-worker-summary').dataset.workReadState==='confirmed');
+ const actionsBefore=await page.evaluate(()=>metrics.actions.length);await summary.locator('button').click();assert(await page.locator('.owner-vm-link').isVisible());
+ assert.equal(await page.evaluate(()=>metrics.actions.length),actionsBefore);await page.keyboard.press('Escape');
+ assert(await summary.locator('button').evaluate(e=>e===document.activeElement));
+ const touch=await summary.locator('button').evaluate(e=>e.getBoundingClientRect().height);assert(touch>=44);
+ assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));assert.equal(await page.evaluate(()=>localStorage.length+sessionStorage.length),0);
+ if(locale==='zh-TW')await summary.screenshot({path:'/tmp/mc-worker-summary-qa/summary-'+width+'.png'});
+ await page.evaluate(()=>{blockRead=true;refreshPilot();});await page.waitForFunction(()=>typeof finishRead==='function');
+ await page.evaluate(()=>{selectedProject='WOOSONG_BUDDY';renderWorkspace();});await page.waitForFunction(()=>document.querySelector('.owner-worker-summary').hidden);
+ await page.evaluate(()=>{finishRead();blockRead=false;delete globalThis.finishRead;});await page.waitForTimeout(40);
+ assert(await summary.isHidden());assert.equal(await summary.getAttribute('data-last-confirmed'),null);assert.equal(await summary.innerText(),'');
+ await page.evaluate(()=>{selectedProject='NEXAEON';renderWorkspace();});await page.waitForFunction(()=>document.querySelector('.owner-worker-summary').dataset.lastConfirmed==='COMPLETED_CONFIRMED');
+ await page.evaluate(()=>{blockRead=true;refreshPilot();});await page.waitForFunction(()=>typeof finishRead==='function');
+ await page.evaluate(()=>{signedIn=false;signal('SIGNED_OUT');finishRead();blockRead=false;});await page.waitForTimeout(40);
+ assert(await summary.isHidden());assert.equal(await summary.getAttribute('data-last-confirmed'),null);assert.equal(await summary.innerText(),'');
+ await page.evaluate(()=>{
+  const summary=fixture.mountOwnerWorkerSummary({doc:document,config:{enabled:true,projectId:'NEXAEON',policyDigest:'a'.repeat(64),artifactDigest:'b'.repeat(64)},now:()=>virtualNow,setTimer:(fn,ms)=>{globalThis.expiry={fn,ms};return 1;},clearTimer:()=>{globalThis.expiry=null;}});
+  summary.setVisible(true);const view=make(true);for(const job of view.jobs)for(const event of job.events)event.observedAt=virtualNow-1;summary.update(view);
+  if(summary.root.dataset.currentWork!=='RUNNING_REPORTED')throw Error('Local timer fixture not running');
+  const scheduled=expiry;virtualNow+=scheduled.ms;scheduled.fn();
+  if(summary.root.dataset.currentWork!=='STALE'||summary.root.dataset.lastConfirmed!=='COMPLETED_CONFIRMED')throw Error('Local timer did not expire current work');summary.dispose();
+ });
+ assert((await page.evaluate(()=>metrics.actions)).every(action=>action==='read'));assert.equal(await page.evaluate(()=>metrics.clients),1);
+ assert.deepEqual(errors,[]);cases.push({width,locale,pass:true,existingReadOnlySource:true,expiryWithoutNetwork:true,localTimerExpiresWithoutInteraction:true,completionTimePreserved:true,failedReadRetentionRecovery:true,invalidPayloadWithheld:true,interruptedVisibility:true,lateResponseAfterProjectSwitchPurged:true,lateResponseAfterLogoutPurged:true,inspectWithoutRead:true,focusAndDisclosureRetained:true,touch44:true,noOverflow:true,noStorage:true});
+ await page.close();
+}
+assert.equal(externalRequests,0);await fs.writeFile('/tmp/mc-worker-summary-qa/report.json',JSON.stringify({pass:true,syntheticOnly:true,externalRequests,cases},null,2)+'\n');console.log(JSON.stringify({pass:true,cases:cases.length,externalRequests}));
+}finally{await browser.close();server.close();}

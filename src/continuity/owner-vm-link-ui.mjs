@@ -1,6 +1,7 @@
 import {createOwnerVmLink} from './owner-vm-link.mjs';
 import {vmBootstrapCommand} from './owner-vm-link-command.mjs';
 import {mountOwnerWorkerEvidence} from './owner-worker-evidence-ui.mjs';
+import {mountOwnerWorkerSummary} from './owner-worker-summary-ui.mjs';
 export function mountOwnerVmLink({doc,config,inspectSession,rpc}){
  if(config.enabled!==true)return null;
  const node=(tag,text)=>{const n=doc.createElement(tag);if(text)n.textContent=text;return n;};
@@ -12,6 +13,7 @@ export function mountOwnerVmLink({doc,config,inspectSession,rpc}){
  const header=node('header'),content=node('div'),actions=node('footer'),readActions=node('div'),flow=node('div'),jobs=node('div');
  header.className='owner-vm-link-header';content.className='owner-vm-link-content';actions.className='owner-vm-link-next';flow.className='owner-vm-link-flow';
  const evidence=mountOwnerWorkerEvidence({doc,config});
+ const workSummary=mountOwnerWorkerSummary({doc,config,onInspect:open});
  const instructions=node('details'),instructionsTitle=node('summary','操作順序與主機資訊'),steps=node('ol');for(const text of ['準備命令','終端停在等碼提示','批准一次配對','複製碼並貼入終端'])steps.append(node('li',text));
  const stepTitle=node('h4'),help=node('p'),worker=node('p');worker.dataset.vmWorkerId='true';
  const commandPanel=node('div'),commandLabel=node('label','已填好 worker ID 的終端命令');
@@ -28,7 +30,7 @@ export function mountOwnerVmLink({doc,config,inspectSession,rpc}){
  launch.className='owner-vm-link-launch';launch.hidden=true;launch.setAttribute('aria-haspopup','dialog');entryLaunch.setAttribute('aria-haspopup','dialog');entry.append(entryLaunch);doc.body.append(launch);
  const closed=()=>{if(!disposed){copyEpoch++;controller.clearPairingCode('PANEL_CLOSED');copyStatus.textContent='';if(returnFocus?.isConnected)returnFocus.focus({preventScroll:true});else if(!launch.hidden)launch.focus({preventScroll:true});}};
  const cancel=e=>{e.preventDefault();close();};root.addEventListener('close',closed);root.addEventListener('cancel',cancel);
- async function perform(fn){try{await fn();}catch(error){evidence.unconfirmed();status.textContent=error?.message==='LINK_TERMINAL_WAIT_REQUIRED'?'先完成步驟 1、2；終端停在等碼提示後才批准。':'操作尚未確認。保留目前紀錄；可按「重新整理」核對，不會自動重送批准。';}schedule();}
+ async function perform(fn){try{await fn();}catch(error){evidence.unconfirmed();workSummary.unconfirmed();status.textContent=error?.message==='LINK_TERMINAL_WAIT_REQUIRED'?'先完成步驟 1、2；終端停在等碼提示後才批准。':'操作尚未確認。保留目前紀錄；可按「重新整理」核對，不會自動重送批准。';}schedule();}
  function schedule(){stopPoll();if(disposed||!authenticated||!controller.snapshot().view?.jobs.some(j=>!j.terminal)||doc.hidden||controller.snapshot().busy)return;
   if(!pilotEnd)pilotEnd=Date.now()+900000;if(Date.now()>=pilotEnd)return;timer=setTimeout(()=>void perform(()=>controller.refresh()),3000);}
  const refresh=button('重新整理',()=>controller.refresh()),activate=button('批准啟用已審閱 broker',()=>controller.activate());
@@ -79,13 +81,14 @@ export function mountOwnerVmLink({doc,config,inspectSession,rpc}){
    jobs.append(row);
   }
   evidence.update(s.view);
+  workSummary.update(s.view);
   if(stage!==lastStage){lastStage=stage;if(stage==='code')queueMicrotask(()=>{if(!disposed&&!doc.hidden)copyCode.scrollIntoView?.({block:'nearest'});});}
  }
  controller=createOwnerVmLink({config,inspectSession,rpc,onChange:render});
  const fullClear=()=>{stopPoll();copyEpoch++;controller.clear();pilotEnd=0;commandStatus.textContent='';copyStatus.textContent='';};
- const visibility=()=>{if(doc.hidden){stopPoll();copyEpoch++;controller.clearPairingCode('PAGE_HIDDEN');copyStatus.textContent='';}else if(authenticated&&!disposed&&!controller.snapshot().busy)void perform(()=>controller.refresh());};
+ const visibility=()=>{if(doc.hidden){stopPoll();copyEpoch++;controller.clearPairingCode('PAGE_HIDDEN');copyStatus.textContent='';workSummary.unconfirmed();}else if(authenticated&&!disposed&&!controller.snapshot().busy)void perform(()=>controller.refresh());};
  doc.addEventListener('visibilitychange',visibility);
- return {root,entry,open,update({projectId,authView}){const was=authenticated;authenticated=projectId==='NEXAEON'&&authView?.status==='authenticated'&&authView.aal==='aal2'&&authView.memberActive===true;root.hidden=!authenticated;entry.hidden=!authenticated;launch.hidden=!authenticated;
+ return {root,entry,workSummary:workSummary.root,open,update({projectId,authView,locale='zh-TW'}){const was=authenticated;authenticated=projectId==='NEXAEON'&&authView?.status==='authenticated'&&authView.aal==='aal2'&&authView.memberActive===true;root.hidden=!authenticated;entry.hidden=!authenticated;launch.hidden=!authenticated;workSummary.setLocale(locale);workSummary.setVisible(authenticated);
   if(!authenticated){close();fullClear();}else if(!was&&!doc.hidden)void perform(()=>controller.refresh());
- },clear:fullClear,clearPairingCode(){copyEpoch++;controller.clearPairingCode('SESSION_REFRESH');copyStatus.textContent='';},dispose(){disposed=true;authenticated=false;close();fullClear();doc.removeEventListener('visibilitychange',visibility);root.removeEventListener('close',closed);root.removeEventListener('cancel',cancel);controller.dispose();evidence.dispose();launch.remove();entry.remove();root.remove();}};
+ },clear:fullClear,clearPairingCode(){copyEpoch++;controller.clearPairingCode('SESSION_REFRESH');copyStatus.textContent='';},dispose(){disposed=true;authenticated=false;close();fullClear();doc.removeEventListener('visibilitychange',visibility);root.removeEventListener('close',closed);root.removeEventListener('cancel',cancel);controller.dispose();evidence.dispose();workSummary.dispose();launch.remove();entry.remove();root.remove();}};
 }
