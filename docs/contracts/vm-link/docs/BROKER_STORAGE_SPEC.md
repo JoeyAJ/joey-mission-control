@@ -1,0 +1,17 @@
+# Production persistence contract, 0.1.1 inactive
+
+Authoritative implementation: `../sql/mc-vm-link-0.1.1.pending.sql` and `../edge/handler.mjs`. The in-memory `src/broker.mjs` remains a synthetic unit-test reference only.
+
+All mutation transactions lock the configuration singleton before looking at worker/job rows. Admission, claim, spawn intent, control, cancel, retry and revocation share this serialization point. Exact requests replay their original stored response; changed content with the same actor/request ID is rejected. Receipts and event batches commit atomically. Readback retains event observed times and expires queued jobs to CANCELLED, claimed stale jobs to UNKNOWN. It cannot renew or requeue them.
+
+Limits: at most sixteen workers/jobs ever in this pilot installation, one enabled nonrevoked worker and one nonterminal job, 128 events/job, sixteen events/batch, 128 Owner mutation receipts and 256 worker receipts/identity. Lookup and identity do not consume mutation receipts. No background deletion or budget reset is included. Exhaustion denies admission and needs explicit maintenance outside this approval. Pair lifetime ten minutes; claim deadline fifteen minutes; fixed attempt deadline sixty seconds; renewable lease fifteen seconds. Native times are database-authoritative.
+
+Worker actions are closed: bootstrap, lookup, pair, identity, claim, spawn_intent, control, events, finish. The public machine RPC executes only for service_role, as the existing NOBYPASSRLS executor, after the Edge server has performed custom caller authentication. The internal key is not a worker credential. Owner actions are read, activate, approve_pair, approve_retry, cancel, revoke, pause; all use the existing current-session verifier plus fixed subject, AAL2 and active NEXAEON Owner membership. Worker signatures cannot approve Owner actions. No CLI or Agent parameter can inject a command or canonical writer role.
+
+Claim is irreversible for this queue: one approval creates one attempt/fence. Visibility expiry never grants another claim. Both local fsync intent and server intent are required before starting a child. A new request cannot replay spawn authorization. Exact transport replay is fenced by the local durable journal; an unknown local phase requires manual reconciliation, not lock stealing or auto restart. Event-only recovery never creates or reclaims a job.
+
+Owner retry is available only for a cancelled, never-claimed, never-spawned job. It creates a new approval, job, attempt and monotonic fence. Claimed/UNKNOWN work cannot be retried through this adapter. Revocation denies lookup and all machine traffic, and marks active claimed work UNKNOWN. Cancellation receipt always says providerCancellationConfirmed=false.
+
+The queue tables are private, owned by postgres, ENABLE/FORCE RLS, with only the existing executor permitted the necessary table operations. Only the new function execution grants and new-schema rights persist; temporary public-schema CREATE and role SET are restored. Existing Auth helper/schema/table grants, role inheritance options, current MC data and canonical writer are preserved. Local PostgreSQL tests compare those exact existing properties before/after installation and after the complete flow.
+
+This is a bound signed-worker attestation channel. A compromised approved VM key can attest incorrect events within its scope; it is not an independent provider audit, hardware identity proof or proof of real Owner authentication.

@@ -1,0 +1,5 @@
+# Merge only after approval, alongside the exact reviewed bundle. No live config change.
+[functions.mc-worker-link-v1]
+verify_jwt = false
+# Signed Ed25519 worker envelopes / preapproved single-use pairing code checked in handler.
+# MC_VM_LINK_ENABLED is absent/false until the activation bundle is approved.

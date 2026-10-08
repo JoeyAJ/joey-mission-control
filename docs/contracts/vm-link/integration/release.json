@@ -1,0 +1,20 @@
+{
+  "release": "0.1.1",
+  "policyDigest": "72f8c00bb21e91fe86720678d72b650eada8dc54ef1f3b5d3dca6395bb83c6f9",
+  "artifactDigest": "9bb363726a13bd96341c84b015354daaa454c6265b5bf0d2c5aff6eab1e3d647",
+  "bootstrapDigest": "6db4da07651c73613eaf00decdcbda37293a2ae86f3bf2fcb0d7d12ea5aa45a4",
+  "files": [
+    "package.json",
+    "src/cli.mjs",
+    "src/installation.mjs",
+    "src/journal.mjs",
+    "src/policy.mjs",
+    "src/protocol.mjs",
+    "src/runtime.mjs",
+    "src/transport.mjs",
+    "src/worker.mjs",
+    "vendor/codex-jsonl.mjs",
+    "vendor/data.mjs",
+    "vendor/safe-payload.mjs"
+  ]
+}
