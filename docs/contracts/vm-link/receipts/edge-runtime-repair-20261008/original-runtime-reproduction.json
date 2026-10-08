@@ -1,0 +1,12 @@
+{
+  "syntheticOnly": true,
+  "networkCalls": 0,
+  "globalBufferProvided": false,
+  "directError": {
+    "name": "ReferenceError",
+    "message": "Buffer is not defined"
+  },
+  "status": 403,
+  "rpcCalls": 0,
+  "responseCode": "LINK_REQUEST_DENIED"
+}

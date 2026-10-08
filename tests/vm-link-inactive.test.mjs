@@ -5,3 +5,4 @@ import '../docs/contracts/vm-link/test/adapters.test.mjs';
 import '../docs/contracts/vm-link/test/routing.test.mjs';
 import '../docs/contracts/vm-link/test/guided-pairing.test.mjs';
 import '../docs/contracts/vm-link/test/terminal-pty.test.mjs';
+import '../docs/contracts/vm-link/test/edge-web-runtime.test.mjs';

@@ -1,0 +1,24 @@
+// Isolated web/Edge globals, real ES modules and crypto, synthetic RPC only.
+import vm from 'node:vm';import fs from 'node:fs/promises';import path from 'node:path';import assert from 'node:assert/strict';import {fileURLToPath,pathToFileURL} from 'node:url';import {webcrypto,generateKeyPairSync,createHash} from 'node:crypto';
+const base=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
+const context=vm.createContext({Request,Response,TextEncoder,TextDecoder,URL,crypto:webcrypto}),cache=new Map();
+assert.equal(vm.runInContext('typeof Buffer',context),'undefined');
+async function load(url){
+ if(cache.has(url))return cache.get(url);
+ if(url.startsWith('node:')){const n=await import(url),keys=Object.keys(n);const m=new vm.SyntheticModule(keys,function(){for(const k of keys)this.setExport(k,n[k]);},{context,identifier:url});cache.set(url,m);return m;}
+ const m=new vm.SourceTextModule(await fs.readFile(fileURLToPath(url),'utf8'),{context,identifier:url});cache.set(url,m);return m;
+}
+const module=await load(pathToFileURL(path.join(base,'edge/handler.mjs')).href);await module.link((s,r)=>load(s.startsWith('node:')?s:new URL(s,r.identifier).href));await module.evaluate();assert.equal(vm.runInContext('typeof Buffer',context),'function');
+const {artifact,artifactDigest,policyDigest}=await import('../edge/artifact.generated.mjs');const {bootstrap}=await import('../edge/bootstrap.generated.mjs');const {signedRequest}=await import('../src/protocol.mjs');
+const code='mc_pair_'+'A'.repeat(43),workerId='synthetic_worker',pair=generateKeyPairSync('ed25519'),publicKey=pair.publicKey.export({type:'spki',format:'pem'}),calls=[],diagnostics=[];let denyRpc=false;
+const h=module.namespace.createEdgeHandler({enabled:true,artifact,artifactDigest,policyDigest,bootstrap,onDenied:d=>diagnostics.push(JSON.parse(JSON.stringify(d))),rpc:async r=>{calls.push(r);if(denyRpc)throw Error('SYNTHETIC_SECRET_MUST_NOT_APPEAR');return r.action==='bootstrap'?{authorized:true,artifactDigest,policyDigest}:r.action==='lookup'?{publicKey}:{paired:true,workerId,keyDigest:'b'.repeat(64),artifactDigest,policyDigest};}});
+const origin='https://scmvedfqwlhkyvljymjj.supabase.co',post=b=>new Request(origin+'/mc-worker-link-v1',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(b)});
+const response=await h(post({action:'bootstrap',workerId,requestId:'synthetic_request',pairingCode:code}));assert.equal(response.status,200);assert.equal(createHash('sha256').update(Buffer.from(await response.arrayBuffer())).digest('hex'),artifactDigest);assert.equal(calls.length,1);assert.equal(calls[0].body.pairingHash,createHash('sha256').update(code).digest('hex'));assert(!JSON.stringify(calls).includes(code));assert.equal(diagnostics.length,0);
+assert.equal((await h(new Request(origin+'/mc-worker-link-v1/bootstrap.mjs'))).status,200);assert.equal(calls.length,1);
+assert.equal((await h(post({action:'bootstrap',workerId,requestId:'synthetic_wrong',pairingCode:'invalid'}))).status,403);assert.equal(calls.length,1);assert.deepEqual(diagnostics.at(-1),{stage:'BOOTSTRAP_VALIDATION',code:'PAIRING_DENIED'});
+assert.equal((await h(new Request(origin+'/wrong',{method:'POST'}))).status,403);assert.equal(calls.length,1);assert.deepEqual(diagnostics.at(-1),{stage:'ROUTE',code:'INVALID_REQUEST'});
+const signed=signedRequest(pair.privateKey,workerId,'pair',{pairingCode:code,publicKey});assert.equal((await h(post(signed))).status,200);assert.equal(calls.at(-1).action,'pair');assert.equal(calls.at(-1).body.pairingHash,createHash('sha256').update(code).digest('hex'));assert(!JSON.stringify(calls).includes(code));
+const count=calls.length;assert.equal((await h(post({...signed,signature:'A'.repeat(86)+'=='}))).status,403);assert.equal(calls.length,count);assert.deepEqual(diagnostics.at(-1),{stage:'PAIR_SIGNATURE',code:'INVALID_SIGNATURE'});
+denyRpc=true;assert.equal((await h(post({action:'bootstrap',workerId,requestId:'synthetic_denied',pairingCode:code}))).status,403);assert.deepEqual(diagnostics.at(-1),{stage:'BOOTSTRAP_RPC',code:'REQUEST_DENIED'});assert(!JSON.stringify(diagnostics).includes('SECRET'));assert(!JSON.stringify(diagnostics).includes(code));
+const sink=module.namespace.createEdgeHandler({enabled:true,onDenied:()=>{throw Error('SINK_UNAVAILABLE');}});assert.equal((await sink(new Request(origin+'/wrong'))).status,403);
+const report={pass:true,syntheticOnly:true,networkCalls:0,globalBufferAbsentBeforeModule:true,trustedBufferInitialized:true,validBootstrapArchiveAndHash:true,hashOnlyRpc:true,pinnedPublicGet:true,malformedCodeAndRoutingRejected:true,realEd25519PairProofVerified:true,wrongSignatureRejected:true,rpcDenialStill403:true,safeDiagnosticEnumsOnly:true,diagnosticSinkCannotChangeAdmission:true,artifactDigest};if(process.env.MC_EDGE_WEB_RUNTIME_REPORT)await fs.writeFile(process.env.MC_EDGE_WEB_RUNTIME_REPORT,JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report));

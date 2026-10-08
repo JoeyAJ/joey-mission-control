@@ -1,0 +1,264 @@
+{
+  "pass": true,
+  "againstCommit": "55d494e8fd9045c2944f384bbb48500a765b788b",
+  "unchangedFiles": [
+    {
+      "path": "docs/contracts/vm-link/edge/artifact.generated.mjs",
+      "sha256": "408f811346f7fede0b57287410376fbeebca1f9bbceec1ce4b61df42d9ed10e3",
+      "unchanged": true
+    },
+    {
+      "path": "docs/contracts/vm-link/edge/bootstrap.generated.mjs",
+      "sha256": "7ff80b69ff75a4d1c630bbe24c582a62edf62182ce78a81ec7103e1911d77575",
+      "unchanged": true
+    },
+    {
+      "path": "docs/contracts/vm-link/src/broker.mjs",
+      "sha256": "02946bbbeb543f4f0339661bf557d2f4d2e195c891e1b649f283d2e3ed4f80f6",
+      "unchanged": true
+    },
+    {
+      "path": "docs/contracts/vm-link/src/cli.mjs",
+      "sha256": "61e1751bebe01769d2e78656ee6b6a9bd65d202978b350cc72c88944f972b0a2",
+      "unchanged": true
+    },
+    {
+      "path": "docs/contracts/vm-link/src/installation.mjs",
+      "sha256": "affd4ee4f05854c614708bc316e859ccaec61782de321e58b828f4aabc8f4eb5",
+      "unchanged": true
+    },
+    {
+      "path": "docs/contracts/vm-link/src/journal.mjs",
+      "sha256": "3ab4afc17e6ff499b322b13cd55645103f4d42cfff067a3e4034797edf995c1d",
+      "unchanged": true
+    },
+    {
+      "path": "docs/contracts/vm-link/src/policy.mjs",
+      "sha256": "fd688a5abecb44a006b358c5671591c4f4efdbaaf49b200d7a2acdbabf13164f",
+      "unchanged": true
+    },
+    {
+      "path": "docs/contracts/vm-link/src/protocol.mjs",
+      "sha256": "3658e98ed4cdf97eb87ead91404fc89a5b8f9429e64ffa6025256fa9671deecc",
+      "unchanged": true
+    },
+    {
+      "path": "docs/contracts/vm-link/src/runtime.mjs",
+      "sha256": "ca54fca38fd608c3644d5c29aa2d2bb59bcfb5d35307539556ffc860ef600707",
+      "unchanged": true
+    },
+    {
+      "path": "docs/contracts/vm-link/src/transport.mjs",
+      "sha256": "4e02fd7e218f5c2a7abe3ca56bf54c751f041fa57b3c0e46d4421f71368d98d5",
+      "unchanged": true
+    },
+    {
+      "path": "docs/contracts/vm-link/src/worker.mjs",
+      "sha256": "54a141c08e45d58210108fbcf76462766b82115b7c9f14a15d6d4a47de677407",
+      "unchanged": true
+    },
+    {
+      "path": "docs/contracts/vm-link/vendor/codex-jsonl.mjs",
+      "sha256": "52d2f21fcb3308b8705b4803b69561f2cab886e9990b2161f550e67e5c0d3ffc",
+      "unchanged": true
+    },
+    {
+      "path": "docs/contracts/vm-link/vendor/data.mjs",
+      "sha256": "dab863dcbef1d95b58c8c1b473a2e814a5133c666f5b2497980e51cb3631c182",
+      "unchanged": true
+    },
+    {
+      "path": "docs/contracts/vm-link/vendor/safe-payload.mjs",
+      "sha256": "91e34cddb19608f74fc98b730d5f84d7ff91f872d62a284c7b2034b69530b01d",
+      "unchanged": true
+    },
+    {
+      "path": "public/agent-detail.js",
+      "sha256": "91ebc30c4bbb227c9c685ca66e0e6cfdabcf47638f2ecbf854782d1c7d22d252",
+      "unchanged": true
+    },
+    {
+      "path": "public/app.js",
+      "sha256": "059a011970755eec79611f6e3cc81f3668817f960c918da4d299a2868d108110",
+      "unchanged": true
+    },
+    {
+      "path": "public/brand-eye-source.png",
+      "sha256": "98d07a454176d9e85a23f41699e1fd20a5123b8d57cde883013bd62a6f323a2d",
+      "unchanged": true
+    },
+    {
+      "path": "public/command-workspace.js",
+      "sha256": "1fbbbcb0436dcd0f543cd78a78595ef09ad3609a69fdb2b31b6e83995974cfbc",
+      "unchanged": true
+    },
+    {
+      "path": "public/control-semantics.js",
+      "sha256": "1402e76855616737beaf25c1725de73898183104453ba3fe1caf5b35a0179ccf",
+      "unchanged": true
+    },
+    {
+      "path": "public/decision-view.js",
+      "sha256": "b2855ce0552a1170d0e4f6c23e118d690f509339361b31f7e39f176a24c4aa86",
+      "unchanged": true
+    },
+    {
+      "path": "public/i18n.js",
+      "sha256": "d3a38b3974ee089a006308ed7c9dfb1807576a80fb1083027762724048321f11",
+      "unchanged": true
+    },
+    {
+      "path": "public/index.html",
+      "sha256": "3f11be4ada5098c4ce0d19758218eb2359a4cbbd87528f6f4622e5ca03db196c",
+      "unchanged": true
+    },
+    {
+      "path": "public/joey-cockpit.js",
+      "sha256": "45629fa7f685c9a5fdf46a47f22c6835dd1d305d3c8c7a5f30ab928ce44a4071",
+      "unchanged": true
+    },
+    {
+      "path": "public/joey-controls.js",
+      "sha256": "01d413d70fec0b24683e44ffc28333991f55f02e6e8f74676ff9a038202d79df",
+      "unchanged": true
+    },
+    {
+      "path": "public/joey-operations.js",
+      "sha256": "6023635d47b36422269ddeaa22cdd65519ebc9885e8f15ccb0e5b2e5015be5e3",
+      "unchanged": true
+    },
+    {
+      "path": "public/joey-view.js",
+      "sha256": "2d7aaf3b6158aec3422335fa41414039becbe80ce8001df3df645087beb1c31f",
+      "unchanged": true
+    },
+    {
+      "path": "public/owner-auth-client.js",
+      "sha256": "72af2e3a88a21081111efd1d737c7d37026d6b118ead9be04073c343c037a762",
+      "unchanged": true
+    },
+    {
+      "path": "public/owner-auth-config.js",
+      "sha256": "abcf87d6ba532e759640939c1d874d5638389b4cebf88efd4c4a6bae90ed6cbf",
+      "unchanged": true
+    },
+    {
+      "path": "public/owner-password-recovery-client.js",
+      "sha256": "a96774b67aa137ec6c499ffe9c2c9e4b34f17632689e814ec6fe5c76f01bc330",
+      "unchanged": true
+    },
+    {
+      "path": "public/owner-password-recovery.html",
+      "sha256": "e28775c61e5fb80aaca75394f9b78eac1754a2afaac74f922a527560df4e0b24",
+      "unchanged": true
+    },
+    {
+      "path": "public/owner-recovery-config.js",
+      "sha256": "8312306e7cc9162299b84bd1729b6d2fed7be42274355dac7c380489dd266bab",
+      "unchanged": true
+    },
+    {
+      "path": "public/phase-summary.js",
+      "sha256": "cef2808497b7fb5a30e25b29b2465ba478f012d6796c1e32fa875387ab00167c",
+      "unchanged": true
+    },
+    {
+      "path": "public/presentation.js",
+      "sha256": "a71f2a19f4ad8136f86ac1c22c74c666362c3eae5f93d6e94fbbd7b389a0822a",
+      "unchanged": true
+    },
+    {
+      "path": "public/private-continuity-status.js",
+      "sha256": "f621915c61fcbc92e38327c75a3915a65bb762a07db4b8bdb470a44cc9bec2d5",
+      "unchanged": true
+    },
+    {
+      "path": "public/project-links.js",
+      "sha256": "9accc5e13295b1f6e62ba4b8418c4ce0b4aaec2c9cbe6d7913517ea3d2c1852c",
+      "unchanged": true
+    },
+    {
+      "path": "public/project-state-controls.js",
+      "sha256": "91db7ec519f9c797e8bd1266e0f0d334aba281e70a59cec1622ff11cffb1b1e8",
+      "unchanged": true
+    },
+    {
+      "path": "public/project-state.js",
+      "sha256": "8ef16fab786d731aefe96c253e5d5d7fba2650cfc5889990d5a7b83b31313cbb",
+      "unchanged": true
+    },
+    {
+      "path": "public/proposal-navigation.js",
+      "sha256": "b8234dd30b42b17326a7f542e1daf41217ab764197e92b6c27e90187ad199d06",
+      "unchanged": true
+    },
+    {
+      "path": "public/proposals.js",
+      "sha256": "8ee8a31efb513bf6ea704bb6d12645bb6a22e14b740c3ae31247c512dbc9691e",
+      "unchanged": true
+    },
+    {
+      "path": "public/public-cases.js",
+      "sha256": "3a107b7efd85466c1c06289681309ba6cdcb2bbc50879c3837e62e04ae10abb8",
+      "unchanged": true
+    },
+    {
+      "path": "public/source-summaries.js",
+      "sha256": "ff7b72faa0f9d06606d46aaa32feb917812530fb70cc9d938d8c9c02c66eafdd",
+      "unchanged": true
+    },
+    {
+      "path": "public/stage-changes.js",
+      "sha256": "caf43c80f9dc36a696b2490c10b60781175da7a89a0e54bfcf903a49fc9a656e",
+      "unchanged": true
+    },
+    {
+      "path": "public/styles.css",
+      "sha256": "6e4fa9d4e8f4aaf6196fff0897f3bab8a10618d2d252d0afbb2442d147d57401",
+      "unchanged": true
+    },
+    {
+      "path": "public/visual-system.js",
+      "sha256": "e7e7153ed188a0189b63af34bc252014b0739d782b36bda9af06fad9d47f9e49",
+      "unchanged": true
+    },
+    {
+      "path": "public/vm-link-config.js",
+      "sha256": "a84b578bab5206135583add1b87aedcc9739b13f8d5e18bb52e9135c0ba01177",
+      "unchanged": true
+    },
+    {
+      "path": "public/workspace-reading.js",
+      "sha256": "5dffb26fb16f53c1a5bdcac462bcd692a18999ce84556605d4407837ce1aed1a",
+      "unchanged": true
+    },
+    {
+      "path": "src/continuity/owner-vm-link-command.mjs",
+      "sha256": "1c09a5f7dcc958e54ac04aa220a3bcdca59e00f3c23a543dd5f54e14c6669aff",
+      "unchanged": true
+    },
+    {
+      "path": "src/continuity/owner-vm-link-ui.mjs",
+      "sha256": "b37494b14e9620e57f124e6bd93dec1442c5f47a0b2ee93278bd6227193901b6",
+      "unchanged": true
+    },
+    {
+      "path": "src/continuity/owner-vm-link.mjs",
+      "sha256": "112a25099671f470ac51af5130753f4f55ea9ca3d132f1f635635434f0af6406",
+      "unchanged": true
+    },
+    {
+      "path": "docs/contracts/vm-link/sql/mc-vm-link-0.1.1.pending.sql",
+      "sha256": "a0b558c6dd65d3a4d511bbe574a412ab1904b1eac9e5002e420f196e9e5028cc",
+      "unchanged": true
+    },
+    {
+      "path": "docs/contracts/vm-link/sql/mc-vm-link-0.1.1.reviewed.sql",
+      "sha256": "bba24c9b6154daaee4fd73a22851e24c08337325cc3db3e20f96a18de49aff76",
+      "unchanged": true
+    }
+  ],
+  "sqlOrGrantsChanged": false,
+  "authOrUiChanged": false,
+  "artifactOrBootstrapChanged": false
+}

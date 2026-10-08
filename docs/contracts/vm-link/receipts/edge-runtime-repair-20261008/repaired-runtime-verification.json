@@ -1,0 +1,17 @@
+{
+  "pass": true,
+  "syntheticOnly": true,
+  "networkCalls": 0,
+  "globalBufferAbsentBeforeModule": true,
+  "trustedBufferInitialized": true,
+  "validBootstrapArchiveAndHash": true,
+  "hashOnlyRpc": true,
+  "pinnedPublicGet": true,
+  "malformedCodeAndRoutingRejected": true,
+  "realEd25519PairProofVerified": true,
+  "wrongSignatureRejected": true,
+  "rpcDenialStill403": true,
+  "safeDiagnosticEnumsOnly": true,
+  "diagnosticSinkCannotChangeAdmission": true,
+  "artifactDigest": "9bb363726a13bd96341c84b015354daaa454c6265b5bf0d2c5aff6eab1e3d647"
+}

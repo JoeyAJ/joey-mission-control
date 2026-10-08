@@ -1,0 +1,5 @@
+npm run verify:portable
+552 tests; 552 pass; 0 fail; 0 skipped
+Pinned official Owner SDK browser bundles, static bundle, module syntax, schemas, and safety checks PASS.
+PORTABILITY_GUARD forbiddenAttempts=0
+No remote mutation or real worker action performed by tests.

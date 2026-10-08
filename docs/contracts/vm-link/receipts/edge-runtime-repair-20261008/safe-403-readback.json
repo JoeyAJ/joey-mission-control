@@ -1,0 +1,213 @@
+{
+  "observedAt": "2026-10-08T11:13:59.815099Z",
+  "queryWindow": {
+    "start": "2026-10-08T11:10:00Z",
+    "end": "2026-10-08T11:16:00Z"
+  },
+  "state": {
+    "observed_at": "2026-10-08 11:13:59.815099+00",
+    "broker_enabled": true,
+    "workers": [
+      {
+        "paired": false,
+        "enabled": false,
+        "revoked": true,
+        "workerId": "ubuntu-1-04c35ad4-2fd3-456c-b9db-cafa120eca15",
+        "createdAt": "2026-10-08T08:13:24.939+00:00",
+        "keyRegistered": false,
+        "pairingExpired": true,
+        "pairingExpiresAt": "2026-10-08T08:23:24.939+00:00"
+      },
+      {
+        "paired": false,
+        "enabled": false,
+        "revoked": true,
+        "workerId": "ubuntu-1-07f72d78-29d3-47cc-a649-6fae8085f0f1",
+        "createdAt": "2026-10-08T08:27:14.324+00:00",
+        "keyRegistered": false,
+        "pairingExpired": true,
+        "pairingExpiresAt": "2026-10-08T08:37:14.324+00:00"
+      },
+      {
+        "paired": false,
+        "enabled": false,
+        "revoked": true,
+        "workerId": "ubuntu-1-fbef1c3b-ba81-4f25-9892-e610339e9180",
+        "createdAt": "2026-10-08T10:20:14.331+00:00",
+        "keyRegistered": false,
+        "pairingExpired": true,
+        "pairingExpiresAt": "2026-10-08T10:30:14.331+00:00"
+      },
+      {
+        "paired": false,
+        "enabled": false,
+        "revoked": true,
+        "workerId": "ubuntu-1-f84ce906-b7ae-4831-9363-719a054b1da8",
+        "createdAt": "2026-10-08T10:23:07.592+00:00",
+        "keyRegistered": false,
+        "pairingExpired": true,
+        "pairingExpiresAt": "2026-10-08T10:33:07.592+00:00"
+      },
+      {
+        "paired": false,
+        "enabled": false,
+        "revoked": false,
+        "workerId": "ubuntu-1-e7181728-e99b-4392-b1f2-ce4e7f3ab44c",
+        "createdAt": "2026-10-08T11:10:33.575+00:00",
+        "keyRegistered": false,
+        "pairingExpired": false,
+        "pairingExpiresAt": "2026-10-08T11:20:33.575+00:00"
+      }
+    ],
+    "jobs": [
+      {
+        "fence": 1,
+        "jobId": "830ab50c-37e7-49cc-b82e-47b84be12af4",
+        "cancel": true,
+        "events": 0,
+        "claimed": false,
+        "outcome": "CANCELLED",
+        "terminal": true,
+        "workerId": "ubuntu-1-04c35ad4-2fd3-456c-b9db-cafa120eca15",
+        "claimBefore": "2026-10-08T08:28:24.939+00:00",
+        "spawnIntent": false,
+        "claimWindowExpired": true
+      },
+      {
+        "fence": 2,
+        "jobId": "a6452b98-dcac-4ca9-946f-b3dbfd9fc437",
+        "cancel": true,
+        "events": 0,
+        "claimed": false,
+        "outcome": "CANCELLED",
+        "terminal": true,
+        "workerId": "ubuntu-1-07f72d78-29d3-47cc-a649-6fae8085f0f1",
+        "claimBefore": "2026-10-08T08:42:14.324+00:00",
+        "spawnIntent": false,
+        "claimWindowExpired": true
+      },
+      {
+        "fence": 3,
+        "jobId": "1e7d915b-ce6a-4d31-9f38-b4706429a062",
+        "cancel": true,
+        "events": 0,
+        "claimed": false,
+        "outcome": "CANCELLED",
+        "terminal": true,
+        "workerId": "ubuntu-1-fbef1c3b-ba81-4f25-9892-e610339e9180",
+        "claimBefore": "2026-10-08T10:35:14.331+00:00",
+        "spawnIntent": false,
+        "claimWindowExpired": true
+      },
+      {
+        "fence": 4,
+        "jobId": "fc3c24cd-5989-4c26-939a-0ebbb2375d26",
+        "cancel": true,
+        "events": 0,
+        "claimed": false,
+        "outcome": "CANCELLED",
+        "terminal": true,
+        "workerId": "ubuntu-1-f84ce906-b7ae-4831-9363-719a054b1da8",
+        "claimBefore": "2026-10-08T10:38:07.592+00:00",
+        "spawnIntent": false,
+        "claimWindowExpired": true
+      },
+      {
+        "fence": 5,
+        "jobId": "cd39b9b8-0a00-48ca-972a-1c7d1b4a0620",
+        "cancel": false,
+        "events": 0,
+        "claimed": false,
+        "outcome": null,
+        "terminal": false,
+        "workerId": "ubuntu-1-e7181728-e99b-4392-b1f2-ce4e7f3ab44c",
+        "claimBefore": "2026-10-08T11:25:33.575+00:00",
+        "spawnIntent": false,
+        "claimWindowExpired": false
+      }
+    ],
+    "total_receipts": 13
+  },
+  "edgeLogs": [
+    {
+      "content_type": "application/json",
+      "duration_ms": "191",
+      "event_type": "",
+      "level": "",
+      "method": "POST",
+      "public_path": "/functions/v1/mc-worker-link-v1",
+      "request_bytes": "200",
+      "source": "function_edge_logs",
+      "status": "403",
+      "version": "5"
+    },
+    {
+      "content_type": "",
+      "duration_ms": "",
+      "event_type": "Shutdown",
+      "level": "log",
+      "method": "",
+      "public_path": "",
+      "request_bytes": "",
+      "source": "function_logs",
+      "status": "",
+      "version": "5"
+    },
+    {
+      "content_type": "",
+      "duration_ms": "",
+      "event_type": "Boot",
+      "level": "log",
+      "method": "",
+      "public_path": "",
+      "request_bytes": "",
+      "source": "function_logs",
+      "status": "",
+      "version": "5"
+    },
+    {
+      "content_type": "",
+      "duration_ms": "",
+      "event_type": "Boot",
+      "level": "log",
+      "method": "",
+      "public_path": "",
+      "request_bytes": "",
+      "source": "function_logs",
+      "status": "",
+      "version": "5"
+    },
+    {
+      "content_type": "",
+      "duration_ms": "",
+      "event_type": "Shutdown",
+      "level": "log",
+      "method": "",
+      "public_path": "",
+      "request_bytes": "",
+      "source": "function_logs",
+      "status": "",
+      "version": "5"
+    }
+  ],
+  "postgresLogs": [
+    {
+      "severity": "LOG",
+      "sql_state": "00000",
+      "vm_denial_code": ""
+    },
+    {
+      "severity": "LOG",
+      "sql_state": "00000",
+      "vm_denial_code": ""
+    }
+  ],
+  "conclusion": {
+    "requestReachedV5": true,
+    "approvedWorkerBindingMatches": true,
+    "uniqueHistoricalDenialStageRecorded": false,
+    "noReplay": true,
+    "noSecretRead": true,
+    "noJobsCreated": true
+  }
+}
