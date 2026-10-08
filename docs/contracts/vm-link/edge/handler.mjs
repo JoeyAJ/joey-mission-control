@@ -2,8 +2,16 @@
 import {Buffer} from 'node:buffer';
 import {createHash,randomUUID} from 'node:crypto';
 import {canonical,exactKeys,fail,identifier,jsonData} from '../vendor/data.mjs';
-import {validateRequest,AUDIENCE} from '../src/protocol.mjs';
+import {validateRequest} from '../src/protocol.mjs';
 const hash=bytes=>createHash('sha256').update(bytes).digest('hex');
+// Supabase forwards a function-name-prefixed pathname to the runtime. The
+// signed envelope still binds to the exact public AUDIENCE in validateRequest.
+function routePath(url){
+ const parsed=new URL(url),raw=/^[A-Za-z][A-Za-z0-9+.-]*:\/\/[^/?#]+(\/[^?#]*)?$/.exec(url);
+ if(!raw||parsed.username||parsed.password||parsed.pathname!==raw[1])fail('INVALID_REQUEST');
+ if(raw[1]!=='/mc-worker-link-v1'&&raw[1]!=='/mc-worker-link-v1/bootstrap.mjs')fail('INVALID_REQUEST');
+ return raw[1];
+}
 export function publicKeyBytes(pem){
  if(typeof pem!=='string'||!/^-----BEGIN PUBLIC KEY-----\n[A-Za-z0-9+/]{59}=\n-----END PUBLIC KEY-----\n$/.test(pem))fail('INVALID_SIGNATURE');
  const der=Buffer.from(pem.split('\n')[1],'base64');
@@ -30,8 +38,9 @@ export function createEdgeHandler({enabled=false,rpc,artifact,artifactDigest,pol
  return async req=>{
   if(enabled!==true)return Response.json({code:'LINK_DISABLED'},{status:503,headers});
   try{
-   if(req.method==='GET'&&req.url===AUDIENCE+'/bootstrap.mjs'&&typeof bootstrap==='string')return new Response(bootstrap,{headers:{...headers,'content-type':'text/javascript; charset=utf-8'}});
-   if(req.method!=='POST'||req.url!==AUDIENCE)fail('INVALID_REQUEST');
+   const path=routePath(req.url);
+   if(req.method==='GET'&&path==='/mc-worker-link-v1/bootstrap.mjs'&&typeof bootstrap==='string')return new Response(bootstrap,{headers:{...headers,'content-type':'text/javascript; charset=utf-8'}});
+   if(req.method!=='POST'||path!=='/mc-worker-link-v1')fail('INVALID_REQUEST');
    const value=await boundedBody(req);let request,body;
    if(value.action==='bootstrap'){
     if(!exactKeys(value,['action','workerId','requestId','pairingCode'])||!identifier(value.workerId)||!identifier(value.requestId)||!/^mc_pair_[A-Za-z0-9_-]{43}$/.test(value.pairingCode))fail('PAIRING_DENIED');
