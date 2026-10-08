@@ -391,6 +391,19 @@
       "previewPublication": "AUTHORIZED_AFTER_VERIFICATION_EXACT_RECEIPT_EXTERNAL",
       "actualOwnerAuthOrVmProof": false,
       "productionPromotion": false
+    },
+    {
+      "at": "2026-10-08T10:01:34.437303+00:00",
+      "type": "PRIVATE_WORKER_EVIDENCE_FIXED_PREVIEW_READY_VERIFIED",
+      "sourceSha": "1a3487d98c2b706e470b6930532c58c9d7bb3962",
+      "deploymentId": "dpl_Di9dpuDtLs3pySZ7nP2FP8KsgHCM",
+      "servedAssetsMatch": true,
+      "readbackAt": "2026-10-08 09:57:07.912207+00",
+      "workerReceipts": 0,
+      "jobsUnclaimedUnspawned": true,
+      "ownerOrVmActions": 0,
+      "productionUnchanged": true,
+      "privateReceiptRef": "docs/contracts/vm-link/receipts/worker-evidence-view-20261008/preview-receipt.json"
     }
   ],
   "migrationPriority": {
@@ -516,7 +529,7 @@
   },
   "nextIndependentSlice": {
     "id": "PRIVATE_WORKER_EVIDENCE_INSPECTOR",
-    "status": "IMPLEMENTED_LOCALLY_VERIFIED_APPROVED_FIXED_PREVIEW_PUBLICATION",
+    "status": "PRIVATE_PREVIEW_READY_VERIFIED_ACTUAL_VM_PROOF_PENDING",
     "proposalRef": "docs/MC_PRIVATE_WORKER_EVIDENCE_NEXT_SLICE.md",
     "source": "EXISTING_QUALIFIED_NEXAEON_OWNER_VIEW_ONLY",
     "credentialDependent": false,
@@ -541,7 +554,9 @@
       "protectedSourceFiles": 11,
       "protectedPairingSections": 4,
       "buildSchemaStaticSafety": "PASS"
-    }
+    },
+    "functionalSourceSha": "1a3487d98c2b706e470b6930532c58c9d7bb3962",
+    "deploymentId": "dpl_Di9dpuDtLs3pySZ7nP2FP8KsgHCM"
   },
   "checkpointHistory": [
     {

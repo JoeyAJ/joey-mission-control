@@ -1,0 +1,21 @@
+{
+  "ownerBundle": {
+    "match": true,
+    "servedSha256": "829a5adf99aa5d26c89af6f18ae31f2c333e27c5be27498c50f6e7b307c4bbaf",
+    "localSha256": "829a5adf99aa5d26c89af6f18ae31f2c333e27c5be27498c50f6e7b307c4bbaf",
+    "bytes": 329605
+  },
+  "styles": {
+    "match": true,
+    "servedSha256": "63eeebca5d0c1f18e45aacd9abb83b69dd490e770858966ec755381c90cf28a5",
+    "localSha256": "63eeebca5d0c1f18e45aacd9abb83b69dd490e770858966ec755381c90cf28a5",
+    "bytes": 130181
+  },
+  "config": {
+    "match": true,
+    "servedSha256": "a84b578bab5206135583add1b87aedcc9739b13f8d5e18bb52e9135c0ba01177",
+    "localSha256": "a84b578bab5206135583add1b87aedcc9739b13f8d5e18bb52e9135c0ba01177",
+    "bytes": 342
+  },
+  "newEvidenceLabelsAndOriginalPairingStepsPresent": true
+}

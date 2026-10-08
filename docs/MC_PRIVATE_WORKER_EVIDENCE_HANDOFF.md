@@ -30,3 +30,9 @@ Parent 在 [範圍與驗收](MC_PRIVATE_WORKER_EVIDENCE_NEXT_SLICE.md) 呈報後
 Joey 通勤期間，agent 沒有呼叫 Owner mutation、重新批准、撤銷、取消、執行 VM 命令、取得 key/token 或觸發實際 worker。新 viewer 不改任何真人操作順序。她回來後仍依 [guided pairing handoff](MC_VM_LINK_GUIDED_PAIRING_HANDOFF.md) 親自撤銷 expired worker，再準備 terminal 等碼、確認並批准、立即複製碼並貼入等待中的 TTY、讀回實際結果，最後 pause/revoke。原歷史紀錄保留。
 
 尚待的是那次 actual VM readback 與 Joey 使用體驗；通用 Agent/tool feed、canonical writer/cutover、Owner final-decision acceptance 和 production promotion 都維持原獨立 gates。本階段只改善已有證據的閱讀，不宣稱 Development OS 已完成。
+
+## Exact fixed-preview release receipt
+
+功能 commit `1a3487d98c2b706e470b6930532c58c9d7bb3962`，tree `b6fae8ea22ed96f9379b9839aa09e7ea9212ed4b`。Deployment `dpl_Di9dpuDtLs3pySZ7nP2FP8KsgHCM` READY/target=null，固定 alias 指向此 deployment。HTTP200 的 JS/CSS/config 與本機已驗證 bytes 一致；exact hashes 與 provider/readback 在 [preview receipt](contracts/vm-link/receipts/worker-evidence-view-20261008/preview-receipt.json) 及 [served assets](contracts/vm-link/receipts/worker-evidence-view-20261008/served-assets.json)。
+
+09:57:07.912207 UTC 的 post-release metadata 再次確認原兩筆 job 未 claimed/spawn、events=0，worker receipts=0；目前 worker expired/unpaired/unrevoked。fence2 仍 terminal=false/outcome=null，保留真人 revoke recovery。Production 仍 8b4945b16a0b23f2e72033aa976fa34f94eabec0。後續 receipt-only commit 不變更這個功能或 public bytes。

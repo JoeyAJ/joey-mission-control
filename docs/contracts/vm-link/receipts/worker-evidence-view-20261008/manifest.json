@@ -27,6 +27,17 @@
       "path": "portable-verification.txt",
       "sha256": "12b09d1eb98ca3bb8bdbafd9de0695fc782e9b5c6d499b7bc9b131d3e6f1c72f",
       "bytes": 58041
+    },
+    {
+      "path": "preview-receipt.json",
+      "sha256": "4433af332f419fa0c7f2494cf2199014ffb36e0a2abb82c388225095ed59f636",
+      "bytes": 2438
+    },
+    {
+      "path": "served-assets.json",
+      "sha256": "9364436ff500fa449d4802fa9c76fe5835ab0d477dfcffa02cecf536e5ab244e",
+      "bytes": 763
     }
-  ]
+  ],
+  "functionalSourceSha": "1a3487d98c2b706e470b6930532c58c9d7bb3962"
 }
