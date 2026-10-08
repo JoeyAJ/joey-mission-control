@@ -6,7 +6,8 @@ import {createEdgeHandler} from '../edge/handler.mjs';
 import {AUDIENCE,signedRequest} from '../src/protocol.mjs';
 import {emptyPayload} from '../vendor/safe-payload.mjs';
 import {artifact,artifactDigest,policyDigest} from '../edge/artifact.generated.mjs';
-import {bootstrap} from '../edge/bootstrap.generated.mjs';
+import {bootstrap,bootstrapDigest} from '../edge/bootstrap.generated.mjs';
+import {vmBootstrapDigest} from '../../../../src/continuity/owner-vm-link-command.mjs';
 const origin=new URL(AUDIENCE).origin,root='/mc-worker-link-v1',runtime=origin+root;
 const hash=x=>createHash('sha256').update(x).digest('hex');
 const pair=generateKeyPairSync('ed25519'),publicKey=pair.publicKey.export({type:'spki',format:'pem'});
@@ -17,7 +18,7 @@ test('documented runtime GET serves only the exact pinned public bootstrap witho
  let rpc=0;const h=createEdgeHandler({enabled:true,bootstrap,rpc:()=>{rpc++;}});
  const res=await h(new Request(runtime+'/bootstrap.mjs'));
  assert.equal(res.status,200);assert.equal(res.headers.get('cache-control'),'no-store');
- assert.equal(hash(Buffer.from(await res.arrayBuffer())),'6db4da07651c73613eaf00decdcbda37293a2ae86f3bf2fcb0d7d12ea5aa45a4');assert.equal(rpc,0);
+ assert.equal(hash(Buffer.from(await res.arrayBuffer())),bootstrapDigest);assert.equal(bootstrapDigest,vmBootstrapDigest);assert.equal(rpc,0);
 });
 
 test('only two exact function-prefixed paths reach routing; wrong prefixes and encodings are denied',async()=>{

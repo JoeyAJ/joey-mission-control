@@ -1,0 +1,63 @@
+{
+  "pass": true,
+  "syntheticOnly": true,
+  "realOwnerAuth": false,
+  "realWorkerExecution": false,
+  "externalRequests": 0,
+  "cases": [
+    {
+      "width": 1440,
+      "pass": true,
+      "emptyWaitingClaimedSpawnCancelledFailedInconsistentCompleted": true,
+      "localExpiryWithoutRpc": true,
+      "keyboardJobAndEventNavigation": true,
+      "focusRetained": true,
+      "readFailureRetentionAndRecovery": true,
+      "invalidPayloadWithheld": true,
+      "touch44": true,
+      "minTouch": 87.5,
+      "noOverflow": true,
+      "noBrowserStorage": true,
+      "existingReadOnlyRpc": true,
+      "noMutationOrJobStart": true,
+      "pairingFlowAndCodeUntouched": true,
+      "projectChangePurged": true
+    },
+    {
+      "width": 390,
+      "pass": true,
+      "emptyWaitingClaimedSpawnCancelledFailedInconsistentCompleted": true,
+      "localExpiryWithoutRpc": true,
+      "keyboardJobAndEventNavigation": true,
+      "focusRetained": true,
+      "readFailureRetentionAndRecovery": true,
+      "invalidPayloadWithheld": true,
+      "touch44": true,
+      "minTouch": 44,
+      "noOverflow": true,
+      "noBrowserStorage": true,
+      "existingReadOnlyRpc": true,
+      "noMutationOrJobStart": true,
+      "pairingFlowAndCodeUntouched": true,
+      "projectChangePurged": true
+    },
+    {
+      "width": 320,
+      "pass": true,
+      "emptyWaitingClaimedSpawnCancelledFailedInconsistentCompleted": true,
+      "localExpiryWithoutRpc": true,
+      "keyboardJobAndEventNavigation": true,
+      "focusRetained": true,
+      "readFailureRetentionAndRecovery": true,
+      "invalidPayloadWithheld": true,
+      "touch44": true,
+      "minTouch": 44,
+      "noOverflow": true,
+      "noBrowserStorage": true,
+      "existingReadOnlyRpc": true,
+      "noMutationOrJobStart": true,
+      "pairingFlowAndCodeUntouched": true,
+      "projectChangePurged": true
+    }
+  ]
+}

@@ -16,9 +16,34 @@ function directory(path){
 }
 async function maskedCode(){
  if(!process.stdin.isTTY||!process.stdout.isTTY)denied('SECURE_TTY_REQUIRED');
- process.stdout.write('一次性 MC 配對碼（輸入不回顯）: ');process.stdin.setRawMode(true);process.stdin.resume();let value='';
- return new Promise((resolve,reject)=>{const done=(error)=>{process.stdin.off('data',receive);process.stdin.setRawMode(false);process.stdin.pause();process.stdout.write('\n');error?reject(error):resolve(value);};
- const receive=chunk=>{for(const c of chunk.toString('utf8')){if(c==='\u0003'){done(Object.assign(Error('USER_CANCELLED'),{code:'USER_CANCELLED'}));return;}if(c==='\r'||c==='\n'){done();return;}if(c==='\u007f'||c==='\b'){value=value.slice(0,-1);continue;}if(!/[A-Za-z0-9_-]/.test(c)||value.length>=51){done(Object.assign(Error('PAIRING_CODE_INVALID'),{code:'PAIRING_CODE_INVALID'}));return;}value+=c;}};process.stdin.on('data',receive);});
+ const prompt=()=>process.stdout.write('MC pairing code (hidden; paste here, then Enter): ');
+ process.stdin.setRawMode(true);process.stdout.write('\u001b[?2004h');prompt();process.stdin.resume();
+ let value='',invalid=false,escape='',pasting=false,pasteEndedLine=false,settled=false;
+ return new Promise((resolve,reject)=>{
+  const done=error=>{if(settled)return;settled=true;clearTimeout(timer);process.stdin.off('data',receive);process.stdin.off('end',ended);process.stdin.off('error',ended);process.stdin.setRawMode(false);process.stdin.pause();process.stdout.write('\u001b[?2004l\n');error?reject(error):resolve(value);};
+  const ended=()=>done(Object.assign(Error('USER_CANCELLED'),{code:'USER_CANCELLED'}));
+  const reset=message=>{value='';invalid=false;escape='';pasting=false;pasteEndedLine=false;process.stdout.write('\n'+message+'\n');prompt();};
+  const receive=chunk=>{for(const c of chunk.toString('utf8')){
+   if(c==='\u0003'||c==='\u0004'){ended();return;}
+   if(escape){escape+=c;
+    if(escape==='\u001b[200~'){if(pasting)invalid=true;pasting=true;pasteEndedLine=false;escape='';}
+    else if(escape==='\u001b[201~'){if(!pasting)invalid=true;pasting=false;escape='';}
+    else if(!['\u001b[200~','\u001b[201~'].some(x=>x.startsWith(escape))){invalid=true;escape='';}
+    continue;
+   }
+   if(c==='\u001b'){escape=c;continue;}
+   if(c==='\r'||c==='\n'){
+    if(pasting){pasteEndedLine=true;continue;}
+    if(!invalid&&/^mc_pair_[A-Za-z0-9_-]{43}$/.test(value)){done();return;}
+    reset(value||invalid?'Input not accepted. Stay here and paste the current code again.':'Still waiting for the code. Blank Enter does not submit.');continue;
+   }
+   if(c==='\u007f'||c==='\b'){if(!pasting)value=value.slice(0,-1);else invalid=true;continue;}
+   if(pasteEndedLine||!/[A-Za-z0-9_-]/.test(c)||value.length>=51){invalid=true;continue;}
+   value+=c;
+  }};
+  const timer=setTimeout(()=>done(Object.assign(Error('PAIRING_INPUT_TIMEOUT'),{code:'PAIRING_INPUT_TIMEOUT'})),900000);
+  process.stdin.on('data',receive);process.stdin.once('end',ended);process.stdin.once('error',ended);
+ });
 }
 async function main(){
  const [workerId,...rest]=process.argv.slice(2);if(rest.length||!/^ubuntu-1-[a-f0-9-]{36}$/.test(workerId||'')||process.platform!=='linux'||process.arch!=='x64'||Number(process.versions.node.split('.')[0])<18)denied('INSTALL_SCOPE_REJECTED');

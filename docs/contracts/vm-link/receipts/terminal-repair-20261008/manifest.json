@@ -1,0 +1,45 @@
+{
+  "status": "LOCAL_VERIFIED_COORDINATED_RELEASE_PENDING",
+  "files": [
+    {
+      "file": "original-interactive-pty-result.json",
+      "bytes": 3641,
+      "sha256": "f7846255a325e99b694d3248f32eba3c1b9fd4dae5a6c78693fee1268880571f"
+    },
+    {
+      "file": "repaired-pty-result.json",
+      "bytes": 4383,
+      "sha256": "ff0e3b270d40756ef50cd3f61f5705a658eb75241dc53e5e0e33c0e2dd3331f9"
+    },
+    {
+      "file": "protected-source-check.json",
+      "bytes": 2260,
+      "sha256": "adbcef648f238d562ce5b6c3c9f7f4a33695eb689007e7a9e36d0c2fc759de5c"
+    },
+    {
+      "file": "dialog-browser.json",
+      "bytes": 2349,
+      "sha256": "3f57e3bec2e0e514a9f9ad13333fd9c674720090e473e4bbcb1d479a452fa117"
+    },
+    {
+      "file": "owner-sdk-lifecycle.json",
+      "bytes": 6314,
+      "sha256": "9a3c5ea288c2463827795ee3f5dc757988c4081c2962921e71ac91b50a4927d3"
+    },
+    {
+      "file": "worker-evidence-browser.json",
+      "bytes": 1875,
+      "sha256": "9b5ebfd96d3e4ff905c948efe12845e4ec3edafd797409f2a41a5be260aeb50d"
+    },
+    {
+      "file": "safe-live-readback.json",
+      "bytes": 3245,
+      "sha256": "7c1d45d2695d747032dc8e5f217508f3362e074f6e230007f012893aefd9f336"
+    },
+    {
+      "file": "portable-verification.txt",
+      "bytes": 58121,
+      "sha256": "4c600910610768126d954a9c8d4446cedd1d1a709b41a86059aac91f015af2c4"
+    }
+  ]
+}

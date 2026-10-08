@@ -1,0 +1,184 @@
+{
+  "networkCalls": 0,
+  "actualOwnerActions": 0,
+  "actualVmCommands": 0,
+  "cases": [
+    {
+      "case": "plain-CR",
+      "commandPastedToInteractiveShell": true,
+      "promptReached": true,
+      "blockedCode": "BROKER_HTTP_503",
+      "localFetchCalls": 1,
+      "checks": [
+        {
+          "audience": true,
+          "worker": true,
+          "code": true,
+          "hash": true
+        }
+      ],
+      "secretEchoed": false,
+      "blankReprompt": false,
+      "malformedReprompt": false
+    },
+    {
+      "case": "plain-LF",
+      "commandPastedToInteractiveShell": true,
+      "promptReached": true,
+      "blockedCode": "BROKER_HTTP_503",
+      "localFetchCalls": 1,
+      "checks": [
+        {
+          "audience": true,
+          "worker": true,
+          "code": true,
+          "hash": true
+        }
+      ],
+      "secretEchoed": false,
+      "blankReprompt": false,
+      "malformedReprompt": false
+    },
+    {
+      "case": "blank-then-valid",
+      "commandPastedToInteractiveShell": true,
+      "promptReached": true,
+      "blockedCode": "BROKER_HTTP_503",
+      "localFetchCalls": 1,
+      "checks": [
+        {
+          "audience": true,
+          "worker": true,
+          "code": true,
+          "hash": true
+        }
+      ],
+      "secretEchoed": false,
+      "blankReprompt": true,
+      "malformedReprompt": false
+    },
+    {
+      "case": "malformed-then-valid",
+      "commandPastedToInteractiveShell": true,
+      "promptReached": true,
+      "blockedCode": "BROKER_HTTP_503",
+      "localFetchCalls": 1,
+      "checks": [
+        {
+          "audience": true,
+          "worker": true,
+          "code": true,
+          "hash": true
+        }
+      ],
+      "secretEchoed": false,
+      "blankReprompt": false,
+      "malformedReprompt": true
+    },
+    {
+      "case": "backspace",
+      "commandPastedToInteractiveShell": true,
+      "promptReached": true,
+      "blockedCode": "BROKER_HTTP_503",
+      "localFetchCalls": 1,
+      "checks": [
+        {
+          "audience": true,
+          "worker": true,
+          "code": true,
+          "hash": true
+        }
+      ],
+      "secretEchoed": false,
+      "blankReprompt": false,
+      "malformedReprompt": false
+    },
+    {
+      "case": "bracketed-paste",
+      "commandPastedToInteractiveShell": true,
+      "promptReached": true,
+      "blockedCode": "BROKER_HTTP_503",
+      "localFetchCalls": 1,
+      "checks": [
+        {
+          "audience": true,
+          "worker": true,
+          "code": true,
+          "hash": true
+        }
+      ],
+      "secretEchoed": false,
+      "blankReprompt": false,
+      "malformedReprompt": false
+    },
+    {
+      "case": "fragmented-bracketed-paste",
+      "commandPastedToInteractiveShell": true,
+      "promptReached": true,
+      "blockedCode": "BROKER_HTTP_503",
+      "localFetchCalls": 1,
+      "checks": [
+        {
+          "audience": true,
+          "worker": true,
+          "code": true,
+          "hash": true
+        }
+      ],
+      "secretEchoed": false,
+      "blankReprompt": false,
+      "malformedReprompt": false
+    },
+    {
+      "case": "paste-trailing-newline",
+      "commandPastedToInteractiveShell": true,
+      "promptReached": true,
+      "blockedCode": "BROKER_HTTP_503",
+      "localFetchCalls": 1,
+      "checks": [
+        {
+          "audience": true,
+          "worker": true,
+          "code": true,
+          "hash": true
+        }
+      ],
+      "secretEchoed": false,
+      "blankReprompt": false,
+      "malformedReprompt": false
+    },
+    {
+      "case": "control-C",
+      "commandPastedToInteractiveShell": true,
+      "promptReached": true,
+      "blockedCode": "USER_CANCELLED",
+      "localFetchCalls": 0,
+      "checks": [],
+      "secretEchoed": false,
+      "blankReprompt": false,
+      "malformedReprompt": false
+    },
+    {
+      "case": "extra-command-Enter",
+      "commandPastedToInteractiveShell": true,
+      "promptReached": true,
+      "blockedCode": "BROKER_HTTP_503",
+      "localFetchCalls": 1,
+      "checks": [
+        {
+          "audience": true,
+          "worker": true,
+          "code": true,
+          "hash": true
+        }
+      ],
+      "secretEchoed": false,
+      "blankReprompt": true,
+      "malformedReprompt": false
+    }
+  ],
+  "preparedEqualsApproved": true,
+  "generationHashMatches": true,
+  "secretInCommand": false,
+  "syntheticOnly": true
+}

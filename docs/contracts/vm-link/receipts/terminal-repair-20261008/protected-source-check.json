@@ -1,0 +1,66 @@
+{
+  "protectedFiles": [
+    {
+      "path": "src/continuity/owner-vm-link.mjs",
+      "sha256": "112a25099671f470ac51af5130753f4f55ea9ca3d132f1f635635434f0af6406",
+      "unchanged": true
+    },
+    {
+      "path": "src/continuity/supabase-owner-auth.mjs",
+      "sha256": "87c7ce6f00ba8d3ea6a620e52b4fb4159d0227f6029a1fa667a043d3a9abe0df",
+      "unchanged": true
+    },
+    {
+      "path": "public/owner-auth-config.js",
+      "sha256": "abcf87d6ba532e759640939c1d874d5638389b4cebf88efd4c4a6bae90ed6cbf",
+      "unchanged": true
+    },
+    {
+      "path": "public/vm-link-config.js",
+      "sha256": "a84b578bab5206135583add1b87aedcc9739b13f8d5e18bb52e9135c0ba01177",
+      "unchanged": true
+    },
+    {
+      "path": "docs/contracts/vm-link/sql/mc-vm-link-0.1.1.reviewed.sql",
+      "sha256": "bba24c9b6154daaee4fd73a22851e24c08337325cc3db3e20f96a18de49aff76",
+      "unchanged": true
+    },
+    {
+      "path": "docs/contracts/vm-link/edge/index.ts",
+      "sha256": "5d61444af47d72f0af9667140ddb5ea015cf90291ce417c6c019ebbe4596d2a2",
+      "unchanged": true
+    },
+    {
+      "path": "docs/contracts/vm-link/edge/handler.mjs",
+      "sha256": "c18dd30b4061001a6d28a80fa4046929cdd91cc3eea56f7bc2118e11fb8d2d79",
+      "unchanged": true
+    },
+    {
+      "path": "docs/contracts/vm-link/edge/artifact.generated.mjs",
+      "sha256": "408f811346f7fede0b57287410376fbeebca1f9bbceec1ce4b61df42d9ed10e3",
+      "unchanged": true
+    },
+    {
+      "path": "docs/contracts/vm-link/src/protocol.mjs",
+      "sha256": "3658e98ed4cdf97eb87ead91404fc89a5b8f9429e64ffa6025256fa9671deecc",
+      "unchanged": true
+    },
+    {
+      "path": "docs/contracts/vm-link/src/installation.mjs",
+      "sha256": "affd4ee4f05854c614708bc316e859ccaec61782de321e58b828f4aabc8f4eb5",
+      "unchanged": true
+    },
+    {
+      "path": "docs/contracts/vm-link/src/runtime.mjs",
+      "sha256": "ca54fca38fd608c3644d5c29aa2d2bb59bcfb5d35307539556ffc860ef600707",
+      "unchanged": true
+    },
+    {
+      "path": "docs/contracts/vm-link/src/worker.mjs",
+      "sha256": "54a141c08e45d58210108fbcf76462766b82115b7c9f14a15d6d4a47de677407",
+      "unchanged": true
+    }
+  ],
+  "ownerBrowserAuthLogicUnchangedExceptDialogDomMount": true,
+  "noSqlOrPolicyOrArtifactChanges": true
+}

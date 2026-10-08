@@ -572,5 +572,24 @@
       "previewRisk": "Automatic Vercel preview possible on push; public bundle/API/private-original exclusion must be checked.",
       "localCommitNote": "Stage content SHA verified remotely; later receipt-only commit SHA resides in external delivery manifest."
     }
-  ]
+  ],
+  "guidedPairingTerminalRepair": {
+    "status": "LOCAL_VERIFIED_COORDINATED_RELEASE_PENDING",
+    "portableTests": 551,
+    "realLocalPtyCases": 10,
+    "browserWidths": [
+      1440,
+      390,
+      320
+    ],
+    "sdkLifecycleCases": 9,
+    "candidateBootstrapDigest": "eb053b359f139df44e20a7141a2cb5ead88f13dc013a53cabf3737229a76ad21",
+    "artifactUnchanged": true,
+    "liveWorkerRevocationConfirmed": false,
+    "liveJobsCancelled": 4,
+    "agentOwnerActions": 0,
+    "realVmCommands": 0,
+    "actualAuthOrVmProof": false,
+    "handoff": "docs/MC_VM_LINK_TERMINAL_REPAIR_HANDOFF.md"
+  }
 }
