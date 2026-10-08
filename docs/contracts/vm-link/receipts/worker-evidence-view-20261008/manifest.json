@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "mc.private-worker-evidence-custody.v1",
+  "baseline": "68f599ce55f3b7499a48bc97a6fff1493df2bc1c",
+  "qualification": "SYNTHETIC_TESTS_NOT_ACTUAL_AUTH_OR_VM_PROOF",
+  "files": [
+    {
+      "path": "evidence-browser.json",
+      "sha256": "9b5ebfd96d3e4ff905c948efe12845e4ec3edafd797409f2a41a5be260aeb50d",
+      "bytes": 1875
+    },
+    {
+      "path": "pairing-source-regression.json",
+      "sha256": "97d16da9bda1a0914e8a95163cc3628162456b79c0be61f54746e32ac7f0dbe7",
+      "bytes": 2559
+    },
+    {
+      "path": "owner-sdk-lifecycle.json",
+      "sha256": "9a3c5ea288c2463827795ee3f5dc757988c4081c2962921e71ac91b50a4927d3",
+      "bytes": 6314
+    },
+    {
+      "path": "guided-pairing-browser.json",
+      "sha256": "9c5f70c02dff206e42c699f70f954c3aa4f5dcf27e5eb38cf0410a443d200421",
+      "bytes": 1641
+    },
+    {
+      "path": "portable-verification.txt",
+      "sha256": "12b09d1eb98ca3bb8bdbafd9de0695fc782e9b5c6d499b7bc9b131d3e6f1c72f",
+      "bytes": 58041
+    }
+  ]
+}

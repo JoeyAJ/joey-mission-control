@@ -1,6 +1,6 @@
 # 下一個獨立範圍：私人 worker 執行證據檢視
 
-狀態：**已界定並呈報，尚未實作**。功能基線是 `7c0053d24fa0df10b510c20175122aa82ef7cd23`；這份文件不啟用功能、連接新 producer 或批准任何 pilot。Parent 要求先回報具體範圍與驗收，再開始下一個階段；目前 sole writer 仍是此 delegated agent。
+狀態：**Parent 已指示實作；本機工程驗證完成，exact preview receipt 隨 checkpoint 保存**。功能基線是 `7c0053d24fa0df10b510c20175122aa82ef7cd23`；實作只讀 evidence view，不連接新 producer 或批准任何 pilot。Parent 要求先回報具體範圍與驗收，再開始下一個階段；目前 sole writer 仍是此 delegated agent。
 
 ## 已有需求與實際缺口
 
@@ -29,6 +29,6 @@
 
 ## 下一階段的交付與順序
 
-交付為 projection、read-only inspector、必要的 scope/privacy/time/terminal/interaction 測試，以及 exact source/private checkpoint；先向 parent 回報此範圍，維持一個 writer。當前只保存這份 proposal，不把它混進已發布的配對修復，也不新增基礎設施、權限、費用、production promotion 或自動 VM jobs。
+交付為 projection、read-only inspector、必要的 scope/privacy/time/terminal/interaction 測試，以及 exact source/private checkpoint；先向 parent 回報此範圍，維持一個 writer。Parent 已在範圍呈報後明確指示實作。現在已有純 projection、私人 inspector、550 項 aggregate checks、3 種螢幕／鍵盤測試、原 guided-pairing 3 種螢幕回歸及 Owner lifecycle 9 cases。配對 controller／command／Auth lifecycle 與四段操作 source bytes 保持不變。詳細交付在 MC_PRIVATE_WORKER_EVIDENCE_HANDOFF.md；不新增基礎設施、權限、費用、production promotion 或自動 VM jobs。
 
 已發布配對流程與真人待辦以 [MC_VM_LINK_GUIDED_PAIRING_HANDOFF.md](MC_VM_LINK_GUIDED_PAIRING_HANDOFF.md) 為準。既有 canonical writer/cutover 與 Owner final-decision acceptance 仍依原獨立 gates，不屬此 slice。

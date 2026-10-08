@@ -366,6 +366,31 @@
       "actualVmProof": false,
       "productionPromotion": false,
       "evidenceRef": "docs/MC_VM_LINK_GUIDED_PAIRING_HANDOFF.md"
+    },
+    {
+      "at": "2026-10-08T09:48:07.426939+00:00",
+      "type": "PRIVATE_WORKER_EVIDENCE_INSPECTOR_IMPLEMENTED_AND_VERIFIED",
+      "sourceQualification": "PARENT_DELEGATED_SCOPE_AFTER_PROPOSAL",
+      "baseline": "68f599ce55f3b7499a48bc97a6fff1493df2bc1c",
+      "result": "Existing qualified Owner view only; claim/spawn/turn/exit/server outcome separated; empty/stale/cancelled/failed/inconsistent states; local expiry, no extra RPC/storage/jobs. Pairing and Auth lifecycle unchanged.",
+      "tests": {
+        "fullPortable": 550,
+        "projectionCasesIncluded": 12,
+        "evidenceBrowserWidths": [
+          1440,
+          390,
+          320
+        ],
+        "pairingBrowserCases": 3,
+        "ownerSdkLifecycleCases": 9,
+        "externalBrowserRequests": 0,
+        "protectedSourceFiles": 11,
+        "protectedPairingSections": 4,
+        "buildSchemaStaticSafety": "PASS"
+      },
+      "previewPublication": "AUTHORIZED_AFTER_VERIFICATION_EXACT_RECEIPT_EXTERNAL",
+      "actualOwnerAuthOrVmProof": false,
+      "productionPromotion": false
     }
   ],
   "migrationPriority": {
@@ -491,7 +516,7 @@
   },
   "nextIndependentSlice": {
     "id": "PRIVATE_WORKER_EVIDENCE_INSPECTOR",
-    "status": "REPORTED_NOT_IMPLEMENTED",
+    "status": "IMPLEMENTED_LOCALLY_VERIFIED_APPROVED_FIXED_PREVIEW_PUBLICATION",
     "proposalRef": "docs/MC_PRIVATE_WORKER_EVIDENCE_NEXT_SLICE.md",
     "source": "EXISTING_QUALIFIED_NEXAEON_OWNER_VIEW_ONLY",
     "credentialDependent": false,
@@ -500,7 +525,23 @@
     "startsJobs": false,
     "productionPromotion": false,
     "parentSequencingCheckpoint": "REPORT_SCOPE_AND_ACCEPTANCE_BEFORE_IMPLEMENTATION",
-    "singleWriter": "THIS_DELEGATED_AGENT_ONLY"
+    "singleWriter": "THIS_DELEGATED_AGENT_ONLY",
+    "handoffRef": "docs/MC_PRIVATE_WORKER_EVIDENCE_HANDOFF.md",
+    "tests": {
+      "fullPortable": 550,
+      "projectionCasesIncluded": 12,
+      "evidenceBrowserWidths": [
+        1440,
+        390,
+        320
+      ],
+      "pairingBrowserCases": 3,
+      "ownerSdkLifecycleCases": 9,
+      "externalBrowserRequests": 0,
+      "protectedSourceFiles": 11,
+      "protectedPairingSections": 4,
+      "buildSchemaStaticSafety": "PASS"
+    }
   },
   "checkpointHistory": [
     {

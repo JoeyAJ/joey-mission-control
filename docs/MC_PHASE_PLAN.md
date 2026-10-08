@@ -14,8 +14,10 @@ Next independent stage, reported before implementation:
 It uses only existing safe job/event readback, does not change the stable pairing
 flow, and adds no credential, source scope, infrastructure, grants, cost or
 production promotion. Detailed acceptance remains in that proposal; status is
-REPORTED_NOT_IMPLEMENTED. Historical phase definitions/receipts below retain
-their broader gaps.
+IMPLEMENTED_LOCALLY_VERIFIED; [the current handoff](MC_PRIVATE_WORKER_EVIDENCE_HANDOFF.md)
+records full550, viewer/pairing browser checks and unchanged protected sources.
+Exact authorized fixed-preview receipt is saved with this checkpoint. Historical
+phase definitions/receipts below retain their broader gaps.
 
 Joey remains Product Owner and Final Approver. This is the continuing core task, not a claim that the first command workspace is the final product. Joey's original instruction is retained verbatim in the private progress ledger, with its source identity/time. The existing public product URL is unchanged.
 

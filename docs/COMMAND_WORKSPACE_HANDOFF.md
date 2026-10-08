@@ -1,6 +1,6 @@
 # Command workspace candidate handoff
 
-Latest current continuation: [published guided pairing, exact receipts and human recovery](MC_VM_LINK_GUIDED_PAIRING_HANDOFF.md); [next independent scope/acceptance](MC_PRIVATE_WORKER_EVIDENCE_NEXT_SLICE.md) is reported and unimplemented. Prior stage receipts remain historical.
+Latest current continuation: [private worker evidence view and verification](MC_PRIVATE_WORKER_EVIDENCE_HANDOFF.md) implements the reported scope under the subsequent parent instruction. [Guided pairing and human recovery](MC_VM_LINK_GUIDED_PAIRING_HANDOFF.md) remain unchanged. Prior stage receipts remain historical.
 
 Implemented outcome: linked AI Development Command Center as an independent Workspace view, with a short Joey View entry, with four project work entries, a selectable/filterable recorded evidence feed, URL-addressed inspector and navigable relationship graph. Project tabs/entries, event buttons and graph share project/event selection. Existing owner decision and Handoff/Continue entries remain usable. Refresh exposes reading/failure/recovery without inventing event timestamps or losing confirmed detail. Native controls remain keyboard accessible; three locales and narrow screens are supported. Explicit candidate acceptance and runtime-disconnected labels are visible.
 

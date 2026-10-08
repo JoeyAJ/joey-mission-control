@@ -6,9 +6,12 @@ READY deployment, matching served assets and private test receipts. Terminal
 preparation now precedes explicit Owner approval; clear-on-hide is retained.
 Joey is commuting. The expired, unclaimed/unspawned fence-2 record is retained
 for her manual recovery; no agent reapproval or pilot launch is scheduled.
-The next independent slice is [private worker evidence inspection](MC_PRIVATE_WORKER_EVIDENCE_NEXT_SLICE.md),
-with scope and acceptance reported before implementation. It remains unimplemented;
-the stable pairing flow and canonical/Auth/production boundaries are unchanged.
+Following the scoped parent instruction, [private worker evidence inspection](MC_PRIVATE_WORKER_EVIDENCE_HANDOFF.md)
+is implemented and locally verified: existing Owner view only, truthful empty,
+stale/cancelled/failed/inconsistent states, safe event selection and local expiry.
+Full550, viewer3widths, pairing3widths and OwnerSDK9 pass. Exact fixed-preview
+receipt is saved with the checkpoint; stable pairing and canonical/Auth/production
+boundaries are unchanged.
 Historical capability receipts below retain their original scope and dates.
 
 Current historical review stage restores the actual sixteen-file historical

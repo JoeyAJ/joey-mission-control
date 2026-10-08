@@ -1,0 +1,69 @@
+{
+  "pass": true,
+  "baseline": "68f599ce55f3b7499a48bc97a6fff1493df2bc1c",
+  "pairingSections": {
+    "pairing-fields": {
+      "sha256": "5efe5257d3bea71488f7b3afcea4c0386390ecb81f46c0e5b2b9b14e2609930c",
+      "unchanged": true
+    },
+    "pairing-controls": {
+      "sha256": "023271d543935169d71414630014fb2e187b95acb8e774d77b459c0b81018b5d",
+      "unchanged": true
+    },
+    "pairing-render-and-steps": {
+      "sha256": "c9e3629503facb81d771ff98ca6c626b14d51c338b605ff0c78c41ce73818132",
+      "unchanged": true
+    },
+    "controller-and-clear-on-hide": {
+      "sha256": "96798fd43b961046131d56b02c2f24054e5a81b32655594c75851cf9e5d70a3d",
+      "unchanged": true
+    }
+  },
+  "protectedFiles": {
+    "src/continuity/owner-vm-link.mjs": {
+      "sha256": "112a25099671f470ac51af5130753f4f55ea9ca3d132f1f635635434f0af6406",
+      "unchanged": true
+    },
+    "src/continuity/owner-vm-link-command.mjs": {
+      "sha256": "099f95cb5e5564a7720afe3eb4ab91420cee0316f9025dfab2186fb665f427d5",
+      "unchanged": true
+    },
+    "src/continuity/owner-browser-entry.mjs": {
+      "sha256": "076c26dbf12a45ad930412e2090332e414f2bac1b71b8e7546e2af3e602cae2e",
+      "unchanged": true
+    },
+    "src/continuity/supabase-owner-auth.mjs": {
+      "sha256": "87c7ce6f00ba8d3ea6a620e52b4fb4159d0227f6029a1fa667a043d3a9abe0df",
+      "unchanged": true
+    },
+    "public/vm-link-config.js": {
+      "sha256": "a84b578bab5206135583add1b87aedcc9739b13f8d5e18bb52e9135c0ba01177",
+      "unchanged": true
+    },
+    "public/owner-auth-config.js": {
+      "sha256": "abcf87d6ba532e759640939c1d874d5638389b4cebf88efd4c4a6bae90ed6cbf",
+      "unchanged": true
+    },
+    "docs/contracts/vm-link/sql/mc-vm-link-0.1.1.reviewed.sql": {
+      "sha256": "bba24c9b6154daaee4fd73a22851e24c08337325cc3db3e20f96a18de49aff76",
+      "unchanged": true
+    },
+    "docs/contracts/vm-link/deploy/bootstrap-0.1.1.mjs": {
+      "sha256": "6db4da07651c73613eaf00decdcbda37293a2ae86f3bf2fcb0d7d12ea5aa45a4",
+      "unchanged": true
+    },
+    "docs/contracts/vm-link/integration/release.json": {
+      "sha256": "070c3b64ae870189bec8bf45ffccb69435e6693b9f3fcec3801318ea1083dc7c",
+      "unchanged": true
+    },
+    "docs/contracts/vm-link/edge/handler.mjs": {
+      "sha256": "c18dd30b4061001a6d28a80fa4046929cdd91cc3eea56f7bc2118e11fb8d2d79",
+      "unchanged": true
+    },
+    "docs/contracts/vm-link/edge/index.ts": {
+      "sha256": "5d61444af47d72f0af9667140ddb5ea015cf90291ce417c6c019ebbe4596d2a2",
+      "unchanged": true
+    }
+  },
+  "noPairingCodeOrAuthLifecycleChange": true
+}

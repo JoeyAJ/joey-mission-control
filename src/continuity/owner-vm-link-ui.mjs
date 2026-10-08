@@ -1,5 +1,6 @@
 import {createOwnerVmLink} from './owner-vm-link.mjs';
 import {vmBootstrapCommand} from './owner-vm-link-command.mjs';
+import {mountOwnerWorkerEvidence} from './owner-worker-evidence-ui.mjs';
 export function mountOwnerVmLink({doc,config,inspectSession,rpc}){
  if(config.enabled!==true)return null;
  const node=(tag,text)=>{const n=doc.createElement(tag);if(text)n.textContent=text;return n;};
@@ -8,6 +9,7 @@ export function mountOwnerVmLink({doc,config,inspectSession,rpc}){
  const note=node('p','只執行一次、最多 60 秒的 MC_CONNECTION_OK 檢查。先讓 AWS 終端等碼，再批准；worker ID 與命令都由這個頁面填好，不需貼到聊天。');
  const status=node('p');status.setAttribute('role','status');
  const readActions=node('div'),flow=node('div'),safetyActions=node('div'),jobs=node('div');flow.className='owner-vm-link-flow';
+ const evidence=mountOwnerWorkerEvidence({doc,config});
  const steps=node('ol');for(const text of ['準備命令','終端停在等碼提示','批准一次配對','複製碼並貼入終端'])steps.append(node('li',text));
  const stepTitle=node('h4'),help=node('p'),worker=node('p');worker.dataset.vmWorkerId='true';
  const commandPanel=node('div'),commandLabel=node('label','已填好 worker ID 的終端命令');
@@ -18,7 +20,7 @@ export function mountOwnerVmLink({doc,config,inspectSession,rpc}){
  let controller,timer=null,disposed=false,authenticated=false,pilotEnd=0,lastStage='',copyEpoch=0;
  const stopPoll=()=>{clearTimeout(timer);timer=null;};
  function button(label,fn){const b=node('button',label);b.type='button';b.style.minHeight='44px';b.addEventListener('click',()=>void perform(fn));return b;}
- async function perform(fn){try{await fn();}catch(error){status.textContent=error?.message==='LINK_TERMINAL_WAIT_REQUIRED'?'先完成步驟 1、2；終端停在等碼提示後才批准。':'操作尚未確認。保留目前紀錄；可按「重新整理」核對，不會自動重送批准。';}schedule();}
+ async function perform(fn){try{await fn();}catch(error){evidence.unconfirmed();status.textContent=error?.message==='LINK_TERMINAL_WAIT_REQUIRED'?'先完成步驟 1、2；終端停在等碼提示後才批准。':'操作尚未確認。保留目前紀錄；可按「重新整理」核對，不會自動重送批准。';}schedule();}
  function schedule(){stopPoll();if(disposed||!authenticated||!controller.snapshot().view?.jobs.some(j=>!j.terminal)||doc.hidden||controller.snapshot().busy)return;
   if(!pilotEnd)pilotEnd=Date.now()+900000;if(Date.now()>=pilotEnd)return;timer=setTimeout(()=>void perform(()=>controller.refresh()),3000);}
  const refresh=button('重新整理',()=>controller.refresh()),activate=button('批准啟用已審閱 broker',()=>controller.activate());
@@ -38,7 +40,7 @@ export function mountOwnerVmLink({doc,config,inspectSession,rpc}){
  const revoke=button('撤銷目前 worker',()=>controller.revoke(controller.snapshot().view?.worker?.workerId)),pause=button('暫停並撤銷 pilot',()=>controller.pause());
  readActions.append(refresh,activate);commandPanel.append(commandLabel,copyCommand,commandStatus);
  flow.append(steps,stepTitle,help,worker,prepare,commandPanel,ready,approve,code,copyCode,copyStatus);
- safetyActions.append(revoke,pause);root.append(heading,note,status,readActions,flow,safetyActions,jobs);
+ safetyActions.append(revoke,pause);root.append(heading,note,status,readActions,flow,safetyActions,jobs,evidence.root);
  function render(s){
   const w=s.view?.worker,hasPending=s.view?.jobs.some(j=>!j.terminal),canPrepare=s.canPrepare,workerId=s.preparedWorker||w?.workerId;
   worker.textContent=workerId?'配對主機 ID：'+workerId:'';
@@ -60,11 +62,12 @@ export function mountOwnerVmLink({doc,config,inspectSession,rpc}){
   else if(!s.terminalReady){stage='terminal';stepTitle.textContent='步驟 2：先讓終端停在等碼提示';help.textContent='先複製下方命令，在既有 Ubuntu-1 終端貼上並按 Enter。看到「一次性 MC 配對碼（輸入不回顯）:」後，回來按「2. 終端已顯示等碼提示」。此時尚無配對碼，切換頁面不會丟碼。';}
   else{stage='approve';stepTitle.textContent='步驟 3：批准並立即複製碼';help.textContent='終端已在等碼。按「批准一次 Ubuntu-1 配對與 pilot」，接著在本頁按「複製一次性配對碼」，再切到終端貼上；不需要等待聊天指示。';}
   root.dataset.vmLinkStage=stage;
-  jobs.replaceChildren();for(const j of s.view?.jobs||[]){const row=node('div');row.append(node('p',`檢查紀錄 ${j.jobId} · fence ${j.fence} · ${j.outcome||(j.cancel?'取消已請求':j.spawnIntent?'執行中':j.claimed?'已租用':'等待 VM')}`),node('p','這是檢查紀錄 ID，不是配對碼。'));
+  jobs.replaceChildren();for(const j of s.view?.jobs||[]){const row=node('div');row.append(node('p',`檢查紀錄 ${j.jobId} · fence ${j.fence} · ${j.outcome?'資料庫結果：'+j.outcome:j.cancel?'取消已請求':j.spawnIntent?'已記錄啟動意圖':j.claimed?'已領取':'等待 VM · 尚無執行證據'}`),node('p','這是檢查紀錄 ID，不是配對碼。'));
    if(!j.terminal)row.append(button('請求取消',()=>controller.cancel(j.jobId)));
    if(j.terminal&&!j.claimed&&!j.spawnIntent&&j.outcome==='CANCELLED'&&w?.workerId===j.workerId&&w.paired&&w.enabled&&!w.revoked)row.append(button('重新批准一次 pilot',()=>controller.retry(j.jobId)));
-   const events=node('ol');for(const e of j.events.slice(-16))events.append(node('li',`${e.seq} · ${e.payload.kind} · ${new Date(e.observedAt).toISOString()}`));row.append(events);jobs.append(row);
+   jobs.append(row);
   }
+  evidence.update(s.view);
   if(stage!==lastStage){lastStage=stage;if(stage==='code')queueMicrotask(()=>{if(!disposed&&!doc.hidden)copyCode.scrollIntoView?.({block:'nearest'});});}
  }
  controller=createOwnerVmLink({config,inspectSession,rpc,onChange:render});
@@ -73,5 +76,5 @@ export function mountOwnerVmLink({doc,config,inspectSession,rpc}){
  doc.addEventListener('visibilitychange',visibility);
  return {root,update({projectId,authView}){const was=authenticated;authenticated=projectId==='NEXAEON'&&authView?.status==='authenticated'&&authView.aal==='aal2'&&authView.memberActive===true;root.hidden=!authenticated;
   if(!authenticated)fullClear();else if(!was&&!doc.hidden)void perform(()=>controller.refresh());
- },clear:fullClear,clearPairingCode(){copyEpoch++;controller.clearPairingCode('SESSION_REFRESH');copyStatus.textContent='';},dispose(){disposed=true;authenticated=false;fullClear();doc.removeEventListener('visibilitychange',visibility);controller.dispose();root.remove();}};
+ },clear:fullClear,clearPairingCode(){copyEpoch++;controller.clearPairingCode('SESSION_REFRESH');copyStatus.textContent='';},dispose(){disposed=true;authenticated=false;fullClear();doc.removeEventListener('visibilitychange',visibility);controller.dispose();evidence.dispose();root.remove();}};
 }
