@@ -17,7 +17,7 @@ export function createSupabaseOwnerAuth({createClient,ownerSubject=null,authSetu
  const client=createClient(ownerAuthConfig.origin,ownerAuthConfig.publishableKey,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:false,storageKey:'mc-owner-session-v1'},global:{fetch:trackedFetch}});
  const auth=client.auth;if(!auth?.mfa)throw Error('OFFICIAL_SDK_REQUIRED');
  let generation=0,disposed=false,mutations=Promise.resolve();const listeners=new Set();
- const subscription=auth.onAuthStateChange((event)=>{if(event==='SIGNED_OUT')generation++;for(const f of listeners)queueMicrotask(()=>f({type:event==='SIGNED_OUT'?'SIGNED_OUT':'SESSION_CHANGED'}));}).data.subscription;
+ const subscription=auth.onAuthStateChange((event)=>{if(event==='SIGNED_OUT')generation++;for(const f of listeners)queueMicrotask(()=>f(event==='TOKEN_REFRESHED'?{type:'SESSION_CHANGED',reason:'TOKEN_REFRESHED'}:{type:event==='SIGNED_OUT'?'SIGNED_OUT':'SESSION_CHANGED'}));}).data.subscription;
  const safeFailure=(failureStage,error=null,providerUserConfirmed=false)=>Object.freeze({status:'session_unconfirmed',authenticated:false,...diagnostic(failureStage,error),providerUserConfirmed});
  async function inspectSession(projectId,{requireMembership=true}={}){
   const g=generation;if(disposed)return Object.freeze({status:'signed_out',authenticated:false});
