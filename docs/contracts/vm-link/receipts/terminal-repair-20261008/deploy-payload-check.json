@@ -1,0 +1,38 @@
+{
+  "sourceSha": "ba36b0e0e10aae2753d97fe10f3de8a0a0eee036",
+  "files": [
+    {
+      "name": "edge/index.ts",
+      "sha256": "5d61444af47d72f0af9667140ddb5ea015cf90291ce417c6c019ebbe4596d2a2"
+    },
+    {
+      "name": "edge/handler.mjs",
+      "sha256": "c18dd30b4061001a6d28a80fa4046929cdd91cc3eea56f7bc2118e11fb8d2d79"
+    },
+    {
+      "name": "edge/bootstrap.generated.mjs",
+      "sha256": "7ff80b69ff75a4d1c630bbe24c582a62edf62182ce78a81ec7103e1911d77575"
+    },
+    {
+      "name": "edge/artifact.generated.mjs",
+      "sha256": "408f811346f7fede0b57287410376fbeebca1f9bbceec1ce4b61df42d9ed10e3"
+    },
+    {
+      "name": "src/protocol.mjs",
+      "sha256": "3658e98ed4cdf97eb87ead91404fc89a5b8f9429e64ffa6025256fa9671deecc"
+    },
+    {
+      "name": "vendor/data.mjs",
+      "sha256": "dab863dcbef1d95b58c8c1b473a2e814a5133c666f5b2497980e51cb3631c182"
+    },
+    {
+      "name": "vendor/safe-payload.mjs",
+      "sha256": "91e34cddb19608f74fc98b730d5f84d7ff91f872d62a284c7b2034b69530b01d"
+    }
+  ],
+  "dependencyClosure": "PASS",
+  "originalSixFilePayloadMissingExistingDependency": [
+    "vendor/safe-payload.mjs"
+  ],
+  "newSourceChanges": false
+}

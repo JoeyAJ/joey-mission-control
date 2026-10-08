@@ -1,0 +1,17 @@
+{
+  "status": 200,
+  "tlsVerified": true,
+  "exactApprovedUrl": true,
+  "anonymous": true,
+  "authorizationHeaderSent": false,
+  "sha256": "eb053b359f139df44e20a7141a2cb5ead88f13dc013a53cabf3737229a76ad21",
+  "bytes": 5822,
+  "matchesReviewedBootstrap": true,
+  "headers": {
+    "content-type": "text/javascript; charset=utf-8",
+    "cache-control": "no-store",
+    "x-content-type-options": "nosniff",
+    "x-sb-edge-region": "us-west-1",
+    "x-served-by": "supabase-edge-runtime"
+  }
+}

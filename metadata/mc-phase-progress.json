@@ -574,7 +574,7 @@
     }
   ],
   "guidedPairingTerminalRepair": {
-    "status": "LOCAL_VERIFIED_COORDINATED_RELEASE_PENDING",
+    "status": "COORDINATED_PRIVATE_RELEASE_READY_VERIFIED_ACTUAL_VM_PENDING",
     "portableTests": 551,
     "realLocalPtyCases": 10,
     "browserWidths": [
@@ -590,6 +590,13 @@
     "agentOwnerActions": 0,
     "realVmCommands": 0,
     "actualAuthOrVmProof": false,
-    "handoff": "docs/MC_VM_LINK_TERMINAL_REPAIR_HANDOFF.md"
+    "handoff": "docs/MC_VM_LINK_TERMINAL_REPAIR_HANDOFF.md",
+    "sourceSha": "ba36b0e0e10aae2753d97fe10f3de8a0a0eee036",
+    "edgeVersion": 5,
+    "previewDeploymentId": "dpl_GENuM1yPKK49rcve1pD2JNfSn8v4",
+    "bootstrapAnonymousTlsHashVerified": true,
+    "bootstrapAndUiPinMatch": true,
+    "productionUnchanged": true,
+    "liveReadbackAt": "2026-10-08 11:01:22.384425+00"
   }
 }
