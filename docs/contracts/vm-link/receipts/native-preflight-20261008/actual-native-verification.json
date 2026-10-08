@@ -1,0 +1,43 @@
+{
+  "pass": true,
+  "actualNativeByteVerification": true,
+  "networkCalls": 0,
+  "modelCalls": 0,
+  "actualVmCommands": 0,
+  "authCacheRead": false,
+  "cases": [
+    {
+      "layout": "nested-optional-package",
+      "originalResolverRejected": true,
+      "officialResolverFound": true,
+      "actualNativeBytes": 292309256,
+      "actualNativeSha256": "9a820c17865fa825d04db416818679a9d63bd72e50835c396f496e5684626c9c",
+      "qualifyRuntimePass": true,
+      "preflightHashPass": true,
+      "osQueriesSynthetic": true,
+      "nativeInvoked": false,
+      "syntheticInstallation": null
+    },
+    {
+      "layout": "official-vendor-fallback",
+      "originalResolverRejected": true,
+      "officialResolverFound": true,
+      "actualNativeBytes": 292309256,
+      "actualNativeSha256": "9a820c17865fa825d04db416818679a9d63bd72e50835c396f496e5684626c9c",
+      "qualifyRuntimePass": true,
+      "preflightHashPass": true,
+      "osQueriesSynthetic": true,
+      "nativeInvoked": false,
+      "syntheticInstallation": {
+        "actualInstallerFoundNative": true,
+        "syntheticPairAckVerified": true,
+        "privateDirectoryAndFileModes": true,
+        "existingInstallationRequiresReconcile": true,
+        "pairCalls": 1,
+        "syntheticServiceCalls": 1,
+        "actualServiceCalls": 0,
+        "syntheticKeysOnly": true
+      }
+    }
+  ]
+}

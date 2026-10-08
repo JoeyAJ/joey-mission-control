@@ -9,7 +9,8 @@ const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const files={};for(const dir of ['src','vendor'])for(const f of (await fs.readdir(path.join(root,dir))).sort())if(f.endsWith('.mjs')&&f!=='broker.mjs')files[dir+'/'+f]=await fs.readFile(path.join(root,dir,f),'utf8');
 files['package.json']=await fs.readFile(path.join(root,'package.json'),'utf8');const names=Object.keys(files).sort();const ordered=Object.fromEntries(names.map(n=>[n,files[n]]));
 const artifact=gzipSync(Buffer.from(JSON.stringify({release:'0.1.1',files:ordered})),{level:9,mtime:0});const artifactDigest=createHash('sha256').update(artifact).digest('hex');
-const bootstrap=(await fs.readFile(path.join(root,'deploy/bootstrap.template.mjs'),'utf8')).replaceAll('@@ARTIFACT_DIGEST@@',artifactDigest).replace('@@FILES@@',JSON.stringify(names));
+const preflight=(await fs.readFile(path.join(root,'src/preflight.mjs'),'utf8')).replace(/^export /gm,'');
+const bootstrap=(await fs.readFile(path.join(root,'deploy/bootstrap.template.mjs'),'utf8')).replaceAll('@@ARTIFACT_DIGEST@@',artifactDigest).replace('@@FILES@@',JSON.stringify(names)).replace('@@PREFLIGHT@@',preflight);
 const bootstrapDigest=createHash('sha256').update(bootstrap).digest('hex');
 await fs.writeFile(path.join(root,'edge/artifact.generated.mjs'),`// Generated offline; no live deployment.\nimport {Buffer} from 'node:buffer';\nexport const artifactDigest='${artifactDigest}',policyDigest='${POLICY_DIGEST}';\nexport const artifact=Buffer.from('${artifact.toString('base64')}','base64');\n`);
 await fs.writeFile(path.join(root,'edge/bootstrap.generated.mjs'),`// Generated offline public bootstrap, contains no credentials.\nexport const bootstrapDigest='${bootstrapDigest}';\nexport const bootstrap=${JSON.stringify(bootstrap)};\n`);
@@ -18,7 +19,10 @@ const commandPath=path.resolve(root,'../../..','src/continuity/owner-vm-link-com
 const command=await fs.readFile(commandPath,'utf8');
 await fs.writeFile(commandPath,command.replace(/vmBootstrapDigest='[a-f0-9]{64}'/,`vmBootstrapDigest='${bootstrapDigest}'`));
 const reviewedSql=(await fs.readFile(path.join(root,'sql/mc-vm-link-0.1.1.pending.sql'),'utf8')).replaceAll('@@POLICY_DIGEST@@',POLICY_DIGEST).replaceAll('@@ARTIFACT_DIGEST@@',artifactDigest);
-await fs.writeFile(path.join(root,'sql/mc-vm-link-0.1.1.reviewed.sql'),reviewedSql);
+// Preserve the already approved initial schema bytes. Repairs select a new
+// artifact through a separately reviewed guarded configuration transition.
+const reviewedPath=path.join(root,'sql/mc-vm-link-0.1.1.reviewed.sql');
+try{await fs.access(reviewedPath);}catch(e){if(e.code!=='ENOENT')throw e;await fs.writeFile(reviewedPath,reviewedSql,{flag:'wx'});}
 await fs.writeFile(path.join(root,'integration/release.json'),JSON.stringify({release:'0.1.1',policyDigest:POLICY_DIGEST,artifactDigest,bootstrapDigest,files:names},null,2)+'\n');
 const ui=path.resolve(root,'../../..','public/vm-link-config.js');let config=await fs.readFile(ui,'utf8');config=config.replace(/policyDigest:'[^']*'/,`policyDigest:'${POLICY_DIGEST}'`).replace(/artifactDigest:'[^']*'/,`artifactDigest:'${artifactDigest}'`);await fs.writeFile(ui,config);
 console.log(JSON.stringify({release:'0.1.1',artifactBytes:artifact.length,policyDigest:POLICY_DIGEST,artifactDigest,bootstrapDigest}));

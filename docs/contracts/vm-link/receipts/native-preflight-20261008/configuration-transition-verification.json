@@ -1,0 +1,53 @@
+{
+  "pass": true,
+  "actualNativePostgres": true,
+  "localSyntheticOnly": true,
+  "liveRequests": 0,
+  "oldArtifactDigest": "9bb363726a13bd96341c84b015354daaa454c6265b5bf0d2c5aff6eab1e3d647",
+  "newArtifactDigest": "0de5fbd05a012fccabb23a4edf2ff7374b71d695b2505cfc4092ac8b85076613",
+  "cases": [
+    {
+      "case": "unrevoked worker",
+      "pass": true,
+      "atomic": true
+    },
+    {
+      "case": "already bound key",
+      "pass": true,
+      "atomic": true
+    },
+    {
+      "case": "nonterminal job",
+      "pass": true,
+      "atomic": true
+    },
+    {
+      "case": "claimed or spawned job",
+      "pass": true,
+      "atomic": true
+    },
+    {
+      "case": "unexpected execution event",
+      "pass": true,
+      "atomic": true
+    },
+    {
+      "case": "wrong policy",
+      "pass": true,
+      "atomic": true
+    },
+    {
+      "case": "changed artifact baseline",
+      "pass": true,
+      "atomic": true
+    },
+    {
+      "case": "one exact pin replacement after confirmed cleanup",
+      "pass": true
+    },
+    {
+      "case": "repeat submission denied without another change",
+      "pass": true
+    }
+  ]
+}

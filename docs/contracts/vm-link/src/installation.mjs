@@ -8,6 +8,7 @@ import {fail,identifier,exactKeys} from '../vendor/data.mjs';
 import {POLICY_DIGEST} from './policy.mjs';
 import {qualifyRuntime} from './runtime.mjs';
 import {createTransport} from './transport.mjs';
+import {resolvePinnedCodex,pilotServiceArgv} from './preflight.mjs';
 export const stateRoot=()=>join(homedir(),'.local','state','mc-vm-link-0.1.1');
 export const releaseRoot=()=>join(homedir(),'.local','lib','mc-vm-link','0.1.1');
 export function privateDirectory(path,{create=false}={}){
@@ -17,12 +18,7 @@ export function privateDirectory(path,{create=false}={}){
 export function privateFile(path){const s=lstatSync(path);if(!s.isFile()||s.isSymbolicLink()||s.nlink!==1||s.uid!==process.getuid()||(s.mode&0o777)!==0o600||s.size>4096)fail('PRIVATE_FILE_REQUIRED');return readFileSync(path,'utf8');}
 function write(path,value){const fd=openSync(path,constants.O_WRONLY|constants.O_CREAT|constants.O_EXCL|constants.O_NOFOLLOW,0o600);try{writeFileSync(fd,value);fsyncSync(fd);}finally{closeSync(fd);}const d=openSync(dirname(path),constants.O_RDONLY|constants.O_DIRECTORY);try{fsyncSync(d);}finally{closeSync(d);}}
 export async function findCodex(workspace){
- const prefix=join(homedir(),'.local','lib','node_modules','@openai'),pkg=join(prefix,'codex','package.json');
- const metadata=JSON.parse(readFileSync(pkg,'utf8'));if(metadata.name!=='@openai/codex'||metadata.version!=='0.161.0')fail('PINNED_CODEX_REQUIRED');
- const found=[];for(const p of [join(prefix,'codex','node_modules','@openai','codex-linux-x64'),join(prefix,'codex-linux-x64'),join(prefix,'codex')])for(const triple of ['x86_64-unknown-linux-musl','x86_64-unknown-linux-gnu']){
-  const candidate=join(p,'vendor',triple,'codex','codex');if(existsSync(candidate))found.push(realpathSync(candidate));
- }
- const unique=[...new Set(found)];if(unique.length!==1||!unique[0].startsWith(prefix+'/'))fail('PINNED_CODEX_PATH_REQUIRED');return qualifyRuntime(unique[0],workspace);
+ return qualifyRuntime(resolvePinnedCodex().executable,workspace);
 }
 function validateIdentity(ack,workerId,privateKey,artifactDigest){
  const der=createPublicKey(privateKey).export({type:'spki',format:'der'}),keyDigest=createHash('sha256').update(der).digest('hex');
@@ -52,8 +48,7 @@ export function loadInstallation(){
 }
 export function serviceArgv(workerId,{user=userInfo(),release=releaseRoot()}={}){
  if(!identifier(workerId)||!Number.isSafeInteger(user.uid)||user.uid<=0||release!==releaseRoot())fail('SERVICE_SCOPE_REJECTED');
- return ['-n','/usr/bin/systemd-run','--quiet','--no-ask-password','--unit=mc-vm-link-pilot-'+workerId,'--uid='+user.uid,'--gid='+user.gid,'--setenv=HOME='+homedir(),'--setenv=USER='+user.username,'--setenv=LOGNAME='+user.username,
- '--property=RuntimeMaxSec=1000','--property=Restart=no','--property=UMask=0077','--property=KillMode=control-group','--property=TimeoutStopSec=10','--property=StandardOutput=null','--property=StandardError=null','--collect','/usr/bin/node',join(release,'src','cli.mjs'),'run'];
+ return pilotServiceArgv(workerId,{home:homedir(),user});
 }
 export function startApprovedTransientService(workerId){
  const result=spawnSync('/usr/bin/sudo',serviceArgv(workerId),{encoding:'utf8',timeout:15000,stdio:['ignore','pipe','pipe']});if(result.status!==0)fail('OS_SERVICE_START_NOT_AUTHORIZED_OR_UNAVAILABLE');return {serviceRequested:true,bootPersistent:false,restart:false,maxSeconds:1000};

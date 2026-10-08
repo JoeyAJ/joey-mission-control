@@ -1,0 +1,23 @@
+// Execute only the proposed configuration transition on synthetic local PG17.
+import fs from 'node:fs/promises';import path from 'node:path';import {pathToFileURL,fileURLToPath} from 'node:url';import {spawnSync} from 'node:child_process';import assert from 'node:assert/strict';
+const prefix='/tmp/mc-native-pg',bin=path.join(prefix,'node_modules/@embedded-postgres/linux-x64/native/bin'),{default:pg}=await import(pathToFileURL(path.join(prefix,'node_modules/pg/lib/index.js')));
+const root=await fs.mkdtemp('/tmp/mc-artifact-cas-'),socket=path.join(root,'socket'),data=path.join(root,'data');await fs.mkdir(socket,{mode:0o700});
+const native=(name,args)=>{const r=spawnSync(path.join(bin,name),args,{encoding:'utf8',timeout:15000});assert.equal(r.status,0,r.stderr);return r.stdout;};let started=false,c;const cases=[];
+const old='9bb363726a13bd96341c84b015354daaa454c6265b5bf0d2c5aff6eab1e3d647',next='0de5fbd05a012fccabb23a4edf2ff7374b71d695b2505cfc4092ac8b85076613',policy='72f8c00bb21e91fe86720678d72b650eada8dc54ef1f3b5d3dca6395bb83c6f9';
+const sql=await fs.readFile(fileURLToPath(new URL('../deploy/worker-artifact-repair-20261008.pending.sql',import.meta.url)),'utf8');
+try{native('initdb',['-D',data,'-U','fixture','--auth-local=trust','--auth-host=reject','--encoding=UTF8','--locale=C','--no-sync']);native('pg_ctl',['-D',data,'-l',path.join(root,'server.log'),'-w','-t','10','-o',`-k ${socket} -p 55433 -c listen_addresses='' -c statement_timeout=5000 -c lock_timeout=3000`,'start']);started=true;c=new pg.Client({host:socket,port:55433,user:'fixture',database:'postgres',password:'',ssl:false});await c.connect();
+ await c.query('CREATE SCHEMA mc_vm_link;CREATE TABLE mc_vm_link.configuration(singleton boolean PRIMARY KEY,enabled boolean,policy_digest text,artifact_digest text);CREATE TABLE mc_vm_link.workers(revoked boolean,enabled boolean,paired_at bigint,public_key text,key_digest text);CREATE TABLE mc_vm_link.jobs(terminal boolean,claimed boolean,spawn_intent boolean);CREATE TABLE mc_vm_link.events(seq int);');
+ const reset=async()=>{await c.query('TRUNCATE mc_vm_link.configuration,mc_vm_link.workers,mc_vm_link.jobs,mc_vm_link.events');await c.query('INSERT INTO mc_vm_link.configuration VALUES(true,true,$1,$2)',[policy,old]);};
+ const get=async()=>(await c.query('SELECT * FROM mc_vm_link.configuration')).rows[0];
+ const deny=async(label,setup,expected)=>{await reset();await c.query(setup);const before=await get();const e=await c.query(sql).then(()=>null,e=>e);assert(e,label);assert.equal(e.message,expected);await c.query('ROLLBACK');assert.deepEqual(await get(),before);cases.push({case:label,pass:true,atomic:true});};
+ await deny('unrevoked worker','INSERT INTO mc_vm_link.workers VALUES(false,false,null,null,null)','MC_WORKER_REPAIR_WORKER_CLEANUP_REQUIRED');
+ await deny('already bound key','INSERT INTO mc_vm_link.workers VALUES(true,false,1,null,null)','MC_WORKER_REPAIR_WORKER_CLEANUP_REQUIRED');
+ await deny('nonterminal job','INSERT INTO mc_vm_link.jobs VALUES(false,false,false)','MC_WORKER_REPAIR_JOB_OR_EXECUTION_STATE_CHANGED');
+ await deny('claimed or spawned job','INSERT INTO mc_vm_link.jobs VALUES(true,true,true)','MC_WORKER_REPAIR_JOB_OR_EXECUTION_STATE_CHANGED');
+ await deny('unexpected execution event','INSERT INTO mc_vm_link.events VALUES(1)','MC_WORKER_REPAIR_JOB_OR_EXECUTION_STATE_CHANGED');
+ await deny('wrong policy',"UPDATE mc_vm_link.configuration SET policy_digest=repeat('0',64)",'MC_WORKER_REPAIR_BASELINE_CHANGED');
+ await deny('changed artifact baseline',"UPDATE mc_vm_link.configuration SET artifact_digest=repeat('0',64)",'MC_WORKER_REPAIR_BASELINE_CHANGED');
+ await reset();await c.query('INSERT INTO mc_vm_link.workers VALUES(true,false,null,null,null);INSERT INTO mc_vm_link.jobs VALUES(true,false,false)');await c.query(sql);assert.deepEqual(await get(),{singleton:true,enabled:true,policy_digest:policy,artifact_digest:next});cases.push({case:'one exact pin replacement after confirmed cleanup',pass:true});
+ const e=await c.query(sql).then(()=>null,e=>e);assert.equal(e.message,'MC_WORKER_REPAIR_BASELINE_CHANGED');await c.query('ROLLBACK');assert.equal((await get()).artifact_digest,next);cases.push({case:'repeat submission denied without another change',pass:true});
+ const report={pass:true,actualNativePostgres:true,localSyntheticOnly:true,liveRequests:0,oldArtifactDigest:old,newArtifactDigest:next,cases};if(process.env.MC_ARTIFACT_CAS_REPORT)await fs.writeFile(process.env.MC_ARTIFACT_CAS_REPORT,JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report));
+}finally{if(c)await c.end();if(started)native('pg_ctl',['-D',data,'-w','-t','10','-m','fast','stop']);await fs.rm(root,{recursive:true,force:true});}

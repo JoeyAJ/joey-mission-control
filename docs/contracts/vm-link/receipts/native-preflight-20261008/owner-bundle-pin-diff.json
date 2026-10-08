@@ -1,0 +1,8 @@
+{
+  "pass": true,
+  "ownerBundleDiffOnlyTwoReviewedPins": true,
+  "ownerAuthLogicChanged": false,
+  "beforeSha256": "72af2e3a88a21081111efd1d737c7d37026d6b118ead9be04073c343c037a762",
+  "afterSha256": "90a1284dbf73f72c30914dfe2f508a38336495aa3069b7b7258455c92038e752",
+  "bytes": 329955
+}

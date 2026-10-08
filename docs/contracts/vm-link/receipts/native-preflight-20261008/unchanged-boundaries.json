@@ -1,0 +1,77 @@
+{
+  "pass": true,
+  "baselineSha": "82d732d64fbd419b60bc16c56f0de9bd76f89132",
+  "immutableBoundaries": [
+    {
+      "path": "docs/contracts/vm-link/edge/handler.mjs",
+      "sha256": "c222ff3670737562575a5f7a9959613b8391f9fec1a26639c3cc9a614d1add31",
+      "unchanged": true
+    },
+    {
+      "path": "docs/contracts/vm-link/edge/index.ts",
+      "sha256": "b70dec69234a348eb17dc8d1e23a2c5b2967626e4b5096327ef92004a07baf3f",
+      "unchanged": true
+    },
+    {
+      "path": "docs/contracts/vm-link/sql/mc-vm-link-0.1.1.reviewed.sql",
+      "sha256": "bba24c9b6154daaee4fd73a22851e24c08337325cc3db3e20f96a18de49aff76",
+      "unchanged": true
+    },
+    {
+      "path": "docs/contracts/vm-link/src/journal.mjs",
+      "sha256": "3ab4afc17e6ff499b322b13cd55645103f4d42cfff067a3e4034797edf995c1d",
+      "unchanged": true
+    },
+    {
+      "path": "docs/contracts/vm-link/src/policy.mjs",
+      "sha256": "fd688a5abecb44a006b358c5671591c4f4efdbaaf49b200d7a2acdbabf13164f",
+      "unchanged": true
+    },
+    {
+      "path": "docs/contracts/vm-link/src/protocol.mjs",
+      "sha256": "3658e98ed4cdf97eb87ead91404fc89a5b8f9429e64ffa6025256fa9671deecc",
+      "unchanged": true
+    },
+    {
+      "path": "docs/contracts/vm-link/src/runtime.mjs",
+      "sha256": "ca54fca38fd608c3644d5c29aa2d2bb59bcfb5d35307539556ffc860ef600707",
+      "unchanged": true
+    },
+    {
+      "path": "docs/contracts/vm-link/src/transport.mjs",
+      "sha256": "4e02fd7e218f5c2a7abe3ca56bf54c751f041fa57b3c0e46d4421f71368d98d5",
+      "unchanged": true
+    },
+    {
+      "path": "docs/contracts/vm-link/src/worker.mjs",
+      "sha256": "54a141c08e45d58210108fbcf76462766b82115b7c9f14a15d6d4a47de677407",
+      "unchanged": true
+    },
+    {
+      "path": "docs/contracts/vm-link/vendor/codex-jsonl.mjs",
+      "sha256": "52d2f21fcb3308b8705b4803b69561f2cab886e9990b2161f550e67e5c0d3ffc",
+      "unchanged": true
+    },
+    {
+      "path": "docs/contracts/vm-link/vendor/data.mjs",
+      "sha256": "dab863dcbef1d95b58c8c1b473a2e814a5133c666f5b2497980e51cb3631c182",
+      "unchanged": true
+    },
+    {
+      "path": "docs/contracts/vm-link/vendor/safe-payload.mjs",
+      "sha256": "91e34cddb19608f74fc98b730d5f84d7ff91f872d62a284c7b2034b69530b01d",
+      "unchanged": true
+    },
+    {
+      "path": "src/continuity/owner-vm-link-ui.mjs",
+      "sha256": "b37494b14e9620e57f124e6bd93dec1442c5f47a0b2ee93278bd6227193901b6",
+      "unchanged": true
+    },
+    {
+      "path": "src/continuity/owner-vm-link.mjs",
+      "sha256": "112a25099671f470ac51af5130753f4f55ea9ca3d132f1f635635434f0af6406",
+      "unchanged": true
+    }
+  ],
+  "authOrGrantsOrJobActionsOrHostOrTtlOrNativePinChanged": false
+}

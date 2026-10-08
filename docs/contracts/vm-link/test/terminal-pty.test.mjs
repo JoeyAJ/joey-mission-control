@@ -12,7 +12,9 @@ test('generated command, prepared approval, clipboard paste and Enter work in a 
  const repo=fileURLToPath(new URL('../../../../',import.meta.url));
  const r=spawnSync('/usr/bin/python3',[fileURLToPath(new URL('../integration/terminal-pty.py',import.meta.url))],{input:JSON.stringify({repo,workerId,command,code,hash:approved.pairingHash}),encoding:'utf8',timeout:30000,maxBuffer:64000});ui.dispose();
  assert.equal(r.status,0,r.stderr);const report=JSON.parse(r.stdout);
- for(const c of report.cases){assert(c.commandPastedToInteractiveShell&&c.promptReached,c.case);assert.equal(c.secretEchoed,false,c.case);assert.equal(c.blockedCode,c.case==='control-C'?'USER_CANCELLED':'BROKER_HTTP_503',c.case);assert.equal(c.localFetchCalls,c.case==='control-C'?0:1,c.case);for(const x of c.checks)assert(Object.values(x).every(Boolean),c.case);}
+ for(const c of report.cases){assert(c.commandPastedToInteractiveShell,c.case);assert.equal(c.secretEchoed,false,c.case);
+  if(c.case.startsWith('preflight-')){assert.equal(c.promptReached,false,c.case);assert.equal(c.preflightPassed,false,c.case);assert.equal(c.blockedCode,'PILOT_PREFLIGHT_BLOCKED',c.case);assert.equal(c.localFetchCalls,0,c.case);assert(c.preflightBlockers.includes(c.case==='preflight-sudo-denied'?'passwordless_exact_service_permission':c.case==='preflight-unsafe-directory'?'directory_guards':'fresh_installation'),c.case);}
+  else{assert(c.promptReached&&c.preflightPassed,c.case);assert.equal(c.blockedCode,c.case==='control-C'?'USER_CANCELLED':'BROKER_HTTP_503',c.case);assert.equal(c.localFetchCalls,c.case==='control-C'?0:1,c.case);for(const x of c.checks)assert(Object.values(x).every(Boolean),c.case);}}
  assert(report.cases.find(x=>x.case==='blank-then-valid').blankReprompt);assert(report.cases.find(x=>x.case==='malformed-then-valid').malformedReprompt);assert.equal(report.networkCalls,0);
  if(process.env.MC_TERMINAL_PTY_REPORT)writeFileSync(process.env.MC_TERMINAL_PTY_REPORT,JSON.stringify({...report,preparedEqualsApproved:true,generationHashMatches:true,secretInCommand:false,syntheticOnly:true},null,2)+'\n');
 });

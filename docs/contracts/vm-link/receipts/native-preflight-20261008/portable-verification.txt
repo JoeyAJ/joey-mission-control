@@ -1,0 +1,4 @@
+npm run verify:portable
+558 tests, 558 pass, 0 fail, 0 skipped
+Build/module/schema/static safety PASS; forbiddenAttempts=0.
+Full final check after freezing initial approved SQL PASS.

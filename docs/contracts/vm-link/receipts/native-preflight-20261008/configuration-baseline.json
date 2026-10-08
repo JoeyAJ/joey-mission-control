@@ -1,0 +1,13 @@
+{
+  "observed_at": "2026-10-08 12:22:31.668308+00",
+  "enabled": true,
+  "policy_digest": "72f8c00bb21e91fe86720678d72b650eada8dc54ef1f3b5d3dca6395bb83c6f9",
+  "artifact_digest": "9bb363726a13bd96341c84b015354daaa454c6265b5bf0d2c5aff6eab1e3d647",
+  "workers": 8,
+  "paired_or_keyed_workers": 0,
+  "unrevoked_workers": 1,
+  "nonterminal_jobs": 1,
+  "claimed_or_spawned_jobs": 0,
+  "safe_events": 0,
+  "worker_receipts": 2
+}

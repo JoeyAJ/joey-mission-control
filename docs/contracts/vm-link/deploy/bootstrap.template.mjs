@@ -9,6 +9,7 @@ import {pathToFileURL} from 'node:url';
 const AUDIENCE='https://scmvedfqwlhkyvljymjj.supabase.co/functions/v1/mc-worker-link-v1';
 const EXPECTED_ARTIFACT='@@ARTIFACT_DIGEST@@';
 const FILES=@@FILES@@;
+@@PREFLIGHT@@
 function denied(code){const e=Error(code);e.code=code;throw e;}
 function directory(path){
  if(!existsSync(path)){directory(dirname(path));mkdirSync(path,{mode:0o700});}
@@ -46,8 +47,11 @@ async function maskedCode(){
  });
 }
 async function main(){
- const [workerId,...rest]=process.argv.slice(2);if(rest.length||!/^ubuntu-1-[a-f0-9-]{36}$/.test(workerId||'')||process.platform!=='linux'||process.arch!=='x64'||Number(process.versions.node.split('.')[0])<18)denied('INSTALL_SCOPE_REJECTED');
- if(['HTTPS_PROXY','HTTP_PROXY','https_proxy','http_proxy'].some(k=>process.env[k]))denied('STANDARD_PROXY_AGENT_REQUIRED');
+ const args=process.argv.slice(2),diagnostic=args[0]==='--preflight',workerId=args[diagnostic?1:0];if(args.length!==(diagnostic?2:1)||!/^ubuntu-1-[a-f0-9-]{36}$/.test(workerId||''))denied('INSTALL_SCOPE_REJECTED');
+ const preflight=await pilotPreflight(workerId);
+ if(diagnostic){console.log(JSON.stringify(preflight));process.exitCode=preflight.ready?0:1;return;}
+ if(!preflight.ready){console.error(JSON.stringify(preflight));denied('PILOT_PREFLIGHT_BLOCKED');}
+ console.log(JSON.stringify({status:'LOCAL_PREFLIGHT_PASS',pairingCreated:false,serviceStarted:false}));
  let code=await maskedCode();if(!/^mc_pair_[A-Za-z0-9_-]{43}$/.test(code))denied('PAIRING_CODE_INVALID');
  const res=await fetch(AUDIENCE,{method:'POST',redirect:'error',headers:{'content-type':'application/json'},body:JSON.stringify({action:'bootstrap',workerId,requestId:randomUUID(),pairingCode:code}),signal:AbortSignal.timeout(5000)});
  if(!res.ok)denied('BROKER_HTTP_'+res.status);const parts=[];let bytes=0;const reader=res.body.getReader();
