@@ -1,5 +1,7 @@
 # Guided pairing terminal input and spacious connection panel repair
 
+**Superseded release gate:** the later actual HTTP403 attempt exposed a separate Edge runtime defect. Use `docs/MC_VM_LINK_EDGE_RUNTIME_REPAIR_HANDOFF.md` for current v6 release, fence 5 readback and the fresh-attempt gate. The v5 release facts below are historical.
+
 ## Result and current release gate
 
 The first failure can occur before any pairing request: the old masked reader exits on a blank Enter or a bracketed clipboard paste. The repair keeps waiting locally after blank/malformed input, accepts terminal paste framing, uses a readable ASCII prompt, and never echoes the code. The pairing flow now opens a viewport-height native dialog from a persistent workspace button, with the current step pinned above and the next action pinned below. The command and its copy control remain together.

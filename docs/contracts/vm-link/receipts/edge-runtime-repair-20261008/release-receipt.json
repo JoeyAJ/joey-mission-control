@@ -1,0 +1,206 @@
+{
+  "observedAt": "2026-10-08 11:32:10 UTC",
+  "sourceSha": "cd982ce631b381dca97c561be6cf34060dba267b",
+  "status": "EDGE_RUNTIME_REPAIR_RELEASE_READY_ACTUAL_PAIRING_PENDING",
+  "edge": {
+    "id": "e6447aff-ed11-4ab1-8040-9ef1c7b33799",
+    "slug": "mc-worker-link-v1",
+    "name": "mc-worker-link-v1",
+    "status": "ACTIVE",
+    "version": 6,
+    "created_at": 1791444882696,
+    "updated_at": 1791458981338,
+    "verify_jwt": false,
+    "import_map": false,
+    "entrypoint_path": "file:///tmp/user_fn_scmvedfqwlhkyvljymjj_e6447aff-ed11-4ab1-8040-9ef1c7b33799_6/source/edge/index.ts",
+    "ezbr_sha256": "51c46b1139670ed7ccf18f41081fbe1e746b557fee431d4e2da1a4b761709318"
+  },
+  "deployedSource": {
+    "files": 7,
+    "byteIdenticalToCommittedSource": true
+  },
+  "preview": {
+    "id": "dpl_CNng6vn3uyiEGRCT1Q2aFqW72VJ3",
+    "state": "READY",
+    "target": null,
+    "alias": "joey-mission-control-git-codex-mc-comma-fceec2-joeyajs-projects.vercel.app",
+    "deploymentId": "dpl_CNng6vn3uyiEGRCT1Q2aFqW72VJ3",
+    "projectId": "prj_X67htPw7vkRI2tuf8817vOUCGQOD"
+  },
+  "production": {
+    "id": "dpl_3quBFohZs1gYJK4PnwjNFZnDTefR",
+    "state": "READY",
+    "sha": "8b4945b16a0b23f2e72033aa976fa34f94eabec0",
+    "unchanged": true
+  },
+  "assets": [
+    {
+      "path": "/vm-link-config.js",
+      "sha256": "a84b578bab5206135583add1b87aedcc9739b13f8d5e18bb52e9135c0ba01177",
+      "bytes": 342,
+      "status": 200,
+      "match": true
+    },
+    {
+      "path": "/styles.css",
+      "sha256": "6e4fa9d4e8f4aaf6196fff0897f3bab8a10618d2d252d0afbb2442d147d57401",
+      "bytes": 133431,
+      "status": 200,
+      "match": true
+    },
+    {
+      "path": "/owner-auth-client.js",
+      "sha256": "72af2e3a88a21081111efd1d737c7d37026d6b118ead9be04073c343c037a762",
+      "bytes": 329955,
+      "status": 200,
+      "match": true
+    }
+  ],
+  "anonymousBootstrap": {
+    "status": 200,
+    "tlsVerified": true,
+    "exactApprovedUrl": true,
+    "authorizationHeaderSent": false,
+    "bytes": 5822,
+    "sha256": "eb053b359f139df44e20a7141a2cb5ead88f13dc013a53cabf3737229a76ad21",
+    "matchesReviewedBootstrapAndBrowserPin": true
+  },
+  "liveReadback": {
+    "observed_at": "2026-10-08 11:30:22.662183+00",
+    "broker_enabled": true,
+    "workers": [
+      {
+        "paired": false,
+        "enabled": false,
+        "revoked": true,
+        "workerId": "ubuntu-1-04c35ad4-2fd3-456c-b9db-cafa120eca15",
+        "createdAt": "2026-10-08T08:13:24.939+00:00",
+        "keyRegistered": false,
+        "pairingExpired": true,
+        "pairingExpiresAt": "2026-10-08T08:23:24.939+00:00"
+      },
+      {
+        "paired": false,
+        "enabled": false,
+        "revoked": true,
+        "workerId": "ubuntu-1-07f72d78-29d3-47cc-a649-6fae8085f0f1",
+        "createdAt": "2026-10-08T08:27:14.324+00:00",
+        "keyRegistered": false,
+        "pairingExpired": true,
+        "pairingExpiresAt": "2026-10-08T08:37:14.324+00:00"
+      },
+      {
+        "paired": false,
+        "enabled": false,
+        "revoked": true,
+        "workerId": "ubuntu-1-fbef1c3b-ba81-4f25-9892-e610339e9180",
+        "createdAt": "2026-10-08T10:20:14.331+00:00",
+        "keyRegistered": false,
+        "pairingExpired": true,
+        "pairingExpiresAt": "2026-10-08T10:30:14.331+00:00"
+      },
+      {
+        "paired": false,
+        "enabled": false,
+        "revoked": true,
+        "workerId": "ubuntu-1-f84ce906-b7ae-4831-9363-719a054b1da8",
+        "createdAt": "2026-10-08T10:23:07.592+00:00",
+        "keyRegistered": false,
+        "pairingExpired": true,
+        "pairingExpiresAt": "2026-10-08T10:33:07.592+00:00"
+      },
+      {
+        "paired": false,
+        "enabled": false,
+        "revoked": false,
+        "workerId": "ubuntu-1-e7181728-e99b-4392-b1f2-ce4e7f3ab44c",
+        "createdAt": "2026-10-08T11:10:33.575+00:00",
+        "keyRegistered": false,
+        "pairingExpired": true,
+        "pairingExpiresAt": "2026-10-08T11:20:33.575+00:00"
+      }
+    ],
+    "jobs": [
+      {
+        "fence": 1,
+        "jobId": "830ab50c-37e7-49cc-b82e-47b84be12af4",
+        "cancel": true,
+        "events": 0,
+        "claimed": false,
+        "outcome": "CANCELLED",
+        "terminal": true,
+        "workerId": "ubuntu-1-04c35ad4-2fd3-456c-b9db-cafa120eca15",
+        "claimBefore": "2026-10-08T08:28:24.939+00:00",
+        "spawnIntent": false,
+        "claimWindowExpired": true
+      },
+      {
+        "fence": 2,
+        "jobId": "a6452b98-dcac-4ca9-946f-b3dbfd9fc437",
+        "cancel": true,
+        "events": 0,
+        "claimed": false,
+        "outcome": "CANCELLED",
+        "terminal": true,
+        "workerId": "ubuntu-1-07f72d78-29d3-47cc-a649-6fae8085f0f1",
+        "claimBefore": "2026-10-08T08:42:14.324+00:00",
+        "spawnIntent": false,
+        "claimWindowExpired": true
+      },
+      {
+        "fence": 3,
+        "jobId": "1e7d915b-ce6a-4d31-9f38-b4706429a062",
+        "cancel": true,
+        "events": 0,
+        "claimed": false,
+        "outcome": "CANCELLED",
+        "terminal": true,
+        "workerId": "ubuntu-1-fbef1c3b-ba81-4f25-9892-e610339e9180",
+        "claimBefore": "2026-10-08T10:35:14.331+00:00",
+        "spawnIntent": false,
+        "claimWindowExpired": true
+      },
+      {
+        "fence": 4,
+        "jobId": "fc3c24cd-5989-4c26-939a-0ebbb2375d26",
+        "cancel": true,
+        "events": 0,
+        "claimed": false,
+        "outcome": "CANCELLED",
+        "terminal": true,
+        "workerId": "ubuntu-1-f84ce906-b7ae-4831-9363-719a054b1da8",
+        "claimBefore": "2026-10-08T10:38:07.592+00:00",
+        "spawnIntent": false,
+        "claimWindowExpired": true
+      },
+      {
+        "fence": 5,
+        "jobId": "cd39b9b8-0a00-48ca-972a-1c7d1b4a0620",
+        "cancel": false,
+        "events": 0,
+        "claimed": false,
+        "outcome": null,
+        "terminal": false,
+        "workerId": "ubuntu-1-e7181728-e99b-4392-b1f2-ce4e7f3ab44c",
+        "claimBefore": "2026-10-08T11:25:33.575+00:00",
+        "spawnIntent": false,
+        "claimWindowExpired": true
+      }
+    ],
+    "total_receipts": 13,
+    "worker_receipts": 0
+  },
+  "verification": {
+    "portableTests": 552,
+    "pass": 552,
+    "fail": 0,
+    "isolatedRuntimeSimulation": true,
+    "nativeDenoProof": false,
+    "actualPairingProof": false,
+    "secretReads": 0,
+    "realPairingRequests": 0,
+    "ownerMutations": 0,
+    "newJobs": 0,
+    "vmCommands": 0
+  }
+}
