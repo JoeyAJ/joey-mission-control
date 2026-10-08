@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "mc.guided-pairing-evidence-custody.v1",
+  "sourceSha": "7c0053d24fa0df10b510c20175122aa82ef7cd23",
+  "scope": "private handoff/test/deployment receipts; excluded from public app",
+  "files": [
+    {
+      "path": "guided-pairing-repair-checkpoint.json",
+      "sha256": "6f39326fc8f1f7cf496fbcf6df7284c0019e04fde7d8d575f8adef2fd7c2d071",
+      "bytes": 3772
+    },
+    {
+      "path": "guided-pairing-browser-report.json",
+      "sha256": "9c5f70c02dff206e42c699f70f954c3aa4f5dcf27e5eb38cf0410a443d200421",
+      "bytes": 1641
+    },
+    {
+      "path": "guided-pairing-native-report.json",
+      "sha256": "526709a6708767b70f1a3c4fa039fe1507eecb4ec670b76c9498f1e0a82f6b08",
+      "bytes": 1967
+    },
+    {
+      "path": "guided-pairing-owner-lifecycle-report.json",
+      "sha256": "9a3c5ea288c2463827795ee3f5dc757988c4081c2962921e71ac91b50a4927d3",
+      "bytes": 6314
+    },
+    {
+      "path": "guided-pairing-served-assets.json",
+      "sha256": "bfd18b62f0dea00b42b8eb0bd5c31cac269059a41333ca8cfaeca6aaa1938419",
+      "bytes": 739
+    },
+    {
+      "path": "guided-pairing-full-tests.log",
+      "sha256": "d2da821e30f8a0d54ab18489dbbdf140385ea04c1aa089743568be3d75929be1",
+      "bytes": 56422
+    },
+    {
+      "path": "guided-pairing-build.log",
+      "sha256": "cbae10d823ad2a7fac323fdda36514e18051285ec167ccc0f499c283afff26ab",
+      "bytes": 480
+    }
+  ]
+}

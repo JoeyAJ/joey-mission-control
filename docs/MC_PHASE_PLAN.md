@@ -1,5 +1,22 @@
 # MC continuing delivery phase plan
 
+Current 2026-10-08 breakdown: the approved bounded VM pilot is deployed;
+guided terminal-first pairing source `7c0053d24fa0df10b510c20175122aa82ef7cd23`
+is verified, while actual human pairing/execution remains pending. Exact
+deployment/test/readback and recovery steps are in
+[MC_VM_LINK_GUIDED_PAIRING_HANDOFF.md](MC_VM_LINK_GUIDED_PAIRING_HANDOFF.md).
+The expired unclaimed record is retained for Joey's manual revoke; no pilot is
+started while she is commuting. This closes the UI repair engineering stage,
+not general P2B producer, canonical writeback or final Owner acceptance.
+
+Next independent stage, reported before implementation:
+[private worker evidence inspection](MC_PRIVATE_WORKER_EVIDENCE_NEXT_SLICE.md).
+It uses only existing safe job/event readback, does not change the stable pairing
+flow, and adds no credential, source scope, infrastructure, grants, cost or
+production promotion. Detailed acceptance remains in that proposal; status is
+REPORTED_NOT_IMPLEMENTED. Historical phase definitions/receipts below retain
+their broader gaps.
+
 Joey remains Product Owner and Final Approver. This is the continuing core task, not a claim that the first command workspace is the final product. Joey's original instruction is retained verbatim in the private progress ledger, with its source identity/time. The existing public product URL is unchanged.
 
 ## Current reconciliation — 2026-10-07 source-bound file review

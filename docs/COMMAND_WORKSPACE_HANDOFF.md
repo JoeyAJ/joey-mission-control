@@ -1,5 +1,7 @@
 # Command workspace candidate handoff
 
+Latest current continuation: [published guided pairing, exact receipts and human recovery](MC_VM_LINK_GUIDED_PAIRING_HANDOFF.md); [next independent scope/acceptance](MC_PRIVATE_WORKER_EVIDENCE_NEXT_SLICE.md) is reported and unimplemented. Prior stage receipts remain historical.
+
 Implemented outcome: linked AI Development Command Center as an independent Workspace view, with a short Joey View entry, with four project work entries, a selectable/filterable recorded evidence feed, URL-addressed inspector and navigable relationship graph. Project tabs/entries, event buttons and graph share project/event selection. Existing owner decision and Handoff/Continue entries remain usable. Refresh exposes reading/failure/recovery without inventing event timestamps or losing confirmed detail. Native controls remain keyboard accessible; three locales and narrow screens are supported. Explicit candidate acceptance and runtime-disconnected labels are visible.
 
 Project reconciliation is included: field-only safe owner receipts, grounded at private handoff index `1578b10d3d41fe9167104b9e9557bc5f6674a891` and independently checked remote project tips. Nex `8271e1b`, Buddy `e41bd1b`, Namyoung `92c17b8`, Asset migration `77b6766`. Buddy Social PK/visits/SQL receipt and open real-device acceptance; University 0.4 candidate/retest and private custody separation; Nex/Namyoung receipt-backed validation/limitations appear in context. Current task, live agent/model and latest receipt actor/model remain absent rather than inheriting old historical actors. Missing next actions/blocker/approval are explicit unknowns, not invented requests. Receipt/phase dates are compared without a fixed-date claim; existing owner/canonical panels remain independent records; their files are not silently promoted.
@@ -94,3 +96,25 @@ Cloud foundation follow-up: Joey personally created exactMC-onlySupabase scmvedf
 Approved executor follow-up: exact5a9862 access SQL applied once20261007044131 onlyMCproject. Role/membership/ACL/policy/functionowner/securitydefiner/searchpath plus rollback-only executorSQL/CAS/idempotency/atomicity and visitor denialPASS. Finaltables/Authusers0, refusingbridge, noWriteractivation; advisors[]. See MC_EXECUTOR_ACCESS_HANDOFF.md. Owner-only Auth bundle is a separate next approval; no credential/identity/host config made.
 
 Owner-only Auth bundle approved2026-10-07T04:49:38Z. Offline owner-session coordinator/private localized renderer now prepared with exact decision digest, fresh owner/AAL binding, explicit one-use confirmation, revocation/expiry/logout invalidation and bounded pending retry. No live provider adapter or public credential screen. Official read-only preflight found owner email UUID count0; callable tools have no Auth-config/publishable-key action. Default-deny remains. See MC_OWNER_SESSION_HANDOFF.md for current approval, PASS/NOTRUN and manual setup handoff; previous next-approval wording above is historical.
+# Current continuation receipt — 2026-10-08
+
+[Guided pairing handoff](MC_VM_LINK_GUIDED_PAIRING_HANDOFF.md) supersedes earlier
+inactive-VM and stale preview statements for the approved bounded pilot only.
+Functional source `7c0053d24fa0df10b510c20175122aa82ef7cd23` is READY at the fixed
+preview; JS/CSS/config match local verified bytes. Evidence: full538, contract52,
+nativePostgres17, Chromium3widths, OwnerSDK9 and build PASS. Reports/logs plus
+their hash manifest are retained under `docs/contracts/vm-link/receipts/guided-pairing-7c0053d/`;
+synthetic tests are not actual Owner Auth/AAL2 or VM proof.
+
+09:14:29 UTC readback retains fence1 CANCELLED and fence2 expired/unclaimed/unspawned,
+events0; current worker remains unpaired/unrevoked. Joey's commute is not a pilot
+start instruction. Her remaining steps are revoke old worker → prepare terminal
+and wait for masked input → confirm/approve → copy code before leaving → paste
+into the waiting TTY → actual readback and pause/revoke. No new job/Owner mutation
+or VM command was issued by this agent. Production remains8b4945b.
+
+[Next slice](MC_PRIVATE_WORKER_EVIDENCE_NEXT_SLICE.md) is a private read-only
+safe-event inspector using the already available Owner view, with truthful
+claim/spawn/turn/process/outcome and time/expiry qualification. Scope and acceptance
+are recorded before implementation; no next-feature code has been written.
+Prior handoff history below is retained.

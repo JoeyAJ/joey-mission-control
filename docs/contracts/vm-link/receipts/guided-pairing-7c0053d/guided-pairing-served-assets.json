@@ -1,0 +1,21 @@
+{
+  "ownerBundle": {
+    "servedSha256": "4d52b328d82a450d1dd8b2183cb6f353a887363a4242d4c8186b5d067e2b61ef",
+    "localSha256": "4d52b328d82a450d1dd8b2183cb6f353a887363a4242d4c8186b5d067e2b61ef",
+    "match": true,
+    "bytes": 313680
+  },
+  "styles": {
+    "servedSha256": "7addc2d78229ea8e0ec92c87cf2212e5af39f79b7bbe78e63c9bb9486267375c",
+    "localSha256": "7addc2d78229ea8e0ec92c87cf2212e5af39f79b7bbe78e63c9bb9486267375c",
+    "match": true,
+    "bytes": 129396
+  },
+  "config": {
+    "servedSha256": "a84b578bab5206135583add1b87aedcc9739b13f8d5e18bb52e9135c0ba01177",
+    "localSha256": "a84b578bab5206135583add1b87aedcc9739b13f8d5e18bb52e9135c0ba01177",
+    "match": true,
+    "bytes": 342
+  },
+  "guidedFlowStringsPresent": true
+}

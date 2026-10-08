@@ -1,0 +1,62 @@
+{
+  "pass": true,
+  "syntheticOnly": true,
+  "actualOwnerAuth": false,
+  "externalRequests": 0,
+  "cases": [
+    {
+      "width": 1440,
+      "pass": true,
+      "masked": true,
+      "hashOnlyRpc": true,
+      "minTouch": 44,
+      "defaultOffNoUi": true,
+      "preparedBeforeApproval": true,
+      "commandWorkerMatchesApproval": true,
+      "preparedStateRetainedOnHide": true,
+      "privateCodeClearedOnHide": true,
+      "copyBeforeHide": true,
+      "jobViewRetained": true,
+      "noDuplicateApproval": true,
+      "zeroBrowserStorage": true,
+      "noOverflow": true,
+      "projectChangeClears": true
+    },
+    {
+      "width": 390,
+      "pass": true,
+      "masked": true,
+      "hashOnlyRpc": true,
+      "minTouch": 44,
+      "defaultOffNoUi": true,
+      "preparedBeforeApproval": true,
+      "commandWorkerMatchesApproval": true,
+      "preparedStateRetainedOnHide": true,
+      "privateCodeClearedOnHide": true,
+      "copyBeforeHide": true,
+      "jobViewRetained": true,
+      "noDuplicateApproval": true,
+      "zeroBrowserStorage": true,
+      "noOverflow": true,
+      "projectChangeClears": true
+    },
+    {
+      "width": 320,
+      "pass": true,
+      "masked": true,
+      "hashOnlyRpc": true,
+      "minTouch": 44,
+      "defaultOffNoUi": true,
+      "preparedBeforeApproval": true,
+      "commandWorkerMatchesApproval": true,
+      "preparedStateRetainedOnHide": true,
+      "privateCodeClearedOnHide": true,
+      "copyBeforeHide": true,
+      "jobViewRetained": true,
+      "noDuplicateApproval": true,
+      "zeroBrowserStorage": true,
+      "noOverflow": true,
+      "projectChangeClears": true
+    }
+  ]
+}

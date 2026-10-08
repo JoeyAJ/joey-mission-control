@@ -1,0 +1,82 @@
+{
+  "pass": true,
+  "localSyntheticOnly": true,
+  "actualNativePostgres": true,
+  "actualSupabaseAuth": false,
+  "actualVmOrCodexExecution": false,
+  "liveRequests": 0,
+  "canonicalSubmit": false,
+  "checks": [
+    {
+      "case": "unchangedExistingAuthHelperBodyAclManagedAuthTablesAndMembershipGraph",
+      "pass": true
+    },
+    {
+      "case": "newTablesForceRlsReceiptsAndEventsAppendOnly",
+      "pass": true
+    },
+    {
+      "case": "defaultOffNoAdmission",
+      "pass": true
+    },
+    {
+      "case": "workerCannotApproveOwnerAndNoDirectTableAccess",
+      "pass": true
+    },
+    {
+      "case": "syntheticAal1NullAndMembershipDenied",
+      "pass": true
+    },
+    {
+      "case": "nullOrWrongJsonTypesCannotApprove",
+      "pass": true
+    },
+    {
+      "case": "boundedBootstrapPairOneConsumptionAndKeyProof",
+      "pass": true
+    },
+    {
+      "case": "twoConnectionsOneClaimReceiptReplayNeverRequeue",
+      "pass": true
+    },
+    {
+      "case": "fenceAndDurableServerSpawnIntent",
+      "pass": true
+    },
+    {
+      "case": "atomicEventBatchNoPartialCommitAndOriginalObservedTime",
+      "pass": true
+    },
+    {
+      "case": "nullAndNonStringSafePayloadDenied",
+      "pass": true
+    },
+    {
+      "case": "claimedCancellationNeverImplicitRetryOrFalseCompletion",
+      "pass": true
+    },
+    {
+      "case": "cancelCommitWinsBlockedSpawnIntentActualTransactionRace",
+      "pass": true
+    },
+    {
+      "case": "unclaimedOnlyFreshOwnerRetryNewAttemptAndFence",
+      "pass": true
+    },
+    {
+      "case": "staleLeaseNoRenewalReclaimOrSuccessUnknownReadback",
+      "pass": true
+    },
+    {
+      "case": "workerCredentialRevocationDeniesAllWorkerTraffic",
+      "pass": true
+    },
+    {
+      "case": "ownerAdapterDatabaseSignedEdgeSyntheticWorkerSafeEventsUiComplete",
+      "pass": true
+    }
+  ],
+  "changesOutsideNewSchema": false,
+  "postgresVersion": "postgres (PostgreSQL) 17.10",
+  "actualClaimLockObserved": true
+}

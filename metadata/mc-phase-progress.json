@@ -96,7 +96,12 @@
       "definitionOfDoneRef": "docs/MC_PHASE_PLAN.md",
       "ownerAcceptance": "PENDING_FINAL_TARGET_ACCEPTANCE",
       "sources": [],
-      "tests": null
+      "tests": null,
+      "boundedVmPilot": {
+        "state": "GUIDED_PAIRING_READY_ACTUAL_VM_PROOF_PENDING",
+        "sourceRef": "docs/MC_VM_LINK_GUIDED_PAIRING_HANDOFF.md",
+        "generalProducerAcceptance": false
+      }
     },
     {
       "id": "P3",
@@ -330,6 +335,37 @@
       "ownerDecisionSubmit": false,
       "productionPromotion": false,
       "checkpointRef": "historical-file-review-checkpoint.json"
+    },
+    {
+      "at": "2026-10-08T09:19:51.655333+00:00",
+      "type": "GUIDED_VM_PAIRING_REPAIR_DEPLOYED_AND_PRIVATE_HANDOFF_SAVED",
+      "functionalSourceSha": "7c0053d24fa0df10b510c20175122aa82ef7cd23",
+      "deploymentId": "dpl_3E8FyGBsQRj9uPdTUtfEUJbm1dMc",
+      "state": "READY_VERIFIED_HUMAN_PAIRING_PENDING",
+      "tests": {
+        "contractTests": 52,
+        "nativePostgresCases": 17,
+        "browserWidths": [
+          1440,
+          390,
+          320
+        ],
+        "ownerLifecycleCases": 9,
+        "externalBrowserRequests": 0,
+        "fullRepositoryTests": 538,
+        "build": true
+      },
+      "safeReadbackAt": "2026-10-08 09:14:29.98959+00",
+      "fence1": "CANCELLED_UNCLAIMED_UNSPAWNED",
+      "fence2": "PAIRING_AND_CLAIM_WINDOW_EXPIRED_UNCLAIMED_UNSPAWNED_TERMINAL_NOT_YET_SET",
+      "currentWorker": "UNPAIRED_DISABLED_KEY_UNREGISTERED_UNREVOKED",
+      "eventsCount": 0,
+      "agentOwnerMutationCount": 0,
+      "agentVmCommandCount": 0,
+      "actualAuthOrAal2Proof": false,
+      "actualVmProof": false,
+      "productionPromotion": false,
+      "evidenceRef": "docs/MC_VM_LINK_GUIDED_PAIRING_HANDOFF.md"
     }
   ],
   "migrationPriority": {
@@ -344,16 +380,12 @@
   },
   "checkpoint": {
     "branch": "codex/mc-command-center-checkpoint-20261006",
-    "localCommit": "39846c133fa01956bc6317b6223b4ceb4e9a19f4",
-    "status": "REMOTE_SAFE_CHECKPOINT_VERIFIED",
-    "remoteReceipt": {
-      "path": "metadata/mc-remote-checkpoint-receipt.json",
-      "stageContentCommit": "39846c133fa01956bc6317b6223b4ceb4e9a19f4",
-      "fetchBack": "EXACT_SHA_AND_TREE"
-    },
+    "stageContentCommit": "7c0053d24fa0df10b510c20175122aa82ef7cd23",
+    "status": "GUIDED_PAIRING_FUNCTIONAL_SOURCE_READY_VERIFIED",
+    "receiptPath": "docs/contracts/vm-link/receipts/guided-pairing-7c0053d/guided-pairing-repair-checkpoint.json",
     "parentSingleWriterCoordination": "AUTHORIZED_THIS_AGENT_ONLY",
-    "previewRisk": "Automatic Vercel preview possible on push; public bundle/API/private-original exclusion must be checked.",
-    "localCommitNote": "Stage content SHA verified remotely; later receipt-only commit SHA resides in external delivery manifest."
+    "handoffFollowupCommit": "EXACT_DOCS_ONLY_SHA_RECORDED_EXTERNALLY_AFTER_COMMIT",
+    "previewRisk": "Docs-only push may create same-public-byte automatic protected preview; no functional scope change."
   },
   "boundedObserver": {
     "taskBaseline": "8b478f0d8c017defdd2a5f5dab92ea9972479c78",
@@ -437,6 +469,52 @@
       "currentBlocker": false
     },
     "ownerDecisionScope": "AUTHORIZED_TWO_BODY_CORRECTION_APPLIED_SUBMIT_GUARDED_EXISTING_OWNER_SMOKE_PENDING",
-    "ownerMacSmoke": "TRANSPORT_CLOSED_NO_NEW_UI_VERIFICATION"
-  }
+    "ownerMacSmoke": "TRANSPORT_CLOSED_NO_NEW_UI_VERIFICATION",
+    "guidedPairingRef": "docs/MC_VM_LINK_GUIDED_PAIRING_HANDOFF.md",
+    "nextSliceRef": "docs/MC_PRIVATE_WORKER_EVIDENCE_NEXT_SLICE.md"
+  },
+  "guidedPairing": {
+    "state": "DEPLOYED_VERIFIED_HUMAN_PAIRING_PENDING",
+    "functionalSourceSha": "7c0053d24fa0df10b510c20175122aa82ef7cd23",
+    "privateHandoffRef": "docs/MC_VM_LINK_GUIDED_PAIRING_HANDOFF.md",
+    "privateReceiptManifest": "docs/contracts/vm-link/receipts/guided-pairing-7c0053d/manifest.json",
+    "clearOnHide": true,
+    "terminalBeforeApproval": true,
+    "automaticPilotStart": false,
+    "commuteStatus": "PARENT_REPORTED_09_08_UTC_EXPECTED_MAC_IN_1_TO_1_5_HOURS",
+    "safeReadbackAt": "2026-10-08 09:14:29.98959+00",
+    "expiredPendingRecordRetained": true,
+    "humanRecovery": "REVOKE_CURRENT_EXPIRED_WORKER_THEN_USE_GUIDED_FLOW",
+    "realWorkerTrial": "NOT_RUN",
+    "generalAgentToolFeed": "NOT_CONNECTED",
+    "canonicalWriterCutover": false
+  },
+  "nextIndependentSlice": {
+    "id": "PRIVATE_WORKER_EVIDENCE_INSPECTOR",
+    "status": "REPORTED_NOT_IMPLEMENTED",
+    "proposalRef": "docs/MC_PRIVATE_WORKER_EVIDENCE_NEXT_SLICE.md",
+    "source": "EXISTING_QUALIFIED_NEXAEON_OWNER_VIEW_ONLY",
+    "credentialDependent": false,
+    "newTransportOrRpc": false,
+    "changesPairingFlow": false,
+    "startsJobs": false,
+    "productionPromotion": false,
+    "parentSequencingCheckpoint": "REPORT_SCOPE_AND_ACCEPTANCE_BEFORE_IMPLEMENTATION",
+    "singleWriter": "THIS_DELEGATED_AGENT_ONLY"
+  },
+  "checkpointHistory": [
+    {
+      "branch": "codex/mc-command-center-checkpoint-20261006",
+      "localCommit": "39846c133fa01956bc6317b6223b4ceb4e9a19f4",
+      "status": "REMOTE_SAFE_CHECKPOINT_VERIFIED",
+      "remoteReceipt": {
+        "path": "metadata/mc-remote-checkpoint-receipt.json",
+        "stageContentCommit": "39846c133fa01956bc6317b6223b4ceb4e9a19f4",
+        "fetchBack": "EXACT_SHA_AND_TREE"
+      },
+      "parentSingleWriterCoordination": "AUTHORIZED_THIS_AGENT_ONLY",
+      "previewRisk": "Automatic Vercel preview possible on push; public bundle/API/private-original exclusion must be checked.",
+      "localCommitNote": "Stage content SHA verified remotely; later receipt-only commit SHA resides in external delivery manifest."
+    }
+  ]
 }

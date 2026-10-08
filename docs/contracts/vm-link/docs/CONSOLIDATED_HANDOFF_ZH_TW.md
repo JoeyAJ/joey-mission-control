@@ -1,4 +1,12 @@
-# 完整接手交付：0.1.1 停用整合候選
+# 完整接手交付：0.1.1 bounded pilot
+
+目前有效交接（2026-10-08）是 [MC_VM_LINK_GUIDED_PAIRING_HANDOFF.md](../../../MC_VM_LINK_GUIDED_PAIRING_HANDOFF.md)。
+approved SQL/Edge 已部署、fixed preview 7c0053d guided-pairing READY；exact receipts
+與真人待辦已保存。09:14 UTC 配對碼已到期、目前 worker 未配對／未撤銷，
+兩筆 job 均未 claimed/spawn，events=0。Joey 通勤期間不啟動、不重新批准。
+新流程先讓 terminal 等碼，再親自批准並立即複製；clear-on-hide 保留。
+下列「停用候選／尚未部署」段落是初始候選歷史，不再代表目前 deployment
+狀態；actual VM execution／Owner Auth/AAL2 仍未由本 executor 驗證。
 
 0.1.0 的 production adapter 缺口已在此候選補齊：私有 SQL queue／lease／receipts／safe events、簽章 Edge、既有 Owner session 的 UI adapter、一次性配對與 VM 本機安裝流程。現行 fixed preview 仍是 d0966da；此候選沒有 push、部署、SQL apply 或實際 VM 啟用。
 

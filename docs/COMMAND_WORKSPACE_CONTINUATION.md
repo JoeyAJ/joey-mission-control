@@ -1,5 +1,16 @@
 # Command workspace continuation / PRD delta
 
+Latest 2026-10-08 continuation: [the published guided-pairing handoff](MC_VM_LINK_GUIDED_PAIRING_HANDOFF.md)
+records exact functional SHA `7c0053d24fa0df10b510c20175122aa82ef7cd23`,
+READY deployment, matching served assets and private test receipts. Terminal
+preparation now precedes explicit Owner approval; clear-on-hide is retained.
+Joey is commuting. The expired, unclaimed/unspawned fence-2 record is retained
+for her manual recovery; no agent reapproval or pilot launch is scheduled.
+The next independent slice is [private worker evidence inspection](MC_PRIVATE_WORKER_EVIDENCE_NEXT_SLICE.md),
+with scope and acceptance reported before implementation. It remains unimplemented;
+the stable pairing flow and canonical/Auth/production boundaries are unchanged.
+Historical capability receipts below retain their original scope and dates.
+
 Current historical review stage restores the actual sixteen-file historical
 comparison response and links Explorer/file selectors/path/numbered bounded diff
 with the scoped MC membership graph. Public output keeps approved categories and
