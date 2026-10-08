@@ -1,0 +1,145 @@
+{
+  "status": "COORDINATED_PRIVATE_RELEASE_PASS_VM_PREFLIGHT_PENDING",
+  "approval": {
+    "userReply": "允許",
+    "at": "2026-10-08T12:36:39Z",
+    "reference": "Sentinel_095750ea660c8191ad53620083dbf2f9",
+    "scope": "Verified trusted artifact repair within unchanged scope; guarded CAS and existing Edge/private preview release only"
+  },
+  "source": {
+    "approvedLocalCandidate": "5481bc6ec5813f74443fd7de650b2af5f9d8bb2f",
+    "remoteFunctionalCommit": "1891ffdb82174b5ca1e11ef26c42a85a8a583ae9",
+    "exactSharedTree": "c624c164a2ae7317e225e2edb8b6849270dfab37",
+    "remoteBaseline": "82d732d64fbd419b60bc16c56f0de9bd76f89132",
+    "branch": "codex/mc-command-center-checkpoint-20261006",
+    "refUpdatedWithExpectedSha": true,
+    "force": false,
+    "remoteCommitDiffersBecauseConnectorCreatedCommit": true
+  },
+  "cleanupBaseline": {
+    "observed_at": "2026-10-08 12:41:02.148586+00",
+    "configuration": {
+      "enabled": true,
+      "policy_digest": "72f8c00bb21e91fe86720678d72b650eada8dc54ef1f3b5d3dca6395bb83c6f9",
+      "artifact_digest": "9bb363726a13bd96341c84b015354daaa454c6265b5bf0d2c5aff6eab1e3d647"
+    },
+    "workers": 8,
+    "worker_guard_blockers": 0,
+    "unrevoked_workers": 0,
+    "job_guard_blockers": 0,
+    "events": 0
+  },
+  "configurationTransition": {
+    "exactReviewedScriptSha256": "24da1a8e05339d5b9eee577ac97acb76f8cf69ae5dc5695d4104f442ddda1889",
+    "submissions": 1,
+    "result": {
+      "observed_at": "2026-10-08 12:42:09.530216+00",
+      "enabled": true,
+      "policy_digest": "72f8c00bb21e91fe86720678d72b650eada8dc54ef1f3b5d3dca6395bb83c6f9",
+      "artifact_digest": "0de5fbd05a012fccabb23a4edf2ff7374b71d695b2505cfc4092ac8b85076613"
+    },
+    "enabledChanged": false,
+    "ownerMutation": false
+  },
+  "edge": {
+    "version": 7,
+    "status": "ACTIVE",
+    "id": "e6447aff-ed11-4ab1-8040-9ef1c7b33799",
+    "verifyJwt": false,
+    "fileCount": 7,
+    "allCommittedBytesMatch": true
+  },
+  "pins": {
+    "oldArtifact": "9bb363726a13bd96341c84b015354daaa454c6265b5bf0d2c5aff6eab1e3d647",
+    "artifact": "0de5fbd05a012fccabb23a4edf2ff7374b71d695b2505cfc4092ac8b85076613",
+    "bootstrap": "ec4340b041dec7c4f7acb2f6b59f1d95451a8bbc67c36cf3c244db76061d3e8e",
+    "bootstrapGetStatus": 200,
+    "bootstrapTlsVerified": true,
+    "bootstrapBytes": 15285,
+    "policy": "72f8c00bb21e91fe86720678d72b650eada8dc54ef1f3b5d3dca6395bb83c6f9",
+    "nativeCodexVersion": "0.161.0",
+    "nativeCodex": "9a820c17865fa825d04db416818679a9d63bd72e50835c396f496e5684626c9c"
+  },
+  "preview": {
+    "id": "dpl_7qYm5zFQQeEJYByY9Gys2XccMuMH",
+    "state": "READY",
+    "target": null,
+    "sourceSha": "1891ffdb82174b5ca1e11ef26c42a85a8a583ae9",
+    "alias": "joey-mission-control-git-codex-mc-comma-fceec2-joeyajs-projects.vercel.app",
+    "servedFiles": [
+      {
+        "path": "public/owner-auth-client.js",
+        "httpStatus": 200,
+        "success": true,
+        "byteIdentical": true,
+        "expectedSha256": "90a1284dbf73f72c30914dfe2f508a38336495aa3069b7b7258455c92038e752",
+        "bodyCharacters": 329955
+      },
+      {
+        "path": "public/vm-link-config.js",
+        "httpStatus": 200,
+        "success": true,
+        "byteIdentical": true,
+        "expectedSha256": "68518280d0e65f82a5ad309be54d4a6d8edafae76f2a64fd6dcb29874d9656d1",
+        "bodyCharacters": 342
+      },
+      {
+        "path": "public/styles.css",
+        "httpStatus": 200,
+        "success": true,
+        "byteIdentical": true,
+        "bytes": 133431,
+        "expectedSha256": "6e4fa9d4e8f4aaf6196fff0897f3bab8a10618d2d252d0afbb2442d147d57401"
+      }
+    ],
+    "protection": {
+      "id": "prj_X67htPw7vkRI2tuf8817vOUCGQOD",
+      "ssoProtection": {
+        "enabled": true,
+        "deploymentType": "all_except_custom_domains"
+      },
+      "passwordProtectionConfigured": true
+    },
+    "anonymousDirectRead": {
+      "status": "CONNECT_403_STOPPED",
+      "applicationHttpStatus": null,
+      "retried": false,
+      "normalProxyUsed": true
+    },
+    "authorizedConnectorReadStatus": 200
+  },
+  "production": {
+    "id": "dpl_3quBFohZs1gYJK4PnwjNFZnDTefR",
+    "sourceSha": "8b4945b16a0b23f2e72033aa976fa34f94eabec0",
+    "unchanged": true
+  },
+  "finalReadback": {
+    "observed_at": "2026-10-08 12:46:55.961519+00",
+    "enabled": true,
+    "artifact_digest": "0de5fbd05a012fccabb23a4edf2ff7374b71d695b2505cfc4092ac8b85076613",
+    "policy_digest": "72f8c00bb21e91fe86720678d72b650eada8dc54ef1f3b5d3dca6395bb83c6f9",
+    "workers": 8,
+    "worker_guard_blockers": 0,
+    "jobs": 8,
+    "job_guard_blockers": 0,
+    "events": 0
+  },
+  "validation": {
+    "portablePassed": 558,
+    "ptyPassed": 13,
+    "nativeLayoutsPassed": 2,
+    "guardedCasPostgresCasesPassed": 9,
+    "unchangedTestsRerun": false,
+    "shortReadOnlyWrapperSyntax": "PASS"
+  },
+  "remaining": {
+    "vmPreflightActualReadback": false,
+    "partialInstallationReconciliation": "PENDING_ACTUAL_METADATA",
+    "newPairing": false,
+    "newJob": false,
+    "serviceStarted": false,
+    "codexInvoked": false,
+    "currentAuthRead": false,
+    "actualAal2Claimed": false
+  }
+}
