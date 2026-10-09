@@ -1,3 +1,47 @@
+# Mission Control manual Agent continuation handoff
+
+Project: MISSION_CONTROL
+Timestamp: 2026-10-09T11:38:04Z
+Task: Usable private manual Agent continuation
+Status: LOCAL_VERIFIED_PENDING_PUBLICATION
+Executed by: Codex
+Baseline: f77aa62d343431f9e25b38dd83e9b94b36fefe52
+
+## Current task progress — 2026-10-09 manual continuation
+
+Qualification: LOCAL_IMPLEMENTATION_AND_SYNTHETIC_BROWSER_VERIFICATION
+Actual Model: UNKNOWN
+Runner Connection: NOT_CONNECTED
+Publication: LOCAL_CANDIDATE_ONLY
+
+### Completed
+
+The existing private task reader and repository HANDOFF reader now form one manual continuation flow in Task events and handoff. The current Owner sees repository, branch, exact resolved SHA and document digest; completed, blockers and next-step fields prefer the current stage. Earlier publication instructions remain preserved as historical context. Missing current-stage facts stay explicitly unrecorded.
+
+Owner explicitly enters all three agent, provider and model identifiers. No default model or provider is selected. The complete private package contains the latest HANDOFF, source qualification, reported checkpoint, bounded original run/model/source history and intake steps. Historical requested model, actual model and immutable run source pins are retained. The selection describes the next handoff and does not rewrite or register a run.
+
+Copy rechecks normal Owner access, current repository source and durable journal revision. Changed source or events produce a new reviewable package before another copy. Clipboard denial selects the package text for system copy. Unchanged refresh preserves the reviewed draft; selection changes and private lifecycle invalidation purge it. The older source-only selection form is hidden when this complete task flow is enabled.
+
+The focused verification covers explicit selection, secret-pattern refusal, ignored payload/getter fields, immutable model/source history and read races. The actual app and official Owner SDK pass desktop/mobile cases at 1440/390/320 in English, Traditional Chinese and Korean, including copy/review/fallback and logout, expiry, revocation, project and page lifecycle clearing. Browser Auth, Git, journal and clipboard are synthetic. No fixture or package was persisted to the real database. Build, portable validate and static checks pass; the portability guard records zero forbidden workstation attempts.
+
+Local inspection of the exact published f77 source and the prior sanitized parent readback confirms that the latest reported completed checkpoint retains null requested/actual model and its original c2a8 source pin. This uses saved evidence and is not a fresh Owner browser read. No actual model was called.
+
+### Blockers
+
+All entered agent/provider/model choices show Runner NOT_CONNECTED. The only usable transfer here is an explicit manual copy into the Owner-selected agent conversation. Automatic dispatch, automatic current-dialogue event attachment and runtime identity verification remain unavailable. This local stage does not activate them.
+
+Real normal-Owner browser acceptance on the fixed HTTPS Preview remains unverified. Cloud CONNECT403 is not retried or bypassed. The two previously rejected operational uploads remain excluded and must not be recreated or uploaded through another route. The old temporary INHERIT scope stays outside this stage.
+
+### Next Action
+
+Parent reviews the exact local manifest and patch against f77 and coordinates any subsequent publication to codex/mc-command-center-checkpoint-20261006 and its existing fixed private Preview. No push or deployment is authorized by this local-only task. Publication would contain only the named code, rebuilt browser asset, focused tests and this HANDOFF update, with no SQL, operational receipt or private runtime record.
+
+After an authorized publication, use existing normal Owner/AAL2 access to prepare and copy a manual continuation package. Verify the returned SHA and digest, explicit target selection, intact original model/source history and NOT_CONNECTED runner label. Read PRODUCT_CHARTER and MC_PHASE_PLAN at that SHA before dependent work. Fresh runner activation or external writes need their own scope; this package grants no execution or write authority. Production, keys, memberships, SQL, AWS/VM state and unrelated projects are unchanged.
+
+## Preserved prior published handoff — f77aa62
+
+The following document bytes are preserved from the published baseline as prior-stage architecture, validation and progress history. They do not supersede the current local candidate stage above.
+
 # Mission Control development handoff
 
 Project: MISSION_CONTROL
