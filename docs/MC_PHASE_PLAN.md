@@ -1,6 +1,12 @@
 # MC continuing delivery phase plan
 
-## Current independent delivery — approved four-project source wiring
+## Current independent delivery — workspace and source reading continuity
+
+Baseline: 6af8975d75757696906a17b9b35523818a60bfe8, published fixed Preview READY. Two reproduced problems are repaired: same-project Workspace return keeps panel/inspector/item/filter, and same immutable source refresh retains document disclosure/keyboard focus. New source and private scope/lifecycle invalidation clear reading state. Acceptance covers project-bound copy after Back/Forward/reload, readable distinct source times/unknown Agent, outage recovery and desktop/mobile geometry. 43 targeted checks and 27 browser cases pass with synthetic private upstreams. Exact publication and bounded parent-summary evidence are sealed separately; real Owner four-repo runtime remains pending. [Continuity audit](MC_LAYOUT_CONTINUITY_AUDIT_20261009.md) records reproduced defects and remaining reference/device acceptance gaps.
+
+Only existing design/navigation/reader components change; no model selector/dispatch, schema/grants/keys, other-project write, AWS/VM or Production action. Continue only useful demonstrated defects; final reference proportions/density/color, technical metadata captions and actual Safari/phone private-reading acceptance remain open.
+
+## Completed prior delivery — approved four-project source wiring
 
 Baseline: 3fc3f8b0462fd592f2bed38646f38e75bcfeea5f, the published READY qualified-status slice. The four-project allowlist/thin adapter is connected through the existing private endpoint, server runtime credential, exact Owner/AAL2 checks and 30-second visible-session consumer. Source SHA/readAt and documentTimestamp are separate; plain entries work without root HANDOFF; unknown Agent stays unknown; verified links and copy are SHA-bound; main/University candidate remain distinct. Outage preserves stale evidence; denial/expiry/switch/lifecycle clears it. Fixture acceptance and exact publication are recorded in the sealed receipt. Normal Owner Preview runtime readback remains pending and may wait until the existing authenticated browser is available. No Mac dependency blocks cloud publication.
 

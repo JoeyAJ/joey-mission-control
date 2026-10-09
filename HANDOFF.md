@@ -1,3 +1,42 @@
+# Mission Control workspace and source reading continuity handoff
+
+Project: MISSION_CONTROL
+Timestamp: 2026-10-09T17:18:52Z
+Task: Preserve workspace return route and same-source reading continuity
+Status: LOCAL_VERIFIED_PENDING_PUBLICATION
+Last Developer: Codex
+Executed by: Codex
+Actual Model: UNKNOWN
+Baseline: 6af8975d75757696906a17b9b35523818a60bfe8
+
+## Summary
+
+The four-project reader baseline above is published on the fixed READY Preview. This stage audits desktop/mobile project and panel selection, Back/Forward/reload, source time and unknown identity, error recovery and project-bound takeover. Two reproduced continuity defects are repaired within the existing UI. The exact publication and bounded parent-record completion are saved in the sealed receipt after publication; this source header describes the prepared checkpoint. Normal Owner/four-repo Preview runtime remains pending.
+
+## Changes
+
+Returning from Joey View or the main workspace entry now restores the same project's last workspace panel, inspector, selected item and evidence filter. A different selected project starts its own default route. Only one transient in-memory navigation context is kept; no private source, packet, Auth state or new persistent store is added.
+
+Same-source refresh and polling now retain the source document disclosure and keyboard focus. The scope includes project/repository/ref/resolved SHA/content digest; changed source starts closed. Existing denial, expiry, project/candidate/page changes and disposal clear both private content and reading state. Copy still rereads and rechecks Owner before preparing a packet. Source times and unsigned Agent stay source-qualified; no executor, heartbeat, model selector or dispatch is introduced.
+
+## Verification
+
+Baseline reproduction: 12 connected-source cases confirm disclosure collapse on same-source refresh; 12 recorded-public workspace cases confirm return route loss. After repair: 12 public actual-app/static-handler cases at 1440/870/390/320 across three locales pass route/keyboard/pane continuity, Back/Forward/reload and source failure/recovery; 12 actual-app/official-SDK connected-source cases at 1440/en, 390/zh-TW and 320/ko pass disclosure/focus continuity, project history/reload, correct selected-project copy, unsigned identity, same-SHA links, candidate separation, outage/conflict/denial/expiry/logout and late-copy clearing. Three existing MC private HTTP/polling regressions pass. 43 affected unit/contract checks and build/portable/static checks pass; final root entry checks are in the sealed receipt. Browser Auth/GitHub/journal/clipboard are synthetic. External browser requests, unexpected writes and forbidden workstation reads are zero.
+
+## Blockers and remaining UI requirements
+
+Ordinary Owner HTTPS and four-project runtime source reads are not yet verified. They may wait for the existing authorized browser; cloud publication does not wait for Mac. The known CONNECT403 is not retried or bypassed. The two rejected operational artifact uploads remain excluded and blocked; no equivalent operational payload is regenerated or uploaded.
+
+Final reference proportions/density/color and Joey usability acceptance are still open. Supported layouts fit the viewport, but actual Safari/iPhone private-source reading is not separately evidenced. Source timestamps/unknown metadata are readable and wrapped in supported fixtures; some private metadata captions retain technical field names. Live Agent/tool/usage indicators require a genuine event source. Full-file editing, execution, automatic dispatch and canonical writeback remain outside this source/read scope. These are explicit remaining requirements or evidence gaps, not claims of completion.
+
+## Next Action
+
+Publish the sealed MC-only changes to the original private branch/fixed Preview, verify exact blob/READY/Production identity, and append one bounded completed parent summary to the existing MC journal under its existing management authority. Parent summary has no source event time, process evidence or actual model identity; it cannot serve as a heartbeat. Save sanitized readback separately from Git. No schema/grant/credential, other-project write, model/AWS/VM operation or Production action is authorized by this continuation stage.
+
+The next independent work should close a concrete remaining usability/reference defect only after reproducing it, or deliver acceptance evidence if none is found. Real runtime and device acceptance stay pending until their actual evidence is available. Detailed audit: [MC_LAYOUT_CONTINUITY_AUDIT_20261009.md](docs/MC_LAYOUT_CONTINUITY_AUDIT_20261009.md).
+
+## Preserved four-project source reader handoff
+
 # Mission Control four-project source reader handoff
 
 Project: MISSION_CONTROL
