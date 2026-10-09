@@ -3,10 +3,17 @@ import {replayTaskEventRecord} from './task-event-record.mjs';
 import {prepareTaskEventHandoff} from './task-event-chain.mjs';
 import {buildAgentContinuationPackage,requireContinuationSelection} from './agent-continuation-package.mjs';
 export function createSupabaseTaskEventReader({rpc,sourceReader,now=Date.now}={}){
+ const denied=status=>Object.assign(Error('OWNER_EVENT_READ_DENIED'),{status:status===401?401:403});
+ const unavailable=()=>Object.assign(Error('OWNER_EVENT_READ_UNAVAILABLE'),{status:503});
  async function load(taskId){
   if(typeof taskId!=='string'||!/^[A-Za-z0-9_-]{1,80}$/.test(taskId))throw Error('TASK_ID_INVALID');
-  const {data,error}=await rpc('mc_task_events_read',{task_id:taskId});if(error)throw Object.assign(Error('OWNER_EVENT_READ_DENIED'),{status:403});
-  if(data?.schemaVersion!==1||data.projectId!=='MISSION_CONTROL'||data.taskId!==taskId||!Number.isSafeInteger(data.expiresAt)||data.expiresAt<=now()||!Number.isSafeInteger(data.revision)||data.revision<1||data.record?.operations?.length!==data.revision)throw Error('DURABLE_EVENT_RESPONSE_INVALID');
+  let reply;try{reply=await rpc('mc_task_events_read',{task_id:taskId});}catch{throw unavailable();}
+  const {data,error,status}=reply;if(error){const code=error.code,http=status||error.status;
+   if(http===401||http===403||['42501','28000','28P01','PGRST301','PGRST302','PGRST303'].includes(code)||['OWNER_SESSION_DENIED','OWNER_AUTHORIZATION_DENIED'].includes(error.message))throw denied(http);
+   throw unavailable();
+  }
+  if(Number.isSafeInteger(data?.expiresAt)&&data.expiresAt<=now())throw denied(403);
+  if(data?.schemaVersion!==1||data.projectId!=='MISSION_CONTROL'||data.taskId!==taskId||!Number.isSafeInteger(data.expiresAt)||!Number.isSafeInteger(data.revision)||data.revision<1||data.record?.operations?.length!==data.revision)throw Error('DURABLE_EVENT_RESPONSE_INVALID');
   const chain=replayTaskEventRecord(data.record,{taskId,now});for(const run of chain.snapshot().runs)if(run.handoffSource.repositoryId!=='JoeyAJ/joey-mission-control'||run.handoffSource.requestedRef!=='codex/mc-command-center-checkpoint-20261006'||!(run.sourceQualification==='CODEX_CLI_PUBLIC_STREAM'&&run.executionKind==='AGENT_TASK'||run.sourceQualification==='PARENT_IMPORTED_VISIBLE_SUMMARY'&&run.executionKind==='PARENT_REPORTED_PROGRESS'))throw Error('DURABLE_EVENT_SOURCE_INVALID');return {data,chain};
  }
  const disabled=()=>{throw Error('CLOUD_TASK_WRITER_NOT_EXPOSED');};

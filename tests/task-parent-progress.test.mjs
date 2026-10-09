@@ -33,6 +33,22 @@ test('Owner reader preserves parent qualification and original pin while prepari
 
 test('reader denies expired sessions and inconsistent records before disclosing parent progress',async()=>{
  const value=record();for(const data of [response(value),{...response(value),expiresAt:time},{...response(value),revision:9}]){
-  const reader=createSupabaseTaskEventReader({rpc:async()=>({data,error:data.expiresAt===time+60000&&data.revision===2?{message:'SYNTHETIC_DENIED'}:null}),now:()=>time});await assert.rejects(reader.events({taskId}),/DENIED|INVALID/);
+  const reader=createSupabaseTaskEventReader({rpc:async()=>({data,error:data.expiresAt===time+60000&&data.revision===2?{message:'SYNTHETIC_DENIED',status:403}:null}),now:()=>time});await assert.rejects(reader.events({taskId}),/DENIED|INVALID/);
+ }
+});
+
+test('SDK outages remain retryable and never become an Owner permission denial',async()=>{
+ for(const reply of [{data:null,error:{message:'SYNTHETIC_UPSTREAM_PRIVATE_DETAIL'},status:503},{data:null,error:{code:'PGRST003',message:'SYNTHETIC_DATABASE_TIMEOUT'},status:504},{data:null,error:{code:'PGRST300',message:'SYNTHETIC_CONFIGURATION_ERROR'},status:500},{data:null,error:{message:'TypeError: Failed to fetch'},status:0}]){
+  const reader=createSupabaseTaskEventReader({rpc:async()=>reply,now:()=>time});
+  await assert.rejects(reader.events({taskId}),error=>error.status===503&&error.message==='OWNER_EVENT_READ_UNAVAILABLE');
+ }
+ const reader=createSupabaseTaskEventReader({rpc:async()=>{throw Error('SYNTHETIC_NETWORK_PRIVATE_DETAIL');},now:()=>time});
+ await assert.rejects(reader.events({taskId}),error=>error.status===503&&error.message==='OWNER_EVENT_READ_UNAVAILABLE');
+});
+
+test('actual SDK permission denial and expired authorization retain immediate purge semantics',async()=>{
+ for(const reply of [{error:{message:'SYNTHETIC_DENIED'},status:401},{error:{status:403,message:'SYNTHETIC_DENIED'}},...['42501','28000','28P01','PGRST301','PGRST302','PGRST303'].map(code=>({error:{code,message:'SYNTHETIC_DENIED'}})),{error:{code:'P0001',message:'OWNER_SESSION_DENIED'}},{data:{...response(record()),expiresAt:time},error:null}]){
+  const reader=createSupabaseTaskEventReader({rpc:async()=>reply,now:()=>time});
+  await assert.rejects(reader.events({taskId}),error=>error.status===401||error.status===403);
  }
 });

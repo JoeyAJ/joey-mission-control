@@ -1,3 +1,46 @@
+# Mission Control event synchronization recovery handoff
+
+Project: MISSION_CONTROL
+Timestamp: 2026-10-09T13:59:08Z
+Task: Recover automatic private event reads and drain event pagination
+Status: LOCAL_VERIFIED_PENDING_PUBLICATION
+Executed by: Codex
+Baseline: 9672aea689ce7a869645b9400ea89add858efdb0
+
+## Current task progress — 2026-10-09 event synchronization recovery
+
+Qualification: SOURCE_REPRODUCED_LOCAL_FIX_AND_SYNTHETIC_BROWSER_VERIFICATION
+Actual Model: UNKNOWN
+Runner Connection: NOT_CONNECTED
+Publication: LOCAL_CANDIDATE_ONLY
+Automatic Current-Dialogue Hook: NOT_CONNECTED
+
+### Completed
+
+Two failures were reproduced against the published baseline before changing production source. The normal SDK's HTTP 503 was incorrectly classified as Owner denial, which purged Owner choices and stopped automatic event polling. A single refresh with 60 available events displayed only 53 because it ignored the remaining event page.
+
+The existing Owner reader now classifies authenticated permission failures and expired authorization separately from temporary SDK/network failures. Temporary failures use a sanitized unavailable error, preserve explicit intake choices, discard the prepared copy package and resume the existing automatic poll. Genuine denial and expiry retain immediate private-data clearing. Raw upstream errors are not displayed or retained.
+
+The existing task view drains available event pages before preparing its overview. Reads remain scoped to the same task, cursor, Owner expiry and invalidation generation. Catch-up is bounded to 20 pages, consistent with the existing 1,000-event contract; a non-advancing cursor fails instead of looping. There is no new writer, runtime route or agent dispatch.
+
+Verification: 55 affected tests pass. Three actual-app/official-SDK Chromium cases at 1440/en, 390/zh-TW and 320/ko pass. They verify automatic recovery from event/source outages, source SHA advancement without reload, a 60-event backlog on one refresh, selectable-copy clearing, logout, revocation, expiry, project changes and late responses. Auth, Git, journal and clipboard upstreams are synthetic; external requests and unexpected writes are zero. Build, portable validate and static check are checked in the local release evidence. No fixture data was written to the real journal.
+
+### Blockers
+
+The separately approved single Codex-default read-only verification did not reach model spawn. Existing relay_acquire failed with PostgreSQL 22P02 in validate_operation's JSON key-subtraction expression. This was a database validation error, not a tool-review rejection or an actual model/quota failure. The plain-pipe controller also could not receive a reply on closed stdin and exited after its relay timeout. No alternate writer, function/schema/grant repair or model rerun was attempted.
+
+Real sanitized journal read-back confirms the proposed run is absent, revision and operation count remain 5, and the prior lease is inactive. Requested selection was Owner-chosen Codex default; no concrete model was guessed, and actual model remains unknown. Normal existing CLI ChatGPT login passed. The unavailable quota query was informational and did not block execution. No model execution occurred because journal registration failed first.
+
+This source candidate has not been committed, pushed or deployed. The fixed Preview remains at baseline 9672aea689ce7a869645b9400ea89add858efdb0; Production remains unchanged. Real normal-Owner HTTPS browser acceptance remains unverified, and the known CONNECT403 is not retried or bypassed. Both previously rejected operational uploads and the old INHERIT scope remain excluded.
+
+### Next Action
+
+Parent coordination can review the exact local patch, manifest and synthetic browser receipt for publication to the existing private branch and fixed Preview. No new Owner model choice is needed for these two completed synchronization fixes. Before attempting a future model run, separately reconcile the existing relay validator defect and controller input handling under an exact approved scope. Preserve the failed pre-spawn evidence and do not invent started, completed or actual-model telemetry.
+
+## Preserved prior published handoff — 9672aea
+
+The following published bytes remain historical architecture and release evidence; the current stage above supersedes their earlier next steps and authorization statements.
+
 # Mission Control published manual Agent continuation handoff
 
 Project: MISSION_CONTROL
