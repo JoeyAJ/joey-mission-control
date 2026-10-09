@@ -1,5 +1,18 @@
 # MC continuing delivery phase plan
 
+## Current delivery — 2026-10-09 portable project takeover
+
+Prior source-sync fixes are published at 8ea591c98bd87b17453ae4feb83fd768fa62d20e with the fixed private Preview READY. The current independent slice removes model/Agent/provider selection from the Owner takeover entry and adds a source-backed project summary and portable canonical-file instructions.
+
+Acceptance: one copy action with no target choice; latest SHA/digest plus HANDOFF-signed last developer, completion, update time and next steps; README, PRODUCT_CHARTER, MC_PHASE_PLAN and STAGE_HANDOFF_TEMPLATE links only after immutable-SHA file verification. Retain original run/model history, source/event copy revalidation, privacy clearing, mobile fallback and outage recovery. Other project entries remain pending until their actual canonical source and existing read authorization are reconciled.
+
+The approved model verification was cancelled before any model spawn when Joey changed this direction. No replacement model task is needed. No new schema, grant, credential, infrastructure, VM action or Production change is part of this slice. Real parent progress is appended only to the existing bounded private journal, separately from runtime telemetry.
+
+Current execution detail is in the root HANDOFF.md. Read its current stage first. The phase records below are preserved history and do not authorize repeating a pilot or resuming model dispatch.
+
+## Preserved earlier phase plan
+
+
 Current 2026-10-08 breakdown: the approved bounded VM pilot is deployed;
 guided terminal-first pairing source `7c0053d24fa0df10b510c20175122aa82ef7cd23`
 is verified, while actual human pairing/execution remains pending. Exact

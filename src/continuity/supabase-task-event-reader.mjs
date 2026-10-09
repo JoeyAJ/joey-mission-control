@@ -1,7 +1,7 @@
 // Normal Owner SDK read only; never export a JWT to a CLI or management caller.
 import {replayTaskEventRecord} from './task-event-record.mjs';
 import {prepareTaskEventHandoff} from './task-event-chain.mjs';
-import {buildAgentContinuationPackage,requireContinuationSelection} from './agent-continuation-package.mjs';
+import {buildAgentContinuationPackage} from './agent-continuation-package.mjs';
 export function createSupabaseTaskEventReader({rpc,sourceReader,now=Date.now}={}){
  const denied=status=>Object.assign(Error('OWNER_EVENT_READ_DENIED'),{status:status===401?401:403});
  const unavailable=()=>Object.assign(Error('OWNER_EVENT_READ_UNAVAILABLE'),{status:503});
@@ -33,7 +33,7 @@ export function createSupabaseTaskEventReader({rpc,sourceReader,now=Date.now}={}
   },
   async handoff(input){const {chain,...reply}=await handoff(input);return reply;},
   overview:input=>continuation(input,null),
-  continuation:input=>continuation(input,requireContinuationSelection(input.ownerSelection)),
+  continuation:input=>continuation(input,input.ownerSelection||null),
   startCheck:disabled,registerAgent:disabled,importSummary:disabled
  });
 }

@@ -109,7 +109,7 @@ test('missing Owner model stops before repository IO; handoff cannot substitute 
  const changed={refresh:()=>f.reader.refresh(),handoff:async choice=>{const packet=await f.reader.handoff(choice);packet.source.resolvedCommitSha=B;return packet;}};
  await assert.rejects(prepareTaskEventHandoff({...f,reader:changed,runId:'run-1'}),/HANDOFF_CHANGED_DURING_READ/);
  let touched=false;const decorated={refresh:()=>f.reader.refresh(),handoff:async choice=>{const packet=await f.reader.handoff(choice);Object.defineProperty(packet,'rawModelPayload',{enumerable:true,get(){touched=true;throw Error('SYNTHETIC_SECRET');}});return packet;}};
- const packet=await prepareTaskEventHandoff({...f,reader:decorated,runId:'run-1'});assert.equal(touched,false);assert.equal(Object.hasOwn(packet,'rawModelPayload'),false);assert.equal(packet.modelDecisionRequired,true);f.reader.dispose();
+ const packet=await prepareTaskEventHandoff({...f,reader:decorated,runId:'run-1'});assert.equal(touched,false);assert.equal(Object.hasOwn(packet,'rawModelPayload'),false);assert.equal(packet.modelDecisionRequired,false);f.reader.dispose();
 });
 
 test('malformed, secret-looking and stale source metadata are refused and returned pages cannot mutate chain state',()=>{

@@ -1,3 +1,53 @@
+# Mission Control portable project takeover handoff
+
+Project: MISSION_CONTROL
+Timestamp: 2026-10-09T14:33:12Z
+Task: Source-backed project memory and direct canonical takeover
+Status: LOCAL_VERIFIED_PENDING_PUBLICATION
+Last Developer: Codex
+Executed by: Codex
+Baseline: 8ea591c98bd87b17453ae4feb83fd768fa62d20e
+
+## Current task progress — 2026-10-09 portable takeover
+
+Qualification: VERIFIED_SOURCE_AND_PARENT_REPORTED_DEVELOPMENT
+Actual Model: UNKNOWN
+Publication: LOCAL_CANDIDATE_ONLY
+
+### Completed
+
+Joey's current product direction is a portable project takeover entry. She can give the canonical entry to Cursor, ClaudeCode, Hermes, Dots or another development Agent without re-explaining the project. The Owner UI no longer asks for Agent/provider/model before preparing or copying the complete context. Model is optional technical history, not a takeover requirement.
+
+The existing private source reader verifies branch HEAD and HANDOFF bytes, and checks four bounded context files at the same immutable SHA. Only FOUND files with verified bytes receive links; missing, denied, unavailable or invalid files have no invented link. The takeover package contains canonical repo/branch/HANDOFF, latest SHA/digest/read time, full current HANDOFF, README/goal/PRD/plan/update pointers, completed work, known blockers, next steps and original event/run/model history. The developer shown is the explicit current HANDOFF signature, with its source pin; Git authors and historical run selection are not used to guess it.
+
+The copy instructions tell the receiving Agent to use its own existing repository access, resolve current branch HEAD again, verify project identity, read current handoff and background documents, continue only already authorized work, test it and update the handoff with the actual development Agent, timestamp, version, results, issues and next steps. They grant no deployment, SQL, new permission or destructive-operation authority.
+
+Source/event changes are rechecked before copy. Privacy clearing and mobile selection fallback remain active. The prior outage/pagination repair is already published at baseline 8ea591c98bd87b17453ae4feb83fd768fa62d20e with the fixed Preview READY. The new local source/package tests and three actual-app/official-SDK browser widths verify direct copy, signed developer changes, missing context, private lifecycle, source recovery and pagination. Browser upstreams are synthetic; no model or real journal fixture is invoked.
+
+### Context index
+
+Canonical repository: JoeyAJ/joey-mission-control
+Canonical branch: codex/mc-command-center-checkpoint-20261006
+Standard entry: HANDOFF.md at the currently resolved branch HEAD.
+
+Read README.md for repository setup/background; docs/PRODUCT_CHARTER.md for current goals and PRD contract; docs/MC_PHASE_PLAN.md for current breakdown, acceptance and next slice; docs/STAGE_HANDOFF_TEMPLATE.md for completion/update fields. These tracked files were verified at the baseline above. The Owner reader verifies their existence and bytes again at each observed source SHA before linking. Read the current product decisions before preserved historical ambitions.
+
+### Blockers
+
+Only MISSION_CONTROL is connected to the website's canonical repository reader. NEXAEON, WOOSONG_BUDDY, NAMYOUNG_WEB3D and JOEY_ASSET_SYSTEM show pending takeover-source connection. Their latest canonical repo/branch/HANDOFF/version and website read scope are not established by this reader. Do not guess paths, infer developer identities, or expand the token scope.
+
+Normal Owner HTTPS browser acceptance remains unverified; the known CONNECT403 is not bypassed. Both previously rejected operational uploads and the old INHERIT scope remain excluded. These gaps do not block the portable MC entry or its publication.
+
+The former Codex-default verification never spawned. Its existing relay failed registration before spawn, then Joey cancelled the test in favor of this takeover direction. The three-parenthesis validator correction was reproduced and validated in an isolated PostgreSQL 17.11 transaction (rollback); no live function, schema, grant, role, RLS or inheritance change was applied. No alternate model run is authorized or required here.
+
+### Next Action
+
+Finish source/build/privacy verification and publish this exact minimal takeover slice to the original private branch and fixed Preview, leaving Production unchanged. Record its real completed development result in the existing bounded parent journal with null model/process evidence. Then reconcile other projects' actual canonical repo, branch, standard handoff/background files and existing read authorization one project at a time. No new model choice is needed.
+
+## Preserved prior handoff — 8ea591c
+
+The following bytes are historical source and release evidence. The current product decision and takeover stage above supersede their model-selection and dispatch next steps.
+
 # Mission Control event synchronization recovery handoff
 
 Project: MISSION_CONTROL

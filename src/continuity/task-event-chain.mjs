@@ -117,7 +117,7 @@ async function latestHandoff(reader,ownerSelection,task){
  if(typeof reader?.refresh!=='function'||typeof reader?.handoff!=='function')fail('HANDOFF_READER_REQUIRED');
  const view=await reader.refresh();if(view.status!=='connected'||view.observation?.projectId!==task.projectId||view.observation?.status!=='FOUND')fail('CURRENT_HANDOFF_UNAVAILABLE');
  const value=await reader.handoff(ownerSelection);if(!value)fail('HANDOFF_CHANGED_DURING_READ');
- const handoff=pick(value,['schemaVersion','projectId','source','sourceStatus','freshness','baselineChanged','progress','document','qualification','providerNeutral','targetSelection','modelDecisionRequired','currentAgent','currentModel','executionAuthorized','instruction']);
+ const handoff=pick(value,['schemaVersion','projectId','source','sourceStatus','contextDocuments','freshness','baselineChanged','progress','document','qualification','providerNeutral','targetSelection','modelDecisionRequired','currentAgent','currentModel','executionAuthorized','instruction']);
  if(handoff.projectId!==task.projectId||handoff.source?.resolvedCommitSha!==view.observation.source.resolvedCommitSha||handoff.source?.contentSha256!==view.observation.source.contentSha256)fail('HANDOFF_CHANGED_DURING_READ');return handoff;
 }
 // Inject the existing current-Owner reader. These helpers only perform its reads.

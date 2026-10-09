@@ -39,11 +39,20 @@ function readerFixture({change=false}={}){
  let calls=0;const reader=createSupabaseTaskEventReader({now:()=>now,rpc:async()=>{const revision=record.operations.length+(change&&calls>0?1:0);calls++;return {data:{schemaVersion:1,projectId:'MISSION_CONTROL',taskId,revision,record,expiresAt:now+60000},error:null};},sourceReader:{refresh:async()=>({status:'connected',observation:{status:'FOUND',projectId:'MISSION_CONTROL',source:source(b)}}),handoff:async()=>handoff()}});
  return {reader,taskId,calls:()=>calls};
 }
-test('reader refuses incomplete target before any IO, then reads latest SHA and immutable original history',async()=>{
- const f=readerFixture();await assert.rejects(async()=>f.reader.continuation({taskId:f.taskId,runId:'original',ownerSelection:{}}),/REQUIRED/);assert.equal(f.calls(),0);
+test('reader prepares direct takeover without a target model and preserves original history',async()=>{
+ const f=readerFixture();const direct=(await f.reader.continuation({taskId:f.taskId,runId:'original'})).packet;assert.equal(direct.targetSelection,null);assert.match(direct.entryInstructions,/private repository JoeyAJ/);assert.match(direct.entryInstructions,/does not authorize deployment, SQL/);
  const overview=(await f.reader.overview({taskId:f.taskId,runId:'original'})).packet;assert.equal(overview.targetSelection,null);
  const p=(await f.reader.continuation({taskId:f.taskId,runId:'original',ownerSelection:selection})).packet;assert.equal(p.source.resolvedCommitSha,b);assert.equal(p.runHistory[0].handoffSource.resolvedCommitSha,a);assert.equal(p.runHistory[0].actualModel,null);assert.equal(p.progress.completed.reportedCheckpoint.summary,checkpoint.publicSummary);
 });
 test('reader refuses journal changes between fresh source and second authenticated read',async()=>{
  const f=readerFixture({change:true});await assert.rejects(f.reader.continuation({taskId:f.taskId,runId:'original',ownerSelection:selection}),/DURABLE_EVENT_RESPONSE_INVALID|EVENT_CHAIN_CHANGED/);
+});
+test('direct entry indexes verified files, signed developer and optional model without inventing absent facts',()=>{
+ const h=handoff();h.progress.lastAgent='Cursor';h.source.documentTimestamp=new Date(now).toISOString();
+ h.contextDocuments=[{path:'README.md',status:'FOUND',qualification:'REMOTE_FILE_READ',resolvedCommitSha:b,providerBlobId:a,contentSha256:digest},{path:'docs/PRODUCT_CHARTER.md',status:'MISSING',qualification:'REMOTE_FILE_READ',resolvedCommitSha:b,providerBlobId:null,contentSha256:null}];
+ const p=build({handoff:h,ownerSelection:null});assert.equal(p.projectSnapshot.lastDeveloper.agent,'Cursor');assert.equal(p.projectSnapshot.lastDeveloper.sourceSha,b);assert.equal(p.projectSnapshot.lastDeveloper.qualification,'HANDOFF_SIGNED_DEVELOPER');assert.equal(p.runHistory[0].selection.agent,'Codex');assert.equal(p.projectSnapshot.contextDocuments[1].url,null);assert.match(p.entryInstructions,/README.md — https:\/\/github.com/);assert.match(p.entryInstructions,/Context unavailable: docs\/PRODUCT_CHARTER.md/);assert.match(p.entryInstructions,/actual development Agent/);assert.equal(p.targetSelection,null);
+ assert.equal(build({ownerSelection:{agent:'Cursor'}}).targetSelection.model,null);
+ const unknown=build({ownerSelection:null});assert.equal(unknown.projectSnapshot.lastDeveloper.agent,null);assert.equal(unknown.projectSnapshot.updatedAt,null);assert.deepEqual(unknown.projectSnapshot.contextDocuments,[]);
+ for(const patch of [{path:'docs/MISSING_INVENTED.md'},{resolvedCommitSha:a},{providerBlobId:'invalid'}]){const changed={...h,contextDocuments:[{...h.contextDocuments[0],...patch}]};assert.throws(()=>build({handoff:changed}),/SOURCE_INVALID/);}
+ assert.throws(()=>build({ownerSelection:{agent:'Cursor',model:'Bearer SYNTHETIC_VALUE'}}),/UNSAFE/);
 });

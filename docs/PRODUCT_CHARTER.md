@@ -1,5 +1,16 @@
 # Mission Control product contract
 
+## Current product decision — 2026-10-09
+
+The core delivery is portable project memory and takeover, using each project's canonical repository and handoff. Joey can tell Dots, Cursor, ClaudeCode, Hermes or another development Agent to read that entry and continue. MC does not require choosing an Agent, provider or model, and it does not need to dispatch or execute the receiving Agent.
+
+Each connected project shows its latest verified source version, last development Agent explicitly signed in HANDOFF/completion evidence, completed work, handoff update time, known issues and next steps. Never infer the development Agent from a Git author. Model is optional technical metadata; unknown remains unknown and does not block takeover. Preserve historical run/model/source evidence.
+
+Provide one copyable instruction with canonical repo, branch, HANDOFF and verified background/README/PRD/plan/update-document locations. Resolve branch HEAD before dependent work; read the current stage before history. The receiving Agent uses its own authorized private-repository access, continues the already approved scope, tests the result and updates the handoff with its actual signature and next steps. The entry grants no deployment, SQL, new access or destructive-operation permission. Missing context and unconnected project scopes are shown explicitly.
+
+The earlier runtime/control ambitions below remain historical scope. They do not make model selection or MC dispatch a prerequisite for this core takeover flow.
+
+
 Mission Control is Joey's Multi-Agent Development OS / control layer, not another product dashboard. Its loop is Joey ↔ Mission Control ↔ Agents ↔ canonical projects, GitHub, deployments and data. Agents can change while project memory and the development chain remain traceable. NexAeon / Dots is the primary operator; Hermes is the backup. This role does not grant execution or external communication authority.
 
 Joey View must answer within 5–10 seconds: where the project stands, who is working, what was confirmed, the next step, blockers, and whether Joey has an explicit decision request. Raw technical records belong in expandable evidence. Facts outrank visual completeness.
