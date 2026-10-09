@@ -1,11 +1,31 @@
 # Mission Control development handoff
 
 Project: MISSION_CONTROL
-Timestamp: 2026-10-09T07:11:45Z
-Task: Private workspace source synchronization and replacement-agent handoff
-Status: LOCAL_VERIFIED_PENDING_PUBLICATION
+Timestamp: 2026-10-09T10:27:45Z
+Task: Private task-event development and source-bound handoff
+Status: LOCAL_VERIFIED_CLOUD_EVENTS_NOT_ENABLED
 Executed by: Codex
 Baseline: bd89889155c9532462dde0c40a060dc23daa5f34
+
+## Current task progress — 2026-10-09
+
+Qualification: PARENT_RELAYED_VISIBLE_TASK_SUMMARY
+Progress Baseline: 28e6b44a657d5ec8fa59738a93c7750f7abd146d
+Actual Model: UNKNOWN
+Cloud Task Events: NOT_ENABLED
+Automatic Current-Dialogue Hook: NOT_CONNECTED
+
+The parent transferred this timestamped development summary. It is document-reported progress, not live execution telemetry. The existing source-synchronization workspace and deep-link fixes are published at the progress baseline above. The preserved source-synchronization handoff below describes its earlier release candidate; its publication decision is historical.
+
+The later local task-event candidate implements a bounded public-event producer, an existing-management-connector relay, a lease/fence journal review candidate and a private Owner read adapter. The local candidate is still unpublished and disabled. No cloud event SQL, grants or model execution have been applied.
+
+Verification is complete: 62/62 affected tests passed in the working checkout and an isolated clean copy of the exact progress baseline; the rebuild matched all 30 candidate files. The actual app and official Owner SDK passed private read-mode browser checks at 1440/390/320 pixels, and the existing local workflow passed the same three widths. Logout, revocation, expiry, project switching and page lifecycle cleared private data and rejected late replies. Browser fixtures made no external requests or unexpected writes. Both SQL review files passed offline SQL/PL/pgSQL syntax checks.
+
+The actual Node fixture process automatically traversed the local producer and management test double. Auth, repository and management upstreams were synthetic. These checks do not establish actual AI execution, PostgreSQL semantics, cloud persistence or real Owner read acceptance. No fixture event is presented as actual project activity.
+
+requestedModel and actualModel remain distinct. No concrete Owner-selected CLI model was recovered, no substitute was selected, and no additional model was called. Actual model stays unknown. The current dialogue has no automatic event hook; this summary is explicitly parent-transferred.
+
+The next approved development scope is a private MC task journal and corresponding fixed-Preview interface for real parent-transferred progress, with source qualification visible. Exact schema and read-policy checks precede application. This document publication itself enables no event writer, runner or database permission. Preserve the private source boundary, original handoff baseline and latest source pins. Production and other projects remain unchanged.
 
 ## Summary
 
