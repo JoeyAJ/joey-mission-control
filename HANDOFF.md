@@ -1,3 +1,40 @@
+# Mission Control qualified status and timestamp handoff
+
+Project: MISSION_CONTROL
+Timestamp: 2026-10-09T16:25:34Z
+Task: Repair source-qualified status, last-known run and timestamp presentation
+Status: LOCAL_VERIFIED_PENDING_PUBLICATION
+Last Developer: Codex
+Executed by: Codex
+Actual Model: UNKNOWN
+Baseline: df918723f3d926cefff1b8ea4db320af46e5883d
+
+## Summary
+
+Audited the published public views and private source/task/worker consumers. No automatic executor or heartbeat was found; current execution remains unknown. Only reproduced presentation/recovery issues were repaired. Historical stages, current source signatures, fixed snapshots, parent-reported runs and bounded worker evidence keep distinct sources and timestamps. The exact publication completion is in the sealed stage receipt; this header describes the locally verified source checkpoint before publication.
+
+## Changes
+
+The MC task feed now shows last-known reported run status and source qualification with separate eventAt, receivedAt and last successful read time. Parent summaries have no invented source event time or heartbeat. Reads accept events/runs/cursor only after all pages and source reconciliation succeed; a second-page outage preserves the complete last-confirmed set, labels it stale, purges copy text and retries. Authorization denial purges task data and pauses automatic retry. Existing expiry, project/page/visibility change, logout and late-reply clearing remain.
+
+Snapshot/mission-state views explicitly say recorded state and latest source/execution unconfirmed; source extraction/checked time is separate from consumer read time. The compact workspace repeats that qualification in the visible source summary. Historical stage Agent labels and dates are retained as history; newer unsigned entries remain unknown. Failed refreshes visibly preserve last-known stages without renewing source dates. Phone task timestamps wrap on separate lines. Full source audit: [MC_STATUS_SOURCE_AUDIT_20261009.md](docs/MC_STATUS_SOURCE_AUDIT_20261009.md).
+
+## Verification
+
+83 affected unit/contract tests passed before the final source-summary caption; final focused/root-entry checks and build/validate/static results are in the sealed receipt. Browser fixtures pass: 3 MC task cases, 12 four-project snapshot cases, 24 public Joey/workspace cases at 1440/en, 390/zh-TW and 320/ko. They exercise completed last-known records, partial-page failure/recovery, source identity/copy, recorded states, stable source dates, cross-project/lifecycle/expiry/logout/late replies and phone overflow. Auth/repository/journal upstreams are synthetic; external requests and unexpected writes are zero. No real Owner HTTPS or source runtime acceptance is claimed.
+
+## Blockers
+
+Four-project website source reads are still not connected in this status slice. The earlier permission blocker is cleared: Joey approved the exact scope and parent reports the existing token's saved/reopened settings contain MC plus the four named repos, Contents/Metadata read only, no user permissions, original expiration 2026-11-08. The separate settings worker did not read/regenerate the value or change Vercel. This is supplied settings evidence; normal authenticated server reads still need verification after wiring.
+
+The known Owner/tool CONNECT403 and prior rejected operational artifact uploads remain untouched. No token value read/transmission, other-project write, model/AWS/VM operation, SQL schema/grant or Production change occurred. Missing signatures and unavailable current runtime remain explicit.
+
+## Next Action
+
+After this safe private-branch/fixed-Preview checkpoint, wire the locally prepared four-project allowlist and thin entry adapter through the existing transport/Owner consumer/scheduler. Server runtime uses the existing secret normally; tools never read/decrypt/transmit it. Verify actual latest SHA, same-revision entry/context reads, separate source/document/read timestamps, unknown unsigned Agent, stale/error/denial clearing, mobile/cross-project and takeover without model choice. If normal Owner browser readback is needed, parent can coordinate the existing Mac worker; do not add another task or bypass CONNECT403. Continue only the existing private branch/fixed Preview and retain Production.
+
+## Preserved sync preparation handoff
+
 # Mission Control four-project sync preparation handoff
 
 Project: MISSION_CONTROL

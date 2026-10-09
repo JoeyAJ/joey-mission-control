@@ -496,3 +496,4 @@ body[data-active-module=workspace] main{padding:0}
 .owner-remote-handoff[hidden],.owner-remote-handoff [hidden]{display:none!important}
 .owner-task-workflow{min-width:0;margin-top:1rem;padding:1rem;border:1px solid var(--line);border-radius:12px;overflow-wrap:anywhere}
 .owner-task-workflow label{display:grid;gap:.3rem;margin:.5rem 0}.owner-task-workflow input,.owner-task-workflow textarea{min-width:0;max-width:100%;width:100%;box-sizing:border-box}.owner-task-workflow textarea{min-height:72px}.owner-task-workflow button{max-width:100%;white-space:normal;margin:.25rem}.owner-task-workflow pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%}.owner-task-workflow[hidden],.owner-task-workflow [hidden]{display:none!important}
+.owner-task-workflow [data-task-last-known] small,.owner-task-workflow [data-task-event] small{display:block;overflow-wrap:anywhere}

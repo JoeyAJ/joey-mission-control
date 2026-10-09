@@ -18,11 +18,17 @@ const linkageCopy={
  en:{waiting:'Checking data mode',local:'Private local data · saves affect this Mac',public:'Public summary · read-only snapshot; private data is shown in the authorized reading area',read:'Last successful read',never:'No successful read yet',refresh:'Read data again',snapshotRefresh:'Reread published snapshot',reading:'Reading…',failed:'Read failed; retaining last confirmed content. Latest data is unconfirmed',changed:'Another local tab may have changed data. Read again to update; unsent input is retained',boundary:'Chat / GitHub do not write automatically; Production requires reviewed publication'},
  ko:{waiting:'데이터 모드 확인 중',local:'비공개 로컬 데이터 · 저장은 이 Mac에만 적용',public:'공개 요약 · 읽기 전용 스냅샷. 비공개 자료는 인증된 읽기 영역에 별도 표시',read:'마지막 읽기 성공',never:'아직 읽기 성공 없음',refresh:'데이터 다시 읽기',snapshotRefresh:'게시된 스냅샷 다시 읽기',reading:'읽는 중…',failed:'읽기 실패. 마지막 확인 내용을 유지하며 최신 데이터는 미확인',changed:'다른 로컬 탭에서 데이터가 변경되었을 수 있습니다. 다시 읽으면 갱신되며 미전송 입력은 유지됩니다',boundary:'Chat / GitHub 자동 쓰기 없음. Production은 검토 후 게시 필요'}
 };
-export function renderLinkageStatus({doc=document,locale='zh-TW',readOnly=null,lastReadAt=null,failed=false,externalChange=false,reading=false,onRefresh=()=>{}}={}){
+const snapshotCopy={
+ 'zh-TW':{time:'已發布 snapshot 擷取時間',freshness:'最新 repo／執行狀態未重新核對；重讀不會更新來源事件時間。'},
+ en:{time:'Published snapshot extraction time',freshness:'Latest repository / execution state is not rechecked; rereading does not renew source event time.'},
+ ko:{time:'게시된 스냅샷 추출 시각',freshness:'최신 저장소 / 실행 상태는 재확인되지 않습니다. 다시 읽어도 출처 이벤트 시각은 갱신되지 않습니다.'}
+};
+export function renderLinkageStatus({doc=document,locale='zh-TW',readOnly=null,sourceAsOf=null,lastReadAt=null,failed=false,externalChange=false,reading=false,onRefresh=()=>{}}={}){
  const w=linkageCopy[locale]||linkageCopy['zh-TW'],box=doc.createElement('aside');box.id='data-link-status';box.className='data-link-status';box.dataset.mode=readOnly===null?'checking':readOnly?'public':'local';box.dataset.failed=String(failed);box.setAttribute('aria-live','polite');
  const text=(tag,v)=>{const n=doc.createElement(tag);n.textContent=v;return n;};
  box.append(text('strong',readOnly===null?w.waiting:readOnly?w.public:w.local));
  const date=lastReadAt?new Date(lastReadAt):null;box.append(text('span',w.read+' · '+(date&&Number.isFinite(date.getTime())?date.toLocaleString(locale):w.never)));
+ if(readOnly){const sw=snapshotCopy[locale]||snapshotCopy.en;box.dataset.sourceFreshness='LATEST_NOT_RECHECKED';box.append(text('small',sw.time+' · '+(sourceAsOf&&Number.isFinite(Date.parse(sourceAsOf))?sourceAsOf:w.never)),text('small',sw.freshness));}
  const refresh=text('button',reading?w.reading:readOnly?w.snapshotRefresh:w.refresh);refresh.type='button';refresh.className='mc-button button-glass';refresh.disabled=reading;refresh.addEventListener('click',onRefresh);box.append(refresh);
  if(failed)box.append(text('p',w.failed));else if(externalChange)box.append(text('p',w.changed));
  box.append(text('small',w.boundary));return box;

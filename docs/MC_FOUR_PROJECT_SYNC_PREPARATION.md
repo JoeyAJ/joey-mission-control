@@ -22,7 +22,9 @@ The local preparation consists of project-entry-read-allowlist.mjs, project-entr
 
 The last row never replaces main or implies Joey acceptance. No arbitrary repo/ref/path, feature branch, environment file, account/auth cache, student record, archive or binary is included. Each source read is capped at 65,536 bytes per file. Existing observed SHAs are comparison anchors, not latest-HEAD assertions.
 
-## One pending permission request
+## Read scope approved and configured — parent evidence 2026-10-09
+
+Joey approved the exact four-repository expansion. Parent reports the separate Mac worker saved and reopened the existing token settings: selected repositories are MC plus exactly the four below; Contents/Metadata remain read only; no user permissions; original expiration 2026-11-08; no token value read or regeneration; Vercel unchanged. This is settings evidence, not a website runtime readback. The list below preserves the approved scope; no repeated permission request is needed. Private wiring and normal authenticated source readback remain pending.
 
 Modify only the selected repositories of the existing credential bound as MC_GITHUB_READ_TOKEN. Retain MC and add exactly JoeyAJ/nexaeon-web, JoeyAJ/woosongbuddy, JoeyAJ/namyoung-web3d and JoeyAJ/joey-asset-system. Preserve its existing owner, token type, expiration, Contents read and Metadata read. No token creation, regeneration, expiration extension, value disclosure or additional permission is requested.
 

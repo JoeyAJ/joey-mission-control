@@ -1,5 +1,11 @@
 # MC continuing delivery phase plan
 
+## Current independent delivery — qualified status and timestamps
+
+The third completion direction is implemented and fixture verified: last-known reported run status with separate event/receiver/read times; atomic multi-page acceptance and stale outage recovery; recorded mission-state captions; historical stage Agent labels/dates; visible snapshot/latest-unconfirmed qualification; phone timestamp wrapping and private expiry/switch/logout/late-reply clearing. Reuses the existing private reader, task feed, source renderers and scheduler; no executor, model selector, dispatch or new access path. [Status/time audit](MC_STATUS_SOURCE_AUDIT_20261009.md) records actual source layers and limitations. Exact private branch/Preview publication identity is in the sealed stage receipt.
+
+The single four-repo read scope request is now approved and reported applied by the separate Mac settings worker, with read-only permissions and original expiration preserved. Continue the already prepared allowlist wiring after this safe status checkpoint, then verify normal authenticated runtime reads. Setting evidence, fixtures, deployment READY and actual source readback remain separate qualifications. No token value is read or transmitted through tools; no other-project write, SQL/grant, model, AWS, VM or Production change is part of either slice.
+
 ## Current completion direction — 2026-10-09
 
 Joey confirmed continuing this direction. Deliver usable stages on the existing private branch and fixed Preview under the existing release authority, with exact source, checks and limitations sent to parent. Do not wait for another screenshot to continue independent work. New access scope still needs its exact approval. Agent/provider/model selectors and MC automatic dispatch are no longer completion targets.
