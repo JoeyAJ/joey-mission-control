@@ -1,3 +1,15 @@
+# Joey Mission Control — current entry
+
+Start with [HANDOFF.md](HANDOFF.md), then the current decision in [PRODUCT_CHARTER.md](docs/PRODUCT_CHARTER.md). These are the current handoff and product authority. [Phase plan](docs/MC_PHASE_PLAN.md) and [acceptance matrix](docs/MC_COMMAND_CENTER_ACCEPTANCE.md) qualify implementation, fixtures, real runtime and Joey acceptance separately.
+
+Current private branch: `codex/mc-command-center-checkpoint-20261006`. The latest functional baseline `cd8f5c4590f10c7d2691b475f194c6fbe396d40f` is already remote and fixed Preview READY. [Release verification and approved visual-reference locators](docs/MC_RELEASE_VERIFICATION_20261009.md) is the canonical in-repository evidence entry. Later docs-only commits clarify this release; they do not create a new functional baseline or require republishing it. Production remains unchanged.
+
+The current direction is source-backed project memory and one-click portable takeover. Real Owner four-project/candidate runtime reads and final visual/device/new-Agent acceptance remain pending. Independent changes stop at that evidence boundary.
+
+## Preserved V0.2 / V0.3 release history
+
+Everything below describes earlier releases. Old branch/version numbers, Mac-local check-in and cloud-sync exclusions are historical, not current continuation instructions. They do not override the current HANDOFF/PRODUCT_CHARTER or require Mac access before authorized cloud-repository work. Existing privacy and permission boundaries still apply.
+
 > V0.3-E public-test release authorized 2026-10-06: shared liquid-glass UI and four-project navigation. Public Production stays read-only and excludes private Ideas/proposals/Asset classification; local registration and same-record editing remain on Joey Mac. Public testing approval is recorded separately from final Joey feedback. See docs/V0.3-E_RELEASE_CHECKPOINT.md; the pre-release acceptance report is historical.
 
 > E public progress correction: JoeyAsset now shows the separately approved university child-case 0.4 summary. This manually curated public snapshot is separate from private Ideas and does not auto-sync local data. See docs/V0.3-E_PUBLIC_CASE_PROGRESS.md.

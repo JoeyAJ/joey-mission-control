@@ -1,12 +1,18 @@
 # MC continuing delivery phase plan
 
-## Current independent delivery — readable metadata and explicit acceptance
+## Current stage — docs-only handoff integrity complete
 
-Baseline: d404c15a5b20a2875adda1e77b5f109ac81176e9, fixed Preview READY. Localize remaining source/task/qualification captions in zh-TW, Korean and English; zh-TW is the default. Keep repository/ref/path, distinct times, verified links and source/runtime limitations visible. Put exact SHA/digests and raw enums in expandable technical evidence; preserve source-qualified copy and selected-project identity. Existing panes/art direction remain unchanged.
+Functional baseline `cd8f5c4590f10c7d2691b475f194c6fbe396d40f` is already remote and fixed Preview READY. [Canonical release verification](MC_RELEASE_VERIFICATION_20261009.md) records the functional tree, exact Preview identity, matching blobs, inherited checks and limits. There is no pending functional publication. Later docs-only HEADs clarify this baseline without changing application behavior or creating self-referential release commits.
 
-The current four-direction [acceptance matrix](MC_COMMAND_CENTER_ACCEPTANCE.md) explicitly separates implemented, fixture-tested, real-runtime-verified and pending Owner acceptance. Deployed automatic reader and READY source metadata do not establish actual four-project reads through the normal Owner runtime. Parent journal management readback is separately qualified. Exact source/publication and checks are sealed after this checkpoint; Production remains unchanged.
+Current authority: [HANDOFF.md](../HANDOFF.md) and the current decision in [PRODUCT_CHARTER.md](PRODUCT_CHARTER.md). README/AGENT_CONTROL now mark old V0.2/V0.3 branches, Mac-local check-in and cloud-sync exclusions as historical. This stage only corrects authority, release wording, canonical evidence discovery and approved private [reference locators](MC_RELEASE_VERIFICATION_20261009.md#approved-visual-reference-locators).
 
-After publishing this MC-only batch, stop at the safe point. Remaining work requires actual Owner desktop/phone source readback, new-Agent takeover evidence or Joey's final reference/usability judgment. No new module, access scope, grant, SQL, credential, model, AWS/VM operation or Production action is part of this batch.
+The [four-direction acceptance matrix](MC_COMMAND_CENTER_ACCEPTANCE.md) distinguishes deployed implementation, synthetic fixtures, actual runtime observations and Owner acceptance. Deployed automatic reader / READY metadata does not verify actual four-project reads through the normal Owner runtime. Reference locators and historical inspection do not establish final visual fidelity.
+
+Stop independent modifications. Wait for actual Owner four-main-source / University-candidate readback, Safari/phone private-source usability, new-Agent takeover or Joey's final visual acceptance. No new feature, module, access, schema/grant/key, model, AWS/VM or Production action follows from this docs repair; no functional suite is rerun.
+
+## Preserved completed-phase notes — superseded instructions
+
+The notes below retain dated engineering history. Earlier pending-publication and proposed next-slice wording does not override the current published baseline or stopping point.
 
 ## Completed prior delivery — workspace and source reading continuity
 

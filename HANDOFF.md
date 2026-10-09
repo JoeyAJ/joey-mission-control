@@ -1,35 +1,48 @@
-# Mission Control readable metadata and acceptance handoff
+# Mission Control current handoff — published function and docs integrity
 
 Project: MISSION_CONTROL
-Timestamp: 2026-10-09T17:40:00Z
-Task: Localize metadata and distinguish four-direction acceptance evidence
-Status: LOCAL_VERIFIED_PENDING_PUBLICATION
+Timestamp: 2026-10-09T17:54:50Z
+Task: Repair current handoff authority and canonical release evidence (docs only)
+Status: LOCAL_VERIFIED_PARENT_READ_PREVIEW_PUBLISHED
 Last Developer: Codex
 Executed by: Codex
 Actual Model: UNKNOWN
-Baseline: d404c15a5b20a2875adda1e77b5f109ac81176e9
+Baseline: cd8f5c4590f10c7d2691b475f194c6fbe396d40f
+Functional Release: PRIVATE_PREVIEW_READY
 
 ## Summary
 
-The source reader and reading-continuity baseline above is published on the fixed READY Preview. This final independent readability batch maps metadata captions to zh-TW/Korean/English, defaults to zh-TW, and folds exact hashes/raw qualifiers while keeping verified provenance and limitations visible. The current four-direction acceptance matrix distinguishes deployed implementation, synthetic fixture coverage, actual runtime observations and pending Owner acceptance. Exact new commit/tree/blob/READY identity is in the sealed publication receipt after publication; this header describes tested source before publication.
+Functional baseline `cd8f5c4590f10c7d2691b475f194c6fbe396d40f` is already published to `codex/mc-command-center-checkpoint-20261006` and the fixed Preview is READY. Its exact source/tree, verified 15 blobs, Preview identity, inherited test evidence and limitations are now discoverable in [MC_RELEASE_VERIFICATION_20261009.md](docs/MC_RELEASE_VERIFICATION_20261009.md). There is no pending functional publication and no reason for a new Agent to republish this checkpoint.
+
+This later stage changes documentation only: current README/AGENT_CONTROL authority, published-state wording, canonical release evidence and approved private visual-reference locators. Application code, bundles, deployment configuration, private data and Production are unchanged. This document intentionally names the functional commit, not its own future docs commit; the exact docs-only HEAD is obtained from Git and the publication response.
 
 ## Changes
 
-Repository/ref/path, source/document/read times and document-reported task/change/test/next/Agent/model fields have readable captions. Current execution remains unconfirmed; parent summaries are not heartbeats. Source freshness, missing context, conflicts and candidate/product-acceptance boundaries remain visible in the selected language. Exact SHA/digest/qualification and sanitized error codes are retained in technical disclosures. Same-source disclosure/focus survives refresh; changed source/project and authorization/lifecycle loss retain clearing behavior. Copied canonical source and private Markdown remain unchanged. Existing command console panes, layout and art direction are retained.
+README and AGENT_CONTROL now direct a fresh Agent to this current handoff and [PRODUCT_CHARTER.md](docs/PRODUCT_CHARTER.md). Earlier V0.2/V0.3 branches, Mac check-in and cloud-sync exclusions are explicitly historical. [Phase plan](docs/MC_PHASE_PLAN.md) and [acceptance matrix](docs/MC_COMMAND_CENTER_ACCEPTANCE.md) record the published functional baseline and safe stopping point.
+
+The functional release already localizes metadata, folds raw fields/hashes, retains verified source/time/identity limitations and preserves same-source disclosure/focus and selected-project copy. No new feature or new functional test result is claimed by this docs-only stage. The approved reference index points to the existing private Git manifest and 02s/18s/34s frames; they are not added to public assets or asserted to match the current UI.
 
 ## Verification
 
-Targeted unit/contract and actual-app browser checks cover localized default/fallback behavior, exact folded identity, immutable links, selected-project copy/history/reload, distinct time/signature qualification, document/technical disclosure/focus, outage/recovery and private clearing. Four-project fixtures cover 12 cases at 1440/en, 390/zh-TW and 320/ko; MC takeover covers three cases; public status covers 24 cases. Auth/GitHub/journal/clipboard upstreams are synthetic. Browser external requests, unexpected writes and forbidden workstation attempts are zero. Exact final check counts, source manifest and limits are in the sealed receipt; no unchanged full suite needs to be rerun by a continuation reader.
+Functional baseline evidence: 74 targeted unit/contract checks, 19 final root-entry checks and 39 browser cases (12 four-project source, 3 MC takeover, 24 public status), plus build/validate/static safety PASS. Browser Auth/GitHub/journal/clipboard upstreams were synthetic, external requests and unexpected writes zero. This evidence belongs to `cd8f5c4590f10c7d2691b475f194c6fbe396d40f` and is not a rerun of the docs-only stage.
+
+Parent's independent fresh-Agent read-only handoff check completed and identified the documentation defects repaired here. This is repository/handoff evidence, not normal Owner Preview runtime evidence. The existing structured published-checkpoint status is retained; Functional Release names the already published baseline separately.
+
+Docs-only checks cover local links, current wording/authority, valid structured handoff, exact baseline metadata, Markdown-only diff, unchanged public/function/config bytes and no added secrets/private runtime payload or reference image bytes. No unrelated full suite is required. Canonical summary: [release verification](docs/MC_RELEASE_VERIFICATION_20261009.md); final acceptance remains in [MC_COMMAND_CENTER_ACCEPTANCE.md](docs/MC_COMMAND_CENTER_ACCEPTANCE.md).
 
 ## Blockers
 
-Actual normal Owner Preview source readback for all four main sources and the separately selected University candidate is NOT VERIFIED. Settings scope, older connector reads, tested reader code, GitHub publication and READY deployment do not prove that runtime path. The prior revision9 completed parent management record is real, but does not verify current Owner browser readback or execution. Actual Safari/phone private-source reading, new-Agent takeover and final reference proportions/density/color/usability acceptance remain pending.
+Normal authenticated Owner Preview reads for the four main sources and the separately selected University candidate are NOT VERIFIED. Deployment READY, settings scope, earlier connector reads and synthetic fixtures do not prove this path. Actual Safari/phone private-source reading, a new Agent continuing from the handoff, and Joey's final reference proportions/density/color/usability acceptance remain pending.
 
-The known CONNECT403 is not retried or bypassed. The two previously rejected operational artifact uploads remain blocked/excluded, without equivalent regenerated uploads. No other-project write, new scope/grant/SQL/key, model job, VM/AWS action or Production promotion occurred in this batch. No parent journal write was needed or made.
+Known CONNECT403 is not retried or bypassed. Previously rejected operational artifacts remain excluded and blocked; their contents or equivalent payloads are not regenerated here. No new access, grants, SQL, keys, model task, VM/AWS action, other-project write or Production promotion is authorized by this documentation repair.
 
 ## Next Action
 
-Publish the sealed checkpoint to the existing private branch/fixed Preview and verify exact GitHub blobs/READY/Production identity. Then stop and release sole-writer ownership with no background operations. Parent may coordinate the already available normal Owner browser when actual readback is possible, and Joey may judge the existing visual target. Do not start a new independent module, pilot or redesign from this handoff. Current acceptance: [MC_COMMAND_CENTER_ACCEPTANCE.md](docs/MC_COMMAND_CENTER_ACCEPTANCE.md).
+Stop independent modifications and release sole-writer ownership with no background operations. Await parent coordination for real Owner runtime and final acceptance evidence. Read the canonical release summary and verify actual HEAD as needed; do not republish `cd8f5c4590f10c7d2691b475f194c6fbe396d40f`, repeat an old Mac check-in/pilot or reopen completed development slices. Newly authorized dependent work must use actual evidence and its own scope.
+
+## Historical boundary
+
+The stage notes below preserve previous engineering history. Their pending-publication and next-slice wording was true at preparation time and is superseded by this current handoff and the canonical release verification. They are not instructions to repeat publication or development.
 
 ## Preserved prior workspace/source reading handoff
 
