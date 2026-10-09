@@ -1,3 +1,55 @@
+# Mission Control four-project entry recovery handoff
+
+Project: MISSION_CONTROL
+Timestamp: 2026-10-09T15:18:18Z
+Task: Verify four canonical project entries and prepare private takeover snapshots
+Status: LOCAL_VERIFIED_PENDING_PUBLICATION
+Last Developer: Codex
+Executed by: Codex
+Baseline: 8c672ce9bd1d942ffa29fa7f53898bfd5c7218ec
+
+## Current task progress — 2026-10-09 four-project recovery
+
+Qualification: CONNECTOR_VERIFIED_METADATA_AND_LOCAL_CANDIDATE
+Actual Model: UNKNOWN
+Publication: NOT_PUBLISHED
+
+### Completed
+
+Existing GitHub connector reads verified four private repositories, their branch HEADs, real entry/context documents and separate candidate branches. Branch metadata was read again unchanged at 2026-10-09T15:06:22Z. No other-project source, account/credential/student records, model execution, AWS or SQL was used. No latest development Agent was explicitly signed in the current entry/handoff documents; unknown stays unknown and Git authors are not used.
+
+NEXAEON: JoeyAJ/nexaeon-web main at 8271e1bbae78eb7fc4fc86c06feaa50d6fa82c39. docs/development-history/README.md explicitly references the production main chain; README.md is the actual entry. README records Stage 5-2 while later 5-4B configuration exists and still requires a real canary. Separate feature/core-interactions at 6aef39b3316897c8f5e39f56c301c8bac411f036 is not established as accepted. No unified latest handoff exists.
+
+WOOSONG_BUDDY: JoeyAJ/woosongbuddy main at e41bd1b7d8a481fdf6402881f382605278d229af, explicitly declared development authority by README.md. Read README, AGENTS, CLAUDE v3 rules and the two 2026-10-06 release-scope documents before older stabilization/plan material. feature/social-v5-20261006 has the same observed SHA; feat/pet-look-v3 at a2112729d3798b69741112d91bfd7bba6ff7441a remains separately qualified. Remote HEAD and public-test release documents do not establish Joey acceptance; earlier unaccepted candidates retain that state without separate acceptance evidence. Legitimate authenticated pet/equipment, real-device and DB acceptance are incomplete; formal school identity remains deferred.
+
+NAMYOUNG_WEB3D: JoeyAJ/namyoung-web3d main at 92c17b8adeec5eaa80d27b8facad532e6ff61d59. README.md and docs/PRODUCTION_REBUILD.md are the entry and documented production chain. main is the only/default observed branch; this does not prove a formal branch policy or Joey acceptance. No current explicit development next slice or semantic version is recorded. The archived controllable-wall PRD is separate historical Asset AI context.
+
+JOEY_ASSET_SYSTEM: JoeyAJ/joey-asset-system main at eb03e2a9d86abf8b53acfe207fb6737d255ba0d4. README/SYSTEM_CHARTER and CASE_001 recovery entry remain the mother entry; migration documentation identifies this exact accepted Phase 1 base. Separate migration/university-v04-portable at 77b6766e790c7794bb1fc691f3f3dd3f4a4fe5c6 contains DEVELOPMENT.md and modules/education/university-lifecycle/docs/HANDOFF.md. University 0.4.0-admissions-candidate remains InDevelopment / JoeyAcceptancePending. main README still says Phase 0; candidate docs still say pending push despite connector visibility. Preserve these discrepancies and the earlier 0.3 usability failure; no main merge/acceptance is inferred.
+
+All four root HANDOFF.md files are missing at the observed SHA. Verified document/blob positions and branch qualifications are server-only metadata in src/continuity/project-entry-snapshots.mjs; private document bodies and local paths are omitted.
+
+The prepared MC-only implementation stores only bounded metadata in the original private MC repository and server-only Vercel function module. Its private GET endpoint exposes this fixed snapshot through the existing exact-current-Owner/AAL2 identity verifier on the fixed Preview host; frontend visibility is not its authorization boundary. It adds a private entry view, observed version/time, documented stage/status, unknown developer, verified context links and one-click generic takeover instructions. The website token remains MC-only; this endpoint does not call GitHub, fetch four-project content or claim live HEAD. The receiving Agent must resolve current branches and read real documents using its own existing authorized access. Copy rechecks Owner access and snapshot changes; clipboard fallback, expiry, revocation, page lifecycle, project switches and late replies clear private metadata. New metadata is excluded from the public client bundle and unauthenticated routes. The actual stage handler denies missing authentication with 401 and the Production host returns 404 for this private route; static output is limited to public/, outside the snapshot source path.
+
+Validation: 51 affected unit/contract tests pass; 12 actual-app/official-SDK browser cases cover four projects at 1440/en, 390/zh-TW and 320/ko. Auth and clipboard are synthetic; metadata is the verified snapshot. External requests and unexpected writes are zero. Build, portable validate and static safety check pass with zero forbidden workstation reads. The existing MC takeover browser regression is separately recorded in the sealed delivery receipt.
+
+### Blockers
+
+Parent has authorized publishing this exact metadata-only slice to the existing private branch/fixed Preview. Publication is in progress; this candidate is not yet committed, pushed or deployed. Fixed Preview remains at baseline 8c672ce9bd1d942ffa29fa7f53898bfd5c7218ec; Production is unchanged. Normal Owner HTTPS acceptance remains unverified and the known CONNECT403 is not retried or bypassed. Prior rejected operational uploads remain excluded.
+
+Website-readable full source and automatic fresh branch reads are not connected for the four repositories. The current snapshot implementation requires no new grant. If parent later requests continuous source reads, exact read-only GitHub Contents/Metadata scope is needed for JoeyAJ/nexaeon-web, JoeyAJ/woosongbuddy, JoeyAJ/namyoung-web3d and JoeyAJ/joey-asset-system, retaining MC scope; no write/admin access or new credential is requested here.
+
+The connector rejected the compare URL as HTTP 400 INVALID_ARGUMENT (invalid repository path). Comparison stopped; no alternative route was used. Ancestry/merge acceptance of separate feature branches remains unverified.
+
+### Next Action
+
+Complete the authorized publication of the sealed local patch, metadata and test receipts for this smallest publishable slice: four private connector-snapshot entry cards and generic copy instructions on the existing MC branch/fixed Preview. Publication uses the current parent authorization; no other-project writes, SQL, model run or token expansion is part of it.
+
+Acceptance: each project shows the exact observed branch/SHA/time and source qualification; root-handoff absence and unrecorded Agent are clear; accepted mother and University candidate stay distinct; links point only to read-verified documents at their own SHA; new snapshot metadata and source bodies are not added to the public client bundle; copy uses the receiving Agent's own access and no model selection; revocation/expiry/lifecycle/project changes suppress stale private output; MC's existing direct takeover flow still passes. Normal Owner acceptance remains a separate real-browser check.
+
+## Preserved prior handoff — 8c672ce9
+
+The following is the published prior-stage handoff. Its completed MC publication remains historical evidence; its other-project pending entry details are superseded by the current verified snapshot above.
+
 # Mission Control portable project takeover handoff
 
 Project: MISSION_CONTROL

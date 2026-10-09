@@ -1,5 +1,12 @@
 # MC continuing delivery phase plan
 
+## Four-project integration candidate — 2026-10-09
+
+Status: LOCAL_VERIFIED_PENDING_PARENT_COORDINATION, baseline 8c672ce9bd1d942ffa29fa7f53898bfd5c7218ec. Existing GitHub connector reads verified the four actual private repositories, observed branch HEADs and real entry/context files. Root HANDOFF is absent in all four; latest development Agent is not explicitly recorded. Separate feature branches and the University migration candidate retain their own qualification; do not promote them from timestamps or Git authors.
+
+The prepared minimal MC slice serves server-only source-position metadata to the existing verified Owner and provides a generic one-click takeover instruction. It is explicitly a connector snapshot checked at 2026-10-09T15:06:22Z, not live website repository content or automatic fresh HEAD. The four-project full source reader remains unconnected; MC_GITHUB_READ_TOKEN and its MC-only scope are unchanged. No new grant, SQL, model, AWS or four-project source write is part of this slice. Parent reviews the sealed local delivery before publication to the existing fixed Preview. Full facts, known stale document statements, acceptance and remaining source gaps are in the current root HANDOFF.
+
+
 ## Current delivery — 2026-10-09 portable project takeover
 
 Prior source-sync fixes are published at 8ea591c98bd87b17453ae4feb83fd768fa62d20e with the fixed private Preview READY. The current independent slice removes model/Agent/provider selection from the Owner takeover entry and adds a source-backed project summary and portable canonical-file instructions.

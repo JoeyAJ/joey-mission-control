@@ -9,6 +9,7 @@ import {candidate} from '../src/candidate.mjs';
 import {assertPublicCases} from '../src/public-cases.mjs';
 import {composeContinue} from '../src/continue/continue-composer.mjs';
 import {createDeploymentRemoteHandoffServer} from '../src/continuity/remote-handoff-server.mjs';
+import {createDeploymentProjectEntryServer} from '../src/continuity/project-entry-server.mjs';
 import {ownerAuthConfig} from '../public/owner-auth-config.js';
 const stageChanges=JSON.parse(await fs.readFile(new URL('../deployment/stage-changes.safe.json',import.meta.url),'utf8'));
 const snapshot=JSON.parse(await fs.readFile(new URL('../deployment/production-snapshot.json',import.meta.url),'utf8'));
@@ -40,6 +41,7 @@ export function productionResponse(method,url){
 export default async function handler(req,res){
  try{const url=new URL(req.url,'https://mission-control.invalid'),route=url.searchParams.get('route');let result;
   if(['private/remote-handoff','private/remote-handoff/config'].includes(route)&&req.headers.host===new URL(ownerAuthConfig.stageOrigin).host){result=await createDeploymentRemoteHandoffServer().handle(req,{action:route.endsWith('/config')?'config':'read',project:url.searchParams.get('project')||'MISSION_CONTROL'});}
+  else if(route==='private/project-entry'&&req.headers.host===new URL(ownerAuthConfig.stageOrigin).host){result=await createDeploymentProjectEntryServer().handle(req,{project:url.searchParams.get('project')});}
   else result=productionResponse(req.method,url);
   res.writeHead(result.status,{...securityHeaders,'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store',...result.headers});res.end(JSON.stringify(result.body));}
  catch(error){res.writeHead(error.status||500,{...securityHeaders,'Content-Type':'application/json; charset=utf-8'});res.end(JSON.stringify({error:error.status?error.message:'Production request failed'}));}
