@@ -1,9 +1,9 @@
 # Mission Control portable project takeover handoff
 
 Project: MISSION_CONTROL
-Timestamp: 2026-10-09T14:33:12Z
+Timestamp: 2026-10-09T14:45:23Z
 Task: Source-backed project memory and direct canonical takeover
-Status: LOCAL_VERIFIED_PENDING_PUBLICATION
+Status: LOCAL_VERIFIED_PARENT_READ_PREVIEW_PUBLISHED
 Last Developer: Codex
 Executed by: Codex
 Baseline: 8ea591c98bd87b17453ae4feb83fd768fa62d20e
@@ -12,7 +12,7 @@ Baseline: 8ea591c98bd87b17453ae4feb83fd768fa62d20e
 
 Qualification: VERIFIED_SOURCE_AND_PARENT_REPORTED_DEVELOPMENT
 Actual Model: UNKNOWN
-Publication: LOCAL_CANDIDATE_ONLY
+Publication: FIXED_PRIVATE_PREVIEW_READY
 
 ### Completed
 
@@ -22,7 +22,7 @@ The existing private source reader verifies branch HEAD and HANDOFF bytes, and c
 
 The copy instructions tell the receiving Agent to use its own existing repository access, resolve current branch HEAD again, verify project identity, read current handoff and background documents, continue only already authorized work, test it and update the handoff with the actual development Agent, timestamp, version, results, issues and next steps. They grant no deployment, SQL, new permission or destructive-operation authority.
 
-Source/event changes are rechecked before copy. Privacy clearing and mobile selection fallback remain active. The prior outage/pagination repair is already published at baseline 8ea591c98bd87b17453ae4feb83fd768fa62d20e with the fixed Preview READY. The new local source/package tests and three actual-app/official-SDK browser widths verify direct copy, signed developer changes, missing context, private lifecycle, source recovery and pagination. Browser upstreams are synthetic; no model or real journal fixture is invoked.
+Source/event changes are rechecked before copy. Privacy clearing and mobile selection fallback remain active. The prior outage/pagination repair is already published at baseline 8ea591c98bd87b17453ae4feb83fd768fa62d20e with the fixed Preview READY. The reviewed 18-file takeover slice is published at code commit 4324a65f6e530f70bab9cf227aa536a979418b8e. Git read-back verifies all 18 blob IDs against the sealed tested bytes. Its existing fixed private Preview is READY with the exact branch alias verified. The clean baseline copy passes 71/71 affected tests and rebuilds with identical source/browser bytes; portable validate and static checks pass with zero forbidden workstation attempts. Three actual-app/official-SDK browser widths (1440/en, 390/zh-TW and 320/ko) verify direct copy, signed developer changes, missing context, private lifecycle, source recovery and pagination. Browser upstreams are synthetic; no model or real journal fixture is invoked.
 
 ### Context index
 
@@ -42,7 +42,9 @@ The former Codex-default verification never spawned. Its existing relay failed r
 
 ### Next Action
 
-Finish source/build/privacy verification and publish this exact minimal takeover slice to the original private branch and fixed Preview, leaving Production unchanged. Record its real completed development result in the existing bounded parent journal with null model/process evidence. Then reconcile other projects' actual canonical repo, branch, standard handoff/background files and existing read authorization one project at a time. No new model choice is needed.
+Use the published MISSION_CONTROL takeover entry: View complete takeover context / Copy takeover instructions (查看完整接手背景／複製接手指令). Paste the complete source-bound instructions into the chosen development Agent using its own authorized repository access. Reconcile the latest branch and current handoff before work; no target model choice or MC dispatch is needed.
+
+The next integration slice is to reconcile other projects' actual canonical repo, branch, standard handoff/background files and existing read authorization one project at a time. Keep unavailable facts pending; do not expand credentials or permissions. Production promotion and normal Owner website acceptance remain separate. This completion is recorded through the existing bounded parent journal, with receiver time, null model and null process evidence; it is not automatic runtime telemetry.
 
 ## Preserved prior handoff — 8ea591c
 
