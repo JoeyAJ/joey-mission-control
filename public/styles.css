@@ -486,3 +486,11 @@ body[data-active-module=workspace] main{padding:0}
 .owner-coordinator-source .coordinator-result-status{padding:8px;background:#172218;border-left:2px solid #adc197;font-size:11px;line-height:1.6}
 .owner-coordinator-source [data-coordinator-result-state=SOURCE_CONFLICT] .coordinator-result-status,.owner-coordinator-source [data-coordinator-result-state=SOURCE_INCOMPLETE] .coordinator-result-status,.owner-coordinator-source [data-coordinator-result-state=EXPIRED] .coordinator-result-status{background:#232316;border-left-color:#beb388}
 .owner-coordinator-source :focus-visible{outline:2px solid #b4d194;outline-offset:2px}
+/* Private remote source stays in the current project's workspace only. */
+.owner-remote-handoff{min-width:0;overflow-wrap:anywhere;margin-top:1rem;padding:1rem;border:1px solid var(--line);border-radius:12px}
+.remote-handoff-controls{display:flex;flex-wrap:wrap;gap:.5rem}
+.remote-handoff-selection{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:.75rem;margin-top:.75rem}
+.remote-handoff-selection label{display:grid;gap:.3rem;min-width:0}
+.remote-handoff-selection input{width:100%;min-width:0;box-sizing:border-box}
+.owner-remote-handoff pre{max-width:100%;white-space:pre-wrap;overflow-wrap:anywhere}
+.owner-remote-handoff[hidden],.owner-remote-handoff [hidden]{display:none!important}
