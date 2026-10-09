@@ -1,6 +1,8 @@
 // Server only. Fixed repository and explicit runtime credential; never GH_TOKEN fallback.
 import {ownerAuthConfig} from '../../public/owner-auth-config.js';
 import {readRemoteHandoff,mcRemoteHandoffConfiguration} from '../canonical/remote-handoff-adapter.mjs';
+import {projectEntryReadConfiguration} from './project-entry-read-allowlist.mjs';
+import {readProjectEntrySource} from './project-entry-source-adapter.mjs';
 const sha=/^[a-f0-9]{40}$/,bearer=/^Bearer ([A-Za-z0-9_.-]{20,8192})$/;
 const fail=code=>Object.assign(Error(code),{code});
 async function jsonRequest(fetchImpl,url,options,signal,limit=262144){
@@ -23,7 +25,7 @@ export function createCurrentOwnerVerifier({fetchImpl=globalThis.fetch,policy=ow
   return {subject:s.subject,role:'OWNER',aal:'aal2',verified:true,sessionActive:true,identityProject,expiresAt:s.expiresAt};
  };
 }
-export function createRemoteHandoffServer({repositoryReader,verifyOwner,configuration=mcRemoteHandoffConfiguration,ownerSubject=ownerAuthConfig.ownerSubject,allowedOrigin=ownerAuthConfig.stageOrigin,now=Date.now}={}){
+export function createRemoteHandoffServer({repositoryReader,verifyOwner,configuration=mcRemoteHandoffConfiguration,ownerSubject=ownerAuthConfig.ownerSubject,allowedOrigin=ownerAuthConfig.stageOrigin,now=Date.now,sourceRead=readRemoteHandoff}={}){
  const c=structuredClone(configuration);
  const result=(status,body)=>({status,body,headers:{'Cache-Control':'private, no-store','Vary':'Authorization','Pragma':'no-cache'}});
  return Object.freeze({async handle(req,{action='read',project=c.projectId,signal}={}){
@@ -38,12 +40,18 @@ export function createRemoteHandoffServer({repositoryReader,verifyOwner,configur
    if(repositoryReader?.configured!==true)return result(503,{error:'REPOSITORY_CONNECTION_NOT_CONFIGURED',backendConfigured:false});
    if(action==='config')return result(200,{schemaVersion:1,configuration:c,authorization,expiresAt:actor.expiresAt,privateReadOnly:true});
    if(action!=='read')return result(404,{error:'NOT_FOUND'});
-   const observation=await readRemoteHandoff({configuration:c,reader:repositoryReader,signal,now});const after=await verifyOwner(token,{signal});if(after?.subject!==actor.subject||after.role!=='OWNER'||after.aal!=='aal2'||after.sessionActive!==true||after.verified!==true||!Number.isSafeInteger(after.expiresAt)||after.expiresAt<=now())throw fail('OWNER_DENIED');
+   const observation=await sourceRead({configuration:c,reader:repositoryReader,signal,now});const after=await verifyOwner(token,{signal});if(after?.subject!==actor.subject||after.role!=='OWNER'||after.aal!=='aal2'||after.sessionActive!==true||after.verified!==true||!Number.isSafeInteger(after.expiresAt)||after.expiresAt<=now())throw fail('OWNER_DENIED');
    return result(200,{schemaVersion:1,observation,authorization,expiresAt:after.expiresAt,privateReadOnly:true});
   }catch(error){return result(error?.code==='OWNER_DENIED'?403:503,{error:error?.code==='OWNER_DENIED'?'OWNER_AUTHORIZATION_DENIED':'PRIVATE_READ_UNAVAILABLE'});}
  }});
 }
-export function createDeploymentRemoteHandoffServer({environment=process.env,fetchImpl=globalThis.fetch}={}){
- const repositoryReader=createGitHubHandoffRepositoryReader({credential:environment.MC_GITHUB_READ_TOKEN,fetchImpl});
- return createRemoteHandoffServer({repositoryReader,verifyOwner:createCurrentOwnerVerifier({fetchImpl})});
+export function createDeploymentRemoteHandoffServer({environment=process.env,fetchImpl=globalThis.fetch,policy=ownerAuthConfig,now=Date.now}={}){
+ const verifyOwner=createCurrentOwnerVerifier({fetchImpl,policy,now});
+ return Object.freeze({async handle(req,{project='MISSION_CONTROL',track='BASELINE',...options}={}){
+  let configuration;try{configuration=project==='MISSION_CONTROL'&&track==='BASELINE'?mcRemoteHandoffConfiguration:projectEntryReadConfiguration(project,{track});}
+  catch{return{status:403,body:{error:'SOURCE_SCOPE_DENIED'},headers:{'Cache-Control':'private, no-store',Vary:'Authorization',Pragma:'no-cache'}};}
+  const repositoryReader=createGitHubHandoffRepositoryReader({credential:environment.MC_GITHUB_READ_TOKEN,fetchImpl,configuration});
+  const sourceRead=project==='MISSION_CONTROL'?readRemoteHandoff:args=>readProjectEntrySource({...args,projectId:project,track});
+  return createRemoteHandoffServer({repositoryReader,verifyOwner,configuration,sourceRead,ownerSubject:policy.ownerSubject,allowedOrigin:policy.stageOrigin,now}).handle(req,{...options,project});
+ }});
 }

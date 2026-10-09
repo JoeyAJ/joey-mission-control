@@ -1,10 +1,16 @@
 # MC continuing delivery phase plan
 
-## Current independent delivery — qualified status and timestamps
+## Current independent delivery — approved four-project source wiring
+
+Baseline: 3fc3f8b0462fd592f2bed38646f38e75bcfeea5f, the published READY qualified-status slice. The four-project allowlist/thin adapter is connected through the existing private endpoint, server runtime credential, exact Owner/AAL2 checks and 30-second visible-session consumer. Source SHA/readAt and documentTimestamp are separate; plain entries work without root HANDOFF; unknown Agent stays unknown; verified links and copy are SHA-bound; main/University candidate remain distinct. Outage preserves stale evidence; denial/expiry/switch/lifecycle clears it. Fixture acceptance and exact publication are recorded in the sealed receipt. Normal Owner Preview runtime readback remains pending and may wait until the existing authenticated browser is available. No Mac dependency blocks cloud publication.
+
+Next independent slice: reference/layout and portable takeover continuity, tested on desktop/mobile and existing login/switch/recovery paths. Preserve source and event qualification; no fake live state, model selectors or automatic dispatch. No other-project write, new grants/keys/services, SQL, VM/AWS or Production action.
+
+## Completed prior delivery — qualified status and timestamps
 
 The third completion direction is implemented and fixture verified: last-known reported run status with separate event/receiver/read times; atomic multi-page acceptance and stale outage recovery; recorded mission-state captions; historical stage Agent labels/dates; visible snapshot/latest-unconfirmed qualification; phone timestamp wrapping and private expiry/switch/logout/late-reply clearing. Reuses the existing private reader, task feed, source renderers and scheduler; no executor, model selector, dispatch or new access path. [Status/time audit](MC_STATUS_SOURCE_AUDIT_20261009.md) records actual source layers and limitations. Exact private branch/Preview publication identity is in the sealed stage receipt.
 
-The single four-repo read scope request is now approved and reported applied by the separate Mac settings worker, with read-only permissions and original expiration preserved. Continue the already prepared allowlist wiring after this safe status checkpoint, then verify normal authenticated runtime reads. Setting evidence, fixtures, deployment READY and actual source readback remain separate qualifications. No token value is read or transmitted through tools; no other-project write, SQL/grant, model, AWS, VM or Production change is part of either slice.
+The single four-repo read scope request is now approved and reported applied by the separate Mac settings worker, with read-only permissions and original expiration preserved. The allowlist wiring is now implemented; verify normal authenticated runtime reads when the existing browser is available. Setting evidence, fixtures, deployment READY and actual source readback remain separate qualifications. No token value is read or transmitted through tools; no other-project write, SQL/grant, model, AWS, VM or Production change is part of either slice.
 
 ## Current completion direction — 2026-10-09
 
@@ -12,14 +18,14 @@ Joey confirmed continuing this direction. Deliver usable stages on the existing 
 
 | Completion direction | Current evidence | Next slice and acceptance |
 |---|---|---|
-| Latest version and handoff auto-sync | Four verified private entry snapshots are published; existing MC reader/30-second scheduler is reusable; four-project thin adapter and explicit allowlist are locally fixture verified | Obtain the single existing-token selected-repository scope change, then reviewed private wiring and real bounded readback. Show latest SHA, actual entry/context, read time, document update time and sanitized outage/stale state. Root HANDOFF is not required. |
+| Latest version and handoff auto-sync | Approved scope and reviewed four-project wiring are fixture verified through the existing private path/scheduler; prior snapshots remain historical | Complete exact private publication and normal Owner bounded readback. Show latest SHA, actual entry/context, read time, document update time and sanitized outage/stale state. Root HANDOFF is not required. |
 | Evidenced last Agent / changes / tests / next steps | MC has signed handoff; four current project entries do not explicitly sign the latest Agent. Shared stage template updated in MC only | Newly executing Agents record their actual identity, tested source, change/test result and next action in the real project entry/handoff under that project's write authority. Unknown historical signatures remain unknown; no Git-author or model inference. |
 | Reliable running / completed / blocked / approval / stale status | Existing source, journal and bounded worker evidence have distinct qualifications and timestamps; snapshots are not runtime | Reconcile each displayed state to its actual source/validity and show source/event/read time. Recent reads do not imply running; completed tests or deployment do not imply Joey acceptance; denial/expiry and outage have explicit clearing/stale behavior. |
 | Reference-aligned command console and portable takeover | Existing IDE-style panes, source/file review and direct copy takeover are published with mobile/desktop fixture checks | Continue independent reference/layout and continuity corrections. Verify desktop/mobile, normal Owner login, cross-project switch, refresh/failure recovery and a new Agent continuing from the handoff alone. Record real access/usability acceptance separately from synthetic tests and READY deployment metadata. |
 
-Current local preparation and the exact pending permission checklist: [MC_FOUR_PROJECT_SYNC_PREPARATION.md](MC_FOUR_PROJECT_SYNC_PREPARATION.md). This documentation stage and shared template do not activate cross-repository reads; website token scope and deployed behavior stay unchanged. Private source bodies, other-project writes, SQL, grants, keys, model jobs, VM changes and Production promotion are outside this stage. Continue independent state/usability work while repository access is pending.
+Current local preparation and the exact pending permission checklist: [MC_FOUR_PROJECT_SYNC_PREPARATION.md](MC_FOUR_PROJECT_SYNC_PREPARATION.md). This documentation stage and shared template do not activate cross-repository reads; website token scope and deployed behavior stay unchanged. Private source bodies, other-project writes, SQL, grants, keys, model jobs, VM changes and Production promotion are outside this stage. Continue independent state/usability work while real runtime readback is pending.
 
-## Four-project integration candidate — 2026-10-09
+## Preserved four-project snapshot stage — 2026-10-09
 
 Status: FIXED_PRIVATE_PREVIEW_PUBLISHED, baseline 8c672ce9bd1d942ffa29fa7f53898bfd5c7218ec. Existing GitHub connector reads verified the four actual private repositories, observed branch HEADs and real entry/context files. Root HANDOFF is absent in all four; latest development Agent is not explicitly recorded. Separate feature branches and the University migration candidate retain their own qualification; do not promote them from timestamps or Git authors.
 

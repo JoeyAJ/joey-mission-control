@@ -1,3 +1,42 @@
+# Mission Control four-project source reader handoff
+
+Project: MISSION_CONTROL
+Timestamp: 2026-10-09T16:59:16Z
+Task: Connect approved four-project sources through the existing private reader
+Status: LOCAL_VERIFIED_PENDING_PUBLICATION
+Last Developer: Codex
+Executed by: Codex
+Actual Model: UNKNOWN
+Baseline: 3fc3f8b0462fd592f2bed38646f38e75bcfeea5f
+
+## Summary
+
+The approved four-project source wiring now uses the existing private endpoint, GitHub transport, exact-current-Owner/AAL2 verifier, in-memory consumer, 30-second visible-session scheduler and renderer. The source-qualified status slice is already published at the baseline above on the fixed READY Preview. This new header describes tested source before publication; the sealed receipt holds its exact commit/tree/READY identity. Production is unchanged. Normal authenticated Preview source readback is pending and is not inferred from settings evidence, fixtures or READY.
+
+## Changes
+
+The server-only allowlist resolves each default main HEAD once and verifies the actual README plus at most four context files at that immutable SHA. Independent context requests share the existing four-second bounded transport. All files are bounded UTF-8 regular files with verified Git blob and SHA-256; context bodies are discarded after verification. Arbitrary repos/refs/paths are denied. Asset University's explicitly selected candidate remains separate from main and labeled Joey acceptance pending.
+
+The Owner UI uses the same private source component for each project, replacing the older snapshot widget when this source mode is enabled. It shows current read SHA/digest/readAt independently of documentTimestamp, verified immutable links, document-reported fields and unknown unsigned Agent/model. Missing root HANDOFF is not a failure when README is the real entry. Copy rereads the source and rechecks Owner identity, without a model choice or dispatch; manual fallback retains only the verified private packet. Transient outage retains a clearly stale last-confirmed source. Endpoint 401/403, repository denial, expiry/logout/pagehide/project or track switches purge source and prepared packets, stop denied retries and suppress late copy/replies. Existing project-specific private context authorization is preserved. The local static handler now serves the existing public task config required by the workspace import.
+
+The existing secret is used only by normal server runtime. Tools have not read, decrypted, transmitted or regenerated its value. Parent supplied saved/reopened settings evidence for exactly MC plus the four named repos, Contents/Metadata read only, no user permissions and expiration 2026-11-08; this is not runtime proof.
+
+## Verification
+
+63 affected unit/contract checks pass, including source/factory scope, unknown signatures, pinned revisions, current Owner before/after source, 30-second advancement, conflict/file limits, private denial purge and the complete local module graph. Actual-app/official-SDK browser fixtures pass 12 four-project cases at 1440/en, 390/zh-TW and 320/ko, including candidate separation, clipboard fallback, fresh copy, outage recovery, conflict refusal, late replies and lifecycle/denial/expiry/logout clearing. Three existing MC task/takeover cases and three local private transport/polling cases pass. Public status/browser and build/portable/static results are in the sealed receipt. Auth/GitHub/journal/clipboard upstreams are synthetic, with zero external requests and unexpected writes. Existing verified source anchors are comparison baselines, not claims of present HEAD.
+
+## Blockers
+
+Real Owner HTTPS and four-repo reads through the normal Preview runtime remain pending. Joey may close her Mac; this does not block cloud publication. Do not retry or bypass the known tool CONNECT403. When an ordinary authenticated browser is available, parent can coordinate the existing Mac worker; report only sanitized status, source SHA/digest/readAt/documentTimestamp/context statuses and qualification, never token values or raw private payloads.
+
+The two previously rejected operational artifact uploads remain excluded and blocked; they are neither retried nor regenerated here. No other-project writes, SQL schema/grants, new keys/domains/services, model job, AWS/VM operation or Production promotion occurred. No product acceptance or autonomous persistent development is claimed.
+
+## Next Action
+
+Complete the authorized private branch/fixed Preview publication and exact blob/READY verification, then report to parent. Verify normal Owner reads for each default main and separately selected University candidate when the existing authenticated browser is available; keep actual runtime acceptance pending until this evidence exists. The next independent completion work is reference/layout and portable takeover continuity: preserve project/panel selection, readable source/event times, signed-versus-unknown identity and outage/expiry recovery across desktop/mobile. Newly executing Agents sign their own work only under the real project's existing write authority. Model selectors and automatic dispatch stay outside the completion direction.
+
+## Preserved status/timestamp handoff
+
 # Mission Control qualified status and timestamp handoff
 
 Project: MISSION_CONTROL
