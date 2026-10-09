@@ -1,9 +1,9 @@
 # Mission Control four-project entry recovery handoff
 
 Project: MISSION_CONTROL
-Timestamp: 2026-10-09T15:18:18Z
+Timestamp: 2026-10-09T15:33:08Z
 Task: Verify four canonical project entries and prepare private takeover snapshots
-Status: LOCAL_VERIFIED_PENDING_PUBLICATION
+Status: LOCAL_VERIFIED_PARENT_READ_PREVIEW_PUBLISHED
 Last Developer: Codex
 Executed by: Codex
 Baseline: 8c672ce9bd1d942ffa29fa7f53898bfd5c7218ec
@@ -12,7 +12,7 @@ Baseline: 8c672ce9bd1d942ffa29fa7f53898bfd5c7218ec
 
 Qualification: CONNECTOR_VERIFIED_METADATA_AND_LOCAL_CANDIDATE
 Actual Model: UNKNOWN
-Publication: NOT_PUBLISHED
+Publication: FIXED_PRIVATE_PREVIEW_READY
 
 ### Completed
 
@@ -34,7 +34,7 @@ Validation: 51 affected unit/contract tests pass; 12 actual-app/official-SDK bro
 
 ### Blockers
 
-Parent has authorized publishing this exact metadata-only slice to the existing private branch/fixed Preview. Publication is in progress; this candidate is not yet committed, pushed or deployed. Fixed Preview remains at baseline 8c672ce9bd1d942ffa29fa7f53898bfd5c7218ec; Production is unchanged. Normal Owner HTTPS acceptance remains unverified and the known CONNECT403 is not retried or bypassed. Prior rejected operational uploads remain excluded.
+The reviewed 12-file metadata-only slice is published at code commit fb29be6dd4967ccdd5c0c4b2b795d54df0ca8989, tree 1d6f8f10bfa7592304badabec15d6c11bc469cf4. Remote read-back verifies all 12 blob IDs against the tested sealed source. Existing fixed Preview dpl_62zMZSLXvnDKuPYJR1BHtxXfV52V is READY with the exact branch alias verified; Production remains at 8b4945b16a0b23f2e72033aa976fa34f94eabec0. This later completion documentation preserves the same code and private storage boundary. Normal Owner HTTPS acceptance remains unverified and the known CONNECT403 is not retried or bypassed. Prior rejected operational uploads remain excluded.
 
 Website-readable full source and automatic fresh branch reads are not connected for the four repositories. The current snapshot implementation requires no new grant. If parent later requests continuous source reads, exact read-only GitHub Contents/Metadata scope is needed for JoeyAJ/nexaeon-web, JoeyAJ/woosongbuddy, JoeyAJ/namyoung-web3d and JoeyAJ/joey-asset-system, retaining MC scope; no write/admin access or new credential is requested here.
 
@@ -42,7 +42,9 @@ The connector rejected the compare URL as HTTP 400 INVALID_ARGUMENT (invalid rep
 
 ### Next Action
 
-Complete the authorized publication of the sealed local patch, metadata and test receipts for this smallest publishable slice: four private connector-snapshot entry cards and generic copy instructions on the existing MC branch/fixed Preview. Publication uses the current parent authorization; no other-project writes, SQL, model run or token expansion is part of it.
+Use the existing fixed Preview's four project deep-links, panel=events and owner=signin: NEXAEON, WOOSONG_BUDDY, NAMYOUNG_WEB3D and JOEY_ASSET_SYSTEM. The private entry exposes Read verified entry / Copy takeover instructions / View entry documents (讀取已驗證入口／複製接手指令／查看入口文件). Source snapshot date remains 2026-10-09T15:06:22Z. The receiving Agent resolves current branch HEAD and reads the real project entry with its own authorized access; the website does not automatically fetch four-project HEAD or full source.
+
+Continue only already requested scope after reconciling each project's real source. Missing root handoff and developer signature remain explicit; do not fabricate them or treat public-test release as product acceptance. Full automatic source reads, real Owner HTTPS acceptance and Production promotion remain separate. No four-project journal write, SQL, model, AWS, grant or token expansion occurred.
 
 Acceptance: each project shows the exact observed branch/SHA/time and source qualification; root-handoff absence and unrecorded Agent are clear; accepted mother and University candidate stay distinct; links point only to read-verified documents at their own SHA; new snapshot metadata and source bodies are not added to the public client bundle; copy uses the receiving Agent's own access and no model selection; revocation/expiry/lifecycle/project changes suppress stale private output; MC's existing direct takeover flow still passes. Normal Owner acceptance remains a separate real-browser check.
 
