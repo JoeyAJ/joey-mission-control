@@ -477,3 +477,12 @@ body[data-active-module=workspace] main{padding:0}
 .owner-worker-summary button{width:100%;font:inherit;background:#243326;color:#e7ede4;border:1px solid #52644d;cursor:pointer}
 .owner-worker-summary :focus-visible{outline:2px solid #a8d396;outline-offset:2px}
 @media(max-width:768px){.owner-worker-summary{padding:10px}.owner-worker-summary-grid{grid-template-columns:1fr;gap:8px}}
+.owner-coordinator-source[hidden]{display:none!important}
+.owner-coordinator-source{margin-top:16px;padding-top:12px;border-top:1px solid #52658466;min-width:0;max-width:100%;overflow-wrap:anywhere}
+.owner-coordinator-source>h4{font-size:13px!important;color:#d5dec1!important;margin:0 0 8px}
+.owner-coordinator-source button,.owner-coordinator-source summary{min-height:44px;box-sizing:border-box;max-width:100%;white-space:normal}
+.owner-coordinator-source summary{display:flex;align-items:center;cursor:pointer}
+.owner-coordinator-source button{font-size:11px;padding:8px 12px}
+.owner-coordinator-source .coordinator-result-status{padding:8px;background:#172218;border-left:2px solid #adc197;font-size:11px;line-height:1.6}
+.owner-coordinator-source [data-coordinator-result-state=SOURCE_CONFLICT] .coordinator-result-status,.owner-coordinator-source [data-coordinator-result-state=SOURCE_INCOMPLETE] .coordinator-result-status,.owner-coordinator-source [data-coordinator-result-state=EXPIRED] .coordinator-result-status{background:#232316;border-left-color:#beb388}
+.owner-coordinator-source :focus-visible{outline:2px solid #b4d194;outline-offset:2px}
