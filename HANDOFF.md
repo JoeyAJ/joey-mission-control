@@ -1,42 +1,50 @@
-# Mission Control manual Agent continuation handoff
+# Mission Control published manual Agent continuation handoff
 
 Project: MISSION_CONTROL
-Timestamp: 2026-10-09T11:38:04Z
-Task: Usable private manual Agent continuation
-Status: LOCAL_VERIFIED_PENDING_PUBLICATION
+Timestamp: 2026-10-09T11:50:12Z
+Task: Published private manual Agent continuation
+Status: LOCAL_VERIFIED_PARENT_READ_PREVIEW_PUBLISHED
 Executed by: Codex
 Baseline: f77aa62d343431f9e25b38dd83e9b94b36fefe52
 
-## Current task progress — 2026-10-09 manual continuation
+## Current task progress — 2026-10-09 manual continuation publication
 
-Qualification: LOCAL_IMPLEMENTATION_AND_SYNTHETIC_BROWSER_VERIFICATION
+Qualification: SOURCE_VERIFIED_PUBLICATION_AND_PARENT_RELAYED_REQUEST
+Progress Baseline: 8ee740685dba70f2d3f6115811f19064a412d330
 Actual Model: UNKNOWN
 Runner Connection: NOT_CONNECTED
-Publication: LOCAL_CANDIDATE_ONLY
+Publication: FIXED_PRIVATE_PREVIEW_READY
+Automatic Current-Dialogue Hook: NOT_CONNECTED
 
 ### Completed
 
-The existing private task reader and repository HANDOFF reader now form one manual continuation flow in Task events and handoff. The current Owner sees repository, branch, exact resolved SHA and document digest; completed, blockers and next-step fields prefer the current stage. Earlier publication instructions remain preserved as historical context. Missing current-stage facts stay explicitly unrecorded.
+The reviewed nine-file private manual Agent continuation stage is published. Git read-back verifies the exact code commit 8ee740685dba70f2d3f6115811f19064a412d330, its tested tree and the nine manifest paths, with parent f77aa62d343431f9e25b38dd83e9b94b36fefe52. Vercel metadata reports the matching Preview READY, and the existing fixed branch alias points to that deployment. This final documentation update records those results separately from the prior task journal checkpoint.
 
-Owner explicitly enters all three agent, provider and model identifiers. No default model or provider is selected. The complete private package contains the latest HANDOFF, source qualification, reported checkpoint, bounded original run/model/source history and intake steps. Historical requested model, actual model and immutable run source pins are retained. The selection describes the next handoff and does not rewrite or register a run.
+The existing private task and repository HANDOFF readers now provide one Owner-selected manual intake flow. It shows latest repo, branch, resolved SHA and document digest, completed work, blockers and next steps. Current-stage fields take precedence over historical publication instructions; absent current fields stay unrecorded. Owner must explicitly enter agent, provider and model. All target choices show Runner NOT_CONNECTED. No model is auto-selected, no run is registered and no agent is dispatched.
 
-Copy rechecks normal Owner access, current repository source and durable journal revision. Changed source or events produce a new reviewable package before another copy. Clipboard denial selects the package text for system copy. Unchanged refresh preserves the reviewed draft; selection changes and private lifecycle invalidation purge it. The older source-only selection form is hidden when this complete task flow is enabled.
+The complete private package contains the latest verified HANDOFF, source/progress qualifications, reported checkpoint, original run/model/source version history and intake steps. Original requested model, actual model and immutable source pins remain unchanged. Copy rechecks normal Owner access, current source and journal revision. Source or event changes require review of the new package before copy. Clipboard refusal retains selectable package text. Unchanged refresh preserves the draft; selection changes, logout, expiry, revocation, project switches and page lifecycle invalidation purge it and reject late responses.
 
-The focused verification covers explicit selection, secret-pattern refusal, ignored payload/getter fields, immutable model/source history and read races. The actual app and official Owner SDK pass desktop/mobile cases at 1440/390/320 in English, Traditional Chinese and Korean, including copy/review/fallback and logout, expiry, revocation, project and page lifecycle clearing. Browser Auth, Git, journal and clipboard are synthetic. No fixture or package was persisted to the real database. Build, portable validate and static checks pass; the portability guard records zero forbidden workstation attempts.
-
-Local inspection of the exact published f77 source and the prior sanitized parent readback confirms that the latest reported completed checkpoint retains null requested/actual model and its original c2a8 source pin. This uses saved evidence and is not a fresh Owner browser read. No actual model was called.
+Verification: 44/44 affected tests pass in both the working checkout and a clean archive with the exact patch. All nine source and rebuilt browser bytes match the sealed manifest. Build, portable validate and static check pass; portability guards report zero forbidden workstation attempts. Three actual-app/official-SDK browser cases pass at 1440/390/320 in English, Traditional Chinese and Korean. Browser Auth, Git, journal and clipboard upstreams are synthetic, with zero external requests and unexpected writes. No synthetic event or handoff package was saved to the real database.
 
 ### Blockers
 
-All entered agent/provider/model choices show Runner NOT_CONNECTED. The only usable transfer here is an explicit manual copy into the Owner-selected agent conversation. Automatic dispatch, automatic current-dialogue event attachment and runtime identity verification remain unavailable. This local stage does not activate them.
+Actual normal-Owner HTTPS browser read/copy acceptance is still unverified. READY and alias metadata establish the deployment target, not served-byte or Owner-session proof. Existing cloud CONNECT403 is not retried or bypassed. A replacement agent can receive the complete package by explicit manual copy; runner dispatch, automatic current-dialogue attachment and runtime identity verification remain unavailable.
 
-Real normal-Owner browser acceptance on the fixed HTTPS Preview remains unverified. Cloud CONNECT403 is not retried or bypassed. The two previously rejected operational uploads remain excluded and must not be recreated or uploaded through another route. The old temporary INHERIT scope stays outside this stage.
+The private event journal is not updated by this publication. Its last confirmed saved checkpoint is the previous parent-reported publication stage; null requested/actual model and original c2a8 source pin remain historical evidence. The current instruction excludes SQL, and the browser exposes only journal reads. The current stage result is recorded in this private HANDOFF rather than fabricated as a new journal event.
+
+The old temporary INHERIT scope and both rejected operational uploads remain excluded. No equivalent operational content is recreated or uploaded. No new permission, role, key, model call, external Agent message, SQL, job, AWS/VM action or Production change is part of this stage.
 
 ### Next Action
 
-Parent reviews the exact local manifest and patch against f77 and coordinates any subsequent publication to codex/mc-command-center-checkpoint-20261006 and its existing fixed private Preview. No push or deployment is authorized by this local-only task. Publication would contain only the named code, rebuilt browser asset, focused tests and this HANDOFF update, with no SQL, operational receipt or private runtime record.
+Use the existing normal Owner/AAL2 workspace at the fixed private Preview with project MISSION_CONTROL and panel events. Enter the chosen agent, provider and exact model, prepare and review the source-bound package, then explicitly copy it into that chosen agent conversation. Verify its latest SHA/digest, completed/blockers/next facts, original history and NOT_CONNECTED runner label. No extra provider authorization is required for this manual transfer.
 
-After an authorized publication, use existing normal Owner/AAL2 access to prepare and copy a manual continuation package. Verify the returned SHA and digest, explicit target selection, intact original model/source history and NOT_CONNECTED runner label. Read PRODUCT_CHARTER and MC_PHASE_PLAN at that SHA before dependent work. Fresh runner activation or external writes need their own scope; this package grants no execution or write authority. Production, keys, memberships, SQL, AWS/VM state and unrelated projects are unchanged.
+The receiving agent should reconcile the exact source and existing permissions, read PRODUCT_CHARTER and MC_PHASE_PLAN at that SHA, preserve original run/model history, and continue only the authorized slice. Fresh dispatch, external writes or automatic telemetry need their own concrete source and scope. This package grants no execution or write authority. Final Owner usability acceptance and Production promotion remain separate.
+
+### Parent-relayed request and current result
+
+Parent relayed Joey's continuing stage-publication instruction and requested actual publication of the tested nine-file continuation flow to the original private repository, branch and fixed Preview. Joey explicitly retains control of agent/provider/model selection. Parent also prohibited external Agent sending, runner calls, hidden model changes, new permissions, SQL and Production modification.
+
+That repository/Preview publication is now verified at the progress baseline above. The manual continuation capability is delivered, with the focused test and deployment qualifications stated here. This is a real forwarded request plus verified publication result, not an automatic runtime emitter or a new durable task-journal event. No actual model has been called and current runtime agent/model remain unconfirmed.
 
 ## Preserved prior published handoff — f77aa62
 
