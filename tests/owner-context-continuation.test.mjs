@@ -1,3 +1,4 @@
+import {renderOwnerContext} from '../src/continuity/owner-context-view.mjs';
 import test from 'node:test';import assert from 'node:assert/strict';
 import {ownerContextContinuation} from '../src/continuity/owner-context-continuation.mjs';
 const projectId='NEXAEON',readAt='2026-01-05T00:00:00.000Z';
@@ -15,4 +16,11 @@ test('Owner continuation rejects cross-project or malformed sources and retains 
  for(const patch of [{projectId:'WOOSONG_BUDDY'},{claims:null},{claims:{stage:{verificationStatus:'UNKNOWN'}}},{claims:{stage:{value:null,sourceRefs:'bad'}}},{historicalOwner:{sourceOwnerRevision:-1,missions:[]}}])assert.throws(()=>ownerContextContinuation({context:{...fixture(),...patch},projectId,readAt}),/PRIVATE_CONTINUATION_INVALID/);
  assert.throws(()=>ownerContextContinuation({context:fixture(),projectId:'UNKNOWN',readAt}),/PRIVATE_CONTINUATION_INVALID/);assert.throws(()=>ownerContextContinuation({context:fixture(),projectId,readAt:'unknown'}),/PRIVATE_CONTINUATION_INVALID/);
  const context=fixture();context.claims.stage.value='合'.repeat(23000);assert.throws(()=>ownerContextContinuation({context,projectId,readAt}),/Capsule size exceeded/);
+});
+
+
+test('Owner context keeps readable source limits visible and exact version/baseline fields folded',()=>{
+ const doc={createElement:tag=>({tag,children:[],dataset:{},append(n){this.children.push(n);}})},c=ownerContextContinuation({context:fixture(),projectId,readAt});
+ const text=(node,folded=false)=>node.tag==='details'&&!folded?text(node.children[0],folded):[node.textContent||'',...node.children.map(child=>text(child,folded))].join(' ');
+ for(const locale of ['zh-TW','ko','en']){const root=renderOwnerContext({doc,continuation:c,locale});assert(!text(root).includes('a'.repeat(40)));assert(!text(root).includes('SYNTHETIC_SOURCE_REVISION'));assert(text(root).includes('synthetic/repo'));assert(text(root).includes('Synthetic recorded stage'));assert(text(root,true).includes('a'.repeat(40)));assert(text(root,true).includes('SYNTHETIC_SOURCE_REVISION'));assert(!text(root,true).includes('SYNTHETIC_PRIVATE_LOG'));assert(!text(root).includes('SOURCE_RECORDED'));}
 });

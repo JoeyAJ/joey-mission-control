@@ -1,3 +1,38 @@
+# Mission Control readable metadata and acceptance handoff
+
+Project: MISSION_CONTROL
+Timestamp: 2026-10-09T17:40:00Z
+Task: Localize metadata and distinguish four-direction acceptance evidence
+Status: LOCAL_VERIFIED_PENDING_PUBLICATION
+Last Developer: Codex
+Executed by: Codex
+Actual Model: UNKNOWN
+Baseline: d404c15a5b20a2875adda1e77b5f109ac81176e9
+
+## Summary
+
+The source reader and reading-continuity baseline above is published on the fixed READY Preview. This final independent readability batch maps metadata captions to zh-TW/Korean/English, defaults to zh-TW, and folds exact hashes/raw qualifiers while keeping verified provenance and limitations visible. The current four-direction acceptance matrix distinguishes deployed implementation, synthetic fixture coverage, actual runtime observations and pending Owner acceptance. Exact new commit/tree/blob/READY identity is in the sealed publication receipt after publication; this header describes tested source before publication.
+
+## Changes
+
+Repository/ref/path, source/document/read times and document-reported task/change/test/next/Agent/model fields have readable captions. Current execution remains unconfirmed; parent summaries are not heartbeats. Source freshness, missing context, conflicts and candidate/product-acceptance boundaries remain visible in the selected language. Exact SHA/digest/qualification and sanitized error codes are retained in technical disclosures. Same-source disclosure/focus survives refresh; changed source/project and authorization/lifecycle loss retain clearing behavior. Copied canonical source and private Markdown remain unchanged. Existing command console panes, layout and art direction are retained.
+
+## Verification
+
+Targeted unit/contract and actual-app browser checks cover localized default/fallback behavior, exact folded identity, immutable links, selected-project copy/history/reload, distinct time/signature qualification, document/technical disclosure/focus, outage/recovery and private clearing. Four-project fixtures cover 12 cases at 1440/en, 390/zh-TW and 320/ko; MC takeover covers three cases; public status covers 24 cases. Auth/GitHub/journal/clipboard upstreams are synthetic. Browser external requests, unexpected writes and forbidden workstation attempts are zero. Exact final check counts, source manifest and limits are in the sealed receipt; no unchanged full suite needs to be rerun by a continuation reader.
+
+## Blockers
+
+Actual normal Owner Preview source readback for all four main sources and the separately selected University candidate is NOT VERIFIED. Settings scope, older connector reads, tested reader code, GitHub publication and READY deployment do not prove that runtime path. The prior revision9 completed parent management record is real, but does not verify current Owner browser readback or execution. Actual Safari/phone private-source reading, new-Agent takeover and final reference proportions/density/color/usability acceptance remain pending.
+
+The known CONNECT403 is not retried or bypassed. The two previously rejected operational artifact uploads remain blocked/excluded, without equivalent regenerated uploads. No other-project write, new scope/grant/SQL/key, model job, VM/AWS action or Production promotion occurred in this batch. No parent journal write was needed or made.
+
+## Next Action
+
+Publish the sealed checkpoint to the existing private branch/fixed Preview and verify exact GitHub blobs/READY/Production identity. Then stop and release sole-writer ownership with no background operations. Parent may coordinate the already available normal Owner browser when actual readback is possible, and Joey may judge the existing visual target. Do not start a new independent module, pilot or redesign from this handoff. Current acceptance: [MC_COMMAND_CENTER_ACCEPTANCE.md](docs/MC_COMMAND_CENTER_ACCEPTANCE.md).
+
+## Preserved prior workspace/source reading handoff
+
 # Mission Control workspace and source reading continuity handoff
 
 Project: MISSION_CONTROL
