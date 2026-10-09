@@ -1,31 +1,33 @@
 # Mission Control development handoff
 
 Project: MISSION_CONTROL
-Timestamp: 2026-10-09T10:27:45Z
-Task: Private task-event development and source-bound handoff
-Status: LOCAL_VERIFIED_CLOUD_EVENTS_NOT_ENABLED
+Timestamp: 2026-10-09T11:07:21Z
+Task: Published private parent progress reader and source-bound handoff
+Status: LOCAL_VERIFIED_PARENT_READ_PREVIEW_PUBLISHED
 Executed by: Codex
 Baseline: bd89889155c9532462dde0c40a060dc23daa5f34
 
 ## Current task progress — 2026-10-09
 
 Qualification: PARENT_RELAYED_VISIBLE_TASK_SUMMARY
-Progress Baseline: 28e6b44a657d5ec8fa59738a93c7750f7abd146d
+Progress Baseline: c139eb40149d201949a60ad689b32bbc343c1585
 Actual Model: UNKNOWN
-Cloud Task Events: NOT_ENABLED
+Cloud Task Events: PRIVATE_PARENT_RECORD_ENABLED
 Automatic Current-Dialogue Hook: NOT_CONNECTED
 
-The parent transferred this timestamped development summary. It is document-reported progress, not live execution telemetry. The existing source-synchronization workspace and deep-link fixes are published at the progress baseline above. The preserved source-synchronization handoff below describes its earlier release candidate; its publication decision is historical.
+This approved publication stage is complete. This is timestamped parent-transferred development progress, not automatic Agent execution telemetry. The private task reader and UI are published to the existing fixed Preview at the progress baseline above; deployment metadata is READY. The source-synchronization handoff below is preserved as historical architecture and release context. Its earlier pending-publication statements do not describe the current release.
 
-The later local task-event candidate implements a bounded public-event producer, an existing-management-connector relay, a lease/fence journal review candidate and a private Owner read adapter. The local candidate is still unpublished and disabled. No cloud event SQL, grants or model execution have been applied.
+The reviewed private MC task namespace and exact Owner/AAL2 read scope were applied and checked against the actual database catalog. The existing Owner session helper, executor membership and temporary INHERIT state did not change. App roles received no task write permission, and no new credential, worker or model execution was enabled.
 
-Verification is complete: 62/62 affected tests passed in the working checkout and an isolated clean copy of the exact progress baseline; the rebuild matched all 30 candidate files. The actual app and official Owner SDK passed private read-mode browser checks at 1440/390/320 pixels, and the existing local workflow passed the same three widths. Logout, revocation, expiry, project switching and page lifecycle cleared private data and rejected late replies. Browser fixtures made no external requests or unexpected writes. Both SQL review files passed offline SQL/PL/pgSQL syntax checks.
+The existing private MC journal now contains real parent-transferred development progress. Its latest checkpoint was recorded at 2026-10-09T11:05:51.627Z with reported status completed and source qualification PARENT_IMPORTED_VISIBLE_SUMMARY. Requested and actual model are null, process evidence is null, and there is no active executor lease. Completed means this reported publication stage is complete; it is not proof of an automatic Agent run or current runtime connection. No fixture data or raw runtime payload was saved.
 
-The actual Node fixture process automatically traversed the local producer and management test double. Auth, repository and management upstreams were synthetic. These checks do not establish actual AI execution, PostgreSQL semantics, cloud persistence or real Owner read acceptance. No fixture event is presented as actual project activity.
+The normal Owner workspace now has the Task events and handoff section (Traditional Chinese: 任務事件與交接). It automatically reads the fixed MC task after normal verified Owner/AAL2 access and polls every 30 seconds. Only read and source-bound handoff actions are available. The section shows reported Agent, requested/actual model qualification, parent provenance, receipt time and shareable progress summary. Writer/executor controls are hidden. All private data clears on logout, expiry, membership loss, project switches and page lifecycle changes; late responses cannot restore it.
 
-requestedModel and actualModel remain distinct. No concrete Owner-selected CLI model was recovered, no substitute was selected, and no additional model was called. Actual model stays unknown. The current dialogue has no automatic event hook; this summary is explicitly parent-transferred.
+Validation: the published 15-file scope passed 48/48 affected tests in a clean baseline copy and rebuilt with identical bytes. Three actual-app/official-SDK browser widths (1440/390/320) passed initial read, progress polling, fresh handoff, cursor/reload and private-data lifecycle checks with no external requests or unexpected writes. These browser Auth, repository and journal upstreams are synthetic and were not saved to the real database. The prior local candidate had separately passed 62/62 affected tests and six read/local-workflow browser cases.
 
-The next approved development scope is a private MC task journal and corresponding fixed-Preview interface for real parent-transferred progress, with source qualification visible. Exact schema and read-policy checks precede application. This document publication itself enables no event writer, runner or database permission. Preserve the private source boundary, original handoff baseline and latest source pins. Production and other projects remain unchanged.
+Actual database read-back confirmed the real parent record. An Owner RPC call without a normal Owner session was denied as expected. Real Owner browser read acceptance is still unverified; deployment metadata and synthetic browser checks do not substitute for that proof. Existing cloud HTTP CONNECT403 was not retried or bypassed.
+
+The fixed entry is the existing Preview workspace with project MISSION_CONTROL and panel events. Existing normal website access can read this stage without exporting credentials or private account data. No model call, AWS/VM action, old INHERIT migration, blocked operational upload or Production change is part of this release. Future Agent execution remains a separate exact scope; actual model stays unknown without evidence.
 
 ## Summary
 
