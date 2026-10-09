@@ -1,5 +1,18 @@
 # MC continuing delivery phase plan
 
+## Current completion direction — 2026-10-09
+
+Joey confirmed continuing this direction. Deliver usable stages on the existing private branch and fixed Preview under the existing release authority, with exact source, checks and limitations sent to parent. Do not wait for another screenshot to continue independent work. New access scope still needs its exact approval. Agent/provider/model selectors and MC automatic dispatch are no longer completion targets.
+
+| Completion direction | Current evidence | Next slice and acceptance |
+|---|---|---|
+| Latest version and handoff auto-sync | Four verified private entry snapshots are published; existing MC reader/30-second scheduler is reusable; four-project thin adapter and explicit allowlist are locally fixture verified | Obtain the single existing-token selected-repository scope change, then reviewed private wiring and real bounded readback. Show latest SHA, actual entry/context, read time, document update time and sanitized outage/stale state. Root HANDOFF is not required. |
+| Evidenced last Agent / changes / tests / next steps | MC has signed handoff; four current project entries do not explicitly sign the latest Agent. Shared stage template updated in MC only | Newly executing Agents record their actual identity, tested source, change/test result and next action in the real project entry/handoff under that project's write authority. Unknown historical signatures remain unknown; no Git-author or model inference. |
+| Reliable running / completed / blocked / approval / stale status | Existing source, journal and bounded worker evidence have distinct qualifications and timestamps; snapshots are not runtime | Reconcile each displayed state to its actual source/validity and show source/event/read time. Recent reads do not imply running; completed tests or deployment do not imply Joey acceptance; denial/expiry and outage have explicit clearing/stale behavior. |
+| Reference-aligned command console and portable takeover | Existing IDE-style panes, source/file review and direct copy takeover are published with mobile/desktop fixture checks | Continue independent reference/layout and continuity corrections. Verify desktop/mobile, normal Owner login, cross-project switch, refresh/failure recovery and a new Agent continuing from the handoff alone. Record real access/usability acceptance separately from synthetic tests and READY deployment metadata. |
+
+Current local preparation and the exact pending permission checklist: [MC_FOUR_PROJECT_SYNC_PREPARATION.md](MC_FOUR_PROJECT_SYNC_PREPARATION.md). This documentation stage and shared template do not activate cross-repository reads; website token scope and deployed behavior stay unchanged. Private source bodies, other-project writes, SQL, grants, keys, model jobs, VM changes and Production promotion are outside this stage. Continue independent state/usability work while repository access is pending.
+
 ## Four-project integration candidate — 2026-10-09
 
 Status: FIXED_PRIVATE_PREVIEW_PUBLISHED, baseline 8c672ce9bd1d942ffa29fa7f53898bfd5c7218ec. Existing GitHub connector reads verified the four actual private repositories, observed branch HEADs and real entry/context files. Root HANDOFF is absent in all four; latest development Agent is not explicitly recorded. Separate feature branches and the University migration candidate retain their own qualification; do not promote them from timestamps or Git authors.

@@ -1,3 +1,40 @@
+# Mission Control four-project sync preparation handoff
+
+Project: MISSION_CONTROL
+Timestamp: 2026-10-09T15:59:47Z
+Task: Minimal four-project source sync preparation and continuing completion plan
+Status: LOCAL_VERIFIED_PENDING_PUBLICATION
+Last Developer: Codex
+Executed by: Codex
+Actual Model: UNKNOWN
+Baseline: ef8849f74d31a70021132884a6c20fb11fa838f8
+
+## Summary
+
+Joey confirmed continuing four completion directions: latest source/handoff auto-sync; evidenced last Agent/change/test/next-step records; reliable qualified task states and timestamps; reference-aligned command console plus mobile/desktop/login/cross-project/new-Agent takeover. Agent/provider/model selectors and MC automatic dispatch are no longer targets. The four-project website entry remains the previously verified connector snapshot checked at 2026-10-09T15:06:22Z; live four-repository source sync is not connected. Status refers to the local source preparation; its publication remains pending access/wiring. The independent documentation checkpoint's exact publication is recorded in the sealed stage receipt.
+
+## Changes
+
+Local preparation reuses the existing GitHub transport, private Owner consumer, 30-second scheduler and renderer. A thin file-observation adapter is needed because the MC-specific handoff parser rejects actual README/root DEVELOPMENT/nested handoff entries. Explicit repository/ref/file configs cover only the four default main entries and the separately selected University candidate. Every read resolves latest HEAD once and pins entry/context bytes to it; missing metadata stays unknown, and errors are sanitized. No route, credential, environment or deployed cross-project reader was connected. The local source/fixture changes and small renderer correction remain in the saved workspace, outside this documentation-only checkpoint.
+
+The shared [stage handoff template](docs/STAGE_HANDOFF_TEMPLATE.md) records the actual executing Agent, tested source, changes, tests, next step and separate acceptance; root HANDOFF is optional. It is updated only in MC. [The preparation report](docs/MC_FOUR_PROJECT_SYNC_PREPARATION.md) contains the exact allowlist, reuse findings, one pending permission checklist and connected-stage acceptance. [The current phase plan](docs/MC_PHASE_PLAN.md) carries Joey's four completion directions and the remaining evidence gaps.
+
+## Verification
+
+37 affected fixture/adapter/server tests pass using synthetic credentials and responses: all four plain entries, same-SHA reads and advancing HEAD, unknown/explicit signatures, example/history exclusion, invalid/missing/oversize content, sanitized failures, stale retry, revocation, expiry and late-reply clearing. Existing components are exercised rather than replaced. Build/browser and exact document publication identity are recorded in the sealed stage receipt. Synthetic checks do not establish real four-repo token access, Owner HTTPS login or Joey product acceptance.
+
+## Blockers
+
+The existing website credential remains MC-only. Pending request: retain MC and add exactly JoeyAJ/nexaeon-web, JoeyAJ/woosongbuddy, JoeyAJ/namyoung-web3d and JoeyAJ/joey-asset-system to its selected repositories; preserve existing Contents/Metadata read, owner/type/expiration and the current Preview branch binding. No creation/regeneration, expiry extension, value disclosure or added permissions. Approval and setting changes still require reviewed private wiring and bounded real source readback before live sync is claimed. No other-project write is authorized by this preparation.
+
+Normal Owner HTTPS access remains unverified; the known CONNECT403 is not retried or bypassed. Prior rejected operational artifact uploads remain excluded and blocked. No new token probe, SQL/grant/key/domain/service, model job, VM operation or Production change occurred. Four missing root handoffs and unsigned latest Agent records remain explicit.
+
+## Next Action
+
+Parent coordinates the single precise repository-access request. Continue independent source-qualified status/console/continuity work under the existing authority while it is pending. After approved access, wire the fixed configs through the existing private path and scheduler, verify actual entry/context at current HEAD, and pass the report's acceptance before publishing connected functionality. Newly executing Agents should sign only their own stages under each project's real write authority. Publish usable independent stages to the existing private branch/fixed Preview and send exact evidence to parent; no repeated requirements or debugging screenshots are needed from Joey.
+
+## Preserved four-project entry recovery handoff
+
 # Mission Control four-project entry recovery handoff
 
 Project: MISSION_CONTROL
