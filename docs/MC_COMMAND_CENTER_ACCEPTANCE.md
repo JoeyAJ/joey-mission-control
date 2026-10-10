@@ -1,3 +1,9 @@
+# Latest usability stage — simple Joey takeover
+
+Parent relayed Joey's actual phone usability rejection at 03:12 UTC: “點進去，不知道點那太複雜。” Default home/#joey now exposes one project choice, truthful known progress and one primary takeover action. Local actual-app 375/390/430/1440 viewport tests and screenshots cover auth/source/copy/candidate/error/switch states with synthetic upstreams; they do not establish actual phone or current Owner acceptance. Parent Chrome Owner source PASS remains scoped to 73c08ae, before this UI change. See [verification](MC_JOEY_SIMPLE_TAKEOVER_VERIFICATION_20261010.md) and [current HANDOFF](../HANDOFF.md). No repeat Mac run is requested.
+
+## Preserved prior acceptance record
+
 # Parent-relayed Chrome Owner acceptance update — 2026-10-10
 
 At tested SHA `73c08ae20170c78a2a71687de01926bdc2b7a8cc`, actual Mac Chrome Owner QA PASS covers both Continue packets, Back/Forward/reload and cross-project isolation. Buddy packet uses verified main `e41bd1b7d8a481fdf6402881f382605278d229af`; University preserves UNIVERSITY_CANDIDATE, migration/university-v04-portable, `77b6766e790c7794bb1fc691f3f3dd3f4a4fe5c6`, CASE002 and JoeyAcceptancePending. Switching Buddy clears candidate; returning restores it. Clipboard NOT WRITTEN; real phone and visual acceptance NOT RUN.

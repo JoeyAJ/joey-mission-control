@@ -12,6 +12,7 @@ const words={
 };
 // Private configuration arrives from the current Owner-authenticated endpoint.
 export function mountRemoteHandoffTransport({doc=document,client,inspectIdentity,ownerSubject,identityProject='NEXAEON',projectId='MISSION_CONTROL',track='BASELINE',locale='zh-TW',intervalMs=30000,initiallyEnabled=true,showHandoffSelection=true,onTrackChange=()=>{},now=Date.now}={}){
+ const viewListeners=new Set();
  let w=words[locale]||words['zh-TW'],enabled=initiallyEnabled,reader=null,unsubscribe=null,generation=0,disposed=false,starting=false,configAbort=null,sourceKey=null,lastView=null,copying=false,renderedSourceKey=null;
  const node=tag=>doc.createElement(tag),root=node('section'),title=node('h4'),controls=node('div'),status=node('p'),host=node('div'),packet=node('pre'),selection=node('div'),choice=node('p');
  root.dataset.remoteHandoffTransport='private';root.className='owner-remote-handoff';root.hidden=!enabled;controls.className='remote-handoff-controls';selection.className='remote-handoff-selection';status.setAttribute('role','status');packet.dataset.agentHandoffPacket='true';packet.hidden=true;packet.style.whiteSpace='pre-wrap';packet.style.overflowWrap='anywhere';
@@ -19,9 +20,9 @@ export function mountRemoteHandoffTransport({doc=document,client,inspectIdentity
  const startButton=button('start',()=>start()),refreshButton=button('refresh',()=>reader?.refresh()),stopButton=button('pause',()=>reader?.stopAutoSync());
  const inputs={};for(const key of []){const label=node('label'),caption=node('span'),input=node('input');input.type='text';input.maxLength=128;input.autocomplete='off';input.dataset.handoffSelection=key;input.addEventListener('input',()=>{packet.textContent='';packet.hidden=true;});label.append(caption,input);selection.append(label);inputs[key]={input,caption};}
  const handoffButton=button('handoff',async()=>{const g=generation,value=await reader?.handoff(Object.fromEntries(Object.entries(inputs).map(([key,{input}])=>[key,input.value])));if(g===generation&&!disposed&&enabled&&value&&value.source.contentSha256===reader?.snapshot().observation?.source.contentSha256){packet.textContent=JSON.stringify(value,null,2);packet.hidden=false;}});
- async function prepareFresh({copy=false}={}){
+ async function prepareFresh({copy=false,format=null}={}){
   if(copying||!reader||disposed||!enabled||doc.hidden)return null;
-  copying=true;packet.textContent='';packet.hidden=true;paint();
+  copying=true;delete root.dataset.copyOutcome;packet.textContent='';packet.hidden=true;paint();
   const g=generation,active=reader,project=projectId,selectedTrack=track;
   const valid=()=>g===generation&&active===reader&&!disposed&&enabled&&!doc.hidden&&project===projectId&&selectedTrack===track;
   const tuple=value=>JSON.stringify([value?.projectId,value?.source?.repositoryId,value?.source?.requestedRef,value?.source?.path,value?.source?.resolvedCommitSha,value?.source?.contentSha256,value?.track||'BASELINE',value?.entryQualification||null]);
@@ -32,7 +33,7 @@ export function mountRemoteHandoffTransport({doc=document,client,inspectIdentity
    const current=active.snapshot();
    if(!valid()||current.status!=='connected'||current.observation?.status!=='FOUND'||!value||value.sourceStatus!=='FOUND'||value.projectId!==project||(value.track||'BASELINE')!==selectedTrack||tuple(value)!==tuple(observed)||tuple(value)!==tuple(current.observation))return null;
    const text=JSON.stringify(value,null,2);packet.textContent=text;packet.hidden=false;
-   if(copy&&globalThis.navigator?.clipboard?.writeText){try{await globalThis.navigator.clipboard.writeText(text);}catch{/* The verified private packet remains available for manual copy. */}}
+   if(copy){const copiedText=typeof format==='function'?format(value):text;if(typeof copiedText!=='string'||!copiedText)throw Error('HANDOFF_FORMAT_INVALID');let outcome='manual';if(globalThis.navigator?.clipboard?.writeText){try{await globalThis.navigator.clipboard.writeText(copiedText);outcome='copied';}catch{/* The verified private packet remains available for manual copy. */}}if(valid())root.dataset.copyOutcome=outcome;}
    return valid()?value:null;
   }catch{return null;}finally{if(g===generation){copying=false;paint(active.snapshot());}}
  }
@@ -51,6 +52,7 @@ export function mountRemoteHandoffTransport({doc=document,client,inspectIdentity
    host.replaceChildren(rendered);renderedSourceKey=nextSourceKey;
    for(const d of disclosures)if(d.focused)rendered.querySelector(d.selector)?.querySelector('summary')?.focus({preventScroll:true});
   }
+  for(const listener of viewListeners)listener(structuredClone(view||{status:'unconfigured',observation:null}));
  }
  function clear({resetSelection=true}={}){generation++;configAbort?.abort();configAbort=null;unsubscribe?.();unsubscribe=null;reader?.dispose();reader=null;starting=false;copying=false;lastView=null;sourceKey=null;renderedSourceKey=null;host.replaceChildren();packet.textContent='';packet.hidden=true;handoffButton.hidden=true;selection.hidden=true;choice.hidden=true;if(resetSelection)for(const {input}of Object.values(inputs))input.value='';paint();status.textContent='';}
  async function start(){
@@ -63,5 +65,5 @@ export function mountRemoteHandoffTransport({doc=document,client,inspectIdentity
  }
  function update(next={}){if(disposed)return;const changed=typeof next.projectId==='string'&&next.projectId!==projectId||typeof next.track==='string'&&next.track!==track;const previous=enabled;if(changed){clear();if(typeof next.projectId==='string'&&next.projectId!==projectId){projectId=next.projectId;track='BASELINE';}if(typeof next.track==='string')track=next.track;}if(next.locale){locale=next.locale;w=words[locale]||words['zh-TW'];}if(typeof next.enabled==='boolean')enabled=next.enabled;root.hidden=!enabled;if(!enabled){clear();return;}paint();if(changed||!previous)void start();}
  const hidden=()=>{if(doc.hidden)clear();};doc.addEventListener('visibilitychange',hidden);paint();
- return Object.freeze({root,start,prepareContinuation:()=>prepareFresh(),refresh:()=>reader?.refresh(),async handoff(selection){const g=generation;if(disposed||!enabled||doc.hidden||!reader)return null;const packet=await reader.handoff(selection);return g===generation&&!disposed&&enabled?packet:null;},snapshot:()=>reader?.snapshot()||{status:'unconfigured',observation:null},invalidate:clear,update,dispose(){if(disposed)return;disposed=true;enabled=false;root.hidden=true;clear();doc.removeEventListener('visibilitychange',hidden);}});
+ return Object.freeze({root,start,prepareContinuation:()=>prepareFresh(),copyContinuation:options=>prepareFresh({copy:true,...options}),subscribe(listener){viewListeners.add(listener);listener(structuredClone(lastView||{status:'unconfigured',observation:null}));return()=>viewListeners.delete(listener);},refresh:()=>reader?.refresh(),async handoff(selection){const g=generation;if(disposed||!enabled||doc.hidden||!reader)return null;const packet=await reader.handoff(selection);return g===generation&&!disposed&&enabled?packet:null;},snapshot:()=>reader?.snapshot()||{status:'unconfigured',observation:null},invalidate:clear,update,dispose(){if(disposed)return;disposed=true;enabled=false;root.hidden=true;clear();viewListeners.clear();doc.removeEventListener('visibilitychange',hidden);}});
 }

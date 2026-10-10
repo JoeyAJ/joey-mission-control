@@ -1,0 +1,65 @@
+import {metadataState} from './i18n.js';
+import {mountOwnerBrowserEntry} from './owner-auth-client.js';
+const names={NEXAEON:'NexAeon',WOOSONG_BUDDY:'Woosong Buddy',NAMYOUNG_WEB3D:'Namyoung Web3D',JOEY_ASSET_SYSTEM:'Joey Asset'};
+const copy={
+ 'zh-TW':{title:'你的專案，接著往前',intro:'選一個專案，查看已知進度，再把接手指令貼給你要使用的 Agent。',project:'選擇專案',progress:'文件記錄的進度',unknown:'未記錄',task:'已知進度',status:'文件狀態',next:'下一步',agent:'最近開發者',time:'文件更新',runtime:'目前是否有 Agent 正在工作：未確認。',source:'版本',main:'main 基準',candidate:'University 候選 · Joey 驗收待確認',copy:'複製接手指令',login:'登入後讀取專案',signin:'先登入，才能讀取你的私人專案；登入後會自動準備來源。',checking:'正在確認登入，請稍候…',reading:'正在讀取所選專案，完成後就能複製。',verify:'完成登入驗證後，會自動讀取專案。',unavailable:'這個網站入口尚未啟用私人來源接手，請使用固定 Preview。',error:'這次未能確認最新來源。按下方按鈕再試一次；不會使用舊的接手資料。',denied:'登入或來源權限未確認。請重新確認登入。',retry:'重新讀取來源',ready:'已確認來源。複製後貼給接手 Agent 即可。',copying:'正在重新確認來源並準備指令…',copied:'已複製。貼給接手 Agent，請它先讀專案入口。',manual:'瀏覽器未允許自動複製。請選取下方指令，手動複製。',stale:'上次確認的文件；這次未讀取成功，最新進度未確認。',technical:'來源與技術資料',account:'帳號與登入',advanced:'進階工作台',full:'完整專案檢視',instruction:'接手指令'},
+ en:{title:'Your projects, ready to continue',intro:'Choose a project, read known progress, then paste its takeover instruction into your chosen agent.',project:'Choose a project',progress:'Progress recorded in the document',unknown:'Not recorded',task:'Known progress',status:'Document status',next:'Next step',agent:'Last developer',time:'Document update',runtime:'Whether an agent is working now is unconfirmed.',source:'Version',main:'main baseline',candidate:'University candidate · Joey acceptance pending',copy:'Copy takeover instruction',login:'Sign in to read project',signin:'Sign in to read your private project. Its source will be prepared automatically.',checking:'Checking sign-in. Please wait…',reading:'Reading the selected project. Copy will be ready shortly.',verify:'Complete sign-in verification to read the project automatically.',unavailable:'Private takeover is unavailable at this site entry. Use the fixed Preview.',error:'The latest source could not be confirmed. Retry below; an old packet will not be used.',denied:'Sign-in or source access is unconfirmed. Check sign-in again.',retry:'Read source again',ready:'Source confirmed. Copy and paste it into your chosen agent.',copying:'Rechecking the source and preparing the instruction…',copied:'Copied. Paste it into your chosen agent and ask it to read the project entry.',manual:'Automatic copy was refused. Select and copy the instruction below.',stale:'Last confirmed document; this read failed and latest progress is unconfirmed.',technical:'Source and technical details',account:'Account and sign-in',advanced:'Advanced workspace',full:'Full project view',instruction:'Takeover instruction'},
+ ko:{title:'프로젝트의 다음 단계',intro:'프로젝트를 선택하고 확인된 진행을 읽은 뒤 원하는 Agent에 인계 지시를 붙여 넣으세요.',project:'프로젝트 선택',progress:'문서에 기록된 진행',unknown:'기록 없음',task:'확인된 진행',status:'문서 상태',next:'다음 단계',agent:'최근 개발자',time:'문서 갱신',runtime:'현재 Agent 실행 여부는 미확인입니다.',source:'버전',main:'main 기준',candidate:'University 후보 · Joey 검수 대기',copy:'인계 지시 복사',login:'로그인 후 프로젝트 읽기',signin:'비공개 프로젝트를 읽으려면 로그인하세요. 출처는 자동 준비됩니다.',checking:'로그인 확인 중…',reading:'선택한 프로젝트를 읽는 중입니다.',verify:'로그인 인증을 완료하면 프로젝트를 읽습니다.',unavailable:'이 사이트에서는 비공개 인계를 사용할 수 없습니다. 고정 Preview를 이용하세요.',error:'최신 출처 확인 실패. 아래에서 다시 읽으세요. 이전 자료는 사용하지 않습니다.',denied:'로그인 또는 출처 권한 미확인. 로그인을 확인하세요.',retry:'출처 다시 읽기',ready:'출처 확인 완료. 복사 후 원하는 Agent에 붙여 넣으세요.',copying:'출처를 다시 확인하고 지시를 준비하는 중…',copied:'복사 완료. 원하는 Agent에 붙여 넣고 프로젝트 문서를 읽게 하세요.',manual:'자동 복사가 거부되었습니다. 아래 지시를 선택해 복사하세요.',stale:'마지막 확인 문서입니다. 이번 읽기는 실패하여 최신 진행은 미확인입니다.',technical:'출처 및 기술 자료',account:'계정 및 로그인',advanced:'고급 작업 화면',full:'전체 프로젝트 보기',instruction:'인계 지시'}
+};
+export function formatTakeoverInstruction(packet){
+ const s=packet.source,context=(packet.contextDocuments||[]).filter(d=>d.status==='FOUND').map(d=>d.path);
+ return ['請接手專案 '+packet.projectId+'。先使用你自己的既有授權存取核對 branch 最新 HEAD，再閱讀目前階段文件與已確認背景文件，依既有授權續開發、測試並更新交接。',
+  'Repository: '+s.repositoryId,'Branch: '+s.requestedRef,'本次已核對版本: '+s.resolvedCommitSha,'本次來源指紋: '+s.contentSha256,'本次讀取時間: '+s.readAt,'文件更新時間: '+(s.documentTimestamp||'未記錄'),'專案入口: '+s.path,
+  '入口文件: https://github.com/'+s.repositoryId+'/blob/'+s.resolvedCommitSha+'/'+s.path,
+  '已核對背景文件: '+(context.join(', ')||'未記錄'),
+  packet.track==='UNIVERSITY_CANDIDATE'?'版本資格: 獨立 University 候選，JoeyAcceptancePending；不得當成 main 或已驗收成果。':'版本資格: main 基準來源；讀取成功不代表產品驗收。',
+  '目前工作: '+(packet.progress?.task||'未記錄'),'下一步: '+(packet.progress?.nextAction||'未記錄'),'最近開發者: '+(packet.progress?.lastAgent||'未記錄'),
+  '缺失的 Agent／進度／文件時間不可推定。本指令不授予新存取、部署、SQL 或其他寫入權限；不啟動 Agent。'].join('\n');
+}
+export function mountJoeyTakeover({doc=document,project='NEXAEON',track='BASELINE',locale='zh-TW',onSelect=()=>{},onWorkspace=()=>{},onFull=()=>{}}={}){
+ const el=(tag,cls)=>{const n=doc.createElement(tag);if(cls)n.className=cls;return n;},root=el('section','joey-takeover'),heading=el('h2'),intro=el('p','joey-simple-intro'),label=el('label'),select=el('select'),card=el('article','joey-simple-card'),cardTitle=el('h3'),badge=el('p','joey-simple-version'),summary=el('dl','joey-simple-progress'),runtime=el('p','joey-simple-runtime'),hint=el('p','joey-simple-hint'),action=el('button','joey-simple-primary'),fallback=el('textarea','joey-simple-instruction'),technical=el('details','joey-simple-technical'),technicalTitle=el('summary'),accountHost=el('div','joey-simple-account'),links=el('div','joey-simple-links'),workspace=el('button'),full=el('button'),sourceLabel=el('label'),sourceSelect=el('select');
+ let w=copy[locale]||copy['zh-TW'],owner=null,controller=null,unsubscribe=null,view=null,disposed=false,busy=false,generation=0,success=null,lastAuth=null;
+ root.dataset.joeySimple='true';select.id='joey-simple-project';label.htmlFor=select.id;action.type=workspace.type=full.type='button';action.dataset.joeyPrimary='true';hint.setAttribute('role','status');fallback.readOnly=true;fallback.hidden=true;fallback.setAttribute('aria-label',w.instruction);technical.append(technicalTitle);sourceSelect.id='joey-simple-version';sourceLabel.htmlFor=sourceSelect.id;
+ for(const [id,name]of Object.entries(names)){const o=el('option');o.value=id;o.textContent=name;select.append(o);}
+ for(const value of ['BASELINE','UNIVERSITY_CANDIDATE']){const o=el('option');o.value=value;sourceSelect.append(o);}
+ select.addEventListener('change',()=>onSelect(select.value,'BASELINE'));sourceSelect.addEventListener('change',()=>onSelect(project,sourceSelect.value));workspace.addEventListener('click',()=>onWorkspace(project));full.addEventListener('click',()=>onFull(project));links.append(workspace);technical.append(full);
+ card.append(cardTitle,badge,sourceLabel,sourceSelect,summary,runtime,hint,action,fallback);root.append(heading,intro,label,select,card,accountHost,technical,links);
+ const fields={};for(const key of ['task','next','agent','time']){const dt=el('dt'),dd=el('dd');summary.append(dt,dd);fields[key]={dt,dd};}
+ function clearResult(){success=null;fallback.value='';fallback.hidden=true;}
+ function paint(){
+  if(disposed)return;w=copy[locale]||copy['zh-TW'];heading.textContent=w.title;intro.textContent=w.intro;label.textContent=w.project;select.value=project;cardTitle.textContent=names[project]||project;technicalTitle.textContent=w.technical;workspace.textContent=w.advanced;full.textContent=w.full;runtime.textContent=w.runtime;sourceLabel.textContent=w.source;sourceLabel.hidden=sourceSelect.hidden=project!=='JOEY_ASSET_SYSTEM';sourceSelect.options[0].textContent=w.main;sourceSelect.options[1].textContent=w.candidate;sourceSelect.value=track;badge.textContent=track==='UNIVERSITY_CANDIDATE'?w.candidate:w.main;badge.dataset.candidate=String(track==='UNIVERSITY_CANDIDATE');
+  const auth=owner?.dataset.ownerAuth;if(auth==='verified'&&lastAuth!=='verified')owner.open=false;lastAuth=auth;const record=view?.status==='unavailable'?view.lastConfirmed:view?.status==='connected'&&view.observation?.status==='FOUND'?view.observation:null,p=record?.progress;
+  const values={task:p?.task||p?.summary||(p?.recordedStatus?w.status+'：'+metadataState(p.recordedStatus,locale):null),next:p?.nextAction,agent:p?.lastAgent,time:record?.source.documentTimestamp};
+  for(const [key,{dt,dd}]of Object.entries(fields)){dt.textContent=w[key];dd.textContent=values[key]||w.unknown;}
+  root.dataset.sourceState=view?.status||'unconfigured';root.dataset.project=project;root.dataset.track=track;action.disabled=false;action.textContent=w.copy;
+  if(busy){hint.textContent=w.copying;action.disabled=true;}
+  else if(!controller){hint.textContent=w.unavailable;action.disabled=true;}
+  else if(auth==='checking'){hint.textContent=w.checking;action.disabled=true;}
+  else if(auth!=='verified'&&owner.querySelector('form button[type=submit]')?.disabled){hint.textContent=w.checking;action.disabled=true;}
+  else if(auth!=='verified'){hint.textContent=auth==='waiting'?w.verify:auth==='signed_out'?w.signin:w.denied;action.textContent=w.login;}
+  else if(view?.status==='denied'){hint.textContent=w.denied;action.textContent=w.login;}
+  else if(view?.status==='reading'){hint.textContent=w.reading;action.disabled=true;}
+  else if(view?.status==='connected'&&view.observation?.status==='FOUND'){hint.textContent=success==='copied'?w.copied:success==='manual'?w.manual:success==='error'?w.error:w.ready;}
+  else{hint.textContent=view?.status==='unavailable'&&record?w.stale+' '+w.error:w.error;action.textContent=w.retry;}
+ }
+ action.addEventListener('click',async()=>{
+  if(disposed||busy||!controller)return;
+  if(owner.dataset.ownerAuth!=='verified'||view?.status==='denied'){owner.open=true;await owner.checkAccess?.();if(owner.dataset.ownerAuth==='verified'&&view?.status==='denied')await controller.start();owner.querySelector('input:not([hidden])')?.focus();owner.scrollIntoView?.({block:'nearest'});return;}
+  if(view?.status!=='connected'||view.observation?.status!=='FOUND'){clearResult();await controller.start();return;}
+  const g=generation,c=controller,scope=JSON.stringify([project,track]);busy=true;clearResult();paint();
+  try{const packet=await c.copyContinuation({format:formatTakeoverInstruction}),current=c.snapshot();
+   if(disposed||g!==generation||c!==controller||scope!==JSON.stringify([project,track])||!packet||packet.projectId!==project||(packet.track||'BASELINE')!==track||current.status!=='connected'||current.observation?.status!=='FOUND'||packet.source.resolvedCommitSha!==current.observation.source.resolvedCommitSha||packet.source.contentSha256!==current.observation.source.contentSha256)return;
+   success=c.root.dataset.copyOutcome||'manual';if(success==='manual'){fallback.value=formatTakeoverInstruction(packet);fallback.hidden=false;}
+  }catch{if(!disposed&&g===generation){clearResult();success='error';}}finally{if(!disposed&&g===generation){busy=false;paint();}}
+ });
+ const authObserver=new MutationObserver(()=>paint());
+ function update(next={}){
+  if(disposed)return;const changed=next.project&&next.project!==project||next.track&&next.track!==track;if(changed){generation++;busy=false;clearResult();view=null;technical.open=false;}
+  project=next.project||project;track=project==='JOEY_ASSET_SYSTEM'&&next.track==='UNIVERSITY_CANDIDATE'?'UNIVERSITY_CANDIDATE':'BASELINE';locale=next.locale||locale;
+  owner=mountOwnerBrowserEntry({doc,projectId:project,track,locale});accountHost.append(owner);const c=owner.sourceController;
+  if(c!==controller){unsubscribe?.();controller=c||null;unsubscribe=c?.subscribe(value=>{view=value;if(value.status!=='connected'||value.observation?.status!=='FOUND')clearResult();paint();});authObserver.disconnect();authObserver.observe(owner,{attributes:true,subtree:true,attributeFilter:['data-owner-auth','data-owner-aal','disabled']});}
+  if(owner.remoteHandoffSource)technical.append(owner.remoteHandoffSource);paint();
+ }
+ update({project,track,locale});
+ return {root,update,dispose(){disposed=true;generation++;unsubscribe?.();authObserver.disconnect();owner?.dispose?.();clearResult();summary.replaceChildren();hint.textContent='';}};
+}

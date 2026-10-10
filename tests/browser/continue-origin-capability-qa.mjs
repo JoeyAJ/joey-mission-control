@@ -50,6 +50,7 @@ try{
    await page.locator('[data-project-continue=verified-source]').click();assert.equal(await page.locator('#continue-result').textContent(),'');
    assert(!await page.locator('[data-agent-handoff-packet]').isVisible());
   }
+  if(kind!=='fixed-preview'){await page.goto(origin+'/#joey?project=WOOSONG_BUDDY');await page.locator('section[data-joey-simple=true]').waitFor();assert(await page.locator('[data-joey-primary]').isDisabled());assert((await page.locator('.joey-simple-hint').innerText()).includes({en:'unavailable','zh-TW':'尚未啟用',ko:'사용할 수 없습니다'}[locale]));assert.equal(privateRequests,0);}
   assert.deepEqual(errors,[]);assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
   cases.push({kind,width,locale,pass:true,actualApp:true,interceptedPublicReplies:true,privateCapability:kind==='fixed-preview'});await context.close();
  }
