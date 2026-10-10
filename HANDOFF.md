@@ -1,9 +1,9 @@
 # Mission Control UX — final implementation delivery
 
 Project: MISSION_CONTROL
-Timestamp: 2026-10-10T08:40:00Z
+Timestamp: 2026-10-10T08:41:36.387780Z
 Task: Complete authorized Joey overview, reference console and locale/mobile UX verification
-Status: LOCAL_VERIFIED_PENDING_PUBLICATION
+Status: LOCAL_VERIFIED_PARENT_READ_PREVIEW_PUBLISHED
 Last Developer: Codex
 Executed by: Codex
 Actual Model: UNKNOWN
@@ -17,9 +17,13 @@ Authorized UX implementation stages are complete: truthful overview, desktop ref
 
 Two latest synthetic review screenshots are persisted in private repository docs/qa/mc-ux-final-20261010, outside public/dist. Official Library helper failed before any prepare/create/finalize call during tools/list network access; no Library IDs exist. No public image upload, access change or signed URL is used. See docs/MC_UX_FINAL_VERIFICATION_20261010.md and docs/MC_CURRENT_ACCEPTANCE.md.
 
+## Published release and actual completion
+
+Functional exact remote SHA d1e7c90f6780fd4ac28b9998facaad34813a960f; Vercel dpl_Btv5En4F5pq9orhB8ViCYA3HnTMB READY, fixed alias independently resolves to the same SHA. Actual existing Codex run now completed at sequence 9: report commit b20759032115d1a8a477bde78ad90e89fac5d3a1, blob ee768a8edd579e307cfeb500a12f3d3a894ddda2. Connected private Git readback verified exact blob, valid report, sequence/kind and result code SHA. Registration baseline remains original 0613acdd3f972e8ab761565d08d7149a51ef63b2; no run-header rebinding or existing terminal-run rewrite. The terminal event completes scoped UX implementation, not final product acceptance.
+
 ## Next Action
 
-Publish this scoped implementation to the existing fixed Preview and verify exact remote SHA/READY/alias; then append actual completed event to existing task mc-joey-overview-reference-20261010 / run codex-mc-joey-overview-20261010. Finish documentation closure. Joey final appearance acceptance and actual iPhone/clipboard remain pending after implementation completion, not a reason to fabricate running work. Cloud HTTPS remains blocked by CONNECT 403; do not bypass. No Production, other-repository, SQL, keys/permissions, AWS, model selector or dispatch change.
+Joey can review durable private synthetic 1440/390 artifacts at functional SHA d1e7c90f6780fd4ac28b9998facaad34813a960f, docs/qa/mc-ux-final-20261010, and the existing fixed Preview. Only final appearance/product acceptance and actual iPhone/clipboard need Joey/device action. No additional cloud development or model choice is requested for this scope. Private Library attachment IDs remain unavailable because official helper tools/list transport returned network before writes; screenshots are persisted in private Git instead. Cloud served HTTPS remains unverified due CONNECT 403; no bypass. Nex current CI remains failing/unrepaired. No Production, other-repository, SQL, keys/permissions, AWS, selector or dispatch change. This final documentation closure is pushed to the same Preview; its exact remote SHA/READY is checked separately in the final release receipt.
 
 ---
 
