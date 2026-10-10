@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "mc.repository-run.v1",
+  "projectId": "MISSION_CONTROL",
+  "track": "BASELINE",
+  "runId": "codex-mc-activity-follow-20261010",
+  "predecessorRunId": "codex-mc-dynamic-workbench-20261010",
+  "taskId": "mc-activity-follow-stage-20261010",
+  "featureTitle": "跟隨已回報活動：run鎖定、未讀注意與協同閱讀",
+  "agentName": "Codex",
+  "provider": null,
+  "model": null,
+  "repositoryId": "JoeyAJ/joey-mission-control",
+  "reportRef": "mc/progress",
+  "workRef": "codex/mc-command-center-checkpoint-20261006",
+  "baseline": {
+    "ref": "codex/mc-command-center-checkpoint-20261006",
+    "commitSha": "1fb6bd1d7ad3a056549d40e1191051c551c5fa28",
+    "handoffPath": "HANDOFF.md",
+    "handoffDigest": "0cb5f70b8e49db1ea4a635da33644c09a490989419f2425f7e7260f783f0c060",
+    "contextPaths": [
+      "README.md",
+      "docs/PRODUCT_CHARTER.md",
+      "docs/MC_PHASE_PLAN.md",
+      "docs/STAGE_HANDOFF_TEMPLATE.md"
+    ]
+  },
+  "events": [
+    {
+      "id": "mc-activity-start",
+      "sequence": 1,
+      "eventAt": "2026-10-10T23:22:46.479476Z",
+      "kind": "started",
+      "summary": "已fresh核1fb6bd1並開始下一個既有權限UI階段：鎖定選取run、跟隨新事件、背景run未讀／注意、歷史閱讀暫停／恢復。保持v1嚴格schema，無新telemetry、外部hooks或delivery欄位；前階段terminal不追加。",
+      "result": null
+    }
+  ]
+}
