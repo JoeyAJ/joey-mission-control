@@ -1,4 +1,4 @@
-import {REPORT_REF,REPORT_DIRECTORY,MAX_RUNS,MAX_REPORT_BYTES,parseRepositoryRun,sameRunReportEvent} from './repository-run-contract.mjs';
+import {REPORT_REF,REPORT_DIRECTORY,MAX_RUNS,MAX_REPORT_BYTES,parseRepositoryRun,sameRunReportEvent,repositoryRunPresentation} from './repository-run-contract.mjs';
 const bearer=/^[A-Za-z0-9_.-]{20,8192}$/,sha=/^[a-f0-9]{40}$/;
 export function createRepositoryRunClient({fetchImpl=globalThis.fetch,getAccessToken}={}){
  return Object.freeze({async read({projectId,track='BASELINE',signal}){const token=await getAccessToken();if(!bearer.test(token||''))throw Object.assign(Error('OWNER_REQUIRED'),{status:401});const q=new URLSearchParams({project:projectId,track}),r=await fetchImpl('/api/private/repository-runs?'+q,{method:'GET',headers:{Authorization:'Bearer '+token},credentials:'omit',cache:'no-store',redirect:'error',signal});
@@ -11,16 +11,17 @@ export function validateRepositoryRunReply(reply,{projectId,track='BASELINE',own
  return structuredClone(reply);
 }
 export function createRepositoryRunReader({client,inspectIdentity,ownerSubject,projectId,track='BASELINE',now=Date.now,setTimer=setTimeout,clearTimer=clearTimeout,intervalMs=30000}={}){
- let generation=0,enabled=false,visible=true,disposed=false,controller=null,timer=null,expiryTimer=null,inFlight=null,lastConfirmed=null,observation=null,status='unconfigured';const listeners=new Set(),seen=new Map();
+ let generation=0,enabled=false,visible=true,disposed=false,controller=null,timer=null,expiryTimer=null,inFlight=null,lastConfirmed=null,observation=null,status='unconfigured',currentExpiry=0,continuations=new WeakMap();const listeners=new Set(),seen=new Map();
  const stopTimers=()=>{clearTimer(timer);clearTimer(expiryTimer);timer=expiryTimer=null;};
  const snapshot=()=>structuredClone({status,observation,lastConfirmed});const emit=()=>{for(const f of listeners)f(snapshot());};
- const clear=next=>{generation++;controller?.abort();controller=null;inFlight=null;stopTimers();observation=lastConfirmed=null;seen.clear();status=next;emit();};
+ const clear=next=>{generation++;controller?.abort();controller=null;inFlight=null;stopTimers();observation=lastConfirmed=null;currentExpiry=0;continuations=new WeakMap();seen.clear();status=next;emit();};
  function schedule(){clearTimer(timer);timer=null;if(enabled&&visible&&!disposed)timer=setTimer(()=>{timer=null;void refresh();},intervalMs);}
- async function refresh(){if(!enabled||!visible||disposed)return snapshot();if(inFlight)return inFlight;const g=generation,project=projectId,selected=track,abort=new AbortController();controller=abort;status='reading';observation=null;emit();
+ async function refresh({force=false}={}){if(!enabled||!visible||disposed)return snapshot();if(force){generation++;controller?.abort();controller=null;inFlight=null;clearTimer(timer);}if(inFlight)return inFlight;const g=generation,project=projectId,selected=track,abort=new AbortController();controller=abort;status='reading';observation=null;emit();
   const valid=()=>g===generation&&!disposed&&enabled&&visible&&project===projectId&&selected===track;
+  if(currentExpiry){clearTimer(expiryTimer);expiryTimer=setTimer(()=>{if(valid())clear('denied');},Math.max(0,currentExpiry-now()+1));}
   const pending=(async()=>{try{const actor=await inspectIdentity('NEXAEON');if(!valid())return snapshot();if(actor?.subject!==ownerSubject||actor.status!=='authenticated'||actor.role!=='OWNER'||actor.aal!=='aal2'||actor.verified!==true||actor.memberActive!==true||actor.sessionActive!==true||!actor.projects?.includes('NEXAEON')||actor.expiresAt<=now())throw Object.assign(Error('OWNER_REQUIRED'),{status:403});
    const raw=await client.read({projectId:project,track:selected,signal:abort.signal});if(!valid())return snapshot();if(actor.expiresAt<=now())throw Object.assign(Error('OWNER_EXPIRED'),{status:403});const reply=validateRepositoryRunReply(raw,{projectId:project,track:selected,ownerSubject,now:now()});const o=reply.observation;
-   clearTimer(expiryTimer);expiryTimer=setTimer(()=>{if(valid())clear('denied');},Math.max(0,Math.min(reply.expiresAt,actor.expiresAt)-now()+1));
+   currentExpiry=Math.min(reply.expiresAt,actor.expiresAt);clearTimer(expiryTimer);expiryTimer=setTimer(()=>{if(valid())clear('denied');},Math.max(0,Math.min(reply.expiresAt,actor.expiresAt)-now()+1));
    const conflict=()=>{observation=lastConfirmed=null;status='conflict';emit();return snapshot();};
    if(o.status==='ACCESS_DENIED')throw Object.assign(Error('RUN_SOURCE_DENIED'),{status:403});if(o.status==='CONFLICT')return conflict();if(o.status==='UNAVAILABLE')throw Error('RUN_SOURCE_UNAVAILABLE');
    if([...seen.keys()].some(id=>!o.runs.some(row=>row.report.runId===id)))return conflict();
@@ -28,6 +29,18 @@ export function createRepositoryRunReader({client,inspectIdentity,ownerSubject,p
    for(const row of o.runs)seen.set(row.report.runId,structuredClone(row.report));observation=o;lastConfirmed=o;status='connected';emit();
   }catch(e){if(valid()){if([401,403].includes(e.status))clear('denied');else{observation=null;status='unavailable';emit();}}}finally{if(valid()){controller=null;inFlight=null;schedule();}}return snapshot();})();inFlight=pending;return pending;
  }
+ const sourceSignature=o=>JSON.stringify([o?.projectId,o?.track,o?.source?.repositoryId,o?.source?.requestedRef,o?.source?.resolvedCommitSha,(o?.runs||[]).map(row=>[row.report.runId,row.source.path,row.source.providerBlobId,row.source.contentSha256])]);
+ const exactActor=a=>a?.subject===ownerSubject&&a.status==='authenticated'&&a.role==='OWNER'&&a.aal==='aal2'&&a.verified===true&&a.memberActive===true&&a.sessionActive===true&&a.projects?.includes('NEXAEON')&&a.expiresAt>now();
+ async function prepareContinuation({expectedProjectId=projectId,expectedTrack=track,expectedRepositoryId}={}){
+  if(!enabled||!visible||disposed||expectedProjectId!==projectId||expectedTrack!==track)return null;
+  const view=await refresh({force:true}),g=generation,o=view.observation;if(view.status!=='connected'||!o||!['FOUND','NO_REPORTS'].includes(o.status)||o.projectId!==expectedProjectId||o.track!==expectedTrack||o.source.repositoryId!==expectedRepositoryId)return null;
+  const actor=await inspectIdentity('NEXAEON');if(g!==generation||!enabled||!visible||disposed)return null;if(!exactActor(actor)){clear('denied');return null;}
+  const latest=observation;if(status!=='connected'||sourceSignature(latest)!==sourceSignature(o)||currentExpiry<=now())return null;
+  const result={schemaVersion:1,qualification:'FRESH_OWNER_REPOSITORY_REPORT_CONTINUATION',projectId,track,repositoryId:o.source.repositoryId,status:o.status,source:structuredClone(o.source),expiresAt:Math.min(currentExpiry,actor.expiresAt),executionAuthorized:false,runs:o.runs.map(row=>{const r=row.report,p=repositoryRunPresentation(r,{now:now()});return {runId:r.runId,predecessorRunId:r.predecessorRunId,taskId:r.taskId,featureTitle:r.featureTitle,agentName:r.agentName,provider:r.provider,model:r.model,workRef:r.workRef,baseline:structuredClone(r.baseline),reportedState:p.reportedState,currentState:p.currentState,freshness:p.freshness,latestCheckpoint:{id:r.events.at(-1).id,sequence:p.sequence,eventAt:p.eventAt,kind:r.events.at(-1).kind,summary:p.summary},history:r.events.slice(-3).map(({result,...event})=>structuredClone(event)),result:structuredClone(p.result),source:structuredClone(row.source)};})};
+  if(new TextEncoder().encode(JSON.stringify(result)).length>131072)return null;
+  continuations.set(result,{generation:g,signature:sourceSignature(o),content:JSON.stringify(result)});return result;
+ }
+ function continuationCurrent(value){const receipt=value&&continuations.get(value);return Boolean(receipt&&receipt.generation===generation&&enabled&&visible&&!disposed&&status==='connected'&&currentExpiry>now()&&value.expiresAt>now()&&receipt.signature===sourceSignature(observation)&&receipt.content===JSON.stringify(value));}
  function update(next={}){if(disposed)return;const changed=next.projectId&&next.projectId!==projectId||next.track&&next.track!==track;if(changed){clear('unconfigured');projectId=next.projectId||projectId;track=next.track||'BASELINE';}const was=enabled;if(typeof next.enabled==='boolean')enabled=next.enabled;if(!enabled){clear('unconfigured');return;}if(changed||!was)void refresh();}
- return Object.freeze({snapshot,refresh,subscribe(f){listeners.add(f);f(snapshot());return()=>listeners.delete(f);},update,setVisible(value){visible=value===true;if(!visible)clear('unconfigured');else if(enabled)void refresh();},invalidate(){clear('unconfigured');},dispose(){disposed=true;enabled=false;clear('closed');listeners.clear();}});
+ return Object.freeze({snapshot,refresh,prepareContinuation,continuationCurrent,subscribe(f){listeners.add(f);f(snapshot());return()=>listeners.delete(f);},update,setVisible(value){visible=value===true;if(!visible)clear('unconfigured');else if(enabled)void refresh();},invalidate(){clear('unconfigured');},dispose(){disposed=true;enabled=false;clear('closed');listeners.clear();}});
 }

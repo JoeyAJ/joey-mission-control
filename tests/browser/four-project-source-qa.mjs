@@ -8,11 +8,12 @@ import http from 'node:http';
 import assert from 'node:assert/strict';
 import {productionResponse} from '../../api/index.mjs';
 import {createDeploymentRemoteHandoffServer} from '../../src/continuity/remote-handoff-server.mjs';
+import {createDeploymentRepositoryRunServer} from '../../src/reporting/repository-run-server.mjs';
 import {projectEntryReadConfiguration} from '../../src/continuity/project-entry-read-allowlist.mjs';
 const require=createRequire(import.meta.url),{chromium}=require(process.env.MC_PLAYWRIGHT_MODULE||(process.env.CODEX_PRIMARY_RUNTIME_NODE_MODULES+'/playwright'));
 const sourceBefore=process.env.MC_QA_SOURCE_CONTINUITY_EXPECT==='before';
 const OWNER='11111111-1111-4111-8111-111111111111',FACTOR='22222222-2222-4222-8222-222222222222',KEY='SYNTHETIC_SERVER_READ_ONLY_000000',A='a'.repeat(40),B='b'.repeat(40),projects=['NEXAEON','WOOSONG_BUDDY','NAMYOUNG_WEB3D','JOEY_ASSET_SYSTEM'],cases=[];
-let origin,bundle,state,service,reads=0,writes=0,external=0,githubReads=0,legacyContinueRequests=0;
+let origin,bundle,state,service,reportService,reads=0,writes=0,external=0,githubReads=0,legacyContinueRequests=0;
 const encode=v=>Buffer.from(JSON.stringify(v)).toString('base64url');
 const token=()=>state.token||(state.token=encode({alg:'HS256',typ:'JWT'})+'.'+encode({sub:OWNER,role:'authenticated',aal:'aal2',exp:Math.floor(Date.now()/1000)+3600})+'.SYNTHETIC_SIGNATURE');
 const user=()=>({id:OWNER,aud:'authenticated',role:'authenticated',email:'synthetic@example.invalid',created_at:new Date().toISOString(),factors:[{id:FACTOR,factor_type:'totp',status:'verified'}],identities:[],app_metadata:{},user_metadata:{}});
@@ -21,6 +22,7 @@ const json=(body,status=200)=>new Response(JSON.stringify(body),{status});
 const send=(res,data,status=200)=>{res.writeHead(status,{'Content-Type':'application/json','Cache-Control':'private, no-store',Vary:'Authorization'});res.end(JSON.stringify(data));};
 const upstream=async(url,options)=>{const u=new URL(url);if(u.origin===origin){assert.equal(options.headers.Authorization,'Bearer '+token());if(u.pathname==='/auth/v1/user')return json(user());assert.deepEqual(JSON.parse(options.body),{project:'NEXAEON'});return json(session('NEXAEON'));}
  assert.equal(u.origin,'https://api.github.com');assert.equal(options.headers.Authorization,'Bearer '+KEY);assert.equal(options.redirect,'error');assert(!options.method||options.method==='GET');githubReads++;
+ if(u.pathname.endsWith('/git/ref/heads/mc/progress'))return json({},404);
  const track=u.pathname.includes('/git/ref/heads/migration/')?'UNIVERSITY_CANDIDATE':state.requestTrack||'BASELINE',project=projects.find(p=>u.pathname.startsWith('/repos/'+projectEntryReadConfiguration(p).repositoryId+'/'));assert(project);
  const c=projectEntryReadConfiguration(project,{track});if(state.providerDenied)return json({secret:'SYNTHETIC_FAILURE_DETAIL'},403);if(state.outage)return json({secret:'SYNTHETIC_FAILURE_DETAIL'},500);
  if(u.pathname.includes('/git/ref/')){assert.equal(decodeURIComponent(u.pathname),'/repos/'+c.repositoryId+'/git/ref/heads/'+c.ref);return json({object:{type:'commit',sha:state.version===2?B:A}});}
@@ -29,6 +31,7 @@ const upstream=async(url,options)=>{const u=new URL(url);if(u.origin===origin){a
  const bytes=Buffer.from(path===c.path?'# SYNTHETIC_PRIVATE_'+project+'_'+state.version+'\nPlain README with no signed Agent or document time.\n<img src="https://attacker.invalid/x" onerror="globalThis.injected=true">\n## Historical notes\nExecuted by: Historical Agent':'# Synthetic pinned context');return json({type:'file',size:bytes.length,encoding:'base64',content:bytes.toString('base64'),sha:createHash('sha1').update('blob '+bytes.length+'\0').update(bytes).digest('hex')});
 };
 const server=http.createServer(async(req,res)=>{try{const u=new URL(req.url,origin||'http://fixture.invalid');
+ if(u.pathname==='/api/private/repository-runs'){const r=await reportService.handle(req,{project:u.searchParams.get('project'),track:u.searchParams.get('track')||'BASELINE'});return send(res,r.body,r.status);}
  if(u.pathname.startsWith('/api/private/remote-handoff')){reads++;assert.equal(req.headers.authorization,'Bearer '+token());if(state.delay&&!u.pathname.endsWith('/config')){state.delay=false;await new Promise(resolve=>state.release=resolve);}state.requestTrack=u.searchParams.get('track')||'BASELINE';const r=await service.handle(req,{action:u.pathname.endsWith('/config')?'config':'read',project:u.searchParams.get('project'),track:state.requestTrack});return send(res,r.body,r.status);}
  if(u.pathname==='/auth/v1/token'){state.signedIn=true;return send(res,{access_token:token(),refresh_token:'SYNTHETIC_REFRESH',expires_in:3600,token_type:'bearer',user:user()});}
  if(u.pathname==='/auth/v1/user')return send(res,user());if(u.pathname==='/auth/v1/logout'){state.signedIn=false;res.writeHead(204);return res.end();}
@@ -40,7 +43,7 @@ const server=http.createServer(async(req,res)=>{try{const u=new URL(req.url,orig
  }catch(error){console.error('Synthetic four-source failure: '+error.message);send(res,{error:'SYNTHETIC_FIXTURE_FAILURE'},500);}});
 await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));origin='http://127.0.0.1:'+server.address().port;
 const policy={origin,publishableKey:'sb_publishable_SYNTHETIC',stageOrigin:origin,ownerSubject:OWNER,authSetupVerified:true,sessionBridgeVerified:true,privateReadSetupVerified:false,coordinatorReadSetupVerified:false,ownerDecisionSetupVerified:false};
-service=createDeploymentRemoteHandoffServer({environment:{MC_GITHUB_READ_TOKEN:KEY},fetchImpl:upstream,policy});
+service=createDeploymentRemoteHandoffServer({environment:{MC_GITHUB_READ_TOKEN:KEY},fetchImpl:upstream,policy});reportService=createDeploymentRepositoryRunServer({environment:{MC_GITHUB_READ_TOKEN:KEY},fetchImpl:upstream,policy});
 bundle=await build({entryPoints:['public/app.js'],bundle:true,format:'esm',write:false,metafile:true,plugins:[{name:'synthetic-four-source',setup(b){
  b.onLoad({filter:/public\/owner-auth-client\.js$/},()=>({contents:"export {mountOwnerBrowserEntry} from '../src/continuity/owner-browser-entry.mjs';",resolveDir:process.cwd()+'/public'}));
  b.onLoad({filter:/owner-auth-config\.js$/},()=>({contents:'export const ownerAuthConfig='+JSON.stringify(policy)+';export const ownerAuthSetupStatus=()=>({status:"unconfigured",ownerIdentityEntryAvailable:true});'}));

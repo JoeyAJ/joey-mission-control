@@ -1,0 +1,27 @@
+# Fresh report-aware takeover and approved MC live proof
+
+Baseline: `48700364e21691391ed9737eff2e54dd68d46cd1`. Final application/report SHAs and READY/alias are recorded after publication. No overall MC / all-Agent acceptance claim.
+
+## Three review fixes
+
+Copy performs its own fresh read rather than joining a pre-click display read, verifies Owner again after await, and binds the receipt to current project/track/generation/source/expiry. A private WeakMap-issued receipt, immutable content/signature and current reader checks gate delivery; display snapshots, clones, mutation, failure/expiry/scope switch cannot be used. Supplemental read remains inside the original gesture-initiated promised clipboard flow; source and reports are rechecked before clipboard fulfillment and after clipboard write. Technical source Continue/copy receives the same reports gate as the simple Joey action. University toggle synchronizes document and report readers.
+
+Copied metadata preserves up to 20 runs, three recent events per run, latest checkpoint/blocker, task/Agent/workRef/baseline, completed result code SHA/tests/exact handoff pointer/next steps, and pinned report source; aggregate 128 KiB limit fails closed. Canonical baseline is retained alongside unmerged feature result pointers. Single-run predecessor is explicit; multiple/active runs require an explicit choice and never silently overwrite another run. The receiving Agent verifies those pointers using its own existing access. Candidate and completed are never promoted to accepted/merged/deployed. Legal canonical context paths are distinct from successfully read FOUND documents.
+
+Publisher append now requires original registration and source packet, reconstructs immutable run/task/Agent/provider/model/project/track/repo/work/baseline header and rejects mismatches even with the correct current blob SHA. New Agent on an existing task requires a new run and explicit predecessor. Context scope is bound in new report headers and shared contract validation checks completion entry/context paths before push; invalid completion or expanded context leaves remote unchanged. The already-published first pilot's older v1 header remains readable without mutation. These checks prevent mistaken run use; malicious repo writers can still self-declare identities, so MC explicitly calls these Agent self-reports with verified repo bytes.
+
+## Verification
+
+683 full portable tests PASS, plus build/validate/static check. 23 focused tests included: contract 5, reporter 5, server 5, client 8. Copied standalone helper actually starts/appends/publishes to isolated local bare Git. Agent B with Agent A's correct blob SHA, changed registration/context, missing predecessor and out-of-scope completed handoff are rejected; remote head is unchanged. Forced read failure preserves authorization-expiry purge. Fresh receipt rejects display cache/clone/mutation/post-read Owner loss.
+
+Actual app/official SDK fixture PASS at 375/390/430/1440: fresh report read on copy, unmerged feature workRef + distinct result/handoff SHA + next steps + predecessor, source/report outage refusal, blocked/progress/completed/stale, candidate/history/reload/focus and privacy lifecycle. 168 report reads / 252 document reads / 1,220 synthetic GitHub reads / zero external/writes. Original Continue 12 PASS, 243 document reads / 1,008 synthetic GitHub reads / zero external/writes. Fixtures are not real Claude/Owner/iPhone clipboard proof.
+
+## Approved live MC run
+
+Joey's approval relayed by parent covers MC-only report-only branch and one real Codex run; no other repo/credential/service/Production changes. Parent's Mac Chrome Vercel UI read confirmed empty effective rootDirectory means repo root; ./ was a placeholder. Automatic ignored-build behavior and all unassigned branches tracked mean the root guard is necessary.
+
+First remote ref directly points at guarded orphan commit `752a711b2909b8f82ffd19d4077c56270d5f6d98`, tree only `vercel.json` with git.deploymentEnabled:false. Real run `codex-mc-report-takeover-20261010`, Agent Codex/provider OpenAI/model null, declared actual report-aware takeover feature before this work. Started: `3c97f677e3a9b7909e7ea1336f03e5ba4df6e80a`, blob `01a36c2c2555617b14c37afe7e4ad3af1912d1b4`; checkpoint: `911d5c50aefec9bdfb86e2e8f0c2e23541e0c40e`, blob `c37384a43bd5d4170be85f9e337d5dfae8c813af`. Exact GitHub connected readback agrees with Git bytes. Initial Actions runs 0 and Vercel mc/progress deployment list empty.
+
+Real report bytes passed actual MC parser/private server/report component at 375/390/430/1440. Local Owner is explicitly synthetic; this proves real Git-to-MC transport/rendering, not served Preview Owner execution. Live read-only script: `tests/browser/repository-live-readback-qa.mjs <exact-report-head> running|completed`; it checks report-only tree, fixed repo, blob/hash and exact head, performs no Git writes, and uses installed /usr/bin/chromium. Local receipts/screenshots: `/tmp/mc-live-report-pilot/`. No raw source/credential or rejected VM payload is published.
+
+Final completed report, application publication and side-effect readback follow once the code/handoff commit is available. No timer-produced heartbeat. On silence MC correctly shows overdue/unconfirmed, not stopped/completed. Known cloud HTTPS403 and ruleset403 are not bypassed; real Owner device/other Agent integration remains unverified.

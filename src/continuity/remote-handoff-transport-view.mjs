@@ -11,7 +11,7 @@ const words={
  ko:{title:'MC 비공개 인계와 동기화',start:'동기화 재개',refresh:'다시 읽기',pause:'동기화 일시 정지',handoff:'에이전트 인계 준비',agent:'다음 에이전트 (Owner 선택)',provider:'Provider (교체 가능)',model:'모델 (Owner 결정)',choice:'선택은 비공개 인계 자료에만 적용됩니다. 에이전트 실행이나 쓰기 권한을 부여하지 않습니다.',checking:'비공개 출처 확인 중',unavailable:'저장소 연결이 설정되지 않았거나 일시적으로 읽을 수 없음',denied:'비공개 출처 권한 없음',idle:'동기화 일시 정지',connected:'원격 출처 읽음',reading:'원격 출처 읽는 중'}
 };
 // Private configuration arrives from the current Owner-authenticated endpoint.
-export function mountRemoteHandoffTransport({doc=document,client,inspectIdentity,ownerSubject,identityProject='NEXAEON',projectId='MISSION_CONTROL',track='BASELINE',locale='zh-TW',intervalMs=30000,initiallyEnabled=true,showHandoffSelection=true,onTrackChange=()=>{},now=Date.now}={}){
+export function mountRemoteHandoffTransport({doc=document,client,inspectIdentity,ownerSubject,identityProject='NEXAEON',projectId='MISSION_CONTROL',track='BASELINE',locale='zh-TW',intervalMs=30000,initiallyEnabled=true,showHandoffSelection=true,copyPrepare=null,copyVerify=null,onTrackChange=()=>{},now=Date.now}={}){
  const viewListeners=new Set();
  let w=words[locale]||words['zh-TW'],enabled=initiallyEnabled,reader=null,unsubscribe=null,generation=0,disposed=false,starting=false,configAbort=null,sourceKey=null,lastView=null,copying=false,renderedSourceKey=null;
  const node=tag=>doc.createElement(tag),root=node('section'),title=node('h4'),controls=node('div'),status=node('p'),host=node('div'),packet=node('pre'),selection=node('div'),choice=node('p');
@@ -20,7 +20,8 @@ export function mountRemoteHandoffTransport({doc=document,client,inspectIdentity
  const startButton=button('start',()=>start()),refreshButton=button('refresh',()=>reader?.refresh()),stopButton=button('pause',()=>reader?.stopAutoSync());
  const inputs={};for(const key of []){const label=node('label'),caption=node('span'),input=node('input');input.type='text';input.maxLength=128;input.autocomplete='off';input.dataset.handoffSelection=key;input.addEventListener('input',()=>{packet.textContent='';packet.hidden=true;});label.append(caption,input);selection.append(label);inputs[key]={input,caption};}
  const handoffButton=button('handoff',async()=>{const g=generation,value=await reader?.handoff(Object.fromEntries(Object.entries(inputs).map(([key,{input}])=>[key,input.value])));if(g===generation&&!disposed&&enabled&&value&&value.source.contentSha256===reader?.snapshot().observation?.source.contentSha256){packet.textContent=JSON.stringify(value,null,2);packet.hidden=false;}});
- async function prepareFresh({copy=false,format=null}={}){
+ async function prepareFresh({copy=false,format=null,prepare=null,verify=null}={}){
+  if(copy){prepare=prepare||copyPrepare;verify=verify||copyVerify;}
   if(copying||!reader||disposed||!enabled||doc.hidden)return null;
   copying=true;delete root.dataset.copyOutcome;packet.textContent='';packet.hidden=true;paint();
   const g=generation,active=reader,project=projectId,selectedTrack=track;
@@ -36,11 +37,12 @@ export function mountRemoteHandoffTransport({doc=document,client,inspectIdentity
   try{
    const view=await active.refresh();
    if(!valid()||view.status!=='connected'||view.observation?.status!=='FOUND')return null;
-   const observed=view.observation,value=await active.handoff();
+   const observed=view.observation;let value=await active.handoff();
    const current=active.snapshot();
    if(!valid()||current.status!=='connected'||current.observation?.status!=='FOUND'||!value||value.sourceStatus!=='FOUND'||value.projectId!==project||(value.track||'BASELINE')!==selectedTrack||tuple(value)!==tuple(observed)||tuple(value)!==tuple(current.observation))return null;
+   if(typeof prepare==='function')value=await prepare(value);const prepared=active.snapshot();if(!valid()||!value||prepared.status!=='connected'||prepared.observation?.status!=='FOUND'||tuple(value)!==tuple(prepared.observation)||typeof verify==='function'&&!verify(value))return null;
    const text=JSON.stringify(value,null,2);packet.textContent=text;packet.hidden=false;
-   if(copy){const copiedText=typeof format==='function'?format(value):text;if(typeof copiedText!=='string'||!copiedText)throw Error('HANDOFF_FORMAT_INVALID');let outcome='manual';if(promisedCopy){delivered=true;deliverText(copiedText);if(await promisedCopy)outcome='copied';}else if(globalThis.navigator?.clipboard?.writeText){try{await globalThis.navigator.clipboard.writeText(copiedText);outcome='copied';}catch{/* The verified private packet remains available for manual copy. */}}const latest=active.snapshot();if(valid()&&latest.status==='connected'&&latest.observation?.status==='FOUND'&&tuple(value)===tuple(latest.observation))root.dataset.copyOutcome=outcome;else return null;}
+   if(copy){const copiedText=typeof format==='function'?format(value):text;if(typeof copiedText!=='string'||!copiedText)throw Error('HANDOFF_FORMAT_INVALID');let outcome='manual';if(promisedCopy){delivered=true;deliverText(copiedText);if(await promisedCopy)outcome='copied';}else if(globalThis.navigator?.clipboard?.writeText){try{await globalThis.navigator.clipboard.writeText(copiedText);outcome='copied';}catch{/* The verified private packet remains available for manual copy. */}}const latest=active.snapshot();if(valid()&&latest.status==='connected'&&latest.observation?.status==='FOUND'&&tuple(value)===tuple(latest.observation)&&(typeof verify!=='function'||verify(value)))root.dataset.copyOutcome=outcome;else return null;}
    return valid()?value:null;
   }catch{return null;}finally{if(!delivered)rejectText?.(Error('HANDOFF_UNAVAILABLE'));if(g===generation){copying=false;paint(active.snapshot());}}
  }

@@ -8,13 +8,14 @@ const copy={
  ko:{title:'프로젝트의 다음 단계',intro:'프로젝트를 선택하고 확인된 진행을 읽은 뒤 원하는 Agent에 인계 지시를 붙여 넣으세요.',project:'프로젝트 선택',progress:'문서에 기록된 진행',unknown:'기록 없음',task:'확인된 진행',status:'문서 상태',next:'다음 단계',agent:'최근 개발자',time:'문서 갱신',runtime:'현재 Agent 실행 여부는 미확인입니다.',source:'버전',main:'main 기준',candidate:'University 후보 · Joey 검수 대기',copy:'인계 지시 복사',login:'로그인 후 프로젝트 읽기',signin:'비공개 프로젝트를 읽으려면 로그인하세요. 출처는 자동 준비됩니다.',checking:'로그인 확인 중…',reading:'선택한 프로젝트를 읽는 중입니다.',verify:'로그인 인증을 완료하면 프로젝트를 읽습니다.',unavailable:'이 사이트에서는 비공개 인계를 사용할 수 없습니다. 고정 Preview를 이용하세요.',error:'최신 출처 확인 실패. 아래에서 다시 읽으세요. 이전 자료는 사용하지 않습니다.',denied:'로그인 또는 출처 권한 미확인. 로그인을 확인하세요.',retry:'출처 다시 읽기',ready:'출처 확인 완료. 복사 후 원하는 Agent에 붙여 넣으세요.',copying:'출처를 다시 확인하고 지시를 준비하는 중…',copied:'복사 완료. 원하는 Agent에 붙여 넣고 프로젝트 문서를 읽게 하세요.',manual:'자동 복사가 완료되지 않았습니다. 전체 선택 후 시스템 복사 기능을 이용하세요.',selectAll:'지시 전체 선택',stale:'마지막 확인 문서입니다. 이번 읽기는 실패하여 최신 진행은 미확인입니다.',technical:'출처 및 기술 자료',account:'계정 및 로그인',advanced:'고급 작업 화면',full:'전체 프로젝트 보기',instruction:'인계 지시'}
 };
 export function formatTakeoverInstruction(packet){
- const s=packet.source,context=(packet.contextDocuments||[]).filter(d=>d.status==='FOUND').map(d=>d.path);
+ const reports=packet.repositoryReports;const s=packet.source,context=(packet.contextDocuments||[]).filter(d=>d.status==='FOUND').map(d=>d.path);
  return ['請接手專案 '+packet.projectId+'。先使用你自己的既有授權存取核對 branch 最新 HEAD，再閱讀目前階段文件與已確認背景文件，依既有授權續開發、測試並更新交接。',
   'Repository: '+s.repositoryId,'Branch: '+s.requestedRef,'本次已核對版本: '+s.resolvedCommitSha,'本次來源指紋: '+s.contentSha256,'本次讀取時間: '+s.readAt,'文件更新時間: '+(s.documentTimestamp||'未記錄'),'專案入口: '+s.path,
   '入口文件: https://github.com/'+s.repositoryId+'/blob/'+s.resolvedCommitSha+'/'+s.path,
   '已核對背景文件: '+(context.join(', ')||'未記錄'),
   packet.track==='UNIVERSITY_CANDIDATE'?'版本資格: 獨立 University 候選，JoeyAcceptancePending；不得當成 main 或已驗收成果。':'版本資格: main 基準來源；讀取成功不代表產品驗收。',
   '目前工作: '+(packet.progress?.task||'未記錄'),'下一步: '+(packet.progress?.nextAction||'未記錄'),'最近開發者: '+(packet.progress?.lastAgent||'未記錄'),
+  ...(reports?['本次重新核對的 Agent run 接手紀錄（Agent 自行回報；repo bytes 已核對，不代表合併／部署／Joey accepted）: '+JSON.stringify(reports),'先閱讀 run 的 workRef、最新 checkpoint／blocker、完成 result 的確切 handoff commit/path 與 nextSteps。未合併功能不能只回 canonical baseline。使用自己既有存取核對該 workRef／交接 SHA，再決定接續；本紀錄不指令 checkout、不自動升 candidate 資格。','多個 run 或仍有 active/blocked run 時，明確選擇要接續的 runId/task；不能默默替換他人的 active run。新 Agent 建立新 runId，明確設定 predecessorRunId；無法決定則先澄清。不把逾時推定為 stopped。']:[]),
   '缺失的 Agent／進度／文件時間不可推定。本指令不授予新存取、部署、SQL 或其他寫入權限；不啟動 Agent。',
   'MC 回報：只使用你對本專案 GitHub repo 的既有寫入授權，不需要 MC token。先讀入口、核對目前工作 branch 與使用者真正要求的功能。不要從複製指令推定已開工。',
   '先把下方通用 reporter 存成本機暫存 mc-reporter.mjs；在本專案 repo 中執行。先填 registration 的新 runId、taskId、featureTitle、你自己的 agentName；provider/model 可為 null，不做模型選擇。接替他人時填 predecessorRunId；另一個 active run 不可覆寫。',
@@ -22,10 +23,11 @@ export function formatTakeoverInstruction(packet){
   '把下面 source packet 存成私人的 source-packet.json，建立 registration.json 與 started-event.json。started 的 event id 要唯一，sequence=1，eventAt=實際當下 ISO 時間，summary=你實際開工的摘要，result=null。',
   'node /你的暫存路徑/mc-reporter.mjs start --packet source-packet.json --meta registration.json --event started-event.json --publish',
   '只有 PUBLISHED / ALREADY_PUBLISHED 的實際 Git receipt 才代表 start 已發布。開工前先發布 started；每個有意義的 progress/blocked checkpoint 明確發布新事件。不能以背景 timer 捏造 heartbeat。五分鐘無新事件，MC 顯示最後回報／更新逾時，而非推定已停或完成。',
-  '後續 event sequence 遞增。保存前次 receipt 的 fileSha 與 sequence，使用：node /你的暫存路徑/mc-reporter.mjs append --run <runId> --event event.json --expected-file-sha <前次fileSha> --expected-sequence <前次sequence> --publish。衝突停止並重新核對，不能 force push。',
+  '後續 event sequence 遞增。保存前次 receipt 的 fileSha 與 sequence，使用：node /你的暫存路徑/mc-reporter.mjs append --packet source-packet.json --meta registration.json --run <runId> --event event.json --expected-file-sha <前次fileSha> --expected-sequence <前次sequence> --publish。衝突停止並重新核對，不能 force push。',
   'completed 事件前先完成並更新專案交接；result 必含 codeSha、tests[{name,outcome:PASS/FAIL/NOT_RUN}]、nextSteps、handoff{path,commitSha}。完成不代表 merged/deployed/Joey accepted。只回報有界 metadata，不放原始 source、prompt、secret 或憑證。頁面可見時 MC 約每30秒讀取，不是永久 collector。',
-  'Source packet: '+JSON.stringify({schemaVersion:1,projectId:packet.projectId,track:packet.track||'BASELINE',sourceStatus:'FOUND',executionAuthorized:false,source:packet.source}),
-  'Registration template: '+JSON.stringify({runId:'__NEW_RUN_ID__',predecessorRunId:null,taskId:'__NEW_TASK_ID__',featureTitle:'__USER_REQUESTED_FEATURE__',agentName:'__ACTUAL_AGENT_NAME__',provider:null,model:null}),
+  'canonicalContextPaths 是固定合法交接路徑清單，不代表每份文件都已讀取成功；已讀背景文件只以上方 FOUND 清單為準。',
+  'Source packet: '+JSON.stringify({schemaVersion:1,projectId:packet.projectId,track:packet.track||'BASELINE',sourceStatus:'FOUND',executionAuthorized:false,canonicalContextPaths:(packet.contextDocuments||[]).map(d=>d.path),source:packet.source}),
+  'Registration template: '+JSON.stringify({runId:'__NEW_RUN_ID__',predecessorRunId:reports?.runs?.length===1?reports.runs[0].runId:null,taskId:'__NEW_TASK_ID__',featureTitle:'__USER_REQUESTED_FEATURE__',agentName:'__ACTUAL_AGENT_NAME__',provider:null,model:null}),
   'Reporter SHA256: '+repositoryRunReporterSha256,
   '```javascript',repositoryRunReporterSource,'```'].join('\n');
 }
@@ -60,7 +62,7 @@ export function mountJoeyTakeover({doc=document,project='NEXAEON',track='BASELIN
   if(owner.dataset.ownerAuth!=='verified'||view?.status==='denied'){owner.open=true;await owner.checkAccess?.();if(owner.dataset.ownerAuth==='verified'&&view?.status==='denied')await controller.start();owner.querySelector('input:not([hidden])')?.focus();owner.scrollIntoView?.({block:'nearest'});return;}
   if(view?.status!=='connected'||view.observation?.status!=='FOUND'){clearResult();await controller.start();return;}
   const g=generation,c=controller,scope=JSON.stringify([project,track]);busy=true;clearResult();paint();
-  try{const packet=await c.copyContinuation({format:formatTakeoverInstruction}),current=c.snapshot();
+  try{const reportController=owner.repositoryRunsController;let reportPacket;const packet=await c.copyContinuation({format:formatTakeoverInstruction,prepare:async value=>{reportPacket=await reportController?.prepareContinuation({expectedProjectId:project,expectedTrack:track,expectedRepositoryId:value.source.repositoryId});if(disposed||g!==generation||c!==controller||scope!==JSON.stringify([project,track])||!reportPacket)return null;return {...value,repositoryReports:reportPacket};},verify:value=>Boolean(reportController===owner.repositoryRunsController&&reportController?.continuationCurrent(value.repositoryReports))}),current=c.snapshot();if(!packet)throw Error('FRESH_REPORT_CONTINUATION_REQUIRED');
    if(disposed||g!==generation||c!==controller||scope!==JSON.stringify([project,track])||!packet||packet.projectId!==project||(packet.track||'BASELINE')!==track||current.status!=='connected'||current.observation?.status!=='FOUND'||packet.source.resolvedCommitSha!==current.observation.source.resolvedCommitSha||packet.source.contentSha256!==current.observation.source.contentSha256)return;
    success=c.root.dataset.copyOutcome||'manual';if(success==='manual'){fallback.value=formatTakeoverInstruction(packet);fallback.hidden=false;selectAll.hidden=false;}
   }catch{if(!disposed&&g===generation){clearResult();success='error';}}finally{if(!disposed&&g===generation){busy=false;paint();}}

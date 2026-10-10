@@ -1,3 +1,32 @@
+# Mission Control report-aware Agent takeover and live MC proof
+
+Project: MISSION_CONTROL
+Timestamp: 2026-10-10T04:59:42Z
+Task: Bind continuation to fresh run evidence and bind publishers to their own registration
+Status: LOCAL_VERIFIED_PENDING_PUBLICATION
+Last Developer: Codex
+Executed by: Codex
+Actual Model: UNKNOWN
+Baseline: 48700364e21691391ed9737eff2e54dd68d46cd1
+
+## Summary
+
+All three independent review gaps are fixed. A copy performs an independent fresh repository-report read and post-read Owner verification, checks project/track/generation/expiry and immutable source again before delivery, and includes bounded run history, task/run/Agent/workRef, latest checkpoint/blocker, completed code/handoff SHA/tests/next steps. Cached display reports cannot supply copy. Single-run predecessor is explicit; multiple/active runs require an explicit continuation choice and never replace another active run. Unmerged result pointers are retained alongside canonical baseline. The same report gate covers technical Continue/copy and simple Joey copy; University track updates both readers.
+
+Append requires the original local registration and source packet, matches immutable run/task/Agent/project/track/repo/work/source header, and validates completion against the same canonical entry/context scope as the reader before push. New reports bind context paths in baseline; original first-pilot v1 header remains readable without being rewritten. Different Agent on an existing task needs a new run and explicit predecessor. This prevents mistaken run use; identity is still self-reported, not cryptographic provider authentication.
+
+## Verification and live status
+
+683 portable tests PASS plus build/validate/static check; 23 focused contract/reporter/server/client tests included. Standalone copied helper starts/appends/publishes to local bare Git. Agent B with Agent A's actual file SHA is rejected; altered contexts and out-of-scope completion leave remote unchanged. Actual app fixtures 375/390/430/1440 PASS, including fresh report-copy, unmerged result SHA/next steps and outage refusing copy; original Continue 12 PASS. Real report bytes through MC parser/private server/report view at four widths PASS with an explicitly synthetic local Owner boundary.
+
+Joey approved the MC-only live test. Parent's read-only Vercel UI confirmed effective rootDirectory is empty (repo root), ignored build behavior Automatic, all unassigned preview branches tracked. Initial report-only orphan commit `752a711b2909b8f82ffd19d4077c56270d5f6d98` already has deploymentEnabled:false and no app/workflow. Real Codex run `codex-mc-report-takeover-20261010` started at report commit `3c97f677e3a9b7909e7ea1336f03e5ba4df6e80a`, then actual checkpoint at `911d5c50aefec9bdfb86e2e8f0c2e23541e0c40e`. Exact GitHub blob readback matches Git source. Initial report Actions runs 0 / report-branch Vercel deployments empty. Completion/publication/final side-effect readback is the remaining finishing action, not a new permission request.
+
+## Next Action
+
+Commit/push this current branch to the existing fixed Preview, verify exact SHA/READY/alias and unchanged Production, then publish the approved real run's completed result with this code/handoff SHA and actual tests; read back exact report bytes and final Actions/Vercel absence. Final release/report SHA is recorded externally. Real Preview Owner/device execution remains unverified; no all-Agent/all-project acceptance claim. No other repo writes, SQL/access/secrets/services/model dispatch/AWS. Known HTTPS403 and GitHub ruleset403 remain unbypassed; rejected VM operational artifacts remain excluded. [Verification](docs/MC_REPORT_AWARE_TAKEOVER_VERIFICATION_20261010.md).
+
+## Preserved repository-report implementation stage
+
 # Mission Control repository-backed Agent reporting implementation
 
 Project: MISSION_CONTROL
