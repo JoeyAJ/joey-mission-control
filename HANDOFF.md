@@ -1,9 +1,9 @@
 # Mission Control simple Joey takeover entry
 
 Project: MISSION_CONTROL
-Timestamp: 2026-10-10T03:35:00Z
+Timestamp: 2026-10-10T03:38:00Z
 Task: Simplify mobile project progress and verified Agent takeover
-Status: LOCAL_VERIFIED_PENDING_PUBLICATION
+Status: LOCAL_VERIFIED_PARENT_READ_PREVIEW_PUBLISHED
 Last Developer: Codex
 Executed by: Codex
 Actual Model: UNKNOWN
@@ -31,4 +31,4 @@ Publish only current private branch to the existing fixed Preview/project. Verif
 
 ## Next Action
 
-Complete exact remote/READY readback, then release sole-writer ownership with no background work. Preserve current result and device/source qualifications when another Agent takes over. Historical notes are preserved in [prior handoff archive](docs/MC_HANDOFF_HISTORY_BEFORE_SIMPLE_JOEY_20261010.md); read this current entry first. [Product charter](docs/PRODUCT_CHARTER.md), [phase plan](docs/MC_PHASE_PLAN.md) and [acceptance record](docs/MC_COMMAND_CENTER_ACCEPTANCE.md) retain product authority.
+Functional release `4e65e2dccdbd540354b3fe0586d7ae2a3694dcf3`, tree `282357be5bfdb9bcb4309daa0780a659d37fe00a`, is remote and fixed Preview READY `dpl_913iji2zFQQq9wNV8joUeRoQC87Z`, with matching fixed alias. 660 portable tests, 4 simple browser cases and the retained regression checks PASS. This final docs-only commit records completion; exact final docs HEAD/READY stays in the external release receipt to avoid a self-reference. Release sole-writer ownership after that readback, with no background work. Preserve current result and device/source qualifications when another Agent takes over. Historical notes are preserved in [prior handoff archive](docs/MC_HANDOFF_HISTORY_BEFORE_SIMPLE_JOEY_20261010.md); read this current entry first. [Product charter](docs/PRODUCT_CHARTER.md), [phase plan](docs/MC_PHASE_PLAN.md) and [acceptance record](docs/MC_COMMAND_CENTER_ACCEPTANCE.md) retain product authority.

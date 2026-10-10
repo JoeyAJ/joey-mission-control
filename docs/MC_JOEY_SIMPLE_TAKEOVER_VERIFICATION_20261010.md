@@ -23,3 +23,9 @@ Baseline: `133e1b6239be19e5c8c55c567b7bf70327b0c70d`. Parent-relayed actual Chro
 Publish current private branch to existing fixed Preview only. Connected READY/alias/exact SHA proves deployment identity, not served bytes; known CONNECT403 remains unbypassed. Production and other repos, SQL/access/secrets/services/AWS/model/dispatch remain unchanged. Rejected operational artifacts/equivalent payloads remain absent.
 
 The final fixture also verifies three actually parsed signed header fields; unsupported next-action metadata remains unknown rather than inferred. Membership revocation clears data and signs out; recovery uses normal sign-in. Explicit logout clears the simple view.
+
+## Functional publication
+
+Functional commit `4e65e2dccdbd540354b3fe0586d7ae2a3694dcf3`, Git tree `282357be5bfdb9bcb4309daa0780a659d37fe00a`, confirmed by Git remote exact branch and connected GitHub commit readback. Vercel deployment `dpl_913iji2zFQQq9wNV8joUeRoQC87Z` READY, exact matching githubCommitSha, target preview (null production target). Fixed alias `joey-mission-control-git-codex-mc-comma-fceec2-joeyajs-projects.vercel.app` binds this deployment and project `prj_X67htPw7vkRI2tuf8817vOUCGQOD`. Production readback remains `dpl_5GgJ8LhD4Ec73RGz9CEFe1ppZQnh` / `8b4945b16a0b23f2e72033aa976fa34f94eabec0`.
+
+Later completion commit changes only documentation; final docs HEAD/deployment receipt is external. No served HTTPS request is retried or protection bypassed. This metadata evidence does not establish served-byte or current Owner/real-phone acceptance.
