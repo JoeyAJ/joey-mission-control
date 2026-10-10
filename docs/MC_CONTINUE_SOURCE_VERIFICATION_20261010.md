@@ -1,3 +1,16 @@
+# Current compatibility stage — 2026-10-10
+
+Baseline: `73c08ae20170c78a2a71687de01926bdc2b7a8cc`. Independent parent review passed both fixed-Preview fixes and identified a non-Preview compatibility regression. Only client route/action capability checks and visible localized unavailable wording change; server/config and generated Owner-client bytes remain unchanged.
+
+- Origin-capability actual-app fixtures: 9 PASS (localhost / other origin / exact fixed Preview origin at 1440/en, 390/zh-TW, 320/ko). Non-capable details stay explicitly historical read-only, Continue is disabled and guarded, workspace shows the limitation; no legacy/latest fallback.
+- Existing four-source/factory browser: 12 PASS, including true Continue, mobile, candidate track/qualification, fresh HEAD, history/reload and all private lifecycle/error gates.
+- Focused workspace/package/source-status/public/routing: 30 PASS. Current Auth helper/SDK contracts: 18 PASS; public status browser: 24 PASS; final structured root-handoff checks: 19 PASS.
+- Build, portable fixture validation and static safety PASS; generated Owner client unchanged. No forbidden workstation reads, external browser requests, unexpected writes, private requests in origin fixtures or legacy Continue requests.
+
+All browser upstreams are synthetic. Parent's ongoing real-device QA applies to `73c08ae`, not automatically this later compatibility stage. No new real Owner or served-byte proof is claimed. Exact new publication evidence is recorded after remote/READY/alias readback. Production remains the existing `dpl_5GgJ8LhD4Ec73RGz9CEFe1ppZQnh` at `8b4945b16a0b23f2e72033aa976fa34f94eabec0`; CONNECT403 is not retried or bypassed.
+
+## Preserved first Continue repair release
+
 # MC Continue source verification — 2026-10-10
 
 Baseline: `ed04d315162d01bcfed56f71166e57d6251ad31b`, freshly fetched from private `JoeyAJ/joey-mission-control`, branch `codex/mc-command-center-checkpoint-20261006`. The mounted `32b77ee` and unavailable old uncommitted tree are not sources for this change.

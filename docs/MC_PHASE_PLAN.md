@@ -1,3 +1,9 @@
+# Current stage — non-Preview Continue capability compatibility
+
+Baseline `73c08ae20170c78a2a71687de01926bdc2b7a8cc`. The two fixed-Preview source repairs passed independent parent review; the new narrow stage adds capability/origin gating, historical read-only detail and an explicit unavailable Continue explanation outside the existing private entry. Nine origin/viewport/locale fixtures and the twelve four-source regressions pass. Parent's real-device QA remains qualified to 73c08ae. Current release status: [HANDOFF](../HANDOFF.md) and [Continue verification](MC_CONTINUE_SOURCE_VERIFICATION_20261010.md). No private scope/origin, credential, backend, model/dispatch, other-repo or Production change.
+
+## Preserved prior phase plan
+
 # Current stage — verified Continue source repair, 2026-10-10
 
 The newly delegated bugfix scope supersedes the prior docs-only stopping instruction. Functional repair `b5d19ba9468670a86467d19f6ec423db4dc8a936` is remote and fixed Preview READY (`dpl_7vDQmHK95o6r97sd4LXYwyeMkX2J`, matching alias). Buddy Continue and Asset University candidate Continue now use the same fresh private source gate and legal track routing, with no legacy snapshot fallback. Parent-relayed Chrome Owner reads established pre-fix four-main-source / candidate runtime availability; post-fix normal Owner and Safari/phone acceptance remain separate. See [current handoff](../HANDOFF.md) and [release verification](MC_CONTINUE_SOURCE_VERIFICATION_20261010.md). Existing branch/fixed Preview only; no SQL, secrets/access, other-repo writes, model dispatch, AWS/pilot or Production action.

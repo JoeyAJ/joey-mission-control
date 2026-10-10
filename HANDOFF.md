@@ -1,3 +1,42 @@
+# Mission Control Continue origin compatibility
+
+Project: MISSION_CONTROL
+Timestamp: 2026-10-10T02:59:42Z
+Task: Keep non-Preview Continue explicit and historical when private capability is unavailable
+Status: LOCAL_VERIFIED_PENDING_PUBLICATION
+Last Developer: Codex
+Executed by: Codex
+Actual Model: UNKNOWN
+Baseline: 73c08ae20170c78a2a71687de01926bdc2b7a8cc
+
+## Summary
+
+Independent parent review passed the two fixed-Preview Continue source repairs, then identified the out-of-origin compatibility defect: the committed sync flag redirected all four project details even though the private Owner entry exists only at the approved fixed Preview. This newly authorized stage is limited to that compatibility fix.
+
+## Changes
+
+Project detail redirects now require both the existing source-sync flag and the existing public Owner capability/origin gate. At localhost or any other unavailable origin, detail remains accessible as explicitly historical read-only information; latest private source is unconfirmed and the legacy Continue action is disabled and guarded against programmatic invocation. Workspace Continue is disabled with a visible localized unavailable explanation when the mounted Owner entry has no preparation capability. There is no silent optional-method click path.
+
+The fixed Preview keeps the existing current-Owner fresh FOUND read, source/track/generation binding and University's separate candidate qualification. No origin, scope, permission, private reader policy, server endpoint, snapshot, Production deployment, credential, model/dispatch or write execution was expanded. Generated Owner client bytes remain identical.
+
+## Verification
+
+Actual-app origin fixtures cover localhost, another origin and the exact fixed Preview origin at 1440/en, 390/zh-TW and 320/ko: 9 cases PASS. Public replies and SDK configuration are synthetic; no real Preview/Auth/source request is made. Non-private cases verify all four historical details, reload/Back/Forward, disabled Continue, visible explanation and zero legacy Continue requests, including a programmatically dispatched click. Fixed-origin cases verify the capability and signed-out boundary without claiming Owner access.
+
+The existing actual-app four-source/factory suite passes all 12 project/viewport/locale cases again, including mobile/candidate/history/reload/fresh-HEAD/error/expiry/revocation/pending-read switches. Focused workspace/source/package/status/public/routing checks, current Auth contracts, build, portable fixture validate and static safety pass; browser external requests and unexpected writes are zero. Exact counts and release metadata are in [Continue verification](docs/MC_CONTINUE_SOURCE_VERIFICATION_20261010.md). The prior 658-test portable result belongs to the first repair; it is inherited, not falsely presented as a full rerun of this narrow stage.
+
+## Runtime qualification and blockers
+
+Parent's real-device QA is checking `73c08ae20170c78a2a71687de01926bdc2b7a8cc`. Any such result applies to that SHA and is not automatically acceptance of this later compatibility patch. This writer did not independently read the normal deployed Owner session. Known cloud CONNECT403 is not retried or bypassed; Safari/phone/final acceptance remains distinct from fixtures and deployment READY.
+
+No permission/tool blocker was encountered. Both rejected operational artifacts and equivalent payloads remain excluded. Production, other repos, SQL, keys, permissions, AWS/pilot and runtime dispatch remain untouched.
+
+## Next Action
+
+Publish only this minimal compatibility stage to the already authorized branch/fixed Preview, verify remote exact SHA and READY/alias/unchanged Production, then record the result and release sole-writer ownership. Retain the real-device QA SHA qualification above; the next Agent should read this header before the preserved earlier stage.
+
+## Preserved prior Continue repair — published baseline
+
 # Mission Control verified Continue source repair
 
 Project: MISSION_CONTROL
