@@ -1,3 +1,32 @@
+# Mission Control external-Agent self-reporting goal checkpoint
+
+Project: MISSION_CONTROL
+Timestamp: 2026-10-10T03:56:32Z
+Task: Record provider-neutral receiving-Agent progress reporting and remaining acceptance gap
+Status: LOCAL_VERIFIED_CLOUD_EVENTS_NOT_ENABLED
+Last Developer: Codex
+Executed by: Codex
+Actual Model: UNKNOWN
+Baseline: 0be215c62ce2071762b68c159de56d4ac34948d2
+
+## Summary
+
+At 03:54 UTC Joey clarified: after Claude Code or another Agent reads a copied handoff and begins a requested feature, MC should show that actual Agent developing that feature. The focus/one-tap copy repair is published and complete as a narrow subtask; **MC overall is not complete or accepted**. The external-Agent producer/registration/reporting end-to-end flow remains **NOT_IMPLEMENTED / NOT_ACCEPTED**. Copy/paste/read is not startup.
+
+## Changes
+
+Docs only: [operative product charter](docs/PRODUCT_CHARTER.md) now records provider-neutral self-reporting after actual work begins; run/project/explicit Agent/requested feature registration; running/progress/blocked/completed plus handoff links; bounded heartbeat/stale behavior and separate completed evidence/Joey acceptance. Never guess Agent from Git author or show running from a copy event. Candidate qualifications and all privacy/source gates remain intact. No Agent/model selection or MC dispatch is required.
+
+## Verification
+
+Published functional repair `b14b0f4fb7c0ef5cd59323daa7bc43026b16511c` and docs `0be215c62ce2071762b68c159de56d4ac34948d2` remain the application baseline, fixed Preview READY `dpl_8TiTDcAtmhRJ8DWsNT2bTTSBSxdr`; prior 660 tests and browser reports belong to that repair, not proof of this missing reporting flow. Current change only updates requirement/acceptance/handoff documents. Root reader is checked within the existing bound. Actual iPhone clipboard success remains unverified.
+
+## Next Action
+
+This docs-only checkpoint inherits the completed application baseline; exact final docs remote SHA/READY/alias is reported externally. No functional publication or reporting implementation is pending in this documentation slice. Await parent's read-only architecture findings on existing bounded reporting capabilities before a new scoped implementation stage. Do not implement/report unsupported external Agent startup or change SQL, credentials/network grants, external Agent communication, services, models/dispatch, AWS/pilot, other repos or Production. No further Mac/device setup is needed for this documentation checkpoint. Known HTTPS403 stays unbypassed; metadata does not prove served execution. Rejected operational artifacts/equivalent payloads stay excluded.
+
+## Preserved completed focus/copy subtask — not overall product acceptance
+
 # Mission Control active-view focus and one-tap copy repair
 
 Project: MISSION_CONTROL

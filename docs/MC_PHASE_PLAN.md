@@ -1,3 +1,11 @@
+# Current target — provider-neutral external-Agent self-reporting
+
+Joey's explicit 03:54 UTC goal: the receiving Agent reads a copied canonical entry, starts the requested feature, then MC displays that Agent/run/feature from an authorized actual report. This remains NOT_IMPLEMENTED / NOT_ACCEPTED. The published focus/copy UI repair is a completed subtask, not overall MC acceptance. Record run/project/Agent/requested feature, running/progress/blocked/completed, handoff/result link, event/read times and bounded heartbeat; expired or absent reports cannot show running. No Git-author guess, copy-as-startup, model selector or MC dispatch. Full acceptance contract: [PRODUCT_CHARTER](PRODUCT_CHARTER.md).
+
+This stage changes docs only and awaits parent's read-only existing-reporting architecture review. No SQL, credentials/network grants, external Agent communication or new service implementation. Existing application, candidate/source/private gates and Production remain unchanged. Current checkpoint: [HANDOFF](../HANDOFF.md).
+
+## Preserved completed narrower stages
+
 # Current stage — active-view focus and one-tap copy repair
 
 Parent review reproduced hidden Workspace taking the visible Owner singleton on focus/expiry. Joey actual iPhone copy feedback requires a supported single-tap path. This narrow repair routes refreshes to the active view and initiates a gesture-preserving ClipboardItem promise whose data is released only after the existing fresh Owner/source gate. Manual fallback explicitly selects all text without claiming success. See [current HANDOFF](../HANDOFF.md) and [verification](MC_JOEY_FOCUS_CLIPBOARD_VERIFICATION_20261010.md). Real iPhone clipboard acceptance remains unverified; no Mac/install/pairing dependency. Existing branch/fixed Preview only, no new permissions/dispatch or Production action.

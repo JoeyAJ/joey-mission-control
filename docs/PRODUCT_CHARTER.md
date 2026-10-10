@@ -1,5 +1,24 @@
 # Mission Control product contract
 
+## Latest explicit product goal — 2026-10-10 03:54 UTC
+
+Joey's confirmed end-to-end expectation: copy the handoff into Claude Code or any other development Agent, ask it to read the project and implement a requested feature, then MC shows that project being developed by that Agent on that feature based on its actual report. Portable copy is one completed prerequisite; it does not complete Mission Control. External Agent automatic self-reporting is **NOT_IMPLEMENTED / NOT_ACCEPTED** in the current delivered flow.
+
+This is provider-neutral reporting by the receiving Agent after it actually starts work. It does not require MC dispatch or an Agent/provider/model selector. Never infer startup from a copy click, pasted prompt, repository read, Git author, plan or historical signature. Current-worker identity needs an explicitly attributed, authorized report bound to the project and run. Unknown model remains optional technical metadata.
+
+Required reporting acceptance:
+
+- Register run ID, canonical project ID, explicit Agent identity and Joey's requested feature, with the bound source/handoff entry and an actual start event. Registration/reporting authority and scope must be verified; a copied instruction grants no new authority.
+- Report running, progress, blocked and completed with event time, receiver/read time and run/project binding. Preserve meaningful progress/blocker details and the current handoff/result link. Completion evidence and Joey acceptance remain separate; a completion report cannot promote a candidate to accepted.
+- Use bounded heartbeat validity. Silence/expiry or unconfirmed live access produces stale/current state unconfirmed, not an indefinitely running badge. Keep last confirmed evidence qualified separately. Replayed, out-of-scope, conflicting or revoked reports cannot establish current work.
+- Any authorized Agent can take over through the canonical entry using its own existing access and report for its own run; project/source/track/run isolation survives switch/history/reload. Private owner/source/report contents stay private.
+
+End-to-end acceptance must prove actual receiving-Agent startup, attributed running/requested-feature display, progress/blocked/completed transitions and linked handoff, plus heartbeat expiry without fake running. Clipboard, fixtures, deployment READY or a readable repository alone do not satisfy that acceptance.
+
+Parent is separately reviewing existing bounded reporting capabilities read-only. This checkpoint records the goal and gap only. Await that architecture result before a scoped implementation proposal; do not change SQL, add credentials/network grants or communicate with external Agents in this stage. No additional services, access or automatic executor follows from this requirement record.
+
+## Preserved prior product decision
+
 ## Current product decision — 2026-10-09
 
 The core delivery is portable project memory and takeover, using each project's canonical repository and handoff. Joey can tell Dots, Cursor, ClaudeCode, Hermes or another development Agent to read that entry and continue. MC does not require choosing an Agent, provider or model, and it does not need to dispatch or execute the receiving Agent.

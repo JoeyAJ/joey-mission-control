@@ -1,3 +1,11 @@
+# Latest gap — external-Agent self-reporting, 2026-10-10 03:54 UTC
+
+Joey explicitly requires MC to display actual receiving-Agent/run/requested-feature development after a copied handoff is read and work starts. This is provider-neutral self-reporting, not MC dispatch/model selection. Required states: running/progress/blocked/completed with handoff/result links; bounded heartbeat becomes stale/current state unconfirmed on expiry. Agent identity cannot be guessed from Git authors and copy/paste/read does not constitute startup.
+
+Current delivered application baseline `0be215c62ce2071762b68c159de56d4ac34948d2` completes focus/copy repair only. External producer registration/authorized reporting and actual end-to-end dashboard acceptance remain NOT_IMPLEMENTED / NOT_ACCEPTED. Existing bounded contracts/fixtures are not evidence of a connected receiving Agent. Parent is reviewing those capabilities read-only; implementation scope/transport must follow that finding. This checkpoint changes docs only, without SQL, credentials/network grants or external Agent communication. [Operative product contract](PRODUCT_CHARTER.md); [current HANDOFF](../HANDOFF.md).
+
+## Preserved dated reconciliation
+
 # Final MC requirement reconciliation
 
 Current baseline:0a32eaefa79173a5e8ed3b155ccd15c3f1373ef9.

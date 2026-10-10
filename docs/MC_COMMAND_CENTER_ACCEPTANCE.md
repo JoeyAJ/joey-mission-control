@@ -1,3 +1,11 @@
+# Latest core acceptance — external-Agent self-reporting remains incomplete
+
+Joey's 03:54 UTC example requires actual receiving-Agent work to produce an attributed project/run/requested-feature report that MC shows, with running/progress/blocked/completed and handoff links. Bounded heartbeat must become stale/current state unconfirmed on silence or expiry. **NOT_IMPLEMENTED / NOT_ACCEPTED** end to end; copy, source read, Git author, fixtures or deployment READY cannot establish startup. The prior focus/one-tap copy repair remains a completed narrow implementation with real iPhone success unverified. Neither makes the whole MC complete.
+
+[Product charter](PRODUCT_CHARTER.md) records the definitive acceptance, privacy and authority constraints. Parent's read-only architecture review is pending; this docs-only stage does not add SQL, credentials/network grants, external Agent communication, dispatch or model selection.
+
+## Preserved narrower acceptance records
+
 # Latest narrow repair — focus ownership and one-tap ClipboardItem
 
 Independent review reproduced simple-page Owner UI moving to hidden Workspace on focus/expiry. Actual iPhone automatic-copy failure at 03:44 UTC and Joey's 03:45 single-tap requirement are addressed through active-view rendering and immediate ClipboardItem write with fresh-gated promised text. All four viewport fixtures and 660 portable tests PASS; denied/unsupported APIs retain explicit select-all manual fallback without claiming clipboard success. Actual iPhone success is not established by those synthetic fixtures. See [verification](MC_JOEY_FOCUS_CLIPBOARD_VERIFICATION_20261010.md) and [current HANDOFF](../HANDOFF.md). Parent should notify completion before another device attempt; no install/pairing/permission workaround.
