@@ -1,3 +1,30 @@
+# Mission Control five-scope private repository reporting rollout
+
+Project: MISSION_CONTROL
+Timestamp: 2026-10-10T07:23:00Z
+Task: Connect the approved four private repositories with exact source profiles and Codex report verification
+Status: LOCAL_VERIFIED_PENDING_PUBLICATION
+Last Developer: Codex
+Executed by: Codex
+Actual Model: UNKNOWN
+Baseline: ace232dd293c7439e5028aaf90e8e4c9d4748ed4
+
+## Current checkpoint
+
+The four additional private repositories now have five exact source profiles and independent guarded orphan mc/progress branches. Actual Codex verification runs published started/progress/completed per scope, with new source SHA packets and fixed-reader FOUND readback. These completed runs mean configuration/reporting verification only, not product feature completion or acceptance. University remains a separate candidate with JoeyAcceptancePending. No Claude/Hermes execution, model selection, MC dispatch, SQL, permission/secret change or new paid service was introduced.
+
+Joey approved source profile writes and disclosed existing CI/production redeploy side effects. Actual Mac UI confirmed root guard placement for five linked Vercel projects. Their report-branch deployment lists are empty and source-profile rebuilds are READY at exact source SHAs. Asset has no linked project in the current team; other teams are unverified. Source commits change only the profile JSON, preserving every original application/document/workflow file. Independent run/task, null predecessor and ordered context paths bind each scope. Original observed vs accepted baseline and candidate qualifications remain unchanged.
+
+## Verification
+
+Five-scope literal parity and latest copied helper tests pass (10 synthetic tests). Actual helper/Git/source/scope/report bytes are independently verified; synthetic Owner boundaries are clearly distinguished from real served acceptance. Full portable checks and final MC release evidence are recorded in the external rollout receipt. Exact source/report/guard commits and qualification details: docs/MC_FIVE_SCOPE_REPORT_ROLLOUT_20261010.md. The old MC failed pilot maintenance audit and valid Claude v3/Codex completed reports remain untouched.
+
+## Next Action
+
+Using existing Owner access, verify each project and both Asset tracks at their new source SHAs: Codex report, independent task/run, complete background and copied instruction. University remains JoeyAcceptancePending; missing Agent signatures/document times stay unrecorded. Exact real clipboard bytes, other-team Asset deployment scope, and overall product acceptance remain unverified. Start requested product feature work as a separate actual run; do not treat this reporting verification as product development or acceptance.
+
+---
+
 # Mission Control current handoff summary isolation
 
 Project: MISSION_CONTROL
