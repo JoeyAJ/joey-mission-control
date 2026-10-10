@@ -27,6 +27,14 @@
       "kind": "started",
       "summary": "ClaudeCode (Claude Desktop Code) started reporting-only pilot from pinned HANDOFF.md at 0a4c627; Git-source-bound packet, no Owner UI clipboard receipt claimed.",
       "result": null
+    },
+    {
+      "id": "claude-mc-desktop-pilot-run-20261010T055619Z-b3e4d1-e2",
+      "sequence": 2,
+      "eventAt": "2026-10-10T05:58:44.000Z",
+      "kind": "progress",
+      "summary": "Ran node --test tests/repository-run-contract.test.mjs tests/repository-run-reporter.test.mjs locally (Node v22.22.3, synthetic temp Git only): exit 1, 10 pass / 1 fail. Contract 5/5 PASS; reporter 5/6 PASS. FAIL: copied generic helper test (null output). Diagnosis: macOS os.tmpdir /var symlink vs /private/var realpath makes copied helper entry check skip main; same test PASSes with realpath TMPDIR (diagnostic only).",
+      "result": null
     }
   ]
 }
