@@ -1,4 +1,5 @@
 // Portable private intake, assembled only from verified reads. No dispatch adapter.
+import {currentHandoffDocument} from '../canonical/handoff-checkpoint.mjs';
 import {ownerAgentSelection} from './agent-handoff-selection.mjs';
 const sensitive=/Bearer\s+|\b(?:token|password|secret|api[_ -]?key)\s*[:=]\s*\S|gh[pousr]_[A-Za-z0-9]|github_pat_|sk-[A-Za-z0-9]{8}|(?:BEGIN\s+[^\n]*PRIVATE KEY)|\bAKIA[A-Z0-9]{16}\b|\beyJ[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.|["']?(?:rawModelPayload|authCache|reasoning)["']?\s*[:=]/i;
 const fail=code=>{throw Error(code);};
@@ -60,8 +61,8 @@ export function buildAgentContinuationPackage({handoff,runs,latestEvent=null,own
  const source=pin(h.source),document=text(h.document,131072),p=pick(h.progress,['task','recordedStatus','lastAgent','lastModel']),context=pick(h.taskEventContext,['taskId','runId','runHandoffSource','latestSourceChanged','durableRevision','journalRevision','sourceQualification','storageQualification']);
  if(!Array.isArray(runs)||!runs.length||runs.length>100)fail('CONTINUATION_HISTORY_INVALID');
  const history=runs.map(runHistory),original=history.find(r=>r.runId===context.runId);if(!original)fail('CONTINUATION_HISTORY_INVALID');
- const current=sections(document).find(s=>/^Current task progress\b/i.test(s.name));
- const top=sections(document),section=names=>current?subsection(current.body,names):top.find(s=>names.includes(s.name.toLowerCase()))?.body||null;
+ const currentDocument=currentHandoffDocument(document),current=sections(currentDocument).find(s=>/^Current task progress\b/i.test(s.name));
+ const top=sections(currentDocument),section=names=>current?subsection(current.body,names):top.find(s=>names.includes(s.name.toLowerCase()))?.body||null;
  let checkpoint=null;if(latestEvent){const e=pick(latestEvent,['runId','kind','publicSummary','sourceQualification','eventAt','receivedAt']);if(e.runId!==context.runId)fail('CONTINUATION_HISTORY_INVALID');checkpoint={kind:text(e.kind),summary:text(e.publicSummary,1024,{nullable:true}),sourceQualification:text(e.sourceQualification),eventAt:text(e.eventAt,40,{nullable:true}),receivedAt:text(e.receivedAt,40,{nullable:true})};}
  const documents=contextIndex(h.contextDocuments,source),lastDeveloper=text(p.lastAgent,128,{nullable:true}),next=section(['next action','next proposed action']),completed=section(['completed','changes']);
  const entryInstructions=['Continue MISSION_CONTROL from the private repository '+source.repositoryId+', branch '+source.requestedRef+'.',

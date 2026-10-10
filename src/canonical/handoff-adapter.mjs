@@ -1,5 +1,6 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import {currentHandoffDocument} from './handoff-checkpoint.mjs';
 import { parseMarkdown } from './markdown.mjs';
 import { sha256, sourceRef } from './fingerprint.mjs';
 import { isStrictDateTime } from './date-time.mjs';
@@ -23,9 +24,9 @@ async function safeRealFile(root,file) {
 }
 
 export function parseHandoff(text,sourcePath,knownEntities=null) {
-  const parsed=parseMarkdown(text),raw=field(text,'Project');
+  const current=currentHandoffDocument(text),parsed=parseMarkdown(current),raw=field(current,'Project');
   const entityId=(knownEntities?knownEntities.has(raw):/^[A-Z][A-Z0-9_-]+$/.test(raw))?raw:null;
-  const timestamp=field(text,'Timestamp'),task=field(text,'Task'),status=field(text,'Status');
+  const timestamp=field(current,'Timestamp'),task=field(current,'Task'),status=field(current,'Status');
   const conflictReasons=[];
   if(!entityId)conflictReasons.push('Unknown or ambiguous entity');
   if(!isStrictDateTime(timestamp))conflictReasons.push('Missing or invalid timestamp');
@@ -33,9 +34,9 @@ export function parseHandoff(text,sourcePath,knownEntities=null) {
   if(!status)conflictReasons.push('Missing status');
   return {
     schemaVersion:'1.0',timestamp,entityId,task,status,
-    executedBy:field(text,'Executed by')||field(text,'Agent'),model:field(text,'Model'),
-    summary:section(parsed,'Summary'),changes:section(parsed,'Changes')||section(parsed,'Content'),verification:section(parsed,'Verification'),
-    commit:(text.match(/Commit:\s*`([^`]+)`/i)||[])[1]||'',decisionRequired:section(parsed,'Decision Required'),
+    executedBy:field(current,'Executed by')||field(current,'Agent'),model:field(current,'Model'),
+    summary:section(parsed,'Current checkpoint')||section(parsed,'Summary'),changes:section(parsed,'Changes')||section(parsed,'Content'),verification:section(parsed,'Verification'),
+    commit:(current.match(/Commit:\s*`([^`]+)`/i)||[])[1]||'',decisionRequired:section(parsed,'Decision Required'),
     nextAction:section(parsed,'Next Proposed Action')||section(parsed,'Next Action'),sourcePath,fingerprint:sha256(text),source:sourceRef(sourcePath,text,'Handoff',{as_of:timestamp}),conflict:conflictReasons.length>0,conflictReasons
   };
 }

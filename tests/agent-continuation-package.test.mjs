@@ -56,3 +56,7 @@ test('direct entry indexes verified files, signed developer and optional model w
  for(const patch of [{path:'docs/MISSING_INVENTED.md'},{resolvedCommitSha:a},{providerBlobId:'invalid'}]){const changed={...h,contextDocuments:[{...h.contextDocuments[0],...patch}]};assert.throws(()=>build({handoff:changed}),/SOURCE_INVALID/);}
  assert.throws(()=>build({ownerSelection:{agent:'Cursor',model:'Bearer SYNTHETIC_VALUE'}}),/UNSAFE/);
 });
+test('preserved attributed run document cannot supply a current stage or next steps to the continuation',()=>{
+ const h=handoff();h.document='# Current handoff\nProject: MISSION_CONTROL\nTimestamp: 2026-10-10T06:47:36Z\nTask: Current task\nStatus: LOCAL_VERIFIED\n## Changes\nCurrent verified checkpoint.\n## Next Action\nVerify current Owner copy.\n\n---\n'+doc;
+ const p=build({handoff:h});assert.equal(p.projectSnapshot.nextSteps,'Verify current Owner copy.');assert.equal(p.projectSnapshot.completion,'Current verified checkpoint.');assert.equal(p.progress.currentStage,null);assert(p.document.content.includes('OLD PUBLICATION TODO'));assert(!p.entryInstructions.includes('OLD PUBLICATION'));assert(!JSON.stringify(p.progress).includes('Prepare the approved local slice'));
+});

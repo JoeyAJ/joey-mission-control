@@ -1,6 +1,7 @@
 import mcSourceProfile from '../../.mission-control/source-profile.json' with {type:'json'};
 import {selectRepositoryRunProfile} from '../reporting/repository-run-source-profile.mjs';
 // Server/agent-side repository reads only. No provider SDK, credential or writes.
+import {currentHandoffDocument} from './handoff-checkpoint.mjs';
 import {parseHandoff} from './handoff-adapter.mjs';
 import {sha256} from './fingerprint.mjs';
 import {isStrictDateTime} from './date-time.mjs';
@@ -50,7 +51,7 @@ export async function readRemoteHandoff({configuration,reader,signal,now=Date.no
   observation.source.documentTimestamp=parsed.timestamp;
   observation.freshness=now()-Date.parse(parsed.timestamp)>maxAgeMs?'STALE_DOCUMENT':'RECENT_DOCUMENT';
   observation.status=observation.freshness==='STALE_DOCUMENT'?'STALE':'FOUND';
-  const header=file.content.split(/^## /m)[0],metadata=name=>header.match(new RegExp('^'+name+':\\s*(.+)$','mi'))?.[1]?.trim()||null;
+  const header=currentHandoffDocument(file.content).split(/^## /m)[0],metadata=name=>header.match(new RegExp('^'+name+':\\s*(.+)$','mi'))?.[1]?.trim()||null;
   observation.progress={qualification:'DOCUMENT_REPORTED',task:parsed.task,recordedStatus:parsed.status,summary:parsed.summary,changes:parsed.changes,verification:parsed.verification,nextAction:parsed.nextAction,decisionRequired:parsed.decisionRequired,lastAgent:metadata('Last Developer')||metadata('Executed by')||metadata('Agent'),lastModel:metadata('Model')};
   for(const path of c.contextPaths||[]){
    if(!['README.md','docs/PRODUCT_CHARTER.md','docs/MC_PHASE_PLAN.md','docs/STAGE_HANDOFF_TEMPLATE.md'].includes(path))throw Error('CONTEXT_PATH_INVALID');

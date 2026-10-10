@@ -20,3 +20,15 @@ test('rejects LATEST and HISTORY symlink escapes using canonical realpaths',asyn
   await fs.symlink(path.join(outside,'evil.md'),path.join(d,'HISTORY','evil.md'));
   await assert.rejects(()=>loadHandoffs(d),/symlink|containment/i);
 });
+
+test('current attributed checkpoint owns summary and next steps; preserved releases cannot overwrite it',()=>{
+ const current='# Current\nProject: MISSION_CONTROL\nTimestamp: 2026-10-10T06:47:36Z\nTask: Current maintenance\nStatus: LOCAL_VERIFIED\nBaseline: '+ 'a'.repeat(40)+'\n## Current checkpoint\nCurrent source-bound result.\n## Next Action\nValidate current Owner copy.\n';
+ const history='\n---\n# Historical release\nProject: MISSION_CONTROL\nTimestamp: 2026-10-09T05:00:00Z\nTask: Old release\nStatus: OLD\n## Summary\nOld release 4e65e2d.\n## Next Proposed Action\nPublish old release 4e65e2d.\n## Next Action\nRepeat old publication.\n';
+ const h=parseHandoff(current+history,'repo@'+'b'.repeat(40)+':HANDOFF.md');assert.equal(h.summary,'Current source-bound result.');assert.equal(h.nextAction,'Validate current Owner copy.');assert.equal(h.task,'Current maintenance');assert.equal(h.timestamp,'2026-10-10T06:47:36Z');assert.equal(h.fingerprint,parseHandoff(current+history,'other-path').fingerprint);assert.notEqual(h.fingerprint,parseHandoff(current,'same').fingerprint);
+ const missing=parseHandoff(current.replace('## Current checkpoint\nCurrent source-bound result.\n','').replace('## Next Action\nValidate current Owner copy.\n','')+history,'x');assert.equal(missing.summary,'');assert.equal(missing.nextAction,'');
+ const invalid=parseHandoff(current.replace('2026-10-10T06:47:36Z','invalid')+history,'x');assert(invalid.conflict);assert.equal(invalid.timestamp,'invalid');
+ const futureHistory=history.replace('2026-10-09T05:00:00Z','2099-01-01T00:00:00Z');assert.equal(parseHandoff(current+futureHistory,'x').nextAction,'Validate current Owner copy.');
+});
+test('explicit history section ends current extraction without changing original bytes; fenced titles are not record boundaries',()=>{
+ const current=sample+'\n## Example\n```markdown\n# Example title\n```\n';const h=parseHandoff(current+'\n## Preserved prior checkpoint\n## Summary\nOLD\n## Next Proposed Action\nOLD','x');assert.equal(h.summary,'Done.');assert.equal(h.nextAction,'Stop.');
+});

@@ -1,3 +1,30 @@
+# Mission Control current handoff summary isolation
+
+Project: MISSION_CONTROL
+Timestamp: 2026-10-10T07:02:05Z
+Task: Keep current document summary and next steps separate from retained history
+Status: LOCAL_VERIFIED_PENDING_PUBLICATION
+Last Developer: Codex
+Executed by: Codex
+Actual Model: UNKNOWN
+Baseline: 26a79e56e230214ee135ddd57537f0a93a872799
+
+## Current checkpoint
+
+Document summary and next steps now come only from this leading attributed handoff record. Current checkpoint is an explicit summary source; repeated headings and old release instructions in retained historical records cannot replace it. The entire original document, history and fingerprint remain available in private full context. Missing current fields remain unrecorded; invalid current metadata does not fall back to old history.
+
+Parent relayed actual Owner QA at 26a79e: Claude v3 completed feature/time, three events, fifteen tests, full context run/workRef/report SHA and maintenance audit, advanced mode and reload all passed. The real copy button displayed copied; exact clipboard bytes remain unverified because TextEdit paste awaited system approval. This writer does not start another Claude pilot or change mc/progress. Source/head/Owner gates and the approved single-blob maintenance policy remain unchanged.
+
+## Verification
+
+Regression cases cover current timestamp/source record plus retained old Summary/Next Proposed Action/Next Action, missing current fields, invalid current time, misleading future history, explicit history boundaries and continuation exclusion of historical current-stage sections. The actual full app fixture checks equal current next steps in full background and copied instruction, preserves original history separately, and runs four widths with source changes, outage, expiry and late project switch. Automated Owner/document/clipboard upstreams remain synthetic.
+
+## Next Action
+
+Recheck the current document summary and next steps through existing Owner access at the latest fixed Preview. The external release receipt records final exact SHA/READY/alias and unchanged report HEAD. Exact real clipboard bytes and overall product acceptance remain pending. Continue only already authorized work; never use retained old release instructions as current next steps.
+
+---
+
 # Mission Control exact-blob rejected pilot maintenance
 
 Project: MISSION_CONTROL
