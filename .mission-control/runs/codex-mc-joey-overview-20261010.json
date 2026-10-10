@@ -64,6 +64,14 @@
       "kind": "progress",
       "summary": "進階console暖色／flat evidence與graph錨定已驗證，715測試通過。操作QA另查出簡易頁返回工作台會重置route／scroll；已接回同案同track的既有route記憶並修正hidden pane捲動恢復，正在回歸。",
       "result": null
+    },
+    {
+      "id": "codex-mc-joey-overview-20261010-reference-published",
+      "sequence": 6,
+      "eventAt": "2026-10-10T08:19:03.122Z",
+      "kind": "progress",
+      "summary": "第2階段已發布固定Preview 965237a／READY：暖色flat console、graph下方錨定、同track閱讀與scroll恢復、NO_REPORTS及時間排序修正。715測試、五尺寸、三語系12組操作QA通過；第3階段狀態／裝置验證待續。",
+      "result": null
     }
   ]
 }
