@@ -80,6 +80,14 @@
       "kind": "progress",
       "summary": "Codex 開始第3階段三語系／四寬度與signed-out、loading、empty、stale、blocked、failed、completed、PARTIAL、維護、過期／撤權驗證；截圖使用合成Owner／資料，會私有保存供外觀審查。",
       "result": null
+    },
+    {
+      "id": "codex-mc-joey-overview-20261010-locale-ui",
+      "sequence": 8,
+      "eventAt": "2026-10-10T08:33:42.135Z",
+      "kind": "progress",
+      "summary": "三語系／狀態矩陣已建立；已補韓文維護與来源標籤、將完成／失敗結果前置、限制長中文摘要高度並保留展開全文、加大手機disclosure觸控區。正在驗證13狀態×12語系寬度組及私有合成截圖。",
+      "result": null
     }
   ]
 }
