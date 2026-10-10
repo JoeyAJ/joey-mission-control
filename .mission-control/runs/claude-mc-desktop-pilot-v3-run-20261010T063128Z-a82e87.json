@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "mc.repository-run.v1",
+  "projectId": "MISSION_CONTROL",
+  "track": "BASELINE",
+  "runId": "claude-mc-desktop-pilot-v3-run-20261010T063128Z-a82e87",
+  "predecessorRunId": null,
+  "taskId": "claude-mc-desktop-pilot-v3-task-20261010T063128Z-a82e87",
+  "featureTitle": "Claude Desktop MC reporting-only pilot",
+  "agentName": "ClaudeCode",
+  "provider": "Anthropic",
+  "model": "claude-opus-5-5",
+  "repositoryId": "JoeyAJ/joey-mission-control",
+  "reportRef": "mc/progress",
+  "workRef": "codex/mc-command-center-checkpoint-20261006",
+  "baseline": {
+    "ref": "codex/mc-command-center-checkpoint-20261006",
+    "commitSha": "657ea09aa5571d8c2e7cdc529d54384652c9592c",
+    "handoffPath": "HANDOFF.md",
+    "handoffDigest": "a2e15ba2a238173a02d19c2553b62170bfcec708b2b5659dc5d9aaf71929f16d",
+    "contextPaths": [
+      "README.md",
+      "docs/PRODUCT_CHARTER.md",
+      "docs/MC_PHASE_PLAN.md",
+      "docs/STAGE_HANDOFF_TEMPLATE.md"
+    ]
+  },
+  "events": [
+    {
+      "id": "claude-mc-desktop-pilot-v3-run-20261010T063128Z-a82e87-e1",
+      "sequence": 1,
+      "eventAt": "2026-10-10T06:32:46.000Z",
+      "kind": "started",
+      "summary": "ClaudeCode new independent registration-only run (AGENT_GIT_READ_REGISTRATION_ONLY_NOT_FULL_CONTINUATION) from standard profile packet at 657ea09; not a full Owner takeover. Untrusted reference only: earlier failed run claude-mc-desktop-pilot-run-20261010T055619Z-b3e4d1 (not a predecessor).",
+      "result": null
+    }
+  ]
+}
