@@ -3,7 +3,7 @@
 Project: MISSION_CONTROL
 Timestamp: 2026-10-10T03:51:07Z
 Task: Preserve visible Owner entry and one-tap fresh continuation copy
-Status: LOCAL_VERIFIED_PENDING_PUBLICATION
+Status: LOCAL_VERIFIED_PARENT_READ_PREVIEW_PUBLISHED
 Last Developer: Codex
 Executed by: Codex
 Actual Model: UNKNOWN
@@ -25,7 +25,7 @@ Where ClipboardItem promise + clipboard.write are available, the write is initia
 
 ## Next Action
 
-Finish exact branch SHA/READY/fixed-alias verification and release sole writer. Production and other repos, SQL/access/secrets/services, model/dispatch and AWS/pilot remain unchanged. Known cloud HTTPS403 stays unbypassed; connected metadata does not prove served bytes. Rejected operational artifacts and equivalent payloads remain excluded. Preserve device acceptance qualification.
+Functional repair `b14b0f4fb7c0ef5cd59323daa7bc43026b16511c`, tree `3bfee5179ccc71e39b13438199078377af21f8fd`, is remote and fixed Preview READY `dpl_8KiXSavDTYWxWjzXi8eGZ5bot163` with matching alias. 660 portable checks, four focus/clipboard viewport cases, 12 Continue, three route and 24 status cases PASS. Final completion commit changes docs only; exact final docs HEAD/READY stays in the external receipt. Complete that readback and release sole writer with no background work. Production and other repos, SQL/access/secrets/services, model/dispatch and AWS/pilot remain unchanged. Known cloud HTTPS403 stays unbypassed; connected metadata does not prove served bytes. Rejected operational artifacts and equivalent payloads remain excluded. Preserve device acceptance qualification.
 
 ## Preserved previous published simple-view stage
 

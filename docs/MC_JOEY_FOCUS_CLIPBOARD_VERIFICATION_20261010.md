@@ -31,3 +31,7 @@ Actual iPhone copy success after this repair is unverified and remains for Joey'
 ## Completed local checks
 
 660/660 portable tests PASS, with official bundle build, schema/fixture validation and static safety. 21 final formatter/root-entry checks PASS. Final simple browser: 4/4 widths PASS; 212 private fixture reads, 756 synthetic GitHub reads, zero external requests/unexpected writes. Twelve four-source Continue cases PASS (243 fixture reads / 921 synthetic GitHub reads); three route cases PASS; 24 qualified-status cases PASS. Full before/after focus reproduction and click-task promised payload assertions are included. Current iPhone/Owner runtime remains unverified.
+
+## Functional Preview publication
+
+Remote/GitHub exact functional commit: `b14b0f4fb7c0ef5cd59323daa7bc43026b16511c`; tree `3bfee5179ccc71e39b13438199078377af21f8fd`. Connected Vercel deployment `dpl_8KiXSavDTYWxWjzXi8eGZ5bot163` READY, exact githubCommitSha, non-production target. Fixed alias `joey-mission-control-git-codex-mc-comma-fceec2-joeyajs-projects.vercel.app` binds that deployment on project `prj_X67htPw7vkRI2tuf8817vOUCGQOD`. Later completion commit changes only docs; exact final docs deployment is in the local external release receipt. No served HTTPS/Owner/device result is inferred.
