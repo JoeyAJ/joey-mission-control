@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "mc.repository-run.v1",
+  "projectId": "MISSION_CONTROL",
+  "track": "BASELINE",
+  "runId": "codex-mc-dynamic-workbench-20261010",
+  "predecessorRunId": null,
+  "taskId": "mc-dynamic-workbench-reference-20261010",
+  "featureTitle": "動態參考工作台：真實回報連動與本地時間",
+  "agentName": "Codex",
+  "provider": null,
+  "model": null,
+  "repositoryId": "JoeyAJ/joey-mission-control",
+  "reportRef": "mc/progress",
+  "workRef": "codex/mc-command-center-checkpoint-20261006",
+  "baseline": {
+    "ref": "codex/mc-command-center-checkpoint-20261006",
+    "commitSha": "97e5ea04246e34e679a7f0f3658ee322142eb97f",
+    "handoffPath": "HANDOFF.md",
+    "handoffDigest": "213c54d00672605e1590565cd26daa7bdb4e48ca89678632565ffd151ff53f5b",
+    "contextPaths": [
+      "README.md",
+      "docs/PRODUCT_CHARTER.md",
+      "docs/MC_PHASE_PLAN.md",
+      "docs/STAGE_HANDOFF_TEMPLATE.md"
+    ]
+  },
+  "events": [
+    {
+      "id": "mc-dynamic-start",
+      "sequence": 1,
+      "eventAt": "2026-10-10T22:57:29.505132Z",
+      "kind": "started",
+      "summary": "已恢復雲端97e5ea0 checkout並開始已授權動態工作台開發：解碼329-frame公開動畫、保存分期驗收、實作回報驅動互動與本地時間。既有completed run不重啟，不新增存取。",
+      "result": null
+    }
+  ]
+}
