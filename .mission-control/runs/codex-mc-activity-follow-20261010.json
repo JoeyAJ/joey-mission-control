@@ -32,6 +32,14 @@
       "kind": "started",
       "summary": "已fresh核1fb6bd1並開始下一個既有權限UI階段：鎖定選取run、跟隨新事件、背景run未讀／注意、歷史閱讀暫停／恢復。保持v1嚴格schema，無新telemetry、外部hooks或delivery欄位；前階段terminal不追加。",
       "result": null
+    },
+    {
+      "id": "mc-activity-review-fixed",
+      "sequence": 2,
+      "eventAt": "2026-10-10T23:34:49.963237Z",
+      "kind": "progress",
+      "summary": "四項獨立 review 修正已實作：交接取消在送出剪貼簿內容前核對、run 卡片鎖定點選 identity、撤銷／登出清除 host 私有 attributes、離開工作台 dispose dialog；活動跟隨六組 zhTW／ko／en × desktop／mobile 測試及七項 activity／strict-v1 delivery 契約測試 PASS。既有全套回歸仍進行中；未聲稱產品驗收或 served URL。",
+      "result": null
     }
   ]
 }
