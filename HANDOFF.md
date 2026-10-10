@@ -3,7 +3,7 @@
 Project: MISSION_CONTROL
 Timestamp: 2026-10-10T04:59:42Z
 Task: Bind continuation to fresh run evidence and bind publishers to their own registration
-Status: LOCAL_VERIFIED_PENDING_PUBLICATION
+Status: LOCAL_VERIFIED_PARENT_READ_PREVIEW_PUBLISHED
 Last Developer: Codex
 Executed by: Codex
 Actual Model: UNKNOWN
@@ -23,7 +23,9 @@ Joey approved the MC-only live test. Parent's read-only Vercel UI confirmed effe
 
 ## Next Action
 
-Commit/push this current branch to the existing fixed Preview, verify exact SHA/READY/alias and unchanged Production, then publish the approved real run's completed result with this code/handoff SHA and actual tests; read back exact report bytes and final Actions/Vercel absence. Final release/report SHA is recorded externally. Real Preview Owner/device execution remains unverified; no all-Agent/all-project acceptance claim. No other repo writes, SQL/access/secrets/services/model dispatch/AWS. Known HTTPS403 and GitHub ruleset403 remain unbypassed; rejected VM operational artifacts remain excluded. [Verification](docs/MC_REPORT_AWARE_TAKEOVER_VERIFICATION_20261010.md).
+Functional commit `d4b18cc1132003dfaf46462a08a1c0b32f85c997`, tree `8bc6e1329eb7cba1c13c132f38a98a11b0b87c9f`, is remote exact and fixed Preview READY `dpl_vvZw8q9GnC5NUa96Vd6bUszGFmpK`. This final handoff records completed code/validation/publication; the approved real run terminal receipt will be published immediately after this handoff commit and verified externally. Final report/app-doc SHA, READY/alias and side-effect readback belong to the external release receipt, avoiding self-referential commit claims.
+
+Parent can verify actual Preview Owner/device display/copy and a separately authorized next Agent against the report/work/handoff pointers. Other four project report branches and other Agent integrations are not activated or accepted. No implementation or permission expansion is pending in this fix. Preserve silence/expiry qualifications and self-reported identity; never infer actual executor connection. Production/other repos/SQL/access/secrets/services/model dispatch/AWS remain unchanged. Known HTTPS403 and ruleset403 stay unbypassed; rejected VM artifacts remain excluded.
 
 ## Preserved repository-report implementation stage
 

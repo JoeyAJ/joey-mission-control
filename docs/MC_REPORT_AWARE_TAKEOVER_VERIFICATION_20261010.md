@@ -1,6 +1,6 @@
 # Fresh report-aware takeover and approved MC live proof
 
-Baseline: `48700364e21691391ed9737eff2e54dd68d46cd1`. Final application/report SHAs and READY/alias are recorded after publication. No overall MC / all-Agent acceptance claim.
+Baseline: `48700364e21691391ed9737eff2e54dd68d46cd1`. Functional publication: remote exact `d4b18cc1132003dfaf46462a08a1c0b32f85c997`, tree `8bc6e1329eb7cba1c13c132f38a98a11b0b87c9f`, fixed Preview READY `dpl_vvZw8q9GnC5NUa96Vd6bUszGFmpK`. Final docs/report SHA and alias are recorded externally after the terminal event. No overall MC / all-Agent acceptance claim.
 
 ## Three review fixes
 
@@ -24,4 +24,4 @@ First remote ref directly points at guarded orphan commit `752a711b2909b8f82ffd1
 
 Real report bytes passed actual MC parser/private server/report component at 375/390/430/1440. Local Owner is explicitly synthetic; this proves real Git-to-MC transport/rendering, not served Preview Owner execution. Live read-only script: `tests/browser/repository-live-readback-qa.mjs <exact-report-head> running|completed`; it checks report-only tree, fixed repo, blob/hash and exact head, performs no Git writes, and uses installed /usr/bin/chromium. Local receipts/screenshots: `/tmp/mc-live-report-pilot/`. No raw source/credential or rejected VM payload is published.
 
-Final completed report, application publication and side-effect readback follow once the code/handoff commit is available. No timer-produced heartbeat. On silence MC correctly shows overdue/unconfirmed, not stopped/completed. Known cloud HTTPS403 and ruleset403 are not bypassed; real Owner device/other Agent integration remains unverified.
+Application code is published; actual checkpoint 3 is `f941f60678571473d3e6524be5b68dc49276be2b`, blob `766580b7eec826a672d9e98214412feec9f5a3bc`. This handoff commit closes the code stage; publish completed immediately afterward with the functional code SHA and this exact handoff SHA, then record final readback/side-effect proof externally. No timer-produced heartbeat. On silence MC correctly shows overdue/unconfirmed, not stopped/completed. Known cloud HTTPS403 and ruleset403 are not bypassed; real Owner device/other Agent integration remains unverified.
