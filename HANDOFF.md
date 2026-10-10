@@ -3,7 +3,7 @@
 Project: MISSION_CONTROL
 Timestamp: 2026-10-10T07:58:13Z
 Task: Integrate real Agent progress into Joey overview and reconcile current acceptance
-Status: LOCAL_VERIFIED_PENDING_PUBLICATION
+Status: LOCAL_VERIFIED_PARENT_READ_PREVIEW_PUBLISHED
 Last Developer: Codex
 Executed by: Codex
 Actual Model: UNKNOWN
@@ -13,7 +13,7 @@ Baseline: 0613acdd3f972e8ab761565d08d7149a51ef63b2
 
 The default Joey view now puts source-verified current Agent/requested feature/latest result/blocker and report decision-request qualification before one primary takeover action. Full document progress and report/test/event/source records remain expandable below copy. All active workers remain explicit; report completion is separate from product acceptance. Missing source signatures/document timestamps remain unrecorded. Source/auth/report/track changes withdraw current summary; active expiry is bounded and outage never restores historical work as running.
 
-This is actual Codex feature development: task mc-joey-overview-reference-20261010, run codex-mc-joey-overview-20261010, latest progress sequence 2 at report HEAD 9eb9bf15c032622ecbc3ec97c64e19c5cd160e1a. Standard reporter and current source profile/Git packet bind baseline 0613acdd. Actual fixed-reader FOUND confirms three trusted MC runs and one approved historical maintenance exclusion; existing terminal reports are unchanged. The four-stage UX task remains in progress; no premature completed report.
+This is actual Codex feature development: task mc-joey-overview-reference-20261010, run codex-mc-joey-overview-20261010, latest progress sequence 3 at report HEAD d92f127d60dfdbad33aeb64518c79ce3f9ae6030. Standard reporter and current source profile/Git packet bind baseline 0613acdd. Actual fixed-reader FOUND confirms three trusted MC runs and one approved historical maintenance exclusion; existing terminal reports are unchanged. The four-stage UX task remains in progress; no premature completed report.
 
 Single current acceptance summary now governs README, AGENT_CONTROL, charter, phase and gap map. Actual MC Codex/Claude v3 and five additional scope Owner QA PASS remain established. Exact real clipboard/iPhone one-tap copy and overall Joey product acceptance remain pending. University is still JoeyAcceptancePending. Existing Nex E2E failure remains separately recorded. No model selector, dispatch, SQL, keys/permissions, AWS pilot, other-repository write or Production change.
 
@@ -23,7 +23,7 @@ Single current acceptance summary now governs README, AGENT_CONTROL, charter, ph
 
 ## Next Action
 
-Publish this first reviewable stage on the existing branch and fixed Preview; verify remote exact SHA and READY/alias. Continue the already authorized remaining stages: compare actual advanced console against the three approved desktop frames, refine only evidenced gaps, and verify zhTW/en/ko plus device layout. Preserve current acceptance evidence and real-copy limitations. Keep this same actual Codex task/run in progress while stages remain unfinished; append meaningful progress using exact current report blob/sequence, never modify terminal runs or start a repeat connection pilot. Final completion only follows the remaining implementation/tests/publication; Joey visual/product acceptance remains separate.
+Functional stage 421a0e525880aa2e619cfa2818f047952d06ad5c is already remote and fixed Preview READY at dpl_6CMAM5aeRZW6wSE3J2QHa1HA1jkD; alias resolves to that exact deployment/SHA. Production remains dpl_5GgJ8LhD4Ec73RGz9CEFe1ppZQnh. Cloud HTTPS CONNECT returned 403; it was not bypassed, and served Owner/clipboard/phone verification is not claimed. This documentation closure does not change the functional stage. Continue the already authorized remaining stages: compare actual advanced console against the three approved desktop frames, refine only evidenced gaps, and verify zhTW/en/ko plus device layout. Preserve current acceptance evidence and real-copy limitations. Keep this same actual Codex task/run in progress while stages remain unfinished; append meaningful progress using exact current report blob/sequence, never modify terminal runs or start a repeat connection pilot. Final completion only follows the remaining implementation/tests/publication; Joey visual/product acceptance remains separate.
 
 ---
 
