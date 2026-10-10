@@ -1,7 +1,7 @@
 # Mission Control — selected-run activity follow and review fixes
 
 Project: MISSION_CONTROL
-Timestamp: 2026-10-10T23:36:05.540261Z
+Timestamp: 2026-10-10T23:39:35.018200Z
 Task: Follow reported activity and resolve four independent workbench review regressions
 Status: LOCAL_VERIFIED_PREVIEW_PUBLISHED
 Last Developer: Codex
@@ -17,7 +17,7 @@ Four independent review fixes: Close/Escape cancellation is checked before deliv
 
 727 unit checks PASS; six two-run activity cases (zhTW/ko/en × 1440/390) PASS; promised-ClipboardItem and writeText cancellation two cases each PASS; final dynamic two cases PASS; twelve reading/focus, four-width fresh-copy and five-size reference regressions PASS. Full dynamic six-case matrix (including visible 30-second polling) and twelve four-source Continue regressions also PASS; see docs/MC_ACTIVITY_FOLLOW_VERIFICATION_20261010.md. Synthetic Auth/GitHub/clipboard evidence is separate from actual Owner/device acceptance. Private inspected screenshots are in docs/qa/mc-activity-follow-20261010, outside public/dist.
 
-Actual new run codex-mc-activity-follow-20261010 / task mc-activity-follow-stage-20261010 has predecessor codex-mc-dynamic-workbench-20261010. Sequence 2 progress is published at report commit 94365c380be747de30ecfe730d3e629c72a35ce2, blob e468f21abc7a5f3878260d7f8d85fcd407215106. Registration baseline stays 1fb6bd1; previous terminal runs and all other repository reports remain unchanged. The stage has not yet been terminally reported.
+Actual new run codex-mc-activity-follow-20261010 / task mc-activity-follow-stage-20261010 is completed sequence 3, predecessor codex-mc-dynamic-workbench-20261010. Connected private Git readback verified report commit c63a6600a33ecb4c658542b77ebb7669aa4d7bee, exact blob 01e36cb1a03b76124bc11b7d2c97666b4e618511, unchanged strict v1 parser, result codeSha ff84d67891e32ae43d51760b7ff778e1fc7bdc86 and consolidated handoff pointer 9925718267a6d3e96c49afa577b1d6686beb8265. Registration baseline stays 1fb6bd1; previous terminal runs and all other repository reports remain unchanged. This completed run is AGENT_REPORTED stage completion; served/device/Joey acceptance stays pending. Do not append to this terminal run.
 
 ## Delivery and data qualification
 
