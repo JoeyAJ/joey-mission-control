@@ -1,6 +1,6 @@
 # Repository-backed receiving-Agent progress reporting
 
-Implementation baseline: `9f53155cf38eb6961ba499585b9f310783e1c15e`. Current functional publication SHA and exact READY/alias are recorded in the release receipt after publication. This is implementation verification, not overall product acceptance.
+Implementation baseline: `9f53155cf38eb6961ba499585b9f310783e1c15e`. Functional publication: remote exact `1a9b7e498adb8d33e24f23a6c8ad077b36d90563`, tree `d056ffee5dddf2d9c139e74baa0d5b426dc7f426`, fixed Preview READY `dpl_2nWCPNXftCuKF7ZqiWmybRXLuPBz`, fixed alias matching. Production alias remains `dpl_5GgJ8LhD4Ec73RGz9CEFe1ppZQnh`; original Production SHA remains `8b4945b16a0b23f2e72033aa976fa34f94eabec0`. Final docs-only HEAD/READY is recorded externally. This is implementation verification, not overall product acceptance.
 
 ## Flow and qualifications
 

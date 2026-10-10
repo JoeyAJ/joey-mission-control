@@ -3,7 +3,7 @@
 Project: MISSION_CONTROL
 Timestamp: 2026-10-10T04:35:00Z
 Task: Implement portable receiving-Agent reports and bounded private MC progress reads
-Status: LOCAL_VERIFIED_PENDING_PUBLICATION
+Status: LOCAL_VERIFIED_PARENT_READ_PREVIEW_PUBLISHED
 Last Developer: Codex
 Executed by: Codex
 Actual Model: UNKNOWN
@@ -21,7 +21,7 @@ No live report branch has been created or pushed. Joey approved the exact MC-onl
 
 ## Next Action
 
-Publish this authorized application change to the existing development branch/fixed Preview and verify remote exact SHA, READY/alias and unchanged Production. Then execute the approved one real Codex/MC test run only after effective Vercel project root is confirmed; never substitute a synthetic Claude. Source/read metadata remains private/no-store/in-memory, no new credential/SQL/access/services/AWS. Known cloud HTTPS403 remains unbypassed. Rejected operational artifacts and equivalent payloads remain excluded. Details: [reporting implementation verification](docs/MC_REPOSITORY_RUN_REPORTING_VERIFICATION_20261010.md).
+Functional commit `1a9b7e498adb8d33e24f23a6c8ad077b36d90563`, tree `d056ffee5dddf2d9c139e74baa0d5b426dc7f426`, is remote exact and fixed Preview READY `dpl_2nWCPNXftCuKF7ZqiWmybRXLuPBz` with matching alias. Production alias remains `dpl_5GgJ8LhD4Ec73RGz9CEFe1ppZQnh`. Final docs-only HEAD/READY is recorded externally. Execute the approved one real Codex/MC test run only after effective Vercel project root is confirmed; never substitute a synthetic Claude. Source/read metadata remains private/no-store/in-memory, no new credential/SQL/access/services/AWS. Known cloud HTTPS403 remains unbypassed. Rejected operational artifacts and equivalent payloads remain excluded. Details: [reporting implementation verification](docs/MC_REPOSITORY_RUN_REPORTING_VERIFICATION_20261010.md).
 
 ## Preserved requirement checkpoint
 
