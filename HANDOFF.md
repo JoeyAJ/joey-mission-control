@@ -1,9 +1,9 @@
 # Mission Control exact-blob rejected pilot maintenance
 
 Project: MISSION_CONTROL
-Timestamp: 2026-10-10T06:45:20Z
+Timestamp: 2026-10-10T06:47:36Z
 Task: Preserve rejected pilot history with approved server-only maintenance audit
-Status: LOCAL_VERIFIED_PENDING_PUBLICATION
+Status: LOCAL_VERIFIED_PARENT_READ_PREVIEW_PUBLISHED
 Last Developer: Codex
 Executed by: Codex
 Actual Model: UNKNOWN
@@ -17,7 +17,7 @@ Read-only report HEAD `8cbd1ca2da179462012d85e56791326d5be694f2` contains two va
 
 ## Next Action
 
-Finish required verification and publish only the existing fixed Preview, verify remote exact SHA/READY/alias and report read HEAD. Production and all other repositories remain outside this change. New Agents should fresh-read this branch and the authoritative profile; use an independent new run or explicitly choose a validated predecessor, never the excluded failed history.
+Implementation commit `c7b63494311a512a75279dd9cb5180af160eefdc` was verified at the existing fixed Preview as READY deployment `dpl_5jT2NDcjaGLTD5irtubvVbdqJYi1`, exact alias and remote SHA. 694 tests, portable build/safety and the four-width takeover/copy fixtures pass. Cloud HTTPS CONNECT is 403; served bytes and real Owner copy acceptance remain unverified. Next confirm the final closure commit deployment metadata and perform real Owner acceptance through existing access when available. Production remains `dpl_5GgJ8LhD4Ec73RGz9CEFe1ppZQnh`; all other repositories remain outside this change. New Agents should fresh-read this branch and the authoritative profile; use an independent new run or explicitly choose a validated predecessor, never the excluded failed history.
 
 ---
 
