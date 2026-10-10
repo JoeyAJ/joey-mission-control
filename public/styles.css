@@ -556,3 +556,18 @@ body[data-active-module=workspace] #data-link-status strong{color:var(--console-
 .joey-live-overview dd:is([data-joey-overview-field=feature],[data-joey-overview-field=blocker]){display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 body[data-joey-simple=true] .utility-menu>summary{min-height:44px;box-sizing:border-box;display:flex;align-items:center}
 .joey-simple-technical>summary,.joey-simple-account .owner-auth-entry>summary{min-height:44px;box-sizing:border-box}
+/* Source-reported workbench. Arrival motion belongs to new validated events only. */
+.run-workbench-cards,.run-workbench-events,.run-workbench-explorer,.run-workbench-detail,.run-workbench-graph{min-width:0;padding:8px;border-bottom:1px solid #333728;color:#c6c7ae}
+.run-workbench-item{display:block;width:100%;text-align:left;white-space:normal;overflow-wrap:anywhere;padding:8px;margin:5px 0;color:inherit;background:#11140f;border:1px solid #363a2a;border-radius:3px;cursor:pointer}
+.run-workbench-item[aria-pressed=true]{background:#202416;border-color:#c8bd78;box-shadow:inset 2px 0 #c8bd78}
+.run-workbench-item :is(strong,small,time){display:block}.run-workbench-item p,.run-workbench-summary{white-space:pre-wrap;overflow-wrap:anywhere}
+.run-workbench-card[data-reported-state=blocked],.run-workbench-card[data-reported-state=failed],.run-workbench-attention{border-left:3px solid #d9ac67;color:#e2bc80}
+.run-workbench-card[data-card-scope=last-confirmed]{opacity:.8}.run-workbench-agent{color:#ded39b}.run-workbench-limits,.run-workbench-notice{font-size:11px;color:#aaa992;line-height:1.5}
+.run-workbench-graph{border:0}.run-workbench-graph .run-workbench-item{margin-left:12px;width:calc(100% - 12px);border-left:2px solid #8e8b58}.run-workbench-graph-root{border-bottom:1px solid #77754a;padding:5px;overflow-wrap:anywhere}
+.run-workbench-detail details{margin:8px 0}.run-workbench-detail summary{cursor:pointer}.run-workbench-detail time{display:block}.run-workbench-detail p{white-space:pre-wrap;overflow-wrap:anywhere}
+.run-event-arrived{animation:run-event-arrival 800ms ease-out 1}@keyframes run-event-arrival{from{background:#4b4d27}to{background:#11140f}}
+@media(prefers-reduced-motion:reduce){.run-event-arrived{animation:none}}
+@media(max-width:768px){.run-workbench-item{min-height:44px;font-size:13px}.run-workbench-detail summary{min-height:44px;display:flex;align-items:center}}
+.run-workbench-handoff{width:min(640px,calc(100vw - 40px));max-height:80vh;overflow:auto;box-sizing:border-box;background:#15180f;color:#d5d5ba;border:1px solid #928c5b;border-radius:8px;padding:20px}.run-workbench-handoff::backdrop{background:#000a}.run-workbench-handoff button{min-height:44px;margin:5px;padding:8px 14px}.run-workbench-handoff textarea{width:100%;box-sizing:border-box;min-height:220px;color:inherit;background:#090d08;white-space:pre-wrap}
+#workspace .run-workbench-graph .run-workbench-item{position:relative;left:auto;top:auto;transform:none;text-align:left;max-width:none}
+#workspace .command-graph[data-private-run-graph=true]>:not([data-run-workbench]),#workspace .command-inspector[data-private-run-details=true]>:not([data-run-workbench]){display:none}

@@ -1,3 +1,30 @@
+# Mission Control — dynamic report workbench and delivery closure
+
+Project: MISSION_CONTROL
+Timestamp: 2026-10-10T23:14:21.751487Z
+Task: Implement approved dynamic reference with real report coordination, local time and reusable delivery closure
+Status: LOCAL_VERIFIED_PENDING_PUBLICATION
+Last Developer: Codex
+Executed by: Codex
+Actual Model: UNKNOWN
+Baseline: 97e5ea04246e34e679a7f0f3658ee322142eb97f
+
+## Current checkpoint
+
+Static design remains not accepted; Joey authorized dynamic reference at 22:53:58 UTC and clarified delivery closure at 23:07:39 UTC. Executor decoded/inspected public 329-frame/27.5s animation. Phased plan and acceptance are in docs/MC_DYNAMIC_WORKBENCH_PLAN_20261010.md.
+
+Implemented report-driven Agent/task cards, transcript events, Explorer/result pointer selection, coordinated detail/relation graph, one-time new-event arrival, follow-latest with preserved manual history, source failure/current-work withdrawal, qualified previous-scope cards, localized browser time with exact ISO, and fresh-gated handoff dialog. No fake typing/file reads/diff/terminal/permission buttons, model choice or dispatch. Copied instruction now specifies tested source→authorized deployment→verified fixed URL→MC receipt→consolidated current handoff/data/migration state. Coding completed and delivery/product acceptance remain distinct; v1 deployment evidence is pending, not inferred from text. Optional adapter/delivery receipt designs do not enable new access.
+
+720 unit checks and six synthetic dynamic matrix cases PASS; final current-code two cases PASS; four-width fresh-copy and five-size reference regressions PASS. Independent reading/focus and final build/safety evidence are in dated verification. Private desktop/mobile/dialog images persisted outside public/dist. Real Owner dynamic UI is not verified. MC schema/data: no SQL or migration; report v1 and endpoint schemas unchanged.
+
+Actual new task mc-dynamic-workbench-reference-20261010 / run codex-mc-dynamic-workbench-20261010 has started and meaningful progress sequence 2, report HEAD 74006e4664c7e10d6796542412a7cd23d4202d6c, blob 69711b5b4e7f2a6bc55d7f0477f00dd57efafc16; original baseline is pinned 97e5ea0. Prior UX run remains completed. Parent real Asset→Claude started/completed use is retained, and University candidate coding-completed/deployment-pending example is documented; no other-repository writes.
+
+## Next Action
+
+Publish this bounded dynamic implementation to the existing fixed Preview, verify remote exact SHA/READY/alias and record actual run result with truthful served-URL limitations. Consolidate delivery receipt/current handoff for next Agent. User product/dynamic visual and actual device acceptance remain pending; do not ask Joey to run terminals for authorized cloud work. No Production, new access/credentials, other repo, SQL, AWS or automatic dispatch.
+
+---
+
 # Mission Control — advanced review artifact supplement
 
 Project: MISSION_CONTROL

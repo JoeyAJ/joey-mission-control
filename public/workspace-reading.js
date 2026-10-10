@@ -1,7 +1,7 @@
 // One active project's transient UI geometry. Never stores content, forms or Auth state.
 const states=new WeakMap();
 const panes={projects:'.command-projects',events:'.command-events',explorer:'.command-layout>.command-explorer',mobileExplorer:'.command-explorer-mobile',inspector:'.command-inspector',graph:'.command-graph',changes:'.command-changes',fileTabs:'.command-file-tabs',observer:'.command-context>.command-observer'};
-const controls=['data-command-project','data-command-event','data-explorer-item','data-mobile-explorer-item','data-explorer-compare','data-mobile-explorer-compare','data-graph-event','data-graph-file','data-graph-compare','data-graph-area','data-stage-file','data-inspector-tab','data-workspace-panel','data-command-refresh','data-command-filter','data-observer-event'];
+const controls=['data-run-selection','data-command-project','data-command-event','data-explorer-item','data-mobile-explorer-item','data-explorer-compare','data-mobile-explorer-compare','data-graph-event','data-graph-file','data-graph-compare','data-graph-area','data-stage-file','data-inspector-tab','data-workspace-panel','data-command-refresh','data-command-filter','data-observer-event'];
 const visible=node=>!!node&&node.getClientRects().length>0&&(!node.checkVisibility||node.checkVisibility({visibilityProperty:true}));
 const bounded=value=>Number.isFinite(value)?Math.min(10000000,Math.max(0,value)):0;
 function controlKey(root,node){
@@ -28,7 +28,7 @@ export function replaceCommandWorkspace(holder,renderNext){
  const positions=prior?.suspended&&prior.project===project?{...prior.positions}:geometry(old,prior);
  const focus=controlKey(old,holder.ownerDocument.activeElement);
  const sourceOpen=old?.querySelector('.command-source-details')?.open===true;
- const next=renderNext();holder.replaceChildren(next);
+ const next=renderNext();old?.disposeWorkbench?.();holder.replaceChildren(next);
  const sameProject=next.dataset.project===project;
  const sameReading=sameProject&&(next.dataset.readingKey||'')===readingKey;
  const nextPositions=sameProject?positions:{};

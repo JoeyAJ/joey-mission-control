@@ -1,3 +1,4 @@
+import {mountRunWorkbench} from '../reporting/workbench-view.mjs';
 import {mountRepositoryTakeover} from '../reporting/repository-takeover-view.mjs';
 import {createRepositoryRunClient} from '../reporting/repository-run-client.mjs';
 import {mountRepositoryRunTransport} from '../reporting/repository-run-view.mjs';
@@ -49,7 +50,7 @@ export function mountOwnerBrowserEntry({doc=document,locale='zh-TW',projectId,tr
  let w=copy[locale]||copy['zh-TW'],mw=mfaCopy[locale]||mfaCopy['zh-TW'],pw=ownerContextWords[locale]||ownerContextWords['zh-TW'];
  const node=(tag,cls)=>{const n=doc.createElement(tag);if(cls)n.className=cls;return n;};
  const root=node('details','owner-auth-entry command-owner-access'),summary=node('summary'),title=node('strong'),badge=node('span'),data=node('span'),body=node('div','owner-auth-body'),text=node('p');
- root.id='owner-workspace-access';summary.append(title,badge,data);root.append(summary,body);badge.setAttribute('role','status');text.setAttribute('role','status');body.append(text);
+ root.mountWorkbench=options=>mountRunWorkbench({...options,owner:root,doc});root.id='owner-workspace-access';summary.append(title,badge,data);root.append(summary,body);badge.setAttribute('role','status');text.setAttribute('role','status');body.append(text);
  const heading=()=>{title.textContent=w.title;data.textContent=w.data;};heading();
  if(!gate){root.dataset.ownerAuth='unconfigured';badge.textContent=w.unconfirmed;text.textContent=w.pending;return root;}
  let client;

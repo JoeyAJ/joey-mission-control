@@ -1,3 +1,9 @@
+# Current phase — dynamic reference workbench
+
+Static design is not accepted. Joey authorized dynamic reference implementation via parent at 2026-10-10 22:53:58 UTC. [Phased plan and acceptance](MC_DYNAMIC_WORKBENCH_PLAN_20261010.md); current factual acceptance remains [MC_CURRENT_ACCEPTANCE](MC_CURRENT_ACCEPTANCE.md). No model selector or automatic dispatch.
+
+## Historical static UX phase
+
 # Current phase — Joey overview and reference interface
 
 [Single current acceptance summary](MC_CURRENT_ACCEPTANCE.md) governs current status; [HANDOFF](../HANDOFF.md) records the latest development checkpoint. Actual MC receiving-Agent/report evidence and five-scope Owner reads passed. Exact real clipboard bytes, iPhone one-tap copy and final Joey product acceptance remain pending.

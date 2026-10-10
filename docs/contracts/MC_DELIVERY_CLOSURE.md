@@ -1,0 +1,17 @@
+# Reusable delivery closure and next-Agent contract
+
+A completed Agent report can establish attributed coding/test evidence. It cannot alone establish deployment, a working fixed public URL or Joey acceptance. Preserve original reports; add subsequent independently qualified delivery evidence instead of rewriting terminal events. Unknown and blocked are first-class states.
+
+| Stage | Required recorded evidence | Missing evidence |
+|---|---|---|
+| Source / tests | Exact work ref/code SHA, actual tests and outcomes, limits; tests apply to that code | Test/source verification pending |
+| Authorized deployment | Explicit existing authority, intended project/team/environment, deployment ID, exact code SHA, READY/error | Deployment pending, or exact approval/action/target blocked |
+| Fixed public URL | User-facing URL, alias→exact deploy/code, served test outcome/time and whether actual Owner/device/browser or synthetic | URL usability verification pending; metadata READY is separate |
+| MC receipt | Feature/task/run/Agent, code/tests, deployment/URL evidence qualification, blockers, pending product acceptance | No inferred deployed/accepted badge from summary text or copy |
+| Current handoff / data | Leading current status and next action consolidated; private source/data separate from public app; schema/migration version, what actually ran, outstanding steps/rollback limitations or explicitly no migration | Data/migration unknown or pending, not silently complete |
+
+The receiving Agent fresh-reads the current canonical source and relevant work ref/result/handoff, then uses its own existing authorization. It does not ask Joey to run terminals for already authorized work. It performs feasible tests/build/deployment/verifications, updates leading current handoff and linked plan/data status, records exact receipts and reports remaining blocked approvals with action/target/reason. If deployment/migration authority is absent, prepare the reviewable result and report that boundary; never infer permission from the contract.
+
+Current `mc.repository-run.v1` contains codeSha/tests/nextSteps/handoff, not independently verified deployment receipts. Its UI therefore keeps deployment/fixed URL evidence pending. Words such as “deployed” in a summary, a passed test called deployment, or a completed kind cannot bypass this qualification. Optional future deployment receipt must bind project/track/task/run/work ref/code SHA, deployment provider/project/environment/ID/fixed URL, verification method/time/exact source, and data/migration status with explicit attestation level. Agent declarations must stay labeled as declarations; provider metadata and served Owner evidence remain different. No new provider API/credential/read scope or persistent ingestion is enabled here.
+
+University candidate example (parent evidence): source a822386af46da73c8a8947d48fb00cca6fd29060; Claude run claude-enrollment-joey_asset_system-university-20261010T224848Z completed sequence 3 describes coding. Deployment/Joey acceptance remain pending. Historical baseline a0cfc6c is not the next entry HEAD. Authorized next Agent should reconcile stale leading handoff with appended changes, verify tests and authorized deployment, and preserve candidate qualification. This document does not authorize MC to change or deploy Asset.

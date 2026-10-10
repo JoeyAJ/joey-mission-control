@@ -3,6 +3,8 @@ export function repositoryRunSourcePacket(packet){const paths=packet.canonicalCo
 export function formatTakeoverInstruction(packet){
  const reports=packet.repositoryReports;const s=packet.source,context=(packet.contextDocuments||[]).filter(d=>d.status==='FOUND').map(d=>d.path);
  return ['請接手專案 '+packet.projectId+'。先使用你自己的既有授權存取核對 branch 最新 HEAD，再閱讀目前階段文件與已確認背景文件，依既有授權續開發、測試並更新交接。',
+  '交付閉環：程式與測試完成後，依既有授權部署，核對固定公開網址與exact code SHA，記錄 feature／Agent／測試／deployment／URL驗證憑證，整理入口文件最前面的目前狀態、handoff與資料／schema／migration實際執行狀態（無遷移也明示）。completed回報不代表已部署、可使用或Joey已驗收。',
+  '若缺部署／migration授權或網址驗證受阻，完成可獨立且已授權工作，報exact action／target／reason與pending狀態；不擅自改Production、權限、其他repo或資料。使用你自己的既有授權完成可行閉環，不把已授權開發操作留給Joey跑terminal。保留舊completed紀錄；下次接手必須fresh-read最新來源及result指向的work ref／handoff。',
   'Repository: '+s.repositoryId,'Branch: '+s.requestedRef,'本次已核對版本: '+s.resolvedCommitSha,'本次來源指紋: '+s.contentSha256,'本次讀取時間: '+s.readAt,'文件更新時間: '+(s.documentTimestamp||'未記錄'),'專案入口: '+s.path,
   '入口文件: https://github.com/'+s.repositoryId+'/blob/'+s.resolvedCommitSha+'/'+s.path,
   '已核對背景文件: '+(context.join(', ')||'未記錄'),

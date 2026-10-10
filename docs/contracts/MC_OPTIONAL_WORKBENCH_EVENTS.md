@@ -1,0 +1,11 @@
+# Optional model-neutral workbench event adapter design
+
+Design only. Current `mc.repository-run.v1` schema and report branch are unchanged; these fields are not accepted by the deployed reader. No hook, CLI watcher, event service, persistent access, credential or background process is enabled. File/diff/terminal capability remains unavailable in the UI.
+
+A future adapter may normalize an explicitly attributed receiving-Agent event into a bounded versioned envelope: schema version, canonical project/track/repository/work ref, run/task/event ID, sequence, source event timestamp, receiving timestamp, explicit Agent identity, observed action and exact source artifact binding. Model/provider remain optional. It must independently prove the existing Owner/read authorization and source/run lineage; event declaration alone grants nothing.
+
+Reserved optional observations: `file_read`, `file_change`, `diff_reported`. Each requires an authorized canonical repository scope, exact immutable commit/blob or bounded supplied-diff digest, safe relative path, explicit event time/actor and limits. A reported file read is an Agent claim, not proof of a filesystem access. A reported change/diff is distinct from accepted/merged/deployed. Summary text, Git authors and polled report bytes cannot create these observations. Invalid, unknown, cross-project/track/run or replayed/conflicting envelopes fail closed.
+
+Limits should be explicit and tested before implementation: per-artifact and total byte/path/event counts, MIME/encoding allowlist, no traversal/symlink escape, no executable HTML/commands, secret/content filtering, no automatic arbitrary repository fetch and no public URL/localStorage persistence. Source expiry/outage/revocation withdraw current activity and clear private prepared copy. Adapter callbacks remain generation-bound after asynchronous work; unchanged polls cannot replay visual effects.
+
+Any implementation that needs additional persistent source access, collection or a security-sensitive policy change must first report the exact access/action/target and obtain required authorization. Existing reporting does not authorize terminal streams, approval controls, automatic actions, dispatch or a model selector. This design does not claim those features are delivered.
