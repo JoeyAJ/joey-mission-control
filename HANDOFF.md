@@ -1,3 +1,44 @@
+# Mission Control verified Continue source repair
+
+Project: MISSION_CONTROL
+Timestamp: 2026-10-10T02:51:43Z
+Task: Repair Buddy Continue and Asset University candidate source continuity
+Status: LOCAL_VERIFIED_PENDING_PUBLICATION
+Last Developer: Codex
+Executed by: Codex
+Actual Model: UNKNOWN
+Baseline: ed04d315162d01bcfed56f71166e57d6251ad31b
+
+## Summary
+
+This authorized sole-writer stage repairs the two Owner-reported Continue source substitutions. The mounted `32b77ee` was not used as authority; the private remote branch was fetched and its exact `ed04d315162d01bcfed56f71166e57d6251ad31b` HEAD reconciled before edits. No AGENTS.md exists in the repository or accessible workspace parents. Current product authority remains [PRODUCT_CHARTER.md](docs/PRODUCT_CHARTER.md).
+
+## Changes
+
+The actual workspace Handoff / Continue action now stays in the verified private reader, opens the source panel and prepares its source-bound packet after a fresh FOUND read and current Owner verification. It no longer opens snapshot-backed project details. Existing four-project `#project` links normalize to the same workspace when source sync is enabled. The historical production Continue endpoint and deployment snapshots are unchanged.
+
+Copy and Continue share one fresh gate. Project, track, generation, active reader and full source tuple (repository, ref, path, SHA, digest and candidate qualification) must still match after awaits. Reading, error, denial, expiry, lifecycle or scope changes clear the prepared packet; unavailable reads may retain explicitly stale source evidence but cannot prepare a packet or fall back to legacy. No observed HEAD or University candidate becomes accepted.
+
+Only Asset's legal `UNIVERSITY_CANDIDATE` track is carried in the route; it survives panel changes, Back/Forward, reload and normalized legacy deep links. URL state contains navigation identifiers, never private documents, credentials or packets. No new browser persistence, model selection, write execution or dispatch was added. Missing document time and unsigned Agent remain unknown.
+
+## Verification
+
+Portable suite: 658/658 PASS, build, five-schema fixture validation and static safety PASS; forbidden workstation reads zero under the portable guard. Focused source/privacy/routing checks also pass. Actual-app official-SDK browser fixtures cover four projects at 1440/en, 390/zh-TW and 320/ko, including the real Continue button, fresh HEAD changes, University's separate pending candidate, Back/Forward/reload/mobile, legacy-route normalization, outage/conflict, provider denial, membership revocation, expiry, page lifecycle and pending-read project switches. The fixture asserts zero requests to the legacy Continue endpoint, zero external browser requests and zero unexpected writes. Auth/GitHub/clipboard/journal upstreams are synthetic and no real database was written.
+
+The current MC takeover and public route/status regression results and release identity are recorded in [Continue release verification](docs/MC_CONTINUE_SOURCE_VERIFICATION_20261010.md). The older `remote-handoff-workspace-qa.mjs` script still tests removed model selectors and fails its bundle assertion on both the untouched ed04 baseline and this stage; it is not a new regression. Plain CLI validate inherits the saved workstation config and fails its unavailable path; portable fixture validate is the applicable passing check. No old uncommitted tree is assumed recovered.
+
+## Runtime evidence and blockers
+
+The delegated request reports real Chrome Owner reads of all four default sources and University candidate as successful before this repair. It specifically reports Buddy main `e41bd1b7d8a481fdf6402881f382605278d229af` and Asset candidate `77b6766e790c7794bb1fc691f3f3dd3f4a4fe5c6`. This is parent-relayed real-device evidence, not this writer's independent deployed readback or post-fix acceptance. Earlier blanket NOT VERIFIED wording below is historical and superseded only to that extent.
+
+Post-fix normal Owner served-byte/read/copy and Safari/phone acceptance remain pending. Known cloud CONNECT403 is not retried or bypassed; connected Vercel metadata is used for deployment verification and cannot prove the Owner flow. Production, other repos, SQL, permissions/secrets and AWS/pilot are outside this task and unchanged. Both previously rejected operational artifacts remain excluded; no equivalent payload is recreated or uploaded.
+
+## Next Action
+
+Complete the authorized current-branch/fixed-Preview publication, verify exact remote SHA and READY/alias identity, then record release evidence and release sole-writer ownership with no background operations. The next Agent reads this current stage and the release verification before preserved history. Any remaining real-device acceptance must use the existing normal Owner session; runtime disconnect does not authorize dispatch recovery.
+
+## Preserved prior handoff — historical stage
+
 # Mission Control current handoff — published function and docs integrity
 
 Project: MISSION_CONTROL

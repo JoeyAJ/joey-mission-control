@@ -17,3 +17,12 @@ test('workspace navigation does not expand proposal project scope or unknown pro
  assert.equal(readContext('#workspace?project=UNKNOWN&module=console').project,'NEXAEON');
  for(const project of ['NEXAEON','WOOSONG_BUDDY','NAMYOUNG_WEB3D','JOEY_ASSET_SYSTEM'])for(const module of ['overview','ideas','proposal','assets','console'])assert.deepEqual(readContext(contextHash({project,module})),{project,module,item:null});
 });
+
+
+test('only Asset University candidate track is retained in portable workspace routes',()=>{
+ const hash=workspaceHash({project:'JOEY_ASSET_SYSTEM',panel:'events',track:'UNIVERSITY_CANDIDATE'});
+ assert.equal(new URLSearchParams(hash.split('?')[1]).get('track'),'UNIVERSITY_CANDIDATE');
+ for(const project of ['NEXAEON','WOOSONG_BUDDY','NAMYOUNG_WEB3D','MISSION_CONTROL'])assert(!workspaceHash({project,track:'UNIVERSITY_CANDIDATE'}).includes('track='));
+ for(const track of ['arbitrary/private-ref','BASELINE','UNKNOWN'])assert(!workspaceHash({project:'JOEY_ASSET_SYSTEM',track}).includes('track='));
+ assert(!hash.includes('77b6766'));assert(!hash.includes('DEVELOPMENT.md'));
+});

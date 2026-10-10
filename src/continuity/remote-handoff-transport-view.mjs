@@ -11,7 +11,7 @@ const words={
  ko:{title:'MC 비공개 인계와 동기화',start:'동기화 재개',refresh:'다시 읽기',pause:'동기화 일시 정지',handoff:'에이전트 인계 준비',agent:'다음 에이전트 (Owner 선택)',provider:'Provider (교체 가능)',model:'모델 (Owner 결정)',choice:'선택은 비공개 인계 자료에만 적용됩니다. 에이전트 실행이나 쓰기 권한을 부여하지 않습니다.',checking:'비공개 출처 확인 중',unavailable:'저장소 연결이 설정되지 않았거나 일시적으로 읽을 수 없음',denied:'비공개 출처 권한 없음',idle:'동기화 일시 정지',connected:'원격 출처 읽음',reading:'원격 출처 읽는 중'}
 };
 // Private configuration arrives from the current Owner-authenticated endpoint.
-export function mountRemoteHandoffTransport({doc=document,client,inspectIdentity,ownerSubject,identityProject='NEXAEON',projectId='MISSION_CONTROL',track='BASELINE',locale='zh-TW',intervalMs=30000,initiallyEnabled=true,showHandoffSelection=true,now=Date.now}={}){
+export function mountRemoteHandoffTransport({doc=document,client,inspectIdentity,ownerSubject,identityProject='NEXAEON',projectId='MISSION_CONTROL',track='BASELINE',locale='zh-TW',intervalMs=30000,initiallyEnabled=true,showHandoffSelection=true,onTrackChange=()=>{},now=Date.now}={}){
  let w=words[locale]||words['zh-TW'],enabled=initiallyEnabled,reader=null,unsubscribe=null,generation=0,disposed=false,starting=false,configAbort=null,sourceKey=null,lastView=null,copying=false,renderedSourceKey=null;
  const node=tag=>doc.createElement(tag),root=node('section'),title=node('h4'),controls=node('div'),status=node('p'),host=node('div'),packet=node('pre'),selection=node('div'),choice=node('p');
  root.dataset.remoteHandoffTransport='private';root.className='owner-remote-handoff';root.hidden=!enabled;controls.className='remote-handoff-controls';selection.className='remote-handoff-selection';status.setAttribute('role','status');packet.dataset.agentHandoffPacket='true';packet.hidden=true;packet.style.whiteSpace='pre-wrap';packet.style.overflowWrap='anywhere';
@@ -19,12 +19,29 @@ export function mountRemoteHandoffTransport({doc=document,client,inspectIdentity
  const startButton=button('start',()=>start()),refreshButton=button('refresh',()=>reader?.refresh()),stopButton=button('pause',()=>reader?.stopAutoSync());
  const inputs={};for(const key of []){const label=node('label'),caption=node('span'),input=node('input');input.type='text';input.maxLength=128;input.autocomplete='off';input.dataset.handoffSelection=key;input.addEventListener('input',()=>{packet.textContent='';packet.hidden=true;});label.append(caption,input);selection.append(label);inputs[key]={input,caption};}
  const handoffButton=button('handoff',async()=>{const g=generation,value=await reader?.handoff(Object.fromEntries(Object.entries(inputs).map(([key,{input}])=>[key,input.value])));if(g===generation&&!disposed&&enabled&&value&&value.source.contentSha256===reader?.snapshot().observation?.source.contentSha256){packet.textContent=JSON.stringify(value,null,2);packet.hidden=false;}});
- const copyButton=button('copy',async()=>{if(copying||!reader)return;copying=true;packet.textContent='';packet.hidden=true;paint();const g=generation,active=reader;try{const view=await active.refresh();if(g!==generation||disposed||!enabled||doc.hidden||view.status!=='connected'||view.observation?.status!=='FOUND')return;const value=await active.handoff();if(g!==generation||disposed||!enabled||doc.hidden||!value||value.sourceStatus!=='FOUND')return;const text=JSON.stringify(value,null,2);packet.textContent=text;packet.hidden=false;if(globalThis.navigator?.clipboard?.writeText){try{await globalThis.navigator.clipboard.writeText(text);}catch{/* The visible verified packet remains available for manual copy. */}}}catch{if(g===generation){packet.textContent='';packet.hidden=true;}}finally{if(g===generation){copying=false;paint();}}});
- const trackButton=button('track',()=>update({track:track==='BASELINE'?'UNIVERSITY_CANDIDATE':'BASELINE'}));
+ async function prepareFresh({copy=false}={}){
+  if(copying||!reader||disposed||!enabled||doc.hidden)return null;
+  copying=true;packet.textContent='';packet.hidden=true;paint();
+  const g=generation,active=reader,project=projectId,selectedTrack=track;
+  const valid=()=>g===generation&&active===reader&&!disposed&&enabled&&!doc.hidden&&project===projectId&&selectedTrack===track;
+  const tuple=value=>JSON.stringify([value?.projectId,value?.source?.repositoryId,value?.source?.requestedRef,value?.source?.path,value?.source?.resolvedCommitSha,value?.source?.contentSha256,value?.track||'BASELINE',value?.entryQualification||null]);
+  try{
+   const view=await active.refresh();
+   if(!valid()||view.status!=='connected'||view.observation?.status!=='FOUND')return null;
+   const observed=view.observation,value=await active.handoff();
+   const current=active.snapshot();
+   if(!valid()||current.status!=='connected'||current.observation?.status!=='FOUND'||!value||value.sourceStatus!=='FOUND'||value.projectId!==project||(value.track||'BASELINE')!==selectedTrack||tuple(value)!==tuple(observed)||tuple(value)!==tuple(current.observation))return null;
+   const text=JSON.stringify(value,null,2);packet.textContent=text;packet.hidden=false;
+   if(copy&&globalThis.navigator?.clipboard?.writeText){try{await globalThis.navigator.clipboard.writeText(text);}catch{/* The verified private packet remains available for manual copy. */}}
+   return valid()?value:null;
+  }catch{return null;}finally{if(g===generation){copying=false;paint(active.snapshot());}}
+ }
+ const copyButton=button('copy',()=>prepareFresh({copy:true}));
+ const trackButton=button('track',()=>{const next=track==='BASELINE'?'UNIVERSITY_CANDIDATE':'BASELINE';onTrackChange(next);update({track:next});});
  root.append(title,controls,status,host,selection,choice,packet);handoffButton.hidden=true;selection.hidden=true;choice.hidden=true;
  const pin=async text=>[...new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(text)))].map(b=>b.toString(16).padStart(2,'0')).join('');
  function paint(view=lastView){lastView=view;const sw=sourceWords[locale]||sourceWords['zh-TW'];title.textContent=projectId==='MISSION_CONTROL'?w.title:sw.title;copyButton.textContent=sw.copy;copyButton.hidden=projectId==='MISSION_CONTROL';copyButton.disabled=copying||starting||view?.status!=='connected'||view?.observation?.status!=='FOUND';trackButton.hidden=projectId!=='JOEY_ASSET_SYSTEM';trackButton.textContent=track==='BASELINE'?sw.candidate:sw.baseline;trackButton.disabled=starting||copying;for(const [key,control]of [['start',startButton],['refresh',refreshButton],['pause',stopButton],['handoff',handoffButton]])control.textContent=w[key];for(const [key,{input,caption}]of Object.entries(inputs)){caption.textContent=w[key];input.setAttribute('aria-label',w[key]);}choice.textContent=w.choice;
-  const document=view?.observation?.document,key=view?.observation?.source.contentSha256||null;if(key!==sourceKey||view?.status==='reading'||view?.status==='denied'){packet.textContent='';packet.hidden=true;sourceKey=key;}if(!document&&view?.status==='denied'){for(const {input}of Object.values(inputs))input.value='';}
+  const document=view?.observation?.document,key=view?.observation?.source.contentSha256||null;if(key!==sourceKey||view?.status!=='connected'){packet.textContent='';packet.hidden=true;sourceKey=key;}if(!document&&view?.status==='denied'){for(const {input}of Object.values(inputs))input.value='';}
   handoffButton.hidden=projectId!=='MISSION_CONTROL'||!document||!showHandoffSelection;selection.hidden=true;choice.hidden=true;startButton.disabled=starting;refreshButton.disabled=starting||!reader;stopButton.disabled=starting||!view?.automatic;root.dataset.syncState=view?.status||'idle';status.textContent=starting?w.checking:w[view?.status]||'';if(view){
    const record=view.status==='unavailable'?view.lastConfirmed:view.observation;
    const nextSourceKey=record?.document!=null?JSON.stringify([record.projectId,record.source.repositoryId,record.source.requestedRef,record.source.resolvedCommitSha,record.source.contentSha256]):null;
@@ -46,5 +63,5 @@ export function mountRemoteHandoffTransport({doc=document,client,inspectIdentity
  }
  function update(next={}){if(disposed)return;const changed=typeof next.projectId==='string'&&next.projectId!==projectId||typeof next.track==='string'&&next.track!==track;const previous=enabled;if(changed){clear();if(typeof next.projectId==='string'&&next.projectId!==projectId){projectId=next.projectId;track='BASELINE';}if(typeof next.track==='string')track=next.track;}if(next.locale){locale=next.locale;w=words[locale]||words['zh-TW'];}if(typeof next.enabled==='boolean')enabled=next.enabled;root.hidden=!enabled;if(!enabled){clear();return;}paint();if(changed||!previous)void start();}
  const hidden=()=>{if(doc.hidden)clear();};doc.addEventListener('visibilitychange',hidden);paint();
- return Object.freeze({root,start,refresh:()=>reader?.refresh(),async handoff(selection){const g=generation;if(disposed||!enabled||doc.hidden||!reader)return null;const packet=await reader.handoff(selection);return g===generation&&!disposed&&enabled?packet:null;},snapshot:()=>reader?.snapshot()||{status:'unconfigured',observation:null},invalidate:clear,update,dispose(){if(disposed)return;disposed=true;enabled=false;root.hidden=true;clear();doc.removeEventListener('visibilitychange',hidden);}});
+ return Object.freeze({root,start,prepareContinuation:()=>prepareFresh(),refresh:()=>reader?.refresh(),async handoff(selection){const g=generation;if(disposed||!enabled||doc.hidden||!reader)return null;const packet=await reader.handoff(selection);return g===generation&&!disposed&&enabled?packet:null;},snapshot:()=>reader?.snapshot()||{status:'unconfigured',observation:null},invalidate:clear,update,dispose(){if(disposed)return;disposed=true;enabled=false;root.hidden=true;clear();doc.removeEventListener('visibilitychange',hidden);}});
 }

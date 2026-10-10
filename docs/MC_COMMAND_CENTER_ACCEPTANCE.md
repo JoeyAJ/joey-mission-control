@@ -1,3 +1,9 @@
+# Continue repair acceptance — 2026-10-10
+
+The delegated real Chrome Owner observations supersede the prior blanket four-source NOT VERIFIED statement only for the reported pre-fix four default reads and University candidate read. This writer did not independently repeat those Owner reads. The two reported Continue substitutions are now repaired and covered through the actual app/private deployment factory with synthetic upstreams. Post-fix normal Owner served-byte/read/copy, Safari/phone and final product acceptance remain pending. Current status and exact release evidence: [HANDOFF](../HANDOFF.md) and [Continue verification](MC_CONTINUE_SOURCE_VERIFICATION_20261010.md). No candidate has been promoted to accepted and no runtime/Agent/document timestamp is invented.
+
+## Preserved prior acceptance record
+
 # MC four-direction acceptance matrix — 2026-10-09
 
 This is the current acceptance record. Rows below distinguish implementation, synthetic fixture coverage, actual runtime evidence and Joey's final acceptance. Earlier tables after the dated boundary are preserved history; their former pending wiring statements do not override this matrix. Joey remains Product Owner and Final Approver.
