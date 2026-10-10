@@ -17,7 +17,7 @@ Implemented report-driven Agent/task cards, transcript events, Explorer/result p
 
 720 unit checks and six synthetic dynamic matrix cases PASS; final current-code two cases PASS; four-width fresh-copy and five-size reference regressions PASS. Independent reading/focus and final build/safety evidence are in dated verification. Private desktop/mobile/dialog images persisted outside public/dist. Real Owner dynamic UI is not verified. MC schema/data: no SQL or migration; report v1 and endpoint schemas unchanged.
 
-Actual new task mc-dynamic-workbench-reference-20261010 / run codex-mc-dynamic-workbench-20261010 has started and meaningful progress sequence 2, report HEAD 74006e4664c7e10d6796542412a7cd23d4202d6c, blob 69711b5b4e7f2a6bc55d7f0477f00dd57efafc16; original baseline is pinned 97e5ea0. Prior UX run remains completed. Parent real Asset→Claude started/completed use is retained, and University candidate coding-completed/deployment-pending example is documented; no other-repository writes.
+Actual new task mc-dynamic-workbench-reference-20261010 / run codex-mc-dynamic-workbench-20261010 is now completed sequence 3 at report HEAD 51b4fa663cbaad3e48c17ca617335229596a6ba7, blob 5e7822458fed5655ea730920b9d0319b156362d4. Functional result code is 2c02f92285e9828b0f044ac12ee0e36846a3cf31; consolidated handoff pointer cd824729a8f09aa8bef317e126fd7c895e9651da. Registration baseline stays pinned 97e5ea0; prior UX run and all other reports are unchanged. This completes the bounded coding/test/authorized Preview stage; served URL and Joey acceptance remain pending. Parent real Asset/Claude and University candidate missing-delivery examples remain documented without other-repository writes.
 
 ## Published functional delivery
 
@@ -25,7 +25,7 @@ Functional exact remote SHA 2c02f92285e9828b0f044ac12ee0e36846a3cf31; Preview dp
 
 ## Next Action
 
-Implementation and authorized Preview publication for this bounded dynamic stage are complete; finalize actual current run after this consolidated handoff/doc closure is remote and Preview READY. No further feature work or new security-sensitive access is requested here. Joey/independent Owner reviewer can inspect fixed Preview and private dynamic artifacts; dynamic product/appearance and actual device/served verification remain pending. Future authorized Agent fresh-reads canonical HEAD, preserves the coding/deployment/URL/data/acceptance distinction and reports exact blocked action/target. Optional adapters or independent deployment receipt ingestion are designs, not enabled capabilities. No Production, other-repo/report, SQL, credentials, AWS or dispatch changes.
+Implementation, tests, authorized Preview publication, current handoff/data closure and actual completed run receipt are recorded. Finalize this documentation-only update on the same Preview; final metadata receipt verifies exact closure SHA. No Agent is kept running while waiting for Joey acceptance. No further feature work or new security-sensitive access is requested here. Joey/independent Owner reviewer can inspect fixed Preview and private dynamic artifacts; dynamic product/appearance and actual device/served verification remain pending. Future authorized Agent fresh-reads canonical HEAD, preserves the coding/deployment/URL/data/acceptance distinction and reports exact blocked action/target. Optional adapters or independent deployment receipt ingestion are designs, not enabled capabilities. No Production, other-repo/report, SQL, credentials, AWS or dispatch changes.
 
 ---
 
