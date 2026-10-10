@@ -12,8 +12,8 @@ test('Mission Control deep links restore only the workspace console, including l
 });
 
 test('workspace navigation does not expand proposal project scope or unknown project routing',()=>{
- for(const route of ['joey','project','dashboard','workspace-other'])assert.equal(readContext('#'+route+'?project=MISSION_CONTROL&module=proposal').project,'NEXAEON');
- assert.equal(readContext(contextHash({project:'MISSION_CONTROL',module:'proposal'})).project,'NEXAEON');
+ for(const route of ['project','dashboard','workspace-other'])assert.equal(readContext('#'+route+'?project=MISSION_CONTROL&module=proposal').project,'NEXAEON');
+ assert.deepEqual(readContext(contextHash({project:'MISSION_CONTROL',module:'proposal',item:'not-a-mc-proposal'})),{project:'MISSION_CONTROL',module:'overview',item:null});assert.deepEqual(readContext('#joey?project=MISSION_CONTROL&module=overview'),{project:'MISSION_CONTROL',module:'overview',item:null});assert.equal(readContext('#joey?project=MISSION_CONTROL&module=proposal').module,'overview');
  assert.equal(readContext('#workspace?project=UNKNOWN&module=console').project,'NEXAEON');
  for(const project of ['NEXAEON','WOOSONG_BUDDY','NAMYOUNG_WEB3D','JOEY_ASSET_SYSTEM'])for(const module of ['overview','ideas','proposal','assets','console'])assert.deepEqual(readContext(contextHash({project,module})),{project,module,item:null});
 });

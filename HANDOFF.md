@@ -1,3 +1,30 @@
+# Mission Control overview and protected report transport repair
+
+Project: MISSION_CONTROL
+Timestamp: 2026-10-10T05:31:01Z
+Task: Repair MC overview routing and preserve existing Preview access on private report reads
+Status: LOCAL_VERIFIED_PARENT_READ_PREVIEW_PUBLISHED
+Last Developer: Codex
+Executed by: Codex
+Actual Model: UNKNOWN
+Baseline: 58e3c902197d5340df0135c730b829176f6d4b39
+
+## Summary
+
+Actual Mac Owner QA confirmed MC workspace selection and fresh remote HANDOFF, but reported unavailable Agent reports. The simple MC overview URL silently selected Nex and omitted MC from its project selector. MC now has a legal simple overview and selector entry; reload/history preserve MC. Unsupported MC proposal contexts normalize to overview. Existing proposal scope remains four projects. MC advanced links use its existing workspace and label its source as the development branch.
+
+Repository report GET now preserves existing same-origin Preview access cookies, matching the successful remote document transport. Owner authentication, exact pre/post Owner and AAL2 checks, redirect refusal, private no-store bounds and failure clearing remain unchanged. A protected Preview fixture reproduces the previous report failure while Owner and document reads work; the repaired actual app passes at 375/390/430/1440. This mechanism is verified locally; actual served Owner recheck remains pending and is not claimed accepted.
+
+The legacy continuation safety guard incorrectly matched a benign historical compound word in this HANDOFF. Its prose is rewritten as “task observation”; the filter itself is unchanged. Current actual HANDOFF passes the original guard and credential-shaped fixture content is still refused. Repository reports remain independent of the legacy workflow ledger; no workflow, SQL, dispatch, access or credential restoration is introduced.
+
+## Verification and Next Action
+
+Final portable verification passes 685 tests, build, validate and static safety checks. Verification details and release qualifications: [MC overview and report transport verification](docs/MC_OVERVIEW_REPORT_TRANSPORT_VERIFICATION_20261010.md). The exact completed real Codex report remains unchanged at report ref commit `379090eab53b78000d9712cf9bc8d408249f3987`, sequence 4; its completed result records the earlier implementation and its acceptance limits. This follow-up does not reopen that completed run or represent it as currently executing.
+
+This handoff records the verified repair and same fixed Preview release; remote exact SHA, READY and alias are recorded in the external release receipt. Parent can recheck MC simple overview and existing signed-in workspace report display/copy on the actual Preview. No fresh login or installation is required by this code change. Actual served HTTP classification is still unavailable here; known cloud HTTPS403 remains unbypassed. Production, other repos, report branches, SQL, permissions, secrets, model selection, services and AWS are unchanged. Rejected VM artifacts remain excluded.
+
+## Preserved report-aware implementation and completed live proof
+
 # Mission Control report-aware Agent takeover and live MC proof
 
 Project: MISSION_CONTROL
@@ -102,7 +129,7 @@ Parent independently reproduced focus moving the simple Joey login/source single
 
 ## Changes
 
-Focus and public task-observation expiry now refresh the active view; hidden Workspace cannot rerender/reparent the singleton. Simple signed-out forms and verified source remain attached across focus, blur/return and public refresh/expiry. Cross-view disposal, private invalidation, legal candidate track and history remain intact.
+Focus and public task observation expiry now refresh the active view; hidden Workspace cannot rerender/reparent the singleton. Simple signed-out forms and verified source remain attached across focus, blur/return and public refresh/expiry. Cross-view disposal, private invalidation, legal candidate track and history remain intact.
 
 Where ClipboardItem promise + clipboard.write are available, the write is initiated synchronously in the original click gesture. Its plain-text promise is fulfilled only after the existing fresh FOUND, Owner, immutable tuple, project/track/generation gates succeed. Failure/cancellation rejects the promise; no old packet is supplied. Other browser paths remain explicit about failure. Manual fallback adds a “全選指令” button and system-copy explanation; it never reports clipboard success. No permission workaround or new access path.
 

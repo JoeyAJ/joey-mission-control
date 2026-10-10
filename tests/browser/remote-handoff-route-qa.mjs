@@ -47,7 +47,7 @@ try{
   await page.reload();await selected('MISSION_CONTROL');
   await choose('NEXAEON');await page.goBack();await selected('MISSION_CONTROL');await page.goForward();await selected('NEXAEON');
   for(const project of ['NEXAEON','WOOSONG_BUDDY','NAMYOUNG_WEB3D','JOEY_ASSET_SYSTEM']){await choose(project);await page.reload();await selected(project);await choose('MISSION_CONTROL');await page.reload();await selected('MISSION_CONTROL');}
-  await page.goto(origin+'/#joey?project=MISSION_CONTROL&module=proposal');await page.locator('#joey.active').waitFor();await page.waitForFunction(()=>document.querySelector('#mission-tab-NEXAEON')?.getAttribute('aria-selected')==='true');assert.equal(await page.locator('#workspace.active').count(),0);
+  await page.goto(origin+'/#joey?project=MISSION_CONTROL&module=proposal');await page.locator('#joey.active').waitFor();await page.waitForFunction(()=>document.querySelector('section[data-joey-simple=true]')?.dataset.project==='MISSION_CONTROL');assert.equal(await page.locator('#joey-simple-project').inputValue(),'MISSION_CONTROL');assert.equal(await page.locator('#workspace.active').count(),0);
   await page.goto(origin+'/'+deepLink);await selected('MISSION_CONTROL');
   const fresh=await context.newPage();await fresh.goto(origin+'/'+deepLink);await fresh.waitForFunction(()=>document.querySelector('#workspace.active #command-workspace')?.dataset.project==='MISSION_CONTROL');await fresh.close();
   assert.deepEqual(errors,[]);assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
