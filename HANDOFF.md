@@ -1,7 +1,7 @@
 # Mission Control persistent reporting evidence and terminal CI follow-up
 
 Project: MISSION_CONTROL
-Timestamp: 2026-10-10T07:30:37Z
+Timestamp: 2026-10-10T07:34:00Z
 Task: Persist five-scope rollout receipt and diagnose terminal source CI without changing products or reports
 Status: LOCAL_VERIFIED_PENDING_PUBLICATION
 Last Developer: Codex
@@ -11,7 +11,7 @@ Baseline: 1e63c294dd7baf6b958bcb753f3d4381a496c314
 
 ## Current checkpoint
 
-Five source profiles and four report branches remain unchanged; no new run or report event was created. Full exact profile/report/guard SHAs, Codex run IDs, original/new five Vercel deployment IDs/URLs/READY and fresh-copy source pins are now persisted in the private repository receipt. All five source-profile Vercel deployments remain READY; report branch deployments and Actions are empty as observed.
+Actual Owner five-scope QA and independent repository review passed, relayed by parent for 07:30:49–07:31:56 UTC: all scopes FOUND, Codex completed sequence 3, correct source profile SHA/repo/ref/track/run and enabled buttons. University remains JoeyAcceptancePending. No click-copy was performed and exact clipboard payload remains unverified. Five source profiles and four report branches remain unchanged; no new run or report event was created. Full exact profile/report/guard SHAs, Codex run IDs, original/new five Vercel deployment IDs/URLs/READY and fresh-copy source pins are now persisted in the private repository receipt. All five source-profile Vercel deployments remain READY; report branch deployments and Actions are empty as observed.
 
 Nex source CI is terminal FAILURE in E2E: run 38033891642, expected transient sit but already sitting_smile at tests/e2e/princess-website-events.spec.js:67. Lint, unit tests, navigator eval and build passed; E2E 102 passed, one failed including automatic retry. Product/test/workflow/package bytes are unchanged, only the source profile was added. A 750ms fixture loading window suggests a preexisting timing-sensitive test, but prior source HEAD CI passed: do not label this as a proven failing baseline. Failure remains recorded, with no fix or rerun. Other four profile SHAs have no Actions/check runs, which is not a passing-test claim.
 
@@ -23,7 +23,7 @@ Persistent receipt: [five-scope rollout metadata and CI](docs/contracts/reposito
 
 ## Next Action
 
-Continue separately delegated actual Owner UI and exact clipboard verification at the final documented Preview SHA. Any Nex E2E repair is a separate product/test task: preserve the failure and decide explicitly whether to investigate the transient-state test; do not silently rerun or expand this reporting change. University remains JoeyAcceptancePending; reported configuration verification is not product completion or acceptance. Do not infer Asset deployment absence outside readable teams.
+Owner five-scope visibility and independent repository scope/digest checks are complete; actual click-copy and exact clipboard payload verification remain outstanding at the final documented Preview SHA. Any Nex E2E repair is a separate product/test task: preserve the failure and decide explicitly whether to investigate the transient-state test; do not silently rerun or expand this reporting change. University remains JoeyAcceptancePending; reported configuration verification is not product completion or acceptance. Do not infer Asset deployment absence outside readable teams.
 
 ---
 

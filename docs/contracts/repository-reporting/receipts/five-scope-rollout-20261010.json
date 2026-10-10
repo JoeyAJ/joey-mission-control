@@ -945,7 +945,7 @@
       "annotationsRead": "Connector URL family denied annotations; authorized decoded job logs and job step summaries were available."
     }
   ],
-  "servedOwnerAcceptance": "NOT_VERIFIED",
+  "servedOwnerAcceptance": "ACTUAL_FIVE_SCOPE_OWNER_UI_PASS; COPY_ACTION_AND_EXACT_CLIPBOARD_UNVERIFIED",
   "cloudHTTPS": "prior CONNECT403 not bypassed",
   "allGitHubPushCIStatus": "TERMINAL: Nex push E2E failure; other profile SHAs have zero workflow/check runs; Vercel statuses success",
   "assetOtherTeamVercelProjects": "Readable team list exhausted: one team only, zero linked Asset projects. No global absence claim.",
@@ -1136,7 +1136,7 @@
   },
   "remainingBlockers": [
     "Nex terminal E2E failure unresolved; timing-sensitive test inference, no fix or rerun",
-    "Actual Owner five-scope UI and exact clipboard validation delegated separately",
+    "Actual click-copy and exact clipboard payload unverified; Owner scope visibility/button readiness PASS",
     "Asset teams/accounts outside current readable team scope not verified"
   ],
   "thisEvidenceCommitScope": "DOCUMENTATION_ONLY; no report edits, new runs or product changes",
@@ -1196,5 +1196,84 @@
   "mcImplementationReleaseDeploymentId": "dpl_AFJr7rkK5KZyXypwPKt2Prtp1irh",
   "mcImplementationReleaseState": "READY",
   "implementationReleaseAliasExactAtVerification": true,
-  "documentationPublicationQualification": "Enclosing Git commit is the evidence document version; final docs-only SHA/READY reported after push. Implementation release fields intentionally identify prior verified code release."
+  "documentationPublicationQualification": "Enclosing Git commit is the evidence document version; final docs-only SHA/READY reported after push. Implementation release fields intentionally identify prior verified code release.",
+  "ownerUIQA": {
+    "source": "Parent relayed actual Mac Owner UI evidence",
+    "verifiedWindowUTC": {
+      "start": "2026-10-10T07:30:49Z",
+      "end": "2026-10-10T07:31:56Z"
+    },
+    "scopeResults": [
+      {
+        "projectId": "NEXAEON",
+        "track": "BASELINE",
+        "sourceSHA": "62dd99b5e190163a1e4bc6ad410155336934f935",
+        "status": "FOUND",
+        "agentName": "Codex",
+        "reportedState": "completed",
+        "sequence": 3,
+        "buttonsEnabled": true,
+        "repositoryRefTrackRunIsolation": "PASS",
+        "candidateStillJoeyAcceptancePending": false
+      },
+      {
+        "projectId": "WOOSONG_BUDDY",
+        "track": "BASELINE",
+        "sourceSHA": "f9952c5494fc047cb4f7046a93b4098755281a0f",
+        "status": "FOUND",
+        "agentName": "Codex",
+        "reportedState": "completed",
+        "sequence": 3,
+        "buttonsEnabled": true,
+        "repositoryRefTrackRunIsolation": "PASS",
+        "candidateStillJoeyAcceptancePending": false
+      },
+      {
+        "projectId": "NAMYOUNG_WEB3D",
+        "track": "BASELINE",
+        "sourceSHA": "81a8d099d674d6c47dfa399bae6b8f8eaa14801a",
+        "status": "FOUND",
+        "agentName": "Codex",
+        "reportedState": "completed",
+        "sequence": 3,
+        "buttonsEnabled": true,
+        "repositoryRefTrackRunIsolation": "PASS",
+        "candidateStillJoeyAcceptancePending": false
+      },
+      {
+        "projectId": "JOEY_ASSET_SYSTEM",
+        "track": "BASELINE",
+        "sourceSHA": "97b8ed5e0e555f95a01bb2507144b5058b95ee92",
+        "status": "FOUND",
+        "agentName": "Codex",
+        "reportedState": "completed",
+        "sequence": 3,
+        "buttonsEnabled": true,
+        "repositoryRefTrackRunIsolation": "PASS",
+        "candidateStillJoeyAcceptancePending": false
+      },
+      {
+        "projectId": "JOEY_ASSET_SYSTEM",
+        "track": "UNIVERSITY_CANDIDATE",
+        "sourceSHA": "a0cfc6c6374120353bbf3c6f7ebc5d625624cc44",
+        "status": "FOUND",
+        "agentName": "Codex",
+        "reportedState": "completed",
+        "sequence": 3,
+        "buttonsEnabled": true,
+        "repositoryRefTrackRunIsolation": "PASS",
+        "candidateStillJoeyAcceptancePending": true
+      }
+    ],
+    "clickCopyPerformed": false,
+    "exactClipboardPayloadVerified": false,
+    "newSuiteRerunRequired": false
+  },
+  "independentRepositoryReview": {
+    "source": "Parent relayed independent repository read-only review",
+    "allFiveSourceDiffsOnlyProfile": true,
+    "allFourReportOrphanGuardsRetained": true,
+    "reportHeadersEventPrefixesHandoffDigests": "PASS",
+    "assetCandidateUpdatePreservesBaselineReport": true
+  }
 }
