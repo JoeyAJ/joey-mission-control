@@ -2,6 +2,8 @@
 
 Static design is not accepted. Joey authorized dynamic reference implementation via parent at 2026-10-10 22:53:58 UTC. [Phased plan and acceptance](MC_DYNAMIC_WORKBENCH_PLAN_20261010.md); current factual acceptance remains [MC_CURRENT_ACCEPTANCE](MC_CURRENT_ACCEPTANCE.md). No model selector or automatic dispatch.
 
+Current bounded stage: selected-run report activity follow plus four independent review fixes. Strict report v1, terminal immutability and delivery qualification remain unchanged. See [stage verification](MC_ACTIVITY_FOLLOW_VERIFICATION_20261010.md). Fine-grained telemetry adapters remain inactive pending explicit scope approval.
+
 ## Historical static UX phase
 
 # Current phase — Joey overview and reference interface

@@ -1,3 +1,38 @@
+# Mission Control — selected-run activity follow and review fixes
+
+Project: MISSION_CONTROL
+Timestamp: 2026-10-10T23:36:05.540261Z
+Task: Follow reported activity and resolve four independent workbench review regressions
+Status: LOCAL_VERIFIED_PREVIEW_PUBLICATION_PENDING
+Last Developer: Codex
+Executed by: Codex
+Actual Model: UNKNOWN
+Baseline: 1fb6bd1d7ad3a056549d40e1191051c551c5fa28
+
+## Current checkpoint
+
+The new bounded stage locks the selected run across transcript/Explorer/detail/graph, follows only its new validated events, counts other-run unread events once, and pauses on manual history/upward scrolling with explicit resume. Historical scope cards preserve the clicked run when navigation fresh-reads that scope. Initial load and unchanged polls do not replay arrivals; no private run/event identity enters URL or persistent storage.
+
+Four independent review fixes: Close/Escape cancellation is checked before delivering clipboard bytes, composed with the existing source/report gate; current and historical cards select the clicked run rather than global latest; revoked/logout host attributes are explicitly cleared; leaving advanced workbench disposes the body-mounted dialog/in-flight copy while preserving the reusable Owner reader. Tests inspect host attributes directly and exercise same-project browser Back.
+
+727 unit checks PASS; six two-run activity cases (zhTW/ko/en × 1440/390) PASS; promised-ClipboardItem and writeText cancellation two cases each PASS; final dynamic two cases PASS; twelve reading/focus, four-width fresh-copy and five-size reference regressions PASS. Full dynamic six-case matrix (including visible 30-second polling) and twelve four-source Continue regressions also PASS; see docs/MC_ACTIVITY_FOLLOW_VERIFICATION_20261010.md. Synthetic Auth/GitHub/clipboard evidence is separate from actual Owner/device acceptance. Private inspected screenshots are in docs/qa/mc-activity-follow-20261010, outside public/dist.
+
+Actual new run codex-mc-activity-follow-20261010 / task mc-activity-follow-stage-20261010 has predecessor codex-mc-dynamic-workbench-20261010. Sequence 2 progress is published at report commit 94365c380be747de30ecfe730d3e629c72a35ce2, blob e468f21abc7a5f3878260d7f8d85fcd407215106. Registration baseline stays 1fb6bd1; previous terminal runs and all other repository reports remain unchanged. The stage has not yet been terminally reported.
+
+## Delivery and data qualification
+
+Historical stage-1 metadata receipt is retained at docs/MC_DYNAMIC_DELIVERY_RECEIPT_20261010.md; it describes that observation time, not an immutable claim about the movable Preview alias. Stage-2 exact remote SHA/READY/alias receipt will be recorded separately. Cloud fixed-Preview HEAD at 23:15:29 UTC failed CONNECT tunnel 403 before reaching the app; no bypass and no served/Owner acceptance claim.
+
+MC data/schema: no SQL or data migration, unchanged strict mc.repository-run.v1 and private endpoint schemas. Agent declarations remain AGENT_REPORTED; Git blobs do not establish Vercel READY/served SHA. Caller MC_VERIFIED, unsupported result.delivery/schema versions and credential-bearing URLs cannot upgrade evidence. N/A requires applicable policy/reason. Independent source-bound provider/served observations remain separate. No new telemetry collector, arbitrary file/diff read, Agent hook, access/credential or fake permission control is activated.
+
+## Next Action
+
+Complete the already authorized same-branch/fixed-Preview publication and exact metadata receipt, consolidate current handoff, then finish this actual bounded run. Joey dynamic product/appearance and actual device/served acceptance remain pending. A future authorized Agent fresh-reads current canonical HEAD and preserves source/test/deployment/URL/data/acceptance distinctions. Fine-grained telemetry requires explicit approval for expanded allowlisted file/diff GET paths or external Agent event hooks/collector; current UI work does not require that access. No Production, other-repository/report, SQL, secrets/permissions, AWS, model selector or dispatch changes.
+
+---
+
+## Historical stage-1 checkpoint — superseded leading status
+
 # Mission Control — dynamic report workbench and delivery closure
 
 Project: MISSION_CONTROL

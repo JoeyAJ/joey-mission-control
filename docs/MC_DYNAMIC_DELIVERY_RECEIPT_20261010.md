@@ -1,6 +1,8 @@
 # MC dynamic workbench delivery receipt
 
 Receipt time: 2026-10-10T23:16:46.385042Z
+Historical receipt: alias/SHA observations below apply at the receipt time. The movable alias can advance; see current HANDOFF and later dated receipts.
+
 Qualification: actual MC development + authorized Preview provider metadata; served Owner usability and product acceptance pending.
 
 - Task: mc-dynamic-workbench-reference-20261010; actual Agent Codex, model UNKNOWN.
