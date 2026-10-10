@@ -8,7 +8,7 @@ export function formatTakeoverInstruction(packet){
   '已核對背景文件: '+(context.join(', ')||'未記錄'),
   packet.track==='UNIVERSITY_CANDIDATE'?'版本資格: 獨立 University 候選，JoeyAcceptancePending；不得當成 main 或已驗收成果。':packet.projectId==='MISSION_CONTROL'?'版本資格: MC 開發分支；讀取成功不代表產品驗收。':'版本資格: main 基準來源；讀取成功不代表產品驗收。',
   '目前工作: '+(packet.progress?.task||'未記錄'),'下一步: '+(packet.progress?.nextAction||'未記錄'),'最近開發者: '+(packet.progress?.lastAgent||'未記錄'),
-  ...(reports?['本次重新核對的 Agent run 接手紀錄（Agent 自行回報；repo bytes 已核對，不代表合併／部署／Joey accepted）: '+JSON.stringify(reports),'先閱讀 run 的 workRef、最新 checkpoint／blocker、完成 result 的確切 handoff commit/path 與 nextSteps。未合併功能不能只回 canonical baseline。使用自己既有存取核對該 workRef／交接 SHA，再決定接續；本紀錄不指令 checkout、不自動升 candidate 資格。','多個 run 或仍有 active/blocked run 時，明確選擇要接續的 runId/task；不能默默替換他人的 active run。新 Agent 建立新 runId，明確設定 predecessorRunId；無法決定則先澄清。不把逾時推定為 stopped。']:[]),
+  ...(reports?['本次重新核對的 Agent run 接手紀錄（Agent 自行回報；repo bytes 已核對，不代表合併／部署／Joey accepted）: '+JSON.stringify(reports),'maintenanceAudit 只記錄經核准排除的失效歷史；不得當成 trusted run、成功、已驗收或 predecessor。原始報告與歷史保留。','先閱讀 run 的 workRef、最新 checkpoint／blocker、完成 result 的確切 handoff commit/path 與 nextSteps。未合併功能不能只回 canonical baseline。使用自己既有存取核對該 workRef／交接 SHA，再決定接續；本紀錄不指令 checkout、不自動升 candidate 資格。','多個 run 或仍有 active/blocked run 時，明確選擇要接續的 runId/task；不能默默替換他人的 active run。新 Agent 建立新 runId，明確設定 predecessorRunId；無法決定則先澄清。不把逾時推定為 stopped。']:[]),
   '缺失的 Agent／進度／文件時間不可推定。本指令不授予新存取、部署、SQL 或其他寫入權限；不啟動 Agent。',
   'MC 回報：只使用你對本專案 GitHub repo 的既有寫入授權，不需要 MC token。先讀入口、核對目前工作 branch 與使用者真正要求的功能。不要從複製指令推定已開工。',
   '先把下方通用 reporter 存成本機暫存 mc-reporter.mjs；在本專案 repo 中執行。先填 registration 的新 runId、taskId、featureTitle、你自己的 agentName；provider/model 可為 null，不做模型選擇。接替他人時填 predecessorRunId；另一個 active run 不可覆寫。',

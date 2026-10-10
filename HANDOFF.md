@@ -1,3 +1,26 @@
+# Mission Control exact-blob rejected pilot maintenance
+
+Project: MISSION_CONTROL
+Timestamp: 2026-10-10T06:45:20Z
+Task: Preserve rejected pilot history with approved server-only maintenance audit
+Status: LOCAL_VERIFIED_PENDING_PUBLICATION
+Last Developer: Codex
+Executed by: Codex
+Actual Model: UNKNOWN
+Baseline: 657ea09aa5571d8c2e7cdc529d54384652c9592c
+
+## Current checkpoint
+
+Joey explicitly approved the single historical failed pilot exclusion on 2026-10-10 at 06:36:48 UTC. The fixed server policy matches project/track/repository/ref/run/path/original Git blob/rejection reason and schema-valid terminal failed report only. Report branch bytes and history remain untouched. The excluded record never enters trusted runs or predecessor lineage. Entire directory/read/type/integrity/auth gates still precede resolution; other invalid reports remain PARTIAL and block full copy. The client validates the bounded private receipt and binds maintenance audit to fresh continuation content, source signature, generation and expiry.
+
+Read-only report HEAD `8cbd1ca2da179462012d85e56791326d5be694f2` contains two validated completed runs (Claude v3 sequence 3 and Codex sequence 4) plus the exact rejected failed pilot. With the approved policy, local verified-byte read is FOUND, two trusted runs and one resolved rejection. A synthetic Owner boundary is used for automated copy/UI checks; this does not establish served Owner acceptance or project completion. Receipt definition, approval scope, testing and remaining release evidence are in `docs/MC_REJECTED_PILOT_MAINTENANCE_20261010.md`.
+
+## Next Action
+
+Finish required verification and publish only the existing fixed Preview, verify remote exact SHA/READY/alias and report read HEAD. Production and all other repositories remain outside this change. New Agents should fresh-read this branch and the authoritative profile; use an independent new run or explicitly choose a validated predecessor, never the excluded failed history.
+
+---
+
 # Mission Control authoritative report scope and rejected history isolation
 
 Project: MISSION_CONTROL
