@@ -1,3 +1,30 @@
+# Mission Control unified repository-report takeover
+
+Project: MISSION_CONTROL
+Timestamp: 2026-10-10T05:49:55Z
+Task: Unify MC background and copy around verified repository reports; retain legacy history separately
+Status: LOCAL_VERIFIED_PARENT_READ_PREVIEW_PUBLISHED
+Last Developer: Codex
+Executed by: Codex
+Actual Model: UNKNOWN
+Baseline: 0a4c62717030b29d93c53431572250518132fbf4
+
+## Summary
+
+Actual Mac Owner QA at the baseline confirmed the correct MC simple entry, fresh HANDOFF, actual Codex completed feature, report HEAD/run file, result/test/next-step/handoff pointers and removal of the earlier unsafe-content error. Actual copy was not exercised. Remaining UI gaps were legacy event read blocking takeover, old parent run context in full background, advanced MC route selecting Nex and terminal reports showing heartbeat overdue.
+
+MC workspace background and copy now use the same fresh document plus fresh repository-report transport, exact Owner post-read/source/scope/generation/expiry gate and shared instruction formatter as the simple entry. Neither action consults the legacy event ledger. The packet carries repositoryReports with actual run/task/workRef, report-source tuple, result and canonical document source; historical parent events cannot choose the latest run. Legacy events stay in a separately labelled historical section, with their old continuation actions removed. A failed legacy read does not block verified report takeover; report/source denial or outage still refuses it.
+
+MC advanced URLs normalize to the existing MC workspace, preserving the project through reload/history even with an unsupported candidate query. Source stays the MC development branch; no model or track selection is introduced. Report cards expose all bounded event sequences/kinds/times/summaries/result details. Copy carries startup plus the latest three events and explicitly records whether a longer history was truncated. Completed/failed reports do not require heartbeats; source unavailability still qualifies them as unconfirmed. Active reports retain the five-minute stale rule and acceptance stays independent.
+
+## Verification and Next Action
+
+The actual MC completed report bytes at `379090eab53b78000d9712cf9bc8d408249f3987` are replayed alongside six clearly synthetic historical parent events through the actual app/official SDK/deployed report reader. Four widths 375/390/430/1440 pass, including initial persistent legacy outage, history retry, matching background/copy run and workRef, all four events, terminal freshness, source HEAD change, report outage, authorization expiry, pending-read project switch, focus and reload/BackForward. Auth/document/journal/clipboard boundaries are explicitly synthetic; this is not new served Owner acceptance.
+
+Final portable verification passes 686 tests, build, validate and static safety checks. Final verification and release receipt: [unified takeover verification](docs/MC_UNIFIED_REPOSITORY_TAKEOVER_VERIFICATION_20261010.md). This handoff records the verified repair and same fixed Preview release; remote exact SHA/READY/alias are recorded in the external receipt. Parent can recheck actual signed-in Owner background/copy. Actual Claude/other Agent use remains untested; other four project report branches remain unactivated. Existing completed run/ref stays unchanged, with no new run or fabricated heartbeat. Production, SQL, credentials, permissions, other repos, dispatch, model selection, services and AWS remain unchanged. Known HTTPS403 is not bypassed; rejected VM artifacts remain excluded.
+
+## Preserved MC overview and transport repair
+
 # Mission Control overview and protected report transport repair
 
 Project: MISSION_CONTROL
