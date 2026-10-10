@@ -1,3 +1,26 @@
+# Mission Control — advanced review artifact supplement
+
+Project: MISSION_CONTROL
+Timestamp: 2026-10-10T08:48:36.560996Z
+Task: Persist latest synthetic advanced render and verify full mobile result disclosure
+Status: LOCAL_VERIFIED_PENDING_PUBLICATION
+Last Developer: Codex
+Executed by: Codex
+Actual Model: UNKNOWN
+Baseline: 0531c685a8e589891b27e261a9448db63da07c72
+
+## Current checkpoint
+
+Artifact/QA/documentation-only supplement: latest advanced 1440×900, 872×512 and same-data 872×512 immutable old-CSS replay captures persisted in private docs/qa/mc-ux-final-20261010. Actual current renderer/CSS and shell geometry with entirely synthetic manifests, not full app/live source verification. Four panes, right top content/bottom graph, column proportions and no document overflow verified; all three captures visually inspected. Old CSS replay demonstrates blue rounded source box versus latest flat warm source section. No original private reference or actual operational report is uploaded.
+
+Mobile zhTW 390px supplemental fifteen-state QA PASS: important blocked/failed conclusions stay explicit; Agent 回報與驗證紀錄 → 事件紀錄 opens the complete exact long result/event text. No application feature or bundled client changes. No new report/run; existing actual Codex run remains completed sequence 9 at report commit b20759032115d1a8a477bde78ad90e89fac5d3a1. Joey product/appearance and actual device/clipboard acceptance remain pending. Details and comparison in docs/MC_UX_FINAL_VERIFICATION_20261010.md.
+
+## Next Action
+
+Push this artifact-only follow-up to the already authorized branch/fixed Preview, verify exact remote SHA/READY/alias, then close publication documentation. Joey may review private advanced PNGs; no new cloud feature work or run is requested. Existing Library transport failure and cloud HTTPS CONNECT403 remain qualified; no bypass, public image publication, Production or other-repository change.
+
+---
+
 # Mission Control UX — final implementation delivery
 
 Project: MISSION_CONTROL
