@@ -40,6 +40,71 @@
       "kind": "progress",
       "summary": "Ran TMPDIR=<canonical realpath tmp, verified equal> node --test tests/repository-run-contract.test.mjs tests/repository-run-reporter.test.mjs at 657ea09 (Node v22.22.3, local synthetic temp Git only, nothing installed): exit 0, 15 tests, 15 pass, 0 fail, 0 cancelled/skipped. No test, assert, helper or product file changed.",
       "result": null
+    },
+    {
+      "id": "claude-mc-desktop-pilot-v3-run-20261010T063128Z-a82e87-e3",
+      "sequence": 3,
+      "eventAt": "2026-10-10T06:33:40.000Z",
+      "kind": "completed",
+      "summary": "All 15/15 required tests passed (exit 0) with canonical TMPDIR at 657ea09. Registration-only pilot run complete; not a full Owner takeover/copy, not product acceptance, merge or deploy.",
+      "result": {
+        "codeSha": "657ea09aa5571d8c2e7cdc529d54384652c9592c",
+        "tests": [
+          {
+            "name": "contract: independent runs identity/feature/nullable model",
+            "outcome": "PASS"
+          },
+          {
+            "name": "contract: lifecycle transitions and completed evidence",
+            "outcome": "PASS"
+          },
+          {
+            "name": "contract: duplicates idempotent, lost updates fail closed",
+            "outcome": "PASS"
+          },
+          {
+            "name": "contract: event timestamp drives stale status",
+            "outcome": "PASS"
+          },
+          {
+            "name": "contract: wrong scope/secret/future/predecessor/size fail closed",
+            "outcome": "PASS"
+          },
+          {
+            "name": "contract: terminal evidence without heartbeat expiry",
+            "outcome": "PASS"
+          },
+          {
+            "name": "reporter: real helper isolated publish, work branch preserved",
+            "outcome": "PASS"
+          },
+          {
+            "name": "reporter: expected file SHA, completed rejects events, predecessor file",
+            "outcome": "PASS"
+          },
+          {
+            "name": "reporter: copied generic helper start/append/publish",
+            "outcome": "PASS"
+          },
+          {
+            "name": "reporter: other Agent cannot append; out-of-scope handoff refused",
+            "outcome": "PASS"
+          },
+          {
+            "name": "reporter: context cannot broaden; same-task new Agent needs predecessor",
+            "outcome": "PASS"
+          },
+          {
+            "name": "reporter: unmerged handoff, profile scope, validate/symlink, read-only packet (tests 12-15)",
+            "outcome": "PASS"
+          }
+        ],
+        "nextSteps": "Parent: verify MC shows this ClaudeCode run as trusted completed within explicit PARTIAL status (Codex completed valid, earlier Claude run claude-mc-desktop-pilot-run-20261010T055619Z-b3e4d1 rejected and untrusted). Actual served Owner display remains unverified.",
+        "handoff": {
+          "path": "HANDOFF.md",
+          "commitSha": "657ea09aa5571d8c2e7cdc529d54384652c9592c"
+        }
+      }
     }
   ]
 }
