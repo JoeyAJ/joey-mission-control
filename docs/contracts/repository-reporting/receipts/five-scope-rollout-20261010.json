@@ -1,0 +1,1200 @@
+{
+  "verifiedAt": "2026-10-10T07:26:54.716937+00:00",
+  "portableTestsPassed": 707,
+  "buildValidateSafety": "PASS",
+  "sourceProfiles": [
+    {
+      "projectId": "NEXAEON",
+      "track": "BASELINE",
+      "repositoryId": "JoeyAJ/nexaeon-web",
+      "ref": "main",
+      "expectedHead": "8271e1bbae78eb7fc4fc86c06feaa50d6fa82c39",
+      "preparedCommit": "62dd99b5e190163a1e4bc6ad410155336934f935",
+      "treeSha": "cfa375119b20ad5185fdc363554254bc88b7cfee",
+      "profileBlob": "f2aeac9fd5f15b6e4b559b0f7f3e84ff6ee254c5",
+      "profile": {
+        "projectId": "NEXAEON",
+        "track": "BASELINE",
+        "repositoryId": "JoeyAJ/nexaeon-web",
+        "ref": "main",
+        "path": "README.md",
+        "contextPaths": [
+          "docs/development-history/README.md",
+          "docs/STAGE_5_2_ACCEPTANCE.md",
+          "docs/architecture/ADR-0054-n8n-tool-runtime.md",
+          "docs/STAGE_5_4_B_EXPLORER_N8N_CONFIGURATION.md"
+        ]
+      },
+      "changedPaths": [
+        ".mission-control/source-profile.json"
+      ],
+      "contextRegularFilesVerified": [
+        "README.md",
+        "docs/development-history/README.md",
+        "docs/STAGE_5_2_ACCEPTANCE.md",
+        "docs/architecture/ADR-0054-n8n-tool-runtime.md",
+        "docs/STAGE_5_4_B_EXPLORER_N8N_CONFIGURATION.md"
+      ],
+      "sourceProfilePushed": true,
+      "pushedAt": "2026-10-10T07:16:59.697Z"
+    },
+    {
+      "projectId": "WOOSONG_BUDDY",
+      "track": "BASELINE",
+      "repositoryId": "JoeyAJ/woosongbuddy",
+      "ref": "main",
+      "expectedHead": "e41bd1b7d8a481fdf6402881f382605278d229af",
+      "preparedCommit": "f9952c5494fc047cb4f7046a93b4098755281a0f",
+      "treeSha": "91440f140eea784620437d2626264d95e4bb448f",
+      "profileBlob": "5c4b94facaaef1ef7c3aa67476ec4a407648420a",
+      "profile": {
+        "projectId": "WOOSONG_BUDDY",
+        "track": "BASELINE",
+        "repositoryId": "JoeyAJ/woosongbuddy",
+        "ref": "main",
+        "path": "README.md",
+        "contextPaths": [
+          "AGENTS.md",
+          "CLAUDE.md",
+          "docs/RELEASE_20261006.md",
+          "docs/THEME_PUBLIC_TEST_RELEASE_20261006.md"
+        ]
+      },
+      "changedPaths": [
+        ".mission-control/source-profile.json"
+      ],
+      "contextRegularFilesVerified": [
+        "README.md",
+        "AGENTS.md",
+        "CLAUDE.md",
+        "docs/RELEASE_20261006.md",
+        "docs/THEME_PUBLIC_TEST_RELEASE_20261006.md"
+      ],
+      "sourceProfilePushed": true,
+      "pushedAt": "2026-10-10T07:20:02.331Z"
+    },
+    {
+      "projectId": "NAMYOUNG_WEB3D",
+      "track": "BASELINE",
+      "repositoryId": "JoeyAJ/namyoung-web3d",
+      "ref": "main",
+      "expectedHead": "92c17b8adeec5eaa80d27b8facad532e6ff61d59",
+      "preparedCommit": "81a8d099d674d6c47dfa399bae6b8f8eaa14801a",
+      "treeSha": "6caeac6a3c800e76312bfbf906cc31733136899d",
+      "profileBlob": "2426d99b1179cfac14cb5cee7a72e1cf8abf5cab",
+      "profile": {
+        "projectId": "NAMYOUNG_WEB3D",
+        "track": "BASELINE",
+        "repositoryId": "JoeyAJ/namyoung-web3d",
+        "ref": "main",
+        "path": "README.md",
+        "contextPaths": [
+          "docs/PRODUCTION_REBUILD.md"
+        ]
+      },
+      "changedPaths": [
+        ".mission-control/source-profile.json"
+      ],
+      "contextRegularFilesVerified": [
+        "README.md",
+        "docs/PRODUCTION_REBUILD.md"
+      ],
+      "sourceProfilePushed": true,
+      "pushedAt": "2026-10-10T07:20:28.668Z"
+    },
+    {
+      "projectId": "JOEY_ASSET_SYSTEM",
+      "track": "BASELINE",
+      "repositoryId": "JoeyAJ/joey-asset-system",
+      "ref": "main",
+      "expectedHead": "eb03e2a9d86abf8b53acfe207fb6737d255ba0d4",
+      "preparedCommit": "97b8ed5e0e555f95a01bb2507144b5058b95ee92",
+      "treeSha": "772944d4fc261cda3faa2ec2401439dd712446bf",
+      "profileBlob": "7df210ea470127cfae2b1240ab85b265defc489d",
+      "profile": {
+        "projectId": "JOEY_ASSET_SYSTEM",
+        "track": "BASELINE",
+        "repositoryId": "JoeyAJ/joey-asset-system",
+        "ref": "main",
+        "path": "README.md",
+        "contextPaths": [
+          "SYSTEM_CHARTER.md",
+          "cases/CASE_001_NAMYOUNG/README.md",
+          "provenance/CASE_001_NAMYOUNG_RECOVERY.md"
+        ]
+      },
+      "changedPaths": [
+        ".mission-control/source-profile.json"
+      ],
+      "contextRegularFilesVerified": [
+        "README.md",
+        "SYSTEM_CHARTER.md",
+        "cases/CASE_001_NAMYOUNG/README.md",
+        "provenance/CASE_001_NAMYOUNG_RECOVERY.md"
+      ],
+      "sourceProfilePushed": true,
+      "pushedAt": "2026-10-10T07:20:44.413Z"
+    },
+    {
+      "projectId": "JOEY_ASSET_SYSTEM",
+      "track": "UNIVERSITY_CANDIDATE",
+      "repositoryId": "JoeyAJ/joey-asset-system",
+      "ref": "migration/university-v04-portable",
+      "expectedHead": "77b6766e790c7794bb1fc691f3f3dd3f4a4fe5c6",
+      "preparedCommit": "a0cfc6c6374120353bbf3c6f7ebc5d625624cc44",
+      "treeSha": "3bf75cf33b4f14f56b40e2b9f3fbbe262df30283",
+      "profileBlob": "c2c02a26d64ca3ca01629c373f6032446a0089a5",
+      "profile": {
+        "projectId": "JOEY_ASSET_SYSTEM",
+        "track": "UNIVERSITY_CANDIDATE",
+        "repositoryId": "JoeyAJ/joey-asset-system",
+        "ref": "migration/university-v04-portable",
+        "path": "DEVELOPMENT.md",
+        "contextPaths": [
+          "modules/education/university-lifecycle/docs/HANDOFF.md",
+          "docs/UNIVERSITY_PORTABLE_MIGRATION.md",
+          "docs/CASE_002_UNIVERSITY_HANDOFF.md"
+        ]
+      },
+      "changedPaths": [
+        ".mission-control/source-profile.json"
+      ],
+      "contextRegularFilesVerified": [
+        "DEVELOPMENT.md",
+        "modules/education/university-lifecycle/docs/HANDOFF.md",
+        "docs/UNIVERSITY_PORTABLE_MIGRATION.md",
+        "docs/CASE_002_UNIVERSITY_HANDOFF.md"
+      ],
+      "sourceProfilePushed": true,
+      "pushedAt": "2026-10-10T07:20:58.234Z"
+    }
+  ],
+  "initialOrphanGuards": [
+    {
+      "repositoryId": "JoeyAJ/nexaeon-web",
+      "ref": "mc/progress",
+      "expectedAbsent": true,
+      "preparedCommit": "5fcd677253116432a131d5c7451c4780de76c64e",
+      "treeSha": "e163d8c0fcdbc84611470338a3336e868f6bcdba",
+      "blobId": "34df471d3b150afa0b27048708fddd0e12f9b4f2",
+      "paths": [
+        "vercel.json"
+      ],
+      "regular": true,
+      "orphan": true,
+      "deploymentEnabled": false,
+      "pushed": true,
+      "pushedAt": "2026-10-10T07:17:02.006Z"
+    },
+    {
+      "repositoryId": "JoeyAJ/woosongbuddy",
+      "ref": "mc/progress",
+      "expectedAbsent": true,
+      "preparedCommit": "80e455d6544a9269a2a9f041c617aad1eb9e3028",
+      "treeSha": "e163d8c0fcdbc84611470338a3336e868f6bcdba",
+      "blobId": "34df471d3b150afa0b27048708fddd0e12f9b4f2",
+      "paths": [
+        "vercel.json"
+      ],
+      "regular": true,
+      "orphan": true,
+      "deploymentEnabled": false,
+      "pushed": true,
+      "pushedAt": "2026-10-10T07:20:04.292Z"
+    },
+    {
+      "repositoryId": "JoeyAJ/namyoung-web3d",
+      "ref": "mc/progress",
+      "expectedAbsent": true,
+      "preparedCommit": "8dbb53d4b7e33148d30a0cc5ea2d33bf3eff3294",
+      "treeSha": "e163d8c0fcdbc84611470338a3336e868f6bcdba",
+      "blobId": "34df471d3b150afa0b27048708fddd0e12f9b4f2",
+      "paths": [
+        "vercel.json"
+      ],
+      "regular": true,
+      "orphan": true,
+      "deploymentEnabled": false,
+      "pushed": true,
+      "pushedAt": "2026-10-10T07:20:30.516Z"
+    },
+    {
+      "repositoryId": "JoeyAJ/joey-asset-system",
+      "ref": "mc/progress",
+      "expectedAbsent": true,
+      "preparedCommit": "db6de3dd3f207128de28e2ff0a82a8bbd436a5c3",
+      "treeSha": "e163d8c0fcdbc84611470338a3336e868f6bcdba",
+      "blobId": "34df471d3b150afa0b27048708fddd0e12f9b4f2",
+      "paths": [
+        "vercel.json"
+      ],
+      "regular": true,
+      "orphan": true,
+      "deploymentEnabled": false,
+      "pushed": true,
+      "pushedAt": "2026-10-10T07:20:46.096Z"
+    }
+  ],
+  "actualCodexRuns": [
+    {
+      "verifiedAt": "2026-10-10T07:19:09.277Z",
+      "projectId": "NEXAEON",
+      "track": "BASELINE",
+      "repositoryId": "JoeyAJ/nexaeon-web",
+      "sourceRef": "main",
+      "sourceProfileCommit": "62dd99b5e190163a1e4bc6ad410155336934f935",
+      "sourceProfileBlob": "f2aeac9fd5f15b6e4b559b0f7f3e84ff6ee254c5",
+      "helperSha256": "c6e9f9e485eeba755e9fcd2a1a526212b9197df55c01c5393d7195c90dabd928",
+      "runId": "codex-mc-scope-nexaeon-base-20261010T071857Z",
+      "taskId": "mc-report-scope-verification-nexaeon-baseline",
+      "agentName": "Codex",
+      "provider": null,
+      "model": null,
+      "predecessorRunId": null,
+      "guardCommit": "5fcd677253116432a131d5c7451c4780de76c64e",
+      "started": {
+        "status": "PUBLISHED",
+        "runId": "codex-mc-scope-nexaeon-base-20261010T071857Z",
+        "path": ".mission-control/runs/codex-mc-scope-nexaeon-base-20261010T071857Z.json",
+        "reportCommitSha": "0554e69d4afa9ac169c5cd60e4b1c2742a76d400",
+        "fileSha": "61a1b2b79cb2b2242ca2a23f359cb37f0baf2169",
+        "sequence": 1,
+        "eventId": "codex-mc-scope-nexaeon-base-20261010T071857Z-started",
+        "scopeQualification": "PINNED_REPOSITORY_PROFILE_NOT_SERVER_ACCEPTANCE"
+      },
+      "progress": {
+        "status": "PUBLISHED",
+        "runId": "codex-mc-scope-nexaeon-base-20261010T071857Z",
+        "path": ".mission-control/runs/codex-mc-scope-nexaeon-base-20261010T071857Z.json",
+        "reportCommitSha": "7aac8a259b738b121c38bb0c5af9285815573ad9",
+        "fileSha": "6b45fd5a15cdb756546ce6e31c872239c011ecc0",
+        "sequence": 2,
+        "eventId": "codex-mc-scope-nexaeon-base-20261010T071857Z-progress",
+        "scopeQualification": "PINNED_REPOSITORY_PROFILE_NOT_SERVER_ACCEPTANCE"
+      },
+      "completed": {
+        "status": "PUBLISHED",
+        "runId": "codex-mc-scope-nexaeon-base-20261010T071857Z",
+        "path": ".mission-control/runs/codex-mc-scope-nexaeon-base-20261010T071857Z.json",
+        "reportCommitSha": "5082e7b297614f6e64f9c26907319e3f6898db4f",
+        "fileSha": "834ccc91f7e49efa2b89e4152daca8212d46d272",
+        "sequence": 3,
+        "eventId": "codex-mc-scope-nexaeon-base-20261010T071857Z-completed",
+        "scopeQualification": "PINNED_REPOSITORY_PROFILE_NOT_SERVER_ACCEPTANCE"
+      },
+      "sourceReadStatus": "FOUND",
+      "source": {
+        "qualification": "REMOTE_FILE_READ",
+        "repositoryId": "JoeyAJ/nexaeon-web",
+        "requestedRef": "main",
+        "expectedBaseline": "8271e1bbae78eb7fc4fc86c06feaa50d6fa82c39",
+        "resolvedCommitSha": "62dd99b5e190163a1e4bc6ad410155336934f935",
+        "path": "README.md",
+        "providerBlobId": "1307357a5fb37ef8df5c1fa08503ef4f1022328f",
+        "contentSha256": "ffec1176dff568d4ef8fc6949b22582c56e96df4b7fb3bbad6e5f8d548b226a8",
+        "readAt": "2026-10-10T07:19:02.935Z",
+        "documentTimestamp": null
+      },
+      "entryQualification": "DOCUMENTED_BASELINE_ENTRY",
+      "reportReadStatus": "FOUND",
+      "reportHead": "5082e7b297614f6e64f9c26907319e3f6898db4f",
+      "runCountForTrack": 1,
+      "reportedState": "completed",
+      "sequence": 3,
+      "freshCopySourceSHA": "62dd99b5e190163a1e4bc6ad410155336934f935",
+      "copyContinuationReportGate": "PASS actual Git bytes with synthetic Owner boundary",
+      "realOwnerServedAcceptance": false,
+      "productAccepted": false,
+      "deploymentAccepted": false,
+      "sourceOnlyChangedProfile": true,
+      "actualApplicationFeatureWork": false
+    },
+    {
+      "verifiedAt": "2026-10-10T07:20:15.615Z",
+      "projectId": "WOOSONG_BUDDY",
+      "track": "BASELINE",
+      "repositoryId": "JoeyAJ/woosongbuddy",
+      "sourceRef": "main",
+      "sourceProfileCommit": "f9952c5494fc047cb4f7046a93b4098755281a0f",
+      "sourceProfileBlob": "5c4b94facaaef1ef7c3aa67476ec4a407648420a",
+      "helperSha256": "c6e9f9e485eeba755e9fcd2a1a526212b9197df55c01c5393d7195c90dabd928",
+      "runId": "codex-mc-scope-woosong_buddy-base-20261010T072004Z",
+      "taskId": "mc-report-scope-verification-woosong_buddy-baseline",
+      "agentName": "Codex",
+      "provider": null,
+      "model": null,
+      "predecessorRunId": null,
+      "guardCommit": "80e455d6544a9269a2a9f041c617aad1eb9e3028",
+      "started": {
+        "status": "PUBLISHED",
+        "runId": "codex-mc-scope-woosong_buddy-base-20261010T072004Z",
+        "path": ".mission-control/runs/codex-mc-scope-woosong_buddy-base-20261010T072004Z.json",
+        "reportCommitSha": "759fa1e876da7ce27d19ae476d454a5441ecfa37",
+        "fileSha": "c6ae608becb415a2527210f08d8ebc87278141ae",
+        "sequence": 1,
+        "eventId": "codex-mc-scope-woosong_buddy-base-20261010T072004Z-started",
+        "scopeQualification": "PINNED_REPOSITORY_PROFILE_NOT_SERVER_ACCEPTANCE"
+      },
+      "progress": {
+        "status": "PUBLISHED",
+        "runId": "codex-mc-scope-woosong_buddy-base-20261010T072004Z",
+        "path": ".mission-control/runs/codex-mc-scope-woosong_buddy-base-20261010T072004Z.json",
+        "reportCommitSha": "5bca932a2b6f376dfe8bbe4219ce793e767339eb",
+        "fileSha": "234b34ec66148081a79f2ed55b9fa5aeb5028746",
+        "sequence": 2,
+        "eventId": "codex-mc-scope-woosong_buddy-base-20261010T072004Z-progress",
+        "scopeQualification": "PINNED_REPOSITORY_PROFILE_NOT_SERVER_ACCEPTANCE"
+      },
+      "completed": {
+        "status": "PUBLISHED",
+        "runId": "codex-mc-scope-woosong_buddy-base-20261010T072004Z",
+        "path": ".mission-control/runs/codex-mc-scope-woosong_buddy-base-20261010T072004Z.json",
+        "reportCommitSha": "0e580a0d6154e8e5ce8a75ee445e78a37c2e0d40",
+        "fileSha": "c558ddfdb3021850b4e2cfa48b420ef894121824",
+        "sequence": 3,
+        "eventId": "codex-mc-scope-woosong_buddy-base-20261010T072004Z-completed",
+        "scopeQualification": "PINNED_REPOSITORY_PROFILE_NOT_SERVER_ACCEPTANCE"
+      },
+      "sourceReadStatus": "FOUND",
+      "source": {
+        "qualification": "REMOTE_FILE_READ",
+        "repositoryId": "JoeyAJ/woosongbuddy",
+        "requestedRef": "main",
+        "expectedBaseline": "e41bd1b7d8a481fdf6402881f382605278d229af",
+        "resolvedCommitSha": "f9952c5494fc047cb4f7046a93b4098755281a0f",
+        "path": "README.md",
+        "providerBlobId": "b87e1e03a206637209b00ef4ee9d81334ecf8776",
+        "contentSha256": "43667356c4effdde10219f5bb9d1be80bcf9c7e38486c05b96ded45cf27cbab1",
+        "readAt": "2026-10-10T07:20:08.601Z",
+        "documentTimestamp": null
+      },
+      "entryQualification": "DOCUMENTED_BASELINE_ENTRY",
+      "reportReadStatus": "FOUND",
+      "reportHead": "0e580a0d6154e8e5ce8a75ee445e78a37c2e0d40",
+      "runCountForTrack": 1,
+      "reportedState": "completed",
+      "sequence": 3,
+      "freshCopySourceSHA": "f9952c5494fc047cb4f7046a93b4098755281a0f",
+      "copyContinuationReportGate": "PASS actual Git bytes with synthetic Owner boundary",
+      "realOwnerServedAcceptance": false,
+      "productAccepted": false,
+      "deploymentAccepted": false,
+      "sourceOnlyChangedProfile": true,
+      "actualApplicationFeatureWork": false
+    },
+    {
+      "verifiedAt": "2026-10-10T07:20:39.757Z",
+      "projectId": "NAMYOUNG_WEB3D",
+      "track": "BASELINE",
+      "repositoryId": "JoeyAJ/namyoung-web3d",
+      "sourceRef": "main",
+      "sourceProfileCommit": "81a8d099d674d6c47dfa399bae6b8f8eaa14801a",
+      "sourceProfileBlob": "2426d99b1179cfac14cb5cee7a72e1cf8abf5cab",
+      "helperSha256": "c6e9f9e485eeba755e9fcd2a1a526212b9197df55c01c5393d7195c90dabd928",
+      "runId": "codex-mc-scope-namyoung_web3d-base-20261010T072030Z",
+      "taskId": "mc-report-scope-verification-namyoung_web3d-baseline",
+      "agentName": "Codex",
+      "provider": null,
+      "model": null,
+      "predecessorRunId": null,
+      "guardCommit": "8dbb53d4b7e33148d30a0cc5ea2d33bf3eff3294",
+      "started": {
+        "status": "PUBLISHED",
+        "runId": "codex-mc-scope-namyoung_web3d-base-20261010T072030Z",
+        "path": ".mission-control/runs/codex-mc-scope-namyoung_web3d-base-20261010T072030Z.json",
+        "reportCommitSha": "86d158090533de1e2c31d6a34cffadb047281dae",
+        "fileSha": "2914e6728844584893e41584644e7b9e98e81a37",
+        "sequence": 1,
+        "eventId": "codex-mc-scope-namyoung_web3d-base-20261010T072030Z-started",
+        "scopeQualification": "PINNED_REPOSITORY_PROFILE_NOT_SERVER_ACCEPTANCE"
+      },
+      "progress": {
+        "status": "PUBLISHED",
+        "runId": "codex-mc-scope-namyoung_web3d-base-20261010T072030Z",
+        "path": ".mission-control/runs/codex-mc-scope-namyoung_web3d-base-20261010T072030Z.json",
+        "reportCommitSha": "fc5199f285233ebfa44be9db3b666b7e9eed426d",
+        "fileSha": "7691fcbd80ad02e6a88fa3886dcbf29d743df59c",
+        "sequence": 2,
+        "eventId": "codex-mc-scope-namyoung_web3d-base-20261010T072030Z-progress",
+        "scopeQualification": "PINNED_REPOSITORY_PROFILE_NOT_SERVER_ACCEPTANCE"
+      },
+      "completed": {
+        "status": "PUBLISHED",
+        "runId": "codex-mc-scope-namyoung_web3d-base-20261010T072030Z",
+        "path": ".mission-control/runs/codex-mc-scope-namyoung_web3d-base-20261010T072030Z.json",
+        "reportCommitSha": "568d66b0acf846c493f337cd2c4e0753f36dce41",
+        "fileSha": "3b2b3d66e1daa15ce76e7cd6949b1f25b33ac378",
+        "sequence": 3,
+        "eventId": "codex-mc-scope-namyoung_web3d-base-20261010T072030Z-completed",
+        "scopeQualification": "PINNED_REPOSITORY_PROFILE_NOT_SERVER_ACCEPTANCE"
+      },
+      "sourceReadStatus": "FOUND",
+      "source": {
+        "qualification": "REMOTE_FILE_READ",
+        "repositoryId": "JoeyAJ/namyoung-web3d",
+        "requestedRef": "main",
+        "expectedBaseline": "92c17b8adeec5eaa80d27b8facad532e6ff61d59",
+        "resolvedCommitSha": "81a8d099d674d6c47dfa399bae6b8f8eaa14801a",
+        "path": "README.md",
+        "providerBlobId": "65affd9ecc91836e498915985ff3e185979935c0",
+        "contentSha256": "f8eb33cb8320d04b8b391b193f94338467e01c893cc49a336f60bfba1517cd36",
+        "readAt": "2026-10-10T07:20:34.429Z",
+        "documentTimestamp": null
+      },
+      "entryQualification": "DOCUMENTED_BASELINE_ENTRY",
+      "reportReadStatus": "FOUND",
+      "reportHead": "568d66b0acf846c493f337cd2c4e0753f36dce41",
+      "runCountForTrack": 1,
+      "reportedState": "completed",
+      "sequence": 3,
+      "freshCopySourceSHA": "81a8d099d674d6c47dfa399bae6b8f8eaa14801a",
+      "copyContinuationReportGate": "PASS actual Git bytes with synthetic Owner boundary",
+      "realOwnerServedAcceptance": false,
+      "productAccepted": false,
+      "deploymentAccepted": false,
+      "sourceOnlyChangedProfile": true,
+      "actualApplicationFeatureWork": false
+    },
+    {
+      "verifiedAt": "2026-10-10T07:20:56.455Z",
+      "projectId": "JOEY_ASSET_SYSTEM",
+      "track": "BASELINE",
+      "repositoryId": "JoeyAJ/joey-asset-system",
+      "sourceRef": "main",
+      "sourceProfileCommit": "97b8ed5e0e555f95a01bb2507144b5058b95ee92",
+      "sourceProfileBlob": "7df210ea470127cfae2b1240ab85b265defc489d",
+      "helperSha256": "c6e9f9e485eeba755e9fcd2a1a526212b9197df55c01c5393d7195c90dabd928",
+      "runId": "codex-mc-scope-joey_asset_system-base-20261010T072046Z",
+      "taskId": "mc-report-scope-verification-joey_asset_system-baseline",
+      "agentName": "Codex",
+      "provider": null,
+      "model": null,
+      "predecessorRunId": null,
+      "guardCommit": "db6de3dd3f207128de28e2ff0a82a8bbd436a5c3",
+      "started": {
+        "status": "PUBLISHED",
+        "runId": "codex-mc-scope-joey_asset_system-base-20261010T072046Z",
+        "path": ".mission-control/runs/codex-mc-scope-joey_asset_system-base-20261010T072046Z.json",
+        "reportCommitSha": "fbbefeab0d3f4aa778f274e383ef789892689187",
+        "fileSha": "8531475d575ad907c98201be6839b0622cada60f",
+        "sequence": 1,
+        "eventId": "codex-mc-scope-joey_asset_system-base-20261010T072046Z-started",
+        "scopeQualification": "PINNED_REPOSITORY_PROFILE_NOT_SERVER_ACCEPTANCE"
+      },
+      "progress": {
+        "status": "PUBLISHED",
+        "runId": "codex-mc-scope-joey_asset_system-base-20261010T072046Z",
+        "path": ".mission-control/runs/codex-mc-scope-joey_asset_system-base-20261010T072046Z.json",
+        "reportCommitSha": "7e725d33e75ae081aa561f375701a96a9518bfd4",
+        "fileSha": "4263f3aecb0caddfd1964174bdccb61e50e5f9fb",
+        "sequence": 2,
+        "eventId": "codex-mc-scope-joey_asset_system-base-20261010T072046Z-progress",
+        "scopeQualification": "PINNED_REPOSITORY_PROFILE_NOT_SERVER_ACCEPTANCE"
+      },
+      "completed": {
+        "status": "PUBLISHED",
+        "runId": "codex-mc-scope-joey_asset_system-base-20261010T072046Z",
+        "path": ".mission-control/runs/codex-mc-scope-joey_asset_system-base-20261010T072046Z.json",
+        "reportCommitSha": "d9d38118732a818f05713bcd62b938e656c24d97",
+        "fileSha": "0694a42d6a3cdeb4443beab288d3db03a0fcadb2",
+        "sequence": 3,
+        "eventId": "codex-mc-scope-joey_asset_system-base-20261010T072046Z-completed",
+        "scopeQualification": "PINNED_REPOSITORY_PROFILE_NOT_SERVER_ACCEPTANCE"
+      },
+      "sourceReadStatus": "FOUND",
+      "source": {
+        "qualification": "REMOTE_FILE_READ",
+        "repositoryId": "JoeyAJ/joey-asset-system",
+        "requestedRef": "main",
+        "expectedBaseline": "eb03e2a9d86abf8b53acfe207fb6737d255ba0d4",
+        "resolvedCommitSha": "97b8ed5e0e555f95a01bb2507144b5058b95ee92",
+        "path": "README.md",
+        "providerBlobId": "db0a682ef339069159b5f6261e15426845c368d9",
+        "contentSha256": "3bcef8d7df392380d328097a3d32476976fd295222fe79977ac52e6f5fe6d066",
+        "readAt": "2026-10-10T07:20:50.387Z",
+        "documentTimestamp": null
+      },
+      "entryQualification": "DOCUMENTED_BASELINE_ENTRY",
+      "reportReadStatus": "FOUND",
+      "reportHead": "d9d38118732a818f05713bcd62b938e656c24d97",
+      "runCountForTrack": 1,
+      "reportedState": "completed",
+      "sequence": 3,
+      "freshCopySourceSHA": "97b8ed5e0e555f95a01bb2507144b5058b95ee92",
+      "copyContinuationReportGate": "PASS actual Git bytes with synthetic Owner boundary",
+      "realOwnerServedAcceptance": false,
+      "productAccepted": false,
+      "deploymentAccepted": false,
+      "sourceOnlyChangedProfile": true,
+      "actualApplicationFeatureWork": false
+    },
+    {
+      "verifiedAt": "2026-10-10T07:21:09.707Z",
+      "projectId": "JOEY_ASSET_SYSTEM",
+      "track": "UNIVERSITY_CANDIDATE",
+      "repositoryId": "JoeyAJ/joey-asset-system",
+      "sourceRef": "migration/university-v04-portable",
+      "sourceProfileCommit": "a0cfc6c6374120353bbf3c6f7ebc5d625624cc44",
+      "sourceProfileBlob": "c2c02a26d64ca3ca01629c373f6032446a0089a5",
+      "helperSha256": "c6e9f9e485eeba755e9fcd2a1a526212b9197df55c01c5393d7195c90dabd928",
+      "runId": "codex-mc-scope-joey_asset_system-university-20261010T072058Z",
+      "taskId": "mc-report-scope-verification-joey_asset_system-university_candidate",
+      "agentName": "Codex",
+      "provider": null,
+      "model": null,
+      "predecessorRunId": null,
+      "guardCommit": "db6de3dd3f207128de28e2ff0a82a8bbd436a5c3",
+      "started": {
+        "status": "PUBLISHED",
+        "runId": "codex-mc-scope-joey_asset_system-university-20261010T072058Z",
+        "path": ".mission-control/runs/codex-mc-scope-joey_asset_system-university-20261010T072058Z.json",
+        "reportCommitSha": "bf1555c0c5dbecf8cb3e68d78bdb98cd77162fc1",
+        "fileSha": "18aca389d39832805419afa37523a2e24cd39324",
+        "sequence": 1,
+        "eventId": "codex-mc-scope-joey_asset_system-university-20261010T072058Z-started",
+        "scopeQualification": "PINNED_REPOSITORY_PROFILE_NOT_SERVER_ACCEPTANCE"
+      },
+      "progress": {
+        "status": "PUBLISHED",
+        "runId": "codex-mc-scope-joey_asset_system-university-20261010T072058Z",
+        "path": ".mission-control/runs/codex-mc-scope-joey_asset_system-university-20261010T072058Z.json",
+        "reportCommitSha": "ea37795b6c50fea6e0cfe967bca71b522199e17c",
+        "fileSha": "7df4426dbb5bb8a6946a839f31891b4533ed9c7c",
+        "sequence": 2,
+        "eventId": "codex-mc-scope-joey_asset_system-university-20261010T072058Z-progress",
+        "scopeQualification": "PINNED_REPOSITORY_PROFILE_NOT_SERVER_ACCEPTANCE"
+      },
+      "completed": {
+        "status": "PUBLISHED",
+        "runId": "codex-mc-scope-joey_asset_system-university-20261010T072058Z",
+        "path": ".mission-control/runs/codex-mc-scope-joey_asset_system-university-20261010T072058Z.json",
+        "reportCommitSha": "b65b9aab04b62e891accf3776d6fed0af4fc09d2",
+        "fileSha": "3f6f56629b5b84785211dcfc51b49f2ada3614ab",
+        "sequence": 3,
+        "eventId": "codex-mc-scope-joey_asset_system-university-20261010T072058Z-completed",
+        "scopeQualification": "PINNED_REPOSITORY_PROFILE_NOT_SERVER_ACCEPTANCE"
+      },
+      "sourceReadStatus": "FOUND",
+      "source": {
+        "qualification": "REMOTE_FILE_READ",
+        "repositoryId": "JoeyAJ/joey-asset-system",
+        "requestedRef": "migration/university-v04-portable",
+        "expectedBaseline": "77b6766e790c7794bb1fc691f3f3dd3f4a4fe5c6",
+        "resolvedCommitSha": "a0cfc6c6374120353bbf3c6f7ebc5d625624cc44",
+        "path": "DEVELOPMENT.md",
+        "providerBlobId": "629c02e3cce63835bb0e6c3c76ee95a1ede8057a",
+        "contentSha256": "0245c29d5d494992d5774f23c7baab7db5ad6d77433ca7c858a8b9330dff964a",
+        "readAt": "2026-10-10T07:21:03.218Z",
+        "documentTimestamp": null
+      },
+      "entryQualification": "SEPARATE_CANDIDATE_JOEY_ACCEPTANCE_PENDING",
+      "reportReadStatus": "FOUND",
+      "reportHead": "b65b9aab04b62e891accf3776d6fed0af4fc09d2",
+      "runCountForTrack": 1,
+      "reportedState": "completed",
+      "sequence": 3,
+      "freshCopySourceSHA": "a0cfc6c6374120353bbf3c6f7ebc5d625624cc44",
+      "copyContinuationReportGate": "PASS actual Git bytes with synthetic Owner boundary",
+      "realOwnerServedAcceptance": false,
+      "productAccepted": false,
+      "deploymentAccepted": false,
+      "sourceOnlyChangedProfile": true,
+      "actualApplicationFeatureWork": false
+    }
+  ],
+  "originalDeployments": [
+    {
+      "projectId": "prj_CRjbBCURR3sBqPreZaQYj6VcpAPN",
+      "readAt": "2026-10-10T07:16:19.839Z",
+      "deployments": [
+        {
+          "id": "dpl_6NYotLUULVSdd1iYbXBQ2UG4yedF",
+          "url": "nexaeon-joeyaj-nexaeon-web-3-7-cbe1p6mwn-joeyajs-projects.vercel.app",
+          "state": "READY",
+          "target": "production",
+          "sha": "8271e1bbae78eb7fc4fc86c06feaa50d6fa82c39",
+          "branch": "main"
+        }
+      ]
+    },
+    {
+      "projectId": "prj_UjMrdbyixkdO72EKHHKCB98DaoVv",
+      "readAt": "2026-10-10T07:16:19.882Z",
+      "deployments": [
+        {
+          "id": "dpl_4f4v3ryXQnbmiJx68vs5geVYiqyg",
+          "url": "nexaeon-hf7afmbh0-joeyajs-projects.vercel.app",
+          "state": "READY",
+          "target": "production",
+          "sha": "8271e1bbae78eb7fc4fc86c06feaa50d6fa82c39",
+          "branch": "main"
+        }
+      ]
+    },
+    {
+      "projectId": "prj_lKT2cNfJ3I2FMTwuvSmahGPUDaHh",
+      "readAt": "2026-10-10T07:16:19.933Z",
+      "deployments": [
+        {
+          "id": "dpl_HtTvo6ruURom936j1tEoZLYZLJ8u",
+          "url": "woosong-buddy-4sh70eqd8-joeyajs-projects.vercel.app",
+          "state": "READY",
+          "target": "production",
+          "sha": "e41bd1b7d8a481fdf6402881f382605278d229af",
+          "branch": "main"
+        }
+      ]
+    },
+    {
+      "projectId": "prj_ROefEtbCUNNWQRN73ZS8mHcmLW9q",
+      "readAt": "2026-10-10T07:16:20.016Z",
+      "deployments": [
+        {
+          "id": "dpl_AhDLCC3FUA3RPg2tswJjvz6yPkKu",
+          "url": "namyoung-web3d-p1jap4tmo-joeyajs-projects.vercel.app",
+          "state": "READY",
+          "target": "production",
+          "sha": "92c17b8adeec5eaa80d27b8facad532e6ff61d59",
+          "branch": "main"
+        }
+      ]
+    },
+    {
+      "projectId": "prj_j1z1rkZl7LY9FuY6KKHMuZgHtPlH",
+      "readAt": "2026-10-10T07:16:21.043Z",
+      "deployments": [
+        {
+          "id": "dpl_Dcigswm82MKFTsPmZiJzwH56x9ng",
+          "url": "repo-dg4xybku5-joeyajs-projects.vercel.app",
+          "state": "READY",
+          "target": "production",
+          "sha": "8271e1bbae78eb7fc4fc86c06feaa50d6fa82c39",
+          "branch": "main"
+        }
+      ]
+    }
+  ],
+  "newDeploymentReadback": [
+    {
+      "projectId": "prj_UjMrdbyixkdO72EKHHKCB98DaoVv",
+      "checkedAt": "2026-10-10T07:19:38.467Z",
+      "reportBranch": [],
+      "sourceProfile": [
+        {
+          "id": "dpl_EXZHzoZZ2MquFqU2Kt7WtY7RjmQK",
+          "state": "READY",
+          "url": "nexaeon-d6dfzw3ii-joeyajs-projects.vercel.app",
+          "target": "production",
+          "sha": "62dd99b5e190163a1e4bc6ad410155336934f935"
+        }
+      ]
+    },
+    {
+      "projectId": "prj_j1z1rkZl7LY9FuY6KKHMuZgHtPlH",
+      "checkedAt": "2026-10-10T07:19:38.386Z",
+      "reportBranch": [],
+      "sourceProfile": [
+        {
+          "id": "dpl_9ce7Ne2ABhnGx26gNnXvHQd8HUXz",
+          "state": "READY",
+          "url": "repo-8w7ba82pu-joeyajs-projects.vercel.app",
+          "target": "production",
+          "sha": "62dd99b5e190163a1e4bc6ad410155336934f935"
+        }
+      ]
+    },
+    {
+      "projectId": "prj_CRjbBCURR3sBqPreZaQYj6VcpAPN",
+      "checkedAt": "2026-10-10T07:19:38.572Z",
+      "reportBranch": [],
+      "sourceProfile": [
+        {
+          "id": "dpl_GcEan45jM9dpJkx3uiMJmgGwHR5U",
+          "state": "READY",
+          "url": "nexaeon-joeyaj-nexaeon-web-3-7-e30c1ay5d-joeyajs-projects.vercel.app",
+          "target": "production",
+          "sha": "62dd99b5e190163a1e4bc6ad410155336934f935"
+        }
+      ]
+    },
+    {
+      "projectId": "prj_lKT2cNfJ3I2FMTwuvSmahGPUDaHh",
+      "checkedAt": "2026-10-10T07:21:24.231Z",
+      "reportBranch": [],
+      "sourceProfile": [
+        {
+          "id": "dpl_HSFAD2kUU2Pkt2RD1JgAsCaXBy5r",
+          "url": "woosong-buddy-atdi4o5vu-joeyajs-projects.vercel.app",
+          "state": "READY",
+          "target": "production",
+          "sha": "f9952c5494fc047cb4f7046a93b4098755281a0f"
+        }
+      ]
+    },
+    {
+      "projectId": "prj_ROefEtbCUNNWQRN73ZS8mHcmLW9q",
+      "checkedAt": "2026-10-10T07:21:24.154Z",
+      "reportBranch": [],
+      "sourceProfile": [
+        {
+          "id": "dpl_3vLFaVmLioaBurdmQZuSgxrZnVMp",
+          "url": "namyoung-web3d-boo9ag6kw-joeyajs-projects.vercel.app",
+          "state": "READY",
+          "target": "production",
+          "sha": "81a8d099d674d6c47dfa399bae6b8f8eaa14801a"
+        }
+      ]
+    }
+  ],
+  "freshCopy": {
+    "pass": true,
+    "cases": [
+      {
+        "projectId": "NEXAEON",
+        "track": "BASELINE",
+        "sourceSHA": "62dd99b5e190163a1e4bc6ad410155336934f935",
+        "sourceDigest": "ffec1176dff568d4ef8fc6949b22582c56e96df4b7fb3bbad6e5f8d548b226a8",
+        "reportHead": "5082e7b297614f6e64f9c26907319e3f6898db4f",
+        "runId": "codex-mc-scope-nexaeon-base-20261010T071857Z",
+        "runCountForTrack": 1,
+        "reportDirectoryRunFiles": 1,
+        "sourceStatus": "FOUND",
+        "reportStatus": "FOUND",
+        "freshCopySourceSHA": "62dd99b5e190163a1e4bc6ad410155336934f935",
+        "entryQualification": "DOCUMENTED_BASELINE_ENTRY",
+        "originalExpectedBaselineUnchanged": true,
+        "documentTimestamp": null,
+        "lastAgent": null,
+        "originalGuardRootRegular": true,
+        "actualGitBytes": true,
+        "syntheticOwnerBoundary": true,
+        "servedOwnerAcceptance": false
+      },
+      {
+        "projectId": "WOOSONG_BUDDY",
+        "track": "BASELINE",
+        "sourceSHA": "f9952c5494fc047cb4f7046a93b4098755281a0f",
+        "sourceDigest": "43667356c4effdde10219f5bb9d1be80bcf9c7e38486c05b96ded45cf27cbab1",
+        "reportHead": "0e580a0d6154e8e5ce8a75ee445e78a37c2e0d40",
+        "runId": "codex-mc-scope-woosong_buddy-base-20261010T072004Z",
+        "runCountForTrack": 1,
+        "reportDirectoryRunFiles": 1,
+        "sourceStatus": "FOUND",
+        "reportStatus": "FOUND",
+        "freshCopySourceSHA": "f9952c5494fc047cb4f7046a93b4098755281a0f",
+        "entryQualification": "DOCUMENTED_BASELINE_ENTRY",
+        "originalExpectedBaselineUnchanged": true,
+        "documentTimestamp": null,
+        "lastAgent": null,
+        "originalGuardRootRegular": true,
+        "actualGitBytes": true,
+        "syntheticOwnerBoundary": true,
+        "servedOwnerAcceptance": false
+      },
+      {
+        "projectId": "NAMYOUNG_WEB3D",
+        "track": "BASELINE",
+        "sourceSHA": "81a8d099d674d6c47dfa399bae6b8f8eaa14801a",
+        "sourceDigest": "f8eb33cb8320d04b8b391b193f94338467e01c893cc49a336f60bfba1517cd36",
+        "reportHead": "568d66b0acf846c493f337cd2c4e0753f36dce41",
+        "runId": "codex-mc-scope-namyoung_web3d-base-20261010T072030Z",
+        "runCountForTrack": 1,
+        "reportDirectoryRunFiles": 1,
+        "sourceStatus": "FOUND",
+        "reportStatus": "FOUND",
+        "freshCopySourceSHA": "81a8d099d674d6c47dfa399bae6b8f8eaa14801a",
+        "entryQualification": "DOCUMENTED_BASELINE_ENTRY",
+        "originalExpectedBaselineUnchanged": true,
+        "documentTimestamp": null,
+        "lastAgent": null,
+        "originalGuardRootRegular": true,
+        "actualGitBytes": true,
+        "syntheticOwnerBoundary": true,
+        "servedOwnerAcceptance": false
+      },
+      {
+        "projectId": "JOEY_ASSET_SYSTEM",
+        "track": "BASELINE",
+        "sourceSHA": "97b8ed5e0e555f95a01bb2507144b5058b95ee92",
+        "sourceDigest": "3bcef8d7df392380d328097a3d32476976fd295222fe79977ac52e6f5fe6d066",
+        "reportHead": "b65b9aab04b62e891accf3776d6fed0af4fc09d2",
+        "runId": "codex-mc-scope-joey_asset_system-base-20261010T072046Z",
+        "runCountForTrack": 1,
+        "reportDirectoryRunFiles": 2,
+        "sourceStatus": "FOUND",
+        "reportStatus": "FOUND",
+        "freshCopySourceSHA": "97b8ed5e0e555f95a01bb2507144b5058b95ee92",
+        "entryQualification": "DOCUMENTED_BASELINE_ENTRY",
+        "originalExpectedBaselineUnchanged": true,
+        "documentTimestamp": null,
+        "lastAgent": null,
+        "originalGuardRootRegular": true,
+        "actualGitBytes": true,
+        "syntheticOwnerBoundary": true,
+        "servedOwnerAcceptance": false
+      },
+      {
+        "projectId": "JOEY_ASSET_SYSTEM",
+        "track": "UNIVERSITY_CANDIDATE",
+        "sourceSHA": "a0cfc6c6374120353bbf3c6f7ebc5d625624cc44",
+        "sourceDigest": "0245c29d5d494992d5774f23c7baab7db5ad6d77433ca7c858a8b9330dff964a",
+        "reportHead": "b65b9aab04b62e891accf3776d6fed0af4fc09d2",
+        "runId": "codex-mc-scope-joey_asset_system-university-20261010T072058Z",
+        "runCountForTrack": 1,
+        "reportDirectoryRunFiles": 2,
+        "sourceStatus": "FOUND",
+        "reportStatus": "FOUND",
+        "freshCopySourceSHA": "a0cfc6c6374120353bbf3c6f7ebc5d625624cc44",
+        "entryQualification": "SEPARATE_CANDIDATE_JOEY_ACCEPTANCE_PENDING",
+        "originalExpectedBaselineUnchanged": true,
+        "documentTimestamp": null,
+        "lastAgent": null,
+        "originalGuardRootRegular": true,
+        "actualGitBytes": true,
+        "syntheticOwnerBoundary": true,
+        "servedOwnerAcceptance": false
+      }
+    ],
+    "externalOwnerAcceptance": false
+  },
+  "finalRemoteReadback": [
+    {
+      "projectId": "NEXAEON",
+      "track": "BASELINE",
+      "remoteSourceSHA": "62dd99b5e190163a1e4bc6ad410155336934f935",
+      "onlyProfileChanged": true,
+      "remoteReportSHA": "5082e7b297614f6e64f9c26907319e3f6898db4f",
+      "completedBlobUnchanged": true
+    },
+    {
+      "projectId": "WOOSONG_BUDDY",
+      "track": "BASELINE",
+      "remoteSourceSHA": "f9952c5494fc047cb4f7046a93b4098755281a0f",
+      "onlyProfileChanged": true,
+      "remoteReportSHA": "0e580a0d6154e8e5ce8a75ee445e78a37c2e0d40",
+      "completedBlobUnchanged": true
+    },
+    {
+      "projectId": "NAMYOUNG_WEB3D",
+      "track": "BASELINE",
+      "remoteSourceSHA": "81a8d099d674d6c47dfa399bae6b8f8eaa14801a",
+      "onlyProfileChanged": true,
+      "remoteReportSHA": "568d66b0acf846c493f337cd2c4e0753f36dce41",
+      "completedBlobUnchanged": true
+    },
+    {
+      "projectId": "JOEY_ASSET_SYSTEM",
+      "track": "BASELINE",
+      "remoteSourceSHA": "97b8ed5e0e555f95a01bb2507144b5058b95ee92",
+      "onlyProfileChanged": true,
+      "remoteReportSHA": "b65b9aab04b62e891accf3776d6fed0af4fc09d2",
+      "completedBlobUnchanged": true
+    },
+    {
+      "projectId": "JOEY_ASSET_SYSTEM",
+      "track": "UNIVERSITY_CANDIDATE",
+      "remoteSourceSHA": "a0cfc6c6374120353bbf3c6f7ebc5d625624cc44",
+      "onlyProfileChanged": true,
+      "remoteReportSHA": "b65b9aab04b62e891accf3776d6fed0af4fc09d2",
+      "completedBlobUnchanged": true
+    }
+  ],
+  "failures": [
+    {
+      "workflowRunId": 38033891642,
+      "jobId": 114160230424,
+      "conclusion": "failure",
+      "failedStep": "Run npm run test:e2e",
+      "testFile": "tests/e2e/princess-website-events.spec.js",
+      "line": 67,
+      "title": "data loading and success do not close the Action Panel",
+      "expectedState": "sit",
+      "receivedState": "sitting_smile",
+      "timeoutMs": 2000,
+      "fixtureDelayMs": 750,
+      "automaticRetries": 1,
+      "passedE2ETests": 102,
+      "unchangedTestBlob": "32cbe666d60beb207563a05eb0488a78664f75fc",
+      "changedFiles": [
+        ".mission-control/source-profile.json"
+      ],
+      "previousProfileParentCI": {
+        "count": 1,
+        "runs": [
+          {
+            "id": 37110457547,
+            "event": "push",
+            "status": "completed",
+            "conclusion": "success",
+            "html_url": "https://github.com/JoeyAJ/nexaeon-web/actions/runs/37110457547"
+          }
+        ]
+      },
+      "passedSteps": [
+        "npm ci",
+        "Playwright installation",
+        "lint",
+        "npm test",
+        "eval:navigator",
+        "build"
+      ],
+      "classification": "INFERRED_TIMING_SENSITIVE_PREEXISTING_TEST_NOT_PROVEN_BASE_FAILURE",
+      "reason": "The unchanged test asserts a transient loading state after page navigation and click, while its API fixture delays only 750ms; logs already show terminal success state. No application, test, workflow or package changes and no application reference to the new profile. Parent CI succeeded, so this is not claimed as a proven existing failing baseline.",
+      "rerunRequested": false,
+      "productChanged": false,
+      "annotationsRead": "Connector URL family denied annotations; authorized decoded job logs and job step summaries were available."
+    }
+  ],
+  "servedOwnerAcceptance": "NOT_VERIFIED",
+  "cloudHTTPS": "prior CONNECT403 not bypassed",
+  "allGitHubPushCIStatus": "TERMINAL: Nex push E2E failure; other profile SHAs have zero workflow/check runs; Vercel statuses success",
+  "assetOtherTeamVercelProjects": "Readable team list exhausted: one team only, zero linked Asset projects. No global absence claim.",
+  "claudeHermesExecution": false,
+  "sqlSecretsPermissionsVercelSettingsChanged": false,
+  "evidenceClosedAt": "2026-10-10T07:32:12.960321+00:00",
+  "ciTerminalEvidence": {
+    "checkedAt": "2026-10-10T07:32:12.053Z",
+    "profiles": [
+      {
+        "repositoryId": "JoeyAJ/nexaeon-web",
+        "profileSha": "62dd99b5e190163a1e4bc6ad410155336934f935",
+        "statuses": [
+          {
+            "context": "Vercel – repo",
+            "state": "success",
+            "target_url": "https://vercel.com/joeyajs-projects/repo/9ce7Ne2ABhnGx26gNnXvHQd8HUXz"
+          },
+          {
+            "context": "Vercel – nexaeon-joeyaj-nexaeon-web-3-7",
+            "state": "success",
+            "target_url": "https://vercel.com/joeyajs-projects/nexaeon-joeyaj-nexaeon-web-3-7/GcEan45jM9dpJkx3uiMJmgGwHR5U"
+          },
+          {
+            "context": "Vercel – nexaeon-web",
+            "state": "success",
+            "target_url": "https://vercel.com/joeyajs-projects/nexaeon-web/EXZHzoZZ2MquFqU2Kt7WtY7RjmQK"
+          }
+        ],
+        "workflowRunCount": 1,
+        "workflowRuns": [
+          {
+            "id": 38033891642,
+            "name": "Verify production source",
+            "head_sha": "62dd99b5e190163a1e4bc6ad410155336934f935",
+            "event": "push",
+            "status": "completed",
+            "conclusion": "failure",
+            "html_url": "https://github.com/JoeyAJ/nexaeon-web/actions/runs/38033891642",
+            "run_attempt": 1
+          }
+        ],
+        "checkRunCount": 1,
+        "checkRuns": [
+          {
+            "id": 114160230424,
+            "name": "verify",
+            "head_sha": "62dd99b5e190163a1e4bc6ad410155336934f935",
+            "status": "completed",
+            "conclusion": "failure",
+            "html_url": "https://github.com/JoeyAJ/nexaeon-web/actions/runs/38033891642/job/114160230424",
+            "annotationsCount": 3
+          }
+        ]
+      },
+      {
+        "repositoryId": "JoeyAJ/woosongbuddy",
+        "profileSha": "f9952c5494fc047cb4f7046a93b4098755281a0f",
+        "statuses": [
+          {
+            "context": "Vercel",
+            "state": "success",
+            "target_url": "https://vercel.com/joeyajs-projects/woosong-buddy-app/HSFAD2kUU2Pkt2RD1JgAsCaXBy5r"
+          }
+        ],
+        "workflowRunCount": 0,
+        "workflowRuns": [],
+        "checkRunCount": 0,
+        "checkRuns": []
+      },
+      {
+        "repositoryId": "JoeyAJ/namyoung-web3d",
+        "profileSha": "81a8d099d674d6c47dfa399bae6b8f8eaa14801a",
+        "statuses": [
+          {
+            "context": "Vercel",
+            "state": "success",
+            "target_url": "https://vercel.com/joeyajs-projects/namyoung-web3d/3vLFaVmLioaBurdmQZuSgxrZnVMp"
+          }
+        ],
+        "workflowRunCount": 0,
+        "workflowRuns": [],
+        "checkRunCount": 0,
+        "checkRuns": []
+      },
+      {
+        "repositoryId": "JoeyAJ/joey-asset-system",
+        "profileSha": "97b8ed5e0e555f95a01bb2507144b5058b95ee92",
+        "statuses": [],
+        "workflowRunCount": 0,
+        "workflowRuns": [],
+        "checkRunCount": 0,
+        "checkRuns": []
+      },
+      {
+        "repositoryId": "JoeyAJ/joey-asset-system",
+        "profileSha": "a0cfc6c6374120353bbf3c6f7ebc5d625624cc44",
+        "statuses": [],
+        "workflowRunCount": 0,
+        "workflowRuns": [],
+        "checkRunCount": 0,
+        "checkRuns": []
+      }
+    ],
+    "nexFailure": {
+      "workflowRunId": 38033891642,
+      "jobId": 114160230424,
+      "conclusion": "failure",
+      "failedStep": "Run npm run test:e2e",
+      "testFile": "tests/e2e/princess-website-events.spec.js",
+      "line": 67,
+      "title": "data loading and success do not close the Action Panel",
+      "expectedState": "sit",
+      "receivedState": "sitting_smile",
+      "timeoutMs": 2000,
+      "fixtureDelayMs": 750,
+      "automaticRetries": 1,
+      "passedE2ETests": 102,
+      "unchangedTestBlob": "32cbe666d60beb207563a05eb0488a78664f75fc",
+      "changedFiles": [
+        ".mission-control/source-profile.json"
+      ],
+      "previousProfileParentCI": {
+        "count": 1,
+        "runs": [
+          {
+            "id": 37110457547,
+            "event": "push",
+            "status": "completed",
+            "conclusion": "success",
+            "html_url": "https://github.com/JoeyAJ/nexaeon-web/actions/runs/37110457547"
+          }
+        ]
+      },
+      "passedSteps": [
+        "npm ci",
+        "Playwright installation",
+        "lint",
+        "npm test",
+        "eval:navigator",
+        "build"
+      ],
+      "classification": "INFERRED_TIMING_SENSITIVE_PREEXISTING_TEST_NOT_PROVEN_BASE_FAILURE",
+      "reason": "The unchanged test asserts a transient loading state after page navigation and click, while its API fixture delays only 750ms; logs already show terminal success state. No application, test, workflow or package changes and no application reference to the new profile. Parent CI succeeded, so this is not claimed as a proven existing failing baseline.",
+      "rerunRequested": false,
+      "productChanged": false,
+      "annotationsRead": "Connector URL family denied annotations; authorized decoded job logs and job step summaries were available."
+    },
+    "reportBranches": [
+      {
+        "repositoryId": "JoeyAJ/nexaeon-web",
+        "branch": "mc/progress",
+        "totalCount": 0,
+        "runs": [],
+        "checkedAt": "2026-10-10T07:30:36.770Z"
+      },
+      {
+        "repositoryId": "JoeyAJ/woosongbuddy",
+        "branch": "mc/progress",
+        "totalCount": 0,
+        "runs": [],
+        "checkedAt": "2026-10-10T07:30:36.804Z"
+      },
+      {
+        "repositoryId": "JoeyAJ/namyoung-web3d",
+        "branch": "mc/progress",
+        "totalCount": 0,
+        "runs": [],
+        "checkedAt": "2026-10-10T07:30:36.690Z"
+      },
+      {
+        "repositoryId": "JoeyAJ/joey-asset-system",
+        "branch": "mc/progress",
+        "totalCount": 0,
+        "runs": [],
+        "checkedAt": "2026-10-10T07:30:36.698Z"
+      }
+    ],
+    "assetTeams": {
+      "accessibleTeamIds": [
+        "team_zpwdbE1o53BqrXSXxPfcKxKV"
+      ],
+      "teamListCount": 1,
+      "paginationExhausted": true,
+      "linkedProjectsInReadableTeams": [],
+      "globalAbsenceClaimed": false
+    }
+  },
+  "remainingBlockers": [
+    "Nex terminal E2E failure unresolved; timing-sensitive test inference, no fix or rerun",
+    "Actual Owner five-scope UI and exact clipboard validation delegated separately",
+    "Asset teams/accounts outside current readable team scope not verified"
+  ],
+  "thisEvidenceCommitScope": "DOCUMENTATION_ONLY; no report edits, new runs or product changes",
+  "sourceProfileDeploymentsTerminal": [
+    {
+      "id": "dpl_GcEan45jM9dpJkx3uiMJmgGwHR5U",
+      "url": "nexaeon-joeyaj-nexaeon-web-3-7-e30c1ay5d-joeyajs-projects.vercel.app",
+      "state": "READY",
+      "sourceSha": "62dd99b5e190163a1e4bc6ad410155336934f935",
+      "branch": "main",
+      "projectId": "prj_CRjbBCURR3sBqPreZaQYj6VcpAPN",
+      "target": "production",
+      "checkedAt": "2026-10-10T07:32:46.683Z"
+    },
+    {
+      "id": "dpl_EXZHzoZZ2MquFqU2Kt7WtY7RjmQK",
+      "url": "nexaeon-d6dfzw3ii-joeyajs-projects.vercel.app",
+      "state": "READY",
+      "sourceSha": "62dd99b5e190163a1e4bc6ad410155336934f935",
+      "branch": "main",
+      "projectId": "prj_UjMrdbyixkdO72EKHHKCB98DaoVv",
+      "target": "production",
+      "checkedAt": "2026-10-10T07:32:46.948Z"
+    },
+    {
+      "id": "dpl_9ce7Ne2ABhnGx26gNnXvHQd8HUXz",
+      "url": "repo-8w7ba82pu-joeyajs-projects.vercel.app",
+      "state": "READY",
+      "sourceSha": "62dd99b5e190163a1e4bc6ad410155336934f935",
+      "branch": "main",
+      "projectId": "prj_j1z1rkZl7LY9FuY6KKHMuZgHtPlH",
+      "target": "production",
+      "checkedAt": "2026-10-10T07:32:47.004Z"
+    },
+    {
+      "id": "dpl_3vLFaVmLioaBurdmQZuSgxrZnVMp",
+      "url": "namyoung-web3d-boo9ag6kw-joeyajs-projects.vercel.app",
+      "state": "READY",
+      "sourceSha": "81a8d099d674d6c47dfa399bae6b8f8eaa14801a",
+      "branch": "main",
+      "projectId": "prj_ROefEtbCUNNWQRN73ZS8mHcmLW9q",
+      "target": "production",
+      "checkedAt": "2026-10-10T07:32:47.422Z"
+    },
+    {
+      "id": "dpl_HSFAD2kUU2Pkt2RD1JgAsCaXBy5r",
+      "url": "woosong-buddy-atdi4o5vu-joeyajs-projects.vercel.app",
+      "state": "READY",
+      "sourceSha": "f9952c5494fc047cb4f7046a93b4098755281a0f",
+      "branch": "main",
+      "projectId": "prj_lKT2cNfJ3I2FMTwuvSmahGPUDaHh",
+      "target": "production",
+      "checkedAt": "2026-10-10T07:32:48.866Z"
+    }
+  ],
+  "mcImplementationReleaseSha": "1e63c294dd7baf6b958bcb753f3d4381a496c314",
+  "mcImplementationReleaseDeploymentId": "dpl_AFJr7rkK5KZyXypwPKt2Prtp1irh",
+  "mcImplementationReleaseState": "READY",
+  "implementationReleaseAliasExactAtVerification": true,
+  "documentationPublicationQualification": "Enclosing Git commit is the evidence document version; final docs-only SHA/READY reported after push. Implementation release fields intentionally identify prior verified code release."
+}

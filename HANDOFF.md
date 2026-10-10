@@ -1,3 +1,32 @@
+# Mission Control persistent reporting evidence and terminal CI follow-up
+
+Project: MISSION_CONTROL
+Timestamp: 2026-10-10T07:30:37Z
+Task: Persist five-scope rollout receipt and diagnose terminal source CI without changing products or reports
+Status: LOCAL_VERIFIED_PENDING_PUBLICATION
+Last Developer: Codex
+Executed by: Codex
+Actual Model: UNKNOWN
+Baseline: 1e63c294dd7baf6b958bcb753f3d4381a496c314
+
+## Current checkpoint
+
+Five source profiles and four report branches remain unchanged; no new run or report event was created. Full exact profile/report/guard SHAs, Codex run IDs, original/new five Vercel deployment IDs/URLs/READY and fresh-copy source pins are now persisted in the private repository receipt. All five source-profile Vercel deployments remain READY; report branch deployments and Actions are empty as observed.
+
+Nex source CI is terminal FAILURE in E2E: run 38033891642, expected transient sit but already sitting_smile at tests/e2e/princess-website-events.spec.js:67. Lint, unit tests, navigator eval and build passed; E2E 102 passed, one failed including automatic retry. Product/test/workflow/package bytes are unchanged, only the source profile was added. A 750ms fixture loading window suggests a preexisting timing-sensitive test, but prior source HEAD CI passed: do not label this as a proven failing baseline. Failure remains recorded, with no fix or rerun. Other four profile SHAs have no Actions/check runs, which is not a passing-test claim.
+
+## Verification
+
+Authorized connector directly read push Actions, check runs, status checks, decoded failed-job logs and step summaries. Raw logs, actors, account identity and credentials are excluded from the committed receipt. Vercel accessible-team list is exhausted at one team; no Asset linked project exists in that readable team, without claiming global absence. Existing 707-test/build/safety PASS belongs to the unchanged implementation release; this follow-up changes documentation only and does not rerun that suite.
+
+Persistent receipt: [five-scope rollout metadata and CI](docs/contracts/repository-reporting/receipts/five-scope-rollout-20261010.json). Diagnosis and qualification: [rollout verification](docs/MC_FIVE_SCOPE_REPORT_ROLLOUT_20261010.md).
+
+## Next Action
+
+Continue separately delegated actual Owner UI and exact clipboard verification at the final documented Preview SHA. Any Nex E2E repair is a separate product/test task: preserve the failure and decide explicitly whether to investigate the transient-state test; do not silently rerun or expand this reporting change. University remains JoeyAcceptancePending; reported configuration verification is not product completion or acceptance. Do not infer Asset deployment absence outside readable teams.
+
+---
+
 # Mission Control five-scope private repository reporting rollout
 
 Project: MISSION_CONTROL
