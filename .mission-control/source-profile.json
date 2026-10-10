@@ -1,0 +1,11 @@
+{
+  "schemaVersion": "mc.source-profile.v1",
+  "profiles": [{
+    "projectId": "MISSION_CONTROL",
+    "track": "BASELINE",
+    "repositoryId": "JoeyAJ/joey-mission-control",
+    "ref": "codex/mc-command-center-checkpoint-20261006",
+    "path": "HANDOFF.md",
+    "contextPaths": ["README.md", "docs/PRODUCT_CHARTER.md", "docs/MC_PHASE_PLAN.md", "docs/STAGE_HANDOFF_TEMPLATE.md"]
+  }]
+}

@@ -1,3 +1,5 @@
+import mcSourceProfile from '../../.mission-control/source-profile.json' with {type:'json'};
+import {selectRepositoryRunProfile} from '../reporting/repository-run-source-profile.mjs';
 // Server/agent-side repository reads only. No provider SDK, credential or writes.
 import {parseHandoff} from './handoff-adapter.mjs';
 import {sha256} from './fingerprint.mjs';
@@ -6,7 +8,8 @@ import {createHash} from 'node:crypto';
 
 const commit=/^[a-f0-9]{40}$/;
 const statuses=new Set(['MISSING','ACCESS_DENIED','UNAVAILABLE','TOO_LARGE','UNSUPPORTED_TYPE']);
-export const mcRemoteHandoffConfiguration=Object.freeze({projectId:'MISSION_CONTROL',repositoryId:'JoeyAJ/joey-mission-control',ref:'codex/mc-command-center-checkpoint-20261006',path:'HANDOFF.md',legacyPath:'docs/MC_WORKSPACE_READING_HANDOFF.md',expectedBaseline:'bd89889155c9532462dde0c40a060dc23daa5f34',contextPaths:Object.freeze(['README.md','docs/PRODUCT_CHARTER.md','docs/MC_PHASE_PLAN.md','docs/STAGE_HANDOFF_TEMPLATE.md'])});
+const {track:mcTrack,...mcProfile}=selectRepositoryRunProfile(JSON.stringify(mcSourceProfile),{projectId:'MISSION_CONTROL',track:'BASELINE',repositoryId:'JoeyAJ/joey-mission-control'});
+export const mcRemoteHandoffConfiguration=Object.freeze({...mcProfile,contextPaths:Object.freeze(mcProfile.contextPaths),legacyPath:'docs/MC_WORKSPACE_READING_HANDOFF.md',expectedBaseline:'bd89889155c9532462dde0c40a060dc23daa5f34'});
 const validPath=p=>typeof p==='string'&&/^(?:HANDOFF\.md|docs\/[A-Za-z0-9_.-]+\.md)$/.test(p)&&!p.includes('..');
 function validConfiguration(c){return c&&/^[A-Z][A-Z0-9_]{0,79}$/.test(c.projectId)&&/^[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+$/.test(c.repositoryId)&&typeof c.ref==='string'&&c.ref.length<=200&&/^[A-Za-z0-9_./-]+$/.test(c.ref)&&!c.ref.includes('..')&&validPath(c.path)&&(!c.legacyPath||validPath(c.legacyPath))&&(!c.expectedBaseline||commit.test(c.expectedBaseline))&&(c.contextPaths===undefined||Array.isArray(c.contextPaths)&&c.contextPaths.length<=4&&new Set(c.contextPaths).size===c.contextPaths.length&&c.contextPaths.every(p=>mcRemoteHandoffConfiguration.contextPaths.includes(p)));}
 

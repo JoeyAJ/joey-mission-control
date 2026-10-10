@@ -1,3 +1,32 @@
+# Mission Control authoritative report scope and rejected history isolation
+
+Project: MISSION_CONTROL
+Timestamp: 2026-10-10T06:19:42Z
+Task: Bind publishers to repository scope profile; isolate rejected reports without trusting incomplete history
+Status: LOCAL_VERIFIED_PARENT_READ_PREVIEW_PUBLISHED
+Last Developer: Codex
+Executed by: Codex
+Actual Model: UNKNOWN
+Baseline: a0e983387e17d36e6e5434b9478332abf7b41d4e
+
+## Summary
+
+Actual Claude Desktop pilot published started/progress/failed at report HEAD `68857597f1a9b13f78f601b716fe6b43ea1ea64b`, sequence 3. The prepared prompt incorrectly supplied empty context paths. Generic schema validation said VALID, while MC fixed scope correctly refused that declaration. This was not a dual-run or terminal-history false conflict. Codex completed blob and report-branch guard remain unchanged. No retry run has been published by this writer.
+
+The shared declarative repository source profile now defines MC scope. Reader policy and generic publisher resolve the same profile; start/append/packet validation compare caller fields to the authoritative profile at the selected source SHA. Empty and nonempty incomplete context lists are refused. Profile content is bounded JSON, never executable code, and the generic copied helper contains no private allowlist. Schema-only validate now explicitly says SCHEMA_VALID_NOT_SOURCE_VERIFIED. Packet validation remains distinct from MC server acceptance.
+
+SHA-pinned, bounded per-file schema/scope failures are isolated as rejected history with sanitized filename/runId/blob/error only. Valid runs still display; rejected identity/state/body and dependent predecessor lineage never enter trusted context. PARTIAL explicitly leaves other active work and overall project completion unconfirmed and refuses full continuation copy. Directory/read/auth/integrity failures, immutable-history rewrite/rollback and cycles still fail closed. No rejected report is removed or rewritten; a new independent task must not cite it as trusted predecessor.
+
+## Verification and Next Action
+
+Actual `68857597` bytes replay as PARTIAL: Codex completed remains visible; old Claude file is rejected for RUN_REPORT_SCOPE_INVALID. Four-width browser verification passes with synthetic Owner boundary, explicit partial notice and no untrusted Claude content rendered. Thirteen focused scope/isolation/reporter tests pass. The canonical temp-root fixture preserves all assertions and product symlink checks; standard source packet generation is read-only and creates no report/predecessor. Final portable verification passes 693 tests, build, validate and static safety checks; release evidence is recorded in [scope and isolation verification](docs/MC_REPORT_SCOPE_ISOLATION_VERIFICATION_20261010.md).
+
+New receiving Agent must use the latest published source SHA containing the profile, not old `0a4c627`. The read-only packet command prepares registration source from its own existing Git access, without claiming a complete MC continuation. New run/task may independently reference the old failed test in summary prose only, with predecessorRunId:null. Existing reports remain intact. Source packet commands and acceptance limits are in the verification document. Current code/Preview release SHA belongs to the external receipt. Actual served Owner recheck and new Claude retry remain unverified; do not claim success from local fixtures or READY.
+
+Production, report branch, other four repos, SQL, credentials/permissions, dispatch/model selection/services/AWS and rejected VM artifacts remain unchanged. Cloud shell/Git and Vercel connected reads are functioning; known served HTTPS403 remains unbypassed.
+
+## Preserved unified takeover stage
+
 # Mission Control unified repository-report takeover
 
 Project: MISSION_CONTROL

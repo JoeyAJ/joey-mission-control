@@ -1,4 +1,5 @@
 import {repositoryRunReporterSource,repositoryRunReporterSha256} from './repository-run-reporter-source.js';
+export function repositoryRunSourcePacket(packet){const paths=packet.canonicalContextPaths||(packet.contextDocuments||[]).map(d=>d.path);if(!Array.isArray(paths)||!paths.length||paths.length>4||new Set(paths).size!==paths.length||paths.some(p=>typeof p!=='string'||!/^[-A-Za-z0-9_./]+$/.test(p)||p.includes('..')||p.startsWith('/')))throw Error('SOURCE_CONTEXT_SCOPE_INVALID');return{schemaVersion:1,projectId:packet.projectId,track:packet.track||'BASELINE',sourceStatus:'FOUND',executionAuthorized:false,canonicalContextPaths:[...paths],source:packet.source};}
 export function formatTakeoverInstruction(packet){
  const reports=packet.repositoryReports;const s=packet.source,context=(packet.contextDocuments||[]).filter(d=>d.status==='FOUND').map(d=>d.path);
  return ['請接手專案 '+packet.projectId+'。先使用你自己的既有授權存取核對 branch 最新 HEAD，再閱讀目前階段文件與已確認背景文件，依既有授權續開發、測試並更新交接。',
@@ -17,8 +18,9 @@ export function formatTakeoverInstruction(packet){
   '只有 PUBLISHED / ALREADY_PUBLISHED 的實際 Git receipt 才代表 start 已發布。開工前先發布 started；每個有意義的 progress/blocked checkpoint 明確發布新事件。不能以背景 timer 捏造 heartbeat。五分鐘無新事件，MC 顯示最後回報／更新逾時，而非推定已停或完成。',
   '後續 event sequence 遞增。保存前次 receipt 的 fileSha 與 sequence，使用：node /你的暫存路徑/mc-reporter.mjs append --packet source-packet.json --meta registration.json --run <runId> --event event.json --expected-file-sha <前次fileSha> --expected-sequence <前次sequence> --publish。衝突停止並重新核對，不能 force push。',
   'completed 事件前先完成並更新專案交接；result 必含 codeSha、tests[{name,outcome:PASS/FAIL/NOT_RUN}]、nextSteps、handoff{path,commitSha}。完成不代表 merged/deployed/Joey accepted。只回報有界 metadata，不放原始 source、prompt、secret 或憑證。頁面可見時 MC 約每30秒讀取，不是永久 collector。',
+  'validate --report <run.json> 不帶 packet 只驗 schema，不能當 MC scope 驗收；使用 validate --report <run.json> --packet <原 source-packet.json> 從所選 source SHA 的 .mission-control/source-profile.json 核對 authoritative scope；MC 仍以固定 server policy 驗收。',
   'canonicalContextPaths 是固定合法交接路徑清單，不代表每份文件都已讀取成功；已讀背景文件只以上方 FOUND 清單為準。',
-  'Source packet: '+JSON.stringify({schemaVersion:1,projectId:packet.projectId,track:packet.track||'BASELINE',sourceStatus:'FOUND',executionAuthorized:false,canonicalContextPaths:(packet.contextDocuments||[]).map(d=>d.path),source:packet.source}),
+  'Source packet: '+JSON.stringify(repositoryRunSourcePacket(packet)),
   'Registration template: '+JSON.stringify({runId:'__NEW_RUN_ID__',predecessorRunId:reports?.runs?.length===1?reports.runs[0].runId:null,taskId:'__NEW_TASK_ID__',featureTitle:'__USER_REQUESTED_FEATURE__',agentName:'__ACTUAL_AGENT_NAME__',provider:null,model:null}),
   'Reporter SHA256: '+repositoryRunReporterSha256,
   '```javascript',repositoryRunReporterSource,'```'].join('\n');
