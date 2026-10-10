@@ -3,7 +3,7 @@
 Project: MISSION_CONTROL
 Timestamp: 2026-10-10T08:48:36.560996Z
 Task: Persist latest synthetic advanced render and verify full mobile result disclosure
-Status: LOCAL_VERIFIED_PENDING_PUBLICATION
+Status: LOCAL_VERIFIED_PARENT_READ_PREVIEW_PUBLISHED
 Last Developer: Codex
 Executed by: Codex
 Actual Model: UNKNOWN
@@ -15,9 +15,13 @@ Artifact/QA/documentation-only supplement: latest advanced 1440×900, 872×512 a
 
 Mobile zhTW 390px supplemental fifteen-state QA PASS: important blocked/failed conclusions stay explicit; Agent 回報與驗證紀錄 → 事件紀錄 opens the complete exact long result/event text. No application feature or bundled client changes. No new report/run; existing actual Codex run remains completed sequence 9 at report commit b20759032115d1a8a477bde78ad90e89fac5d3a1. Joey product/appearance and actual device/clipboard acceptance remain pending. Details and comparison in docs/MC_UX_FINAL_VERIFICATION_20261010.md.
 
+## Published artifact supplement
+
+Exact remote artifact SHA 53dbadf27609013a69af44c50f9d519ddf2489b2; Vercel dpl_AjJiWMmBh9QT9sf6DtHdg4QGfp31 READY and independent fixed-alias lookup matches the same SHA. Advanced synthetic three cases, mobile supplemental fifteen states and nineteen handoff/privacy checks PASS. Public/src/api/scripts/vercel.json bytes are unchanged from 0531c68. No advanced images exist under public/dist. Remote mc/progress remains b20759032115d1a8a477bde78ad90e89fac5d3a1; no run/report mutation.
+
 ## Next Action
 
-Push this artifact-only follow-up to the already authorized branch/fixed Preview, verify exact remote SHA/READY/alias, then close publication documentation. Joey may review private advanced PNGs; no new cloud feature work or run is requested. Existing Library transport failure and cloud HTTPS CONNECT403 remain qualified; no bypass, public image publication, Production or other-repository change.
+Joey/independent reviewer may inspect private latest advanced 1440/872 and before-CSS replay images in docs/qa/mc-ux-final-20261010 at artifact SHA 53dbadf27609013a69af44c50f9d519ddf2489b2. Final acceptance stays pending. No further cloud feature work or run is requested. This documentation closure is published on the same fixed Preview; exact closure SHA/READY is checked in final receipt. Existing Library transport failure and cloud HTTPS CONNECT403 remain qualified; no bypass, public image publication, Production or other-repository change.
 
 ---
 
