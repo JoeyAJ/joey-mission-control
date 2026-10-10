@@ -48,6 +48,14 @@
       "kind": "progress",
       "summary": "第1階段 Joey 真實總覽與驗收摘要已發布固定 Preview 421a0e5／READY；713測試、四寬度及Continue回歸通過。桌面參考精修與語系／實機驗收待續；cloud CONNECT403限制served檢查。",
       "result": null
+    },
+    {
+      "id": "codex-mc-joey-overview-20261010-reference",
+      "sequence": 4,
+      "eventAt": "2026-10-10T08:05:49.164Z",
+      "kind": "progress",
+      "summary": "已保存五寬度進階工作台現況並實際對照桌面參考；四欄比例與預設graph位置已符合。正在修正藍框／亮青來源色／密度差距，補changes錨定與鍵盤驗證，並修正NO_REPORTS及帶時區事件排序。",
+      "result": null
     }
   ]
 }
