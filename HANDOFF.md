@@ -1,7 +1,7 @@
 # Mission Control Continue origin compatibility
 
 Project: MISSION_CONTROL
-Timestamp: 2026-10-10T02:59:42Z
+Timestamp: 2026-10-10T03:02:22Z
 Task: Keep non-Preview Continue explicit and historical when private capability is unavailable
 Status: LOCAL_VERIFIED_PARENT_READ_PREVIEW_PUBLISHED
 Last Developer: Codex
@@ -29,13 +29,15 @@ The existing actual-app four-source/factory suite passes all 12 project/viewport
 
 ## Runtime qualification and blockers
 
-Parent's real-device QA is checking `73c08ae20170c78a2a71687de01926bdc2b7a8cc`. Any such result applies to that SHA and is not automatically acceptance of this later compatibility patch. This writer did not independently read the normal deployed Owner session. Known cloud CONNECT403 is not retried or bypassed; Safari/phone/final acceptance remains distinct from fixtures and deployment READY.
+Parent now relays successful real Mac Chrome Owner post-fix QA at `73c08ae20170c78a2a71687de01926bdc2b7a8cc`: both Continue actions, Back/Forward/reload and cross-project isolation PASS. Buddy packet is bound to main `e41bd1b7d8a481fdf6402881f382605278d229af`. University packet preserves `UNIVERSITY_CANDIDATE`, `migration/university-v04-portable`, SHA `77b6766e790c7794bb1fc691f3f3dd3f4a4fe5c6`, CASE002 and JoeyAcceptancePending. Switching to Buddy clears the candidate; returning restores it. Clipboard was not written. Real phone and visual acceptance are NOT RUN.
+
+Qualification: PARENT_RELAYED_REAL_CHROME_OWNER_QA. This is actual device evidence relayed by parent, not this writer's independent browser observation. It applies to the tested 73c08ae and is retained separately from the later non-Preview compatibility fixture result. The compatibility patch changes only origin availability/history labels; private reader/fresh gate and candidate transport are unchanged. No repeated Mac QA is requested. Known cloud CONNECT403 is not retried or bypassed; real phone/visual/final acceptance remains distinct from desktop QA, fixtures and deployment READY.
 
 No permission/tool blocker was encountered. Both rejected operational artifacts and equivalent payloads remain excluded. Production, other repos, SQL, keys, permissions, AWS/pilot and runtime dispatch remain untouched.
 
 ## Next Action
 
-The minimal functional compatibility publication is complete. Finish the docs-only remote/READY readback, then release sole-writer ownership without background operations. Do not repeat functional publication. Retain the real-device QA SHA qualification above; the next Agent should read this header before the preserved earlier stage.
+The minimal functional compatibility publication is complete. Finish the docs-only remote/READY readback, then release sole-writer ownership without background operations. Do not repeat functional publication. Retain the completed real-device QA SHA qualification above without requesting another Mac run; the next Agent should read this header before the preserved earlier stage.
 
 ## Preserved prior Continue repair — published baseline
 

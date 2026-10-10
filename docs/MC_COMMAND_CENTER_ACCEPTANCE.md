@@ -1,3 +1,11 @@
+# Parent-relayed Chrome Owner acceptance update — 2026-10-10
+
+At tested SHA `73c08ae20170c78a2a71687de01926bdc2b7a8cc`, actual Mac Chrome Owner QA PASS covers both Continue packets, Back/Forward/reload and cross-project isolation. Buddy packet uses verified main `e41bd1b7d8a481fdf6402881f382605278d229af`; University preserves UNIVERSITY_CANDIDATE, migration/university-v04-portable, `77b6766e790c7794bb1fc691f3f3dd3f4a4fe5c6`, CASE002 and JoeyAcceptancePending. Switching Buddy clears candidate; returning restores it. Clipboard NOT WRITTEN; real phone and visual acceptance NOT RUN.
+
+Qualification is PARENT_RELAYED_REAL_CHROME_OWNER_QA, distinct from this writer's synthetic fixtures and metadata checks. This updates the prior pending post-fix desktop-read/Continue qualification only at that tested SHA. The later narrow non-Preview compatibility patch (`0454307`) has 9 origin-capability cases plus the 12 four-source regressions; private reader and candidate/fresh transport are unchanged. No repeat Mac run, source promotion, wider origin/permission or Production change follows from this record. Current handoff/release: [HANDOFF](../HANDOFF.md), [Continue verification](MC_CONTINUE_SOURCE_VERIFICATION_20261010.md).
+
+## Preserved prior acceptance record
+
 # Continue repair acceptance — 2026-10-10
 
 The delegated real Chrome Owner observations supersede the prior blanket four-source NOT VERIFIED statement only for the reported pre-fix four default reads and University candidate read. This writer did not independently repeat those Owner reads. The functional repair is remote at `b5d19ba9468670a86467d19f6ec423db4dc8a936`, fixed Preview `dpl_7vDQmHK95o6r97sd4LXYwyeMkX2J` READY with matching alias. The two reported Continue substitutions are now repaired and covered through the actual app/private deployment factory with synthetic upstreams. Post-fix normal Owner served-byte/read/copy, Safari/phone and final product acceptance remain pending. Current status and exact release evidence: [HANDOFF](../HANDOFF.md) and [Continue verification](MC_CONTINUE_SOURCE_VERIFICATION_20261010.md). No candidate has been promoted to accepted and no runtime/Agent/document timestamp is invented.
