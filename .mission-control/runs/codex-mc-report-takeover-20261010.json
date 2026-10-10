@@ -34,6 +34,14 @@
       "kind": "progress",
       "summary": "Implemented fresh report-aware copy, mandatory own registration/source binding and pre-push handoff scope checks; 21 focused tests pass. App regression verification continues.",
       "result": null
+    },
+    {
+      "id": "checkpoint-live-3",
+      "sequence": 3,
+      "eventAt": "2026-10-10T05:04:51.370Z",
+      "kind": "progress",
+      "summary": "All three reviewed takeover/binding gaps pass actual-app and 12 Continue fixtures; 24 focused tests including divergent main/unmerged predecessor pass. Existing branch Preview is READY; final release closure underway.",
+      "result": null
     }
   ]
 }
