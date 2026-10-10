@@ -1,3 +1,30 @@
+# Mission Control repository-backed Agent reporting implementation
+
+Project: MISSION_CONTROL
+Timestamp: 2026-10-10T04:35:00Z
+Task: Implement portable receiving-Agent reports and bounded private MC progress reads
+Status: LOCAL_VERIFIED_PENDING_PUBLICATION
+Last Developer: Codex
+Executed by: Codex
+Actual Model: UNKNOWN
+Baseline: 9f53155cf38eb6961ba499585b9f310783e1c15e
+
+## Summary
+
+The provider-neutral run contract, executable portable reporter, fixed `mc/progress` report reader, exact Owner/AAL2 pre/post gate, visible-only polling and Joey/workspace report UI are implemented. A copied handoff carries a generic reporter and project-bound source packet; the receiving Agent supplies its actual name/run/requested feature, publishes started before feature work, then meaningful checkpoints/completed evidence. No token, model selection or dispatch is added. Original document Agent/runtime flags stay unchanged. Reports are explicitly Agent self-reported; only their repository bytes are verified.
+
+## Verification and remaining gap
+
+18 new contract/reporter/server/client tests PASS, including isolated real Git publication and independent execution of the copied helper. Actual app/official SDK fixtures at 375/390/430/1440 PASS with synthetic auth/GitHub/Agent/clipboard: no reports, running/blocked/progress/completed, overdue, outage, University qualification, focus/history/reload, source freshness, privacy clearing and copy. Twelve original Continue cases PASS. Final full portable verification PASS: 678 tests, build, validate and static check. Three route fixtures PASS; publication evidence is recorded separately.
+
+No live report branch has been created or pushed. Joey approved the exact MC-only live test via parent at 04:35 UTC; activation is still blocked until effective Vercel project root can be confirmed. `mc/progress` must start as a report-only orphan tree whose first commit already includes `vercel.json` with `git.deploymentEnabled:false`; no app or workflows. Current/main have no GitHub workflows, but Vercel is Git-linked and default branch pushes can deploy. No zero-cost claim. Reporter refuses missing/unprotected/extra-file branch and uses file SHA plus non-force push. No other four repo writes are authorized. Actual external-Agent/Owner/device end-to-end acceptance remains unverified; fixtures/READY cannot establish it.
+
+## Next Action
+
+Publish this authorized application change to the existing development branch/fixed Preview and verify remote exact SHA, READY/alias and unchanged Production. Then execute the approved one real Codex/MC test run only after effective Vercel project root is confirmed; never substitute a synthetic Claude. Source/read metadata remains private/no-store/in-memory, no new credential/SQL/access/services/AWS. Known cloud HTTPS403 remains unbypassed. Rejected operational artifacts and equivalent payloads remain excluded. Details: [reporting implementation verification](docs/MC_REPOSITORY_RUN_REPORTING_VERIFICATION_20261010.md).
+
+## Preserved requirement checkpoint
+
 # Mission Control external-Agent self-reporting goal checkpoint
 
 Project: MISSION_CONTROL

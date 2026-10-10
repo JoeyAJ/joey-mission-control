@@ -55,3 +55,5 @@ export function createDeploymentRemoteHandoffServer({environment=process.env,fet
   return createRemoteHandoffServer({repositoryReader,verifyOwner,configuration,sourceRead,ownerSubject:policy.ownerSubject,allowedOrigin:policy.stageOrigin,now}).handle(req,{...options,project});
  }});
 }
+// Shared bounded GET transport for the independent fixed repository-report reader.
+export {jsonRequest as boundedPrivateJsonRequest};

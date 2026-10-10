@@ -1,0 +1,232 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "projectId",
+    "track",
+    "runId",
+    "predecessorRunId",
+    "taskId",
+    "featureTitle",
+    "agentName",
+    "provider",
+    "model",
+    "repositoryId",
+    "reportRef",
+    "workRef",
+    "baseline",
+    "events"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "mc.repository-run.v1"
+    },
+    "projectId": {
+      "type": "string",
+      "pattern": "^[_A-Z][_A-Z0-9]{0,79}$"
+    },
+    "track": {
+      "enum": [
+        "BASELINE",
+        "UNIVERSITY_CANDIDATE"
+      ]
+    },
+    "runId": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,95}$"
+    },
+    "predecessorRunId": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,95}$"
+    },
+    "taskId": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,95}$"
+    },
+    "featureTitle": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 500
+    },
+    "agentName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 100
+    },
+    "provider": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "maxLength": 100
+    },
+    "model": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "maxLength": 100
+    },
+    "repositoryId": {
+      "type": "string",
+      "pattern": "^[-A-Za-z0-9_.]+/[-A-Za-z0-9_.]+$"
+    },
+    "reportRef": {
+      "const": "mc/progress"
+    },
+    "workRef": {
+      "type": "string",
+      "maxLength": 200
+    },
+    "baseline": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ref",
+        "commitSha",
+        "handoffPath",
+        "handoffDigest"
+      ],
+      "properties": {
+        "ref": {
+          "type": "string",
+          "maxLength": 200
+        },
+        "commitSha": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{40}$"
+        },
+        "handoffPath": {
+          "type": "string",
+          "maxLength": 200
+        },
+        "handoffDigest": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      }
+    },
+    "events": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 64,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "sequence",
+          "eventAt",
+          "kind",
+          "summary",
+          "result"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,95}$"
+          },
+          "sequence": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 64
+          },
+          "eventAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "kind": {
+            "enum": [
+              "started",
+              "progress",
+              "heartbeat",
+              "blocked",
+              "completed",
+              "failed"
+            ]
+          },
+          "summary": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 500
+          },
+          "result": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "additionalProperties": false,
+            "required": [
+              "codeSha",
+              "tests",
+              "nextSteps",
+              "handoff"
+            ],
+            "properties": {
+              "codeSha": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{40}$"
+              },
+              "tests": {
+                "type": "array",
+                "minItems": 1,
+                "maxItems": 12,
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "name",
+                    "outcome"
+                  ],
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 150
+                    },
+                    "outcome": {
+                      "enum": [
+                        "PASS",
+                        "FAIL",
+                        "NOT_RUN"
+                      ]
+                    }
+                  }
+                }
+              },
+              "nextSteps": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000
+              },
+              "handoff": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "path",
+                  "commitSha"
+                ],
+                "properties": {
+                  "path": {
+                    "type": "string",
+                    "maxLength": 200
+                  },
+                  "commitSha": {
+                    "type": "string",
+                    "pattern": "^[a-f0-9]{40}$"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "Private self-reported Agent run metadata. Semantic transitions, timestamps, byte limits and canonical scope are additionally checked by repository-run-contract.mjs."
+}

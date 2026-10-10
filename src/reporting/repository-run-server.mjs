@@ -1,0 +1,31 @@
+// Independent read-only route. Uses existing exact Owner/AAL2 realm and Contents-read credential.
+import {ownerAuthConfig} from '../../public/owner-auth-config.js';
+import {boundedPrivateJsonRequest,createCurrentOwnerVerifier} from '../continuity/remote-handoff-server.mjs';
+import {repositoryRunConfiguration,readRepositoryRuns} from './repository-run-source.mjs';
+import {REPORT_REF,REPORT_DIRECTORY,MAX_REPORT_BYTES,MAX_RUNS,runReportPath} from './repository-run-contract.mjs';
+const sha=/^[a-f0-9]{40}$/,bearer=/^Bearer ([A-Za-z0-9_.-]{20,8192})$/;
+const error=code=>Object.assign(Error(code),{code});
+export function createGitHubRepositoryRunReader({credential,fetchImpl=globalThis.fetch,configuration}={}){
+ const c=configuration,configured=typeof credential==='string'&&credential.length>=20&&!/\s/.test(credential);
+ const scope=repo=>{if(!configured||repo!==c.repositoryId)throw error('ACCESS_DENIED');};
+ const get=(url,signal)=>boundedPrivateJsonRequest(fetchImpl,url,{headers:{Authorization:'Bearer '+credential,Accept:'application/vnd.github+json','X-GitHub-Api-Version':'2026-03-10'}},signal,131072);
+ const contents=(path,commit)=>{const url=new URL('https://api.github.com/repos/'+c.repositoryId+'/contents/'+path.split('/').map(encodeURIComponent).join('/'));url.searchParams.set('ref',commit);return url.href;};
+ const denial=r=>{if([401,403].includes(r.status))throw error('ACCESS_DENIED');};
+ return Object.freeze({configured,async resolveRevision({repositoryId,ref,signal}){scope(repositoryId);if(ref!==REPORT_REF)throw error('ACCESS_DENIED');const r=await get('https://api.github.com/repos/'+repositoryId+'/git/ref/heads/mc/progress',signal);denial(r);if(r.status===404)return {status:'MISSING'};if(r.status!==200||r.data?.object?.type!=='commit'||!sha.test(r.data.object.sha))throw error('UNAVAILABLE');return {commitSha:r.data.object.sha};},async listRunFiles({repositoryId,commitSha,signal}){scope(repositoryId);if(!sha.test(commitSha))throw error('ACCESS_DENIED');const r=await get(contents(REPORT_DIRECTORY,commitSha),signal);denial(r);if(r.status===404)return {status:'MISSING',files:[]};if(r.status!==200||!Array.isArray(r.data))throw error('UNAVAILABLE');if(r.data.length>MAX_RUNS)throw error('RUN_LIST_LIMIT');const files=r.data.map(f=>{const runId=f.name?.endsWith('.json')?f.name.slice(0,-5):null;if(f.type!=='file'||f.target||f.submodule_git_url||f.path!==runReportPath(runId)||!sha.test(f.sha)||!Number.isInteger(f.size)||f.size<1||f.size>MAX_REPORT_BYTES)throw error('RUN_REPORT_FILE_CONFLICT');return {path:f.path,blobId:f.sha};});return {status:'FOUND',files};},async readRunFile({repositoryId,commitSha,path,maxBytes,signal}){scope(repositoryId);const runId=path?.slice((REPORT_DIRECTORY+'/').length,-5);if(!sha.test(commitSha)||path!==runReportPath(runId)||maxBytes!==MAX_REPORT_BYTES)throw error('ACCESS_DENIED');const r=await get(contents(path,commitSha),signal);denial(r);if(r.status===404)return {status:'MISSING'};if(r.status!==200)return {status:'UNAVAILABLE'};const d=r.data;if(d?.type!=='file'||d.target||d.submodule_git_url||d.encoding!=='base64'||!sha.test(d.sha)||!Number.isInteger(d.size)||d.size>maxBytes||typeof d.content!=='string')return {status:'UNSUPPORTED_TYPE'};try{const encoded=d.content.replace(/\n/g,'');if(!/^[A-Za-z0-9+/]*={0,2}$/.test(encoded))throw Error();const bytes=Buffer.from(encoded,'base64');if(bytes.length!==d.size||bytes.length>maxBytes)throw Error();return {status:'FOUND',commitSha,blobId:d.sha,content:new TextDecoder('utf-8',{fatal:true}).decode(bytes)};}catch{return {status:'UNAVAILABLE'};}}});
+}
+export function createRepositoryRunServer({configuration,repositoryReader,verifyOwner,ownerSubject=ownerAuthConfig.ownerSubject,allowedOrigin=ownerAuthConfig.stageOrigin,now=Date.now}={}){
+ const c=configuration,result=(status,body)=>({status,body,headers:{'Cache-Control':'private, no-store',Vary:'Authorization',Pragma:'no-cache'}});
+ const valid=actor=>actor?.subject===ownerSubject&&actor.role==='OWNER'&&actor.aal==='aal2'&&actor.verified===true&&actor.sessionActive===true&&Number.isSafeInteger(actor.expiresAt)&&actor.expiresAt>now();
+ return Object.freeze({async handle(req,{signal}={}){
+  if(req.method!=='GET')return result(405,{error:'READ_ONLY_ENDPOINT'});if(req.headers?.origin&&req.headers.origin!==allowedOrigin||req.headers?.['sec-fetch-site']==='cross-site')return result(403,{error:'ORIGIN_DENIED'});const token=bearer.exec(req.headers?.authorization||'')?.[1];if(!token)return result(401,{error:'OWNER_AUTHENTICATION_REQUIRED'});
+  try{const before=await verifyOwner(token,{signal});if(!valid(before))throw error('OWNER_DENIED');if(repositoryReader?.configured!==true)return result(503,{error:'REPOSITORY_CONNECTION_NOT_CONFIGURED'});
+   const observation=await readRepositoryRuns({configuration:c,reader:repositoryReader,signal,now});const after=await verifyOwner(token,{signal});if(!valid(after)||after.subject!==before.subject||after.identityProject!==before.identityProject)throw error('OWNER_DENIED');
+   return result(200,{schemaVersion:1,observation,authorization:{qualification:'OWNER_REPOSITORY_RUN_READ_POLICY',subject:before.subject,identityProject:before.identityProject,projectId:c.projectId,track:c.track,repositoryId:c.repositoryId,reportRef:c.reportRef,directory:c.directory},expiresAt:after.expiresAt,privateReadOnly:true});
+  }catch(e){return result(e.code==='OWNER_DENIED'?403:503,{error:e.code==='OWNER_DENIED'?'OWNER_AUTHORIZATION_DENIED':'PRIVATE_READ_UNAVAILABLE'});}
+ }});
+}
+export function createDeploymentRepositoryRunServer({environment=process.env,fetchImpl=globalThis.fetch,policy=ownerAuthConfig,now=Date.now}={}){
+ const verifyOwner=createCurrentOwnerVerifier({fetchImpl,policy,now});return Object.freeze({async handle(req,{project='MISSION_CONTROL',track='BASELINE',signal}={}){let configuration;try{configuration=repositoryRunConfiguration(project,{track});}catch{return {status:403,body:{error:'SOURCE_SCOPE_DENIED'},headers:{'Cache-Control':'private, no-store',Vary:'Authorization',Pragma:'no-cache'}};}
+  return createRepositoryRunServer({configuration,repositoryReader:createGitHubRepositoryRunReader({credential:environment.MC_GITHUB_READ_TOKEN,fetchImpl,configuration}),verifyOwner,ownerSubject:policy.ownerSubject,allowedOrigin:policy.stageOrigin,now}).handle(req,{signal});
+ }});
+}

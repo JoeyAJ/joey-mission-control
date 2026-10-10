@@ -1,3 +1,4 @@
+import {createDeploymentRepositoryRunServer} from '../src/reporting/repository-run-server.mjs';
 import {commandReadout,commandWorkspaceHealth} from '../src/operations/command-readouts.mjs';
 import {phaseSummary} from '../public/phase-summary.js';
 import {productView} from '../src/product/view.mjs';
@@ -41,6 +42,7 @@ export function productionResponse(method,url){
 export default async function handler(req,res){
  try{const url=new URL(req.url,'https://mission-control.invalid'),route=url.searchParams.get('route');let result;
   if(['private/remote-handoff','private/remote-handoff/config'].includes(route)&&req.headers.host===new URL(ownerAuthConfig.stageOrigin).host){result=await createDeploymentRemoteHandoffServer().handle(req,{action:route.endsWith('/config')?'config':'read',project:url.searchParams.get('project')||'MISSION_CONTROL',track:url.searchParams.get('track')||'BASELINE'});}
+  else if(route==='private/repository-runs'&&req.headers.host===new URL(ownerAuthConfig.stageOrigin).host){result=await createDeploymentRepositoryRunServer().handle(req,{project:url.searchParams.get('project')||'MISSION_CONTROL',track:url.searchParams.get('track')||'BASELINE'});}
   else if(route==='private/project-entry'&&req.headers.host===new URL(ownerAuthConfig.stageOrigin).host){result=await createDeploymentProjectEntryServer().handle(req,{project:url.searchParams.get('project')});}
   else result=productionResponse(req.method,url);
   res.writeHead(result.status,{...securityHeaders,'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store',...result.headers});res.end(JSON.stringify(result.body));}

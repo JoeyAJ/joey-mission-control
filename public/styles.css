@@ -516,3 +516,5 @@ body[data-joey-simple=true] #joey.active{display:block;padding:0;margin:0;min-wi
 .joey-takeover [hidden]{display:none!important}body[data-joey-simple=true] .brand h1{text-transform:none}
 
 .joey-simple-select-all{min-height:44px;padding:10px 16px;font-size:16px;border:1px solid #758a65;border-radius:10px;background:#263522;color:#edf5df}
+
+.repository-run-reports{min-width:0;border-top:1px solid #455440;padding-top:12px;overflow-wrap:anywhere}.repository-run-reports h4{font-size:15px;margin:0 0 8px}.repository-run-card{margin:8px 0;padding:12px;border:1px solid #40543a;border-radius:10px;min-width:0}.repository-run-card p{font-size:14px;line-height:1.5;margin:4px 0}.repository-run-card small{display:block;font-size:12px;color:#b6c5ad;line-height:1.5}.repository-run-card .run-report-main{font-size:16px;color:#e5f4d2}.repository-run-card[data-run-freshness=STALE]{border-color:#8d7846}.repository-run-card[data-run-freshness=STALE] .run-report-main{color:#f0dba9}.repository-run-reports details{margin-top:8px;font-size:12px}.repository-run-reports a{color:#d4e6b5}.run-report-notice{font-size:14px;line-height:1.5}.joey-simple-runs [hidden]{display:none!important}

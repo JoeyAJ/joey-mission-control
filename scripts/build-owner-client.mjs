@@ -1,3 +1,4 @@
+import './build-repository-run-reporter.mjs';
 import {build} from 'esbuild';
 for(const [entry,outfile] of [['owner-browser-entry','owner-auth-client'],['password-recovery-browser-entry','owner-password-recovery-client']]){
  const result=await build({entryPoints:['src/continuity/'+entry+'.mjs'],bundle:true,format:'esm',platform:'browser',target:['es2022'],minify:true,sourcemap:false,legalComments:'eof',outfile:'public/'+outfile+'.js',metafile:true});

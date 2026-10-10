@@ -1,8 +1,10 @@
+> 2026-10-10 implementation update: the scoped repository-report contract, portable helper, Owner-only SHA-pinned private GET and truthful Joey/workspace UI are now implemented and locally verified. Fixed transport is `mc/progress` / `.mission-control/runs/<runId>.json`; no new token/SQL/service/model selector/dispatch. Actual external-Agent/Owner end-to-end acceptance remains pending. Joey approved the MC-only live test via parent at 04:35 UTC; report-branch creation/push awaits effective Vercel project-root confirmation; other four repos remain untouched. Earlier docs-only / architecture-awaiting statements below record the requirement checkpoint, not current implementation scope. See [implementation verification](MC_REPOSITORY_RUN_REPORTING_VERIFICATION_20261010.md).
+
 # Mission Control product contract
 
 ## Latest explicit product goal — 2026-10-10 03:54 UTC
 
-Joey's confirmed end-to-end expectation: copy the handoff into Claude Code or any other development Agent, ask it to read the project and implement a requested feature, then MC shows that project being developed by that Agent on that feature based on its actual report. Portable copy is one completed prerequisite; it does not complete Mission Control. External Agent automatic self-reporting is **NOT_IMPLEMENTED / NOT_ACCEPTED** in the current delivered flow.
+Joey's confirmed end-to-end expectation: copy the handoff into Claude Code or any other development Agent, ask it to read the project and implement a requested feature, then MC shows that project being developed by that Agent on that feature based on its actual report. Portable copy is one completed prerequisite; it does not complete Mission Control. External Agent automatic self-reporting is **IMPLEMENTED_LOCAL_FIXTURE_VERIFIED / LIVE_NOT_ACCEPTED** in the current delivered flow.
 
 This is provider-neutral reporting by the receiving Agent after it actually starts work. It does not require MC dispatch or an Agent/provider/model selector. Never infer startup from a copy click, pasted prompt, repository read, Git author, plan or historical signature. Current-worker identity needs an explicitly attributed, authorized report bound to the project and run. Unknown model remains optional technical metadata.
 
@@ -15,7 +17,7 @@ Required reporting acceptance:
 
 End-to-end acceptance must prove actual receiving-Agent startup, attributed running/requested-feature display, progress/blocked/completed transitions and linked handoff, plus heartbeat expiry without fake running. Clipboard, fixtures, deployment READY or a readable repository alone do not satisfy that acceptance.
 
-Parent is separately reviewing existing bounded reporting capabilities read-only. This checkpoint records the goal and gap only. Await that architecture result before a scoped implementation proposal; do not change SQL, add credentials/network grants or communicate with external Agents in this stage. No additional services, access or automatic executor follows from this requirement record.
+The approved architecture is implemented through bounded repository metadata and the existing private reader. The MC-only live test is approved, but effective Vercel project root must be confirmed before report-branch activation. No SQL, new credentials/network grants or external Agent communication is authorized. No additional services, access or automatic executor follows from this requirement record.
 
 ## Preserved prior product decision
 
