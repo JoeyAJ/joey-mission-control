@@ -40,6 +40,14 @@
       "kind": "progress",
       "summary": "已實作同案／同 track 真實 worker、feature、result、blocker 總覽與可展開紀錄；已檢視三張私人桌面參考並同步單一驗收摘要。正在跑四寬度及撤權／切案回歸。",
       "result": null
+    },
+    {
+      "id": "codex-mc-joey-overview-20261010-published",
+      "sequence": 3,
+      "eventAt": "2026-10-10T07:59:23.423Z",
+      "kind": "progress",
+      "summary": "第1階段 Joey 真實總覽與驗收摘要已發布固定 Preview 421a0e5／READY；713測試、四寬度及Continue回歸通過。桌面參考精修與語系／實機驗收待續；cloud CONNECT403限制served檢查。",
+      "result": null
     }
   ]
 }
