@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "mc.repository-run.v1",
+  "projectId": "MISSION_CONTROL",
+  "track": "BASELINE",
+  "runId": "codex-mc-delivery-evidence-20261010",
+  "predecessorRunId": "codex-mc-activity-follow-20261010",
+  "taskId": "mc-delivery-evidence-stage-20261010",
+  "featureTitle": "Versioned delivery evidence：reported 閉環、兼容與安全驗證",
+  "agentName": "Codex",
+  "provider": null,
+  "model": null,
+  "repositoryId": "JoeyAJ/joey-mission-control",
+  "reportRef": "mc/progress",
+  "workRef": "codex/mc-command-center-checkpoint-20261006",
+  "baseline": {
+    "ref": "codex/mc-command-center-checkpoint-20261006",
+    "commitSha": "e63d71bdcc50ae9139c8dc7793598b710a829964",
+    "handoffPath": "HANDOFF.md",
+    "handoffDigest": "972ab61200a23c431fb2669aa135c6ede9b8db3c39de3be682f3051cb3f7d16a",
+    "contextPaths": [
+      "README.md",
+      "docs/PRODUCT_CHARTER.md",
+      "docs/MC_PHASE_PLAN.md",
+      "docs/STAGE_HANDOFF_TEMPLATE.md"
+    ]
+  },
+  "events": [
+    {
+      "id": "mc-delivery-start",
+      "sequence": 1,
+      "eventAt": "2026-10-10T23:44:32.212485Z",
+      "kind": "started",
+      "summary": "已開始 bounded delivery evidence 開發：先讀現有 v1 contract／helper／reader／UI，設計 v2 backward-compatible reported snapshot；保留 historical／terminal bytes，不新增 fetch／權限／SQL。納入 equal-time sequence 排序回歸。",
+      "result": null
+    }
+  ]
+}
