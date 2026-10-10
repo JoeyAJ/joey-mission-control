@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "mc.repository-run.v1",
+  "projectId": "MISSION_CONTROL",
+  "track": "BASELINE",
+  "runId": "claude-mc-desktop-pilot-run-20261010T055619Z-b3e4d1",
+  "predecessorRunId": null,
+  "taskId": "claude-mc-desktop-pilot-task-20261010T055619Z-b3e4d1",
+  "featureTitle": "Claude Desktop MC reporting-only pilot",
+  "agentName": "ClaudeCode",
+  "provider": "Anthropic",
+  "model": "claude-opus-5-5",
+  "repositoryId": "JoeyAJ/joey-mission-control",
+  "reportRef": "mc/progress",
+  "workRef": "codex/mc-command-center-checkpoint-20261006",
+  "baseline": {
+    "ref": "codex/mc-command-center-checkpoint-20261006",
+    "commitSha": "0a4c62717030b29d93c53431572250518132fbf4",
+    "handoffPath": "HANDOFF.md",
+    "handoffDigest": "9d5bccd1aa79639cf76a67443d6b1eacd58fda810e3d81460044d7de618a6f05",
+    "contextPaths": []
+  },
+  "events": [
+    {
+      "id": "claude-mc-desktop-pilot-run-20261010T055619Z-b3e4d1-e1",
+      "sequence": 1,
+      "eventAt": "2026-10-10T05:57:30.000Z",
+      "kind": "started",
+      "summary": "ClaudeCode (Claude Desktop Code) started reporting-only pilot from pinned HANDOFF.md at 0a4c627; Git-source-bound packet, no Owner UI clipboard receipt claimed.",
+      "result": null
+    }
+  ]
+}
