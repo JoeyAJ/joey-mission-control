@@ -3,7 +3,7 @@
 Project: MISSION_CONTROL
 Timestamp: 2026-10-10T23:36:05.540261Z
 Task: Follow reported activity and resolve four independent workbench review regressions
-Status: LOCAL_VERIFIED_PREVIEW_PUBLICATION_PENDING
+Status: LOCAL_VERIFIED_PREVIEW_PUBLISHED
 Last Developer: Codex
 Executed by: Codex
 Actual Model: UNKNOWN
@@ -21,13 +21,13 @@ Actual new run codex-mc-activity-follow-20261010 / task mc-activity-follow-stage
 
 ## Delivery and data qualification
 
-Historical stage-1 metadata receipt is retained at docs/MC_DYNAMIC_DELIVERY_RECEIPT_20261010.md; it describes that observation time, not an immutable claim about the movable Preview alias. Stage-2 exact remote SHA/READY/alias receipt will be recorded separately. Cloud fixed-Preview HEAD at 23:15:29 UTC failed CONNECT tunnel 403 before reaching the app; no bypass and no served/Owner acceptance claim.
+Historical stage-1 metadata receipt is retained at docs/MC_DYNAMIC_DELIVERY_RECEIPT_20261010.md; it describes that observation time, not an immutable claim about the movable Preview alias. Stage-2 functional exact remote SHA ff84d67891e32ae43d51760b7ff778e1fc7bdc86 is published; connected deployment dpl_HiP7VSLLiETgxxgy4oFC1crXQtV6 READY and independent fixed-alias lookup matches. Qualified receipt: docs/MC_ACTIVITY_FOLLOW_DELIVERY_RECEIPT_20261010.md. Cloud fixed-Preview HEAD at 23:15:29 UTC failed CONNECT tunnel 403 before reaching the app; no bypass and no served/Owner acceptance claim.
 
 MC data/schema: no SQL or data migration, unchanged strict mc.repository-run.v1 and private endpoint schemas. Agent declarations remain AGENT_REPORTED; Git blobs do not establish Vercel READY/served SHA. Caller MC_VERIFIED, unsupported result.delivery/schema versions and credential-bearing URLs cannot upgrade evidence. N/A requires applicable policy/reason. Independent source-bound provider/served observations remain separate. No new telemetry collector, arbitrary file/diff read, Agent hook, access/credential or fake permission control is activated.
 
 ## Next Action
 
-Complete the already authorized same-branch/fixed-Preview publication and exact metadata receipt, consolidate current handoff, then finish this actual bounded run. Joey dynamic product/appearance and actual device/served acceptance remain pending. A future authorized Agent fresh-reads current canonical HEAD and preserves source/test/deployment/URL/data/acceptance distinctions. Fine-grained telemetry requires explicit approval for expanded allowlisted file/diff GET paths or external Agent event hooks/collector; current UI work does not require that access. No Production, other-repository/report, SQL, secrets/permissions, AWS, model selector or dispatch changes.
+This bounded implementation, tests, authorized functional Preview and current handoff/data consolidation are complete. Actual run closure is recorded separately in the dated delivery receipt; this handoff never promotes code/report completion to product acceptance. Joey dynamic product/appearance and actual device/served acceptance remain pending. A future authorized Agent fresh-reads current canonical HEAD and preserves source/test/deployment/URL/data/acceptance distinctions. Fine-grained telemetry requires explicit approval for expanded allowlisted file/diff GET paths or external Agent event hooks/collector; current UI work does not require that access. No Production, other-repository/report, SQL, secrets/permissions, AWS, model selector or dispatch changes.
 
 ---
 
