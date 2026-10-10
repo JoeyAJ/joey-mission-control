@@ -17,7 +17,19 @@ All private browser upstreams are synthetic. Reports remain local under `/tmp`, 
 
 ## Publication
 
-Prepared for the already authorized private branch and fixed protected Preview. Exact commit/tree, remote readback, READY deployment and fixed alias are filled after the real publication. Production baseline is `8b4945b16a0b23f2e72033aa976fa34f94eabec0`, deployment `dpl_5GgJ8LhD4Ec73RGz9CEFe1ppZQnh`; no promotion is authorized.
+Verified functional publication:
+
+| Evidence | Actual value |
+|---|---|
+| Commit | `b5d19ba9468670a86467d19f6ec423db4dc8a936` |
+| Tree | `9d6afaec39eba36d486d93f03580656f329d9b72` |
+| Remote | Exact branch SHA via `git ls-remote`, fresh fetch with zero commit/tree diff, and independent connected GitHub commit read |
+| Preview deployment | `dpl_7vDQmHK95o6r97sd4LXYwyeMkX2J`, READY, target Preview (`target: null`) |
+| Project | `prj_X67htPw7vkRI2tuf8817vOUCGQOD`, existing team |
+| Deployment metadata | Exact functional SHA, branch and private repo match |
+| Fixed alias | [Existing protected Preview](https://joey-mission-control-git-codex-mc-comma-fceec2-joeyajs-projects.vercel.app/), points to the deployment above |
+
+Verified by connected GitHub/Vercel and Git readback on 2026-10-10 UTC. The later docs-only completion may advance the alias; it changes no application/bundle/config bytes. Its exact docs HEAD and READY readback are reported externally rather than embedding a future self-commit. No redundant functional redeployment is needed. Production baseline is `8b4945b16a0b23f2e72033aa976fa34f94eabec0`, deployment `dpl_5GgJ8LhD4Ec73RGz9CEFe1ppZQnh`; no promotion is authorized.
 
 ## Runtime qualification
 

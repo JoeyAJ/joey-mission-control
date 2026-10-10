@@ -1,3 +1,5 @@
+Current functional repair and release evidence: [Continue source verification — 2026-10-10](MC_CONTINUE_SOURCE_VERIFICATION_20261010.md). The record below is the earlier functional checkpoint, preserved as history.
+
 # MC functional release verification — 2026-10-09
 
 This is the canonical in-repository summary for the already published functional checkpoint. It is a deliberately limited release record: functional Git identity, non-secret Preview metadata, test types/counts and limitations. It contains no operational worker/job/event payload, account/credential data, raw private source, logs or reference-image bytes.

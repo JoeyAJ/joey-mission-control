@@ -3,13 +3,17 @@
 Project: MISSION_CONTROL
 Timestamp: 2026-10-10T02:51:43Z
 Task: Repair Buddy Continue and Asset University candidate source continuity
-Status: LOCAL_VERIFIED_PENDING_PUBLICATION
+Status: LOCAL_VERIFIED_PARENT_READ_PREVIEW_PUBLISHED
 Last Developer: Codex
 Executed by: Codex
 Actual Model: UNKNOWN
 Baseline: ed04d315162d01bcfed56f71166e57d6251ad31b
+Functional Release: PRIVATE_PREVIEW_READY
+Functional Commit: b5d19ba9468670a86467d19f6ec423db4dc8a936
 
 ## Summary
+
+The functional repair is published at `b5d19ba9468670a86467d19f6ec423db4dc8a936` (tree `9d6afaec39eba36d486d93f03580656f329d9b72`), remote exact HEAD verified, fixed Preview deployment `dpl_7vDQmHK95o6r97sd4LXYwyeMkX2J` READY and fixed alias matched. This later documentation completion records that release; its exact docs HEAD is read from Git and deployment metadata, without self-referential future commit claims.
 
 This authorized sole-writer stage repairs the two Owner-reported Continue source substitutions. The mounted `32b77ee` was not used as authority; the private remote branch was fetched and its exact `ed04d315162d01bcfed56f71166e57d6251ad31b` HEAD reconciled before edits. No AGENTS.md exists in the repository or accessible workspace parents. Current product authority remains [PRODUCT_CHARTER.md](docs/PRODUCT_CHARTER.md).
 
@@ -35,7 +39,7 @@ Post-fix normal Owner served-byte/read/copy and Safari/phone acceptance remain p
 
 ## Next Action
 
-Complete the authorized current-branch/fixed-Preview publication, verify exact remote SHA and READY/alias identity, then record release evidence and release sole-writer ownership with no background operations. The next Agent reads this current stage and the release verification before preserved history. Any remaining real-device acceptance must use the existing normal Owner session; runtime disconnect does not authorize dispatch recovery.
+The functional publication is complete. Finish the docs-only readback on the same branch/Preview, then release sole-writer ownership with no background operations. Do not republish the completed functional checkpoint. The next Agent reads this current stage and the release verification before preserved history. Any remaining real-device acceptance must use the existing normal Owner session; runtime disconnect does not authorize dispatch recovery.
 
 ## Preserved prior handoff — historical stage
 

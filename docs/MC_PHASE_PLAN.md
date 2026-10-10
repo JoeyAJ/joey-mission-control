@@ -1,6 +1,6 @@
 # Current stage — verified Continue source repair, 2026-10-10
 
-The newly delegated bugfix scope supersedes the prior docs-only stopping instruction. Buddy Continue and Asset University candidate Continue now use the same fresh private source gate and legal track routing, with no legacy snapshot fallback. Parent-relayed Chrome Owner reads established pre-fix four-main-source / candidate runtime availability; post-fix normal Owner and Safari/phone acceptance remain separate. See [current handoff](../HANDOFF.md) and [release verification](MC_CONTINUE_SOURCE_VERIFICATION_20261010.md). Existing branch/fixed Preview only; no SQL, secrets/access, other-repo writes, model dispatch, AWS/pilot or Production action.
+The newly delegated bugfix scope supersedes the prior docs-only stopping instruction. Functional repair `b5d19ba9468670a86467d19f6ec423db4dc8a936` is remote and fixed Preview READY (`dpl_7vDQmHK95o6r97sd4LXYwyeMkX2J`, matching alias). Buddy Continue and Asset University candidate Continue now use the same fresh private source gate and legal track routing, with no legacy snapshot fallback. Parent-relayed Chrome Owner reads established pre-fix four-main-source / candidate runtime availability; post-fix normal Owner and Safari/phone acceptance remain separate. See [current handoff](../HANDOFF.md) and [release verification](MC_CONTINUE_SOURCE_VERIFICATION_20261010.md). Existing branch/fixed Preview only; no SQL, secrets/access, other-repo writes, model dispatch, AWS/pilot or Production action.
 
 ## Preserved prior phase plan
 
