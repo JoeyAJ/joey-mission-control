@@ -88,6 +88,55 @@
       "kind": "progress",
       "summary": "三語系／狀態矩陣已建立；已補韓文維護與来源標籤、將完成／失敗結果前置、限制長中文摘要高度並保留展開全文、加大手機disclosure觸控區。正在驗證13狀態×12語系寬度組及私有合成截圖。",
       "result": null
+    },
+    {
+      "id": "codex-mc-joey-overview-20261010-ux-completed",
+      "sequence": 9,
+      "eventAt": "2026-10-10T08:40:25.741519Z",
+      "kind": "completed",
+      "summary": "已完成授權 UX 實作與固定 Preview 發布：overview、參考 console、語系／mobile 狀態、handoff；715 tests、156 state visits、fresh-copy regression PASS。這是 UX 開發完成，Joey 產品／真機 clipboard 驗收仍 pending。",
+      "result": {
+        "codeSha": "d1e7c90f6780fd4ac28b9998facaad34813a960f",
+        "tests": [
+          {
+            "name": "Portable unit suite: 715",
+            "outcome": "PASS"
+          },
+          {
+            "name": "zhTW/ko/en x four widths x thirteen synthetic states: 156",
+            "outcome": "PASS"
+          },
+          {
+            "name": "Four-width fresh source/report copy regression",
+            "outcome": "PASS"
+          },
+          {
+            "name": "Handoff/privacy: 19",
+            "outcome": "PASS"
+          },
+          {
+            "name": "Owner client build, schemas and safety",
+            "outcome": "PASS"
+          },
+          {
+            "name": "Exact remote SHA and fixed Preview READY/alias",
+            "outcome": "PASS"
+          },
+          {
+            "name": "Actual iPhone/clipboard and Joey product acceptance",
+            "outcome": "NOT_RUN"
+          },
+          {
+            "name": "Private Library IDs: tools/list network blocked",
+            "outcome": "NOT_RUN"
+          }
+        ],
+        "nextSteps": "Joey final appearance and actual iPhone/clipboard acceptance pending; no Agent is kept fictitiously running for acceptance. Synthetic 1440/390 renders are durable private repo docs/qa/mc-ux-final-20261010; Library helper transport blocked before mutations. Cloud served bytes remain unverified (CONNECT403). No Nex CI fix, Production, SQL, keys/permissions, AWS or dispatch action.",
+        "handoff": {
+          "path": "HANDOFF.md",
+          "commitSha": "d1e7c90f6780fd4ac28b9998facaad34813a960f"
+        }
+      }
     }
   ]
 }
