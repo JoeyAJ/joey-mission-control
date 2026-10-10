@@ -32,6 +32,14 @@
       "kind": "started",
       "summary": "已恢復雲端97e5ea0 checkout並開始已授權動態工作台開發：解碼329-frame公開動畫、保存分期驗收、實作回報驅動互動與本地時間。既有completed run不重啟，不新增存取。",
       "result": null
+    },
+    {
+      "id": "mc-dynamic-core-progress",
+      "sequence": 2,
+      "eventAt": "2026-10-10T23:06:37.378672Z",
+      "kind": "progress",
+      "summary": "已保存動畫分期驗收並實作fresh source/report四pane連動、跨已讀scope上次確認卡片、一次事件提示、本地時間與fresh-gated交接dialog。719單元PASS；正在修正並驗證手機panel操作、實際30秒poll及reduced motion。無新存取／無假terminal。",
+      "result": null
     }
   ]
 }
