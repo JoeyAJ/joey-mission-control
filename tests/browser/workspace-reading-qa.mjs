@@ -35,14 +35,14 @@ try{
    await page.locator('[data-workspace-panel=entries]').click();await page.locator('[data-command-project=NEXAEON]').click();await page.locator('[data-workspace-panel=events]').click();assert.equal((await scroll())['.command-events'],0);
   }
   if(width<=768)await page.locator('[data-workspace-panel=events]').click();await page.evaluate(()=>document.querySelector('.command-events').scrollTop=180);
-  await page.locator('.command-workspace-head button:last-child').click();await page.locator('.workspace-entry').click();assert.equal((await scroll())['.command-events'],180);
+  await page.locator('.command-workspace-head button:last-child').click();await page.locator('.joey-simple-links button').first().click();assert.equal((await scroll())['.command-events'],180);
   await page.route('**/api/state',r=>r.fulfill({status:503,contentType:'application/json',body:JSON.stringify({error:'QA_READ_FAILURE'})}));
   await page.locator('[data-command-refresh]').click();await page.locator('#data-link-status[data-failed=true]').waitFor();assert.equal((await scroll())['.command-events'],180);assert.equal(await page.locator('#command-workspace').getAttribute('data-project'),'NEXAEON');
   await page.unroute('**/api/state');await page.locator('[data-command-refresh]').click();await page.locator('#data-link-status[data-failed=false]').waitFor();assert.equal((await scroll())['.command-events'],180);
   if(width<=768)await page.locator('[data-workspace-panel=context]').click();await page.locator('button[data-inspector-tab=graph]').click();await page.locator('button[data-inspector-tab=changes]').click();await page.goBack();await page.locator('button[data-inspector-tab=graph][aria-pressed=true]').waitFor();await page.goForward();await page.locator('button[data-inspector-tab=changes][aria-pressed=true]').waitFor();if(width<=768)await page.locator('[data-workspace-panel=events]').click();assert.equal((await scroll())['.command-events'],180);
   if(width<=768)await page.locator('[data-workspace-panel=context]').click();
   const routeBeforeReturn=await page.evaluate(()=>location.hash);
-  await page.locator('.command-workspace-head button:last-child').click();await page.locator('.workspace-entry').click();
+  await page.locator('.command-workspace-head button:last-child').click();await page.locator('.joey-simple-links button').first().click();
   const returnPanel=await page.locator('#command-workspace').getAttribute('data-panel');
   assert.equal(returnPanel,returnBefore?'events':new URLSearchParams(routeBeforeReturn.split('?')[1]).get('panel')||'events','returning to the selected workspace must keep its panel');
   if(!returnBefore)assert.equal(await page.evaluate(()=>location.hash),routeBeforeReturn,'return must retain item, inspector and evidence filter');else{assert.notEqual(await page.evaluate(()=>location.hash),routeBeforeReturn);if(width<=768)await page.locator('[data-workspace-panel=context]').click();await page.locator('[data-inspector-tab=changes]').click();if(width<=768)await page.locator('[data-workspace-panel=events]').click();}

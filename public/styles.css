@@ -523,3 +523,31 @@ body[data-joey-simple=true] #joey.active{display:block;padding:0;margin:0;min-wi
 .joey-live-overview{display:grid;grid-template-columns:100px minmax(0,1fr);gap:8px 14px;margin:8px 0}.joey-live-overview dt{color:#b7bea7;font-size:13px;line-height:1.5}.joey-live-overview dd{margin:0;color:#efefdf;font-size:15px;line-height:1.5;overflow-wrap:anywhere;white-space:pre-wrap}.joey-live-overview dd[data-joey-overview-field=worker]{color:#d8e9ac;font-weight:700}.joey-live-overview dd[data-joey-overview-field=feature]{font-size:17px}.joey-document-details,.joey-report-details{border-top:1px solid #45503b;padding-top:4px;min-width:0}.joey-document-details>summary,.joey-report-details>summary{min-height:44px;display:flex;align-items:center;cursor:pointer;font-size:14px;color:#c2c9b5}.joey-simple-runtime{font-size:12px}.joey-simple-card{background:#1c231a;border-color:#414937}.joey-simple-primary{background:#dedeb9;color:#1a2015}.joey-simple-version{color:#babc9b}@media(max-width:600px){.joey-live-overview{grid-template-columns:86px minmax(0,1fr);gap:7px 10px}.joey-live-overview dd{font-size:14px}.joey-live-overview dd[data-joey-overview-field=feature]{font-size:16px}}
 
 .joey-live-overview dd[data-joey-overview-field=result]{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}.joey-live-overview dt{word-break:keep-all}
+
+/* Advanced console reference refinement: flat evidence, warm chrome, anchored graph. */
+body[data-active-module=workspace] #data-link-status strong{color:var(--console-accent);font-weight:500}
+#workspace .command-events :is(.owner-task-workflow,.owner-remote-handoff){margin:10px 0;padding:8px 0 8px 9px;border:0;border-left:1px solid #57583c;border-radius:0;background:transparent;font-size:11px;line-height:1.5}
+#workspace .command-events :is(.owner-task-workflow,.owner-remote-handoff)>h4{margin:0 0 5px;color:#c9c19c;letter-spacing:.04em}
+#workspace .command-events :is(.owner-task-workflow,.owner-remote-handoff)>p{margin:5px 0;font-size:11px;color:#aeb19b}
+#workspace .command-events .remote-handoff-controls{gap:4px}
+#workspace .command-events .remote-handoff-controls button{font:11px/1.4 ui-monospace,monospace;border-color:var(--console-line);border-radius:3px;background:#11140f}
+#workspace .repository-run-reports{padding-top:8px;border-color:var(--console-line)}
+#workspace .repository-run-card{padding:7px 0 7px 9px;border:0;border-left:1px solid #4f573c;border-radius:0;margin:6px 0}
+#workspace .repository-run-card[data-run-freshness=STALE]{border-left-color:#aa9359}
+#workspace .repository-run-card p,#workspace .run-report-notice{font:11px/1.5 ui-monospace,monospace;color:#bfc1aa;margin:4px 0}
+#workspace .repository-run-card .run-report-main{color:#d8d0a5;font-size:12px}
+#workspace .repository-run-card small,#workspace .repository-run-reports details{font-size:10px;color:#9fa78f}
+#workspace .command-context-actions{flex-wrap:wrap}
+#workspace .command-context-actions .source-qualification{flex-basis:100%;font-size:10px;line-height:1.5;color:#aeb19b;margin:7px 0}
+#workspace .command-graph{margin-top:auto;flex-shrink:0;box-sizing:border-box}
+#workspace .command-graph>h4{color:#aaa88a;letter-spacing:.04em}
+#workspace button:focus-visible,#workspace select:focus-visible{outline:2px solid #d7c68d!important;outline-offset:-2px}
+@media(max-width:768px){
+ #workspace .command-events :is(.owner-task-workflow,.owner-remote-handoff){font-size:12px;padding:9px 0 9px 10px}
+ #workspace .command-events :is(.owner-task-workflow,.owner-remote-handoff)>p,#workspace .repository-run-card p,#workspace .run-report-notice{font-size:12px;line-height:1.6}
+ #workspace .command-events .remote-handoff-controls button{min-height:44px;font-size:12px}
+ #workspace .repository-run-card .run-report-main{font-size:13px}
+}
+#workspace .command-mobile-tabs [aria-selected=true]{outline:2px solid #a99f6c;outline-offset:-2px;color:#ded2a6;background:#181b13}
+#workspace .command-changes button{border-color:var(--console-line);border-radius:3px;background:#11140f;font:10px/1.5 ui-monospace,monospace;min-height:29px}
+@media(max-width:768px){#workspace .command-changes button{min-height:44px;font-size:12px}}

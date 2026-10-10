@@ -18,12 +18,14 @@ function geometry(root,prior){
 const visiblePanes=root=>Object.entries(panes).filter(([,selector])=>visible(root.querySelector(selector))).map(([key])=>key);
 export function rememberCommandWorkspace(holder){
  const root=holder?.querySelector('#command-workspace');if(!root)return;
- states.set(holder,{project:root.dataset.project,positions:geometry(root,states.get(holder)),visiblePanes:visiblePanes(root)});
+ states.set(holder,{project:root.dataset.project,positions:geometry(root,states.get(holder)),visiblePanes:visiblePanes(root),suspended:true});
 }
 export function replaceCommandWorkspace(holder,renderNext){
  const old=holder.querySelector('#command-workspace'),prior=states.get(holder);
  const project=old?.dataset.project,readingKey=old?.dataset.readingKey||'';
- const positions=geometry(old,prior);
+ // Hidden panes can have their scroll offsets clamped by the simple-view layout.
+ // Resume the geometry captured before leaving, once, for that same project.
+ const positions=prior?.suspended&&prior.project===project?{...prior.positions}:geometry(old,prior);
  const focus=controlKey(old,holder.ownerDocument.activeElement);
  const sourceOpen=old?.querySelector('.command-source-details')?.open===true;
  const next=renderNext();holder.replaceChildren(next);

@@ -1,3 +1,32 @@
+# Mission Control advanced console — second reviewable delivery
+
+Project: MISSION_CONTROL
+Timestamp: 2026-10-10T08:16:55Z
+Task: Refine advanced console against actual references and preserve reading operations
+Status: LOCAL_VERIFIED_PENDING_PUBLICATION
+Last Developer: Codex
+Executed by: Codex
+Actual Model: UNKNOWN
+Baseline: 8765dacd8aa2c2baa27bd740e0e7fe8f0234f128
+
+## Current checkpoint
+
+Advanced console now uses flat evidence/source/report sections, warm olive/beige status and selection, compact readable controls, retained desktop column ratios and graph bottom anchoring. Actual before/after captures cover four requested widths plus 872×512 reference size; mobile retains its existing selected-pane navigation. No fake tool stream, usage or editor was added. Simple Joey remains default.
+
+Operation QA found and fixed simple-to-workspace route/scroll loss: same project/track restores the previous reading route, geometry is captured before applying simple CSS and resumes once after hidden-pane scroll clamping. University return preserves candidate track; baseline does not restore a candidate route. Report overview fixes also accept actual NO_REPORTS and sort terminal event timestamps chronologically, including offset/fractions.
+
+Same actual Codex task/run remains progress; latest published sequence 5 report HEAD 73c31288ac82067f1835beb5cfbc46ed63f2ac51, blob 7c8f587ca5b15b2a2f1a1693b37225f878dc9d88. Existing terminal runs remain untouched. Actual MC and five-scope Owner PASS remains established; final Joey/device/clipboard acceptance remains pending. New parent-relayed primary evidence confirms preexisting Nex timing-sensitive flaky test; current CI still fails and no Nex product/test change is made.
+
+## Verification
+
+715 portable unit checks, actual API-factory empty response and chronological timestamp regressions; five-size reference geometry/interaction captures; independent pane reading/focus/scroll, route and zhTW/en/ko checks; four-width full-context/fresh-copy using actual historical MC report bytes with synthetic Owner/document/clipboard; build regeneration and safety. Final counts/results and exact Preview release evidence are in the external second-stage receipt. No private served Owner or actual iPhone/clipboard proof is claimed. See docs/MC_ADVANCED_REFERENCE_VERIFICATION_20261010.md and docs/MC_CURRENT_ACCEPTANCE.md.
+
+## Next Action
+
+Finish final reading regression/build, publish this second stage on the existing branch/fixed Preview and verify exact remote SHA/READY/alias. Then continue authorized third-stage zhTW/ko/en and empty/loading/denied/expired/blocked/completed state verification in cloud. Mac may remain offline; do not repeat completed five-scope Owner QA or bypass cloud CONNECT 403. Keep the actual run in progress until the overall stages finish; do not add a connectivity pilot, selector, dispatch, SQL, keys/permissions, AWS, other-repository writes or Production change.
+
+---
+
 # Mission Control Joey overview — first reviewable delivery
 
 Project: MISSION_CONTROL
