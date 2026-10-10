@@ -3,15 +3,17 @@
 Project: MISSION_CONTROL
 Timestamp: 2026-10-10T02:59:42Z
 Task: Keep non-Preview Continue explicit and historical when private capability is unavailable
-Status: LOCAL_VERIFIED_PENDING_PUBLICATION
+Status: LOCAL_VERIFIED_PARENT_READ_PREVIEW_PUBLISHED
 Last Developer: Codex
 Executed by: Codex
 Actual Model: UNKNOWN
 Baseline: 73c08ae20170c78a2a71687de01926bdc2b7a8cc
+Functional Release: PRIVATE_PREVIEW_READY
+Functional Commit: 0454307b9d774696c48579a095478b92f580824b
 
 ## Summary
 
-Independent parent review passed the two fixed-Preview Continue source repairs, then identified the out-of-origin compatibility defect: the committed sync flag redirected all four project details even though the private Owner entry exists only at the approved fixed Preview. This newly authorized stage is limited to that compatibility fix.
+Independent parent review passed the two fixed-Preview Continue source repairs, then identified the out-of-origin compatibility defect: the committed sync flag redirected all four project details even though the private Owner entry exists only at the approved fixed Preview. This newly authorized stage is limited to that compatibility fix. It is published at `0454307b9d774696c48579a095478b92f580824b` (tree `3fdc7f33bed1c02258f47ff8750cca81433777a6`), remote exact SHA verified; deployment `dpl_Bx1SHi43bYoZ2aNMGHQG8DDk8Mk7` is READY on the same fixed Preview.
 
 ## Changes
 
@@ -33,7 +35,7 @@ No permission/tool blocker was encountered. Both rejected operational artifacts 
 
 ## Next Action
 
-Publish only this minimal compatibility stage to the already authorized branch/fixed Preview, verify remote exact SHA and READY/alias/unchanged Production, then record the result and release sole-writer ownership. Retain the real-device QA SHA qualification above; the next Agent should read this header before the preserved earlier stage.
+The minimal functional compatibility publication is complete. Finish the docs-only remote/READY readback, then release sole-writer ownership without background operations. Do not repeat functional publication. Retain the real-device QA SHA qualification above; the next Agent should read this header before the preserved earlier stage.
 
 ## Preserved prior Continue repair — published baseline
 

@@ -1,6 +1,6 @@
 # Current stage — non-Preview Continue capability compatibility
 
-Baseline `73c08ae20170c78a2a71687de01926bdc2b7a8cc`. The two fixed-Preview source repairs passed independent parent review; the new narrow stage adds capability/origin gating, historical read-only detail and an explicit unavailable Continue explanation outside the existing private entry. Nine origin/viewport/locale fixtures and the twelve four-source regressions pass. Parent's real-device QA remains qualified to 73c08ae. Current release status: [HANDOFF](../HANDOFF.md) and [Continue verification](MC_CONTINUE_SOURCE_VERIFICATION_20261010.md). No private scope/origin, credential, backend, model/dispatch, other-repo or Production change.
+Baseline `73c08ae20170c78a2a71687de01926bdc2b7a8cc`. The two fixed-Preview source repairs passed independent parent review; the new narrow stage adds capability/origin gating, historical read-only detail and an explicit unavailable Continue explanation outside the existing private entry. Functional compatibility `0454307b9d774696c48579a095478b92f580824b` is remote and same fixed Preview READY (`dpl_Bx1SHi43bYoZ2aNMGHQG8DDk8Mk7`, matching alias). Nine origin/viewport/locale fixtures and the twelve four-source regressions pass. Parent's real-device QA remains qualified to 73c08ae. Current release status: [HANDOFF](../HANDOFF.md) and [Continue verification](MC_CONTINUE_SOURCE_VERIFICATION_20261010.md). No private scope/origin, credential, backend, model/dispatch, other-repo or Production change.
 
 ## Preserved prior phase plan
 
