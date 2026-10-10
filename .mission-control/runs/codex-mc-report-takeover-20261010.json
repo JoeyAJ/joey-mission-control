@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "mc.repository-run.v1",
+  "projectId": "MISSION_CONTROL",
+  "track": "BASELINE",
+  "runId": "codex-mc-report-takeover-20261010",
+  "predecessorRunId": null,
+  "taskId": "mc-repository-report-takeover",
+  "featureTitle": "Verified report-aware Agent takeover and live MC reporting proof",
+  "agentName": "Codex",
+  "provider": "OpenAI",
+  "model": null,
+  "repositoryId": "JoeyAJ/joey-mission-control",
+  "reportRef": "mc/progress",
+  "workRef": "codex/mc-command-center-checkpoint-20261006",
+  "baseline": {
+    "ref": "codex/mc-command-center-checkpoint-20261006",
+    "commitSha": "48700364e21691391ed9737eff2e54dd68d46cd1",
+    "handoffPath": "HANDOFF.md",
+    "handoffDigest": "d9f6fcd84b9ead666c3994c7d7092b8a5358e9e68a4623b319f68c82fad291c8"
+  },
+  "events": [
+    {
+      "id": "started-live-1",
+      "sequence": 1,
+      "eventAt": "2026-10-10T04:45:16.428Z",
+      "kind": "started",
+      "summary": "Codex started the approved MC-only report-aware takeover fix and real repository reporting verification.",
+      "result": null
+    }
+  ]
+}
