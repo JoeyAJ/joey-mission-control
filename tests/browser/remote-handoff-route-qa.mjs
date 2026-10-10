@@ -25,7 +25,7 @@ const server=http.createServer(async(req,res)=>{
 await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));origin='http://127.0.0.1:'+server.address().port;
 const policy={origin,publishableKey:'sb_publishable_SYNTHETIC_ONLY',stageOrigin:origin,ownerSubject:'11111111-1111-4111-8111-111111111111',authSetupVerified:true,sessionBridgeVerified:true,privateReadSetupVerified:false,coordinatorReadSetupVerified:false,ownerDecisionSetupVerified:false};
 bundle=await build({entryPoints:['public/app.js'],bundle:true,format:'esm',write:false,metafile:true,plugins:[{name:'synthetic-auth-config',setup(build){
- build.onLoad({filter:/public\/owner-auth-client\.js$/},()=>({contents:"export {mountOwnerBrowserEntry} from '../src/continuity/owner-browser-entry.mjs';",resolveDir:process.cwd()+'/public'}));
+ build.onLoad({filter:/public\/owner-auth-client\.js$/},()=>({contents:"export {mountOwnerBrowserEntry,joeyRunSummary} from '../src/continuity/owner-browser-entry.mjs';",resolveDir:process.cwd()+'/public'}));
  build.onLoad({filter:/owner-auth-config\.js$/},()=>({contents:'export const ownerAuthConfig=Object.freeze('+JSON.stringify(policy)+');export const ownerAuthSetupStatus=()=>({status:"unconfigured",ownerIdentityEntryAvailable:true});'}));
  build.onLoad({filter:/vm-link-config\.js$/},()=>({contents:'export const vmLinkConfig={enabled:false};'}));
 }}]});

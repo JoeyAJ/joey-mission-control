@@ -1,8 +1,16 @@
-> Current 2026-10-10 report-aware takeover update: fresh Owner/source-bound report copy and own-run registration/context binding are locally verified (684 tests). The approved real MC Codex run has published started/checkpoint and passed real-byte parser/server/view readback with synthetic local Owner; final completion/publication readback follows. Effective Vercel root is confirmed as repo root, so the first guarded report-only branch is active. Actual Preview Owner/other external Agent/all-project acceptance remains pending. Older root/authorization-blocked statements below are preserved historical checkpoints. [Current verification](MC_REPORT_AWARE_TAKEOVER_VERIFICATION_20261010.md).
+# Current remaining gaps
+
+[Single current acceptance summary](MC_CURRENT_ACCEPTANCE.md) governs current status; [HANDOFF](../HANDOFF.md) records the latest development checkpoint. Actual MC receiving-Agent/report evidence and five-scope Owner reads passed. Exact real clipboard bytes, iPhone one-tap copy and final Joey product acceptance remain pending.
+
+The current authorized work is the four-stage Joey overview, approved desktop reference refinement, locale/device verification and documentation reconciliation. No new connectivity pilot, model selector or dispatch is required.
+
+## Historical phase and requirement checkpoints — superseded status
+
+> Historical checkpoint 2026-10-10 report-aware takeover update: fresh Owner/source-bound report copy and own-run registration/context binding are locally verified (684 tests). The approved real MC Codex run has published started/checkpoint and passed real-byte parser/server/view readback with synthetic local Owner; final completion/publication readback follows. Effective Vercel root is confirmed as repo root, so the first guarded report-only branch is active. Actual Preview Owner/other external Agent/all-project acceptance remains pending. Older root/authorization-blocked statements below are preserved historical checkpoints. [Dated verification](MC_REPORT_AWARE_TAKEOVER_VERIFICATION_20261010.md).
 
 > 2026-10-10 implementation update: the scoped repository-report contract, portable helper, Owner-only SHA-pinned private GET and truthful Joey/workspace UI are now implemented and locally verified. Fixed transport is `mc/progress` / `.mission-control/runs/<runId>.json`; no new token/SQL/service/model selector/dispatch. Actual external-Agent/Owner end-to-end acceptance remains pending. Joey approved the MC-only live test via parent at 04:35 UTC; report-branch creation/push awaits effective Vercel project-root confirmation; other four repos remain untouched. Earlier docs-only / architecture-awaiting statements below record the requirement checkpoint, not current implementation scope. See [implementation verification](MC_REPOSITORY_RUN_REPORTING_VERIFICATION_20261010.md).
 
-# Latest gap — external-Agent self-reporting, 2026-10-10 03:54 UTC
+# Historical gap — external-Agent self-reporting, 2026-10-10 03:54 UTC
 
 Joey explicitly requires MC to display actual receiving-Agent/run/requested-feature development after a copied handoff is read and work starts. This is provider-neutral self-reporting, not MC dispatch/model selection. Required states: running/progress/blocked/completed with handoff/result links; bounded heartbeat becomes stale/current state unconfirmed on expiry. Agent identity cannot be guessed from Git authors and copy/paste/read does not constitute startup.
 

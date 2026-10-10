@@ -1,10 +1,10 @@
 # Mission Control — current Agent entry
 
-Read the current stage of [HANDOFF.md](HANDOFF.md) first, then [PRODUCT_CHARTER.md](docs/PRODUCT_CHARTER.md), [phase plan](docs/MC_PHASE_PLAN.md) and [acceptance matrix](docs/MC_COMMAND_CENTER_ACCEPTANCE.md). HANDOFF and the current product decision govern continuation; prior stage instructions below are historical. Follow Joey's latest authorized scope and verify the actual repository HEAD without overwriting unrelated work.
+Read [HANDOFF](HANDOFF.md), then [PRODUCT_CHARTER](docs/PRODUCT_CHARTER.md). [Single current acceptance summary](docs/MC_CURRENT_ACCEPTANCE.md) separates implementation, actual Owner/receiving-Agent verification, remaining device checks and Joey final acceptance. Historical checkpoints below do not override these sources or the latest authorized scope.
 
-Use the existing private branch `codex/mc-command-center-checkpoint-20261006`. Functional baseline `cd8f5c4590f10c7d2691b475f194c6fbe396d40f` is already remote / fixed Preview READY; see [release verification and reference index](docs/MC_RELEASE_VERIFICATION_20261009.md). A later docs-only HEAD updates handoff integrity, not application behavior. Do not republish the functional checkpoint, repeat a pilot or run unrelated full suites merely to start.
+Continue on private branch `codex/mc-command-center-checkpoint-20261006` and its existing fixed Preview. Actual MC Codex/Claude v3 reports and five additional scope Owner QA passed; exact real clipboard/iPhone and overall Joey product acceptance remain pending. Current authorized development is Joey overview and reference interface refinement. No repeat connection pilot, Mac setup, model selector or dispatch is required.
 
-Keep source/runtime qualifications intact: unknown Agent/model stays unknown; deployment READY is not Owner runtime or final acceptance. Stop independent modifications while normal Owner four-project/candidate source reads, actual device/new-Agent takeover and Joey visual acceptance remain pending. This entry grants no new access, SQL, credentials, model, infrastructure or Production authority.
+Keep private source/Owner data private, candidate qualification separate, missing signatures/document times unrecorded, and report completion distinct from product acceptance. This UX stage adds no SQL, keys, permissions, AWS pilot, other-repository writes or Production change. Desktop reference source: [approved private reference index](docs/MC_REFERENCE_FIDELITY_20261008.md); no mobile reference exists.
 
 ## Preserved V0.3 Agent protocol — historical
 

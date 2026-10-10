@@ -129,3 +129,5 @@ export function mountOwnerBrowserEntry({doc=document,locale='zh-TW',projectId,tr
  const observer=typeof MutationObserver==='function'?new MutationObserver(()=>{if(!root.isConnected)root.dispose();}):null;queueMicrotask(()=>{if(root.isConnected)observer?.observe(doc.documentElement,{childList:true,subtree:true});});
  mounted.set(doc,root);paint();if(new URLSearchParams(globalThis.location?.hash?.split('?')[1]||'').get('owner')==='signin')root.open=true;void check();return root;
 }
+
+export {joeyRunSummary} from '../reporting/joey-run-summary.mjs';

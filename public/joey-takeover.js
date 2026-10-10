@@ -1,7 +1,7 @@
 import {formatTakeoverInstruction} from './takeover-instruction.js';
 export {formatTakeoverInstruction} from './takeover-instruction.js';
 import {metadataState} from './i18n.js';
-import {mountOwnerBrowserEntry} from './owner-auth-client.js';
+import {mountOwnerBrowserEntry,joeyRunSummary} from './owner-auth-client.js';
 const names={MISSION_CONTROL:'Mission Control',NEXAEON:'NexAeon',WOOSONG_BUDDY:'Woosong Buddy',NAMYOUNG_WEB3D:'Namyoung Web3D',JOEY_ASSET_SYSTEM:'Joey Asset'};
 const copy={
  'zh-TW':{title:'你的專案，接著往前',intro:'選一個專案，查看已知進度，再把接手指令貼給你要使用的 Agent。',project:'選擇專案',progress:'文件記錄的進度',unknown:'未記錄',task:'已知進度',status:'文件狀態',next:'下一步',agent:'最近開發者',time:'文件更新',runtime:'MC 未直接連接 Agent 執行器；開發狀態請看下方自行回報。',source:'版本',main:'main 基準',mcBaseline:'MC 開發分支',candidate:'University 候選 · Joey 驗收待確認',copy:'複製接手指令',login:'登入後讀取專案',signin:'先登入，才能讀取你的私人專案；登入後會自動準備來源。',checking:'正在確認登入，請稍候…',reading:'正在讀取所選專案，完成後就能複製。',verify:'完成登入驗證後，會自動讀取專案。',unavailable:'這個網站入口尚未啟用私人來源接手，請使用固定 Preview。',error:'這次未能確認最新來源。按下方按鈕再試一次；不會使用舊的接手資料。',denied:'登入或來源權限未確認。請重新確認登入。',retry:'重新讀取來源',ready:'已確認來源。複製後貼給接手 Agent 即可。',copying:'正在重新確認來源並準備指令…',copied:'已複製。貼給接手 Agent，請它先讀專案入口。',manual:'這個瀏覽器未完成自動複製。點「全選指令」，再用系統的複製功能。',selectAll:'全選指令',stale:'上次確認的文件；這次未讀取成功，最新進度未確認。',technical:'來源與技術資料',account:'帳號與登入',advanced:'進階工作台',full:'完整專案檢視',instruction:'接手指令'},
@@ -16,6 +16,10 @@ export function mountJoeyTakeover({doc=document,project='NEXAEON',track='BASELIN
  for(const value of ['BASELINE','UNIVERSITY_CANDIDATE']){const o=el('option');o.value=value;sourceSelect.append(o);}
  select.addEventListener('change',()=>onSelect(select.value,'BASELINE'));sourceSelect.addEventListener('change',()=>onSelect(project,sourceSelect.value));workspace.addEventListener('click',()=>onWorkspace(project));full.addEventListener('click',()=>project==='MISSION_CONTROL'?onWorkspace(project):onFull(project));links.append(workspace);technical.append(full);
  card.append(cardTitle,badge,sourceLabel,sourceSelect,summary,runtime,runsHost,hint,action,fallback,selectAll);root.append(heading,intro,label,select,card,accountHost,technical,links);
+ const overview=el('dl','joey-live-overview'),reportDetails=el('details','joey-report-details'),reportTitle=el('summary'),documentDetails=el('details','joey-document-details'),documentTitle=el('summary');
+ card.insertBefore(overview,summary);documentDetails.append(documentTitle,summary);reportDetails.append(reportTitle,runsHost);card.append(documentDetails,reportDetails);runtime.hidden=true;
+ const liveFields={};for(const key of ['worker','feature','result','blocker','decision']){const dt=el('dt'),dd=el('dd');dd.dataset.joeyOverviewField=key;overview.append(dt,dd);liveFields[key]={dt,dd};}
+ let reportController=null,reportUnsubscribe=null,reportView=null,staleTimer;
  const fields={};for(const key of ['task','next','agent','time']){const dt=el('dt'),dd=el('dd');summary.append(dt,dd);fields[key]={dt,dd};}
  function clearResult(){success=null;fallback.value='';fallback.hidden=true;selectAll.hidden=true;}
  function paint(){
@@ -23,6 +27,17 @@ export function mountJoeyTakeover({doc=document,project='NEXAEON',track='BASELIN
   const auth=owner?.dataset.ownerAuth;if(auth==='verified'&&lastAuth!=='verified')owner.open=false;lastAuth=auth;const record=view?.status==='unavailable'?view.lastConfirmed:view?.status==='connected'&&view.observation?.status==='FOUND'?view.observation:null,p=record?.progress;
   const values={task:p?.task||p?.summary||(p?.recordedStatus?w.status+'：'+metadataState(p.recordedStatus,locale):null),next:p?.nextAction,agent:p?.lastAgent,time:record?.source.documentTimestamp};
   for(const [key,{dt,dd}]of Object.entries(fields)){dt.textContent=w[key];dd.textContent=values[key]||w.unknown;}
+  const phrases={
+   'zh-TW':{worker:'目前 Agent',feature:'正在做什麼',result:'最近完成／結果',blocker:'受阻',decision:'需 Joey 決定',none:'尚無開工回報',idle:'目前沒有活動中的回報',unknown:'目前未確認',clear:'目前回報未列受阻',noDecision:'回報未記錄決定請求',done:'回報完成',failed:'回報失敗',blocked:'回報受阻',details:'Agent 回報與驗證紀錄',document:'文件進度與下一步',pending:'回報結果不代表 Joey 已驗收產品。'},
+   en:{worker:'Current Agent',feature:'Working on',result:'Latest result',blocker:'Blocked',decision:'Joey decision',none:'No startup report',idle:'No active work reported',unknown:'Currently unconfirmed',clear:'No blocker reported',noDecision:'No decision request in reports',done:'Reported completed',failed:'Reported failed',blocked:'Reported blocked',details:'Agent reports and verification',document:'Document progress and next steps',pending:'Reported results do not imply Joey product acceptance.'},
+   ko:{worker:'현재 Agent',feature:'진행 작업',result:'최근 결과',blocker:'차단',decision:'Joey 결정',none:'시작 보고 없음',idle:'진행 중 보고 없음',unknown:'현재 미확인',clear:'차단 보고 없음',noDecision:'보고에 결정 요청 기록 없음',done:'완료 보고',failed:'실패 보고',blocked:'차단 보고',details:'Agent 보고 및 검증 기록',document:'문서 진행 및 다음 단계',pending:'보고 결과가 Joey 제품 검수를 의미하지 않습니다.'}
+  },q=phrases[locale]||phrases['zh-TW'];
+  const live=joeyRunSummary({view:reportView,projectId:project,track,sourceConfirmed:auth==='verified'&&view?.status==='connected'&&view.observation?.status==='FOUND'});
+  const unconfirmed=['unconfirmed','stale'].includes(live.status),latest=live.latestResult;
+  const liveValues={worker:live.active.length?live.active.map(p=>p.agentName+(p.currentState==='blocked'?' · '+q.blocked:'')).join(' · '):unconfirmed?q.unknown:live.status==='missing'?q.none:q.idle,feature:live.active.length?live.active.map(p=>p.featureTitle).join('；'):unconfirmed?q.unknown:w.unknown,result:latest?latest.agentName+' · '+latest.featureTitle+' · '+(latest.reportedState==='completed'?q.done:q.failed)+'\n'+latest.summary:unconfirmed?q.unknown:w.unknown,blocker:live.blockers.length?live.blockers.map(p=>p.agentName+' · '+p.summary).join('；'):unconfirmed?q.unknown:q.clear,decision:unconfirmed?q.unknown:q.noDecision};
+  for(const [key,{dt,dd}]of Object.entries(liveFields)){dt.textContent=q[key];dd.textContent=liveValues[key];}
+  overview.dataset.joeyOverviewState=live.status;reportTitle.textContent=q.details;documentTitle.textContent=q.document;runtime.hidden=!latest;runtime.textContent=q.pending;
+  clearTimeout(staleTimer);if(live.expiresAt)staleTimer=setTimeout(paint,Math.max(1,live.expiresAt-Date.now()+1));
   root.dataset.sourceState=view?.status||'unconfigured';root.dataset.project=project;root.dataset.track=track;action.disabled=false;action.textContent=w.copy;
   if(busy){hint.textContent=w.copying;action.disabled=true;}
   else if(!controller){hint.textContent=w.unavailable;action.disabled=true;}
@@ -46,12 +61,13 @@ export function mountJoeyTakeover({doc=document,project='NEXAEON',track='BASELIN
  });
  const authObserver=new MutationObserver(()=>paint());
  function update(next={}){
-  if(disposed)return;const changed=next.project&&next.project!==project||next.track&&next.track!==track;if(changed){generation++;busy=false;clearResult();view=null;technical.open=false;}
+  if(disposed)return;const changed=next.project&&next.project!==project||next.track&&next.track!==track;if(changed){generation++;busy=false;clearResult();view=null;reportView=null;technical.open=false;documentDetails.open=false;reportDetails.open=false;}
   project=next.project||project;track=project==='JOEY_ASSET_SYSTEM'&&next.track==='UNIVERSITY_CANDIDATE'?'UNIVERSITY_CANDIDATE':'BASELINE';locale=next.locale||locale;
   owner=mountOwnerBrowserEntry({doc,projectId:project,track,locale});accountHost.append(owner);const c=owner.sourceController;
   if(c!==controller){unsubscribe?.();controller=c||null;unsubscribe=c?.subscribe(value=>{view=value;if(value.status!=='connected'||value.observation?.status!=='FOUND')clearResult();paint();});authObserver.disconnect();authObserver.observe(owner,{attributes:true,subtree:true,attributeFilter:['data-owner-auth','data-owner-aal','disabled']});}
+  const rc=owner.repositoryRunsController;if(rc!==reportController){reportUnsubscribe?.();reportController=rc||null;reportView=null;reportUnsubscribe=rc?.subscribe(value=>{reportView=value;paint();});}
   if(owner.remoteHandoffSource)technical.append(owner.remoteHandoffSource);if(owner.repositoryRunsSource)runsHost.append(owner.repositoryRunsSource);paint();
  }
  update({project,track,locale});
- return {root,update,dispose(){disposed=true;generation++;unsubscribe?.();authObserver.disconnect();owner?.dispose?.();clearResult();summary.replaceChildren();hint.textContent='';}};
+ return {root,update,dispose(){disposed=true;generation++;clearTimeout(staleTimer);reportUnsubscribe?.();unsubscribe?.();authObserver.disconnect();owner?.dispose?.();clearResult();summary.replaceChildren();overview.replaceChildren();reportView=null;hint.textContent='';}};
 }

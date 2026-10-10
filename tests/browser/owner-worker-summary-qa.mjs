@@ -7,7 +7,7 @@ import assert from 'node:assert/strict';
 const require=createRequire(import.meta.url),{chromium}=require(process.env.CODEX_PRIMARY_RUNTIME_NODE_MODULES+'/playwright');
 const owner='11111111-1111-4111-8111-111111111111';
 const bundle=await build({stdin:{contents:"export {renderCommandWorkspace} from './public/command-workspace.js';export {mountOwnerWorkerSummary} from './src/continuity/owner-worker-summary-ui.mjs';",resolveDir:process.cwd()},bundle:true,format:'iife',globalName:'fixture',write:false,plugins:[{name:'synthetic-private-summary',setup(b){
- b.onLoad({filter:/public\/owner-auth-client\.js$/},()=>({contents:"export {mountOwnerBrowserEntry} from '../src/continuity/owner-browser-entry.mjs';",resolveDir:process.cwd()+'/public'}));
+ b.onLoad({filter:/public\/owner-auth-client\.js$/},()=>({contents:"export {mountOwnerBrowserEntry,joeyRunSummary} from '../src/continuity/owner-browser-entry.mjs';",resolveDir:process.cwd()+'/public'}));
  b.onLoad({filter:/public\/vm-link-config\.js$/},()=>({contents:"export const vmLinkConfig={enabled:true,projectId:'NEXAEON',release:'0.1.1',policyDigest:'a'.repeat(64),artifactDigest:'b'.repeat(64)};"}));
  b.onLoad({filter:/public\/owner-auth-config\.js$/},()=>({contents:`export const ownerAuthConfig={origin:'https://synthetic.invalid',publishableKey:'sb_publishable_SYNTHETIC_TEST_ONLY',stageOrigin:location.origin,ownerSubject:'${owner}',authSetupVerified:true,sessionBridgeVerified:true};export const ownerAuthSetupStatus=()=>({status:'unconfigured'});`}));
  b.onResolve({filter:/^@supabase\/supabase-js$/},()=>({path:'sdk',namespace:'synthetic'}));
