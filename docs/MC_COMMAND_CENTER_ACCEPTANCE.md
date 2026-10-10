@@ -1,3 +1,9 @@
+# Latest narrow repair — focus ownership and one-tap ClipboardItem
+
+Independent review reproduced simple-page Owner UI moving to hidden Workspace on focus/expiry. Actual iPhone automatic-copy failure at 03:44 UTC and Joey's 03:45 single-tap requirement are addressed through active-view rendering and immediate ClipboardItem write with fresh-gated promised text. All four viewport fixtures and 660 portable tests PASS; denied/unsupported APIs retain explicit select-all manual fallback without claiming clipboard success. Actual iPhone success is not established by those synthetic fixtures. See [verification](MC_JOEY_FOCUS_CLIPBOARD_VERIFICATION_20261010.md) and [current HANDOFF](../HANDOFF.md). Parent should notify completion before another device attempt; no install/pairing/permission workaround.
+
+## Preserved prior acceptance record
+
 # Latest usability stage — simple Joey takeover
 
 Parent relayed Joey's actual phone usability rejection at 03:12 UTC: “點進去，不知道點那太複雜。” Default home/#joey now exposes one project choice, truthful known progress and one primary takeover action. Local actual-app 375/390/430/1440 viewport tests and screenshots cover auth/source/copy/candidate/error/switch states with synthetic upstreams; they do not establish actual phone or current Owner acceptance. Parent Chrome Owner source PASS remains scoped to 73c08ae, before this UI change. See [verification](MC_JOEY_SIMPLE_TAKEOVER_VERIFICATION_20261010.md) and [current HANDOFF](../HANDOFF.md). No repeat Mac run is requested.

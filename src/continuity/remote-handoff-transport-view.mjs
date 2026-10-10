@@ -26,6 +26,13 @@ export function mountRemoteHandoffTransport({doc=document,client,inspectIdentity
   const g=generation,active=reader,project=projectId,selectedTrack=track;
   const valid=()=>g===generation&&active===reader&&!disposed&&enabled&&!doc.hidden&&project===projectId&&selectedTrack===track;
   const tuple=value=>JSON.stringify([value?.projectId,value?.source?.repositoryId,value?.source?.requestedRef,value?.source?.path,value?.source?.resolvedCommitSha,value?.source?.contentSha256,value?.track||'BASELINE',value?.entryQualification||null]);
+  // WebKit requires write() in the click gesture. Its item promise is fulfilled
+  // only after the existing fresh source/Owner/scope gate succeeds.
+  let deliverText,rejectText,promisedCopy=null,delivered=false;
+  if(copy&&typeof globalThis.ClipboardItem==='function'&&typeof globalThis.navigator?.clipboard?.write==='function'){
+   const payload=new Promise((resolve,reject)=>{deliverText=resolve;rejectText=reject;}).then(text=>new Blob([text],{type:'text/plain'}));payload.catch(()=>{});
+   try{promisedCopy=Promise.resolve(globalThis.navigator.clipboard.write([new ClipboardItem({'text/plain':payload})])).then(()=>true,()=>false);}catch{promisedCopy=Promise.resolve(false);}
+  }
   try{
    const view=await active.refresh();
    if(!valid()||view.status!=='connected'||view.observation?.status!=='FOUND')return null;
@@ -33,9 +40,9 @@ export function mountRemoteHandoffTransport({doc=document,client,inspectIdentity
    const current=active.snapshot();
    if(!valid()||current.status!=='connected'||current.observation?.status!=='FOUND'||!value||value.sourceStatus!=='FOUND'||value.projectId!==project||(value.track||'BASELINE')!==selectedTrack||tuple(value)!==tuple(observed)||tuple(value)!==tuple(current.observation))return null;
    const text=JSON.stringify(value,null,2);packet.textContent=text;packet.hidden=false;
-   if(copy){const copiedText=typeof format==='function'?format(value):text;if(typeof copiedText!=='string'||!copiedText)throw Error('HANDOFF_FORMAT_INVALID');let outcome='manual';if(globalThis.navigator?.clipboard?.writeText){try{await globalThis.navigator.clipboard.writeText(copiedText);outcome='copied';}catch{/* The verified private packet remains available for manual copy. */}}if(valid())root.dataset.copyOutcome=outcome;}
+   if(copy){const copiedText=typeof format==='function'?format(value):text;if(typeof copiedText!=='string'||!copiedText)throw Error('HANDOFF_FORMAT_INVALID');let outcome='manual';if(promisedCopy){delivered=true;deliverText(copiedText);if(await promisedCopy)outcome='copied';}else if(globalThis.navigator?.clipboard?.writeText){try{await globalThis.navigator.clipboard.writeText(copiedText);outcome='copied';}catch{/* The verified private packet remains available for manual copy. */}}const latest=active.snapshot();if(valid()&&latest.status==='connected'&&latest.observation?.status==='FOUND'&&tuple(value)===tuple(latest.observation))root.dataset.copyOutcome=outcome;else return null;}
    return valid()?value:null;
-  }catch{return null;}finally{if(g===generation){copying=false;paint(active.snapshot());}}
+  }catch{return null;}finally{if(!delivered)rejectText?.(Error('HANDOFF_UNAVAILABLE'));if(g===generation){copying=false;paint(active.snapshot());}}
  }
  const copyButton=button('copy',()=>prepareFresh({copy:true}));
  const trackButton=button('track',()=>{const next=track==='BASELINE'?'UNIVERSITY_CANDIDATE':'BASELINE';onTrackChange(next);update({track:next});});

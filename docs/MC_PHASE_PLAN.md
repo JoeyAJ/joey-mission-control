@@ -1,3 +1,9 @@
+# Current stage — active-view focus and one-tap copy repair
+
+Parent review reproduced hidden Workspace taking the visible Owner singleton on focus/expiry. Joey actual iPhone copy feedback requires a supported single-tap path. This narrow repair routes refreshes to the active view and initiates a gesture-preserving ClipboardItem promise whose data is released only after the existing fresh Owner/source gate. Manual fallback explicitly selects all text without claiming success. See [current HANDOFF](../HANDOFF.md) and [verification](MC_JOEY_FOCUS_CLIPBOARD_VERIFICATION_20261010.md). Real iPhone clipboard acceptance remains unverified; no Mac/install/pairing dependency. Existing branch/fixed Preview only, no new permissions/dispatch or Production action.
+
+## Preserved prior phase plan
+
 # Current stage — simple Joey project takeover
 
 Joey's 03:12 UTC actual phone feedback rejected discoverability. Default home/#joey now prioritizes project selection, known source progress and one verified copy action; engineering/full routes remain accessible. Source gate, private scope, candidate qualification and unknown metadata remain unchanged. Implementation and local browser evidence are in [simple takeover verification](MC_JOEY_SIMPLE_TAKEOVER_VERIFICATION_20261010.md); exact current publication is in [HANDOFF](../HANDOFF.md). Real phone acceptance of the new view remains unverified; no Mac setup/repeat dependency is introduced. This delegated UI scope supersedes older stopping instructions below.

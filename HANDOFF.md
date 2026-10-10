@@ -1,3 +1,34 @@
+# Mission Control active-view focus and one-tap copy repair
+
+Project: MISSION_CONTROL
+Timestamp: 2026-10-10T03:51:07Z
+Task: Preserve visible Owner entry and one-tap fresh continuation copy
+Status: LOCAL_VERIFIED_PENDING_PUBLICATION
+Last Developer: Codex
+Executed by: Codex
+Actual Model: UNKNOWN
+Baseline: e1995cc7b6337fb0ddcca0f835c00633cd249f1b
+
+## Summary
+
+Parent independently reproduced focus moving the simple Joey login/source singleton into hidden Workspace. Joey separately reported actual iPhone automatic-copy failure at 03:44 UTC and explicitly required one tap at 03:45. This narrow repair preserves the simple UI and existing fresh Owner/source gates.
+
+## Changes
+
+Focus and public task-observation expiry now refresh the active view; hidden Workspace cannot rerender/reparent the singleton. Simple signed-out forms and verified source remain attached across focus, blur/return and public refresh/expiry. Cross-view disposal, private invalidation, legal candidate track and history remain intact.
+
+Where ClipboardItem promise + clipboard.write are available, the write is initiated synchronously in the original click gesture. Its plain-text promise is fulfilled only after the existing fresh FOUND, Owner, immutable tuple, project/track/generation gates succeed. Failure/cancellation rejects the promise; no old packet is supplied. Other browser paths remain explicit about failure. Manual fallback adds a “全選指令” button and system-copy explanation; it never reports clipboard success. No permission workaround or new access path.
+
+## Verification and qualifications
+
+[Focus/copy verification](docs/MC_JOEY_FOCUS_CLIPBOARD_VERIFICATION_20261010.md) records before-fix reproduction, current fixtures, official technical sources and final release. Browser results use actual app/official SDK with synthetic auth/repository/clipboard and an iOS-like gesture restriction; no current real iPhone clipboard success is claimed. Joey should not retry until parent is notified of completion. No installation, pairing, Mac setup or permission change is required by this repair. Parent's earlier real Chrome source PASS remains limited to 73c08ae.
+
+## Next Action
+
+Finish exact branch SHA/READY/fixed-alias verification and release sole writer. Production and other repos, SQL/access/secrets/services, model/dispatch and AWS/pilot remain unchanged. Known cloud HTTPS403 stays unbypassed; connected metadata does not prove served bytes. Rejected operational artifacts and equivalent payloads remain excluded. Preserve device acceptance qualification.
+
+## Preserved previous published simple-view stage
+
 # Mission Control simple Joey takeover entry
 
 Project: MISSION_CONTROL
