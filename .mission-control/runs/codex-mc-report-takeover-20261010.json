@@ -26,6 +26,14 @@
       "kind": "started",
       "summary": "Codex started the approved MC-only report-aware takeover fix and real repository reporting verification.",
       "result": null
+    },
+    {
+      "id": "checkpoint-live-2",
+      "sequence": 2,
+      "eventAt": "2026-10-10T04:51:00.790Z",
+      "kind": "progress",
+      "summary": "Implemented fresh report-aware copy, mandatory own registration/source binding and pre-push handoff scope checks; 21 focused tests pass. App regression verification continues.",
+      "result": null
     }
   ]
 }
