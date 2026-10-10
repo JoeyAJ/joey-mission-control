@@ -3,7 +3,7 @@
 Project: MISSION_CONTROL
 Timestamp: 2026-10-10T08:16:55Z
 Task: Refine advanced console against actual references and preserve reading operations
-Status: LOCAL_VERIFIED_PENDING_PUBLICATION
+Status: LOCAL_VERIFIED_PARENT_READ_PREVIEW_PUBLISHED
 Last Developer: Codex
 Executed by: Codex
 Actual Model: UNKNOWN
@@ -15,7 +15,7 @@ Advanced console now uses flat evidence/source/report sections, warm olive/beige
 
 Operation QA found and fixed simple-to-workspace route/scroll loss: same project/track restores the previous reading route, geometry is captured before applying simple CSS and resumes once after hidden-pane scroll clamping. University return preserves candidate track; baseline does not restore a candidate route. Report overview fixes also accept actual NO_REPORTS and sort terminal event timestamps chronologically, including offset/fractions.
 
-Same actual Codex task/run remains progress; latest published sequence 5 report HEAD 73c31288ac82067f1835beb5cfbc46ed63f2ac51, blob 7c8f587ca5b15b2a2f1a1693b37225f878dc9d88. Existing terminal runs remain untouched. Actual MC and five-scope Owner PASS remains established; final Joey/device/clipboard acceptance remains pending. New parent-relayed primary evidence confirms preexisting Nex timing-sensitive flaky test; current CI still fails and no Nex product/test change is made.
+Same actual Codex task/run remains progress; latest published sequence 6 report HEAD a6f1d6e65d924b478ebdf418ab04eb3b58f2c031, blob 01a486e58e9042f3c9970dda68beacb89354b237. Existing terminal runs remain untouched. Actual MC and five-scope Owner PASS remains established; final Joey/device/clipboard acceptance remains pending. New parent-relayed primary evidence confirms preexisting Nex timing-sensitive flaky test; current CI still fails and no Nex product/test change is made.
 
 ## Verification
 
@@ -23,7 +23,7 @@ Same actual Codex task/run remains progress; latest published sequence 5 report 
 
 ## Next Action
 
-Finish final reading regression/build, publish this second stage on the existing branch/fixed Preview and verify exact remote SHA/READY/alias. Then continue authorized third-stage zhTW/ko/en and empty/loading/denied/expired/blocked/completed state verification in cloud. Mac may remain offline; do not repeat completed five-scope Owner QA or bypass cloud CONNECT 403. Keep the actual run in progress until the overall stages finish; do not add a connectivity pilot, selector, dispatch, SQL, keys/permissions, AWS, other-repository writes or Production change.
+Second-stage functional 965237aaed87dd9e136618115b28a685e6672c03 is remote and fixed Preview READY at dpl_46WrEod73KNaVXv9pWgMmu9q3CuR; the alias resolves to the same exact SHA. Final reading QA has 12 PASS, reference/candidate return QA five sizes PASS, portable 715 PASS, build/safety PASS. Authorized deployment file-tree lookup returned 404 for this Git deployment; public HTTPS/served bytes remain unverified under the previously observed CONNECT 403. No bypass. This documentation closure leaves the functional stage unchanged. Continue authorized third-stage zhTW/ko/en and empty/loading/denied/expired/blocked/completed state verification in cloud. Mac may remain offline; do not repeat completed five-scope Owner QA or bypass cloud CONNECT 403. Keep the actual run in progress until the overall stages finish; do not add a connectivity pilot, selector, dispatch, SQL, keys/permissions, AWS, other-repository writes or Production change.
 
 ---
 
