@@ -1,8 +1,8 @@
 # Mission Control Continue origin compatibility
 
 Project: MISSION_CONTROL
-Timestamp: 2026-10-10T03:02:22Z
-Task: Keep non-Preview Continue explicit and historical when private capability is unavailable
+Timestamp: 2026-10-10T03:03:25Z
+Task: Keep non-Preview Continue explicit when private capability is unavailable
 Status: LOCAL_VERIFIED_PARENT_READ_PREVIEW_PUBLISHED
 Last Developer: Codex
 Executed by: Codex
@@ -13,31 +13,25 @@ Functional Commit: 0454307b9d774696c48579a095478b92f580824b
 
 ## Summary
 
-Independent parent review passed the two fixed-Preview Continue source repairs, then identified the out-of-origin compatibility defect: the committed sync flag redirected all four project details even though the private Owner entry exists only at the approved fixed Preview. This newly authorized stage is limited to that compatibility fix. It is published at `0454307b9d774696c48579a095478b92f580824b` (tree `3fdc7f33bed1c02258f47ff8750cca81433777a6`), remote exact SHA verified; deployment `dpl_Bx1SHi43bYoZ2aNMGHQG8DDk8Mk7` is READY on the same fixed Preview.
+Parent review passed both fixed-Preview source fixes and found the non-Preview redirect regression. The narrow compatibility fix is remote at the functional commit above, tree `3fdc7f33bed1c02258f47ff8750cca81433777a6`, same fixed Preview READY `dpl_Bx1SHi43bYoZ2aNMGHQG8DDk8Mk7`. Later commits complete docs only; exact final HEAD/READY is external. Full evidence: [Continue verification](docs/MC_CONTINUE_SOURCE_VERIFICATION_20261010.md).
 
 ## Changes
 
-Project detail redirects now require both the existing source-sync flag and the existing public Owner capability/origin gate. At localhost or any other unavailable origin, detail remains accessible as explicitly historical read-only information; latest private source is unconfirmed and the legacy Continue action is disabled and guarded against programmatic invocation. Workspace Continue is disabled with a visible localized unavailable explanation when the mounted Owner entry has no preparation capability. There is no silent optional-method click path.
-
-The fixed Preview keeps the existing current-Owner fresh FOUND read, source/track/generation binding and University's separate candidate qualification. No origin, scope, permission, private reader policy, server endpoint, snapshot, Production deployment, credential, model/dispatch or write execution was expanded. Generated Owner client bytes remain identical.
+Detail redirects require the existing sync flag and Owner capability/origin gate. Without capability, all four details remain explicitly historical read-only; latest private source is unconfirmed, legacy Continue is disabled and programmatically guarded. Workspace Continue shows a localized unavailable notice. Fixed-Preview fresh FOUND/source/track/generation gates remain intact. Server, scope/origins, config and generated Owner client are unchanged.
 
 ## Verification
 
-Actual-app origin fixtures cover localhost, another origin and the exact fixed Preview origin at 1440/en, 390/zh-TW and 320/ko: 9 cases PASS. Public replies and SDK configuration are synthetic; no real Preview/Auth/source request is made. Non-private cases verify all four historical details, reload/Back/Forward, disabled Continue, visible explanation and zero legacy Continue requests, including a programmatically dispatched click. Fixed-origin cases verify the capability and signed-out boundary without claiming Owner access.
-
-The existing actual-app four-source/factory suite passes all 12 project/viewport/locale cases again, including mobile/candidate/history/reload/fresh-HEAD/error/expiry/revocation/pending-read switches. Focused workspace/source/package/status/public/routing checks, current Auth contracts, build, portable fixture validate and static safety pass; browser external requests and unexpected writes are zero. Exact counts and release metadata are in [Continue verification](docs/MC_CONTINUE_SOURCE_VERIFICATION_20261010.md). The prior 658-test portable result belongs to the first repair; it is inherited, not falsely presented as a full rerun of this narrow stage.
+9 origin-capability cases, 12 four-source cases, 24 public-status cases and 71 focused checks PASS; build, fixture validate and static safety PASS. Private browser upstreams are synthetic; external/unexpected-write/legacy-Continue requests are zero. The inherited 658-test result is not a full rerun of this stage. Final docs are checked against the existing 64 KiB reader bound.
 
 ## Runtime qualification and blockers
 
-Parent now relays successful real Mac Chrome Owner post-fix QA at `73c08ae20170c78a2a71687de01926bdc2b7a8cc`: both Continue actions, Back/Forward/reload and cross-project isolation PASS. Buddy packet is bound to main `e41bd1b7d8a481fdf6402881f382605278d229af`. University packet preserves `UNIVERSITY_CANDIDATE`, `migration/university-v04-portable`, SHA `77b6766e790c7794bb1fc691f3f3dd3f4a4fe5c6`, CASE002 and JoeyAcceptancePending. Switching to Buddy clears the candidate; returning restores it. Clipboard was not written. Real phone and visual acceptance are NOT RUN.
+PARENT_RELAYED_REAL_CHROME_OWNER_QA at tested `73c08ae`: both Continue packets, Back/Forward/reload and cross-project isolation PASS. Buddy main is `e41bd1b7d8a481fdf6402881f382605278d229af`. University preserves UNIVERSITY_CANDIDATE, migration ref, `77b6766e790c7794bb1fc691f3f3dd3f4a4fe5c6`, CASE002 and JoeyAcceptancePending. Switching Buddy clears candidate; returning restores it. Clipboard NOT WRITTEN; real phone/visual NOT RUN. This is parent-relayed device evidence at that SHA, separate from this writer's fixtures and the later compatibility patch. No repeat Mac run is requested.
 
-Qualification: PARENT_RELAYED_REAL_CHROME_OWNER_QA. This is actual device evidence relayed by parent, not this writer's independent browser observation. It applies to the tested 73c08ae and is retained separately from the later non-Preview compatibility fixture result. The compatibility patch changes only origin availability/history labels; private reader/fresh gate and candidate transport are unchanged. No repeated Mac QA is requested. Known cloud CONNECT403 is not retried or bypassed; real phone/visual/final acceptance remains distinct from desktop QA, fixtures and deployment READY.
-
-No permission/tool blocker was encountered. Both rejected operational artifacts and equivalent payloads remain excluded. Production, other repos, SQL, keys, permissions, AWS/pilot and runtime dispatch remain untouched.
+One transient shell disconnect recovered on the next harmless read. CONNECT403 is not retried/bypassed. Production, other repos, SQL, keys/permissions, model/dispatch and AWS/pilot are unchanged. Rejected artifacts/equivalent payloads remain excluded. See [acceptance record](docs/MC_COMMAND_CENTER_ACCEPTANCE.md).
 
 ## Next Action
 
-The minimal functional compatibility publication is complete. Finish the docs-only remote/READY readback, then release sole-writer ownership without background operations. Do not repeat functional publication. Retain the completed real-device QA SHA qualification above without requesting another Mac run; the next Agent should read this header before the preserved earlier stage.
+Finish docs-only exact remote/READY/alias readback and release sole-writer ownership with no background work. Functional publication is complete. Preserve tested-SHA QA qualification; actual phone/visual acceptance remains separate. Read this stage before history.
 
 ## Preserved prior Continue repair — published baseline
 
