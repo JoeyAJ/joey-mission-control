@@ -40,6 +40,71 @@
       "kind": "progress",
       "summary": "四項獨立 review 修正已實作：交接取消在送出剪貼簿內容前核對、run 卡片鎖定點選 identity、撤銷／登出清除 host 私有 attributes、離開工作台 dispose dialog；活動跟隨六組 zhTW／ko／en × desktop／mobile 測試及七項 activity／strict-v1 delivery 契約測試 PASS。既有全套回歸仍進行中；未聲稱產品驗收或 served URL。",
       "result": null
+    },
+    {
+      "id": "mc-activity-completed",
+      "sequence": 3,
+      "eventAt": "2026-10-10T23:38:42.884501Z",
+      "kind": "completed",
+      "summary": "完成受權 MC 活動跟隨階段與四項 review 修正；727 unit 與既有回歸 PASS、同固定 Preview provider READY／exact SHA 與 alias 核對 PASS。僅完成此 coding／test／受權 Preview 階段，served URL 與 Joey 產品驗收仍未確認；未新增 telemetry／權限／schema。",
+      "result": {
+        "codeSha": "ff84d67891e32ae43d51760b7ff778e1fc7bdc86",
+        "tests": [
+          {
+            "name": "portable 727 unit + build/validate/check",
+            "outcome": "PASS"
+          },
+          {
+            "name": "two-run activity follow 6 language/width cases",
+            "outcome": "PASS"
+          },
+          {
+            "name": "in-flight cancellation promised ClipboardItem 2 cases",
+            "outcome": "PASS"
+          },
+          {
+            "name": "in-flight cancellation writeText 2 cases",
+            "outcome": "PASS"
+          },
+          {
+            "name": "dynamic lifecycle 6 cases + final 2; visible 30-second poll",
+            "outcome": "PASS"
+          },
+          {
+            "name": "reading/focus 12 cases",
+            "outcome": "PASS"
+          },
+          {
+            "name": "fresh source/report copy 4 widths",
+            "outcome": "PASS"
+          },
+          {
+            "name": "original four-source Continue 12 cases",
+            "outcome": "PASS"
+          },
+          {
+            "name": "reference geometry 5 cases",
+            "outcome": "PASS"
+          },
+          {
+            "name": "handoff/privacy/projection/activity/delivery final 13 + 8 checks",
+            "outcome": "PASS"
+          },
+          {
+            "name": "connected Preview deployment + independent alias exact SHA READY",
+            "outcome": "PASS"
+          },
+          {
+            "name": "served fixed URL / actual Owner-device clipboard / Joey acceptance",
+            "outcome": "NOT_RUN"
+          }
+        ],
+        "nextSteps": "依 current canonical HANDOFF 與 MC_ACTIVITY_FOLLOW_DELIVERY_RECEIPT_20261010 核對本階段；Vercel provider READY／exact alias SHA 是獨立 metadata 觀察，非 served 或 Owner 驗收。Cloud CONNECT403 未繞過；Joey 動態產品／實機 clipboard／URL 驗證待確認。此 UI 階段無 SQL／schema／data migration，strict v1 unchanged；fine-grained telemetry 或可信 deployment ingestion 需另有 approved action/target/policy，未啟用。先前 terminal run 保持原樣，不再 append 本 completed run。",
+        "handoff": {
+          "path": "HANDOFF.md",
+          "commitSha": "9925718267a6d3e96c49afa577b1d6686beb8265"
+        }
+      }
     }
   ]
 }
