@@ -56,6 +56,14 @@
       "kind": "progress",
       "summary": "已保存五寬度進階工作台現況並實際對照桌面參考；四欄比例與預設graph位置已符合。正在修正藍框／亮青來源色／密度差距，補changes錨定與鍵盤驗證，並修正NO_REPORTS及帶時區事件排序。",
       "result": null
+    },
+    {
+      "id": "codex-mc-joey-overview-20261010-reference-qa",
+      "sequence": 5,
+      "eventAt": "2026-10-10T08:14:29.859Z",
+      "kind": "progress",
+      "summary": "進階console暖色／flat evidence與graph錨定已驗證，715測試通過。操作QA另查出簡易頁返回工作台會重置route／scroll；已接回同案同track的既有route記憶並修正hidden pane捲動恢復，正在回歸。",
+      "result": null
     }
   ]
 }
