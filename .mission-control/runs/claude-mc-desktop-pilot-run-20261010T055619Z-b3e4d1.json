@@ -35,6 +35,14 @@
       "kind": "progress",
       "summary": "Ran node --test tests/repository-run-contract.test.mjs tests/repository-run-reporter.test.mjs locally (Node v22.22.3, synthetic temp Git only): exit 1, 10 pass / 1 fail. Contract 5/5 PASS; reporter 5/6 PASS. FAIL: copied generic helper test (null output). Diagnosis: macOS os.tmpdir /var symlink vs /private/var realpath makes copied helper entry check skip main; same test PASSes with realpath TMPDIR (diagnostic only).",
       "result": null
+    },
+    {
+      "id": "claude-mc-desktop-pilot-run-20261010T055619Z-b3e4d1-e3",
+      "sequence": 3,
+      "eventAt": "2026-10-10T05:58:59.000Z",
+      "kind": "failed",
+      "summary": "Pilot terminal: failed, not completed, because the required test command exited 1 (10/11 PASS) at pinned 0a4c627. Reporting transport itself worked (seq 1-3 non-force). Suspected env-specific test issue: copied-helper main guard compares unresolved argv path with realpath on macOS tmp. No product code changed. Parent to review and decide on a separate fix/rerun; not accepted, merged or deployed.",
+      "result": null
     }
   ]
 }
