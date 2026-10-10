@@ -1,3 +1,28 @@
+# Mission Control UX — final implementation delivery
+
+Project: MISSION_CONTROL
+Timestamp: 2026-10-10T08:40:00Z
+Task: Complete authorized Joey overview, reference console and locale/mobile UX verification
+Status: LOCAL_VERIFIED_PENDING_PUBLICATION
+Last Developer: Codex
+Executed by: Codex
+Actual Model: UNKNOWN
+Baseline: a1a1e8afa4da754baa00ad68eb6f436e3362d3df
+
+## Current checkpoint
+
+Authorized UX implementation stages are complete: truthful overview, desktop reference console, same-track history/scroll recovery, localized states and compact readable mobile controls. Completion/failure now leads the latest result; long feature/blocker excerpts are bounded with full records expandable. Korean source/maintenance labels are localized; mobile settings and source expansion targets are at least 44px. Source/Owner/report/generation/candidate gates remain unchanged. No report completion is promoted to product acceptance.
+
+715 unit checks PASS; twelve language/width combinations × thirteen states PASS (156 visits); four-width existing fresh-source/report copy regression PASS. Build regeneration/safety PASS. Fixture Owner, source/report data and clipboard are synthetic; synthetic maintenance checks client presentation only, not real backend maintenance approval. Prior actual Owner/five-scope evidence is retained; missing signatures/time remain unrecorded and University remains candidate. Nex current CI remains failing/unrepaired despite confirmed preexisting timing-sensitive test.
+
+Two latest synthetic review screenshots are persisted in private repository docs/qa/mc-ux-final-20261010, outside public/dist. Official Library helper failed before any prepare/create/finalize call during tools/list network access; no Library IDs exist. No public image upload, access change or signed URL is used. See docs/MC_UX_FINAL_VERIFICATION_20261010.md and docs/MC_CURRENT_ACCEPTANCE.md.
+
+## Next Action
+
+Publish this scoped implementation to the existing fixed Preview and verify exact remote SHA/READY/alias; then append actual completed event to existing task mc-joey-overview-reference-20261010 / run codex-mc-joey-overview-20261010. Finish documentation closure. Joey final appearance acceptance and actual iPhone/clipboard remain pending after implementation completion, not a reason to fabricate running work. Cloud HTTPS remains blocked by CONNECT 403; do not bypass. No Production, other-repository, SQL, keys/permissions, AWS, model selector or dispatch change.
+
+---
+
 # Mission Control advanced console — second reviewable delivery
 
 Project: MISSION_CONTROL

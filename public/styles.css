@@ -551,3 +551,8 @@ body[data-active-module=workspace] #data-link-status strong{color:var(--console-
 #workspace .command-mobile-tabs [aria-selected=true]{outline:2px solid #a99f6c;outline-offset:-2px;color:#ded2a6;background:#181b13}
 #workspace .command-changes button{border-color:var(--console-line);border-radius:3px;background:#11140f;font:10px/1.5 ui-monospace,monospace;min-height:29px}
 @media(max-width:768px){#workspace .command-changes button{min-height:44px;font-size:12px}}
+
+/* Keep long report excerpts bounded and mobile disclosure targets operable. */
+.joey-live-overview dd:is([data-joey-overview-field=feature],[data-joey-overview-field=blocker]){display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+body[data-joey-simple=true] .utility-menu>summary{min-height:44px;box-sizing:border-box;display:flex;align-items:center}
+.joey-simple-technical>summary,.joey-simple-account .owner-auth-entry>summary{min-height:44px;box-sizing:border-box}

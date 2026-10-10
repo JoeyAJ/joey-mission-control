@@ -2,7 +2,7 @@
 
 [Single current acceptance summary](MC_CURRENT_ACCEPTANCE.md) governs current status; [HANDOFF](../HANDOFF.md) records the latest development checkpoint. Actual MC receiving-Agent/report evidence and five-scope Owner reads passed. Exact real clipboard bytes, iPhone one-tap copy and final Joey product acceptance remain pending.
 
-The current authorized work is the four-stage Joey overview, approved desktop reference refinement, locale/device verification and documentation reconciliation. No new connectivity pilot, model selector or dispatch is required.
+The four-stage Joey overview, approved desktop reference refinement, locale/device verification and documentation reconciliation are implementation-complete and locally verified. Final publication and actual completed development report are recorded in HANDOFF; product acceptance remains pending. No new connectivity pilot, model selector or dispatch is required.
 
 ## Historical phase and requirement checkpoints — superseded status
 
