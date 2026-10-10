@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "mc.repository-run.v1",
+  "projectId": "MISSION_CONTROL",
+  "track": "BASELINE",
+  "runId": "codex-mc-joey-overview-20261010",
+  "predecessorRunId": null,
+  "taskId": "mc-joey-overview-reference-20261010",
+  "featureTitle": "Joey 一眼總覽與參考介面優化",
+  "agentName": "Codex",
+  "provider": null,
+  "model": null,
+  "repositoryId": "JoeyAJ/joey-mission-control",
+  "reportRef": "mc/progress",
+  "workRef": "codex/mc-command-center-checkpoint-20261006",
+  "baseline": {
+    "ref": "codex/mc-command-center-checkpoint-20261006",
+    "commitSha": "0613acdd3f972e8ab761565d08d7149a51ef63b2",
+    "handoffPath": "HANDOFF.md",
+    "handoffDigest": "d338df5a6d05969cce9721b9a58075d88b9d366d86c8b0496e505857702662b1",
+    "contextPaths": [
+      "README.md",
+      "docs/PRODUCT_CHARTER.md",
+      "docs/MC_PHASE_PLAN.md",
+      "docs/STAGE_HANDOFF_TEMPLATE.md"
+    ]
+  },
+  "events": [
+    {
+      "id": "codex-mc-joey-overview-20261010-started",
+      "sequence": 1,
+      "eventAt": "2026-10-10T07:50:30.286Z",
+      "kind": "started",
+      "summary": "Codex 正在整合真實 Agent 回報到 Joey 總覽，核對三張私人桌面參考，並統一目前驗收狀態。",
+      "result": null
+    }
+  ]
+}
