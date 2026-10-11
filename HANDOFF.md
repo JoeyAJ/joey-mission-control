@@ -1,15 +1,23 @@
-# Mission Control — bounded explicit file metadata
+# Mission Control — quoted credential fingerprint guard
 
 Project: MISSION_CONTROL
-Timestamp: 2026-10-11T01:20:39.690247Z
-Task: Model-neutral opt-in actual file metadata and continuation ownership
-Status: LOCAL_VERIFIED_CLOUD_EVENTS_NOT_ENABLED
+Timestamp: 2026-10-11T01:29:42.244591Z
+Task: Exclude quoted JSON/YAML credential fingerprints in adapter and copied helper
+Status: LOCAL_VERIFIED_PENDING_PUBLICATION
 Last Developer: Codex
 Executed by: Codex
 Actual Model: UNKNOWN
-Baseline: 6961725c0e75901f9ecf9d45fdf8433496a4cb30
+Baseline: c9a444f35e98b1e3eb848dab7603f492161af738
 
-## Current checkpoint
+## Current guard fix
+
+Independent review found quoted JSON/YAML credential keys bypassed the bounded fingerprint exclusion. The adapter now recognizes closing key quotes for password/token/api_key and other existing credential names, preserving unquoted detection and bounded text scope. Tests read only synthetic task-listed config.json: 56 refusals for read/changed per adapter/copied-helper surface, no prepared fingerprint/output or report mutation, safe config before/after succeeds. No unrelated private scan or further file-activity expansion.
+
+Affected tests25 PASS; final portable757 tests/build/validate/check PASS, zero forbidden attempts; current source/handoff31 PASS. Existing fixed Preview publication follows. Updated generic helper SHA256 ba0e1a68595b0c38772bfa69b79d74669753f22e163fec5d7020a3f428d7e836, 32797 bytes. Historical helper78378a91 receipts remain unchanged. Contract: docs/contracts/MC_FILE_ACTIVITY_V3.md; verification: docs/MC_QUOTED_CREDENTIAL_GUARD_VERIFICATION_20261011.md.
+
+Actual new v2 BUGFIX run codex-mc-quoted-guard-20261011, predecessor codex-mc-file-observations-20261011, fresh baseline c9a444f unchanged. Started1 b9f3d77692157a15b5824446c8d87b16e9e697d2 / 846c5091a94f3196aaf1b56da335119bc72f71a7. Complete existing checks/authorized Preview publication and current handoff, then close this new run with dated evidence and retain old terminal bytes. No Production/other repo/report/SQL/permissions/secrets/AWS action. Prior CONNECT403 is not bypassed; served/Joey acceptance remains pending.
+
+## Prior file metadata support checkpoint
 
 Explicit mc.repository-run.v3 adds an immutable exact task manifest (1–8 safe tracked paths), activityMode=EXPLICIT_FILE_METADATA and bounded event.activity metadata. Default v1 and strict v2 remain unchanged; old reports/events are never converted or appended after terminal. v3 inherits delivery evidence and requires activity:null on non-file events. All actor/path/digest/time/HEAD observations remain AGENT_REPORTED_METADATA. Git Contents/hash proves report bytes and scope only; independent/Joey acceptance stays pending. Contract: docs/contracts/MC_FILE_ACTIVITY_V3.md.
 

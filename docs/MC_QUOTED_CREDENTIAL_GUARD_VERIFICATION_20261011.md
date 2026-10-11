@@ -1,0 +1,13 @@
+# Quoted credential-key fingerprint exclusion
+
+Independent review found that the bounded reporter refused an unquoted password assignment but missed the closing key quote in standard JSON/YAML. An explicitly task-listed tracked config.json could therefore emit a fingerprint of credential-shaped bytes. No raw contents were uploaded. This followup fixes that exclusion before any further file-activity expansion.
+
+The assignment guard now recognizes optional closing single/double key quotes for password, secret, token and api_key/apiKey/api-key, preserving the existing case-insensitive matching and credential-shaped literal threshold. Adapter and generated copied helper use the same implementation. No arbitrary private scan, new filesystem/network access, hook, daemon or provider credential is introduced.
+
+Only synthetic task-listed config.json fixtures are read. Seven key spellings × JSON/single-quoted YAML/double-quoted YAML/unquoted assignment × read/changed actions yield 56 sensitive-content refusals in each surface. Adapter refuses before fingerprints; copied helper returns FILE_ACTIVITY_SENSITIVE_CONTENT, empty stdout, no prepared output and unchanged report HEAD. Safe configuration succeeds before and after all refusals, including its longer ordinary description. Original safe read/change and private continuation behavior remains covered.
+
+Affected adapter/copied helper/reporter/delivery-reader/takeover checks: 25 PASS, zero forbidden attempts. Full portable757 tests/build/validate/check PASS, zero forbidden attempts. Final current source/handoff31 PASS. Fresh generated helper: 32797 bytes, SHA256 ba0e1a68595b0c38772bfa69b79d74669753f22e163fec5d7020a3f428d7e836. Prior 78378a91… fingerprints remain dated historical receipts and are not rewritten. Contract: contracts/MC_FILE_ACTIVITY_V3.md.
+
+New explicit v2 BUGFIX run codex-mc-quoted-guard-20261011, predecessor codex-mc-file-observations-20261011, fresh original baseline c9a444f35e98b1e3eb848dab7603f492161af738. Started1 b9f3d77692157a15b5824446c8d87b16e9e697d2 / blob846c5091a94f3196aaf1b56da335119bc72f71a7. No old report/event is changed, no post-terminal append and no live v3 expansion. All report evidence remains Agent reported; independent/Joey acceptance pending.
+
+Publish only the existing MC branch/fixed Preview. Production/other repository/report/SQL/permissions/secrets/AWS remain unchanged. CONNECT403 is not bypassed; served verification and checkedSha remain separately qualified. Exact remote/READY/alias and immutable terminal receipts follow.

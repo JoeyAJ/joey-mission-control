@@ -17,7 +17,7 @@ export function prepareFileActivity({report,filePath,action,eventId,git,now=Date
  if(path.relative(root,fs.realpathSync(file))!==filePath)fail('FILE_ACTIVITY_FILE_CHANGED');let current=root;for(const component of filePath.split('/')){current=path.join(current,component);if(fs.lstatSync(current).isSymbolicLink())fail('FILE_ACTIVITY_SYMLINK_DENIED');}
  let text;try{text=new TextDecoder('utf-8',{fatal:true}).decode(bytes);}catch{fail('FILE_ACTIVITY_TEXT_ONLY');}
  // Refuse credential-shaped values before even their fingerprints are reported.
- if(text.includes('\0')||/-----BEGIN[^\n]*PRIVATE KEY|\b(?:gh[pousr]_[A-Za-z0-9]{20,}|github_pat_[A-Za-z0-9_]{20,})|\bBearer\s+[A-Za-z0-9_.-]{20,}|\b(?:password|secret|token|api[_-]?key)\s*[:=]\s*["']?[A-Za-z0-9_./+-]{20,}|https?:\/\/[^\s/]*:[^\s/]*@/i.test(text))fail('FILE_ACTIVITY_SENSITIVE_CONTENT');
+ if(text.includes('\0')||/-----BEGIN[^\n]*PRIVATE KEY|\b(?:gh[pousr]_[A-Za-z0-9]{20,}|github_pat_[A-Za-z0-9_]{20,})|\bBearer\s+[A-Za-z0-9_.-]{20,}|\b(?:password|secret|token|api[_-]?key)["']?\s*[:=]\s*["']?[A-Za-z0-9_./+-]{20,}|https?:\/\/[^\s/]*:[^\s/]*@/i.test(text))fail('FILE_ACTIVITY_SENSITIVE_CONTENT');
  const contentSha256=createHash('sha256').update(bytes).digest('hex'),prior=report.events.filter(e=>e.activity?.path===filePath).at(-1)?.activity;
  if(action==='changed'&&(!prior||prior.contentSha256===contentSha256))fail('FILE_ACTIVITY_CHANGE_LINEAGE_REQUIRED');
  const at=new Date(now()).toISOString();
