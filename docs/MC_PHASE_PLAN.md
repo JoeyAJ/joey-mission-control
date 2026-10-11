@@ -1,3 +1,7 @@
+# Current bounded fix — Owner decision intent integrity
+
+Approval clicks must retain the separately displayed exact PR/CI/task/report tuple. No automatic reconcile during decision; drift requires a new explicit click. [Evidence](MC_OWNER_REVIEW_INTENT_FIX_20261011.md). SQL/ACL/execution boundaries unchanged; device acceptance remains pending.
+
 > Owner acceptance records2026-10-11: exact four-object migration/native15/live10 denial and old ACL/data gates passed; server-only capability ON, executionAuthorized:false. Fresh saved requirements/completed report/code binding, dated history and retry verified. Actual Owner UI/JWT acceptance and genuine bound Agent run remain pending. [Evidence](MC_OWNER_TASK_REVIEW_20261011.md). Earlier checkpoints retain dated qualifications.
 
 > Cloud currentness repair2026-10-11: independent review of62615bf reproduced overwritten selected-task conflicts and legitimate200 NOT_CONNECTED downgrade. Per-task conflicts and sticky cloud-backed CI/handoff gates repaired; portable859/focused64/browser20 PASS. Binding acceptance remains pending independent review. Owner decision storage approved12:43:39 UTC for exactly four proposed objects/caps; SQL/grants unapplied pending native verification, no execution authority. [Repair evidence](MC_TASK_CLOUD_CURRENTNESS_20261011.md). Earlier notes keep dated qualifications.

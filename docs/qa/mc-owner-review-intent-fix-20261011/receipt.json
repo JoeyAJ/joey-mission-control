@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "qualification": "LOCAL_VERIFIED_OWNER_REVIEW_CLICK_INTENT_PUBLISHED_PENDING",
+  "baselineSha": "9b87948fc058e3a691f3ac87ac978417dd29ce6f",
+  "executionAuthorized": false,
+  "sqlOrAclChanges": false,
+  "actualOwnerDecisionWrites": 0,
+  "actualOwnerDeviceOrJwtVerified": false,
+  "harmlessSavedTestExecuted": false,
+  "servedCheckedSha": null,
+  "genuineCloudBoundAgentRun": "ABSENT",
+  "runtimeGitHubPermissions": "UNKNOWN",
+  "root": {
+    "bytes": 65160,
+    "priorPrefixSha256": "6ff700f0a994606e677c07b57b8a643625e0ae47e73c48e685b8c11744188a4c",
+    "datedHistorySha256": "8a2a580aca03e58a7f049e97342423cef90f952f78d7cd16d50d097c67531f14",
+    "datedHistoryUnchanged": true
+  },
+  "verification": {
+    "focusedGroups": 18,
+    "regressionOldRuntime": "RED_SUBSTITUTED_REPORT_C_WITH_D",
+    "portableTests": 877,
+    "buildValidateCheck": "PASS",
+    "rootIntakeGroups": 20,
+    "actualApp": true,
+    "normalDeploymentFactory": true,
+    "officialSDK": true,
+    "ownerBrowserWidths": 4,
+    "projectsPerWidth": [
+      "WOOSONG_BUDDY/BASELINE",
+      "JOEY_ASSET_SYSTEM/UNIVERSITY_CANDIDATE"
+    ],
+    "intendedSyntheticReviewWrites": 24,
+    "intendedSyntheticTaskWrites": 16,
+    "externalRequests": 0,
+    "unexpectedWrites": 0,
+    "actualOwnerProviderHttp": false,
+    "forbiddenWorkstationAttempts": 0
+  }
+}

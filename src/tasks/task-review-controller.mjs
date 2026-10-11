@@ -21,12 +21,15 @@ export function createTaskReviews({tasks,source,reports,client,now=Date.now,rand
  }
  return {snapshot,subscribe(f){listeners.add(f);f(snapshot());return()=>listeners.delete(f);},clear,
   async load(){if(busy)throw Error('TASK_REVIEW_BUSY');clear();await tasks.cloudRefresh();const c=capture();return operation(c,async(g,c,signal)=>{await read(c,g,signal);check(g,c);if(status!=='disabled')status='history';});},
-  async record({runId,decision,comment=''}){if(busy)throw Error('TASK_REVIEW_BUSY');const retry=pending;clear();await tasks.reconcile(runId);const review=binding(decision,comment),c=capture();return operation(c,async(g,c,signal)=>{
-   if(!await read(c,g,signal))throw Error('TASK_REVIEW_NOT_ACTIVATED');check(g,c);
+  // Capture the displayed intent before any await. PR/CI refresh is a separate Owner action;
+  // reconciling here could replace the report or source tuple without another decision click.
+  async record({runId,decision,comment=''}){if(busy)throw Error('TASK_REVIEW_BUSY');const c=capture(),review=binding(decision,comment);if(review.runId!==runId)throw Error('TASK_REVIEW_DISPLAYED_RUN_REQUIRED');const retry=pending;clear();return operation(c,async(g,c,signal)=>{
+   check(g,c);if(!await read(c,g,signal))throw Error('TASK_REVIEW_NOT_ACTIVATED');check(g,c);if(!sameTaskReviewBinding(review,binding(decision,comment)))throw Error('TASK_REVIEW_INVALIDATED');
    const request=retry&&canonicalTaskJson(retry.review)===canonicalTaskJson(review)?retry:{action:'append',review,operationId:randomId(),expectedSequence:sequence};pending=request;
    const reply=await verifyTaskReviewDigests(validateTaskReviewReply(await client.append({review:request.review,operationId:request.operationId,expectedSequence:request.expectedSequence},{signal}),request,now()));check(g,c);if(!sameTaskReviewBinding(review,binding(decision,comment)))throw Error('TASK_REVIEW_INVALIDATED');
    records=[...records.filter(r=>r.operationId!==reply.record.operationId),reply.record].sort((a,b)=>a.sequence-b.sequence);sequence=Math.max(sequence,reply.record.sequence);ack=reply.record;pending=null;status='recorded';until(Math.min(reply.expiresAt,tasks.snapshot().reconciliation.expiresAt));return reply;
   });},
+  canRecord(runId){try{return binding('APPROVE','').runId===runId;}catch{return false;}},
   current(record){try{return sameTaskReviewBinding(record.review,binding(record.review.decision,record.review.comment));}catch{return false;}},
   dispose(){disposed=true;clear();unsubTask();unsubSource?.();unsubReport?.();listeners.clear();}
  };
