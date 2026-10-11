@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "mc.repository-run.v2",
+  "taskKind": "FEATURE",
+  "projectId": "MISSION_CONTROL",
+  "track": "BASELINE",
+  "runId": "codex-mc-owner-task-review-20261011",
+  "predecessorRunId": "codex-mc-task-cloud-currentness-20261011",
+  "taskId": "mc-owner-task-review-20261011",
+  "featureTitle": "Approved bounded private Owner task acceptance ledger and UI; no execution authority",
+  "agentName": "Codex",
+  "provider": null,
+  "model": null,
+  "repositoryId": "JoeyAJ/joey-mission-control",
+  "reportRef": "mc/progress",
+  "workRef": "codex/mc-command-center-checkpoint-20261006",
+  "baseline": {
+    "ref": "codex/mc-command-center-checkpoint-20261006",
+    "commitSha": "86806a73eafcd95993a8734e094115ed6af84564",
+    "handoffPath": "HANDOFF.md",
+    "handoffDigest": "f40c1f14512dfaae2dd828843a83bce469e0a794723b40a86976d44394772651",
+    "contextPaths": [
+      "README.md",
+      "docs/PRODUCT_CHARTER.md",
+      "docs/MC_PHASE_PLAN.md",
+      "docs/STAGE_HANDOFF_TEMPLATE.md"
+    ]
+  },
+  "events": [
+    {
+      "id": "started-owner-task-review",
+      "sequence": 1,
+      "eventAt": "2026-10-11T13:15:45Z",
+      "kind": "started",
+      "summary": "Owner explicitly approved four objects/original capacities and two authenticated RPC grants at12:43:39 UTC. Cloud-currentness repairs already released exact86806a7 READY. Local contract/OFF-by-default API and bounded SQL prepared; live read-only preflight passed, production migration not applied.",
+      "result": null,
+      "delivery": null
+    }
+  ]
+}
