@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "qualification": "SOURCE_INTEGRATED_SYNTHETIC_VERIFIED_OWNER_SERVED_PENDING",
-  "checkedAt": "2026-10-11T10:29:37.902Z",
+  "checkedAt": "2026-10-11T10:33:27.883Z",
   "baselineSha": "c26e1e9e17411b63240514cf0503cf7ac7566f0e",
   "sourceDeliverySha": "cc174c4f426c2a8994f948fafd42531b41b40f30",
   "sourceFilesMatchedExactly": 5,
@@ -53,17 +53,39 @@
   "run": {
     "runId": "codex-mc-reference-palette-20261011",
     "predecessorRunId": "codex-mc-pr-ci-privacy-source-20261011",
-    "state": "VERIFIED_PROGRESS_SEQUENCE2",
-    "path": ".mission-control/runs-page-2/codex-mc-reference-palette-20261011.json",
-    "sequence": 2,
-    "reportCommitSha": "43955df892fec0a7c198adff55f51d185fc44959",
-    "blobId": "f6c34f24ead04c1fec5e955dd6ac81c93719a836"
+    "state": "TERMINAL_COMPLETED",
+    "sequence": 3,
+    "reportCommitSha": "61ec29060d8686caf9ebeb7233d1bc517d85f118",
+    "blobId": "4c7aef462df6c725d7805ce80f42f3798aebb61e",
+    "pass": true,
+    "schema": "Draft2020-12_WITH_FORMAT_CHECKER",
+    "immutableHeaderStartAndProgress": true,
+    "otherHistoricalReportBlobsUnchanged": 22,
+    "totalReports": 23,
+    "bytes": 6077,
+    "reportPath": ".mission-control/runs-page-2/codex-mc-reference-palette-20261011.json"
   },
   "publication": {
-    "state": "PENDING",
+    "state": "RUNTIME_PUBLISHED_READY",
     "projectId": "prj_X67htPw7vkRI2tuf8817vOUCGQOD",
     "fixedPreview": "https://joey-mission-control-git-codex-mc-comma-fceec2-joeyajs-projects.vercel.app/",
-    "servedCheckedSha": null
+    "servedCheckedSha": null,
+    "runtimeSha": "5536433dcab22bec97c47a923db52a8b12860477",
+    "deploymentId": "dpl_Ap8TvrABijQVhc9QRdaEHGvgBuRC",
+    "fixedAliasAndIndependentIdExactMatch": true,
+    "readyState": "READY",
+    "observedAt": "2026-10-11T10:33:27.883Z",
+    "ordinaryCloudHttps": {
+      "checkedAt": "2026-10-11T10:31:11.213Z",
+      "method": "ORDINARY_HTTPS_HEAD",
+      "curlExit": 56,
+      "httpCode": "000",
+      "proxyConnect403": true,
+      "servedCheckedSha": null,
+      "protectionBypass": false
+    },
+    "productionShaUnchanged": "8b4945b16a0b23f2e72033aa976fa34f94eabec0",
+    "productionDeploymentIdUnchanged": "dpl_5GgJ8LhD4Ec73RGz9CEFe1ppZQnh"
   },
   "remaining": {
     "ownerCloudSaveReload": "PENDING_ACTUAL_SIGNED_HTTP",
@@ -79,5 +101,14 @@
     "sqlAuthSessionSecretsGrantsChanged": false,
     "productionOtherRepositoryChanged": false,
     "modelAwsDispatchMergeExecutorAdded": false
+  },
+  "ownerRuntimePrerequisite": {
+    "freshReportInventorySha": "61ec29060d8686caf9ebeb7233d1bc517d85f118",
+    "reportFiles": 23,
+    "completedReports": 22,
+    "developmentTaskCompatibleReportIds": 0,
+    "oldReportsReassigned": false,
+    "cloudTaskContentsRead": false,
+    "cloudSaveReloadIndependentlyTestable": true
   }
 }
