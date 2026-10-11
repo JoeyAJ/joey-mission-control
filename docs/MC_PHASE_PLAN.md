@@ -1,3 +1,9 @@
+# Current bounded phase — versioned reported delivery evidence
+
+Approved after e63d71bd: backward-compatible v1/v2 helper/reader/UI, strict source/code/deployment binding, actual functional/handoff/data evidence and reasoned N/A. [Plan](MC_DELIVERY_EVIDENCE_PLAN_20261010.md), [contract](contracts/REPOSITORY_RUN_DELIVERY_V2.md). Publish tested support before live v2 reports. Independent verification/Joey acceptance stays pending; no new background URL/provider fetch, credentials, SQL, other repo, Production or dispatch action. Equal-time event ordering is included.
+
+## Historical activity-follow phase
+
 # Current phase — dynamic reference workbench
 
 Static design is not accepted. Joey authorized dynamic reference implementation via parent at 2026-10-10 22:53:58 UTC. [Phased plan and acceptance](MC_DYNAMIC_WORKBENCH_PLAN_20261010.md); current factual acceptance remains [MC_CURRENT_ACCEPTANCE](MC_CURRENT_ACCEPTANCE.md). No model selector or automatic dispatch.

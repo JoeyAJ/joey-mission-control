@@ -19,11 +19,15 @@ export function formatTakeoverInstruction(packet){
   'node /你的暫存路徑/mc-reporter.mjs start --packet source-packet.json --meta registration.json --event started-event.json --publish',
   '只有 PUBLISHED / ALREADY_PUBLISHED 的實際 Git receipt 才代表 start 已發布。開工前先發布 started；每個有意義的 progress/blocked checkpoint 明確發布新事件。不能以背景 timer 捏造 heartbeat。五分鐘無新事件，MC 顯示最後回報／更新逾時，而非推定已停或完成。',
   '後續 event sequence 遞增。保存前次 receipt 的 fileSha 與 sequence，使用：node /你的暫存路徑/mc-reporter.mjs append --packet source-packet.json --meta registration.json --run <runId> --event event.json --expected-file-sha <前次fileSha> --expected-sequence <前次sequence> --publish。衝突停止並重新核對，不能 force push。',
+  '新 delivery evidence 使用 registration schemaVersion=mc.repository-run.v2、taskKind=FEATURE/BUGFIX/DOCUMENTATION/DELIVERY_FOLLOWUP；每個 event 必含 delivery:null 或完整 snapshot。v1 保持支援但無交付 evidence，禁止把既有 run 改版或在 terminal 後 append；舊 coding-completed 需要部署 followup 時建立同 scope 新 run／predecessor。',
+  '填妥 v2 registration 後，可用 node /你的暫存路徑/mc-reporter.mjs delivery-template --packet source-packet.json --meta registration.json --code-sha <已測試完整SHA> --output delivery.json 產生本 run 綁定的未記錄 snapshot；它不是證據，也不發布 run。依實際檢查填值後放進 event.delivery；NOT_RECORDED 不得偽填 PASS/READY。',
+  'delivery snapshot 只可 qualification=AGENT_REPORTED，scope 綁定本 run/project/track/repo/task/workRef/codeSha；記錄 deployment target/ID/status/deployedSha/許可 HTTPS URL、functional verification 結果/時間/方法/evidence、handoff currentness 與 data/migration status。deployedSha 必須與 codeSha 相同，驗證綁定 exact deployment ID/URL。只用核准 project policy URL；未知 target／policy 報 exact blocker，不自行新增 scope。',
+  '先完成 tests、受權 deployment、實際固定 URL functional check、目前 docs/data handoff，再回報 delivery。Contents-read 只核對 report blob；不得自稱 MC_VERIFIED。missing/blocked/NOT_RUN 是 incomplete，N/A 必須有 project-applicable policy 與具體 reason，不能以 prose 取代。固定 alias 移動後旧 verification 只屬 dated historical evidence；新部署需要新核對。獨立驗證與 Joey acceptance 保持 pending，記錄 read/served 失敗而不繞過。',
   'completed 事件前先完成並更新專案交接；result 必含 codeSha、tests[{name,outcome:PASS/FAIL/NOT_RUN}]、nextSteps、handoff{path,commitSha}。完成不代表 merged/deployed/Joey accepted。只回報有界 metadata，不放原始 source、prompt、secret 或憑證。頁面可見時 MC 約每30秒讀取，不是永久 collector。',
   'validate --report <run.json> 不帶 packet 只驗 schema，不能當 MC scope 驗收；使用 validate --report <run.json> --packet <原 source-packet.json> 從所選 source SHA 的 .mission-control/source-profile.json 核對 authoritative scope；MC 仍以固定 server policy 驗收。',
   'canonicalContextPaths 是固定合法交接路徑清單，不代表每份文件都已讀取成功；已讀背景文件只以上方 FOUND 清單為準。',
   'Source packet: '+JSON.stringify(repositoryRunSourcePacket(packet)),
-  'Registration template: '+JSON.stringify({runId:'__NEW_RUN_ID__',predecessorRunId:reports?.runs?.length===1?reports.runs[0].runId:null,taskId:'__NEW_TASK_ID__',featureTitle:'__USER_REQUESTED_FEATURE__',agentName:'__ACTUAL_AGENT_NAME__',provider:null,model:null}),
+  'Registration template: '+JSON.stringify({schemaVersion:'mc.repository-run.v2',taskKind:'FEATURE',runId:'__NEW_RUN_ID__',predecessorRunId:reports?.runs?.length===1?reports.runs[0].runId:null,taskId:'__NEW_TASK_ID__',featureTitle:'__USER_REQUESTED_FEATURE__',agentName:'__ACTUAL_AGENT_NAME__',provider:null,model:null}),
   'Reporter SHA256: '+repositoryRunReporterSha256,
   '```javascript',repositoryRunReporterSource,'```'].join('\n');
 }

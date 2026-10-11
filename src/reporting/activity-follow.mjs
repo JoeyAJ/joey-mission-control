@@ -1,6 +1,6 @@
 // Scope-local UI state over already validated v1 events. No new transport/schema.
 export function createActivityFollow(){let runId=null,selected=null,following=true;const unread=new Map();
- const latest=(events,id)=>events.filter(e=>e.runId===id).at(-1);
+ const latest=(events,id)=>events.filter(e=>e.runId===id).sort((a,b)=>a.event.sequence-b.event.sequence).at(-1);
  return{
   observe(projection,newKeys=[]){const events=projection.events||[];if(!events.length)return this.snapshot(events);
    if(runId===null){runId=events.at(-1).runId;following=true;selected=latest(events,runId).key;}

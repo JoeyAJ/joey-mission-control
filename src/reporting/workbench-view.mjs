@@ -1,5 +1,6 @@
+import {renderDeliveryEvidence} from './delivery-evidence-view.mjs';
 import {createActivityFollow} from './activity-follow.mjs';
-import {workbenchProjection,createWorkbenchTransitions,reportDeliveryStatus} from './workbench-projection.mjs';
+import {workbenchProjection,createWorkbenchTransitions} from './workbench-projection.mjs';
 import {reportTimeNode} from '../../public/report-time.js';
 import {formatTakeoverInstruction} from '../../public/takeover-instruction.js';
 const memories=new WeakMap();
@@ -52,11 +53,12 @@ export function mountRunWorkbench({owner,doc=document,projectId,track='BASELINE'
   const row=projection.events.find(e=>e.key===selected);if(!row){hosts.detail.append(el('p',w.unknown));return;}for(const b of hosts.cards.querySelectorAll('[data-card-scope=current]'))b.setAttribute('aria-pressed',String(b.dataset.runSelection===row.runId));const p=projection.runs.find(r=>r.report.runId===row.runId).presentation;
   hosts.detail.append(el('p',row.agentName+' · '+(w[p.currentState]||w.unconfirmed),'run-workbench-agent'),el('h5',row.featureTitle),el('strong',row.event.kind+' · #'+row.event.sequence),reportTimeNode(doc,row.event.eventAt,{locale}),el('p',row.event.summary,'run-workbench-summary'));
   hosts.detail.dataset.selectedEventSequence=String(row.event.sequence);hosts.detail.dataset.selectedRun=row.runId;
+  if(p.schemaVersion==='mc.repository-run.v2')hosts.detail.append(renderDeliveryEvidence({doc,locale,presentation:{...p,reportedState:row.event.kind,result:row.event.result,delivery:row.event.delivery}}));
   if(['blocked','failed'].includes(row.event.kind))hosts.detail.append(el('p',w.attention,'run-workbench-attention'));
   const proof=el('details'),caption=el('summary',w.source);proof.append(caption,el('p','ISO · '+row.event.eventAt),el('p',row.runId+' · '+row.source.repositoryId+' @ '+row.source.resolvedCommitSha),el('p',row.source.path),el('p','Source read ISO · '+row.source.readAt));hosts.detail.append(proof);
   if(row.event.result){const r=row.event.result;hosts.detail.append(el('p',w.pending),el('p',w.code+' · '+r.codeSha),el('p',w.handoff+' · '+r.handoff.path+' @ '+r.handoff.commitSha),el('p',w.next+' · '+r.nextSteps));for(const test of r.tests)hosts.detail.append(el('p',w.tests+' · '+test.outcome+' · '+test.name));const artifact=button(r.handoff.path,row.key,'artifact');artifact.dataset.reportArtifact='handoff';hosts.explorer.append(artifact);const mobileArtifact=button(r.handoff.path,row.key,'artifact-mobile');mobileArtifact.dataset.reportArtifact='handoff';hosts.explorerMobile.append(mobileArtifact);}
   hosts.detail.append(el('p',w.limits,'run-workbench-limits'));
-  if(row.event.kind==='completed'){const delivery=reportDeliveryStatus(p),message=locale==='ko'?'개발 완료 보고 · 배포 증거 / 고정 URL 검증 대기. 데이터 / migration 상태는 보고에 미기록.':locale==='en'?'Coding completion reported · deployment evidence / fixed URL verification pending. Data / migration state is unrecorded in this report.':'開發回報完成 · 部署證據／固定網址可用性驗證待確認；此回報未記錄資料／migration 狀態。';const d=el('p',message,'run-workbench-delivery');d.dataset.deploymentEvidence=delivery.deployment;d.dataset.fixedUrlEvidence=delivery.fixedUrl;hosts.detail.append(d);}
+  if(p.schemaVersion!=='mc.repository-run.v2'&&row.event.kind==='completed')hosts.detail.append(renderDeliveryEvidence({doc,locale,presentation:{...p,reportedState:row.event.kind,result:row.event.result}}));
   const handoff=el('button',handoffWords[0],'run-workbench-item');handoff.type='button';handoff.dataset.runHandoffOpen='true';handoff.addEventListener('click',()=>{dialogGeneration++;purgePacket();status.textContent='';dialog.showModal();});hosts.detail.append(handoff);
   hosts.graph.prepend(el('p',row.runId,'run-workbench-graph-root'));
   for(const {n,top}of positions)if(n.parentElement)n.parentElement.scrollTop=top;

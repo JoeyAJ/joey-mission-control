@@ -1,3 +1,38 @@
+# Mission Control — versioned reported delivery evidence
+
+Project: MISSION_CONTROL
+Timestamp: 2026-10-10T23:57:31.092710Z
+Task: Backward-compatible delivery evidence, closure/readiness UI and equal-time event ordering
+Status: LOCAL_VERIFIED_PENDING_PUBLICATION
+Last Developer: Codex
+Executed by: Codex
+Actual Model: UNKNOWN
+Baseline: e63d71bdcc50ae9139c8dc7793598b710a829964
+
+## Current checkpoint
+
+Explicit mc.repository-run.v2 adds taskKind and bounded event.delivery snapshots. Default/strict v1 and historical report bytes remain unchanged. V2 binds scope/code/deployment/functional check/handoff/data; labels all authored evidence AGENT_REPORTED. Missing required evidence is incomplete; reasoned N/A is project/task-policy gated. Reported ready requires completed run, all tests PASS and complete applicable evidence. Independent verification/Joey acceptance stays pending; Contents-read is blob integrity only. No trusted ingestion or new provider/URL fetch exists. Contract: docs/contracts/REPOSITORY_RUN_DELIVERY_V2.md; bounded plan: docs/MC_DELIVERY_EVIDENCE_PLAN_20261010.md.
+
+Generic copied helper and delivery-template private preparation, mixed-version reader/continuation and zhTW/en/ko report/workbench/simple views are implemented. Cross-agent instruction now records actual tests, authorized deployment, exact permitted URL check, leading current handoff/data and structured reported evidence before claiming delivery. Current policy only permits MC BASELINE existing Preview; unknown project URL/target/N/A policy remains unavailable, never inferred. Old terminal work uses new same-scope predecessor run.
+
+Equal eventAt ties now sort runId then numeric sequence before key; activity latest uses highest numeric sequence. Equal-time z-start/a-progress and reversed-input regressions pass. Prior four independent review fixes remain covered. Six new delivery desktop/mobile/three-locale cases, copied helper/reader, strict contract, twelve reading/focus, four-width fresh-copy, six dynamic lifecycle and promised-clipboard cancellation PASS. Full portable suite now 742 PASS with build/validate/check, after correcting this leading document to the existing legal phase status; no test/parser relaxation. Final current-code contract/helper/handoff/privacy/equal-time 32 PASS. See docs/MC_DELIVERY_EVIDENCE_VERIFICATION_20261010.md. Latest inspected private synthetic screenshots: docs/qa/mc-delivery-evidence-20261010.
+
+Actual development run codex-mc-delivery-evidence-20261010 is v1 (live v2 awaits tested support publication), predecessor codex-mc-activity-follow-20261010. Progress sequence 2 at report commit a0784352fe99c653e7dbf4ab317fcd63bcd47a34, blob 218d9001796787cb90ec31c5d0541973bf448dc2. Baseline stays e63d71bd; previous terminal/other-repository reports are unchanged.
+
+## Delivery and data qualification
+
+Current functional changes are not yet published. Existing fixed Preview only; support must be READY/exact alias SHA before live v2 reports. Real example will use only actual existing Git/Vercel observations and a permitted fixed-URL attempt; cloud CONNECT403 is unverified, never functional PASS. Dated alias observations remain historical after movement. No served/device/Joey acceptance is claimed.
+
+Data: report metadata now supports v2; v1 and private endpoint envelope/allowlist remain unchanged. No SQL, database schema/data migration or credentials/permissions change. Fine-grained telemetry/external Agent collector and independently trusted delivery ingestion remain inactive; those exact access changes need explicit approval. No Production, other repo/report, AWS, model selector or dispatch change.
+
+## Next Action
+
+Finish full checks, publish tested helper/reader/UI to the same branch/fixed Preview, then record a bounded actual v2 delivery followup with original scope/predecessor and explicit remaining URL blocker. Consolidate current HANDOFF and qualified receipt; terminal records are immutable. Actual Owner/clipboard/device, served exact URL and Joey product acceptance remain pending. A next authorized Agent fresh-reads current source and applies the versioned closure contract with its own existing authorization.
+
+---
+
+## Historical activity-follow checkpoint — superseded leading status
+
 # Mission Control — selected-run activity follow and review fixes
 
 Project: MISSION_CONTROL
