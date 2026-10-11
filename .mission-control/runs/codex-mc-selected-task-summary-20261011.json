@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "mc.repository-run.v2",
+  "taskKind": "FEATURE",
+  "projectId": "MISSION_CONTROL",
+  "track": "BASELINE",
+  "runId": "codex-mc-selected-task-summary-20261011",
+  "predecessorRunId": "codex-mc-task-entry-selection-20261011",
+  "taskId": "mc-selected-task-summary-20261011",
+  "featureTitle": "Shared selected task focus, delivery gaps and clearly scoped current project handoff",
+  "agentName": "Codex",
+  "provider": null,
+  "model": null,
+  "repositoryId": "JoeyAJ/joey-mission-control",
+  "reportRef": "mc/progress",
+  "workRef": "codex/mc-command-center-checkpoint-20261006",
+  "baseline": {
+    "ref": "codex/mc-command-center-checkpoint-20261006",
+    "commitSha": "b895b402dd9f1f6d64e223bed0c680f7df23a6a1",
+    "handoffPath": "HANDOFF.md",
+    "handoffDigest": "6ae6f6718b3a03a0d190dd889fc31ea2c828c59b11a4fee2033a07aa21540d74",
+    "contextPaths": [
+      "README.md",
+      "docs/PRODUCT_CHARTER.md",
+      "docs/MC_PHASE_PLAN.md",
+      "docs/STAGE_HANDOFF_TEMPLATE.md"
+    ]
+  },
+  "events": [
+    {
+      "id": "started",
+      "sequence": 1,
+      "eventAt": "2026-10-11T03:25:11.363Z",
+      "kind": "started",
+      "summary": "Default phone selected task/events differ from project-wide Agent/result/handoff areas. Unify selected-run focus with dated status/delivery/next steps before history in phone and desktop; separately label fresh current-project handoff. Existing source/copy/continuity gates remain. Shell Git credential invalid; connected GitHub read verifies exact latest baseline, existing authorized API transport will be used without new credentials.",
+      "result": null,
+      "delivery": null
+    }
+  ]
+}
