@@ -1,0 +1,121 @@
+{
+  "qualification": "AGENT_REPORTED_WITH_EXACT_GIT_BLOB_AND_CONNECTED_PROVIDER_METADATA_READBACK",
+  "runId": "codex-mc-project-draft-integration-20261011",
+  "task": "mc-project-draft-integration-20261011",
+  "predecessorRunId": "codex-mc-project-onboarding-20261011",
+  "originalBaseline": "be996d53cbd833ff60e93af12f113bb90d63d06c",
+  "testedSource": "c9ae949a095860ad9b6933146cefd240976c866e",
+  "testedTree": "cbb3a2f73527659703c9a971a62ec0a204d115a3",
+  "deployment": {
+    "id": "dpl_81P6uv4njERL6timsSSvV4XLZxPt",
+    "state": "READY",
+    "sha": "c9ae949a095860ad9b6933146cefd240976c866e",
+    "observedAt": "2026-10-11T06:56:25.156Z",
+    "fixedAliasMatched": true,
+    "scope": "DATED_PROVIDER_METADATA_NOT_SERVED_BYTES"
+  },
+  "progress": {
+    "status": "PUBLISHED",
+    "runId": "codex-mc-project-draft-integration-20261011",
+    "path": ".mission-control/runs/codex-mc-project-draft-integration-20261011.json",
+    "reportCommitSha": "56f29a8e183d2fb60c36b4a1a7769238eb93c4c5",
+    "fileSha": "27969c3a210effcf4882302ade2fd5a06399e6e7",
+    "sequence": 2,
+    "eventId": "draft-integration-checkpoint-2",
+    "scopeQualification": "PINNED_REPOSITORY_PROFILE_NOT_SERVER_ACCEPTANCE"
+  },
+  "terminal": {
+    "status": "PUBLISHED",
+    "runId": "codex-mc-project-draft-integration-20261011",
+    "path": ".mission-control/runs/codex-mc-project-draft-integration-20261011.json",
+    "reportCommitSha": "7e9b05588dde7983be650df2eacddd4a20ce7ead",
+    "fileSha": "6a43dd426648b99bcb2e1d8ad4cf6744f22c8475",
+    "sequence": 3,
+    "eventId": "draft-integration-completion-3",
+    "scopeQualification": "PINNED_REPOSITORY_PROFILE_NOT_SERVER_ACCEPTANCE",
+    "bytes": 6925
+  },
+  "readback": {
+    "exactGitBlob": true,
+    "strictCodeSchema": true,
+    "pinnedOriginalProfile": true,
+    "externalDraft202012WithFormatCheck": true,
+    "originalBaselineAndStartedEventUnchanged": true,
+    "delivery": "REPORTED_INCOMPLETE",
+    "independentVerification": "PENDING",
+    "joeyAcceptance": "PENDING"
+  },
+  "checks": {
+    "portable": 804,
+    "focused": 38,
+    "currentSourceHandoff": 30,
+    "cloudBrowserWidths": [
+      375,
+      390,
+      430,
+      1440
+    ],
+    "cloudBrowserCases": 4,
+    "intendedSyntheticDraftWrites": 12,
+    "unexpectedBrowserWrites": 0,
+    "externalBrowserCalls": 0,
+    "fallbackBrowserCases": 4,
+    "originalSimpleCases": 4,
+    "trueContinueCases": 12,
+    "sharedBriefCases": 6,
+    "build": "PASS",
+    "validate": "PASS",
+    "staticCheck": "PASS",
+    "forbiddenAttempts": 0
+  },
+  "cloudProvider": "SYNTHETIC_NOT_ACTIVATED",
+  "activationRequest": {
+    "projectRef": "scmvedfqwlhkyvljymjj",
+    "proposal": "docs/contracts/sql/private-project-drafts.pending.sql",
+    "proposalSha256": "1dc75176ef7e837dd4364aacbb82db93c25118861806553a5a2d1aa850185433",
+    "table": "mc_private.project_drafts",
+    "publicRpcs": [
+      "mc_owner_project_draft_list()",
+      "mc_owner_project_draft_save(jsonb,bigint)"
+    ],
+    "privateHelpers": [
+      "mc_private.project_draft_actor()",
+      "mc_private.validate_project_draft(jsonb)"
+    ],
+    "ownerPredicate": "EXACT_EXISTING_OWNER_AAL2_LIVE_SESSION_NEXAEON_ACTIVE_OWNER_MEMBER",
+    "newRpcRole": "authenticated EXECUTE only",
+    "directTableAccess": "REVOKED_PUBLIC_ANON_AUTHENTICATED_SERVICE_ROLE",
+    "rls": "ENABLE_AND_FORCE",
+    "executor": "EXISTING_RESTRICTED_mc_continuity_executor",
+    "installationGrants": "TEMPORARY_SET_AND_SCHEMA_CREATE_RESTORED_BEFORE_COMMIT",
+    "limitDrafts": 12,
+    "maxUtf8Bytes": 98304,
+    "cas": true,
+    "exactPayloadReplay": true,
+    "hardDelete": false
+  },
+  "frontend": {
+    "sameOriginCloudTransport": "WIRED_GET_POST",
+    "defaultRuntime": "SESSION_ONLY_DOWNLOAD_IMPORT",
+    "serverActivation": "OFF",
+    "activationControlledBy": "SERVER_ONLY_REVIEWED_FINGERPRINT_AND_PROVIDER_VERIFIED_APPROVAL_RECORD",
+    "privateBrowserStorage": false
+  },
+  "sqlExecuted": false,
+  "providerDatabaseParityVerified": false,
+  "newCredentialCreated": false,
+  "newRepositorySourceReportActivation": "SEPARATE_EXACT_SCOPE_REQUIRED",
+  "existingFiveScopes": "PRESERVED_VERIFIED",
+  "frozenLedgersDataRoles": "UNCHANGED",
+  "servedVerification": {
+    "status": "BLOCKED",
+    "method": "HTTP_FUNCTIONAL_CHECK",
+    "checkedAt": "2026-10-11T06:57:03Z",
+    "deploymentId": "dpl_81P6uv4njERL6timsSSvV4XLZxPt",
+    "checkedSha": null,
+    "url": "https://joey-mission-control-git-codex-mc-comma-fceec2-joeyajs-projects.vercel.app/",
+    "evidence": "Ordinary root GET failed curl56 CONNECT403 HTTP000 before app. No bypass. Provider SQL and live Owner cloud saving not activated or verified.",
+    "notRequired": null
+  },
+  "finalReceiptOnlyIdentity": "CHECKED_SEPARATELY_AFTER_PUSH"
+}

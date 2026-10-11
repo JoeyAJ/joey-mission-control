@@ -1,7 +1,7 @@
 # Mission Control — private cloud draft integration (activation pending)
 
 Project: MISSION_CONTROL
-Timestamp: 2026-10-11T06:54:55.266Z
+Timestamp: 2026-10-11T06:59:21.885Z
 Task: Owner private draft API, cloud UI and revision conflict isolation
 Status: LOCAL_VERIFIED_CLOUD_EVENTS_NOT_ENABLED
 DeliveryQualification: DRAFT_TRANSPORT_IMPLEMENTED_ACTIVATION_NOT_APPROVED
@@ -21,6 +21,8 @@ Actual cloud UI supports private save/readback/reload, explicit conflict choice 
 Focused38 PASS; synthetic app/official SDK cloud4 widths PASS with two separate browser sessions, exact lost-response readback, outage and pending logout. Intended synthetic draft writes12, external0/unexpected writes0. Dormant fallback4/Continue12/shared brief6 PASS. Final portable804/build/validate/check and original simple4 PASS; forbiddenAttempts0. Source/handoff verification and exact fixed Preview checkpoint follow. Details and exact approval request: docs/MC_PROJECT_DRAFT_INTEGRATION_VERIFICATION_20261011.md and docs/MC_PROJECT_DRAFT_STORAGE_PROPOSAL_20261011.md.
 
 Fresh same-scope run codex-mc-project-draft-integration-20261011 uses immutable baselinebe996d53, predecessor codex-mc-project-onboarding-20261011; started1 commit42db6ec3c29982c7338087066c39dee0cf1f3788/blob5f8a0da80046f09f69dac5a1f930960a17e1a58f. Prior terminal4 remains immutable. Current progress/terminal follows genuine publication checks. Same branch/fixed Preview only, no Production/AWS/other repo/dispatch/model selection/secret/permission activation. Five accepted scope/Owner QA preserved; University candidate and unsigned identities/times stay qualified. Next: publish/review current exact proposal and transport checkpoint; only explicit scoped approval can apply SQL and later enable verified server storage.
+
+Current transport source c9ae949a095860ad9b6933146cefd240976c866e /dpl_81P6uv4njERL6timsSSvV4XLZxPt READY; remote exact SHA and fixed alias matched2026-10-11T06:56:25.156Z. Ordinary root remains curl56/CONNECT403/HTTP000 before app (see receipt actual timestamp), checkedSha=null, no bypass. Own progress2 56f29a8e183d2fb60c36b4a1a7769238eb93c4c5/blob27969c3a210effcf4882302ade2fd5a06399e6e7; terminal3 7e9b05588dde7983be650df2eacddd4a20ce7ead/blob6a43dd426648b99bcb2e1d8ad4cf6744f22c8475,6925 bytes. Exact Git blob/strict schema/original pinned profile/external Draft2020-12 with format check PASS; baseline/started1 unchanged. Completed coding, delivery REPORTED_INCOMPLETE, independent/Joey PENDING. No post-terminal append. Final cloud4 rerun PASS after wording change; source/handoff30 PASS. Receipt: docs/contracts/repository-reporting/receipts/project-draft-integration-20261011.json. Last receipt-only push changes no runtime. Source/api/frontend/proposal/necessary tests/branch push/same Preview/report/handoff work within approved scope is complete; exact SQL approval, approved provider checks and OFF-to-ON activation are the next explicit gate, not an installation or broad ledger change. Formal new repo activation remains separately scoped.
 
 # Historical new-project fallback checkpoint
 
