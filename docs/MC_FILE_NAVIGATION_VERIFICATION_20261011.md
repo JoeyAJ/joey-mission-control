@@ -35,3 +35,5 @@ Full portable761 tests/build/validate/check PASS; zero forbidden attempts. Final
 | Full reference/served Owner/independent/Joey acceptance | Pending; exact served restriction recorded separately at publication. |
 
 No MC Production, University runtime/report/deploy, other repository write, SQL, permissions/secrets, model chooser, dispatch or revoked AWS pilot action. Fixed Preview provider READY and exact Git SHA are separate from functional served verification; CONNECT403 is recorded without bypass.
+
+Tested implementation b576e310eb1c91b8055cca4c3cde33dd00e7bc55 equals remote branch; dpl_9DREiqbgJUpdtXvpEiUyiwABhddt READY. Independent fixed alias matched full SHA/ID at2026-10-11T02:03:50Z. Actual permitted root GET after that observation at02:03:50.473459Z: curl56 / CONNECT403 / HTTP000 before app, checkedSha=null, no bypass. Production remains dpl_5GgJ8LhD4Ec73RGz9CEFe1ppZQnh / 8b4945b16a0b23f2e72033aa976fa34f94eabec0. Current handoff consolidation/own terminal/final docs identity are checked separately; runtime bytes remain the tested implementation. Provider READY does not resolve served Owner/device/Joey acceptance.
