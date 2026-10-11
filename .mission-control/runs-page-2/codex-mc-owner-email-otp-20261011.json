@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "mc.repository-run.v2",
+  "taskKind": "FEATURE",
+  "projectId": "MISSION_CONTROL",
+  "track": "BASELINE",
+  "runId": "codex-mc-owner-email-otp-20261011",
+  "predecessorRunId": "codex-mc-finalization-core-20261011",
+  "taskId": "mc-owner-email-otp-20261011",
+  "featureTitle": "Same-page existing Owner email OTP with unchanged TOTP private gates and readiness-disabled deployment",
+  "agentName": "Codex",
+  "provider": null,
+  "model": null,
+  "repositoryId": "JoeyAJ/joey-mission-control",
+  "reportRef": "mc/progress",
+  "workRef": "codex/mc-command-center-checkpoint-20261006",
+  "baseline": {
+    "ref": "codex/mc-command-center-checkpoint-20261006",
+    "commitSha": "45cebef30f958934674619fc7e90b25324579d99",
+    "handoffPath": "HANDOFF.md",
+    "handoffDigest": "f737eee6118833a315e8ce40faa274522ce4e07e0e3cd4c3c330b9f7274d985f",
+    "contextPaths": [
+      "README.md",
+      "docs/PRODUCT_CHARTER.md",
+      "docs/MC_PHASE_PLAN.md",
+      "docs/STAGE_HANDOFF_TEMPLATE.md"
+    ]
+  },
+  "events": [
+    {
+      "id": "owner-email-otp-start-1",
+      "sequence": 1,
+      "eventAt": "2026-10-11T22:54:07.429Z",
+      "kind": "started",
+      "summary": "Joey22:41:48UTC approved passwordless direction; priority navigation/task feedback release45cebef READY closed. Begin bounded same-page existing Owner email OTP code and local tests, preserving TOTP/AAL2/session/membership. Auth config read not exposed; template readiness unknown and June3 template restriction requires checking. No mail/settings/signup/SMTP/redirect/password deletion or new credentials; deployed OTP remains disabled until verified readiness.",
+      "result": null,
+      "delivery": null
+    }
+  ]
+}
