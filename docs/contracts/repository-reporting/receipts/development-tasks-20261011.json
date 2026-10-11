@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "task": "mc-existing-project-task-20261011",
+  "status": "AWAITING_SOURCE_PREVIEW_PUBLICATION",
+  "baseline": "95e60d8dd1a4081c6ed20d138cb128e8b85a24a5",
+  "codeSha": null,
+  "preview": null,
+  "sql": {
+    "status": "NOT_APPLIED_PENDING_EXPLICIT_TASK_APPROVAL",
+    "projectRef": "scmvedfqwlhkyvljymjj",
+    "proposalSha256": "553d99b407d34d622b53918eb42c6e42146417e71009a47cbf25f8c1dc283194",
+    "nativeGroups": 10,
+    "parityCases": 17,
+    "liveTaskSqlRequests": 0,
+    "receipt": "development-tasks-20261011.native.json"
+  },
+  "taskServerActivation": "OFF",
+  "existingProjectDraftCapability": "ON_APPROVED_UNCHANGED",
+  "tests": {
+    "portable": 820,
+    "focused": 15,
+    "sourceHandoff": 46,
+    "nativeGroups": 10,
+    "nativeParityCases": 17,
+    "browserTasks": 4,
+    "browserContinue": 12,
+    "browserCloudProjectDrafts": 4,
+    "intendedSyntheticCloudDraftWrites": 16,
+    "browserFallback": 4,
+    "browserSimple": 4,
+    "browserSharedBrief": 6,
+    "unexpectedExternalWrites": 0,
+    "actualOwnerAuth": false,
+    "actualProviderRemoteReads": false,
+    "qa": "../../../qa/mc-development-tasks-20261011/verification.json"
+  },
+  "run": {
+    "runId": "codex-mc-existing-project-task-20261011",
+    "sequence": 2,
+    "reportCommitSha": "9b7d5910179dfb8e058289b4e777fc515b021902",
+    "fileSha": "32948458457b0a18cfde8600264be0c2de723793",
+    "terminal": false,
+    "qualification": "PINNED_REPOSITORY_PROFILE_NOT_SERVER_ACCEPTANCE",
+    "baselinePreserved": true,
+    "startedPreserved": true
+  },
+  "capacity": {
+    "allowedRuns": 20,
+    "currentRuns": 20,
+    "newMcRunRegistration": "BLOCKED_UNCHANGED_CAPACITY",
+    "historyRotated": false
+  },
+  "joeyAcceptance": "PENDING",
+  "independentAcceptance": "PENDING",
+  "visualIntegration": "PENDING_NAMED_REVIEWED_COMMIT"
+}

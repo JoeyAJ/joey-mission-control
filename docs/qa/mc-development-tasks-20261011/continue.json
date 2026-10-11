@@ -1,0 +1,153 @@
+{
+  "pass": true,
+  "beforeFixReproduction": false,
+  "sameSourceDisclosureRetained": true,
+  "historyReloadSelectedProjectVerified": true,
+  "actualApp": true,
+  "officialSDK": true,
+  "deploymentFactory": true,
+  "repositoryAccess": "SYNTHETIC_GITHUB_NORMAL_FACTORY",
+  "actualOwnerAuth": false,
+  "actualRemoteRepositoryRead": false,
+  "reads": 243,
+  "githubReads": 1035,
+  "externalRequests": 0,
+  "unexpectedWrites": 0,
+  "cases": [
+    {
+      "width": 1440,
+      "locale": "en",
+      "project": "NEXAEON",
+      "realContinue": true,
+      "pass": true,
+      "localizedMetadata": true,
+      "technicalHashesFolded": true,
+      "technicalDisclosureRetained": true
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "project": "WOOSONG_BUDDY",
+      "realContinue": true,
+      "pass": true,
+      "localizedMetadata": true,
+      "technicalHashesFolded": true,
+      "technicalDisclosureRetained": true
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "project": "NAMYOUNG_WEB3D",
+      "realContinue": true,
+      "pass": true,
+      "localizedMetadata": true,
+      "technicalHashesFolded": true,
+      "technicalDisclosureRetained": true
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "project": "JOEY_ASSET_SYSTEM",
+      "realContinue": true,
+      "pass": true,
+      "localizedMetadata": true,
+      "technicalHashesFolded": true,
+      "technicalDisclosureRetained": true
+    },
+    {
+      "width": 390,
+      "locale": "zh-TW",
+      "project": "NEXAEON",
+      "realContinue": true,
+      "pass": true,
+      "localizedMetadata": true,
+      "technicalHashesFolded": true,
+      "technicalDisclosureRetained": true
+    },
+    {
+      "width": 390,
+      "locale": "zh-TW",
+      "project": "WOOSONG_BUDDY",
+      "realContinue": true,
+      "pass": true,
+      "localizedMetadata": true,
+      "technicalHashesFolded": true,
+      "technicalDisclosureRetained": true
+    },
+    {
+      "width": 390,
+      "locale": "zh-TW",
+      "project": "NAMYOUNG_WEB3D",
+      "realContinue": true,
+      "pass": true,
+      "localizedMetadata": true,
+      "technicalHashesFolded": true,
+      "technicalDisclosureRetained": true
+    },
+    {
+      "width": 390,
+      "locale": "zh-TW",
+      "project": "JOEY_ASSET_SYSTEM",
+      "realContinue": true,
+      "pass": true,
+      "localizedMetadata": true,
+      "technicalHashesFolded": true,
+      "technicalDisclosureRetained": true
+    },
+    {
+      "width": 320,
+      "locale": "ko",
+      "project": "NEXAEON",
+      "realContinue": true,
+      "pass": true,
+      "localizedMetadata": true,
+      "technicalHashesFolded": true,
+      "technicalDisclosureRetained": true
+    },
+    {
+      "width": 320,
+      "locale": "ko",
+      "project": "WOOSONG_BUDDY",
+      "realContinue": true,
+      "pass": true,
+      "localizedMetadata": true,
+      "technicalHashesFolded": true,
+      "technicalDisclosureRetained": true
+    },
+    {
+      "width": 320,
+      "locale": "ko",
+      "project": "NAMYOUNG_WEB3D",
+      "realContinue": true,
+      "pass": true,
+      "localizedMetadata": true,
+      "technicalHashesFolded": true,
+      "technicalDisclosureRetained": true
+    },
+    {
+      "width": 320,
+      "locale": "ko",
+      "project": "JOEY_ASSET_SYSTEM",
+      "realContinue": true,
+      "pass": true,
+      "localizedMetadata": true,
+      "technicalHashesFolded": true,
+      "technicalDisclosureRetained": true
+    }
+  ],
+  "clearing": [
+    "project-change",
+    "late-copy",
+    "pagehide",
+    "revocation",
+    "repository-denial",
+    "expiry",
+    "signout"
+  ],
+  "candidateSeparate": true,
+  "noPrivateSourceOrConfigurationInBundle": true,
+  "metadataReadabilityAndExactTechnicalProvenance": true,
+  "realContinueFreshSource": true,
+  "legacyContinueRequests": 0,
+  "candidateContinueHistoryReload": true
+}

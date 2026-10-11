@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "pass": true,
+  "nativePostgres": true,
+  "syntheticOnly": true,
+  "liveSupabaseRequests": 0,
+  "taskSqlAppliedLive": false,
+  "auth": "PROTECTED_SYNTHETIC_SESSION_NOT_REAL_PROVIDER",
+  "checks": [
+    {
+      "name": "exactUnmodifiedTaskProposalAndExistingHelperRoleLedgerRestoration",
+      "pass": true
+    },
+    {
+      "name": "forcedRlsRpcOwnerSearchPathAnonServiceAndDirectTableValidatorDenials",
+      "pass": true
+    },
+    {
+      "name": "saveListExactReplayCasAndImmutableProjectTrack",
+      "pass": true
+    },
+    {
+      "name": "foreignAal1ExpiredRevokedAndMembershipDenied",
+      "pass": true
+    },
+    {
+      "name": "foreignOwnedTaskCannotBeRead",
+      "pass": true
+    },
+    {
+      "name": "jsSqlTaskScopeUnicodeUtf16Utf8CredentialAndCalendarParity",
+      "pass": true,
+      "cases": 17
+    },
+    {
+      "name": "twoNativeConnectionsObservedLockOneCasOneConflict",
+      "pass": true,
+      "observedLock": true
+    },
+    {
+      "name": "twoNativeConnectionsExactRetryOneStoredTask",
+      "pass": true,
+      "observedLock": true
+    },
+    {
+      "name": "concurrentGlobalTwelveTaskCapacityAndOversizeNoMutation",
+      "pass": true,
+      "observedLock": true
+    },
+    {
+      "name": "existingDraftsAndFrozenDataHelpersMembershipUnchanged",
+      "pass": true
+    }
+  ],
+  "container": {
+    "network": "none",
+    "hostMounts": 0,
+    "publishedPorts": 0,
+    "data": "TASK_TMPFS",
+    "image": "docker.io/library/postgres@sha256:3cec7eb015ba8adb28139fa5c83b8489cdf0e666e53dfdf20f598ae0cc8739e3"
+  },
+  "serverVersion": "17.11 (Debian 17.11-1.pgdg13+2)",
+  "proposalSha256": "553d99b407d34d622b53918eb42c6e42146417e71009a47cbf25f8c1dc283194"
+}

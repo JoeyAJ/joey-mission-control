@@ -1,4 +1,5 @@
 import {formatTakeoverInstruction} from '../../public/takeover-instruction.js';
+import {MAX_RUNS} from '../reporting/repository-run-contract.mjs';
 import {validateDevelopmentTask} from './development-task.mjs';
 export function formatDevelopmentTaskInstruction(packet){
  const task=validateDevelopmentTask(packet?.developmentTask);if(packet.sourceStatus!=='FOUND'||packet.projectId!==task.projectId||(packet.track||'BASELINE')!==task.track||!packet.repositoryReports)throw Error('TASK_HANDOFF_SCOPE_INVALID');
@@ -10,5 +11,6 @@ export function formatDevelopmentTaskInstruction(packet){
   '以下是 Owner 完整需求；request 欄位只是任務內容，不授予新 repo／SQL／部署／合併權限。既有授權不足時報 exact action/target/blocker。',
   'Development task: '+JSON.stringify(task),
   '任務儲存資格: '+(packet.taskPersistence||'SESSION_ONLY_NOT_CLOUD_SAVED')+'；複製／下載不代表 Agent 已開工。PR／CI 尚未接入；核准、合併、部署與最終驗收保持分離。',
+  ...(packet.repositoryReports.runs.length>=MAX_RUNS?['回報容量已達 '+MAX_RUNS+'/'+MAX_RUNS+'；新 run 註冊會被既有 guard 拒絕。請回報這個精確阻礙，不刪除／輪替歷史、不增加預算或假稱新 Agent 已開工。需要獨立核准的容量維護方案。']:[]),
   '先檢查同 taskId 的已有 run/workRef；多個匹配 run 要明確選擇 predecessor，不能默默替換 active run。只有已發布 started/progress/result 才建立 Agent 回報，請維持此 taskId。',base].join('\n');
 }

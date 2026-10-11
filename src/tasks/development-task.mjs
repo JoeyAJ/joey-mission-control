@@ -2,7 +2,7 @@
 import {isStrictDateTime} from '../canonical/date-time.mjs';
 export const DEVELOPMENT_TASK_VERSION='mc.development-task.v1',MAX_TASK_BYTES=98304,MAX_TASKS=12;
 const projects=new Set(['MISSION_CONTROL','NEXAEON','WOOSONG_BUDDY','NAMYOUNG_WEB3D','JOEY_ASSET_SYSTEM']);
-const sensitive=/-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----|github_pat_[A-Za-z0-9_]{20,}|gh[pousr]_[A-Za-z0-9]{20,}|sb_secret_[A-Za-z0-9_-]{16,}|Bearer\s+[A-Za-z0-9_.-]{30,}|\b(?:password|secret|token)\s*[:=]|\beyJ[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+/i;
+const sensitive=/-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----|github_pat_[A-Za-z0-9_]{20,}|gh[pousr]_[A-Za-z0-9]{20,}|sb_secret_[A-Za-z0-9_-]{16,}|Bearer\s+[A-Za-z0-9_.-]{30,}|\b(?:password|secret|token)["']?\s*[:=]|\beyJ[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+/i;
 export const canonicalTaskJson=v=>JSON.stringify(Array.isArray(v)?v.map(x=>JSON.parse(canonicalTaskJson(x))):v&&typeof v==='object'?Object.fromEntries(Object.keys(v).sort().map(k=>[k,JSON.parse(canonicalTaskJson(v[k]))])):v);
 export const sameTask=(a,b)=>canonicalTaskJson(a)===canonicalTaskJson(b);
 const fail=(code='TASK_SPEC_INVALID')=>{throw Error(code);};

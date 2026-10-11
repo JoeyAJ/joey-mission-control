@@ -1,0 +1,86 @@
+{
+  "pass": true,
+  "cases": [
+    {
+      "width": 1440,
+      "locale": "zh-TW",
+      "pass": true,
+      "v3LatestDeliveryExplicit": true,
+      "fullSelectedTitle": true,
+      "selectedSummaryShared": true,
+      "historyIsSeparate": true,
+      "freshCurrentProjectCopy": true,
+      "actionBeforeHistory": true,
+      "noPrivateUrlStorage": true,
+      "refusalClears": true
+    },
+    {
+      "width": 1440,
+      "locale": "ko",
+      "pass": true,
+      "v3LatestDeliveryExplicit": true,
+      "fullSelectedTitle": true,
+      "selectedSummaryShared": true,
+      "historyIsSeparate": true,
+      "freshCurrentProjectCopy": true,
+      "actionBeforeHistory": true,
+      "noPrivateUrlStorage": true,
+      "refusalClears": true
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "pass": true,
+      "v3LatestDeliveryExplicit": true,
+      "fullSelectedTitle": true,
+      "selectedSummaryShared": true,
+      "historyIsSeparate": true,
+      "freshCurrentProjectCopy": true,
+      "actionBeforeHistory": true,
+      "noPrivateUrlStorage": true,
+      "refusalClears": true
+    },
+    {
+      "width": 390,
+      "locale": "zh-TW",
+      "pass": true,
+      "v3LatestDeliveryExplicit": true,
+      "fullSelectedTitle": true,
+      "selectedSummaryShared": true,
+      "historyIsSeparate": true,
+      "freshCurrentProjectCopy": true,
+      "actionBeforeHistory": true,
+      "noPrivateUrlStorage": true,
+      "refusalClears": true
+    },
+    {
+      "width": 390,
+      "locale": "ko",
+      "pass": true,
+      "v3LatestDeliveryExplicit": true,
+      "fullSelectedTitle": true,
+      "selectedSummaryShared": true,
+      "historyIsSeparate": true,
+      "freshCurrentProjectCopy": true,
+      "actionBeforeHistory": true,
+      "noPrivateUrlStorage": true,
+      "refusalClears": true
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "pass": true,
+      "v3LatestDeliveryExplicit": true,
+      "fullSelectedTitle": true,
+      "selectedSummaryShared": true,
+      "historyIsSeparate": true,
+      "freshCurrentProjectCopy": true,
+      "actionBeforeHistory": true,
+      "noPrivateUrlStorage": true,
+      "refusalClears": true
+    }
+  ],
+  "external": 0,
+  "writes": 0,
+  "realOwnerAcceptance": false
+}

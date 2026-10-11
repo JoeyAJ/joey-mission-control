@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "syntheticOnly": true,
+  "actualOwnerHttp": false,
+  "tests": {
+    "task-browser": "task-browser.json",
+    "cloud-browser": "cloud-browser.json",
+    "fallback-browser": "fallback-browser.json",
+    "simple-browser": "simple-browser.json",
+    "continue": "continue.json",
+    "brief": "brief.json"
+  }
+}
