@@ -1,3 +1,9 @@
+# Current bounded bugfix — selected task workspace entry
+
+Parent review required actual same-click proof. Default Joey now forwards one-shot scope/report-bound in-memory selection through fresh source/report rereads; older selected run/history remains, missing/changed/foreign/pending-scope changes refuse and clear. Portable764/build/check, source36, actual-byte desktop/mobile2, simple4 and true Continue12 PASS. Existing copy/privacy/candidate/history gates unchanged. [Verification](MC_TASK_ENTRY_SELECTION_VERIFICATION_20261011.md); exact current Preview/report receipts are in HANDOFF. Served Owner/Joey acceptance remains pending; no unrelated policy/features.
+
+## Historical bounded delivery phase
+
 # Current bounded phase — versioned reported delivery evidence
 
 Approved after e63d71bd: backward-compatible v1/v2 helper/reader/UI, strict source/code/deployment binding, actual functional/handoff/data evidence and reasoned N/A. [Plan](MC_DELIVERY_EVIDENCE_PLAN_20261010.md), [contract](contracts/REPOSITORY_RUN_DELIVERY_V2.md). Publish tested support before live v2 reports. Independent verification/Joey acceptance stays pending; no new background URL/provider fetch, credentials, SQL, other repo, Production or dispatch action. Equal-time event ordering is included.

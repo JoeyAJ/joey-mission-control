@@ -1,0 +1,22 @@
+# Selected task entry verification — 2026-10-11
+
+Bounded correction for the default Joey selected reported task → 開啟任務／檔案工作台 path. Prior screenshots were not same-click evidence. Actual pre-fix app flow at1440/390 selected codex-mc-file-navigation-20261011 and entered synthetic-live-fixture. This defect was reproduced before implementation with synthetic Owner/transport and exact own-MC report bytes; no external calls/writes.
+
+The intent is one-shot authenticated memory, bound to project/track/repository/run/report blob/SHA256/latest sequence with a30s expiry. Workspace freshly rereads source and reports before applying it with current verified Owner. The selected original run/history is retained; absent, changed, foreign or unconfirmed evidence refuses. Case/track switch, logout, outage, expiry and disposed pending reads clear the request. Nothing private enters URL/storage; existing copy/source/privacy/immutable-history/candidate gates remain.
+
+| Local check | Evidence |
+|---|---|
+| Full portable |764 PASS, build/validate/check PASS, forbiddenAttempts0|
+| Final source/Owner/routing/selection |36 PASS|
+| Real same-click flow at1440 and390 |Older v2 navigation run sequence3 remains selected; v3 file-observations run sequence5 with original events1–5 remains selected|
+| Refusals and navigation |Back, missing report, changed immutable blob, foreign scope, report read pending during case switch, logout/outage; cleared intent cannot replay|
+| Existing source/copy flows |Simple takeover375/390/430/1440 and true four-project Continue12 PASS; browser external0/writes0|
+
+Actual replay uses immutable own-MC terminal e22d33880ed8dee04e771d43a2cedaa616b1eb4a and its original report/predecessor bytes. Owner/Auth/GitHub/clipboard are synthetic. Changed/missing reports are laboratory faults only; immutable original reports were never rewritten. Existing reader conflicts remain sticky for that session and are not silently recovered by refresh. Screens below were inspected; private metadata remains in this private repository. They prove local navigation/history rendering, not served Owner or full product acceptance.
+
+- [Desktop selected v3 history](qa/mc-task-entry-selection-20261011/1440-task-entry-continuity.png)
+- [Mobile selected v3 history](qa/mc-task-entry-selection-20261011/390-task-entry-continuity.png)
+
+Normal served Owner verification: open the fixed Preview, sign in using the existing Owner flow, choose Mission Control in default Joey, select an older reported task, and immediately tap 開啟任務／檔案工作台. Confirm that exact task and its original dated history. Back to Joey, choose another task and repeat; on mobile select內容 to inspect detail. A missing/changed/revoked report must show unconfirmed/refusal and clear the entry, with no run ID in the URL. No new installation, manual deployment or permissions are required. Report independent/Joey acceptance only after actual review.
+
+Publication/terminal readback receipts follow in the dated closure below. Provider READY/exact SHA never implies served PASS; ordinary cloud root GET CONNECT403 remains a blocker without bypass. MC Production/other repositories/SQL/secrets/permissions/AWS and historical operational artifacts are untouched.

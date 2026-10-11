@@ -13,11 +13,20 @@ const words={
  ko:{cards:'Agent / 작업 보고',events:'보고 이벤트',explorer:'이벤트 및 결과',detail:'선택한 보고',graph:'보고 관계',unknown:'현재 출처 미확인',empty:'Agent 시작 보고 없음',last:'마지막 확인 · 현재 상태 미확인',current:'현재 확인한 보고',running:'개발 중 보고',blocked:'차단 보고',completed:'완료 보고',failed:'실패 보고',unconfirmed:'현재 미확인',stale:'갱신 지연',attention:'선택 이벤트: 차단 / 실패 보고',limits:'파일 읽기/수정, diff 및 터미널 스트림 미연결. 출처가 보고한 이벤트입니다.',pending:'완료 보고가 Joey 검수를 의미하지 않습니다.',source:'출처 상세',handoff:'보고된 인계',tests:'보고된 테스트',code:'결과 버전',next:'다음 단계',historical:'과거 출처 기록',scope:'BASELINE',candidate:'University 후보'}
 };
 // Transient authenticated UI memory only; no transport/storage, no private URL state.
-export function mountRunWorkbench({owner,doc=document,projectId,track='BASELINE',locale='zh-TW',targets,onProject=()=>{},onSelect=()=>{},onExplore=()=>{},now=Date.now}={}){
+export function mountRunWorkbench({owner,doc=document,projectId,track='BASELINE',locale='zh-TW',targets,initialRunSelection=null,onProject=()=>{},onSelect=()=>{},onExplore=()=>{},now=Date.now}={}){
  const w=words[locale]||words['zh-TW'];let memory=memories.get(owner);if(!memory){memory={scopes:new Map(),transitions:createWorkbenchTransitions(),activities:new Map()};memories.set(owner,memory);}
  const scope=JSON.stringify([projectId,track]);if(!memory.activities.has(scope))memory.activities.set(scope,createActivityFollow());const activity=memory.activities.get(scope);let latestEvents=[];const el=(tag,text,cls)=>{const n=doc.createElement(tag);if(text)n.textContent=text;if(cls)n.className=cls;return n;};
  const hosts={};for(const key of ['cards','events','explorer','explorerMobile','detail','graph']){hosts[key]=el('section',null,'run-workbench-'+key);hosts[key].dataset.runWorkbench=key==='explorerMobile'?'explorer-mobile':key;targets[key]?.prepend(hosts[key]);}
  let disposed=false,sourceView,reportView,timer,selected=activity.snapshot().selected,prepared=null,busy=false,dialogGeneration=0;
+ let entryStarted=false,entryState=initialRunSelection?.snapshot()?'waiting':'none';
+ const entryText=locale==='ko'?['선택 작업의 최신 출처/보고 확인 중…','선택 작업이 변경되었거나 확인되지 않았습니다. 다시 선택하세요.']:locale==='en'?['Rechecking the selected task source/reports…','The selected task changed or is unconfirmed. Select it again.']:['正在重新確認所選任務的來源／回報…','所選任務回報已變動或未確認，請重新選取。'];
+ const rejectEntry=()=>{if(entryState==='waiting'){initialRunSelection?.cancel();entryState='rejected';}};
+ async function enterSelectedRun(){
+  entryStarted=true;const intent=initialRunSelection.snapshot();
+  try{await owner.sourceController.refresh();if(disposed||initialRunSelection.snapshot()!==intent)return;await owner.repositoryRunsController.refresh();if(disposed||initialRunSelection.snapshot()!==intent)return;
+   const source=owner.sourceController.snapshot(),reports=owner.repositoryRunsController.snapshot(),result=initialRunSelection.take({sourceView:source,reportView:reports,projectId,track,ownerVerified:owner.dataset.ownerAuth==='verified',now:now()});entryState=result.status;activity.reset();if(result.status==='applied')activity.selectRun(result.runId,workbenchProjection({sourceView:source,reportView:reports,projectId,track,now:now()}).events);
+  }catch{rejectEntry();}finally{if(!disposed){if(entryState==='waiting')rejectEntry();paint();}}
+ }
  const handoffWords=locale==='ko'?['인계','닫기','최신 출처와 보고를 다시 확인하여 인계 지시를 복사합니다. Agent 실행이나 새 권한 부여 없음.','인계 지시 복사','확인 중…','출처 또는 보고 미확인. 다시 읽으세요.','복사됨. 제품 검수를 뜻하지 않습니다.','전체 지시를 선택하여 시스템 복사를 사용하세요.']:locale==='en'?['Handoff','Close','Recheck current source and reports, then copy the takeover instruction. No Agent execution or new permission.','Copy takeover instruction','Checking…','Source or reports unconfirmed. Read again.','Copied. Product acceptance remains pending.','Select the whole instruction and use system Copy.']:['交接','關閉','重新核對最新來源與回報後複製接手指令；不啟動 Agent、不授予新權限。','複製接手指令','正在核對…','來源或回報未確認，請重新讀取。','已複製；產品驗收仍待確認。','請全選指令並使用系統複製。'];
  const dialog=el('dialog',null,'run-workbench-handoff'),title=el('h3',handoffWords[0]),note=el('p',handoffWords[2]),copy=el('button',handoffWords[3]),close=el('button',handoffWords[1]),status=el('p'),instruction=el('textarea');
  dialog.dataset.runHandoff='true';instruction.readOnly=true;instruction.dataset.runHandoffInstruction='true';instruction.setAttribute('aria-label',handoffWords[3]);copy.type=close.type='button';copy.dataset.runHandoffCopy='true';status.setAttribute('role','status');dialog.append(title,note,copy,close,status,instruction);doc.body.append(dialog);
@@ -33,11 +42,17 @@ export function mountRunWorkbench({owner,doc=document,projectId,track='BASELINE'
   delete hosts.detail.dataset.selectedRun;delete hosts.detail.dataset.selectedEventSequence;hosts.events.dataset.workbenchState='unconfirmed';
   delete hosts.detail.dataset.selectedFilePath;
   const auth=owner.dataset.ownerAuth;if(auth!=='verified'){targets.graph.dataset.privateRunGraph='false';targets.detail.dataset.privateRunDetails='false';
+   if(['signed_out','unconfirmed','unconfigured','waiting'].includes(auth))rejectEntry();
    purgePacket();if(dialog.open)dialog.close();
    if(['signed_out','unconfirmed','unconfigured'].includes(auth))clear();
    hosts.events.append(el('p',w.unknown,'run-workbench-notice'));return;
   }
   if(['denied','conflict','closed'].includes(sourceView?.status)||['denied','conflict','closed'].includes(reportView?.status))clear();
+  if(['denied','conflict','closed','unavailable'].includes(sourceView?.status)||['denied','conflict','closed','unavailable'].includes(reportView?.status))rejectEntry();
+  const intent=initialRunSelection?.snapshot();if(entryState==='waiting'&&(!intent||intent.projectId!==projectId||intent.track!==track||now()>=intent.expiresAt))rejectEntry();
+  hosts.events.dataset.initialRunSelection=entryState;
+  if(entryState==='waiting'){if(!entryStarted&&sourceView?.status==='connected'&&reportView?.status==='connected')void enterSelectedRun();hosts.events.append(el('p',entryText[0],'run-workbench-notice'));timer=setTimeout(()=>{rejectEntry();paint();},Math.max(1,intent.expiresAt-now()+1));return;}
+  if(entryState==='rejected')hosts.events.append(el('p',entryText[1],'run-workbench-notice'));
   const projection=workbenchProjection({sourceView,reportView,projectId,track,now:now()});
   hosts.events.dataset.workbenchState=projection.status;
   const fresh=projection.status==='confirmed'||projection.status==='empty';

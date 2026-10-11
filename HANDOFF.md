@@ -1,15 +1,29 @@
-# Mission Control — visible default Joey mobile activity
+# Mission Control — preserve selected task on workspace entry
 
 Project: MISSION_CONTROL
-Timestamp: 2026-10-11T02:14:02.457978Z
-Task: Visible default mobile task/activity surface from verified reports
+Timestamp: 2026-10-11T02:41:36.817Z
+Task: Fresh scope-bound selected-run entry from default Joey
 Status: LOCAL_VERIFIED_CLOUD_EVENTS_NOT_ENABLED
 Last Developer: Codex
 Executed by: Codex
 Actual Model: UNKNOWN
-Baseline: 756723280f399a7dec9d50716ac1196f483dce49
+Baseline: caab2cfd68ebe171347034fddba1045f3fbd4e7d
 
-## Current default mobile activity checkpoint
+## Current selected-task entry checkpoint
+
+Parent review clarified prior screenshots were not same-click continuity proof. Actual older task selection followed immediately by 開啟任務／檔案工作台 reproduced the defect before implementation at1440/390: codex-mc-file-navigation-20261011 entered synthetic-live-fixture. Default Joey kept selectedTask locally but onWorkspace forwarded only project/track. Historical mobile publication is retained below; its screenshots did not establish selected-run continuity.
+
+The bounded repair carries one opaque one-shot intent only in authenticated memory. It binds project/track/repository/run and exact report blob/SHA256/latest sequence, expires after30s, and applies only after fresh source and report rereads with current verified Owner. Workspace waits for verification, then selects that same run and original numeric history. Missing/changed/foreign/expired/unconfirmed reports refuse the intent; logout/outage/project/track switch and disposed pending reads clear it. No private identifier/source body/credential enters URL or storage. Existing report/source/copy gates, immutable report history, University candidate qualification, desktop layout and all prior Continue fixes remain.
+
+Portable764/build/validate/check PASS, forbiddenAttempts0; affected source/Owner/routing/selection36 PASS. Actual own-MC report-byte replay at e22d33880ed8dee04e771d43a2cedaa616b1eb4a with synthetic Owner/transport passes same-click continuity1440/390 for older v2 run(sequence3) and v3 file-observation run(sequence5/history1–5), Back, missing/changed/foreign refusal and pending-read case switch. Original simple takeover4 widths and true four-project Continue12 PASS; browser external0/writes0. Reviewed evidence and Owner steps: docs/MC_TASK_ENTRY_SELECTION_VERIFICATION_20261011.md. Local replay is not served Owner/device acceptance.
+
+Own new v2 BUGFIX run codex-mc-task-entry-selection-20261011, predecessor codex-mc-mobile-activity-20261011; fresh registration baselinecaab2cf stays immutable. Started1 commit66f715d722e9b3090d41087f49a0bafe78a1daa7 / blob676f631564676a017f9da26ed2fd3f8db99f4b77. Actual tested progress/final publication/report readback are closed separately. Old terminal reports and helper/schema bytes remain unchanged. All evidence AGENT_REPORTED; independent/Joey acceptance PENDING. Git Contents/hash proves bytes/scope only.
+
+Existing MC branch and fixed Preview only. No Production/other-repository write, SQL, permissions/secrets, private storage reset, collector, execution/dispatch, model chooser or AWS action. Three unsigned source/documentTimestamp values remain unrecorded; University stays candidate/JoeyAcceptancePending; Nex CI remains failing/unrepaired. Cloud root CONNECT403 is never bypassed; READY/exact provider SHA and served PASS remain separate. No Joey installation or routine manual deployment task.
+
+Actual tested progress2 commit8bc8836457f14fac80f7015f28fd961a617e62ef / blobb8f11dcd6ba73eadb9690074025744947d0a7c45; original source baselinecaab2cf unchanged.
+
+## Historical default mobile activity checkpoint (2026-10-11, baseline7567232)
 
 Direct Joey feedback at02:01UTC: mobile default #joey showed little visible change because new task/file UI was hidden in the advanced workspace. The authorized correction keeps the simple overview and adds prominent 開發動態 above it, a scoped Agent/reported-task selector, latest three original dated events and a44px+ 開啟任務／檔案工作台 button. Initial/default #joey and existing #joey bookmarks use the same entry; no route/storage migration or private run/path URL. Reports are original bounded metadata, not fabricated runtime. Native task selection survives ordinary same-scope reread; denial/outage/logout/project/track switch clears private rows/options. Existing copy/fresh-read/source/Owner gates and desktop workspace layout remain.
 
