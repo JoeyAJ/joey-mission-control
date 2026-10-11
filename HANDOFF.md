@@ -1,9 +1,9 @@
 # Mission Control — versioned reported delivery evidence
 
 Project: MISSION_CONTROL
-Timestamp: 2026-10-10T23:57:31.092710Z
+Timestamp: 2026-10-11T00:04:18.896429Z
 Task: Backward-compatible delivery evidence, closure/readiness UI and equal-time event ordering
-Status: LOCAL_VERIFIED_PENDING_PUBLICATION
+Status: LOCAL_VERIFIED_PARENT_READ_PREVIEW_PUBLISHED
 Last Developer: Codex
 Executed by: Codex
 Actual Model: UNKNOWN
@@ -21,13 +21,13 @@ Actual development run codex-mc-delivery-evidence-20261010 is v1 (live v2 awaits
 
 ## Delivery and data qualification
 
-Current functional changes are not yet published. Existing fixed Preview only; support must be READY/exact alias SHA before live v2 reports. Real example will use only actual existing Git/Vercel observations and a permitted fixed-URL attempt; cloud CONNECT403 is unverified, never functional PASS. Dated alias observations remain historical after movement. No served/device/Joey acceptance is claimed.
+Tested reader/helper support ec4d82c80b61e2d3a21d110eb21e4bad8ea746ef is exact remote and published. Vercel dpl_CySQnbFJSAXxT5DP3WWujhHVnR7K READY; independent fixed-alias lookup matches full SHA at 2026-10-11 00:02:43 UTC. Production remains dpl_5GgJ8LhD4Ec73RGz9CEFe1ppZQnh / 8b4945b16a0b23f2e72033aa976fa34f94eabec0. Actual GET of permitted fixed URL at that time failed curl exit 56 / CONNECT tunnel 403 / HTTP 000 before app. No bypass; functional result BLOCKED, checked served SHA absent. Live v2 may now be emitted; it cannot claim full delivery. Dated alias observations remain historical after movement. No served/device/Joey acceptance is claimed.
 
 Data: report metadata now supports v2; v1 and private endpoint envelope/allowlist remain unchanged. No SQL, database schema/data migration or credentials/permissions change. Fine-grained telemetry/external Agent collector and independently trusted delivery ingestion remain inactive; those exact access changes need explicit approval. No Production, other repo/report, AWS, model selector or dispatch change.
 
 ## Next Action
 
-Finish full checks, publish tested helper/reader/UI to the same branch/fixed Preview, then record a bounded actual v2 delivery followup with original scope/predecessor and explicit remaining URL blocker. Consolidate current HANDOFF and qualified receipt; terminal records are immutable. Actual Owner/clipboard/device, served exact URL and Joey product acceptance remain pending. A next authorized Agent fresh-reads current source and applies the versioned closure contract with its own existing authorization.
+Tested support publication and current source/data consolidation are complete. Record actual immutable development completion and bounded v2 delivery followup separately in the qualified receipt. The fixed URL functional check is blocked before app; independently trusted verification/Joey acceptance stays pending. Later authorized followup uses a new same-scope predecessor run after terminal completion, with fresh exact deployment/URL/handoff/data evidence. Actual Owner/clipboard/device, served exact URL and Joey product acceptance remain pending. A next authorized Agent fresh-reads current source and applies the versioned closure contract with its own existing authorization.
 
 ---
 

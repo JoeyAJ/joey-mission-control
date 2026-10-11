@@ -1,0 +1,14 @@
+# MC versioned delivery evidence — qualified receipt
+
+Recorded 2026-10-11T00:04:18.896429Z. These observations are private documentation, not report-reader trusted verification. Agent report fields remain AGENT_REPORTED; independent GUI verification stays absent/pending.
+
+- Tested support: ec4d82c80b61e2d3a21d110eb21e4bad8ea746ef on existing codex/mc-command-center-checkpoint-20261006; exact remote confirmed. Reader/helper/UI support published before live v2 reports.
+- Actual connected deployment: dpl_CySQnbFJSAXxT5DP3WWujhHVnR7K READY. Independent fixed-alias lookup matched full support SHA at 2026-10-11 00:02:43 UTC.
+- Allowed target: Vercel Preview, prj_X67htPw7vkRI2tuf8817vOUCGQOD / team_zpwdbE1o53BqrXSXxPfcKxKV. Public policy name vercel / joey-mission-control / preview; fixed URL https://joey-mission-control-git-codex-mc-comma-fceec2-joeyajs-projects.vercel.app/ . No other target/URL policy activated.
+- Actual functional attempt: GET fixed root at 00:02:43 UTC, curl exit 56, CONNECT tunnel failed response 403, HTTP code 000. The app was not reached; no served content/SHA/Owner usability verified, no bypass. V2 evidence must use BLOCKED and checkedSha=null, never PASS. Existing provider READY / exact alias is separate from functional success.
+- Tests: 742 unit + build/validate/check PASS; final current-code 32 contract/helper/privacy/handoff/equal-time PASS; 6 delivery three-locale desktop/mobile security/recovery/compatibility cases PASS; 6 dynamic, 12 reading/focus, 4-width fresh copy, 12 original Continue and 2 promised cancellation cases PASS. Synthetic upstream/clipboard/Owner; real source/Git/Vercel observations above are separate.
+- Data: explicit v2 report metadata support, v1 and private envelope/read scope preserved. This bounded UI/helper/reader task changes no SQL/database schema/data and executes no migration; MC_NO_DATA_CHANGE reason applies. New report version is not a database migration. No credentials, permissions, background URL/provider fetch, Source path expansion, telemetry collector, AWS or dispatch.
+- Production independently unchanged: dpl_5GgJ8LhD4Ec73RGz9CEFe1ppZQnh / 8b4945b16a0b23f2e72033aa976fa34f94eabec0.
+- Private artifacts: docs/qa/mc-delivery-evidence-20261010/reported-ready-1440.png / reported-ready-390.png, actual inspected synthetic UI; ko/en desktop also inspected. No public/dist image or prohibited operational artifact upload.
+
+Mutable alias observations describe that date/deployment only; later documentation publication advances the alias and does not make this blocked check cover new content. Actual v2 followup will bind the recorded support code/deployment/URL/time and current consolidated handoff, preserve original source baseline and terminal history, and report completed bounded attempts separately from delivery incomplete / independent pending / Joey pending. Exact actual run/receipt follows after handoff consolidation; no post-terminal append.
