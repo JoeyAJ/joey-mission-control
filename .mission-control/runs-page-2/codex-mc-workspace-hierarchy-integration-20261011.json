@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "mc.repository-run.v2",
+  "taskKind": "FEATURE",
+  "projectId": "MISSION_CONTROL",
+  "track": "BASELINE",
+  "runId": "codex-mc-workspace-hierarchy-integration-20261011",
+  "predecessorRunId": "codex-mc-finalization-boundary-20261011",
+  "taskId": "mc-workspace-hierarchy-integration-20261011",
+  "featureTitle": "Integrate exact reviewed shared project Agent state task handoff hierarchy while preserving finalization repairs",
+  "agentName": "Codex",
+  "provider": null,
+  "model": null,
+  "repositoryId": "JoeyAJ/joey-mission-control",
+  "reportRef": "mc/progress",
+  "workRef": "codex/mc-command-center-checkpoint-20261006",
+  "baseline": {
+    "ref": "codex/mc-command-center-checkpoint-20261006",
+    "commitSha": "d9a7beb18b8e6c0fd8d31db5ef6f6a25fa2e37cb",
+    "handoffPath": "HANDOFF.md",
+    "handoffDigest": "4c588bda3c2b732eb852be332debe652093b7240b59f701ed24018f4901d81a0",
+    "contextPaths": [
+      "README.md",
+      "docs/PRODUCT_CHARTER.md",
+      "docs/MC_PHASE_PLAN.md",
+      "docs/STAGE_HANDOFF_TEMPLATE.md"
+    ]
+  },
+  "events": [
+    {
+      "id": "workspace-hierarchy-start-1",
+      "sequence": 1,
+      "eventAt": "2026-10-11T23:47:48.230Z",
+      "kind": "started",
+      "summary": "Parent authorized exact3e8fd2b eight-file hierarchy slice based625ff30. Fresh shell/remote confirmsd9a7beb repair preserved. Review compatibility, rebuild excluded Owner bundle, focused/aggregate/browser verification and same fixed Preview. No live execution/OTP/settings/permissions/Production change. One bounded integration run only, no report history deletion or capacity expansion.",
+      "result": null,
+      "delivery": null
+    }
+  ]
+}
