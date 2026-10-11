@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "mc.repository-run.v2",
+  "taskKind": "BUGFIX",
+  "projectId": "MISSION_CONTROL",
+  "track": "BASELINE",
+  "runId": "codex-mc-task-requirements-20261011",
+  "predecessorRunId": "codex-mc-task-report-inspection-20261011",
+  "taskId": "mc-task-requirements-20261011",
+  "featureTitle": "Bind handed-off saved-task requirements revision and digest to immutable Agent report headers; retain legacy history",
+  "agentName": "Codex",
+  "provider": null,
+  "model": null,
+  "repositoryId": "JoeyAJ/joey-mission-control",
+  "reportRef": "mc/progress",
+  "workRef": "codex/mc-command-center-checkpoint-20261006",
+  "baseline": {
+    "ref": "codex/mc-command-center-checkpoint-20261006",
+    "commitSha": "e35e7aec258286ebb7abacbcef31a4e2e5018567",
+    "handoffPath": "HANDOFF.md",
+    "handoffDigest": "dc75f0609e4b1ef7c2b50329365d27f2e9a75668f444aea81a31619645909ec2",
+    "contextPaths": [
+      "README.md",
+      "docs/PRODUCT_CHARTER.md",
+      "docs/MC_PHASE_PLAN.md",
+      "docs/STAGE_HANDOFF_TEMPLATE.md"
+    ]
+  },
+  "events": [
+    {
+      "id": "started-task-requirements-binding",
+      "sequence": 1,
+      "eventAt": "2026-10-11T11:47:09.379477Z",
+      "kind": "started",
+      "summary": "Inspect exacte35 canonical handoff and existing task/report contracts. Implement optional immutable revision/digest binding with truthful legacy/mismatch history, no new SQL/access; separately propose durable Owner decisions. Never execute harmless save test.",
+      "result": null,
+      "delivery": null
+    }
+  ]
+}
