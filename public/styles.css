@@ -603,4 +603,107 @@ body[data-joey-simple=true] .utility-menu>summary{min-height:44px;box-sizing:bor
 
 /* Owner draft: explicit private export/import, no new persistence or palette. */
 .new-project-entry{margin:12px 0}.new-project-entry>[data-new-project-open]{width:100%;min-height:44px;font-weight:600}.new-project-panel{padding:18px;border:1px solid var(--border,#384154);border-radius:14px;margin-top:10px;background:var(--panel,#151b28);max-width:850px}.new-project-panel h2{font-size:21px;line-height:1.4}.new-project-panel p{line-height:1.6;overflow-wrap:anywhere}.new-project-storage-note{font-size:13px;color:var(--muted,#b4bdce)}.new-project-form,.new-project-options-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0}.new-project-form>label,.new-project-form>details,.new-project-form>button{grid-column:1/-1}.new-project-form label{display:flex;flex-direction:column;gap:7px;min-width:0;font-size:14px}.new-project-options-grid label:has(textarea),.new-project-options-grid label:has([data-new-project-field=previewUrl]){grid-column:1/-1}.new-project-form input,.new-project-form textarea,.new-project-form select,.new-project-panel>textarea{width:100%;min-height:44px;background:var(--bg,#0e1420);color:var(--text,#ecf0fa);border:1px solid var(--border,#445069);border-radius:8px;padding:10px;font:inherit;box-sizing:border-box}.new-project-form textarea{min-height:120px;resize:vertical}.new-project-form textarea[data-new-project-field=idea]{min-height:190px}.new-project-options>summary{min-height:44px;padding:10px 0;cursor:pointer;box-sizing:border-box;font-size:14px}.new-project-actions{display:flex;flex-wrap:wrap;gap:9px;margin:18px 0}.new-project-actions button{min-height:44px;flex:1 1 170px}.new-project-notice:empty{display:none}.new-project-notice{padding:10px;border-left:3px solid var(--accent,#899cfe)}.new-project-readiness dl{display:grid;grid-template-columns:135px 1fr;gap:10px;font-size:14px;line-height:1.5}.new-project-readiness dd{margin:0;overflow-wrap:anywhere}.new-project-readiness details{font-size:13px;padding:10px 0}.new-project-draft-card{padding:14px;border:1px solid var(--border,#384154);border-radius:12px;margin:10px 0}.new-project-draft-card h4{margin:0;font-size:16px;line-height:1.5}.new-project-draft-card summary,.new-project-draft-card p{font-size:14px;overflow-wrap:anywhere}.new-project-panel>textarea{min-height:240px;font-size:14px}
+
+/* 2026-10-11: palette sampled from both verified, pixel-inspected private references.
+   Scope follows the existing Joey/Workspace routes; metadata and pane geometry stay intact. */
+body:is([data-joey-simple=true],[data-active-module=workspace]){
+ --mc-charcoal:#1a1a19;--mc-hover:#24262a;--mc-cyan:#24d3ef;
+ --mc-periwinkle:#818cf8;--mc-muted:#a5b4fd;--mc-magenta:#e979f9;
+ --mc-outline:#5588a2;--mc-separator:#475569;--mc-text:#f5f5f5;
+ --mc-selected:#252936;--mc-arrival:#263f48;
+ --bg:var(--mc-charcoal);--panel:var(--mc-charcoal);--text:var(--mc-text);
+ --muted:var(--mc-muted);--accent:var(--mc-cyan);--line:var(--mc-separator);--border:var(--mc-outline);
+ --bg-deep:var(--mc-charcoal);--bg-surface:var(--mc-charcoal);--bg-elevated:var(--mc-hover);
+ --glass-surface:var(--mc-charcoal);--glass-surface-hover:var(--mc-hover);--glass-line:var(--mc-outline);
+ --visual-text:var(--mc-text);--visual-muted:var(--mc-muted);
+ --console-bg:var(--mc-charcoal);--console-line:var(--mc-separator);
+ --console-text:var(--mc-text);--console-muted:var(--mc-muted);--console-accent:var(--mc-cyan);
+ --status-completed:var(--mc-muted);--status-progress:var(--mc-cyan);--status-waiting:var(--mc-magenta);
+ --status-blocked:var(--mc-magenta);--status-paused:var(--mc-muted);--status-planned:var(--mc-muted);
+ --status-ready:var(--mc-muted);--status-working:var(--mc-cyan);--status-unknown:var(--mc-muted);
+ background:var(--mc-charcoal);color:var(--mc-text);color-scheme:dark;
+}
+body.joey-cockpit-mode:is([data-joey-simple=true],[data-active-module=workspace])>header{background:var(--mc-charcoal);border-color:var(--mc-separator);box-shadow:none}
+body:is([data-joey-simple=true],[data-active-module=workspace]) :is(button,input,select,textarea){color:var(--mc-text);border-color:var(--mc-outline)}
+body:is([data-joey-simple=true],[data-active-module=workspace]) :is(input,select,textarea){background:var(--mc-charcoal)}
+body:is([data-joey-simple=true],[data-active-module=workspace]) :is(button,summary,select):focus-visible{outline:2px solid var(--mc-cyan)!important;outline-offset:2px}
+#workspace :is(button,summary,select,input,textarea):focus-visible{outline:2px solid var(--mc-cyan)!important;outline-offset:-2px}
+body:is([data-joey-simple=true],[data-active-module=workspace]) :is(.utility-menu>summary,.top-command-nav .mc-button){background:var(--mc-charcoal);color:var(--mc-muted);border-color:var(--mc-outline);border-radius:8px}
+body:is([data-joey-simple=true],[data-active-module=workspace]) :is(.utility-menu .header-tools,.owner-auth-body,.owner-auth-diagnostic){background:var(--mc-charcoal);color:var(--mc-text);border-color:var(--mc-outline)}
+body[data-active-module=workspace] :is(.top-command-nav .line-icon,#data-link-status){color:var(--mc-muted)}
+body[data-active-module=workspace] .top-command-nav .mc-button[aria-current=page]{background:var(--mc-selected);color:var(--mc-cyan);box-shadow:none;border-color:var(--mc-cyan)}
+body[data-active-module=workspace] main{padding:6px}
+#workspace .command-workspace{background:var(--mc-charcoal);border:1px solid var(--mc-outline);border-radius:16px;overflow:hidden}
+#workspace :is(.command-workspace-head,.command-owner-access,.command-owner-access[open]>.owner-auth-body,.command-projects,.command-events,.command-explorer,.command-context,.command-inspector,.command-context .command-changes,.command-inspector-tabs,.command-source-bar){background:var(--mc-charcoal);color:var(--mc-text);border-color:var(--mc-separator)}
+#workspace :is(.command-workspace-head h3,.command-layout h4,.command-work-summary h5,.command-graph>h4,.command-events :is(.owner-task-workflow,.owner-remote-handoff)>h4){color:var(--mc-cyan)}
+#workspace .command-workspace-head{background-image:linear-gradient(90deg,var(--mc-cyan),var(--mc-periwinkle),var(--mc-magenta));background-size:100% 1px;background-position:bottom;background-repeat:no-repeat}
+#workspace :is(.command-workspace-head button,.command-changes button,.command-context-actions button,.remote-handoff-controls button,.command-file-tabs button,.command-evidence-filter select,.command-events select){background:var(--mc-charcoal);color:var(--mc-text);border-color:var(--mc-outline);border-radius:8px}
+#workspace :is(.command-project,.run-workbench-item){background:var(--mc-charcoal);color:var(--mc-text);border-color:var(--mc-outline);border-radius:14px;transition:background-color 160ms ease,border-color 160ms ease,box-shadow 160ms ease}
+#workspace :is(.command-project,.run-workbench-item):hover{background:var(--mc-hover);border-color:var(--mc-muted)}
+#workspace :is(.command-project,.run-workbench-item)[aria-pressed=true]{background:var(--mc-selected);border-color:var(--mc-cyan);box-shadow:inset 2px 0 var(--mc-cyan)}
+#workspace :is(.command-explorer-item,.command-explorer-compare,.command-event,.command-file-tabs button){color:var(--mc-text);transition:background-color 160ms ease,border-color 160ms ease}
+#workspace :is(.command-explorer-item,.command-event,.command-file-tabs button)[aria-pressed=true]{background:var(--mc-selected);border-color:var(--mc-cyan);box-shadow:inset 2px 0 var(--mc-cyan)}
+#workspace :is(.command-event:before,.command-event[aria-pressed=true]:before){background:var(--mc-cyan)}
+#workspace :is(.command-explorer-item:before,.command-source-runtime:before){color:var(--mc-cyan)}
+#workspace .command-inspector-tabs [aria-pressed=true]{background:var(--mc-selected)!important;color:var(--mc-cyan);box-shadow:inset 0 -2px var(--mc-cyan)}
+#workspace .command-mobile-tabs [aria-selected=true]{background:var(--mc-selected);color:var(--mc-cyan);outline:2px solid var(--mc-cyan)}
+#workspace :is(.command-project small,.command-project-session,.command-event small,.command-event-source,.command-explorer-scope,.command-explorer-project,.command-explorer-item small,.command-inspector>p,.command-source-details p,.command-source-details summary,.command-primary-reading,.command-context .command-changes p,.command-work-summary p,.command-work-summary>span,.command-owner-access>summary span,.command-context-actions .source-qualification){color:var(--mc-muted)}
+#workspace :is(.command-work-summary,.command-events :is(.owner-task-workflow,.owner-remote-handoff),.repository-run-card){border-color:var(--mc-separator);background:transparent}
+#workspace :is(.command-events :is(.owner-task-workflow,.owner-remote-handoff)>p,.repository-run-card p,.run-report-notice,.repository-run-card small,.repository-run-reports details){color:var(--mc-muted)}
+#workspace .repository-run-card .run-report-main{color:var(--mc-text)}
+#workspace .command-graph{background:var(--mc-charcoal);border-color:var(--mc-separator)}
+#workspace :is(.command-graph button,.command-graph-group){background:var(--mc-charcoal);color:var(--mc-text);border-color:var(--mc-outline);border-radius:8px}
+#workspace .command-graph button[aria-pressed=true]{background:var(--mc-selected);border-color:var(--mc-cyan);box-shadow:inset 2px 0 var(--mc-cyan)}
+#workspace .command-graph-lines line{stroke:var(--mc-outline)}
+#workspace .command-graph-lines line.is-selected{stroke:var(--mc-cyan)}
+#workspace :is(.command-changes pre,.command-diff-line:before,.command-diff-line[data-diff-kind=metadata]){background:var(--mc-charcoal);color:var(--mc-muted);border-color:var(--mc-separator)}
+#workspace .command-diff-line[data-diff-kind=added]{background:var(--mc-arrival);color:var(--mc-cyan)}
+#workspace .command-diff-line[data-diff-kind=removed]{background:#392a39;color:var(--mc-magenta)}
+#workspace :is(.command-file-breadcrumb,.command-source-bar){color:var(--mc-muted)}
+:where(body[data-joey-simple=true],body[data-active-module=workspace]) :is(.run-workbench-cards,.run-workbench-events,.run-workbench-explorer,.run-workbench-detail,.run-workbench-graph){color:var(--mc-text);border-color:var(--mc-separator)}
+:where(body[data-joey-simple=true],body[data-active-module=workspace]) :is(.run-workbench-limits,.run-workbench-notice,.run-workbench-agent){color:var(--mc-muted)}
+:where(body[data-joey-simple=true],body[data-active-module=workspace]) .run-workbench-graph .run-workbench-item,:where(body[data-joey-simple=true],body[data-active-module=workspace]) .run-workbench-graph-root{border-color:var(--mc-periwinkle)}
+:where(body[data-joey-simple=true],body[data-active-module=workspace]) .run-unread{color:var(--mc-cyan)!important}
+:where(body[data-joey-simple=true],body[data-active-module=workspace]) .run-file-navigation select{background:var(--mc-charcoal);border-color:var(--mc-outline);border-radius:8px}
+:where(body[data-joey-simple=true],body[data-active-module=workspace]) :is(.run-file-item,.run-workbench-item)[data-new-file-observation=true]{border-left-color:var(--mc-magenta)}
+:where(body[data-joey-simple=true],body[data-active-module=workspace]) .run-event-arrived{animation-name:mc-reported-event-arrival}
+@keyframes mc-reported-event-arrival{from{background-color:var(--mc-arrival)}to{background-color:var(--mc-charcoal)}}
+:where(body[data-joey-simple=true],body[data-active-module=workspace]) :is(.run-workbench-card[data-reported-state=blocked],.run-workbench-card[data-reported-state=failed],.run-workbench-attention){border-left-color:var(--mc-magenta);color:var(--mc-magenta)}
+#workspace .run-workbench-card:is([data-reported-state=blocked],[data-reported-state=failed]){border-left-color:var(--mc-magenta)}
+:where(body[data-joey-simple=true],body[data-active-module=workspace]) :is(.selected-task-agent,.selected-task-title){color:var(--mc-text)}
+:where(body[data-joey-simple=true],body[data-active-module=workspace]) :is(.selected-task-brief>small,.selected-task-date,.selected-task-delivery small,.selected-task-delivery dt,.project-handoff-scope>p,.project-handoff-scope>small){color:var(--mc-muted)}
+:where(body[data-joey-simple=true],body[data-active-module=workspace]) :is(.selected-task-delivery,.project-handoff-scope,#workspace .selected-task-brief,#workspace .selected-task-brief .project-handoff-scope){border-color:var(--mc-separator)}
+:where(body[data-joey-simple=true],body[data-active-module=workspace]) .selected-task-disclosure>summary,:where(body[data-joey-simple=true],body[data-active-module=workspace]) .run-event-details>summary,:where(body[data-joey-simple=true],body[data-active-module=workspace]) .run-workbench-history>summary,:where(body[data-joey-simple=true],body[data-active-module=workspace]) .joey-task-history>summary,:where(body[data-joey-simple=true],body[data-active-module=workspace]) .joey-project-details>summary{color:var(--mc-muted);border-color:var(--mc-separator)}
+:where(body[data-joey-simple=true],body[data-active-module=workspace]) :is(.selected-task-disclosure,.run-event-details,.run-workbench-history,.joey-task-history,.joey-project-details){border-color:var(--mc-separator)}
+:where(body[data-joey-simple=true],body[data-active-module=workspace]) :is(.selected-task-brief[data-current-state=blocked],.selected-task-brief[data-current-state=failed]){border-left-color:var(--mc-magenta)}
+:where(body[data-joey-simple=true],body[data-active-module=workspace]) :is(.selected-task-attention,.selected-task-blocker){color:var(--mc-magenta)}
+:where(body[data-joey-simple=true],body[data-active-module=workspace]) .run-workbench-handoff{background:var(--mc-charcoal);color:var(--mc-text);border-color:var(--mc-outline);border-radius:16px}
+:where(body[data-joey-simple=true],body[data-active-module=workspace]) .run-workbench-handoff textarea{background:var(--mc-charcoal);color:var(--mc-text);border-color:var(--mc-outline)}
+:where(body[data-joey-simple=true],body[data-active-module=workspace]) .joey-takeover h2,:where(body[data-joey-simple=true],body[data-active-module=workspace]) .joey-simple-card h3{color:var(--mc-text)}
+:where(body[data-joey-simple=true],body[data-active-module=workspace]) :is(.joey-simple-intro,.joey-takeover label,.joey-simple-version,.joey-simple-progress dt,.joey-simple-runtime,.joey-simple-hint,.joey-live-overview dt,.joey-activity-status,.joey-mobile-activity label,.joey-activity-events time,.joey-activity-events small){color:var(--mc-muted)}
+:where(body[data-joey-simple=true],body[data-active-module=workspace]) :is(.joey-simple-card,.joey-mobile-activity,.joey-simple-technical,.joey-simple-account .owner-auth-entry){background:var(--mc-charcoal);color:var(--mc-text);border:1px solid var(--mc-outline);border-radius:16px;box-shadow:none}
+:where(body[data-joey-simple=true],body[data-active-module=workspace]) .joey-mobile-activity h3{color:var(--mc-cyan)}
+:where(body[data-joey-simple=true],body[data-active-module=workspace]) .joey-mobile-activity>header{border-bottom:1px solid transparent;border-image:linear-gradient(90deg,var(--mc-cyan),var(--mc-periwinkle),var(--mc-magenta)) 1;padding-bottom:10px}
+:where(body[data-joey-simple=true],body[data-active-module=workspace]) :is(.joey-takeover select,.joey-mobile-activity select,.joey-simple-instruction){background:var(--mc-charcoal);color:var(--mc-text);border-color:var(--mc-outline);border-radius:14px}
+:where(body[data-joey-simple=true],body[data-active-module=workspace]) :is(.joey-simple-progress dd,.joey-live-overview dd){color:var(--mc-text)}
+:where(body[data-joey-simple=true],body[data-active-module=workspace]) .joey-live-overview dd[data-joey-overview-field=worker]{color:var(--mc-cyan)}
+:where(body[data-joey-simple=true],body[data-active-module=workspace]) .joey-mobile-activity .selected-task-title-disclosure .selected-task-title{display:-webkit-inline-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;max-width:calc(100% - 16px);vertical-align:top}
+:where(body[data-joey-simple=true],body[data-active-module=workspace]) .joey-mobile-activity .selected-task-title-disclosure[open] .selected-task-title{display:inline-block;-webkit-line-clamp:unset}
+:where(body[data-joey-simple=true],body[data-active-module=workspace]) .selected-task-title-disclosure>summary{display:flex;align-items:flex-start;gap:8px;list-style:none}
+:where(body[data-joey-simple=true],body[data-active-module=workspace]) .selected-task-title-disclosure>summary::marker{content:''}
+:where(body[data-joey-simple=true],body[data-active-module=workspace]) .selected-task-title-disclosure>summary::-webkit-details-marker{display:none}
+:where(body[data-joey-simple=true],body[data-active-module=workspace]) .selected-task-title-disclosure>summary::before{content:'▸';flex:0 0 auto;margin-top:6px;color:var(--mc-muted);line-height:1.4}
+:where(body[data-joey-simple=true],body[data-active-module=workspace]) .selected-task-title-disclosure[open]>summary::before{content:'▾'}
+:where(body[data-joey-simple=true],body[data-active-module=workspace]) .selected-task-title-disclosure .selected-task-title{flex:1;min-width:0}
+body[data-joey-simple=true] .joey-simple-primary{background:#fff;color:#0b0b0b;border:1px solid #fff;border-radius:14px;box-shadow:none}
+:where(body[data-joey-simple=true],body[data-active-module=workspace]) .joey-simple-version[data-candidate=true]{background:var(--mc-selected);color:var(--mc-magenta);border:1px solid var(--mc-periwinkle);border-radius:14px}
+:where(body[data-joey-simple=true],body[data-active-module=workspace]) :is(.joey-workspace-secondary,.joey-simple-select-all,.joey-activity-open){background:var(--mc-charcoal);color:var(--mc-muted);border:1px solid var(--mc-outline);border-radius:14px;box-shadow:none}
+:where(body[data-joey-simple=true],body[data-active-module=workspace]) :is(.joey-activity-events li,.joey-document-details,.joey-report-details,.repository-run-reports){border-color:var(--mc-separator)}
+:where(body[data-joey-simple=true],body[data-active-module=workspace]) :is(.joey-document-details,.joey-report-details,.joey-simple-technical)>summary{color:var(--mc-muted)}
+:where(body[data-joey-simple=true],body[data-active-module=workspace]) .repository-run-card{border-color:var(--mc-outline);border-radius:14px;color:var(--mc-text)}
+:where(body[data-joey-simple=true],body[data-active-module=workspace]) .repository-run-card :is(small,.run-report-main){color:var(--mc-muted)}
+:where(body[data-joey-simple=true],body[data-active-module=workspace]) .repository-run-card[data-run-freshness=STALE]{border-color:var(--mc-magenta)}
+:where(body[data-joey-simple=true],body[data-active-module=workspace]) .repository-run-card[data-run-freshness=STALE] .run-report-main{color:var(--mc-magenta)}
+:where(body[data-joey-simple=true],body[data-active-module=workspace]) .repository-run-reports a{color:var(--mc-cyan)}
+@media(prefers-reduced-motion:reduce){#workspace :is(.command-project,.run-workbench-item,.command-explorer-item,.command-event,.command-file-tabs button){transition:none}.run-event-arrived{animation:none}}
 @media(max-width:640px){.new-project-panel{padding:15px}.new-project-form,.new-project-options-grid{grid-template-columns:1fr}.new-project-form input,.new-project-form select,.new-project-form textarea{font-size:16px}.new-project-readiness dl{grid-template-columns:1fr;gap:5px}.new-project-readiness dd{margin-bottom:10px}.new-project-actions{flex-direction:column}.new-project-actions button{flex:auto;width:100%}}

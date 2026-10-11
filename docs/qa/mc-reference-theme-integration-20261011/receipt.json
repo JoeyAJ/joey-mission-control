@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "qualification": "SOURCE_INTEGRATED_SYNTHETIC_VERIFIED_OWNER_SERVED_PENDING",
+  "checkedAt": "2026-10-11T10:29:37.902Z",
+  "baselineSha": "c26e1e9e17411b63240514cf0503cf7ac7566f0e",
+  "sourceDeliverySha": "cc174c4f426c2a8994f948fafd42531b41b40f30",
+  "sourceFilesMatchedExactly": 5,
+  "reviewerRuntimeSha": "d46da151a9932fe24481cd6a392a7766a3194159",
+  "reviewerFixCodeAndGeneratedBundleUnchanged": true,
+  "verification": {
+    "portableTests": 843,
+    "failures": 0,
+    "buildValidateCheck": "PASS",
+    "forbiddenWorkstationAttempts": 0,
+    "browserCases": {
+      "disclosureTheme": 6,
+      "reportedEventMotion": 6,
+      "delivery": 6,
+      "fileNavigation": 6,
+      "cancelPrivacy": 2,
+      "prCiPrivacyAndSourceRace": 8,
+      "cloudTask": 4,
+      "simpleTakeover": 4,
+      "trueContinue": 12
+    },
+    "browserTotal": 54,
+    "externalRequests": 0,
+    "unexpectedWrites": 0,
+    "intendedSyntheticTaskWrites": 16,
+    "actualAppOfficialSdk": true,
+    "actualOwnerAuth": false,
+    "actualProviderHttp": false,
+    "minimumSampledTextContrast": 8.747271600130002,
+    "minimumSampledControlBorderContrast": 9.653270812878997,
+    "minimumMobileDisclosureHeight": 44,
+    "reportBoundMotion": true,
+    "reducedMotionSuppressed": true,
+    "currentRootGuard": "PASS",
+    "currentRootGuardGroups": 10
+  },
+  "reportPreflight": {
+    "pass": true,
+    "schema": "Draft2020-12_WITH_FORMAT_CHECKER",
+    "reviewFixTerminalSequence": 2,
+    "immutableHeaderAndStart": true,
+    "reviewFixTerminalBlob": "ab45e9403d78e619f0b0775082fdfbd23f7ed79b",
+    "originalTwentyAndPriorPageTwoBlobCount": 21,
+    "oldReportBlobsUnchanged": true,
+    "paletteStartSequence": 1,
+    "paletteStartCommit": "ce331a660f1e4df2a52073ddcf137a93959faa80",
+    "paletteStartBlob": "f52c1088afd8f6fb6d70ab6aa19554466ddab252"
+  },
+  "run": {
+    "runId": "codex-mc-reference-palette-20261011",
+    "predecessorRunId": "codex-mc-pr-ci-privacy-source-20261011",
+    "state": "VERIFIED_PROGRESS_SEQUENCE2",
+    "path": ".mission-control/runs-page-2/codex-mc-reference-palette-20261011.json",
+    "sequence": 2,
+    "reportCommitSha": "43955df892fec0a7c198adff55f51d185fc44959",
+    "blobId": "f6c34f24ead04c1fec5e955dd6ac81c93719a836"
+  },
+  "publication": {
+    "state": "PENDING",
+    "projectId": "prj_X67htPw7vkRI2tuf8817vOUCGQOD",
+    "fixedPreview": "https://joey-mission-control-git-codex-mc-comma-fceec2-joeyajs-projects.vercel.app/",
+    "servedCheckedSha": null
+  },
+  "remaining": {
+    "ownerCloudSaveReload": "PENDING_ACTUAL_SIGNED_HTTP",
+    "runtimePrCiPermissions": "UNKNOWN",
+    "matchingCompletedCloudTaskReport": "ABSENT_LEGACY_IDS_NOT_REASSIGNED",
+    "joeyFinalAppearanceAcceptance": "PENDING"
+  },
+  "preserved": {
+    "sourceScopesCandidateQualification": true,
+    "taskDraftActivation": "ON_EXISTING_APPROVED",
+    "reportContractsChanged": false,
+    "rawPrivateReferencesCommitted": false,
+    "sqlAuthSessionSecretsGrantsChanged": false,
+    "productionOtherRepositoryChanged": false,
+    "modelAwsDispatchMergeExecutorAdded": false
+  }
+}

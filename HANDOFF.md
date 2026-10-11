@@ -1,19 +1,19 @@
-# Current PR/CI reviewer corrections — 2026-10-11
+# Current reference palette integration — 2026-10-11
 
 Project: MISSION_CONTROL
-Timestamp: 2026-10-11T10:13:53.295Z
-Task: Quoted credential label privacy and delayed canonical source correlation
-Status: LOCAL_VERIFIED_PARENT_READ_PREVIEW_PUBLISHED
+Timestamp: 2026-10-11T10:29:37.902Z
+Task: Authorized pixel-inspected palette integration after PR/CI reviewer fixes
+Status: LOCAL_VERIFIED_PENDING_PUBLICATION
 Last Developer: Codex
 Executed by: Codex
 Actual Model: UNKNOWN
-Baseline: 95d850f6779089cd6e6d61863c7079e8065cdcf1
+Baseline: c26e1e9e17411b63240514cf0503cf7ac7566f0e
 
-Reuse task quoted-key privacy guard in provider redaction and client label/context-ID validation. PR-CI needs current connected FOUND project/track/repo/ref/HEAD equal to captured and returned binding; source reading/change invalidates pending reads, including change-and-return and final Owner await. No stale result or legacy fallback. Exact-code/report/private Owner scope retained.
+Only named cc174c4 five-file source delivery integrated: charcoal/cyan/periwinkle/magenta, white primary action, rounded cards; report-ID-bound arrival and reduced motion retained. Quoted-key privacy and post-await current FOUND source tuple/generation corrections remain unchanged. Candidate qualification, fresh Continue/history/reload, task/draft activation and bounded report contracts preserved.
 
-Synthetic focused29 and actual-app privacy/source-race8 PASS; portable843 and fixed Preview d46da15 READY proof in docs/MC_PR_CI_REVIEW_FIXES_20261011.md. Prior exact root prefix is preserved there. Original terminal runs/history remain; new BUGFIX run uses page2 and prior PR-CI predecessor. Existing tasks/drafts ON, candidate acceptance pending, unsigned sources UNKNOWN. SQL/Auth/permissions/secrets/Production/other repo/AWS/model/dispatch unchanged.
+Portable843/build/validate/check and54 synthetic actual-app browser cases PASS; minimum sampled text contrast8.74, mobile disclosure44px, external/unexpected writes0. Actual Owner HTTP/device/appearance and runtime GitHub channel permissions remain pending. Original reports/terminal runs unchanged; new receiving-Agent palette run is page2 with prior bugfix predecessor. Prior current root prefix preserved byte-for-byte in docs/MC_REFERENCE_THEME_INTEGRATION_20261011.md; dated history below unchanged.
 
-Next Action: use docs/MC_OWNER_PR_CI_ONE_SCREEN_TEST_20261011.md. Cloud save/reload is independent; MC legacy reports have no compatible task ID. Live runtime GitHub permission and actual Owner acceptance remain unverified; CONNECT403 is not permission proof. No new grant or bypass.
+Next Action: exact fixed Preview publication, then docs/MC_OWNER_CLOUD_SAVE_ACCEPTANCE_20261011.md save/reload only. No compatible completed cloud task run exists for MC legacy IDs; do not click disabled PR/CI or rewrite reports. SQL/Auth/secrets/grants/Production/other repo/AWS/model/dispatch unchanged. CONNECT403 is not bypassed. Do not recreate rejected VM artifacts.
 
 # Dated prior stage history
 
