@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "task": "mc-existing-project-task-20261011",
-  "status": "APPROVED_TASK_SQL_APPLIED_AND_SERVER_ACTIVATED",
+  "status": "AUTHORIZED_INCREMENT_CODING_COMPLETED_DELIVERY_INCOMPLETE_SERVED_OWNER_PENDING",
   "approval": {
     "approvedAt": "2026-10-11T08:39:39Z",
     "response": "允許",
@@ -111,11 +111,27 @@
     "qa": "../../../qa/mc-task-activation-capacity-20261011/verification.json"
   },
   "run": {
-    "sequence": 5,
-    "reportCommitSha": "e1aa802895ae5d1825bce50d80f898942b526469",
-    "fileSha": "d35159ff6291e68f5c1a997db5e36bd90f6992b6",
-    "terminal": false,
-    "baselineAndPriorEventsPreserved": true
+    "schemaVersion": 1,
+    "reportCommitSha": "0cd55d3e3235951325a6765a2b5443bf9074092c",
+    "fileSha": "66b740d2e704efd29a3c420332cd206a03288efb",
+    "sequence": 6,
+    "bytes": 14274,
+    "baselineAndStartedAndPriorEventsPreserved": true,
+    "externalDraft202012WithFormatChecker": "PASS",
+    "pinnedRepositoryProfile": "PASS_NOT_SERVER_ACCEPTANCE",
+    "exactRemoteBlob": true,
+    "terminal": true,
+    "coding": "REPORTED_COMPLETED",
+    "delivery": "REPORTED_INCOMPLETE",
+    "data": "APPLIED",
+    "servedCheckedSha": null,
+    "liveTotalFiles": 20,
+    "unchangedOtherHistoricalBlobs": 19,
+    "ownRunOnlyAuthorizedAppends": true,
+    "livePageTwoReportsWritten": 0,
+    "historyRotated": false,
+    "runId": "codex-mc-existing-project-task-20261011",
+    "originalBaseline": "95e60d8dd1a4081c6ed20d138cb128e8b85a24a5"
   },
   "previewFunctionalCheckpoint": {
     "id": "dpl_8MCejUP3pN7kiMWddp1aJj1WEwxY",
@@ -137,5 +153,64 @@
     "httpStatus": "000",
     "checkedSha": null,
     "bypass": false
-  }
+  },
+  "runtimeCodeSha": "86c07ddbcd8848ae5424e6d54202d32b11769586",
+  "preview": {
+    "id": "dpl_7DkqwRjyD2RYSRy6y46HdLuYAtLR",
+    "sha": "86c07ddbcd8848ae5424e6d54202d32b11769586",
+    "readyState": "READY",
+    "projectId": "prj_X67htPw7vkRI2tuf8817vOUCGQOD",
+    "target": null,
+    "alias": [
+      "joey-mission-control-git-codex-mc-comma-fceec2-joeyajs-projects.vercel.app"
+    ],
+    "observedAt": "2026-10-11T09:13:39.903Z",
+    "aliasIndependentIdMatch": true,
+    "remoteExactSha": true
+  },
+  "served": {
+    "status": "BLOCKED",
+    "reason": "CONNECT403_BEFORE_APP",
+    "checkedAt": "2026-10-11T09:13:40.662Z",
+    "curlExitCode": 56,
+    "httpStatus": "000",
+    "checkedSha": null,
+    "bypass": false
+  },
+  "capacity": {
+    "directories": [
+      ".mission-control/runs",
+      ".mission-control/runs-page-2"
+    ],
+    "perPage": 20,
+    "total": 40,
+    "maxReportBytes": 16384,
+    "maxEvents": 64,
+    "replyByteBound": 741376,
+    "continuationByteBound": 131072,
+    "fullInstructionByteBound": 262144,
+    "uiRowsPerPage": 20,
+    "completeScanRequired": true,
+    "taskFilterAfterFullScan": true,
+    "liveFiles": 20,
+    "livePageTwoReportsWritten": 0,
+    "unchangedOtherHistoricalBlobs": 19,
+    "ownRunOnlyAuthorizedAppends": true,
+    "historyRotated": false,
+    "newRun21PageTwo": "PASS_REAL_SYNTHETIC_BARE_GIT",
+    "newRun21Visible": "PASS_SYNTHETIC_APP_BROWSER",
+    "newScopeCredentialGrant": false
+  },
+  "productionUnchanged": {
+    "id": "dpl_5GgJ8LhD4Ec73RGz9CEFe1ppZQnh",
+    "sha": "8b4945b16a0b23f2e72033aa976fa34f94eabec0",
+    "connectedReadyCheck": true
+  },
+  "completedAt": "2026-10-11T09:17:04.231Z",
+  "remaining": [
+    "ordinary served HTTPS CONNECT403; no bypass",
+    "actual Owner signed JWT/task save/reload/device acceptance pending",
+    "reference palette/layout pending supported image inspection",
+    "broader PR/CI/decision/merge workflow remains separately scoped"
+  ]
 }

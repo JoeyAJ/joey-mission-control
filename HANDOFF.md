@@ -1,10 +1,10 @@
 # Mission Control — approved private tasks and bounded report capacity
 
 Project: MISSION_CONTROL
-Timestamp: 2026-10-11T09:10:03Z
+Timestamp: 2026-10-11T09:17:04.231Z
 Task: Approved existing-project task persistence and bounded reporting maintenance
 Status: LOCAL_VERIFIED_CLOUD_EVENTS_NOT_ENABLED
-DeliveryQualification: TASK_RPC_AND_REPORT_CAPACITY_AND_REVIEWED_UI_VERIFIED_PUBLICATION_PENDING
+DeliveryQualification: AUTHORIZED_INCREMENT_CODING_COMPLETE_PREVIEW_READY_SERVED_OWNER_PENDING
 Last Developer: Codex
 Executed by: Codex
 Actual Model: UNKNOWN
@@ -14,9 +14,13 @@ Joey separately approved task storage at2026-10-11T08:39:39Z. Exact9758-byte SQL
 
 Reporting now supports exactly .mission-control/runs/ and .mission-control/runs-page-2/,20/page40total on existing mc/progress;16KiB/run64events unchanged. Fresh pinned HEAD and both complete inventories/full blob-schema-prefix-predecessor verification required; no silent truncation/history deletion/rotation/new token/source grant. UI20/page retains full reader state, new21 visible; task copy filters only after full scan and discloses coverage/totals. Strict reply741376/report packet131072/full UTF8 instruction262144 bytes. Immutable cache80x16KiB5min scoped to credential digest/repo/path/blob, always reread HEAD+both listings, no Auth/outage fallback. Bare-Git21/cross-page append/predecessor/original20-blobs unchanged PASS; actual-app21-to22 pagination/task coverage/outage/pending-scope privacy4 widths PASS. Cloud task browser4 widths PASS incl save-reload/fixedID/conflict/unchanged-remote edits/lostack-no-duplicate/candidate separation/logout/outage;16 intended synthetic writes, zero unexpected/external. True Continue12 and existing cloud project draft4/16 intended writes PASS. Full portable831/build/portable validate/check PASS, forbidden workstation attempts0; publication receipt follows.
 
-Own v2 FEATURE run codex-mc-existing-project-task [suffix: 20261011] stays OPEN progress5, report commite1aa802895ae5d1825bce50d80f898942b526469/blobd35159ff6291e68f5c1a997db5e36bd90f6992b6. Original95e60d8 registration baseline/started/prior events immutable; continue same run, no second run created. Live history remains20 physical files; no page2 report written by this task.
+Own v2 FEATURE run codex-mc-existing-project-task [suffix: 20261011] terminal6 completed coding, delivery REPORTED_INCOMPLETE/data APPLIED, report commit0cd55d3e3235951325a6765a2b5443bf9074092c/blob66b740d2e704efd29a3c420332cd206a03288efb,14274bytes. Original95e60d8 registration baseline/started/all5 prior events immutable; exact remote/blob/profile/external Draft2020-12 formats PASS. Do not append after terminal. Live20 files/19 other historical blobs unchanged, only own authorized appends; no page2 live write/rotation.
 
 Named UI commit5e3ee061fb4f8291419039d7911d19b4e4a8438a integrated ONLY after parent-authorized source-only private Git push/exact remote readback. Sole writer fetched verified SHA/cherry-picked this commit, retained current task/storage/capacity sources, regenerated Owner client to resolve its only conflict. Prior Library two download failures are historical; no URL fallback/retry. UI disclosure6/delivery6/file navigation6/follow6/privacy2 PASS, source Continue12/cloud task4/capacity4 PASS; full portable831/build/validate/check PASS after integration. Compact selected task, full tap/keyboard title/evidence/next/history, visible project blockers, scoped transient open/focus and refusal clearing; palette/reference match remains pending. Source/owner/private details remain private, zhTW default, candidateJoeyAcceptancePending/unsigned times UNKNOWN/Nex CI unrepaired. No Production/other repo/Auth/secrets/new Agent grants/AWS/model selector/direct dispatch/merge/external message. Fixed Preview remote exactSHA/READY verification and terminal closure follow; ordinary CONNECT403 cannot be bypassed, servedCheckedSha=null/Owner acceptance pending. See docs/MC_TASK_ACTIVATION_AND_REPORT_CAPACITY_VERIFICATION_20261011.md and development-tasks-activation-20261011.json receipt.
+
+## Current runtime publication and closure
+
+Runtime86c07ddbcd8848ae5424e6d54202d32b11769586 exact canonical remote and fixed Preview dpl_7DkqwRjyD2RYSRy6y46HdLuYAtLR READY; alias and independent ID match2026-10-11T09:13:39.903Z. Ordinary GET09:13:40.662Z curl56/CONNECT403/HTTP000 before app; servedCheckedSha=null/no bypass. Post-integration portable831/build/validate/check,54 synthetic browser cases and current root safe-content/source20 PASS. Approved task capability ON after exact live rollback gates, no fixtures/Auth changes. Existing project drafts ON unchanged. Sole-writer UI named5e3ee06 integrated after exact private Git verification, regenerated Owner bundle; Library failures historical/source delivery resolved, palette/reference matching still pending. Current Production remainsdpl_5GgJ8LhD4Ec73RGz9CEFe1ppZQnh/8b4945b16a0b23f2e72033aa976fa34f94eabec0. This increment's authorized code/test/push/same Preview/report/handoff completed; actual signed Owner task save-reload/device acceptance and broader8-step PR-CI/decision/merge goal remain pending. Closing receipt docs/contracts/repository-reporting/receipts/development-tasks-activation-20261011.json; QA docs/qa/mc-ui-integration-20261011/verification.json. Receipt-only final source publication will be checked independently; no runtime changes or post-terminal append.
 
 # Historical pre-activation capacity checkpoint
 
