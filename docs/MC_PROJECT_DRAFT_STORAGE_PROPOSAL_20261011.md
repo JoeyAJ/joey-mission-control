@@ -1,0 +1,17 @@
+# Private new-project draft persistence — pending approval
+
+Target: existing Supabase `scmvedfqwlhkyvljymjj`. Status: REVIEW_ONLY_NOT_APPLIED. No SQL was executed and no cloud save is implemented or claimed.
+
+The functional Preview fallback keeps drafts in authenticated memory, downloads a private JSON file and imports it after reload. This is incomplete end-to-end onboarding: it does not provision a repo, save to cloud, establish a new source/report grant or formally register a project.
+
+Review [the exact pending transaction](contracts/sql/private-project-drafts.pending.sql). It adds only `mc_private.project_drafts`, two restricted private helpers and public `mc_owner_project_draft_list()`, `mc_owner_project_draft_save(jsonb,bigint)`, `mc_owner_project_draft_delete(text,bigint)`. Actor is derived from the existing exact Owner/AAL2/live-session verifier and active NEXAEON Owner membership; callers cannot select an owner. No new token, login, service-role browser/server credential, bucket or paid service is requested.
+
+Rows are owned by the existing restricted executor; RLS is enabled and forced. PUBLIC/anon/authenticated/service_role receive no table or private-helper access. Only authenticated receives EXECUTE on the three new RPCs, which independently enforce Owner, AAL2, current real session and membership before and after work. Existing verifier/helper privileges stay unchanged. New drafts have at most 12 rows per Owner and 98,304 UTF8 bytes (96 KiB) per canonical JSON payload; changes/deletes require expected revision. One per-Owner transaction lock enforces the concurrent count and CAS budget. Imports carry neither source nor readiness authority.
+
+The transaction uses the existing installation protocol: temporarily allow postgres to SET the restricted executor and grant it schema CREATE, create new objects as executor, then revoke schema CREATE and restore SET FALSE before COMMIT. Preconditions require the current restricted role/ACL and absent new objects; any failure rolls back. This transient protocol is included in the requested approval. It does not grant a new login role, bypass RLS or change membership/data/old RPCs. Rollback drops only the six new objects after separately approving draft deletion.
+
+Before activation: independently review SQL syntax and deployed helper/role ACLs; run the proposal in an isolated approved database with foreign/anonymous/AAL1/expired/revoked/forged actor tests, 13th-row/UTF8 overflow and concurrent stale-revision tests. Then approve this exact target and transaction before applying it. This draft has been reviewed as source; no provider execution or database security PASS is represented. The SQL URL validator intentionally accepts only ordinary HTTPS DNS hostnames and no query/hash/credentials; canonical JavaScript validation remains required at the future server boundary.
+
+After explicit activation approval and provider verification, a separate bounded change can add a same-origin Owner draft transport, fresh-before/after reads/writes, session/generation invalidation, CAS conflict UI and real cloud-save receipts. Until then the deployed form must continue showing cloud saving unavailable.
+
+New repository source/report scope is a separate named approval: exact project ID, private repo, development ref, canonical paths and `mc/progress` write scope. Existing five scopes do not authorize new repo provisioning or MC registration.

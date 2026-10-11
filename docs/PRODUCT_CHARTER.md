@@ -1,3 +1,5 @@
+> New-project checkpoint 2026-10-11: Owner idea/PRD form, private session draft/download/import and full canonical bootstrap are locally verified. This is incomplete end-to-end onboarding: cloud draft persistence requires the unactivated [exact SQL/ACL proposal](MC_PROJECT_DRAFT_STORAGE_PROPOSAL_20261011.md); new repo/source/report scope and formal registration remain pending named approval. Existing five scopes/Owner QA remain accepted. No SQL was applied.
+
 > Current status: [single acceptance summary](MC_CURRENT_ACCEPTANCE.md). Actual MC receiving-Agent reports and five additional scope Owner QA have passed; do not reset them to MC-only or disconnected. Final product acceptance remains with Joey.
 
 # Mission Control product contract

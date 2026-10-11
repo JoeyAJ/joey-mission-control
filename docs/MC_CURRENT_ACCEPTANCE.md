@@ -1,3 +1,5 @@
+> New-project checkpoint 2026-10-11: Owner idea/PRD form, private session draft/download/import and full canonical bootstrap are locally verified. This is incomplete end-to-end onboarding: cloud draft persistence requires the unactivated [exact SQL/ACL proposal](MC_PROJECT_DRAFT_STORAGE_PROPOSAL_20261011.md); new repo/source/report scope and formal registration remain pending named approval. Existing five scopes/Owner QA remain accepted. No SQL was applied.
+
 # Mission Control — current acceptance summary
 
 Updated 2026-10-10. Static design was explicitly not accepted at 22:53:58 UTC; bounded dynamic workbench stages are implemented and locally verified; current publication is recorded in HANDOFF, see [implementation plan](MC_DYNAMIC_WORKBENCH_PLAN_20261010.md). Read HANDOFF first, then PRODUCT_CHARTER. This is the single current acceptance summary; dated checkpoints elsewhere retain history and do not reset these verified facts.

@@ -75,7 +75,7 @@ export function mountJoeyTakeover({doc=document,project='NEXAEON',track='BASELIN
  function update(next={}){
   if(disposed)return;const changed=next.project&&next.project!==project||next.track&&next.track!==track;if(changed){generation++;busy=false;clearResult();view=null;reportView=null;selectedTask=null;technical.open=false;documentDetails.open=false;reportDetails.open=false;}
   project=next.project||project;track=project==='JOEY_ASSET_SYSTEM'&&next.track==='UNIVERSITY_CANDIDATE'?'UNIVERSITY_CANDIDATE':'BASELINE';locale=next.locale||locale;
-  owner=mountOwnerBrowserEntry({doc,projectId:project,track,locale});accountHost.append(owner);const c=owner.sourceController;
+  owner=mountOwnerBrowserEntry({doc,projectId:project,track,locale});accountHost.append(owner);if(owner.newProjectSource)select.after(owner.newProjectSource);const c=owner.sourceController;
   if(c!==controller){unsubscribe?.();controller=c||null;unsubscribe=c?.subscribe(value=>{view=value;if(value.status!=='connected'||value.observation?.status!=='FOUND')clearResult();paint();});authObserver.disconnect();authObserver.observe(owner,{attributes:true,subtree:true,attributeFilter:['data-owner-auth','data-owner-aal','disabled']});}
   const rc=owner.repositoryRunsController;if(rc!==reportController){reportUnsubscribe?.();reportController=rc||null;reportView=null;reportUnsubscribe=rc?.subscribe(value=>{reportView=value;paint();});}
   if(owner.remoteHandoffSource)technical.append(owner.remoteHandoffSource);if(owner.repositoryRunsSource)runsHost.append(owner.repositoryRunsSource);paint();

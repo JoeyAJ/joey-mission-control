@@ -1,4 +1,32 @@
-# Mission Control — shared selected-task focus and project handoff
+# Mission Control — new-project draft and bootstrap handoff
+
+Project: MISSION_CONTROL
+Timestamp: 2026-10-11T06:27:44.275Z
+Task: Owner new-project idea, private session draft and canonical bootstrap
+Status: LOCAL_VERIFIED_CLOUD_EVENTS_NOT_ENABLED
+DeliveryQualification: LOCAL_ONBOARDING_FALLBACK_CLOUD_STORAGE_PENDING_APPROVAL
+Last Developer: Codex
+Executed by: Codex
+Actual Model: UNKNOWN
+Baseline: 09d39f23a0fcf528aabd6e7d1f4f7623fdba481c
+
+## Current new-project checkpoint
+
+Joey requested this feature at2026-10-11T03:58:16Z and authorized recovery at06:08:50Z. The replacement environment had only clean old32b77ee; unpublished52dfceb2/tree d051ff52 were unavailable/404. Verified remote09d39f23 and fixed Preview dpl_Wza6pjSBtFUNeDcCqJphXwVhSj44 READY before restoring the latest branch. No residual writer, new credential or Joey installation. Rebuilt the feature from the retained specification; dated earlier results are not represented as recovered code.
+
+Owner can open 新增專案, paste the full idea/PRD, optionally add acceptance/repo/environment/deployment details, keep a versioned private session draft, download/import it, and download/copy a complete six-file canonical bootstrap with Mission #001 and honest UNKNOWN execution signature. Multiple draft cards show project, task, unstarted Agent, pending status and editing action with optional details. Unsaved edits cannot produce stale exports. Default zhTW, en and preserved locale switching; new Korean copy is partial with English fallback. Palette work remains deferred.
+
+This fallback is incomplete end-to-end onboarding: cloud save, repo provisioning, new source/report grants and formal registration remain unconnected. The form explicitly says session-only and instructs private download before reload/logout. Full PRD is in both packet and copy. Only exact current Owner/AAL2/live membership can use drafts; fresh capabilities/source reads and post-await generation/session checks prevent late response resurrection. Logout/expiry/revocation clears drafts and private DOM. No private draft enters URL or browser storage. Existing repo overlap requires its existing entry and can never establish a new registered project; typed repo/URL grants no access.
+
+Fresh reconstructed portable784/build/validate/check PASS, forbiddenAttempts0. Focused18 PASS and actual app/official SDK synthetic onboarding375/390/430/1440 PASS, external0/writes0. Includes download/import/reload, full packet/copy/manual fallback, two drafts, locale preservation, fresh existing HEAD change/outage, expiry/revocation and pending capability logout. Prior original takeover/Continue/shared-brief regression matrices will be rerun before final closure. Synthetic upstream evidence is separate from served Owner/device acceptance.
+
+Pending proposal: docs/MC_PROJECT_DRAFT_STORAGE_PROPOSAL_20261011.md and docs/contracts/sql/private-project-drafts.pending.sql. Exact existing Supabase target scmvedfqwlhkyvljymjj; one Owner-only draft table, three authenticated RPCs, forced RLS, existing exact Owner/AAL2/session helper, CAS, max12 drafts and98304 UTF8 bytes (96KiB). SQL and ACL are review-only, not applied. No SQL/key/service-role/bucket/paid resource or existing data change. Parent approval is required before activation. New repo read/report scope needs a separate exact named approval.
+
+Own run codex-mc-project-onboarding-20261011 keeps original09d39f23 baseline and immutable started1/progress2 (04:13:29.290Z /04:15:43.798Z), report blobc1119f77fa1dc7b8230864bbe06aeaff10ba34c1. Recovery progress and terminal follow actual checks; do not create a replacement run or rewrite its history. Earlier progress used imprecise98KiB; actual limit is96KiB.
+
+Five connected scopes and previous Owner QA remain accepted. Continue repairs stay intact; University candidate remains JoeyAcceptancePending, unsigned source/document times remain unknown, Nex CI remains unrepaired. No Production/other-repo/SQL activation/secrets/permissions/AWS/model-selection/dispatch actions. Do not recreate the rejected VM operational artifacts. Next: finish regression checks, publish exact current branch to the same fixed Preview, verify remote fullSHA/READY/alias, append bounded own report and close current handoff with actual served limitations.
+
+# Historical shared selected-task checkpoint
 
 Project: MISSION_CONTROL
 Timestamp: 2026-10-11T03:55:05.849Z
