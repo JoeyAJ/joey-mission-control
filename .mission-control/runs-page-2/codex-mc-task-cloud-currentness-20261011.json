@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "mc.repository-run.v2",
+  "taskKind": "BUGFIX",
+  "projectId": "MISSION_CONTROL",
+  "track": "BASELINE",
+  "runId": "codex-mc-task-cloud-currentness-20261011",
+  "predecessorRunId": "codex-mc-task-requirements-20261011",
+  "taskId": "mc-task-cloud-currentness-20261011",
+  "featureTitle": "Repair per-task cloud conflicts and cloud-backed CI/handoff deactivation races after independent review",
+  "agentName": "Codex",
+  "provider": null,
+  "model": null,
+  "repositoryId": "JoeyAJ/joey-mission-control",
+  "reportRef": "mc/progress",
+  "workRef": "codex/mc-command-center-checkpoint-20261006",
+  "baseline": {
+    "ref": "codex/mc-command-center-checkpoint-20261006",
+    "commitSha": "62615bf0054049f093bf70bc4796e8c5dc3ad90b",
+    "handoffPath": "HANDOFF.md",
+    "handoffDigest": "665919b50e7f856ad3ea25e58580a0794037c7d07e512453ca97416766211950",
+    "contextPaths": [
+      "README.md",
+      "docs/PRODUCT_CHARTER.md",
+      "docs/MC_PHASE_PLAN.md",
+      "docs/STAGE_HANDOFF_TEMPLATE.md"
+    ]
+  },
+  "events": [
+    {
+      "id": "started-task-cloud-currentness",
+      "sequence": 1,
+      "eventAt": "2026-10-11T12:48:10Z",
+      "kind": "started",
+      "summary": "Receiving the independent review defects at62615bf: selected-task conflict overwritten by another changed task, and cloud-backed pending CI incorrectly downgraded after200 NOT_CONNECTED. Reproduced failing actual-controller test; repairing with activation/SQL unchanged.",
+      "result": null,
+      "delivery": null
+    }
+  ]
+}
