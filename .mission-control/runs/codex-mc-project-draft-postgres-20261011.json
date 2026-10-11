@@ -34,6 +34,15 @@
       "summary": "Check existing local runtime and verify draft SQL in isolated official PostgreSQL with synthetic identities. Existing Docker available, no cached PostgreSQL; official digest fixed. No live Supabase request, credential, SQL or activation; flag remains OFF.",
       "result": null,
       "delivery": null
+    },
+    {
+      "id": "draft-postgres-approved-checkpoint-2",
+      "sequence": 2,
+      "eventAt": "2026-10-11T07:26:02.889Z",
+      "kind": "progress",
+      "summary": "Joey exact SQL approval07:05:55Z received; proposal1dc75176 installed unchanged on existing Supabase. Native PG17.11 thirteen groups and rollback-only live Owner-metadata RPC/parity28 checks PASS; old8 tables/16 helpers/ACLs/role grants unchanged, zero retained test rows. Server activation ON; dirty-refresh bug fixed. Portable805/focused39/source46/cloud4/Continue12 PASS. Actual Owner signed-JWT/HTTP acceptance still unverified; no dispatch/Production/AWS/new source.",
+      "result": null,
+      "delivery": null
     }
   ]
 }
