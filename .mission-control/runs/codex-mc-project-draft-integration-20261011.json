@@ -34,6 +34,15 @@
       "summary": "Implement dormant same-origin Owner draft API and cloud UI CAS/isolation tests. Reviewed activation proposal remains NOT_APPLIED; existing draft fallback and five scopes preserved.",
       "result": null,
       "delivery": null
+    },
+    {
+      "id": "draft-integration-checkpoint-2",
+      "sequence": 2,
+      "eventAt": "2026-10-11T06:57:02.049Z",
+      "kind": "progress",
+      "summary": "Dormant Owner list/save API and cloud frontend wired; activation OFF and no SQL executed. Reviewed expiry milliseconds, exact replay, no hard delete and canonical URL parity fixed. Portable804/build/validate/check, focused38, cloud4/fallback4/Continue12/simple4/brief6 PASS. Source c9ae949 pushed, fixed Preview READY exactSHA. Scoped SQL proposal fingerprint1dc75176 requires explicit approval before activation; new repo scope separate.",
+      "result": null,
+      "delivery": null
     }
   ]
 }
