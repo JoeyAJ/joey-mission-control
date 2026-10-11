@@ -34,6 +34,15 @@
       "summary": "Default phone selected task/events differ from project-wide Agent/result/handoff areas. Unify selected-run focus with dated status/delivery/next steps before history in phone and desktop; separately label fresh current-project handoff. Existing source/copy/continuity gates remain. Shell Git credential invalid; connected GitHub read verifies exact latest baseline, existing authorized API transport will be used without new credentials.",
       "result": null,
       "delivery": null
+    },
+    {
+      "id": "tested-brief",
+      "sequence": 2,
+      "eventAt": "2026-10-11T03:33:04.915Z",
+      "kind": "progress",
+      "summary": "Shared selected-run brief now shows full task, dated state, v2/v3 delivery gaps and recorded next step before history; fresh current-project handoff is separate. Portable766/build/check PASS, focused18, brief6 locales/devices, actual-byte continuity2, file2, simple4 and Continue12 PASS, external0/writes0. No schema/transport/credentials changes; connected GitHub publication follows.",
+      "result": null,
+      "delivery": null
     }
   ]
 }
