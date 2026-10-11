@@ -3,7 +3,7 @@
 Project: MISSION_CONTROL
 Timestamp: 2026-10-11T09:45:26.058Z
 Task: Existing task / Agent report / exact-commit PR-CI inspection
-Status: LOCAL_VERIFIED_PENDING_PUBLICATION
+Status: LOCAL_VERIFIED_PUBLISHED_PREVIEW_OWNER_PENDING
 Last Developer: Codex
 Executed by: Codex
 Actual Model: UNKNOWN
@@ -13,7 +13,7 @@ Private completed-task inspection separates Agent tests from GitHub PR/check/sta
 
 Portable840/build/validate/check, focused9 and32 synthetic actual-app browser cases PASS. Live runtime PR/CI permission UNKNOWN; connected-app reads are a distinct credential. Actual Owner HTTP/device acceptance pending; cloud CONNECT403 is not bypassed. Existing approved tasks/drafts ON, fresh Continue and40-run history preserved. New Codex run starts page2, predecessor prior terminal task run; never append that terminal run. SQL/Auth/secrets/permissions/Production/other repo/AWS/model/dispatch unchanged. Do not recreate rejected VM artifacts.
 
-Next Action: verify authorized Preview exact SHA/READY; Owner inspects a completed task via 重新核對 PR／CI. Details and current publication receipt: docs/MC_PR_CI_RECONCILIATION_20261011.md.
+Next Action: authorized Preview c4d089f READY; Owner inspects a completed task via 重新核對 PR／CI. Details and current publication receipt: docs/MC_PR_CI_RECONCILIATION_20261011.md.
 
 # Dated prior stage history
 
