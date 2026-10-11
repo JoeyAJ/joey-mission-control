@@ -168,6 +168,93 @@
       "summary": "Separate Owner approval at08:39:39Z received. Exact task SQL553d99b installed unchanged; live rollback-only20-case parity/CAS/ACL/capacity and old9-table/20-function/role restoration PASS, zero fixtures. Server task storage activated. Two-page40-run implementation and21/22 browser coverage PASS; final regression/publication ongoing. Named UI Library transfer failed twice; no fallback. Actual Owner HTTP remains unverified.",
       "result": null,
       "delivery": null
+    },
+    {
+      "id": "task-storage-capacity-ui-completed-20261011",
+      "sequence": 6,
+      "eventAt": "2026-10-11T09:14:31.692Z",
+      "kind": "completed",
+      "summary": "Authorized task persistence, bounded40-run reporting and named source-only UI integration completed and published on fixed Preview. Portable831 and54 synthetic browser cases PASS. Exact approved task SQL applied and activated after safety gates. Coding complete; delivery remains incomplete due to served CONNECT403/actual Owner acceptance. Palette/reference match and broader PR/CI/merge workflow remain pending.",
+      "result": {
+        "codeSha": "86c07ddbcd8848ae5424e6d54202d32b11769586",
+        "tests": [
+          {
+            "name": "Portable831/build/portable validate/check; workstation guard0",
+            "outcome": "PASS"
+          },
+          {
+            "name": "Approved live SQL rollback-only20 parity/CAS/ACL/capacity/old-object restoration",
+            "outcome": "PASS"
+          },
+          {
+            "name": "Actual-app synthetic54 browser cases: UI26/task4/capacity4/Continue12/simple4/cloud drafts4",
+            "outcome": "PASS"
+          },
+          {
+            "name": "Bare Git copied helper21/page2/cross-page append/predecessor/40 guard; original20 fixture blobs preserved",
+            "outcome": "PASS"
+          },
+          {
+            "name": "Signed HANDOFF safe-content and source guard20",
+            "outcome": "PASS"
+          }
+        ],
+        "nextSteps": "Actual signed Owner cloud task save/reload and device acceptance; verify served Preview once ordinary authorized access works. Reference palette/layout still pending supported image inspection. Broader PR/CI/decision/merge workflow remains separately scoped. Next authorized Agent uses fresh entry and new run/predecessor; no post-terminal append, no automatic dispatch.",
+        "handoff": {
+          "path": "HANDOFF.md",
+          "commitSha": "86c07ddbcd8848ae5424e6d54202d32b11769586"
+        }
+      },
+      "delivery": {
+        "qualification": "AGENT_REPORTED",
+        "scope": {
+          "projectId": "MISSION_CONTROL",
+          "track": "BASELINE",
+          "repositoryId": "JoeyAJ/joey-mission-control",
+          "runId": "codex-mc-existing-project-task-20261011",
+          "taskId": "mc-existing-project-task-20261011",
+          "workRef": "codex/mc-command-center-checkpoint-20261006",
+          "codeSha": "86c07ddbcd8848ae5424e6d54202d32b11769586"
+        },
+        "deployment": {
+          "status": "READY",
+          "target": {
+            "provider": "vercel",
+            "project": "joey-mission-control",
+            "environment": "preview"
+          },
+          "id": "dpl_7DkqwRjyD2RYSRy6y46HdLuYAtLR",
+          "deployedSha": "86c07ddbcd8848ae5424e6d54202d32b11769586",
+          "url": "https://joey-mission-control-git-codex-mc-comma-fceec2-joeyajs-projects.vercel.app/",
+          "observedAt": "2026-10-11T09:13:39.903Z",
+          "evidence": "Connected fixed alias and independent deployment ID match exact canonical remote full SHA; READY. Production unchanged.",
+          "notRequired": null
+        },
+        "verification": {
+          "status": "BLOCKED",
+          "method": "HTTP_FUNCTIONAL_CHECK",
+          "checkedAt": "2026-10-11T09:13:40.662Z",
+          "deploymentId": "dpl_7DkqwRjyD2RYSRy6y46HdLuYAtLR",
+          "checkedSha": null,
+          "url": "https://joey-mission-control-git-codex-mc-comma-fceec2-joeyajs-projects.vercel.app/",
+          "evidence": "Ordinary HTTPS curl56 CONNECT403/HTTP000 before app, no bypass. Actual signed Owner task save/reload/device acceptance pending.",
+          "notRequired": null
+        },
+        "handoff": {
+          "status": "CURRENT",
+          "path": "HANDOFF.md",
+          "commitSha": "86c07ddbcd8848ae5424e6d54202d32b11769586",
+          "checkedAt": "2026-10-11T09:14:31.692Z",
+          "evidence": "Current signed repository checkpoint retains exact approvals/provider qualifications, task and source/candidate/privacy gates, capacity bounds, reviewed UI and scoped pending acceptance. Closing receipt follows without runtime mutation."
+        },
+        "data": {
+          "status": "APPLIED",
+          "version": "553d99b407d34d622b53918eb42c6e42146417e71009a47cbf25f8c1dc283194",
+          "checkedAt": "2026-10-11T09:14:31.692Z",
+          "evidence": "Exact9758-byte approved task migration applied unchanged to existing project. Live rollback-only20-case parity/CAS/capacity/ACL PASS; old9 table digests/20 helpers/2 memberships preserved; zero fixtures. SQL_ADMIN_EMULATED_CLAIMS_WITH_EXISTING_SESSION_METADATA, no real Owner JWT HTTP.",
+          "notRequired": null
+        }
+      }
     }
   ]
 }
