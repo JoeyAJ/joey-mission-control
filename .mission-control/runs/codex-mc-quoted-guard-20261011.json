@@ -34,6 +34,15 @@
       "summary": "Independent review identified quoted credential-key exclusion gap. Executor healthy; patch and synthetic task-listed config regressions implemented, affected/full checks pending. No live file metadata expansion or unrelated private reads.",
       "result": null,
       "delivery": null
+    },
+    {
+      "id": "verified-fix",
+      "sequence": 2,
+      "eventAt": "2026-10-11T01:30:24.477677Z",
+      "kind": "progress",
+      "summary": "Quoted JSON/YAML credential exclusion fixed before fingerprints; adapter/copied helper each56 refusals, safe config restored, no outputs/report writes. Affected25/full757/source31 checks PASS, build/validate/check forbidden0; current branch pushed, Preview proof pending.",
+      "result": null,
+      "delivery": null
     }
   ]
 }
