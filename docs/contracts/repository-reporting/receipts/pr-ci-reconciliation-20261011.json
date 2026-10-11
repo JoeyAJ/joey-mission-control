@@ -17,7 +17,16 @@
     "actualOwnerAuth": false,
     "actualRemoteProviderHttp": false,
     "focusedFinalSourceRoutingGroups": 32,
-    "finalRootGuardGroups": 20
+    "finalRootGuardGroups": 20,
+    "closingHandoffStatusCorrection": {
+      "firstDocumentationSha": "e01884250da5a6b78281cfb33f52cc690b5cc892",
+      "caughtFailure": "New HANDOFF Status was outside existing intake acceptance values",
+      "correctedStatus": "LOCAL_VERIFIED_PARENT_READ_PREVIEW_PUBLISHED",
+      "testsChanged": false,
+      "recheckedGroups": 20,
+      "recheckedResult": "PASS",
+      "ownerAcceptanceRemainsPending": true
+    }
   },
   "permissions": {
     "executorRuntimeCredentialPresent": false,
