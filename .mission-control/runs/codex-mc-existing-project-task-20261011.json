@@ -101,6 +101,64 @@
           "notRequired": null
         }
       }
+    },
+    {
+      "id": "existing-task-final-preview-blocked-4",
+      "sequence": 4,
+      "eventAt": "2026-10-11T08:19:50.376Z",
+      "kind": "blocked",
+      "summary": "Final task runtime58d83d1 same fixed Preview READY/alias/exact remote. Portable820/build/validate/check PASS after report capacity disclosure includes excluded physical history. Task15/browser4/Continue12/native10 groups17 parity PASS. Task SQL553d99b4 remains NOT_APPLIED/OFF pending exact approval; served GET CONNECT403, no bypass. MC20/20 budget/history intact; run OPEN. No new Agent access/dispatch/Production/other repo action.",
+      "result": null,
+      "delivery": {
+        "qualification": "AGENT_REPORTED",
+        "scope": {
+          "projectId": "MISSION_CONTROL",
+          "track": "BASELINE",
+          "repositoryId": "JoeyAJ/joey-mission-control",
+          "runId": "codex-mc-existing-project-task-20261011",
+          "taskId": "mc-existing-project-task-20261011",
+          "workRef": "codex/mc-command-center-checkpoint-20261006",
+          "codeSha": "58d83d103656c81f37032d77d99d64fa965e3fa7"
+        },
+        "deployment": {
+          "status": "READY",
+          "target": {
+            "provider": "vercel",
+            "project": "joey-mission-control",
+            "environment": "preview"
+          },
+          "id": "dpl_BzwkdNHsAuEnyBvPyU4F3fbcqLyR",
+          "deployedSha": "58d83d103656c81f37032d77d99d64fa965e3fa7",
+          "url": "https://joey-mission-control-git-codex-mc-comma-fceec2-joeyajs-projects.vercel.app/",
+          "observedAt": "2026-10-11T08:19:31.758Z",
+          "evidence": "Connected provider ID and fixed alias READY/exact SHA; exact canonical remote SHA matched. Preview project prj_X67htPw7vkRI2tuf8817vOUCGQOD.",
+          "notRequired": null
+        },
+        "verification": {
+          "status": "BLOCKED",
+          "method": "HTTP_FUNCTIONAL_CHECK",
+          "checkedAt": "2026-10-11T08:19:32.542Z",
+          "deploymentId": "dpl_BzwkdNHsAuEnyBvPyU4F3fbcqLyR",
+          "checkedSha": null,
+          "url": "https://joey-mission-control-git-codex-mc-comma-fceec2-joeyajs-projects.vercel.app/",
+          "evidence": "Ordinary exact HTTPS GET curl56/CONNECT403/HTTP000 before app; no bypass. Synthetic task4/Continue12/cloud4/fallback4/simple4/brief6 PASS does not establish served Owner HTTP.",
+          "notRequired": null
+        },
+        "handoff": {
+          "status": "CURRENT",
+          "path": "HANDOFF.md",
+          "commitSha": "58d83d103656c81f37032d77d99d64fa965e3fa7",
+          "checkedAt": "2026-10-11T08:19:50.376Z",
+          "evidence": "Source includes updated current task/qualification/gaps/exact SQL proposal and native/browser verification; original histories preserved."
+        },
+        "data": {
+          "status": "PENDING",
+          "version": "553d99b407d34d622b53918eb42c6e42146417e71009a47cbf25f8c1dc283194",
+          "checkedAt": "2026-10-11T08:19:50.376Z",
+          "evidence": "New development task SQL/ACL NOT_APPLIED; server OFF pending separate exact proposal approval at existing scmvedfqwlhkyvljymjj. Existing approved project drafts remain ON. Native exact task SQL10 groups/17 parity PASS; zero live task SQL requests.",
+          "notRequired": null
+        }
+      }
     }
   ]
 }
