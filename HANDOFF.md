@@ -3,7 +3,7 @@
 Project: MISSION_CONTROL
 Timestamp: 2026-10-11T23:06:24.079Z
 Task: Same-page existing Owner OTP; readiness disabled
-Status: LOCAL_VERIFIED_PENDING_PUBLICATION
+Status: LOCAL_VERIFIED_PARENT_READ_PREVIEW_PUBLISHED
 Last Developer: Codex
 Executed by: Codex
 Actual Model: UNKNOWN
@@ -11,9 +11,9 @@ Baseline: 45cebef30f958934674619fc7e90b25324579d99
 
 Priority navigation/task feedback45cebef fixed Preview dpl_3kGhMssHDph5WvTAnxmCwnubYHNo READY. OTP code prepared with shouldCreateUser:false, exact Owner, scoped transient challenge/currentness; existing password/TOTP/AAL2/live-session/member gates retained. Deployed switch OFF, no mail/settings change or extra credential storage.
 
-Evidence: docs/MC_OWNER_EMAIL_OTP_20261011.md; portable945/focused47/build/validate/check, OTP browser21/password5/mobile entry3 PASS. Current settings GET200: email ON, signup/anonymous OFF. Auth-management template/plan/SMTP read unavailable; project created2026-10-07 may face June3 template restriction. Single pending body proposal is reviewable. Final root/Preview pending; core preserved/live disabled, actual Owner writes0.
+Evidence: docs/MC_OWNER_EMAIL_OTP_20261011.md; portable945/focused47/build/validate/check, OTP browser21/password5/mobile entry3 PASS. Current settings GET200: email ON, signup/anonymous OFF. Auth-management template/plan/SMTP read unavailable; project created2026-10-07 may face June3 template restriction. Single pending body proposal is reviewable. Runtimec97a250 exact fixed Preview dpl_6bDyUTJTEduX2F47XsSGRpLX77Jq READY; root20 PASS, core preserved/live disabled, actual Owner writes0.
 
-Next Action: finish disabled-code exact Preview/report. Then fresh nonsecret GET /v1/projects/scmvedfqwlhkyvljymjj/config/auth through existing authorized connection; verify template/OTP length/plan/mail readiness. Exact approval needed only for actual body/settings change; no mail before qualified flow. No password deletion/signup/SMTP/redirect/SQL/grants/new keys/Production/dispatch/AWS. CONNECT403 not bypassed; served/Owner acceptance pending.
+Next Action: finish final docs exact Preview/report. Then fresh nonsecret GET /v1/projects/scmvedfqwlhkyvljymjj/config/auth through existing authorized connection; verify template/OTP length/plan/mail readiness. Exact approval needed only for actual body/settings change; no mail before qualified flow. No password deletion/signup/SMTP/redirect/SQL/grants/new keys/Production/dispatch/AWS. CONNECT403 not bypassed; served/Owner acceptance pending.
 
 # Dated prior stage history
 

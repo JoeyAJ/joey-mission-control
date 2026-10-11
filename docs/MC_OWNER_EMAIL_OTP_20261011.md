@@ -51,3 +51,7 @@ Evidence: docs/MC_MOBILE_TASK_ENTRY_20261011.md. Baseline RED; entry3/navigation
 Next Action: finish final exact Preview/terminal, then approved passwordless readiness/code. Joey22:41:48UTC approved direction; prefer same-page OTP with existing TOTP/AAL2/private gates. No password deletion/SMTP/signup/redirect/security changes without exact required approval; no sending before flow explanation. CONNECT403 before app not bypassed, served/Owner acceptance pending. No Production/new keys/SQL/permissions/dispatch/AWS.
 
 ```
+
+## Verified disabled-code publication
+
+Runtimec97a2508100c199f70fd057a0be3a48a1871fce9 exact canonical remote and fixed Preview dpl_6bDyUTJTEduX2F47XsSGRpLX77Jq READY; connected alias and independent ID match. Original Production dpl_5GgJ8LhD4Ec73RGz9CEFe1ppZQnh / 8b4945b16a0b23f2e72033aa976fa34f94eabec0 unchanged. Current root20 PASS, prior dated handoff history preserved; earlier task feedback/navigation and finalization core unchanged. OTP still false, no email/settings mutation. [Runtime receipt](qa/mc-owner-email-otp-20261011/runtime-publication.json). Normal cloud HTTPS still CONNECT403/HTTP000 before application, servedCheckedSha=null; no bypass. Final documentation HEAD is checked independently before the terminal, with final metadata and immutable report verification kept in the private final receipt. Missing exact read remains the readiness blocker described above.
