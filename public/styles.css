@@ -708,3 +708,10 @@ body[data-joey-simple=true] .joey-simple-primary{background:#fff;color:#0b0b0b;b
 :where(body[data-joey-simple=true],body[data-active-module=workspace]) .repository-run-reports a{color:var(--mc-cyan)}
 @media(prefers-reduced-motion:reduce){#workspace :is(.command-project,.run-workbench-item,.command-explorer-item,.command-event,.command-file-tabs button){transition:none}.run-event-arrived{animation:none}}
 @media(max-width:640px){.new-project-panel{padding:15px}.new-project-form,.new-project-options-grid{grid-template-columns:1fr}.new-project-form input,.new-project-form select,.new-project-form textarea{font-size:16px}.new-project-readiness dl{grid-template-columns:1fr;gap:5px}.new-project-readiness dd{margin-bottom:10px}.new-project-actions{flex-direction:column}.new-project-actions button{flex:auto;width:100%}}
+
+.joey-site-navigation{display:flex;flex-direction:row;flex-wrap:wrap;align-items:center;justify-content:flex-start;position:static;width:auto;height:auto;min-height:0;padding:0;border:0;gap:8px;margin:12px 0;background:transparent}
+.joey-site-navigation :is(a,button){display:flex;align-items:center;justify-content:center;min-height:44px;padding:9px 14px;box-sizing:border-box;border:1px solid var(--mc-outline);border-radius:14px;color:var(--mc-text);background:var(--mc-charcoal);font-size:14px;text-decoration:none}
+.joey-site-navigation a[data-joey-public-site]{border-color:var(--mc-cyan);color:var(--mc-cyan)}
+.joey-site-navigation small{order:3;flex-basis:100%;color:var(--mc-muted);font-size:12px;margin:0}
+.joey-site-navigation :is(a,button):focus-visible{outline:3px solid var(--mc-cyan);outline-offset:2px}
+@media(max-width:768px){.joey-site-navigation :is(a,button){flex:1;white-space:normal}.joey-site-navigation{margin:10px 0}}
