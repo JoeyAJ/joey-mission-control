@@ -1,3 +1,7 @@
+# Current bounded repair — preflight conflicts
+
+Reserved report-ref overlaps and per-draft remote revision conflicts must fail closed, preserving local text until explicit resolution of that draft. No SQL/permission/provisioning change. [Repair evidence](MC_PREFLIGHT_CONFLICT_REPAIR_20261011.md). Existing acceptance gaps remain qualified.
+
 # Current bounded stage — actionable new-project creation preflight
 
 Reuse saved private drafts and the existing six-file bundle for one-copy exact target/registration plans. Prepared/configuration-missing/authorization-missing/conflict remain distinct; no live provisioning, new access, repo, SQL or deployment project. [Evidence](MC_PROJECT_CREATION_PREFLIGHT_20261011.md). Real task/Owner acceptance deferred.

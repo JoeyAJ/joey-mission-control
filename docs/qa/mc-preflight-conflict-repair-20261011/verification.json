@@ -1,0 +1,52 @@
+{
+  "qualification": "SYNTHETIC_LOCAL_VERIFICATION_NOT_OWNER_OR_SERVED_ACCEPTANCE",
+  "baseline": "d29123b0599a92ec19386f2414b8f44c91f9ed93",
+  "checkedAt": "2026-10-11T15:20:09.000Z",
+  "redBeforeHelperRepair": {
+    "cases": 3,
+    "failures": 3,
+    "failure": "Missing expected rejection; stale cloud Save allowed"
+  },
+  "focused": {
+    "tests": 60,
+    "pass": 60,
+    "fail": 0
+  },
+  "portable": {
+    "tests": 898,
+    "pass": 898,
+    "fail": 0,
+    "build": "PASS",
+    "validate": "PASS",
+    "staticSafety": "PASS",
+    "forbiddenAttempts": 0
+  },
+  "root": {
+    "tests": 20,
+    "pass": 20,
+    "fail": 0
+  },
+  "browser": {
+    "actualApp": true,
+    "officialSDK": true,
+    "syntheticUpstreams": true,
+    "widths": [
+      375,
+      390,
+      430,
+      1440
+    ],
+    "cases": 8,
+    "reportRefOverlap": true,
+    "perDraftConflictsBothRemoteOrders": true,
+    "intendedSyntheticCloudDraftWrites": 20,
+    "actualOwnerWrites": 0,
+    "taskWrites": 0,
+    "unexpectedWrites": 0,
+    "externalRequests": 0
+  },
+  "protectedBoundaries": "SQL/config/task-validator/review/source scopes/original six-file contract unchanged",
+  "liveProvisioning": false,
+  "productionChange": false,
+  "servedCheckedSha": null
+}

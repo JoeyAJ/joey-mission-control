@@ -1,19 +1,19 @@
-# Current new-project creation preflight — 2026-10-11
+# Current preflight conflict repair — 2026-10-11
 
 Project: MISSION_CONTROL
-Timestamp: 2026-10-11T14:40:28.071Z
-Task: Actionable creation plan from existing private draft and six-file bundle
-Status: LOCAL_VERIFIED_PARENT_READ_PREVIEW_PUBLISHED
+Timestamp: 2026-10-11T15:17:53.905Z
+Task: Reserved report ref and per-draft remote conflict protection
+Status: LOCAL_VERIFIED_PENDING_PUBLICATION
 Last Developer: Codex
 Executed by: Codex
 Actual Model: UNKNOWN
-Baseline: e464f571b9127c2684192fa1c5a96717d4c72142
+Baseline: d29123b0599a92ec19386f2414b8f44c91f9ed93
 
-Existing onboarding lacked a consolidated target/action plan. One copy now prepares exact private repo/branch proposals, original six files, Preview intent and source/report registration requirements. Prepared plan differs from missing configuration/authorization and target conflicts. Unknown targets stay existence UNCONFIRMED; only existing read scopes are queried. Cloud revision drift, outage, expiry/logout clear old plan; no provisioning or execution authority.
+Reserved mc/progress and its parent/child source branches yield CONFLICT, never a ready creation plan. Each remotely changed draft retains its own conflict; repeated preflight, unrelated save/reload and failed reload cannot authorize overwriting newer text. Explicit resolution affects only that draft. No provisioning or execution authority.
 
-Evidence: docs/MC_PROJECT_CREATION_PREFLIGHT_20261011.md. Portable888/build/validate/check, focused50/root20/browser8 PASS; forbiddenAttempts0. Existing task/review/SQL/config/source scopes unchanged. Actual Owner writes0; harmless saved test untouched. Prior prefix preserved there byte-for-byte; dated history unchanged.
+Evidence: docs/MC_PREFLIGHT_CONFLICT_REPAIR_20261011.md. RED3 reproduced stale writes; focused60 PASS. Portable898/build/validate/check, focused60/root20/browser8 PASS; forbiddenAttempts0. Exact fixed Preview publication follows. Original six files, task review, SQL/config/source scopes and dated history preserved. Actual Owner writes0; saved test untouched.
 
-Next Action: runtimeff77b07 exact Preview READY. Final SHA/report receipt privately recorded after docs closure. Independent review pending. Real task packet/Owner acceptance deferred until tomorrow. No new repo/SQL/grants/keys/deployment project/Agent dispatch/AWS/Production. CONNECT403 not bypassed; servedCheckedSha null. Plan and offline bundle are not a working project.
+Next Action: finish synthetic checks and publish same Preview, then close own new bugfix run at final work HEAD. Real task/Owner acceptance deferred until tomorrow. No new repo/SQL/grants/keys/deployment project/dispatch/AWS/Production. CONNECT403 is not bypassed; served check unconfirmed.
 
 # Dated prior stage history
 
