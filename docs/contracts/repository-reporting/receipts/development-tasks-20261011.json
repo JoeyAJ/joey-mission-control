@@ -1,10 +1,23 @@
 {
   "schemaVersion": 1,
   "task": "mc-existing-project-task-20261011",
-  "status": "AWAITING_SOURCE_PREVIEW_PUBLICATION",
+  "status": "SESSION_TASK_HANDOFF_VERIFIED_STORAGE_APPROVAL_AND_SERVED_OWNER_PENDING",
   "baseline": "95e60d8dd1a4081c6ed20d138cb128e8b85a24a5",
-  "codeSha": null,
-  "preview": null,
+  "codeSha": "2cb0c23f7fbb4a68f07723191cef823093872ff4",
+  "preview": {
+    "id": "dpl_2ngwhAigWndB4LLDrbijoL753EkK",
+    "sha": "2cb0c23f7fbb4a68f07723191cef823093872ff4",
+    "readyState": "READY",
+    "projectId": "prj_X67htPw7vkRI2tuf8817vOUCGQOD",
+    "target": null,
+    "alias": [
+      "joey-mission-control-git-codex-mc-comma-fceec2-joeyajs-projects.vercel.app"
+    ],
+    "observedAt": "2026-10-11T08:15:42.138Z",
+    "aliasIndependentIdMatch": true,
+    "fixedUrl": "https://joey-mission-control-git-codex-mc-comma-fceec2-joeyajs-projects.vercel.app/",
+    "remoteExactSha": true
+  },
   "sql": {
     "status": "NOT_APPLIED_PENDING_EXPLICIT_TASK_APPROVAL",
     "projectRef": "scmvedfqwlhkyvljymjj",
@@ -36,21 +49,50 @@
   },
   "run": {
     "runId": "codex-mc-existing-project-task-20261011",
-    "sequence": 2,
-    "reportCommitSha": "9b7d5910179dfb8e058289b4e777fc515b021902",
-    "fileSha": "32948458457b0a18cfde8600264be0c2de723793",
+    "sequence": 3,
+    "reportCommitSha": "bad6726545c945484c02b34de3959336f364433a",
+    "fileSha": "b50b0c7da207f2f1666d8615e5028ccc36c842ec",
     "terminal": false,
     "qualification": "PINNED_REPOSITORY_PROFILE_NOT_SERVER_ACCEPTANCE",
     "baselinePreserved": true,
-    "startedPreserved": true
+    "startedPreserved": true,
+    "readback": {
+      "schemaVersion": 1,
+      "exactRemoteCommit": true,
+      "exactBlob": true,
+      "bytes": 5620,
+      "externalDraft202012FormatCheck": "PASS",
+      "baselinePreserved": true,
+      "priorEventsPreserved": true,
+      "branchChangedPaths": [
+        ".mission-control/runs/codex-mc-existing-project-task-20261011.json"
+      ],
+      "terminal": false,
+      "pinnedProfileValidation": "PASS"
+    }
   },
   "capacity": {
     "allowedRuns": 20,
     "currentRuns": 20,
     "newMcRunRegistration": "BLOCKED_UNCHANGED_CAPACITY",
-    "historyRotated": false
+    "historyRotated": false,
+    "qualification": "PHYSICAL_BRANCH_ROWS_INCLUDE_MAINTENANCE_EXCLUDED_HISTORY"
   },
   "joeyAcceptance": "PENDING",
   "independentAcceptance": "PENDING",
-  "visualIntegration": "PENDING_NAMED_REVIEWED_COMMIT"
+  "visualIntegration": "PENDING_NAMED_REVIEWED_COMMIT",
+  "served": {
+    "status": "BLOCKED",
+    "reason": "CONNECT403_BEFORE_APP",
+    "checkedAt": "2026-10-11T08:15:42.323Z",
+    "curlExitCode": 56,
+    "httpStatus": "000",
+    "checkedSha": null,
+    "bypass": false
+  },
+  "productionUnchanged": {
+    "id": "dpl_5GgJ8LhD4Ec73RGz9CEFe1ppZQnh",
+    "sha": "8b4945b16a0b23f2e72033aa976fa34f94eabec0",
+    "connectedReadyCheck": true
+  }
 }
