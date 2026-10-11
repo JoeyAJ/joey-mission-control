@@ -3,7 +3,7 @@
 Project: MISSION_CONTROL
 Timestamp: 2026-10-11T23:37:57.504Z
 Task: Effect grant boundary and own-merge recovery
-Status: LOCAL_VERIFIED_PENDING_PUBLICATION
+Status: LOCAL_VERIFIED_PARENT_READ_PREVIEW_PUBLISHED
 Last Developer: Codex
 Executed by: Codex
 Actual Model: UNKNOWN
@@ -11,9 +11,9 @@ Baseline: 625ff30ff466d1f81eb2091eb3ea5a8f9b96641b
 
 Fixture commit boundary rereads exact grant/expiry/revocation/payload after provider awaits, synchronously with mutation. Known-not-started proof permits guarded CAS retry; uncertainty never repeats effects. Merge recovery requires independent own-operation ledger, not attempt marker/matching PR or echoed IDs; unattributed merge blocks deployment/adoption. Live factory still OFF, no actual merge/deploy.
 
-Evidence: docs/MC_FINALIZATION_EFFECT_BOUNDARY_20261011.md. Baseline RED7/8; new11+old22 groups, focused88/portable956/build/validate/check PASS. Root/Preview pending. Navigation/mobile/client bundle/inactive OTP/source/API/SQL/preflight byte unchanged; actual Owner/mail/actions0. Prior prefix/history preserved.
+Evidence: docs/MC_FINALIZATION_EFFECT_BOUNDARY_20261011.md. Baseline RED7/8; new11+old22 groups, focused88/portable956/build/validate/check PASS. Runtime8408e1d fixed Preview dpl_5aEd3G72Zs3qGFeK7sKMfhgTFYsj READY; root20 PASS. Navigation/mobile/client bundle/inactive OTP/source/API/SQL/preflight byte unchanged; actual Owner/mail/actions0. Prior prefix/history preserved.
 
-Next Action: finish exact same Preview/report. Live still needs trusted revocation lifecycle and authority at provider acceptance, conditional refs/CI, durable CAS/nonexecution proof and own-operation correlation/unknown lookup/served verification. External adoption has no grant/route. OTP remains false awaiting dashboard nonsecret template/plan/mail read; no sending/settings/password/SMTP/signup/redirect/new keys/permissions/Production/dispatch/AWS. CONNECT403 not bypassed, served/Owner acceptance pending.
+Next Action: finish final docs exact Preview/report. Live still needs trusted revocation lifecycle and authority at provider acceptance, conditional refs/CI, durable CAS/nonexecution proof and own-operation correlation/unknown lookup/served verification. External adoption has no grant/route. OTP remains false awaiting dashboard nonsecret template/plan/mail read; no sending/settings/password/SMTP/signup/redirect/new keys/permissions/Production/dispatch/AWS. CONNECT403 not bypassed, served/Owner acceptance pending.
 
 # Dated prior stage history
 

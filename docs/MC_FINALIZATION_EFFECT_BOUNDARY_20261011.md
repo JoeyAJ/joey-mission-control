@@ -53,3 +53,7 @@ Evidence: docs/MC_OWNER_EMAIL_OTP_20261011.md; portable945/focused47/build/valid
 Next Action: finish final docs exact Preview/report. Then fresh nonsecret GET /v1/projects/scmvedfqwlhkyvljymjj/config/auth through existing authorized connection; verify template/OTP length/plan/mail readiness. Exact approval needed only for actual body/settings change; no mail before qualified flow. No password deletion/signup/SMTP/redirect/SQL/grants/new keys/Production/dispatch/AWS. CONNECT403 not bypassed; served/Owner acceptance pending.
 
 ```
+
+## Verified runtime publication
+
+Runtime8408e1d67646f8dc1d770c29f2a12df46bbfb362 exact canonical remote and fixed Preview dpl_5aEd3G72Zs3qGFeK7sKMfhgTFYsj READY; connected alias and independent ID match, original Production identity unchanged. Root20 PASS, dated history and all protected client/source/API/SQL boundaries retained. [Runtime receipt](qa/mc-finalization-boundary-20261011/runtime-publication.json). Ordinary cloud HTTPS CONNECT403/HTTP000 before application, servedCheckedSha=null; no bypass or claim of Owner acceptance. Final documentation HEAD is independently deployed/verified before terminal; exact final metadata/report immutability evidence is in the private final receipt. Live execution and OTP still OFF; no real workflow actions or mail/settings changes.
