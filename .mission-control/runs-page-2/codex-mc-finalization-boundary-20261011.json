@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "mc.repository-run.v2",
+  "taskKind": "FEATURE",
+  "projectId": "MISSION_CONTROL",
+  "track": "BASELINE",
+  "runId": "codex-mc-finalization-boundary-20261011",
+  "predecessorRunId": "codex-mc-owner-email-otp-20261011",
+  "taskId": "mc-finalization-boundary-20261011",
+  "featureTitle": "Repair fixture effect authorization boundary and trustworthy own-merge operation recovery",
+  "agentName": "Codex",
+  "provider": null,
+  "model": null,
+  "repositoryId": "JoeyAJ/joey-mission-control",
+  "reportRef": "mc/progress",
+  "workRef": "codex/mc-command-center-checkpoint-20261006",
+  "baseline": {
+    "ref": "codex/mc-command-center-checkpoint-20261006",
+    "commitSha": "625ff30ff466d1f81eb2091eb3ea5a8f9b96641b",
+    "handoffPath": "HANDOFF.md",
+    "handoffDigest": "7a52e43f51c886d39baf6aec58543c94e7f535ac05d7daee4209931ce98ca332",
+    "contextPaths": [
+      "README.md",
+      "docs/PRODUCT_CHARTER.md",
+      "docs/MC_PHASE_PLAN.md",
+      "docs/STAGE_HANDOFF_TEMPLATE.md"
+    ]
+  },
+  "events": [
+    {
+      "id": "finalization-boundary-start-1",
+      "sequence": 1,
+      "eventAt": "2026-10-11T23:26:53.152Z",
+      "kind": "started",
+      "summary": "Parent reviewer found grant expiry/revocation during final preflight and false own-merge adoption from attempt marker. Repair exact authority at provider effect boundary and trustworthy operation correlation; deterministic expiry/revoke/recovery/no-duplicate fixtures only. Preserve navigation/mobile/inactive OTP and hard-disabled live factory; no real merge/deploy/new credentials/permissions/routes.",
+      "result": null,
+      "delivery": null
+    }
+  ]
+}
