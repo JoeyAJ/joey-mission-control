@@ -34,6 +34,15 @@
       "summary": "Parent reviewer found grant expiry/revocation during final preflight and false own-merge adoption from attempt marker. Repair exact authority at provider effect boundary and trustworthy operation correlation; deterministic expiry/revoke/recovery/no-duplicate fixtures only. Preserve navigation/mobile/inactive OTP and hard-disabled live factory; no real merge/deploy/new credentials/permissions/routes.",
       "result": null,
       "delivery": null
+    },
+    {
+      "id": "finalization-boundary-progress-2",
+      "sequence": 2,
+      "eventAt": "2026-10-11T23:37:57.504Z",
+      "kind": "progress",
+      "summary": "Both reviewer blockers repaired in fixtures: one-shot synchronous effect authority recheck after transport awaits; own-merge recovery needs independent operation ledger, not marker/echo. Known-not-started CAS retry is identity-tracked, uncertain outcomes never replay. Baseline RED7/8; finalization33/focused88/portable956/build/validate/check PASS. Client/navigation/mobile/inactive OTP/API/SQL/source unchanged; live OFF/no actual actions. Preparing fixed Preview.",
+      "result": null,
+      "delivery": null
     }
   ]
 }
