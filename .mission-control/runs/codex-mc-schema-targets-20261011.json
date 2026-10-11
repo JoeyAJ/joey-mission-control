@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "mc.repository-run.v2",
+  "taskKind": "BUGFIX",
+  "projectId": "MISSION_CONTROL",
+  "track": "BASELINE",
+  "runId": "codex-mc-schema-targets-20261011",
+  "predecessorRunId": "codex-mc-delivery-followup-20261011",
+  "taskId": "mc-schema-targets-20261011",
+  "featureTitle": "Strict v1/v2 schema parity and scoped fixed delivery metadata",
+  "agentName": "Codex",
+  "provider": null,
+  "model": null,
+  "repositoryId": "JoeyAJ/joey-mission-control",
+  "reportRef": "mc/progress",
+  "workRef": "codex/mc-command-center-checkpoint-20261006",
+  "baseline": {
+    "ref": "codex/mc-command-center-checkpoint-20261006",
+    "commitSha": "e535e33bb076e52ed4057c6f60b700d1b8225a08",
+    "handoffPath": "HANDOFF.md",
+    "handoffDigest": "09ccf10ee5a0e76df0925f05d780d9c9536c2ad4e1da1009c4fe8e989b450471",
+    "contextPaths": [
+      "README.md",
+      "docs/PRODUCT_CHARTER.md",
+      "docs/MC_PHASE_PLAN.md",
+      "docs/STAGE_HANDOFF_TEMPLATE.md"
+    ]
+  },
+  "events": [
+    {
+      "id": "mc-schema-targets-start",
+      "sequence": 1,
+      "eventAt": "2026-10-11T00:22:19.851Z",
+      "kind": "started",
+      "summary": "Inspecting strict schema gap and authoritative fixed deployment targets; metadata-only MC work",
+      "result": null,
+      "delivery": null
+    }
+  ]
+}
