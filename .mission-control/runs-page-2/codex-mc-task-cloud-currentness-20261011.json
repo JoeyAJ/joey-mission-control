@@ -34,6 +34,15 @@
       "summary": "Receiving the independent review defects at62615bf: selected-task conflict overwritten by another changed task, and cloud-backed pending CI incorrectly downgraded after200 NOT_CONNECTED. Reproduced failing actual-controller test; repairing with activation/SQL unchanged.",
       "result": null,
       "delivery": null
+    },
+    {
+      "id": "progress-task-cloud-currentness",
+      "sequence": 2,
+      "eventAt": "2026-10-11T12:53:35Z",
+      "kind": "progress",
+      "summary": "Per-task conflict retention and sticky cloud-backed pre/post CI checks repaired; handoff rereads before copy. Portable859/build/validate/check, focused64/root10 and20 actual-app synthetic browser cases PASS,48 intended task writes, external/unexpected0. Owner storage remains unapplied pending native gates.",
+      "result": null,
+      "delivery": null
     }
   ]
 }
