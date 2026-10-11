@@ -6,6 +6,7 @@ export {REPORT_VERSION_V3} from './file-activity.mjs';
 export {REPORT_VERSION_V2} from './delivery-evidence.mjs';
 export const REPORT_REF='mc/progress',REPORT_DIRECTORY='.mission-control/runs';
 export const REPORT_VERSION='mc.repository-run.v1',MAX_REPORT_BYTES=16384,MAX_EVENTS=64,MAX_RUNS=20;
+export const REPORT_DIRECTORIES=Object.freeze([REPORT_DIRECTORY,'.mission-control/runs-page-2']),MAX_TOTAL_RUNS=MAX_RUNS*REPORT_DIRECTORIES.length,MAX_RUN_REPLY_BYTES=MAX_TOTAL_RUNS*(MAX_REPORT_BYTES+2048)+4096;
 const sha=/^[a-f0-9]{40}$/,id=/^[A-Za-z0-9][A-Za-z0-9_.-]{0,95}$/;
 const kinds=new Set(['started','progress','heartbeat','blocked','completed','failed']),terminal=new Set(['completed','failed']);
 const sensitive=/Bearer\s|gh[pousr]_|github_pat_|\b(?:password|secret|token)\s*[:=]|PRIVATE KEY|^eyJ[A-Za-z0-9_-]+\./i;
@@ -17,7 +18,8 @@ function relative(value){string(value,200);if(!/^[A-Za-z0-9_.\/-]+$/.test(value)
 function timestamp(value){if(!isStrictDateTime(value))fail('RUN_REPORT_TIME_INVALID');return Date.parse(value);}
 const canonical=v=>Array.isArray(v)?v.map(canonical):v&&typeof v==='object'?Object.fromEntries(Object.keys(v).sort().map(k=>[k,canonical(v[k])])):v;
 export const sameRunReportEvent=(a,b)=>JSON.stringify(canonical(a))===JSON.stringify(canonical(b));
-export function runReportPath(runId){return REPORT_DIRECTORY+'/'+identifier(runId)+'.json';}
+export function runReportPath(runId,page=1){identifier(runId);if(!Number.isInteger(page)||page<1||page>REPORT_DIRECTORIES.length)fail('RUN_REPORT_PAGE_INVALID');return REPORT_DIRECTORIES[page-1]+'/'+runId+'.json';}
+export function runReportLocation(path){if(typeof path!=='string')fail('RUN_REPORT_PATH_INVALID');for(let i=0;i<REPORT_DIRECTORIES.length;i++){const prefix=REPORT_DIRECTORIES[i]+'/';if(path.startsWith(prefix)&&path.endsWith('.json')){const runId=path.slice(prefix.length,-5);if(runReportPath(runId,i+1)===path)return {runId,page:i+1};}}fail('RUN_REPORT_PATH_INVALID');}
 export function validateRepositoryRun(input,{scope=null,now=Date.now()}={}){
  const v2=supportsDeliveryVersion(input?.schemaVersion),v3=input?.schemaVersion===REPORT_VERSION_V3;object(input,[...(v3?['activityMode','activityPaths']:[]),...(v2?['taskKind']:[]),'schemaVersion','projectId','track','runId','predecessorRunId','taskId','featureTitle','agentName','provider','model','repositoryId','reportRef','workRef','baseline','events']);
  if(![REPORT_VERSION,REPORT_VERSION_V2,REPORT_VERSION_V3].includes(input.schemaVersion)||!Number.isSafeInteger(now)||now<0||typeof input.projectId!=='string'||!/^[_A-Z][_A-Z0-9]{0,79}$/.test(input.projectId)||!['BASELINE','UNIVERSITY_CANDIDATE'].includes(input.track)||input.track==='UNIVERSITY_CANDIDATE'&&input.projectId!=='JOEY_ASSET_SYSTEM'||typeof input.repositoryId!=='string'||!/^[-A-Za-z0-9_.]+\/[-A-Za-z0-9_.]+$/.test(input.repositoryId)||input.reportRef!==REPORT_REF)fail('RUN_REPORT_SCOPE_INVALID');

@@ -1,3 +1,25 @@
+# Mission Control — two-page repository reporting maintenance checkpoint
+
+Project: MISSION_CONTROL
+Timestamp: 2026-10-11T08:39:37.340Z
+Task: Existing-project task handoff and bounded reporting capacity maintenance
+Status: LOCAL_VERIFIED_CLOUD_EVENTS_NOT_ENABLED
+DeliveryQualification: SECOND_REPORT_PAGE_IMPLEMENTED_VERIFICATION_IN_PROGRESS_TASK_SQL_OFF
+Last Developer: Codex
+Executed by: Codex
+Actual Model: UNKNOWN
+Baseline: 58d83d103656c81f37032d77d99d64fa965e3fa7
+
+Parent explicitly authorized existing reporting maintenance after exact20 physical-file cap diagnosis; the one approved maintenance-excluded pilot still occupies its original slot. Implemented two exact directories in the same approved mc/progress: .mission-control/runs/ and .mission-control/runs-page-2/,20 each/40 total, unchanged16KiB/run and64events. Old paths/blobs remain; no rotation/delete/rewrite/index migration. Reader pins one HEAD and fully validates both pages; client checks exact directories/complete inventory/counts/predecessors/all prior prefixes. UI pages20 validated rows without trimming reader state. Run21 goes to page2; duplicate IDs, unknown directory, page2 with missing first-page history, page overflow or41st write refuse. New source/report/Owner scope or credential is not granted.
+
+Basic focused62 PASS; new capacity regressions8 plus task/takeover26 PASS. Real synthetic bare Git verifies run21/cross-page append/predecessor with20 original blobs unchanged; caches always re-read HEAD+both listings, key by existing credential digest/repo/path/blob,80 entries at most16KiB each/5min TTL, never source outage/Auth fallback. Private reply bound741376 bytes, report continuation131072 bytes, complete UTF8 instruction262144 bytes. Project copy keeps every validated run and refuses overflow; task copy selects matching fixed taskId only after complete two-page scan and explicitly carries full scan totals. No hidden scan truncation or unreturned page becomes deletion. Actual app/mobile pagination/privacy tests and full regression are ongoing.
+
+Reviewer import parity fix applied: taskId must be a string before regex; array-wrapped valid ID rejects in JS/import as already rejected by SQL. Exact task SQL fingerprint553d99b407d34d622b53918eb42c6e42146417e71009a47cbf25f8c1dc283194 unchanged, NOT_APPLIED, task server OFF. New objects only mc_private.development_tasks, private validate_development_task(jsonb), two public Owner list-save RPCs,12 tasks/Owner,96KiB canonical UTF8/task,CAS/exact retry, fixed project/track. Reuse existing Owner/AAL2/live session/NEXAEON membership and private helper ACLs; include temporary CREATE/SET restoration and bounded verification before activation in the requested separate approval. Existing approved project drafts remain ON. No live task SQL/ACL executed.
+
+Own existing v2 FEATURE run remains OPEN blocked4, commit4368c3b883a1eda7a2dad963eb8cb0166810528a/blob3554a950cb1c090d4b6c56e52cf0bdc4220cd31e,8894 bytes strict original-profile/external schema/remote blob PASS; original95e60d8 registration baseline/started/events immutable. Continue this run; no page2 live report written yet. Prior source58d83d1/dpl_BzwkdNHsAuEnyBvPyU4F3fbcqLyR READY and actual cloud CONNECT403 remain dated evidence. New code publication/verification follows genuine checks. Visual patch stays isolated awaiting named review/integration; no palette edits, Production/other repo/AWS/model/direct dispatch/actual external message/new Agent permission.
+
+# Historical existing-project task publication checkpoint
+
 # Mission Control — existing-project task increment ready for exact storage approval
 
 Project: MISSION_CONTROL
