@@ -3,7 +3,7 @@
 Project: MISSION_CONTROL
 Timestamp: 2026-10-11T01:12:39Z
 Task: Model-neutral opt-in actual file metadata and continuation ownership
-Status: LOCAL_VERIFIED_PENDING_PUBLICATION
+Status: LOCAL_VERIFIED_CLOUD_EVENTS_NOT_ENABLED
 Last Developer: Codex
 Executed by: Codex
 Actual Model: UNKNOWN
@@ -31,9 +31,9 @@ Actual ongoing v2 FEATURE run codex-mc-file-activity-20261011 retains registrati
 
 ## Delivery and Next Action
 
-Prior exact remote/READY fixed Preview observation: 6961725c0e75901f9ecf9d45fdf8433496a4cb30 / dpl_7dsvK44m4eSRzN41W7PTPmPDd85W at 2026-10-11 00:39:51 UTC. Its runtime matches previously tested dbfc1df. These are dated historical observations, not this stage's publication. The last permitted root GET at 00:33:58.852684Z failed curl exit56 / CONNECT tunnel403 / HTTP000 before app; functional BLOCKED, checkedSha=null. No bypass or served/device/Joey acceptance claim.
+Tested support b7a3777b5cb032f2521266a51d85f8d9dadbdf3e is exact remote and READY at dpl_djimJh8xxjCYH8yAZRvJDcpLY4Ci; independent fixed alias matches full SHA/ID at 2026-10-11 01:13:19 UTC. Actual permitted root GET at 01:13:17.354973Z failed curl exit56 / CONNECT tunnel403 / HTTP000 before app; functional BLOCKED, checkedSha=null. No bypass or served/device/Joey acceptance claim. Production remains dpl_5GgJ8LhD4Ec73RGz9CEFe1ppZQnh / 8b4945b16a0b23f2e72033aa976fa34f94eabec0. Receipt: docs/MC_FILE_ACTIVITY_DELIVERY_RECEIPT_20261011.md. Dated alias checks do not certify later alias movement.
 
-Complete final portable/schema checks, commit/push this branch and verify exact remote plus fixed Preview READY/alias. Then a new same-scope v3 predecessor run performs actual explicit reads and a necessary handoff change, followed by report readback and terminal receipts. Update this entry and close publication. Production remains unchanged; read-only provider confirmation is separate. Normal Owner/device/clipboard acceptance stays pending if cloud root GET remains blocked. No Joey installation/cleanup request.
+Final portable/schema/Continue tests and support publication are complete. Commit this current handoff, close the immutable v2 implementation run and open a fresh same-scope v3 predecessor run for actual explicit reads and a necessary handoff change, then validate report readback and terminal receipts. Update this entry and close publication. LOCAL_VERIFIED_CLOUD_EVENTS_NOT_ENABLED means persistent editor/tool/terminal/cloud collectors remain inactive; explicit one-shot v3 file metadata is supported. Production remains unchanged; read-only provider confirmation is separate. Normal Owner/device/clipboard acceptance stays pending if cloud root GET remains blocked. No Joey installation/cleanup request.
 
 ## Historical checkpoints and bounds
 
