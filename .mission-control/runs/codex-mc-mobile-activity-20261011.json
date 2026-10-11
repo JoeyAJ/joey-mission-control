@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "mc.repository-run.v2",
+  "taskKind": "FEATURE",
+  "projectId": "MISSION_CONTROL",
+  "track": "BASELINE",
+  "runId": "codex-mc-mobile-activity-20261011",
+  "predecessorRunId": "codex-mc-file-navigation-20261011",
+  "taskId": "mc-mobile-activity-20261011",
+  "featureTitle": "Visible default mobile Joey task/activity entry with source-bound latest events",
+  "agentName": "Codex",
+  "provider": null,
+  "model": null,
+  "repositoryId": "JoeyAJ/joey-mission-control",
+  "reportRef": "mc/progress",
+  "workRef": "codex/mc-command-center-checkpoint-20261006",
+  "baseline": {
+    "ref": "codex/mc-command-center-checkpoint-20261006",
+    "commitSha": "756723280f399a7dec9d50716ac1196f483dce49",
+    "handoffPath": "HANDOFF.md",
+    "handoffDigest": "e697b0a3f4b4564819eb7b5efa2ed2f12ac885aac232f75c498f4e546d7fe9e0",
+    "contextPaths": [
+      "README.md",
+      "docs/PRODUCT_CHARTER.md",
+      "docs/MC_PHASE_PLAN.md",
+      "docs/STAGE_HANDOFF_TEMPLATE.md"
+    ]
+  },
+  "events": [
+    {
+      "id": "started",
+      "sequence": 1,
+      "eventAt": "2026-10-11T02:07:35.085Z",
+      "kind": "started",
+      "summary": "Direct Joey mobile feedback: default overview hid new dynamic workspace. Preserve simple overview; add prominent task/activity surface and file-workspace entry using verified current scoped Agent reports. No fake activity or new source/execution capability.",
+      "result": null,
+      "delivery": null
+    }
+  ]
+}
