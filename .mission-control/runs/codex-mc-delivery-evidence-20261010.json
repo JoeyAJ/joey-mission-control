@@ -40,6 +40,14 @@
       "kind": "progress",
       "summary": "v2 minimal snapshot／readiness validator 與 equal-time numeric sequence 修正已實作；21 contract/activity tests 與 14 copied-helper/reader/compatibility tests PASS。v1 預設、歷史 bytes、終止規則維持；v2尚未 live publish，正在驗證 desktop/mobile 三語 UI 與安全回歸。",
       "result": null
+    },
+    {
+      "id": "mc-delivery-all-tested",
+      "sequence": 3,
+      "eventAt": "2026-10-11T00:01:22.672622Z",
+      "kind": "progress",
+      "summary": "742 unit＋build/validate/check PASS；current contract/helper/privacy/handoff/equal-time 32 PASS；6 desktop/mobile×三語 delivery security/recovery 與6 dynamic cases、12 reading、4 fresh-copy、12原Continue PASS。手機已前置 delivery reported status／pending摘要並重驗。準備先發布tested reader/helper support，尚未live寫v2。",
+      "result": null
     }
   ]
 }
