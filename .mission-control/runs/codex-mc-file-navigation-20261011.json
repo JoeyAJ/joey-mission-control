@@ -43,6 +43,92 @@
       "summary": "Bounded task manifest/file-history navigation tested: portable761/build/validate/check PASS, external Draft2020-12 parity204 PASS; actual MC v3 bytes replay2, metadata navigation6 and old follow/file/delivery18, true Continue12/copy cancellation2 PASS, zero external calls/writes. Static no-migration guidance is exact reviewed University SHA/FOLLOWUP/READY only; old reports unchanged. Preparing fixed Preview/handoff closure; served check remains separate.",
       "result": null,
       "delivery": null
+    },
+    {
+      "id": "navigation-completed",
+      "sequence": 3,
+      "eventAt": "2026-10-11T02:05:04.862Z",
+      "kind": "completed",
+      "summary": "Final bounded metadata navigation and source-specific no-migration guidance tested and published at existing fixed Preview READY. Actual own-MC metadata replay/source privacy and historical-report preservation verified; root GET remains CONNECT403, delivery incomplete and independent Joey acceptance pending.",
+      "result": {
+        "codeSha": "756723280f399a7dec9d50716ac1196f483dce49",
+        "tests": [
+          {
+            "name": "Portable761/build/validate/check; forbidden attempts0",
+            "outcome": "PASS"
+          },
+          {
+            "name": "External Draft2020-12 structural/static parity204; source46 and final handoff20",
+            "outcome": "PASS"
+          },
+          {
+            "name": "Navigation6 actual-byte replay2 legacy follow/file/delivery18 true Continue12 promised-copy cancellation2; external0/writes0",
+            "outcome": "PASS"
+          },
+          {
+            "name": "Direct served Owner/device/full reference acceptance: root GET CONNECT403 before app",
+            "outcome": "NOT_RUN"
+          }
+        ],
+        "nextSteps": "Bounded authorized slice complete. Served Owner QA follows docs/MC_FILE_NAVIGATION_VERIFICATION_20261011.md when existing authorized device access is available; do not bypass403 or infer full reference acceptance. Preserve old reports and candidate qualification; no speculative content/diff/terminal/collector expansion.",
+        "handoff": {
+          "path": "HANDOFF.md",
+          "commitSha": "756723280f399a7dec9d50716ac1196f483dce49"
+        }
+      },
+      "delivery": {
+        "qualification": "AGENT_REPORTED",
+        "scope": {
+          "projectId": "MISSION_CONTROL",
+          "track": "BASELINE",
+          "repositoryId": "JoeyAJ/joey-mission-control",
+          "runId": "codex-mc-file-navigation-20261011",
+          "taskId": "mc-file-navigation-20261011",
+          "workRef": "codex/mc-command-center-checkpoint-20261006",
+          "codeSha": "756723280f399a7dec9d50716ac1196f483dce49"
+        },
+        "deployment": {
+          "status": "READY",
+          "target": {
+            "provider": "vercel",
+            "project": "joey-mission-control",
+            "environment": "preview"
+          },
+          "id": "dpl_28qUFPDyBeMUvZt4m92pCZTsSm6A",
+          "deployedSha": "756723280f399a7dec9d50716ac1196f483dce49",
+          "url": "https://joey-mission-control-git-codex-mc-comma-fceec2-joeyajs-projects.vercel.app/",
+          "observedAt": "2026-10-11T02:04:46Z",
+          "evidence": "Normal current-branch push exact remote SHA; connected Vercel READY and independent fixed alias matched full SHA/ID. Runtime bytes unchanged from tested b576e310.",
+          "notRequired": null
+        },
+        "verification": {
+          "status": "BLOCKED",
+          "method": "HTTP_FUNCTIONAL_CHECK",
+          "checkedAt": "2026-10-11T02:04:46.947423Z",
+          "deploymentId": "dpl_28qUFPDyBeMUvZt4m92pCZTsSm6A",
+          "checkedSha": null,
+          "url": "https://joey-mission-control-git-codex-mc-comma-fceec2-joeyajs-projects.vercel.app/",
+          "evidence": "Actual permitted root GET after provider observation: curl56/CONNECT403/HTTP000 before app. No bypass; no served bytes, Owner-device or full-reference acceptance claim.",
+          "notRequired": null
+        },
+        "handoff": {
+          "status": "CURRENT",
+          "path": "HANDOFF.md",
+          "commitSha": "756723280f399a7dec9d50716ac1196f483dce49",
+          "checkedAt": "2026-10-11T02:05:04.862Z",
+          "evidence": "Canonical current handoff consolidates final bounded task/file UI, source-specific policy inventory, tests, actual progress and fixed Preview blocker. Native source/handoff checks20 PASS; runtime unchanged, Owner QA steps documented."
+        },
+        "data": {
+          "status": "NOT_REQUIRED",
+          "version": null,
+          "checkedAt": "2026-10-11T02:05:04.862Z",
+          "evidence": null,
+          "notRequired": {
+            "policy": "MC_NO_DATA_CHANGE",
+            "reason": "This MC task changes metadata UI/report JSON validation only; no database schema/data/migration, SQL, permissions/secrets, University runtime or persistent browser state changed. Existing Auth/private API preserved."
+          }
+        }
+      }
     }
   ]
 }
