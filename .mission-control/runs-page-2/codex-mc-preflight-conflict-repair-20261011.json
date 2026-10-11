@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "mc.repository-run.v2",
+  "taskKind": "BUGFIX",
+  "projectId": "MISSION_CONTROL",
+  "track": "BASELINE",
+  "runId": "codex-mc-preflight-conflict-repair-20261011",
+  "predecessorRunId": "codex-mc-project-creation-preflight-20261011",
+  "taskId": "mc-preflight-conflict-repair-20261011",
+  "featureTitle": "Reserved report-ref conflicts and per-draft remote revision preservation; bounded preflight repair",
+  "agentName": "Codex",
+  "provider": null,
+  "model": null,
+  "repositoryId": "JoeyAJ/joey-mission-control",
+  "reportRef": "mc/progress",
+  "workRef": "codex/mc-command-center-checkpoint-20261006",
+  "baseline": {
+    "ref": "codex/mc-command-center-checkpoint-20261006",
+    "commitSha": "d29123b0599a92ec19386f2414b8f44c91f9ed93",
+    "handoffPath": "HANDOFF.md",
+    "handoffDigest": "a98201aa2ff1bb3624436b7325eb629db256cd258347ba4b636f5c92f5f00a7f",
+    "contextPaths": [
+      "README.md",
+      "docs/PRODUCT_CHARTER.md",
+      "docs/MC_PHASE_PLAN.md",
+      "docs/STAGE_HANDOFF_TEMPLATE.md"
+    ]
+  },
+  "events": [
+    {
+      "id": "preflight-conflict-start-1",
+      "sequence": 1,
+      "eventAt": "2026-10-11T15:12:07.030Z",
+      "kind": "started",
+      "summary": "Independent review confirmed reserved report-ref overlap and two remotely changed drafts losing conflict protection. Repairing within existing MC branch/Preview; synthetic fixtures only, no SQL, permissions or provisioning.",
+      "result": null,
+      "delivery": null
+    }
+  ]
+}
