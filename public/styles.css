@@ -708,3 +708,30 @@ body[data-joey-simple=true] .joey-simple-primary{background:#fff;color:#0b0b0b;b
 :where(body[data-joey-simple=true],body[data-active-module=workspace]) .repository-run-reports a{color:var(--mc-cyan)}
 @media(prefers-reduced-motion:reduce){#workspace :is(.command-project,.run-workbench-item,.command-explorer-item,.command-event,.command-file-tabs button){transition:none}.run-event-arrived{animation:none}}
 @media(max-width:640px){.new-project-panel{padding:15px}.new-project-form,.new-project-options-grid{grid-template-columns:1fr}.new-project-form input,.new-project-form select,.new-project-form textarea{font-size:16px}.new-project-readiness dl{grid-template-columns:1fr;gap:5px}.new-project-readiness dd{margin-bottom:10px}.new-project-actions{flex-direction:column}.new-project-actions button{flex:auto;width:100%}}
+
+/* One selected task context remains visible above every workspace pane. */
+#workspace .command-focus{flex:0 0 auto;min-width:0;border-bottom:1px solid var(--mc-separator)}
+#workspace .run-workbench-focus-brief{padding:0;border:0;border-left:3px solid var(--mc-cyan)}
+#workspace .run-workbench-focus-brief:is([data-current-state=blocked],[data-current-state=failed],[data-current-state=unconfirmed]){border-left-color:var(--mc-magenta)}
+#workspace .run-workbench-focus-brief .selected-task-title-disclosure>summary{padding:12px 16px;min-height:44px;align-items:center;cursor:pointer}
+#workspace .run-workbench-focus-brief .selected-task-title-disclosure>summary:before{order:2;margin:0;align-self:center}
+#workspace .run-focus-heading{display:grid;grid-template-columns:minmax(130px,.75fr) minmax(180px,1fr) minmax(0,2.5fr) auto;align-items:center;gap:16px;flex:1;min-width:0;margin:0;font-weight:400}
+#workspace .run-focus-field{display:grid;min-width:0;gap:3px}
+#workspace .run-focus-field :is(.run-focus-label,.run-focus-scope){font-size:10px;line-height:1.3;margin:0;color:var(--mc-muted);opacity:1;letter-spacing:.025em}
+#workspace .run-focus-project{color:var(--mc-cyan);font-size:14px;font-weight:700;overflow-wrap:anywhere}
+#workspace .run-focus-heading .selected-task-agent{color:var(--mc-muted);font-size:13px;font-weight:600;line-height:1.45;margin:0}
+#workspace .run-focus-heading .selected-task-title{display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden;margin:0;font-size:14px;line-height:1.45;color:var(--mc-text)}
+#workspace .run-workbench-focus-brief .selected-task-title-disclosure[open] .selected-task-title{display:block;-webkit-line-clamp:unset}
+#workspace .run-focus-more{color:var(--mc-muted);font-size:11px;white-space:nowrap}
+#workspace .run-focus-details{max-height:min(210px,32dvh);overflow:auto;padding:12px 16px;border-top:1px solid var(--mc-separator)}
+#workspace .run-focus-details .selected-task-disclosure{margin:7px 0}
+#workspace .run-focus-details .project-handoff-scope{margin:8px 0 0}
+#workspace .run-workbench-focus-brief>.selected-task-delivery{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 14px;padding:7px 16px;margin:0;border-top:1px solid var(--mc-separator)}
+#workspace .run-workbench-focus-brief>.selected-task-delivery>strong{font-size:11px}
+#workspace .run-workbench-focus-brief>.selected-task-delivery>small{font-size:10px;margin:0;opacity:1}
+#workspace .run-workbench-focus-brief .selected-task-alert{margin:0;color:var(--mc-magenta);font-size:11px}
+#workspace .run-workbench-focus-brief>.selected-task-blocker{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin:0;padding:4px 16px 8px;font-size:12px;line-height:1.5}
+#workspace .run-focus-placeholder{display:flex;align-items:center;flex-wrap:wrap;gap:8px 16px;padding:12px 16px;min-height:46px;box-sizing:border-box;font-size:12px;color:var(--mc-muted)}
+#workspace .run-card-agent{display:block;margin:0 0 4px;color:var(--mc-muted);line-height:1.45;font-size:11px}
+#workspace .run-workbench-card[aria-pressed=true] .run-card-agent{color:var(--mc-cyan)}
+@media(max-width:768px){#workspace .run-workbench-focus-brief .selected-task-title-disclosure>summary{padding:10px 12px;gap:6px}#workspace .run-focus-heading{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:7px 10px}#workspace .run-focus-field:nth-child(3){grid-column:1/-1}#workspace .run-focus-more{display:none}#workspace .run-focus-heading :is(.run-focus-project,.selected-task-agent){font-size:12px}#workspace .run-focus-heading .selected-task-title{font-size:14px}#workspace .run-workbench-focus-brief>.selected-task-delivery{padding:6px 12px;gap:3px 8px}#workspace .run-focus-details{padding:10px 12px;max-height:min(190px,28dvh)}#workspace .run-focus-details summary{min-height:44px;display:flex;align-items:center}#workspace .run-workbench-focus-brief>.selected-task-blocker{padding:4px 12px 7px}}
