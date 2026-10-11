@@ -43,6 +43,88 @@
       "summary": "Visible default Joey activity tested: portable762/build/validate/check PASS, focused25/handoff20 PASS; actual MC report-byte replay1440/390 initial/bookmark/reload/task/refresh/history/project/workspace/outage/logout2, old simple takeover4 widths and true Continue12 PASS, external0/writes0. Before/after reviewed; same-scope reread preserves selection. Fixed Preview/served check closure follows, no full reference acceptance.",
       "result": null,
       "delivery": null
+    },
+    {
+      "id": "mobile-completed",
+      "sequence": 3,
+      "eventAt": "2026-10-11T02:17:43.648Z",
+      "kind": "completed",
+      "summary": "Default Joey mobile activity is now visible above simple overview with real scoped task selection, dated latest events and one-tap file workspace entry. Tests and existing fixed Preview READY complete; cloud root CONNECT403 remains, delivery incomplete and independent Joey acceptance pending.",
+      "result": {
+        "codeSha": "625c3f51b4694a245262a5317b73f4801c5d9700",
+        "tests": [
+          {
+            "name": "Portable762/build/validate/check; forbiddenAttempts0; focused25/current handoff20",
+            "outcome": "PASS"
+          },
+          {
+            "name": "Default/bookmark mobile1440/390 actual MC bytes replay2; original simple4 widths and true Continue12; external0/writes0",
+            "outcome": "PASS"
+          },
+          {
+            "name": "Direct served Owner/device/full-reference acceptance: root CONNECT403 before app",
+            "outcome": "NOT_RUN"
+          }
+        ],
+        "nextSteps": "Authorized mobile visibility correction complete. Use fixed Preview #joey: select Mission Control, inspect 開發動態/Agent task/latest dated events and tap 開啟任務／檔案工作台. Exact before/after and normal served Owner QA steps are documented; no bypass or full-reference acceptance. Preserve immutable reports/candidate scope; no further speculative expansion.",
+        "handoff": {
+          "path": "HANDOFF.md",
+          "commitSha": "ab4407b5dbde5f950c5cb23cd2c731ed329fcf06"
+        }
+      },
+      "delivery": {
+        "qualification": "AGENT_REPORTED",
+        "scope": {
+          "projectId": "MISSION_CONTROL",
+          "track": "BASELINE",
+          "repositoryId": "JoeyAJ/joey-mission-control",
+          "runId": "codex-mc-mobile-activity-20261011",
+          "taskId": "mc-mobile-activity-20261011",
+          "workRef": "codex/mc-command-center-checkpoint-20261006",
+          "codeSha": "625c3f51b4694a245262a5317b73f4801c5d9700"
+        },
+        "deployment": {
+          "status": "READY",
+          "target": {
+            "provider": "vercel",
+            "project": "joey-mission-control",
+            "environment": "preview"
+          },
+          "id": "dpl_21BphymoGbCpF2czo8WHXQBCPyM5",
+          "deployedSha": "625c3f51b4694a245262a5317b73f4801c5d9700",
+          "url": "https://joey-mission-control-git-codex-mc-comma-fceec2-joeyajs-projects.vercel.app/",
+          "observedAt": "2026-10-11T02:16:32Z",
+          "evidence": "Tested implementation exact remote SHA; connected Vercel READY and independent fixed alias matched full SHA/ID. Subsequent handoff-only commit preserves runtime bytes; observations are dated.",
+          "notRequired": null
+        },
+        "verification": {
+          "status": "BLOCKED",
+          "method": "HTTP_FUNCTIONAL_CHECK",
+          "checkedAt": "2026-10-11T02:16:32.731340Z",
+          "deploymentId": "dpl_21BphymoGbCpF2czo8WHXQBCPyM5",
+          "checkedSha": null,
+          "url": "https://joey-mission-control-git-codex-mc-comma-fceec2-joeyajs-projects.vercel.app/",
+          "evidence": "Actual root GET after provider observation curl56/CONNECT403/HTTP000 before app. No bypass, served bytes, Owner-device or full-reference acceptance claim.",
+          "notRequired": null
+        },
+        "handoff": {
+          "status": "CURRENT",
+          "path": "HANDOFF.md",
+          "commitSha": "ab4407b5dbde5f950c5cb23cd2c731ed329fcf06",
+          "checkedAt": "2026-10-11T02:17:43.648Z",
+          "evidence": "Current handoff consolidates default mobile visibility correction, before/after QA, tested progress, exact support publication and served restriction. Source/handoff20 PASS; public/src/API/runtime diff from tested implementation empty."
+        },
+        "data": {
+          "status": "NOT_REQUIRED",
+          "version": null,
+          "checkedAt": "2026-10-11T02:17:43.648Z",
+          "evidence": null,
+          "notRequired": {
+            "policy": "MC_NO_DATA_CHANGE",
+            "reason": "Default mobile metadata UI/summary projection and pure public time-module allowlist only; no database schema/data/migration, SQL, permissions/secrets, private storage reset or other repository change."
+          }
+        }
+      }
     }
   ]
 }
