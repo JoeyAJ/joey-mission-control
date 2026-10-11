@@ -43,6 +43,15 @@
       "summary": "165 structural/static-policy parity cases and 10 initial checks PASS; three fixed targets read-only verified, Asset/University disabled; full regression running",
       "result": null,
       "delivery": null
+    },
+    {
+      "id": "mc-schema-targets-publication",
+      "sequence": 3,
+      "eventAt": "2026-10-11T00:34:45.632Z",
+      "kind": "progress",
+      "summary": "Final 745 checks, 180 parity cases and 36 browser cases PASS; support dbfc1df fixed Preview READY/exact alias. Actual root GET CONNECT403/HTTP000; served SHA unverified, current handoff consolidation next",
+      "result": null,
+      "delivery": null
     }
   ]
 }
