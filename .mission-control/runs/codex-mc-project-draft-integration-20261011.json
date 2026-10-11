@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "mc.repository-run.v2",
+  "taskKind": "FEATURE",
+  "projectId": "MISSION_CONTROL",
+  "track": "BASELINE",
+  "runId": "codex-mc-project-draft-integration-20261011",
+  "predecessorRunId": "codex-mc-project-onboarding-20261011",
+  "taskId": "mc-project-draft-integration-20261011",
+  "featureTitle": "Owner private cloud draft API integration and revision conflict isolation (activation pending)",
+  "agentName": "Codex",
+  "provider": null,
+  "model": null,
+  "repositoryId": "JoeyAJ/joey-mission-control",
+  "reportRef": "mc/progress",
+  "workRef": "codex/mc-command-center-checkpoint-20261006",
+  "baseline": {
+    "ref": "codex/mc-command-center-checkpoint-20261006",
+    "commitSha": "be996d53cbd833ff60e93af12f113bb90d63d06c",
+    "handoffPath": "HANDOFF.md",
+    "handoffDigest": "c6ab104ee3297068be4577a1745dae538e42cfde0ac8e18e372b514dd11ba792",
+    "contextPaths": [
+      "README.md",
+      "docs/PRODUCT_CHARTER.md",
+      "docs/MC_PHASE_PLAN.md",
+      "docs/STAGE_HANDOFF_TEMPLATE.md"
+    ]
+  },
+  "events": [
+    {
+      "id": "draft-integration-start-1",
+      "sequence": 1,
+      "eventAt": "2026-10-11T06:38:15.270Z",
+      "kind": "started",
+      "summary": "Implement dormant same-origin Owner draft API and cloud UI CAS/isolation tests. Reviewed activation proposal remains NOT_APPLIED; existing draft fallback and five scopes preserved.",
+      "result": null,
+      "delivery": null
+    }
+  ]
+}
