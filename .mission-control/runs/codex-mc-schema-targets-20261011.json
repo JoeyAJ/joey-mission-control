@@ -52,6 +52,108 @@
       "summary": "Final 745 checks, 180 parity cases and 36 browser cases PASS; support dbfc1df fixed Preview READY/exact alias. Actual root GET CONNECT403/HTTP000; served SHA unverified, current handoff consolidation next",
       "result": null,
       "delivery": null
+    },
+    {
+      "id": "mc-schema-targets-completed",
+      "sequence": 4,
+      "eventAt": "2026-10-11T00:36:50.358Z",
+      "kind": "completed",
+      "summary": "Bounded MC schema/metadata development completed; Preview READY, actual root check blocked; delivery/independent/Joey pending",
+      "result": {
+        "codeSha": "dbfc1df7688fa0c4260fe1f5bbe286200cd47795",
+        "tests": [
+          {
+            "name": "745 portable checks plus build/validate/check",
+            "outcome": "PASS"
+          },
+          {
+            "name": "180 code/local/external Draft2020 schema parity cases",
+            "outcome": "PASS"
+          },
+          {
+            "name": "41 final schema/source/handoff checks",
+            "outcome": "PASS"
+          },
+          {
+            "name": "26 contract/helper/reader/takeover checks",
+            "outcome": "PASS"
+          },
+          {
+            "name": "18 new-target desktop/mobile/three-locale app cases",
+            "outcome": "PASS"
+          },
+          {
+            "name": "6 MC delivery plus 12 four-project fresh Continue cases",
+            "outcome": "PASS"
+          },
+          {
+            "name": "31 current canonical handoff/source checks",
+            "outcome": "PASS"
+          },
+          {
+            "name": "Served app Owner/device/clipboard functional verification",
+            "outcome": "NOT_RUN"
+          }
+        ],
+        "nextSteps": "Normal permitted served/Owner verification remains blocked by CONNECT403; independent/Joey acceptance pending. Later authorized work needs a new same-scope predecessor run. Asset/University output-target/source consolidation and Nex CI remain separate work; actual file-event source gates are documented, inactive.",
+        "handoff": {
+          "path": "HANDOFF.md",
+          "commitSha": "aecd307c3394ae0f263fa4361110dcdca75e180d"
+        }
+      },
+      "delivery": {
+        "qualification": "AGENT_REPORTED",
+        "scope": {
+          "projectId": "MISSION_CONTROL",
+          "track": "BASELINE",
+          "repositoryId": "JoeyAJ/joey-mission-control",
+          "runId": "codex-mc-schema-targets-20261011",
+          "taskId": "mc-schema-targets-20261011",
+          "workRef": "codex/mc-command-center-checkpoint-20261006",
+          "codeSha": "dbfc1df7688fa0c4260fe1f5bbe286200cd47795"
+        },
+        "deployment": {
+          "status": "READY",
+          "target": {
+            "provider": "vercel",
+            "project": "joey-mission-control",
+            "environment": "preview"
+          },
+          "id": "dpl_CoqsUgyqmuPf37guyrGFZnu3ZQS7",
+          "deployedSha": "dbfc1df7688fa0c4260fe1f5bbe286200cd47795",
+          "url": "https://joey-mission-control-git-codex-mc-comma-fceec2-joeyajs-projects.vercel.app/",
+          "observedAt": "2026-10-11T00:33:58.000Z",
+          "evidence": "Connected provider deployment and independent fixed alias each returned READY/exact tested support SHA; dated observation.",
+          "notRequired": null
+        },
+        "verification": {
+          "status": "BLOCKED",
+          "method": "HTTP_FUNCTIONAL_CHECK",
+          "checkedAt": "2026-10-11T00:33:58.852684Z",
+          "deploymentId": "dpl_CoqsUgyqmuPf37guyrGFZnu3ZQS7",
+          "checkedSha": null,
+          "url": "https://joey-mission-control-git-codex-mc-comma-fceec2-joeyajs-projects.vercel.app/",
+          "evidence": "Actual permitted root GET: curl exit56, CONNECT tunnel403, HTTP000 before app. Served SHA unverified; no bypass.",
+          "notRequired": null
+        },
+        "handoff": {
+          "status": "CURRENT",
+          "path": "HANDOFF.md",
+          "commitSha": "aecd307c3394ae0f263fa4361110dcdca75e180d",
+          "checkedAt": "2026-10-11T00:36:50.358Z",
+          "evidence": "Leading current legal task/progress/blocker/handoff/data consolidated; 31 source/current-entry guard checks PASS, below 64KiB."
+        },
+        "data": {
+          "status": "NOT_REQUIRED",
+          "version": null,
+          "checkedAt": "2026-10-11T00:36:50.358Z",
+          "evidence": null,
+          "notRequired": {
+            "policy": "MC_NO_DATA_CHANGE",
+            "reason": "MC standalone JSON contract, report/helper metadata and documentation only; no SQL/database schema/data migration or external collector."
+          }
+        }
+      }
     }
   ]
 }
