@@ -52,3 +52,22 @@ export function replaceCommandWorkspace(holder,renderNext){
  }
  return next;
 }
+
+// Transient presentation choices only. Scope keys never enter URLs or storage.
+export function createDisclosureState(){
+ const opened=new Set();let focused=null;
+ const key=n=>JSON.stringify([n.closest('[data-disclosure-scope]')?.dataset.disclosureScope,n.dataset.disclosure]);
+ const nodes=root=>[...root.querySelectorAll('details[data-disclosure]')];
+ return {
+  capture(root){
+   for(const n of nodes(root)){const k=key(n);if(n.open)opened.add(k);else opened.delete(k);}
+   const active=root.ownerDocument.activeElement;
+   if(active?.tagName==='SUMMARY'&&root.contains(active)&&active.parentElement?.dataset.disclosure)focused=key(active.parentElement);
+   else if(active&&active!==root.ownerDocument.body)focused=null;
+  },
+  restore(root){
+   for(const n of nodes(root)){n.open=opened.has(key(n));if(focused===key(n))n.querySelector(':scope > summary')?.focus({preventScroll:true});}
+  },
+  clear(){opened.clear();focused=null;}
+ };
+}

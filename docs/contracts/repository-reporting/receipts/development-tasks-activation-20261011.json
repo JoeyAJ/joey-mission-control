@@ -70,9 +70,29 @@
     "attempts": 2,
     "error": "library file transfer failed: download failed",
     "sourceCommit": "5e3ee061fb4f8291419039d7911d19b4e4a8438a",
-    "integrated": false,
+    "integrated": true,
     "privateUrlFallbackUsed": false,
-    "resolution": "AUTHORIZED_SOURCE_ONLY_ISOLATED_GIT_BRANCH_AWAITING_PARENT_VERIFIED_REMOTE_SHA"
+    "resolution": "PARENT_AUTHORIZED_VERIFIED_SOURCE_ONLY_GIT_CHERRY_PICK_AND_OWNER_BUNDLE_REBUILD",
+    "gitRemoteExactSha": "5e3ee061fb4f8291419039d7911d19b4e4a8438a",
+    "referencePaletteLayout": "PENDING_REFERENCE_BYTES_AND_OWNER_ACCEPTANCE",
+    "regressions": {
+      "disclosure": 6,
+      "delivery": 6,
+      "fileNavigation": 6,
+      "follow": 6,
+      "privacy": 2,
+      "cloudTasks": 4,
+      "capacity": 4,
+      "trueContinue": 12,
+      "portable": 831,
+      "simpleTakeover": 4,
+      "cloudProjectDrafts": 4,
+      "totalBrowserCases": 54,
+      "buildValidateCheck": "PASS",
+      "unexpectedWrites": 0,
+      "externalRequests": 0,
+      "qa": "../../../qa/mc-ui-integration-20261011/verification.json"
+    }
   },
   "tests": {
     "portable": 831,
@@ -96,5 +116,26 @@
     "fileSha": "d35159ff6291e68f5c1a997db5e36bd90f6992b6",
     "terminal": false,
     "baselineAndPriorEventsPreserved": true
+  },
+  "previewFunctionalCheckpoint": {
+    "id": "dpl_8MCejUP3pN7kiMWddp1aJj1WEwxY",
+    "sha": "754528e81e15babeeafccebfbf50ac66b617b460",
+    "readyState": "READY",
+    "projectId": "prj_X67htPw7vkRI2tuf8817vOUCGQOD",
+    "target": null,
+    "alias": [
+      "joey-mission-control-git-codex-mc-comma-fceec2-joeyajs-projects.vercel.app"
+    ],
+    "observedAt": "2026-10-11T09:05:23.017Z",
+    "remoteExactSha": true
+  },
+  "servedFunctionalCheckpoint": {
+    "status": "BLOCKED",
+    "reason": "CONNECT403_BEFORE_APP",
+    "checkedAt": "2026-10-11T09:05:23.259837+00:00",
+    "curlExitCode": 56,
+    "httpStatus": "000",
+    "checkedSha": null,
+    "bypass": false
   }
 }

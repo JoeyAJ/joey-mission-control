@@ -1,0 +1,34 @@
+{
+  "pass": true,
+  "cases": [
+    {
+      "width": 1440,
+      "pass": true,
+      "cancelActions": [
+        "close",
+        "escape",
+        "scope",
+        "owner",
+        "route-back"
+      ],
+      "syntheticClipboardWrites": 0,
+      "directHostAttributesCleared": true
+    },
+    {
+      "width": 390,
+      "pass": true,
+      "cancelActions": [
+        "close",
+        "escape",
+        "scope",
+        "owner",
+        "route-back"
+      ],
+      "syntheticClipboardWrites": 0,
+      "directHostAttributesCleared": true
+    }
+  ],
+  "external": 0,
+  "writes": 0,
+  "realOwnerAcceptance": false
+}

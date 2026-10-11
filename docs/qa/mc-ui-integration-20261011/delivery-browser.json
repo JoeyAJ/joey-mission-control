@@ -1,0 +1,86 @@
+{
+  "pass": true,
+  "cases": [
+    {
+      "projectId": "MISSION_CONTROL",
+      "width": 1440,
+      "locale": "zh-TW",
+      "pass": true,
+      "v1V2Compatibility": true,
+      "equalTimeSequence": true,
+      "reportedIncompleteReady": true,
+      "independentAndJoeyPending": true,
+      "historyDated": true,
+      "permittedUrlOnly": true,
+      "authWithdrawn": true
+    },
+    {
+      "projectId": "MISSION_CONTROL",
+      "width": 1440,
+      "locale": "ko",
+      "pass": true,
+      "v1V2Compatibility": true,
+      "equalTimeSequence": true,
+      "reportedIncompleteReady": true,
+      "independentAndJoeyPending": true,
+      "historyDated": true,
+      "permittedUrlOnly": true,
+      "authWithdrawn": true
+    },
+    {
+      "projectId": "MISSION_CONTROL",
+      "width": 1440,
+      "locale": "en",
+      "pass": true,
+      "v1V2Compatibility": true,
+      "equalTimeSequence": true,
+      "reportedIncompleteReady": true,
+      "independentAndJoeyPending": true,
+      "historyDated": true,
+      "permittedUrlOnly": true,
+      "authWithdrawn": true
+    },
+    {
+      "projectId": "MISSION_CONTROL",
+      "width": 390,
+      "locale": "zh-TW",
+      "pass": true,
+      "v1V2Compatibility": true,
+      "equalTimeSequence": true,
+      "reportedIncompleteReady": true,
+      "independentAndJoeyPending": true,
+      "historyDated": true,
+      "permittedUrlOnly": true,
+      "authWithdrawn": true
+    },
+    {
+      "projectId": "MISSION_CONTROL",
+      "width": 390,
+      "locale": "ko",
+      "pass": true,
+      "v1V2Compatibility": true,
+      "equalTimeSequence": true,
+      "reportedIncompleteReady": true,
+      "independentAndJoeyPending": true,
+      "historyDated": true,
+      "permittedUrlOnly": true,
+      "authWithdrawn": true
+    },
+    {
+      "projectId": "MISSION_CONTROL",
+      "width": 390,
+      "locale": "en",
+      "pass": true,
+      "v1V2Compatibility": true,
+      "equalTimeSequence": true,
+      "reportedIncompleteReady": true,
+      "independentAndJoeyPending": true,
+      "historyDated": true,
+      "permittedUrlOnly": true,
+      "authWithdrawn": true
+    }
+  ],
+  "external": 0,
+  "writes": 0,
+  "realOwnerAcceptance": false
+}

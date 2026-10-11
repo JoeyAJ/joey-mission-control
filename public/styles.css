@@ -583,6 +583,22 @@ body[data-joey-simple=true] .utility-menu>summary{min-height:44px;box-sizing:bor
 
 .selected-task-title{text-transform:none!important;letter-spacing:normal!important}
 
+/* Text-authorized disclosure; reference palette and pane geometry stay pending. */
+.selected-task-disclosure,.run-workbench-history,.run-event-details,.joey-task-history,.joey-project-details{min-width:0;margin:6px 0;border-top:1px solid currentColor}
+.selected-task-disclosure>summary,.run-workbench-history>summary,.run-event-details>summary,.joey-task-history>summary,.joey-project-details>summary{cursor:pointer;min-height:44px;padding:10px 0;box-sizing:border-box;line-height:1.5;font-size:13px}
+.selected-task-disclosure>summary:focus-visible,.run-workbench-history>summary:focus-visible,.run-event-details>summary:focus-visible,.joey-task-history>summary:focus-visible,.joey-project-details>summary:focus-visible{outline:2px solid currentColor;outline-offset:2px}
+.selected-task-disclosure dl{display:grid;grid-template-columns:auto minmax(0,1fr);gap:6px 14px;font-size:13px}.selected-task-disclosure dd{margin:0;min-width:0}.selected-task-tests{padding-left:20px;font-size:13px;line-height:1.6}
+.selected-task-disclosure .selected-task-latest,.selected-task-disclosure .selected-task-next,.joey-task-history .joey-activity-events p{display:block;-webkit-line-clamp:unset;overflow:visible;white-space:pre-wrap}
+.selected-task-delivery .selected-task-alert{margin:6px 0 0;font-size:12px;line-height:1.5;font-weight:600}
+.selected-task-blocker{font-size:13px;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;white-space:pre-wrap}
+.selected-task-title-disclosure>summary{cursor:pointer;min-height:44px;box-sizing:border-box}.selected-task-title-disclosure>summary:focus-visible{outline:2px solid currentColor;outline-offset:2px}.selected-task-title-disclosure .selected-task-title{vertical-align:top;max-width:calc(100% - 16px)}.selected-task-title-disclosure:not([open]) .selected-task-title{display:-webkit-inline-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}.selected-task-title-disclosure[open] .selected-task-title{display:inline-block;-webkit-line-clamp:unset;overflow:visible}
+.joey-workspace-secondary{width:100%;min-height:44px;font-size:14px}
+.run-selected-qualification{margin:8px 0;font-size:11px;line-height:1.5}.run-selected-qualification strong,.run-selected-qualification small{display:block}.run-selected-qualification small{font-size:10px;margin-top:4px}
+.selected-task-date time{display:inline;margin-left:.5em}.run-workbench-card strong{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#workspace .selected-task-disclosure dl{font-size:11px}#workspace .selected-task-date time{display:inline}#workspace .run-workbench-history[open]>summary{margin-bottom:6px}
+.joey-task-history .joey-activity-events{margin-top:6px}.joey-simple-card .joey-project-overview-scope{font-size:12px;line-height:1.5;margin:0}
+@media(max-width:768px){#workspace .selected-task-disclosure dl{font-size:12px}.selected-task-disclosure>summary,.joey-task-history>summary,.joey-project-details>summary{font-size:14px}}
+
 #workspace .command-events .selected-task-brief h4.selected-task-title{font-size:14px;line-height:1.5}@media(max-width:768px){#workspace .command-events .selected-task-brief h4.selected-task-title{font-size:15px}}
 
 /* Owner draft: explicit private export/import, no new persistence or palette. */
