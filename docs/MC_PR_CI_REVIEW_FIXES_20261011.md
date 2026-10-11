@@ -31,3 +31,6 @@ Portable840/build/validate/check, focused9 and32 synthetic actual-app browser ca
 
 Next Action: authorized Preview c4d089f READY; Owner inspects a completed task via 重新核對 PR／CI. Details and current publication receipt: docs/MC_PR_CI_RECONCILIATION_20261011.md.
 
+End of the preserved prior checkpoint.
+
+Runtime d46da151a9932fe24481cd6a392a7766a3194159 / dpl_8hBbRyeZ4AyZ5LFY2ZFe4CaK8XBN is READY on the fixed alias and independently inspected deployment ID. Portable843, focused29, root20, privacy/source-race browser8 and cloud-task browser4 PASS. Runtime permissions and actual Owner acceptance stay unverified. Corrected run terminal2 at d4c1c550004d641ac3613a490c2d1a9294fa339a / ab45e9403d78e619f0b0775082fdfbd23f7ed79b; no terminal append follows. The separately authorized cc174c4 palette integration follows this runtime without undoing these fixes.

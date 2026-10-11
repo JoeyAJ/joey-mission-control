@@ -3,7 +3,7 @@
 Project: MISSION_CONTROL
 Timestamp: 2026-10-11T10:13:53.295Z
 Task: Quoted credential label privacy and delayed canonical source correlation
-Status: LOCAL_VERIFIED_PENDING_PUBLICATION
+Status: LOCAL_VERIFIED_PARENT_READ_PREVIEW_PUBLISHED
 Last Developer: Codex
 Executed by: Codex
 Actual Model: UNKNOWN
@@ -11,7 +11,7 @@ Baseline: 95d850f6779089cd6e6d61863c7079e8065cdcf1
 
 Reuse task quoted-key privacy guard in provider redaction and client label/context-ID validation. PR-CI needs current connected FOUND project/track/repo/ref/HEAD equal to captured and returned binding; source reading/change invalidates pending reads, including change-and-return and final Owner await. No stale result or legacy fallback. Exact-code/report/private Owner scope retained.
 
-Synthetic focused29 and actual-app privacy/source-race8 PASS; full portable verification and authorized fixed Preview proof follow in docs/MC_PR_CI_REVIEW_FIXES_20261011.md. Prior exact root prefix is preserved there. Original terminal runs/history remain; new BUGFIX run uses page2 and prior PR-CI predecessor. Existing tasks/drafts ON, candidate acceptance pending, unsigned sources UNKNOWN. SQL/Auth/permissions/secrets/Production/other repo/AWS/model/dispatch unchanged.
+Synthetic focused29 and actual-app privacy/source-race8 PASS; portable843 and fixed Preview d46da15 READY proof in docs/MC_PR_CI_REVIEW_FIXES_20261011.md. Prior exact root prefix is preserved there. Original terminal runs/history remain; new BUGFIX run uses page2 and prior PR-CI predecessor. Existing tasks/drafts ON, candidate acceptance pending, unsigned sources UNKNOWN. SQL/Auth/permissions/secrets/Production/other repo/AWS/model/dispatch unchanged.
 
 Next Action: use docs/MC_OWNER_PR_CI_ONE_SCREEN_TEST_20261011.md. Cloud save/reload is independent; MC legacy reports have no compatible task ID. Live runtime GitHub permission and actual Owner acceptance remain unverified; CONNECT403 is not permission proof. No new grant or bypass.
 
