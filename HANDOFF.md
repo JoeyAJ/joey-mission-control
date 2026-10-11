@@ -1,19 +1,19 @@
-# Current reference palette integration — 2026-10-11
+# Current PR/CI API-key label correction — 2026-10-11
 
 Project: MISSION_CONTROL
-Timestamp: 2026-10-11T10:29:37.902Z
-Task: Authorized pixel-inspected palette integration after PR/CI reviewer fixes
-Status: LOCAL_VERIFIED_PARENT_READ_PREVIEW_PUBLISHED
+Timestamp: 2026-10-11T10:47:23.074Z
+Task: Shared provider-label privacy guard for API-key assignment variants
+Status: LOCAL_VERIFIED_PENDING_PUBLICATION
 Last Developer: Codex
 Executed by: Codex
 Actual Model: UNKNOWN
-Baseline: c26e1e9e17411b63240514cf0503cf7ac7566f0e
+Baseline: 7a10322e1936f0ecbfe1c854f24bc8a00e895654
 
-Only named cc174c4 five-file source delivery integrated: charcoal/cyan/periwinkle/magenta, white primary action, rounded cards; report-ID-bound arrival and reduced motion retained. Quoted-key privacy and post-await current FOUND source tuple/generation corrections remain unchanged. Candidate qualification, fresh Continue/history/reload, task/draft activation and bounded report contracts preserved.
+Bounded fix only: provider label and status-context ID share a server/client guard for API-key assignment forms. Established task quoted-key guard retained; task payload validator and approved SQL parity unchanged. Unsafe labels redact before response, forged client labels reject, DOM regression follows normal authenticated factory. Existing source tuple/generation races, palette/disclosures, candidate qualification and fresh Continue preserved.
 
-Portable843/build/validate/check and54 synthetic actual-app browser cases PASS; minimum sampled text contrast8.74, mobile disclosure44px, external/unexpected writes0. Actual Owner HTTP/device/appearance and runtime GitHub channel permissions remain pending. Original reports/terminal runs unchanged; new receiving-Agent palette run is page2 with prior bugfix predecessor. Prior current root prefix preserved byte-for-byte in docs/MC_REFERENCE_THEME_INTEGRATION_20261011.md; dated history below unchanged.
+Portable845/build/validate/check, focused31/root10 and18 synthetic browser cases PASS incl server-client-DOM8, cloud-task4 and palette/disclosure6. Evidence: docs/MC_PR_CI_API_KEY_LABEL_FIX_20261011.md. Prior current root prefix preserved there byte-for-byte; dated root history unchanged. New receiving-Agent BUGFIX run starts page2 after terminal palette run; no prior terminal append.
 
-Next Action: fixed Preview5536433 READY; docs/MC_OWNER_CLOUD_SAVE_ACCEPTANCE_20261011.md save/reload only. No compatible completed cloud task run exists for MC legacy IDs; do not click disabled PR/CI or rewrite reports. SQL/Auth/secrets/grants/Production/other repo/AWS/model/dispatch unchanged. CONNECT403 is not bypassed. Do not recreate rejected VM artifacts.
+Next Action: publish same fixed Preview, then independent docs/MC_OWNER_CLOUD_SAVE_ACCEPTANCE_20261011.md. Actual Owner save/reload and appearance pending; live GitHub permission UNKNOWN. No compatible completed cloud-task report; do not click disabled PR/CI or rewrite old reports. SQL/Auth/secrets/grants/Production/other repo/AWS/model/dispatch unchanged; CONNECT403 not bypassed. Do not recreate rejected VM artifacts.
 
 # Dated prior stage history
 

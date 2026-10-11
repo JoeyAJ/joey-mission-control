@@ -45,6 +45,23 @@ test('fresh controller observation binds run and report blob; expiry clears resu
 const quotedCredentials=['{"token":"synthetic-private-value"}',"{'password': 'synthetic-private-value'}",'prefix {"secret" : "synthetic-private-value"}',"prefix {'TOKEN' : 'synthetic-private-value'}"];
 test('provider check/workflow/status names reuse task quoted-credential guard and are redacted before Owner response',async()=>{for(const value of quotedCredentials){assert.throws(()=>createDevelopmentTask({projectId:'WOOSONG_BUDDY',track:'BASELINE'},{feature:value,acceptance:'',constraints:''},{taskId,now:time}));const f=fixture();f.state.labels={checks:value,statuses:value,actions:value};const reply=await f.server.handle(f.req);assert.equal(reply.status,200);for(const key of ['checks','statuses','actions']){assert.equal(reply.body.channels[key].state,'OBSERVED');assert.equal(reply.body.channels[key].items[0].label,'名稱已隱藏');}assert.equal(reply.body.channels.statuses.items[0].id,'名稱已隱藏');assert(!JSON.stringify(reply.body).includes('synthetic-private-value'));}});
 test('client independently rejects quoted credential labels and status-context IDs instead of trusting server sanitization',async()=>{const f=fixture(),reply=(await f.server.handle(f.req)).body;for(const value of quotedCredentials)for(const key of ['checks','statuses','actions']){const forged=structuredClone(reply);forged.channels[key].items[0].label=value;assert.throws(()=>validateReconciliationReply(forged,f.request,time));const client=createTaskReconciliationClient({origin,getAccessToken:async()=>KEY,now:()=>time,fetchImpl:async()=>new Response(JSON.stringify(forged))});await assert.rejects(client.inspect(f.request));}for(const value of quotedCredentials){const forged=structuredClone(reply);forged.channels.statuses.items[0].id=value;assert.throws(()=>validateReconciliationReply(forged,f.request,time));}});
+const apiKeyLabels=['api_key=synthetic-private-value','{"api_key":"synthetic-private-value"}',"{'API-KEY' : 'synthetic-private-value'}",'API KEY = synthetic-private-value','apiKey: synthetic-private-value','OPENAI_API_KEY = synthetic-private-value','CI-x-api-key=synthetic-private-value','_api_key=synthetic-private-value','service__api_key=synthetic-private-value','openaiApiKey=synthetic-private-value'];
+test('provider API-key assignment variants are redacted in all label channels before client validation, while descriptive API labels remain',async()=>{
+ for(const value of [...apiKeyLabels,'API key validation','API-key smoke check','apikey rotation audit']){
+  const f=fixture();f.state.labels={checks:value,statuses:value,actions:value};const reply=await f.server.handle(f.req);assert.equal(reply.status,200);
+  const expected=apiKeyLabels.includes(value)?'名稱已隱藏':value;
+  for(const key of ['checks','statuses','actions']){assert.equal(reply.body.channels[key].state,'OBSERVED');assert.equal(reply.body.channels[key].items[0].label,expected);}
+  assert.equal(reply.body.channels.statuses.items[0].id,expected);assert(!JSON.stringify(reply.body).includes('synthetic-private-value'));
+  const client=createTaskReconciliationClient({origin,getAccessToken:async()=>KEY,now:()=>time,fetchImpl:async()=>new Response(JSON.stringify(reply.body))});assert.equal((await client.inspect(f.request)).channels.statuses.items[0].label,expected);
+ }
+});
+test('actual client rejects forged API-key labels and status-context IDs independently of server redaction',async()=>{
+ const f=fixture(),reply=(await f.server.handle(f.req)).body;
+ for(const value of apiKeyLabels)for(const key of ['checks','statuses','actions','statusesId']){
+  const forged=structuredClone(reply);if(key==='statusesId')forged.channels.statuses.items[0].id=value;else forged.channels[key].items[0].label=value;
+  assert.throws(()=>validateReconciliationReply(forged,f.request,time));const client=createTaskReconciliationClient({origin,getAccessToken:async()=>KEY,now:()=>time,fetchImpl:async()=>new Response(JSON.stringify(forged))});await assert.rejects(client.inspect(f.request));
+ }
+});
 test('ordered actual-client reconciliation race refuses reading source then newer connected HEAD; it cannot resurrect an old response',async()=>{
  for(const change of ['initialReading','headWithSubscription','headWithoutSubscription','headChangeAndReturn','project','track','repository','ref','duringFinalOwner','duringReportRefresh']){
   const f=fixture(),reply=(await f.server.handle(f.req)).body;let sourceView=validSource(f),subscriber=()=>{},release,requests=0,ownerCalls=0,holdFinalOwner=false,ownerRelease;

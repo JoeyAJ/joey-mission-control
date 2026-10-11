@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "qualification": "BOUNDED_PR_CI_LABEL_PRIVACY_FIX_SYNTHETIC_VERIFIED_OWNER_RUNTIME_PENDING",
+  "baselineSha": "7a10322e1936f0ecbfe1c854f24bc8a00e895654",
+  "checkedAt": "2026-10-11T10:49:45.320Z",
+  "guard": "SHARED_PROVIDER_LABEL_ONLY_API_KEY_ASSIGNMENT_VARIANTS",
+  "verification": {
+    "portableTests": 845,
+    "failures": 0,
+    "buildValidateCheck": "PASS",
+    "forbiddenWorkstationAttempts": 0,
+    "focusedGroups": 31,
+    "rootSafeIntakeGroups": 10,
+    "apiKeyAssignmentVariants": 10,
+    "positiveDescriptiveApiNames": 3,
+    "prCiBrowserCases": 8,
+    "normalFactoryServerClientDomAssignments": 32,
+    "cloudTaskBrowserCases": 4,
+    "paletteDisclosureBrowserCases": 6,
+    "totalBrowserCases": 18,
+    "externalRequests": 0,
+    "unexpectedWrites": 0,
+    "intendedSyntheticTaskWrites": 16,
+    "actualOwnerAuth": false,
+    "actualProviderHttp": false
+  },
+  "scopeProof": {
+    "pass": true,
+    "baselineSha": "7a10322e1936f0ecbfe1c854f24bc8a00e895654",
+    "taskPayloadValidatorSha256Unchanged": "17b7af9171547c65d39a737d5536d8add4f103671b08cb921c1762b941ccffe7",
+    "sourceRaceControllerUnchanged": true,
+    "paletteAndDisclosureTestFilesUnchanged": true,
+    "sqlAndApprovedContractsUnchanged": true,
+    "runtimePermissions": "UNKNOWN",
+    "actualOwnerCloudSaveReload": "PENDING"
+  },
+  "run": {
+    "runId": "codex-mc-pr-ci-api-key-20261011",
+    "predecessorRunId": "codex-mc-reference-palette-20261011",
+    "path": ".mission-control/runs-page-2/codex-mc-pr-ci-api-key-20261011.json",
+    "pass": true,
+    "schema": "Draft2020-12_WITH_FORMAT_CHECKER",
+    "oldReportBlobsUnchanged": 23,
+    "totalReports": 24,
+    "headerAndStartImmutable": true,
+    "sequence": 2,
+    "reportCommitSha": "56b114bf3b7c676d43ed3aa22bed0c86e0b21e14",
+    "blobId": "0cb2d0fca1f5516dd5b3022aa1626cf6f7a394e6",
+    "state": "VERIFIED_PROGRESS_SEQUENCE2"
+  },
+  "publication": {
+    "state": "PENDING",
+    "projectId": "prj_X67htPw7vkRI2tuf8817vOUCGQOD",
+    "fixedPreview": "https://joey-mission-control-git-codex-mc-comma-fceec2-joeyajs-projects.vercel.app/",
+    "servedCheckedSha": null
+  },
+  "remaining": {
+    "actualOwnerCloudSaveReload": "PENDING_INDEPENDENT",
+    "runtimeGitHubReadPermissions": "UNKNOWN",
+    "joeyFinalAppearanceAcceptance": "PENDING",
+    "prCiCompletedCloudTaskRun": "ABSENT_LEGACY_IDS_NOT_REASSIGNED"
+  },
+  "preserved": {
+    "taskPayloadValidatorAndApprovedSqlParity": true,
+    "sourceRaceController": true,
+    "paletteDisclosures": true,
+    "candidateQualificationFreshContinue": true,
+    "sqlAuthSecretsGrantsProductionOtherRepoChanges": false,
+    "modelAwsDispatchOrExecutionFeatureAdded": false
+  }
+}
