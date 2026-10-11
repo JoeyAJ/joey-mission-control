@@ -43,6 +43,101 @@
       "summary": "Joey exact SQL approval07:05:55Z received; proposal1dc75176 installed unchanged on existing Supabase. Native PG17.11 thirteen groups and rollback-only live Owner-metadata RPC/parity28 checks PASS; old8 tables/16 helpers/ACLs/role grants unchanged, zero retained test rows. Server activation ON; dirty-refresh bug fixed. Portable805/focused39/source46/cloud4/Continue12 PASS. Actual Owner signed-JWT/HTTP acceptance still unverified; no dispatch/Production/AWS/new source.",
       "result": null,
       "delivery": null
+    },
+    {
+      "id": "draft-postgres-activation-completion-3",
+      "sequence": 3,
+      "eventAt": "2026-10-11T07:29:50.131Z",
+      "kind": "completed",
+      "summary": "Approved exact Owner draft SQL installed and bounded checks passed; server cloud save/readback enabled and same Preview published READY exactSHA. Native concurrency and live rollback RPC/parity verified; old data/grants restored/unchanged. Dirty-refresh corrected. Ordinary served check CONNECT403; actual Owner JWT/browser, independent/Joey acceptance pending. Drafts are not tasks or automated PR/approval/merge closure.",
+      "result": {
+        "codeSha": "cd6ae579720192cc2bd55dbd0497be7caa10c0c6",
+        "tests": [
+          {
+            "name": "Portable805/build/guarded fixture validate/check; forbiddenAttempts0",
+            "outcome": "PASS"
+          },
+          {
+            "name": "Focused39 and source/handoff46",
+            "outcome": "PASS"
+          },
+          {
+            "name": "Native PG17.11 13 groups; two connections observed lock/CAS/retry/capacity",
+            "outcome": "PASS"
+          },
+          {
+            "name": "Live rollback RPC checks/parity28; emulated claims, existing actual session metadata",
+            "outcome": "PASS"
+          },
+          {
+            "name": "Cloud4 widths with16 intended synthetic writes; fallback4/simple4/Continue12/brief6",
+            "outcome": "PASS"
+          },
+          {
+            "name": "Exact remote/fixed alias/independent READY deployment SHA",
+            "outcome": "PASS"
+          },
+          {
+            "name": "Real signed Owner JWT and served Owner/device acceptance blocked CONNECT403",
+            "outcome": "NOT_RUN"
+          }
+        ],
+        "nextSteps": "Actual Owner review on fixed Preview should confirm save/fresh reload with existing login; no install or manual deploy needed. Cloud HTTPS CONNECT403 blocks this environment before app, no bypass. Existing-project natural-language task persistence, exact PR/CI sync, Owner task/PR decisions and authorized exact-head merge/deploy remain separate gaps: use the documented smallest external-Agent route after exact named approval, not new AWS/model dispatch. New repo/source/report grants remain separately scoped. Preserve immutable terminal history and candidate/unknown-signature qualifications.",
+        "handoff": {
+          "path": "HANDOFF.md",
+          "commitSha": "cd6ae579720192cc2bd55dbd0497be7caa10c0c6"
+        }
+      },
+      "delivery": {
+        "qualification": "AGENT_REPORTED",
+        "scope": {
+          "projectId": "MISSION_CONTROL",
+          "track": "BASELINE",
+          "repositoryId": "JoeyAJ/joey-mission-control",
+          "runId": "codex-mc-project-draft-postgres-20261011",
+          "taskId": "mc-project-draft-postgres-20261011",
+          "workRef": "codex/mc-command-center-checkpoint-20261006",
+          "codeSha": "cd6ae579720192cc2bd55dbd0497be7caa10c0c6"
+        },
+        "deployment": {
+          "status": "READY",
+          "target": {
+            "provider": "vercel",
+            "project": "joey-mission-control",
+            "environment": "preview"
+          },
+          "id": "dpl_81ofZ5FgpYGmBsukuJtmpsSkrW3N",
+          "deployedSha": "cd6ae579720192cc2bd55dbd0497be7caa10c0c6",
+          "url": "https://joey-mission-control-git-codex-mc-comma-fceec2-joeyajs-projects.vercel.app/",
+          "observedAt": "2026-10-11T07:28:04.759Z",
+          "evidence": "Connected fixed alias and independent deployment ID match READY/full source SHA; exact Git remote HEAD verified.",
+          "notRequired": null
+        },
+        "verification": {
+          "status": "BLOCKED",
+          "method": "HTTP_FUNCTIONAL_CHECK",
+          "checkedAt": "2026-10-11T07:29:49.846Z",
+          "deploymentId": "dpl_81ofZ5FgpYGmBsukuJtmpsSkrW3N",
+          "checkedSha": null,
+          "url": "https://joey-mission-control-git-codex-mc-comma-fceec2-joeyajs-projects.vercel.app/",
+          "evidence": "Ordinary root GET curl56 CONNECT403 HTTP000 before app; no bypass. Real signed Owner JWT/cloud save/browser acceptance unverified. Live SQL qualification is SQL_ADMIN_EMULATED_CLAIMS_WITH_EXISTING_SESSION_METADATA.",
+          "notRequired": null
+        },
+        "handoff": {
+          "status": "CURRENT",
+          "path": "HANDOFF.md",
+          "commitSha": "cd6ae579720192cc2bd55dbd0497be7caa10c0c6",
+          "checkedAt": "2026-10-11T07:29:50.131Z",
+          "evidence": "Published current handoff records exact approval/install/RLS/restored ACLs/native+live checks, activation ON and separate task/source/PR/approval/merge gaps; old scopes/candidate qualifications preserved."
+        },
+        "data": {
+          "status": "APPLIED",
+          "version": "mc.project-draft.v1/1dc75176ef7e837d",
+          "checkedAt": "2026-10-11T07:29:50.131Z",
+          "evidence": "Joey07:05:55Z approval; exact proposal SHA2561dc75176ef7e837dd4364aacbb82db93c25118861806553a5a2d1aa850185433 installed on existing Supabase. New table/helpers/two RPCs only; old8 table digests/16 helpers/ACLs/role membership unchanged, zero test rows, no Auth mutation/token read. Live receipt in docs/contracts/repository-reporting/receipts/project-draft-postgres-20261011.live.json.",
+          "notRequired": null
+        }
+      }
     }
   ]
 }
