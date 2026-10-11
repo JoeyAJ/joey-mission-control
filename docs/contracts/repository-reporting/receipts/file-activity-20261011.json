@@ -1,0 +1,147 @@
+{
+  "schemaVersion": "mc.file-activity-receipt.v1",
+  "qualification": "AGENT_REPORTED_METADATA_BLOB_VALIDATED_NOT_EXECUTION_VERIFIED",
+  "actor": "Codex",
+  "actualModel": null,
+  "supportSha": "b7a3777b5cb032f2521266a51d85f8d9dadbdf3e",
+  "copiedHelperSha256": "78378a91b108ccdea119bf9ed58643bb2c608dc01dad71facad07e1e5e9a5222",
+  "copiedHelperBytes": 32792,
+  "implementationRun": {
+    "status": "PUBLISHED",
+    "runId": "codex-mc-file-activity-20261011",
+    "path": ".mission-control/runs/codex-mc-file-activity-20261011.json",
+    "reportCommitSha": "9c23d40ebd26dc1ec11813b4bf7fb24706313690",
+    "fileSha": "f681d5a329e33fa29e331704ea7b82d36dd4e7e3",
+    "sequence": 4,
+    "eventId": "completed-support",
+    "scopeQualification": "PINNED_REPOSITORY_PROFILE_NOT_SERVER_ACCEPTANCE"
+  },
+  "observationRun": {
+    "status": "PUBLISHED",
+    "runId": "codex-mc-file-observations-20261011",
+    "path": ".mission-control/runs/codex-mc-file-observations-20261011.json",
+    "reportCommitSha": "a53f7b57136b6be63a748202fabcbc415641d9e7",
+    "fileSha": "99a0bf615ddf6ec8715533850e3b163901e9851b",
+    "sequence": 5,
+    "eventId": "completed-observations",
+    "scopeQualification": "PINNED_REPOSITORY_PROFILE_NOT_SERVER_ACCEPTANCE"
+  },
+  "observationBaselineSha": "250095f136a1d1629d0d173f668c98f922fea985",
+  "observations": [
+    {
+      "schemaVersion": "mc.file-activity.v1",
+      "qualification": "AGENT_REPORTED_METADATA",
+      "scope": {
+        "projectId": "MISSION_CONTROL",
+        "track": "BASELINE",
+        "repositoryId": "JoeyAJ/joey-mission-control",
+        "runId": "codex-mc-file-observations-20261011",
+        "taskId": "mc-file-observations-20261011",
+        "workRef": "codex/mc-command-center-checkpoint-20261006"
+      },
+      "actor": "Codex",
+      "action": "FILE_READ",
+      "path": "src/reporting/workbench-view.mjs",
+      "contentSha256": "36db567dab7f322debfeb60de7cbd192a643e538316165878e2e014fbb11bca9",
+      "previousContentSha256": null,
+      "byteLength": 18115,
+      "workHeadSha": "250095f136a1d1629d0d173f668c98f922fea985",
+      "observedAt": "2026-10-11T01:16:13.228Z",
+      "precision": "REPORTER_BOUNDED_READ"
+    },
+    {
+      "schemaVersion": "mc.file-activity.v1",
+      "qualification": "AGENT_REPORTED_METADATA",
+      "scope": {
+        "projectId": "MISSION_CONTROL",
+        "track": "BASELINE",
+        "repositoryId": "JoeyAJ/joey-mission-control",
+        "runId": "codex-mc-file-observations-20261011",
+        "taskId": "mc-file-observations-20261011",
+        "workRef": "codex/mc-command-center-checkpoint-20261006"
+      },
+      "actor": "Codex",
+      "action": "FILE_READ",
+      "path": "HANDOFF.md",
+      "contentSha256": "fe013c460307948e552793bd0397586c26213b0f09e83e924bc1c20dfcbee5a0",
+      "previousContentSha256": null,
+      "byteLength": 7641,
+      "workHeadSha": "250095f136a1d1629d0d173f668c98f922fea985",
+      "observedAt": "2026-10-11T01:16:16.637Z",
+      "precision": "REPORTER_BOUNDED_READ"
+    },
+    {
+      "schemaVersion": "mc.file-activity.v1",
+      "qualification": "AGENT_REPORTED_METADATA",
+      "scope": {
+        "projectId": "MISSION_CONTROL",
+        "track": "BASELINE",
+        "repositoryId": "JoeyAJ/joey-mission-control",
+        "runId": "codex-mc-file-observations-20261011",
+        "taskId": "mc-file-observations-20261011",
+        "workRef": "codex/mc-command-center-checkpoint-20261006"
+      },
+      "actor": "Codex",
+      "action": "FILE_CHANGED",
+      "path": "HANDOFF.md",
+      "contentSha256": "fdfb5ae87f16b3dc831b1d64b9ca36e1b2f227130c781811dff3d07666e43301",
+      "previousContentSha256": "fe013c460307948e552793bd0397586c26213b0f09e83e924bc1c20dfcbee5a0",
+      "byteLength": 8960,
+      "workHeadSha": "f91f371ddcaa55fa5ed7d6cdee08b2a55f494b49",
+      "observedAt": "2026-10-11T01:17:39.522Z",
+      "precision": "OBSERVED_DIGEST_CHANGE"
+    }
+  ],
+  "privateContentsReadback": {
+    "commitSha": "a53f7b57136b6be63a748202fabcbc415641d9e7",
+    "blobSha": "99a0bf615ddf6ec8715533850e3b163901e9851b",
+    "bytes": 9028,
+    "scope": "PINNED_REPOSITORY_PROFILE_NOT_SERVER_ACCEPTANCE",
+    "strictCodeSchemaAndOriginalProfile": "PASS",
+    "externalDraft202012": "PASS"
+  },
+  "historicalReportsAndGuardUnchanged": true,
+  "newRunFilesOnly": 2,
+  "publication": {
+    "preview": {
+      "id": "dpl_92gh5ba7DeY8mFncJvT59DGhNS6e",
+      "state": "READY",
+      "sha": "f91f371ddcaa55fa5ed7d6cdee08b2a55f494b49"
+    },
+    "production": {
+      "id": "dpl_5GgJ8LhD4Ec73RGz9CEFe1ppZQnh",
+      "state": "READY",
+      "sha": "8b4945b16a0b23f2e72033aa976fa34f94eabec0"
+    },
+    "observedAt": "2026-10-11T01:18:45Z"
+  },
+  "functionalRootAttempt": {
+    "url": "https://joey-mission-control-git-codex-mc-comma-fceec2-joeyajs-projects.vercel.app/",
+    "checkedAt": "2026-10-11T01:18:46.409344Z",
+    "exitCode": 56,
+    "httpStatus": "000",
+    "error": "curl: (56) CONNECT tunnel failed, response 403",
+    "checkedSha": null,
+    "qualification": "ACTUAL_ROOT_GET_NOT_SERVED_VERIFICATION"
+  },
+  "qualificationStatus": {
+    "delivery": "REPORTED_INCOMPLETE",
+    "independentVerification": "PENDING",
+    "joeyAcceptance": "PENDING",
+    "fileContentsDiffEditorTerminal": "UNAVAILABLE",
+    "sourceContentsUploaded": false
+  },
+  "tests": {
+    "portable": 755,
+    "portableForbiddenAttempts": 0,
+    "sourceHandoffHelper": 46,
+    "finalHandoff": 31,
+    "externalSchemaCases": 195,
+    "fileBrowserCases": 6,
+    "deliveryBrowserCases": 6,
+    "trueContinueCases": 12,
+    "promisedCancellationWidths": 2,
+    "browserExternalCalls": 0,
+    "browserWrites": 0
+  }
+}
