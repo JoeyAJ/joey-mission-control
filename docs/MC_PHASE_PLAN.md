@@ -1,3 +1,7 @@
+# Current bounded stage — actionable new-project creation preflight
+
+Reuse saved private drafts and the existing six-file bundle for one-copy exact target/registration plans. Prepared/configuration-missing/authorization-missing/conflict remain distinct; no live provisioning, new access, repo, SQL or deployment project. [Evidence](MC_PROJECT_CREATION_PREFLIGHT_20261011.md). Real task/Owner acceptance deferred.
+
 # Current bounded fix — Owner decision intent integrity
 
 Approval clicks must retain the separately displayed exact PR/CI/task/report tuple. No automatic reconcile during decision; drift requires a new explicit click. [Evidence](MC_OWNER_REVIEW_INTENT_FIX_20261011.md). SQL/ACL/execution boundaries unchanged; device acceptance remains pending.

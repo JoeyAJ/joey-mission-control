@@ -1,19 +1,19 @@
-# Current Owner review intent fix — 2026-10-11
+# Current new-project creation preflight — 2026-10-11
 
 Project: MISSION_CONTROL
-Timestamp: 2026-10-11T14:07:40.528Z
-Task: Bind Owner decision to the displayed exact tuple
-Status: LOCAL_VERIFIED_PARENT_READ_PREVIEW_PUBLISHED
+Timestamp: 2026-10-11T14:40:28.071Z
+Task: Actionable creation plan from existing private draft and six-file bundle
+Status: LOCAL_VERIFIED_PENDING_PUBLICATION
 Last Developer: Codex
 Executed by: Codex
 Actual Model: UNKNOWN
-Baseline: 9b87948fc058e3a691f3ac87ac978417dd29ce6f
+Baseline: e464f571b9127c2684192fa1c5a96717d4c72142
 
-Independent probe reproduced approval auto-reconcile replacing report/source tuples. Review now requires a separately displayed PR/CI observation; click synchronously captures tuple and generations. Drift rejects before append; unchanged tuple can record. Server fresh validation unchanged, executionAuthorized false, University remains pending.
+Existing onboarding lacked a consolidated target/action plan. One copy now prepares exact private repo/branch proposals, original six files, Preview intent and source/report registration requirements. Prepared plan differs from missing configuration/authorization and target conflicts. Unknown targets stay existence UNCONFIRMED; only existing read scopes are queried. Cloud revision drift, outage, expiry/logout clear old plan; no provisioning or execution authority.
 
-Evidence: docs/MC_OWNER_REVIEW_INTENT_FIX_20261011.md. Portable877/build/validate/check, focused18/root20/browser8 PASS; forbiddenAttempts0. No SQL/grants/keys or actual Owner decisions; existing ledger unchanged. Prior prefix preserved there byte-for-byte; dated history unchanged. Harmless saved test never executed.
+Evidence: docs/MC_PROJECT_CREATION_PREFLIGHT_20261011.md. Portable888/build/validate/check, focused50/root20/browser8 PASS; forbiddenAttempts0. Existing task/review/SQL/config/source scopes unchanged. Actual Owner writes0; harmless saved test untouched. Prior prefix preserved there byte-for-byte; dated history unchanged.
 
-Next Action: runtime40fa1e7 exact Preview READY; terminal3/old28 unchanged. Independent review and Owner device acceptance pending. Genuine non-test saved task absent; real bound Agent run/Owner UI acceptance pending, GitHub permissions UNKNOWN. CONNECT403 not bypassed; servedCheckedSha null. No Production/other repo/AWS/model/dispatch. Do not recreate refused VM artifacts.
+Next Action: same branch/fixed Preview exact publication, independent review. Real task packet/Owner acceptance deferred until tomorrow. No new repo/SQL/grants/keys/deployment project/Agent dispatch/AWS/Production. CONNECT403 not bypassed; servedCheckedSha null. Plan and offline bundle are not a working project.
 
 # Dated prior stage history
 

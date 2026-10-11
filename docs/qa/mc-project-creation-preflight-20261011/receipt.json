@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "qualification": "LOCAL_VERIFIED_PREFLIGHT_ONLY_PUBLICATION_PENDING",
+  "baselineSha": "e464f571b9127c2684192fa1c5a96717d4c72142",
+  "provisioned": false,
+  "developmentReady": false,
+  "executionAuthorized": false,
+  "liveProvisioning": false,
+  "newRepositories": 0,
+  "newDeploymentProjects": 0,
+  "sqlOrAclChanges": false,
+  "actualOwnerWrites": 0,
+  "harmlessSavedTestChanged": false,
+  "servedCheckedSha": null,
+  "root": {
+    "bytes": 65302,
+    "priorPrefixSha256": "51718faa62604fefe97df5ff5049cae0e2b7f61cf455e56026b12db3c7746508",
+    "datedHistorySha256": "8a2a580aca03e58a7f049e97342423cef90f952f78d7cd16d50d097c67531f14",
+    "datedHistoryUnchanged": true
+  },
+  "verification": {
+    "focusedGroups": 50,
+    "portableTests": 888,
+    "buildValidateCheck": "PASS",
+    "rootIntakeGroups": 20,
+    "actualApp": true,
+    "officialSDK": true,
+    "syntheticOnly": true,
+    "browserWidths": 4,
+    "browserModes": [
+      "onboarding",
+      "cloud-drafts"
+    ],
+    "intendedSyntheticCloudDraftWrites": 16,
+    "actualOwnerOrProviderHttp": false,
+    "externalRequests": 0,
+    "unexpectedWrites": 0,
+    "forbiddenWorkstationAttempts": 0
+  }
+}
