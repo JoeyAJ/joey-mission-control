@@ -1,9 +1,9 @@
 # Current task requirements binding — 2026-10-11
 
 Project: MISSION_CONTROL
-Timestamp: 2026-10-11T12:26:09Z
+Timestamp: 2026-10-11T12:29:53Z
 Task: Bind Agent reports to handed-off task requirements and revision
-Status: LOCAL_VERIFIED_PENDING_PUBLICATION
+Status: LOCAL_VERIFIED_PARENT_READ_PREVIEW_PUBLISHED
 Last Developer: Codex
 Executed by: Codex
 Actual Model: UNKNOWN
@@ -11,9 +11,9 @@ Baseline: e35e7aec258286ebb7abacbcef31a4e2e5018567
 
 Private handoff and optional immutable report header bind exact taskId/project/track/revision and full-request SHA256. Only MATCH contributes current task evidence; changed or unbound runs stay historical. Portable helper verifies full packet; CI rereads existing cloud task around await and preserves source/Owner/report guards. No legacy upgrade or automatic acceptance.
 
-Portable856/build/validate/check,focused61 and42 synthetic browser cases PASS; root intake checked separately. Evidence: docs/MC_TASK_REQUIREMENTS_BINDING_20261011.md. Prior prefix preserved there byte-for-byte; dated root history unchanged. Owner cloud save/reload accepted10:52 UTC; no repeat or harmless-task execution.
+Portable856/build/validate/check,focused61 and42 synthetic browser cases PASS; root safe-intake10 PASS. Evidence: docs/MC_TASK_REQUIREMENTS_BINDING_20261011.md. Prior prefix preserved there byte-for-byte; dated root history unchanged. Owner cloud save/reload accepted10:52 UTC; no repeat or harmless-task execution.
 
-Next Action: publish same Preview, verify exact SHA/READY and terminal3. Genuine bound cloud-task Agent report and new UI device acceptance pending; runtime GitHub permissions UNKNOWN. Owner decision proposal docs/MC_OWNER_TASK_DECISION_PERSISTENCE_PROPOSAL_20261011.md remains unapplied. No SQL/Auth/grants/secrets/other repo/Production/AWS/model/dispatch. CONNECT403 not bypassed; servedCheckedSha null. Do not recreate rejected VM artifacts.
+Next Action: runtime b3454c5 fixed Preview exact READY; terminal3 verified, old25 blobs unchanged. Genuine bound cloud-task Agent report and new UI device acceptance pending; runtime GitHub permissions UNKNOWN. Owner decision proposal docs/MC_OWNER_TASK_DECISION_PERSISTENCE_PROPOSAL_20261011.md remains unapplied. No SQL/Auth/grants/secrets/other repo/Production/AWS/model/dispatch. CONNECT403 not bypassed; servedCheckedSha null. Do not recreate rejected VM artifacts.
 
 # Dated prior stage history
 

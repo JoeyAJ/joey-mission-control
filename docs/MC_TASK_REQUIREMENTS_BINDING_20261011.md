@@ -1,6 +1,6 @@
 # 任務需求版本與 Agent 回報綁定
 
-資格：LOCAL_VERIFIED_PENDING_PUBLICATION。實際開發者 Codex；實際模型 UNKNOWN。基準 `e35e7aec258286ebb7abacbcef31a4e2e5018567`。接續任務回報檢視，重用既有 task storage、private source-bound handoff 和 repository report contract，無新資料表或存取權限。
+資格：LOCAL_VERIFIED_PARENT_READ_PREVIEW_PUBLISHED。實際開發者 Codex；實際模型 UNKNOWN。基準 `e35e7aec258286ebb7abacbcef31a4e2e5018567`。接續任務回報檢視，重用既有 task storage、private source-bound handoff 和 repository report contract，無新資料表或存取權限。
 
 交接包含固定 taskId、完整私人 developmentTask 和 `mc.task-requirements.v1` revision／requestDigest。指紋為 schemaVersion、projectId、track、taskId、revision、request（feature／acceptance／constraints）的 canonical JSON UTF8 SHA-256；timestamps 不影響需求身分。相同需求重複交接保持 ID／revision／digest。完整 request 僅在 private packet；report header 只有 schemaVersion／revision／digest，URL／localStorage／sessionStorage 不存私人需求、source 或憑證。
 
@@ -16,11 +16,11 @@ scope proof：task validator／批准 SQL、共用 API-key privacy guard、fresh
 
 Owner 雲端保存／刷新10:52 UTC 已驗收，[原 receipt](MC_OWNER_CLOUD_SAVE_ACCEPTANCE_RECEIPT_20261011.md) 不變；不重測或執行「保存測試，只保存不執行」。真實 reports 仍無 cloud task-compatible ID／binding。需要授權外部 Agent 收到真正開發任務及新 packet 後發表新 run，不能冒用保存測試或重寫歷史。runtime GitHub permissions UNKNOWN，新需求綁定 UI 實機驗收 pending。
 
-唯一實際開發 run `codex-mc-task-requirements-20261011` 的 taskId `mc-task-requirements-20261011` 是本開發工作識別，非 Owner cloud task ID，不捏造 binding。predecessor 為已 terminal task-report-inspection run。started／progress 已發表；exact runtime READY 後 append terminal3，其他25個 report blobs 不變。
+唯一實際開發 run `codex-mc-task-requirements-20261011` 的 taskId `mc-task-requirements-20261011` 是本開發工作識別，非 Owner cloud task ID，不捏造 binding。predecessor 為已 terminal task-report-inspection run。本 run terminal3 已在 exact runtime READY 後發表；started／progress 與其他25個 report blobs 不變，詳見下列收尾證據。
 
 [Owner 決策持久化提案](MC_OWNER_TASK_DECISION_PERSISTENCE_PROPOSAL_20261011.md) 明列4物件、完整 binding、僅2個 authenticated RPC EXECUTE、forced RLS、容量、CAS／retry／session gates 和 activation OFF；PROPOSAL_ONLY_NOT_IMPLEMENTED_NOT_APPLIED，無 SQL／ACL 執行。APPROVE／REQUEST_CHANGES 記錄不啟動 task、dispatch、merge 或 deploy，executionAuthorized=false。本次需求綁定不依賴此提案。
 
-發布後補 fixed Preview runtime SHA／READY、獨立 ID、remote exact、Production 不變及 terminal schema／immutable-prefix／old25 proof。普通 cloud HTTPS CONNECT403 不繞過，servedCheckedSha=null；metadata 不充當 served-bytes／實機驗收。無 SQL/Auth/grants/secrets/其他 repo/Production/AWS/model/dispatch 變更，未重製被拒 VM artifacts。
+下列收尾證據記錄 fixed Preview runtime SHA／READY、獨立 ID、remote exact、Production 不變及 terminal schema／immutable-prefix／old25 proof。普通 cloud HTTPS CONNECT403 不繞過，servedCheckedSha=null；metadata 不充當 served-bytes／實機驗收。無 SQL/Auth/grants/secrets/其他 repo/Production/AWS/model/dispatch 變更，未重製被拒 VM artifacts。
 
 ## Preserved prior current checkpoint
 
@@ -45,3 +45,12 @@ Next Action: fixed Preview341c70e exact READY; own run terminal3, old24 blobs un
 
 End of the preserved prior checkpoint.
 
+## 發布與 terminal 收尾證據
+
+功能 commit `b3454c5b953aa0140d31003b1ab748f84449f466` 已推到 canonical remote，同固定 Preview 與獨立 `dpl_DgLeiQBRZSysKngjTBXggd3612Jp` 均確認 exact SHA／project／branch／READY。核對時間 2026-10-11T12:27:47Z。Production 保留 `dpl_5GgJ8LhD4Ec73RGz9CEFe1ppZQnh`／`8b4945b16a0b23f2e72033aa976fa34f94eabec0`。
+
+普通 HTTPS HEAD 於 2026-10-11T12:27:48.096176Z 回 curl56／CONNECT403／HTTP000，未到 app，沒有繞過；servedCheckedSha=null。READY 只證明 deployment metadata；真實 served-bytes、新需求綁定 UI／bound-task Agent workflow 驗收仍未取得。Owner 既有 save/reload 驗收獨立保持已完成，不重新要求。
+
+本 run terminal3 已發表並 remote readback：report commit `3f0fe5672640848dfd1f270e1ad9702bcac6d5f0`，blob `ff1d7d5c9f34f46fa040a31e888cbe18f309474a`，6920 bytes。Draft2020-12＋format checker PASS；header／started／progress immutable，只有本 run 路徑改動，其他25 report blobs不變。全26檔案有25 completed、0 cloud-task-compatible／bound-cloud-task run。本 run 是實際開發記錄，不能代表 Owner 保存測試或外部 Agent 的任務執行。terminal delivery HTTP_FUNCTIONAL_CHECK BLOCKED／checkedSha=null；不得再 append 本 terminal。
+
+這次文件收尾後的 final HEAD 將另以 canonical remote、固定 alias、獨立 deployment ID 核 exact READY，並檢查 public/src/api/scripts/tests/schemas/deployment/config 的功能樹與已測 runtime 一致；最後證據在工作區 `/tmp/mc-task-requirements-20261011/final-publication.json`（避免 commit 自身 SHA 循環）。所有功能驗證結果仍是856／61／42；root intake 在收尾再核10。Owner 提案始終未實施；需另核 digest helper／native SQL ACL／CAS／capacity／rollback parity 和 exact migration，再另行批准，任何決策記錄均不觸發執行。

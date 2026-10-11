@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "qualification": "TASK_REQUIREMENTS_BINDING_SYNTHETIC_VERIFIED_REAL_BOUND_TASK_RUN_PENDING",
   "baselineSha": "e35e7aec258286ebb7abacbcef31a4e2e5018567",
-  "checkedAt": "2026-10-11T12:26:09Z",
+  "checkedAt": "2026-10-11T12:29:53Z",
   "verification": {
     "focusedGroups": 61,
     "portableTests": 856,
@@ -80,8 +80,30 @@
     "durableOwnerDecisionMergeDeployPipeline": "NOT_IMPLEMENTED"
   },
   "publication": {
-    "state": "PENDING",
-    "servedCheckedSha": null
+    "state": "RUNTIME_PUBLISHED_READY",
+    "runtimeSha": "b3454c5b953aa0140d31003b1ab748f84449f466",
+    "deploymentId": "dpl_DgLeiQBRZSysKngjTBXggd3612Jp",
+    "readyState": "READY",
+    "projectId": "prj_X67htPw7vkRI2tuf8817vOUCGQOD",
+    "branch": "codex/mc-command-center-checkpoint-20261006",
+    "repository": "JoeyAJ/joey-mission-control",
+    "fixedPreview": "https://joey-mission-control-git-codex-mc-comma-fceec2-joeyajs-projects.vercel.app/",
+    "aliasAndIndependentIdExact": true,
+    "remoteExact": true,
+    "servedCheckedSha": null,
+    "productionShaUnchanged": "8b4945b16a0b23f2e72033aa976fa34f94eabec0",
+    "productionDeploymentIdUnchanged": "dpl_5GgJ8LhD4Ec73RGz9CEFe1ppZQnh",
+    "observedAt": "2026-10-11T12:27:47Z",
+    "ordinaryCloudHttps": {
+      "attemptedDeploymentSha": "b3454c5b953aa0140d31003b1ab748f84449f466",
+      "checkedAt": "2026-10-11T12:27:48.096176Z",
+      "method": "ORDINARY_HTTPS_HEAD",
+      "curlExit": 56,
+      "httpCode": "000",
+      "proxyConnect403": true,
+      "servedCheckedSha": null,
+      "protectionBypass": false
+    }
   },
   "priorCurrentPrefixSha256": "3e1770c3d9430deecad14e1154448d068a2fa89561510b16c6ef869f463ae3c0",
   "datedHistorySha256": "68de1c1e6a0ad588431996926396a6e19777a26ecc6ad7770afd13a3a23a0ea9",
@@ -93,7 +115,21 @@
     "path": ".mission-control/runs-page-2/codex-mc-task-requirements-20261011.json",
     "progressCommitSha": "18696db967f667f73bb784eabe17e9314eae6c1b",
     "progressBlobId": "395781aa7b219136add52b74ef1d4d53e4ad83bb",
-    "state": "PROGRESS_SEQUENCE_2"
+    "state": "TERMINAL_COMPLETED",
+    "pass": true,
+    "schema": "Draft2020-12_WITH_FORMAT_CHECKER",
+    "remoteExact": true,
+    "reportCommitSha": "3f0fe5672640848dfd1f270e1ad9702bcac6d5f0",
+    "blobId": "ff1d7d5c9f34f46fa040a31e888cbe18f309474a",
+    "bytes": 6920,
+    "sequence": 3,
+    "headerStartAndProgressImmutable": true,
+    "oldReportBlobsUnchanged": 25,
+    "onlyOwnedReportPathChanged": true,
+    "totalReports": 26,
+    "completedReports": 25,
+    "developmentTaskCompatibleReportIds": 0,
+    "boundCloudTaskReports": 0
   }
 }
 
