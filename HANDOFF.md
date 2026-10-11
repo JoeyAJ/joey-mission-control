@@ -1,7 +1,7 @@
 # Mission Control — strict v1/v2 schema and scoped target metadata
 
 Project: MISSION_CONTROL
-Timestamp: 2026-10-11T00:35:37.024196Z
+Timestamp: 2026-10-11T00:38:29.003001Z
 Task: Strict standalone schema parity, fixed target inventory and model-neutral continuation
 Status: LOCAL_VERIFIED_CLOUD_EVENTS_NOT_ENABLED
 Last Developer: Codex
@@ -21,7 +21,7 @@ Model-neutral takeover now gives the actual v2 event envelope/helper commands an
 
 745 portable tests PASS with build/validate/check and zero forbidden attempts. New target desktop/mobile × three-language QA: 18 PASS, zero external calls/writes; inspected synthetic mobile/desktop screenshots. Final contract/helper/source-schema/takeover checks: 26 PASS, plus final standalone schema 3 PASS after tightening deployment-ID text. Original MC delivery 6 PASS and four-source fresh Continue 12 PASS, with zero external calls/writes. Final current source/schema/handoff checks 41 PASS. Verification and private synthetic evidence: docs/MC_SCHEMA_TARGET_POLICY_VERIFICATION_20261011.md / docs/qa/mc-schema-targets-20261011.
 
-Actual new v2 BUGFIX run codex-mc-schema-targets-20261011, predecessor codex-mc-delivery-followup-20261011, retains registration baseline e535e33b. Started sequence 1 commit 9e220498f83b7e8cb3104ae0577998d2bcb09e40 / blob 9816d146679894f55190eabe82b2c617206bc47b; meaningful parity/inventory progress sequence 2 commit 3c59d49c45d4b6708baad65c38bf957b1ef24833 / blob 4f7d426843aad5b583c75b3e4064c7377c557b39. Reporting is AGENT_REPORTED; terminal receipt follows current handoff consolidation. Prior terminal development/followup receipts remain in docs/MC_DELIVERY_EVIDENCE_RECEIPT_20261010.md; neither old run is appended or converted.
+Actual new v2 BUGFIX run codex-mc-schema-targets-20261011, predecessor codex-mc-delivery-followup-20261011, retains registration baseline e535e33b. Started sequence 1 commit 9e220498f83b7e8cb3104ae0577998d2bcb09e40 / blob 9816d146679894f55190eabe82b2c617206bc47b; meaningful parity/inventory progress sequence 2 commit 3c59d49c45d4b6708baad65c38bf957b1ef24833 / blob 4f7d426843aad5b583c75b3e4064c7377c557b39. Publication/blocker progress sequence 3: f36379a2bacbbcd6c95a82e49ac4627e4f91102f / blob 6724bc53869fb5da1fd40463b43dfa8a91974602. Actual terminal completed sequence 4: 0963e1d911f95c280439dc616a36fe8e7b34db63 / blob 2646731ada612cdb7bd06430dc4d8dc14dee8f6d; connected private Git readback/hash/strict schema/original profile validation PASS. Code/deployment dbfc1df, handoff aecd307c3394ae0f263fa4361110dcdca75e180d, checkedSha=null, data reasoned NOT_REQUIRED. Derived run completed, delivery REPORTED_INCOMPLETE; all evidence AGENT_REPORTED, independent/Joey PENDING. Report-branch diff only adds this run, all old report/config bytes unchanged; no post-terminal append. Prior terminal development/followup receipts remain in docs/MC_DELIVERY_EVIDENCE_RECEIPT_20261010.md; neither old run is appended or converted.
 
 ## Delivery and data qualification
 
@@ -31,7 +31,7 @@ Data: standalone strict v1/v2 contract and fixed public metadata only, no SQL/da
 
 ## Next Action
 
-Tests, support publication and actual root GET attempt are complete. Current handoff/data consolidation is recorded; complete this new run with tested code/deployment, actual BLOCKED check, this current handoff and explicit MC no-DB-change reason, then retain its terminal bytes. Independent/Joey acceptance and full delivery remain pending while served verification is blocked. Any later authorized followup needs a new same-project/track/repository predecessor run and fresh exact deployment/URL/handoff/data evidence. Normal Owner/device/clipboard verification and the actual file/activity source gates remain next; no bypass or installation/terminal cleanup request to Joey. University target/output/current-source consolidation and Nex failing CI remain separate authorized-project work. Final docs publication advances the alias; dated blocked GET does not verify later served content.
+Tests, support publication and actual root GET attempt are complete. Current handoff/data consolidation and immutable sequence 4 terminal receipt are complete; retain terminal bytes. Receipt: docs/MC_SCHEMA_TARGET_POLICY_RECEIPT_20261011.md. Final docs release exact remote/READY/alias identity is checked separately; runtime code bytes remain identical to tested support dbfc1df. Independent/Joey acceptance and full delivery remain pending while served verification is blocked. Any later authorized followup needs a new same-project/track/repository predecessor run and fresh exact deployment/URL/handoff/data evidence. Normal Owner/device/clipboard verification and the actual file/activity source gates remain next; no bypass or installation/terminal cleanup request to Joey. University target/output/current-source consolidation and Nex failing CI remain separate authorized-project work. Final docs publication advances the alias; dated blocked GET does not verify later served content.
 
 ## Historical checkpoints
 
