@@ -3,17 +3,17 @@
 Project: MISSION_CONTROL
 Timestamp: 2026-10-11T10:47:23.074Z
 Task: Shared provider-label privacy guard for API-key assignment variants
-Status: LOCAL_VERIFIED_PENDING_PUBLICATION
+Status: LOCAL_VERIFIED_PARENT_READ_PREVIEW_PUBLISHED
 Last Developer: Codex
 Executed by: Codex
 Actual Model: UNKNOWN
 Baseline: 7a10322e1936f0ecbfe1c854f24bc8a00e895654
 
-Bounded fix only: provider label and status-context ID share a server/client guard for API-key assignment forms. Established task quoted-key guard retained; task payload validator and approved SQL parity unchanged. Unsafe labels redact before response, forged client labels reject, DOM regression follows normal authenticated factory. Existing source tuple/generation races, palette/disclosures, candidate qualification and fresh Continue preserved.
+Shared PR-CI label/context-ID guard covers API-key assignment variants. Server redacts before response; client rejects unsafe replies; synthetic DOM regressions PASS. Task validator/SQL parity, current-source races, palette/disclosures, candidate qualification and fresh Continue unchanged.
 
 Portable845/build/validate/check, focused31/root10 and18 synthetic browser cases PASS incl server-client-DOM8, cloud-task4 and palette/disclosure6. Evidence: docs/MC_PR_CI_API_KEY_LABEL_FIX_20261011.md. Prior current root prefix preserved there byte-for-byte; dated root history unchanged. New receiving-Agent BUGFIX run starts page2 after terminal palette run; no prior terminal append.
 
-Next Action: publish same fixed Preview, then independent docs/MC_OWNER_CLOUD_SAVE_ACCEPTANCE_20261011.md. Actual Owner save/reload and appearance pending; live GitHub permission UNKNOWN. No compatible completed cloud-task report; do not click disabled PR/CI or rewrite old reports. SQL/Auth/secrets/grants/Production/other repo/AWS/model/dispatch unchanged; CONNECT403 not bypassed. Do not recreate rejected VM artifacts.
+Next Action: fixed Preview635dcfe READY; independent docs/MC_OWNER_CLOUD_SAVE_ACCEPTANCE_20261011.md. Owner save/reload accepted10:52 UTC; receipt docs/MC_OWNER_CLOUD_SAVE_ACCEPTANCE_RECEIPT_20261011.md. Appearance pending; GitHub permission UNKNOWN. No compatible completed cloud-task report; do not click disabled PR/CI or rewrite old reports. SQL/Auth/secrets/grants/Production/other repo/AWS/model/dispatch unchanged; CONNECT403 not bypassed. Do not recreate rejected VM artifacts.
 
 # Dated prior stage history
 

@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "qualification": "JOEY_REPORTED_ACTUAL_OWNER_UI_ACCEPTANCE_VIA_PARENT",
+  "recordedAt": "2026-10-11T10:55:27.898Z",
+  "reportedAtUtc": "2026-10-11 10:52 UTC",
+  "sourceMessageId": "Sentinel_221b1741ab5c8191ab9b31c948bcc6ab",
+  "sourceThreadId": "01a10e89-4091-73f7-be42-056d7f9ca03f",
+  "ownerReport": "有刷新了後有你說的剛填寫的任務以及雲端版本已確認",
+  "requestedHarmlessTask": "保存測試，只保存不執行",
+  "accepted": {
+    "actualOwnerDevelopmentTaskCloudSave": true,
+    "pageRefreshReloadRecoversSameTask": true,
+    "cloudVersionConfirmedAfterRefresh": true
+  },
+  "releaseBinding": {
+    "fixedPreview": "https://joey-mission-control-git-codex-mc-comma-fceec2-joeyajs-projects.vercel.app/",
+    "ownerObservedExactCodeSha": null,
+    "qualification": "EXISTING_REQUESTED_FLOW_OWNER_REPORT_NO_EXACT_RELEASE_SHA_PROVIDED"
+  },
+  "notEstablished": {
+    "agentExecution": false,
+    "taskDispatch": false,
+    "prCiRuntimeReadPermissions": false,
+    "automaticDeploymentClosure": false,
+    "finalAppearanceAcceptance": false,
+    "cloudExecutorServedBytesVerified": false
+  },
+  "testTaskExecutionAuthorized": false,
+  "taskExecutedOrDispatched": false,
+  "sessionCredentialOrPrivateTaskIdCollected": false,
+  "syntheticTestEvidenceSeparate": true
+}
