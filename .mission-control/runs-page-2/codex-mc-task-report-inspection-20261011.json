@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "mc.repository-run.v2",
+  "taskKind": "FEATURE",
+  "projectId": "MISSION_CONTROL",
+  "track": "BASELINE",
+  "runId": "codex-mc-task-report-inspection-20261011",
+  "predecessorRunId": "codex-mc-pr-ci-api-key-20261011",
+  "taskId": "mc-task-report-inspection-20261011",
+  "featureTitle": "Connect saved existing-project tasks to their verified Agent progress, tests and final handoff using the existing report viewer",
+  "agentName": "Codex",
+  "provider": null,
+  "model": null,
+  "repositoryId": "JoeyAJ/joey-mission-control",
+  "reportRef": "mc/progress",
+  "workRef": "codex/mc-command-center-checkpoint-20261006",
+  "baseline": {
+    "ref": "codex/mc-command-center-checkpoint-20261006",
+    "commitSha": "957ac164b57d64ccb0f55b148d24aab6649b2cc6",
+    "handoffPath": "HANDOFF.md",
+    "handoffDigest": "189097e0f53077d269c5160226fb94fd4ecf4869859e84f563245909d6ac2b9a",
+    "contextPaths": [
+      "README.md",
+      "docs/PRODUCT_CHARTER.md",
+      "docs/MC_PHASE_PLAN.md",
+      "docs/STAGE_HANDOFF_TEMPLATE.md"
+    ]
+  },
+  "events": [
+    {
+      "id": "started-task-report-inspection",
+      "sequence": 1,
+      "eventAt": "2026-10-11T11:11:30.173Z",
+      "kind": "started",
+      "summary": "Inspect verified957ac164 handoff/eight-step breakdown. Existing project-specific task handoff already exists; implement the missing task-specific report inspection using existing projection/renderer/disclosure state, no new SQL or permissions. Owner cloud save acceptance stays accepted; never execute the harmless save test.",
+      "result": null,
+      "delivery": null
+    }
+  ]
+}
