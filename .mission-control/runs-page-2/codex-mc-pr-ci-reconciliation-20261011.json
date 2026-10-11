@@ -34,6 +34,15 @@
       "summary": "Inspect existing runtime credential versus connected-app permissions; implement bounded private exact-commit PR and CI reads, preserving task/report capabilities and no execution.",
       "result": null,
       "delivery": null
+    },
+    {
+      "id": "progress-pr-ci-verified",
+      "sequence": 2,
+      "eventAt": "2026-10-11T09:43:32.113Z",
+      "kind": "progress",
+      "summary": "Read-only canonical report-to-exact-commit PR/CI surface and Owner privacy implemented. Nine focused groups and eight actual-app synthetic Buddy/candidate mobile cases pass. Runtime credential scopes and actual Owner HTTP remain unknown; full preservation checks ongoing.",
+      "result": null,
+      "delivery": null
     }
   ]
 }
