@@ -43,3 +43,11 @@ Portable859/build/validate/check,focused64 and20 synthetic browser cases PASS. E
 Next Action: runtime9fb3e7b same Preview exact READY; terminal3/old26 unchanged. Continue approved four-object Owner decision storage, native ACL/data/CAS/capacity/rollback checks before activation. Approval12:43:39 UTC; no decision SQL/grants applied yet. Genuine bound task Agent run/UI device acceptance pending; GitHub permissions UNKNOWN. No Production/other repo/secrets/AWS/model/dispatch. CONNECT403 not bypassed; servedCheckedSha null. Do not recreate rejected VM artifacts.
 
 ```
+
+## Runtime 精確發布與 immutable terminal
+
+Runtime `2c5b7f8f44aa5cd399ef3eed883d782cb3cb193f`，固定 Preview alias／independent deployment `dpl_G8VybWXvrBUztxWvbxtYbm6Pv3dL` 都為 exact SHA/READY，target null（Preview）。API target:"preview" 先被400拒絕；省略 target 曾被 automatic approval review 阻擋，在 [官方明示省略 target 就是 Preview](https://vercel.com/docs/rest-api/deployments/create-a-new-deployment) 的證據補齊後相同授權 request 成功，無其他 target／專案設定／權限變更。Production仍 `dpl_5GgJ8LhD4Ec73RGz9CEFe1ppZQnh`／`8b4945b16a0b23f2e72033aa976fa34f94eabec0`。普通 HTTPS curl56 CONNECT403 HTTP000 before app；不繞過、servedCheckedSha:null。
+
+實際 Codex run `codex-mc-owner-task-review-20261011` 的 terminal sequence3 發布於 `mc/progress` commit `007d594c0f7944cd4ac8f8469a2fd7f470bac70e`，blob `88f8ebec64a81bed4e749ca8e3b510ab6f592e16`。外部 Draft2020-12＋format checker／remote exact readback PASS；header/start/progress不可變，其他27 blobs完全不变，總28 reports。這是 human authorized development taskId，沒有偽造 cloud-task binding；genuine cloud-task-bound Agent report仍0。terminal delivery verification標 BLOCKED／checkedSha:null、data APPLIED（實際新 migration），不套用MC_NO_DATA_CHANGE waiver或Owner驗收資格。
+
+最後 docs-only closure 的精確 SHA／READY 在 executor私有 `/tmp/mc-owner-task-review-20261011/final-publication.json`，避免 self-referential commit SHA。最終功能 tree 必須與上述已測 runtime相同；root安全 intake再核，dated history byte-preserved。

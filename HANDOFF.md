@@ -3,7 +3,7 @@
 Project: MISSION_CONTROL
 Timestamp: 2026-10-11T13:38:05Z
 Task: Approved bounded private acceptance ledger and UI
-Status: LOCAL_VERIFIED_PENDING_PUBLICATION
+Status: LOCAL_VERIFIED_PARENT_READ_PREVIEW_PUBLISHED
 Last Developer: Codex
 Executed by: Codex
 Actual Model: UNKNOWN
@@ -11,9 +11,9 @@ Baseline: 86806a73eafcd95993a8734e094115ed6af84564
 
 Owner approval12:43:39 UTC covers exactly four objects and original caps. Migration applied; ten existing tables/data and old functions/ACLs/schema/memberships unchanged. Native15 and live10 denial checks PASS; new table has zero rows. Server-only capability ON after gates. Approve/request-changes bind saved task requirements, fresh completed report and exact code/source; executionAuthorized false. No Agent/merge/deploy or candidate promotion.
 
-Evidence: docs/MC_OWNER_TASK_REVIEW_20261011.md. Runtime tests and fixed Preview closure follow there. Prior prefix preserved byte-for-byte; dated history unchanged. Currentness repair already independently released86806a7 READY, portable859/browser20. Owner save/reload acceptance10:52 UTC retained; harmless task never executed.
+Evidence: docs/MC_OWNER_TASK_REVIEW_20261011.md. Portable872/build/validate/check,root20/browser8 PASS; runtime2c5b7f8 exact READY,terminal3/other27 unchanged. Prior prefix preserved byte-for-byte; dated history unchanged. Currentness repair already independently released86806a7 READY, portable859/browser20. Owner save/reload acceptance10:52 UTC retained; harmless task never executed.
 
-Next Action: finish exact READY publication/readback. Genuine bound task Agent run/new Owner UI device acceptance pending; GitHub permissions UNKNOWN. No Production/other repo/new keys/Auth mutation/AWS/model/dispatch. CONNECT403 not bypassed; servedCheckedSha null. Do not recreate rejected VM artifacts.
+Next Action: independent review and Owner device acceptance. Genuine bound task Agent run/new Owner UI device acceptance pending; GitHub permissions UNKNOWN. No Production/other repo/new keys/Auth mutation/AWS/model/dispatch. CONNECT403 not bypassed; servedCheckedSha null. Do not recreate rejected VM artifacts.
 
 # Dated prior stage history
 

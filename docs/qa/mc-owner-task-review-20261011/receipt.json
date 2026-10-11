@@ -31,7 +31,7 @@
   "runtimeGitHubPermissions": "UNKNOWN",
   "servedCheckedSha": null,
   "root": {
-    "bytes": 65253,
+    "bytes": 65327,
     "priorPrefixSha256": "e42e80701ae8483cc51b0f20c995bd4735bdcea2fae0153a6b1378a916df85d4",
     "datedHistorySha256": "68de1c1e6a0ad588431996926396a6e19777a26ecc6ad7770afd13a3a23a0ea9",
     "datedHistoryUnchanged": true
@@ -57,5 +57,41 @@
     "externalRequests": 0,
     "unexpectedWrites": 0,
     "actualOwnerOrProviderHttp": false
+  },
+  "runtimePublication": {
+    "sha": "2c5b7f8f44aa5cd399ef3eed883d782cb3cb193f",
+    "deploymentId": "dpl_G8VybWXvrBUztxWvbxtYbm6Pv3dL",
+    "readyState": "READY",
+    "fixedAliasAndIndependentIdExact": true,
+    "target": null,
+    "servedCheckedSha": null,
+    "ordinaryHttps": "curl56 CONNECT403 HTTP000 before app; no bypass",
+    "productionUnchanged": {
+      "id": "dpl_5GgJ8LhD4Ec73RGz9CEFe1ppZQnh",
+      "sha": "8b4945b16a0b23f2e72033aa976fa34f94eabec0"
+    }
+  },
+  "developerReport": {
+    "status": "PUBLISHED",
+    "runId": "codex-mc-owner-task-review-20261011",
+    "path": ".mission-control/runs-page-2/codex-mc-owner-task-review-20261011.json",
+    "reportCommitSha": "007d594c0f7944cd4ac8f8469a2fd7f470bac70e",
+    "fileSha": "88f8ebec64a81bed4e749ca8e3b510ab6f592e16",
+    "sequence": 3,
+    "eventId": "completed-owner-task-review",
+    "scopeQualification": "PINNED_REPOSITORY_PROFILE_NOT_SERVER_ACCEPTANCE",
+    "bytes": 6479,
+    "remoteExact": true,
+    "externalDraft202012FormatChecker": "PASS",
+    "headerStartProgressImmutable": true,
+    "other27BlobsUnchanged": true,
+    "reportCount": 28,
+    "genuineCloudTaskBindingReports": 0
+  },
+  "approvalReview": {
+    "initialTargetOmissionRejected": true,
+    "resolvedAfterOfficialPreviewDefaultEvidence": true,
+    "officialSource": "https://vercel.com/docs/rest-api/deployments/create-a-new-deployment",
+    "noAlternateTargetOrProtectionBypass": true
   }
 }
