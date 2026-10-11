@@ -1,0 +1,40 @@
+{
+  "checkedAt": "2026-10-11T16:01:33.651Z",
+  "owner": {
+    "uid": 1000,
+    "name": "agent"
+  },
+  "processesBefore": {
+    "352976": "1  1000 agent    Sun Oct 11 13:25:20 2026 S    bash",
+    "352980": "352976  1000 agent    Sun Oct 11 13:25:20 2026 Sl   MainThread",
+    "352986": "352980  1000 agent    Sun Oct 11 13:25:20 2026 Rl   MainThread"
+  },
+  "rootCommand": "node --import ./tests/test-environment.mjs --test tests/task-review.test.mjs",
+  "childCommandQualification": "Exact Node isolated task-review test child, same Owner and start, no descendants",
+  "parentCommandQualification": "Exact earlier authored shell creating our task-review test then running it to our unit.log; no commands follow",
+  "parentPpid": 1,
+  "startedAtUtc": "2026-10-11T13:25:20Z",
+  "earlierCompletedStage": "MC_OWNER_TASK_REVIEW_20261011",
+  "currentTaskDependency": false,
+  "targets": [
+    352980,
+    352986
+  ],
+  "signal": "SIGTERM",
+  "broadProcessSignal": false,
+  "signalResults": [
+    {
+      "pid": 352980,
+      "status": "SIGTERM_SENT_TO_PINNED_PID"
+    },
+    {
+      "pid": 352986,
+      "status": "SIGTERM_SENT_TO_PINNED_PID"
+    }
+  ],
+  "readbackAt": "2026-10-11T16:02:41.815Z",
+  "readback": "352976       1 Z    bash\n 352986       1 Z    MainThread",
+  "rootTestGone": true,
+  "noLiveOldTestProcesses": true,
+  "residual": "Exited shell/test-child zombies adopted by PID1; no execution or CPU, awaiting init reap. No further signals."
+}

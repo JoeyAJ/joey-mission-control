@@ -1,3 +1,7 @@
+# Overnight closure — motion frame freshness boundary
+
+Frame-time report arrivals recheck event/observation age including terminal null-expiry. Morning acceptance and remaining gaps are in the [overnight handoff](MC_OVERNIGHT_MOTION_BOUNDARY_20261011.md); no next implementation phase starts. Source/task/SQL/permissions and both preflight repairs remain unchanged.
+
 # Current bounded integration — linked workspace motion
 
 Exact private motion slice is presentation over existing verified tuples. Both preflight repairs and current source/task/review/privacy qualifications remain preserved. [Canonical integration evidence](MC_WORKSPACE_MOTION_INTEGRATION_20261011.md). No new events, execution, SQL/permission or Production changes.

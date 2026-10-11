@@ -1,9 +1,11 @@
 // Transient presentation over the existing validated selection. No storage or transport.
 export const workbenchSelectionKey=s=>JSON.stringify([s.runId,s.selected,s.selectedFilePath]);
+const freshEvent=(event,now)=>[event?.eventAt,...(event?.activity?[event.activity.observedAt]:[])].every(at=>{const age=now-Date.parse(at);return age>=0&&age<300000;});
 export function freshWorkbenchMotionKeys(projection,keys,now){
  const fresh=new Set(projection.runs.filter(r=>r.presentation.freshness==='FRESH').map(r=>r.report.runId));
- return projection.events.filter(r=>keys.includes(r.key)&&fresh.has(r.runId)&&[r.event.eventAt,...(r.event.activity?[r.event.activity.observedAt]:[])].every(at=>{const age=now-Date.parse(at);return age>=0&&age<300000;})).map(r=>r.key);
+ return projection.events.filter(r=>keys.includes(r.key)&&fresh.has(r.runId)&&freshEvent(r.event,now)).map(r=>r.key);
 }
+export function workbenchMotionFrameFresh(presentation,event,kind,now){return presentation?.freshness==='FRESH'&&(!presentation.expiresAt||Date.parse(presentation.expiresAt)>now)&&(kind!=='report'||freshEvent(event,now));}
 
 export function createWorkbenchPaneMotion({requestFrame=globalThis.requestAnimationFrame?.bind(globalThis),cancelFrame=globalThis.cancelAnimationFrame?.bind(globalThis),now=Date.now}={}){
  let previous=null,requested=null,intent=null,frame=null,generation=0,query=null,lease=null;

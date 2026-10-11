@@ -1,0 +1,374 @@
+{
+  "qualification": "LOCAL_ACTUAL_APP_SYNTHETIC_UPSTREAMS_NOT_OWNER_OR_SERVED_ACCEPTANCE",
+  "verifiedAt": "2026-10-11T16:06:28.608Z",
+  "baseline": "239d9d3e7f5b71c11e311445bc54a7ea5355b1e8",
+  "portable": {
+    "tests": 909,
+    "pass": 909,
+    "fail": 0,
+    "build": "PASS",
+    "validate": "PASS",
+    "staticSafety": "PASS",
+    "forbiddenAttempts": 0
+  },
+  "focused": {
+    "tests": 118,
+    "pass": 118,
+    "fail": 0
+  },
+  "root": {
+    "tests": 20,
+    "pass": 20,
+    "fail": 0
+  },
+  "browserCases": 20,
+  "externalRequests": 0,
+  "unexpectedWrites": 0,
+  "actualOwnerWrites": 0,
+  "redOldPredicate": {
+    "qualification": "LOCAL_SYNTHETIC_REPRODUCTION",
+    "eventAt": "2026-10-11T15:55:00.010Z",
+    "paintAgeMs": 299990,
+    "rafAdvanceMs": 25,
+    "frameAgeMs": 300015,
+    "terminalRunExpiresAt": null,
+    "oldFramePredicateAccepted": true,
+    "expiredReportAnimations": 1
+  },
+  "frameMatrix": {
+    "paintAgeMs": 299990,
+    "rafAdvanceMs": [
+      5,
+      10,
+      25
+    ],
+    "eventAndObservationBoundaryTested": true,
+    "nullTerminalExpiryCovered": true,
+    "datedSelectionStillValid": true
+  },
+  "protectedPreflightTaskSqlApiSourcePaletteUnchanged": true,
+  "oldProcessNoLongerLive": true,
+  "servedCheckedSha": null,
+  "groups": [
+    {
+      "name": "motion",
+      "pass": true,
+      "cases": [
+        {
+          "width": 1440,
+          "locale": "zh-TW",
+          "pass": true,
+          "syntheticOwner": true,
+          "linkedVisiblePanes": true,
+          "taskFileEventSelection": true,
+          "datedHistoryQualified": true,
+          "notObservedFileHonest": true,
+          "keyboardFocus": true,
+          "rapidLastSelection": true,
+          "preferenceChangeStopsMotion": true,
+          "idleNoReplay": true,
+          "realNewEventOnly": true,
+          "staleAndDisconnectedStill": true,
+          "emptyAndRefusedStill": true,
+          "reducedInitial": false,
+          "recordedPaneEffects": 32
+        },
+        {
+          "width": 1440,
+          "locale": "ko",
+          "pass": true,
+          "syntheticOwner": true,
+          "linkedVisiblePanes": true,
+          "taskFileEventSelection": true,
+          "datedHistoryQualified": true,
+          "notObservedFileHonest": true,
+          "keyboardFocus": true,
+          "rapidLastSelection": true,
+          "preferenceChangeStopsMotion": true,
+          "idleNoReplay": true,
+          "realNewEventOnly": true,
+          "staleAndDisconnectedStill": true,
+          "emptyAndRefusedStill": true,
+          "reducedInitial": true,
+          "recordedPaneEffects": 4
+        },
+        {
+          "width": 1440,
+          "locale": "en",
+          "pass": true,
+          "syntheticOwner": true,
+          "linkedVisiblePanes": true,
+          "taskFileEventSelection": true,
+          "datedHistoryQualified": true,
+          "notObservedFileHonest": true,
+          "keyboardFocus": true,
+          "rapidLastSelection": true,
+          "preferenceChangeStopsMotion": true,
+          "idleNoReplay": true,
+          "realNewEventOnly": true,
+          "staleAndDisconnectedStill": true,
+          "emptyAndRefusedStill": true,
+          "reducedInitial": false,
+          "recordedPaneEffects": 32
+        },
+        {
+          "width": 390,
+          "locale": "zh-TW",
+          "pass": true,
+          "syntheticOwner": true,
+          "linkedVisiblePanes": true,
+          "taskFileEventSelection": true,
+          "datedHistoryQualified": true,
+          "notObservedFileHonest": true,
+          "keyboardFocus": true,
+          "rapidLastSelection": true,
+          "preferenceChangeStopsMotion": true,
+          "idleNoReplay": true,
+          "realNewEventOnly": true,
+          "staleAndDisconnectedStill": true,
+          "emptyAndRefusedStill": true,
+          "reducedInitial": false,
+          "recordedPaneEffects": 16
+        },
+        {
+          "width": 390,
+          "locale": "ko",
+          "pass": true,
+          "syntheticOwner": true,
+          "linkedVisiblePanes": true,
+          "taskFileEventSelection": true,
+          "datedHistoryQualified": true,
+          "notObservedFileHonest": true,
+          "keyboardFocus": true,
+          "rapidLastSelection": true,
+          "preferenceChangeStopsMotion": true,
+          "idleNoReplay": true,
+          "realNewEventOnly": true,
+          "staleAndDisconnectedStill": true,
+          "emptyAndRefusedStill": true,
+          "reducedInitial": true,
+          "recordedPaneEffects": 2
+        },
+        {
+          "width": 390,
+          "locale": "en",
+          "pass": true,
+          "syntheticOwner": true,
+          "linkedVisiblePanes": true,
+          "taskFileEventSelection": true,
+          "datedHistoryQualified": true,
+          "notObservedFileHonest": true,
+          "keyboardFocus": true,
+          "rapidLastSelection": true,
+          "preferenceChangeStopsMotion": true,
+          "idleNoReplay": true,
+          "realNewEventOnly": true,
+          "staleAndDisconnectedStill": true,
+          "emptyAndRefusedStill": true,
+          "reducedInitial": false,
+          "recordedPaneEffects": 16
+        }
+      ],
+      "external": 0,
+      "writes": 0,
+      "realOwnerAcceptance": false
+    },
+    {
+      "name": "follow",
+      "pass": true,
+      "cases": [
+        {
+          "width": 1440,
+          "locale": "zh-TW",
+          "pass": true,
+          "twoRuns": true,
+          "selectedRunLocked": true,
+          "backgroundUnread": true,
+          "manualPauseResume": true,
+          "scrollAndNoReplay": true,
+          "historicalCardRunPreserved": true
+        },
+        {
+          "width": 1440,
+          "locale": "ko",
+          "pass": true,
+          "twoRuns": true,
+          "selectedRunLocked": true,
+          "backgroundUnread": true,
+          "manualPauseResume": true,
+          "scrollAndNoReplay": true,
+          "historicalCardRunPreserved": true
+        },
+        {
+          "width": 1440,
+          "locale": "en",
+          "pass": true,
+          "twoRuns": true,
+          "selectedRunLocked": true,
+          "backgroundUnread": true,
+          "manualPauseResume": true,
+          "scrollAndNoReplay": true,
+          "historicalCardRunPreserved": true
+        },
+        {
+          "width": 390,
+          "locale": "zh-TW",
+          "pass": true,
+          "twoRuns": true,
+          "selectedRunLocked": true,
+          "backgroundUnread": true,
+          "manualPauseResume": true,
+          "scrollAndNoReplay": true,
+          "historicalCardRunPreserved": true
+        },
+        {
+          "width": 390,
+          "locale": "ko",
+          "pass": true,
+          "twoRuns": true,
+          "selectedRunLocked": true,
+          "backgroundUnread": true,
+          "manualPauseResume": true,
+          "scrollAndNoReplay": true,
+          "historicalCardRunPreserved": true
+        },
+        {
+          "width": 390,
+          "locale": "en",
+          "pass": true,
+          "twoRuns": true,
+          "selectedRunLocked": true,
+          "backgroundUnread": true,
+          "manualPauseResume": true,
+          "scrollAndNoReplay": true,
+          "historicalCardRunPreserved": true
+        }
+      ],
+      "external": 0,
+      "writes": 0,
+      "realOwnerAcceptance": false
+    },
+    {
+      "name": "delivery",
+      "pass": true,
+      "cases": [
+        {
+          "projectId": "MISSION_CONTROL",
+          "width": 1440,
+          "locale": "zh-TW",
+          "pass": true,
+          "v1V2Compatibility": true,
+          "equalTimeSequence": true,
+          "reportedIncompleteReady": true,
+          "independentAndJoeyPending": true,
+          "historyDated": true,
+          "permittedUrlOnly": true,
+          "authWithdrawn": true
+        },
+        {
+          "projectId": "MISSION_CONTROL",
+          "width": 1440,
+          "locale": "ko",
+          "pass": true,
+          "v1V2Compatibility": true,
+          "equalTimeSequence": true,
+          "reportedIncompleteReady": true,
+          "independentAndJoeyPending": true,
+          "historyDated": true,
+          "permittedUrlOnly": true,
+          "authWithdrawn": true
+        },
+        {
+          "projectId": "MISSION_CONTROL",
+          "width": 1440,
+          "locale": "en",
+          "pass": true,
+          "v1V2Compatibility": true,
+          "equalTimeSequence": true,
+          "reportedIncompleteReady": true,
+          "independentAndJoeyPending": true,
+          "historyDated": true,
+          "permittedUrlOnly": true,
+          "authWithdrawn": true
+        },
+        {
+          "projectId": "MISSION_CONTROL",
+          "width": 390,
+          "locale": "zh-TW",
+          "pass": true,
+          "v1V2Compatibility": true,
+          "equalTimeSequence": true,
+          "reportedIncompleteReady": true,
+          "independentAndJoeyPending": true,
+          "historyDated": true,
+          "permittedUrlOnly": true,
+          "authWithdrawn": true
+        },
+        {
+          "projectId": "MISSION_CONTROL",
+          "width": 390,
+          "locale": "ko",
+          "pass": true,
+          "v1V2Compatibility": true,
+          "equalTimeSequence": true,
+          "reportedIncompleteReady": true,
+          "independentAndJoeyPending": true,
+          "historyDated": true,
+          "permittedUrlOnly": true,
+          "authWithdrawn": true
+        },
+        {
+          "projectId": "MISSION_CONTROL",
+          "width": 390,
+          "locale": "en",
+          "pass": true,
+          "v1V2Compatibility": true,
+          "equalTimeSequence": true,
+          "reportedIncompleteReady": true,
+          "independentAndJoeyPending": true,
+          "historyDated": true,
+          "permittedUrlOnly": true,
+          "authWithdrawn": true
+        }
+      ],
+      "external": 0,
+      "writes": 0,
+      "realOwnerAcceptance": false
+    },
+    {
+      "name": "privacy",
+      "pass": true,
+      "cases": [
+        {
+          "width": 1440,
+          "pass": true,
+          "cancelActions": [
+            "close",
+            "escape",
+            "scope",
+            "owner",
+            "route-back"
+          ],
+          "syntheticClipboardWrites": 0,
+          "directHostAttributesCleared": true
+        },
+        {
+          "width": 390,
+          "pass": true,
+          "cancelActions": [
+            "close",
+            "escape",
+            "scope",
+            "owner",
+            "route-back"
+          ],
+          "syntheticClipboardWrites": 0,
+          "directHostAttributesCleared": true
+        }
+      ],
+      "external": 0,
+      "writes": 0,
+      "realOwnerAcceptance": false
+    }
+  ]
+}

@@ -5,7 +5,7 @@ import {supportsDeliveryVersion} from './file-activity.mjs';
 import {renderDeliveryEvidence} from './delivery-evidence-view.mjs';
 import {createActivityFollow} from './activity-follow.mjs';
 import {workbenchProjection,createWorkbenchTransitions} from './workbench-projection.mjs';
-import {createWorkbenchPaneMotion,workbenchSelectionKey,freshWorkbenchMotionKeys} from './workbench-motion.mjs';
+import {createWorkbenchPaneMotion,workbenchSelectionKey,freshWorkbenchMotionKeys,workbenchMotionFrameFresh} from './workbench-motion.mjs';
 import {reportTimeNode} from '../../public/report-time.js';
 import {formatTakeoverInstruction} from '../../public/takeover-instruction.js';
 import {createDisclosureState} from '../../public/workspace-reading.js';
@@ -112,8 +112,8 @@ export function mountRunWorkbench({owner,doc=document,projectId,track='BASELINE'
   for(const {n,top}of positions)if(n.parentElement)n.parentElement.scrollTop=top;
   if(history.open&&followState.following&&(scrollLatest||changes.some(key=>followState.visibleEvents.some(e=>e.key===key)))){const current=hosts.events.querySelector('[aria-pressed=true][data-run-control=event]');const column=targets.events;if(current&&column&&column.getClientRects().length){const r=current.getBoundingClientRect(),c=column.getBoundingClientRect();if(r.bottom>c.bottom)column.scrollTop+=r.bottom-c.bottom+8;else if(r.top<c.top)column.scrollTop+=r.top-c.top-8;}}
   if(focus){const b=[...Object.values(hosts).flatMap(n=>[...n.querySelectorAll('[data-run-selection]')])].find(n=>n.dataset.runSelection===focus.key&&n.dataset.runControl===focus.kind);b?.focus({preventScroll:true});}
-  const binding=workbenchSelectionKey(followState),eligible=currentRun?.presentation.freshness==='FRESH';paneMotion.connect(motionQuery,motionLease);if(eligible)memory.paneMotion.set(scope,paneMotion);
-  paneMotion.apply({binding,panes:[hosts.events,hosts.explorer,hosts.explorerMobile,hosts.detail,hosts.graph],eligible,current:()=>!disposed&&owner.dataset.ownerAuth==='verified'&&hosts.events.dataset.workbenchState==='confirmed'&&binding===workbenchSelectionKey(activity.snapshot(latestEvents))&&(!currentRun.presentation.expiresAt||Date.parse(currentRun.presentation.expiresAt)>now()),kind:visualChanges.includes(selected)?'report':'selection'});
+  const binding=workbenchSelectionKey(followState),eligible=currentRun?.presentation.freshness==='FRESH',motionKind=visualChanges.includes(selected)?'report':'selection';paneMotion.connect(motionQuery,motionLease);if(eligible)memory.paneMotion.set(scope,paneMotion);
+  paneMotion.apply({binding,panes:[hosts.events,hosts.explorer,hosts.explorerMobile,hosts.detail,hosts.graph],eligible,current:()=>!disposed&&owner.dataset.ownerAuth==='verified'&&hosts.events.dataset.workbenchState==='confirmed'&&binding===workbenchSelectionKey(activity.snapshot(latestEvents))&&workbenchMotionFrameFresh(currentRun?.presentation,row?.event,motionKind,now()),kind:motionKind});
   const expiry=[...projection.runs.map(r=>Date.parse(r.presentation.expiresAt)),...projection.files.filter(f=>f.latest).map(f=>Date.parse(f.latest.event.activity.observedAt)+300000),...(row?.event.activity?[Date.parse(row.event.activity.observedAt)+300000]:[])].filter(t=>t>now());if(expiry.length)timer=setTimeout(paint,Math.min(...expiry)-now()+1);
  }
  const unsubSource=owner.sourceController?.subscribe(v=>{sourceView=v;paint();}),unsubReport=owner.repositoryRunsController?.subscribe(v=>{reportView=v;paint();});

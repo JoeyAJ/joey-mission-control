@@ -1,5 +1,5 @@
 import test from 'node:test';import assert from 'node:assert/strict';
-import {createWorkbenchPaneMotion,freshWorkbenchMotionKeys} from '../src/reporting/workbench-motion.mjs';
+import {createWorkbenchPaneMotion,freshWorkbenchMotionKeys,workbenchMotionFrameFresh} from '../src/reporting/workbench-motion.mjs';
 
 function fixture(){
  const frames=new Map(),effects=[];let id=0;const listeners=new Set(),query={matches:false,addEventListener:(_,f)=>listeners.add(f),removeEventListener:(_,f)=>listeners.delete(f)};
@@ -37,4 +37,11 @@ test('new event highlights reject stale/unknown runs, older/future events and da
  const now=Date.parse('2026-10-11T20:00:00Z'),at=age=>new Date(now-age).toISOString();
  const projection={runs:[{report:{runId:'fresh'},presentation:{freshness:'FRESH'}},{report:{runId:'stale'},presentation:{freshness:'STALE'}}],events:[{key:'good',runId:'fresh',event:{eventAt:at(1000)}},{key:'stale',runId:'stale',event:{eventAt:at(1000)}},{key:'old',runId:'fresh',event:{eventAt:at(300001)}},{key:'future',runId:'fresh',event:{eventAt:at(-1)}},{key:'dated-file',runId:'fresh',event:{eventAt:at(1000),activity:{observedAt:at(300001)}}}]};
  assert.deepEqual(freshWorkbenchMotionKeys(projection,projection.events.map(e=>e.key),now),['good']);assert.deepEqual(freshWorkbenchMotionKeys(projection,[],now),[]);
+});
+test('terminal null-expiry report arrivals recheck event and observation age at RAF, including the exact boundary',()=>{
+ const paintAt=Date.parse('2026-10-11T16:00:00Z'),presentation={freshness:'FRESH',expiresAt:null};
+ for(const observation of [false,true])for(const advance of [5,10,25]){let clock=paintAt;const event={eventAt:new Date(paintAt-(observation?1000:299990)).toISOString(),...(observation?{activity:{observedAt:new Date(paintAt-299990).toISOString()}}:{})},projection={runs:[{report:{runId:'terminal'},presentation}],events:[{key:'arrival',runId:'terminal',event}]};assert.deepEqual(freshWorkbenchMotionKeys(projection,['arrival'],clock),['arrival']);const f=fixture();f.apply('terminal-arrival',{kind:'report',current:()=>workbenchMotionFrameFresh(presentation,event,'report',clock)});clock+=advance;f.flush();assert.equal(f.effects.length,advance<10?2:0,JSON.stringify({observation,advance}));assert.equal(f.panes.some(n=>n.dataset.workbenchMotion==='report'),advance<10);}
+});
+test('dated selection keeps navigation motion while stale or expired runs remain still',()=>{
+ const now=Date.parse('2026-10-11T16:00:00Z'),dated={eventAt:new Date(now-300015).toISOString()};for(const [presentation,expected]of [[{freshness:'FRESH',expiresAt:null},2],[{freshness:'FRESH',expiresAt:new Date(now+100).toISOString()},2],[{freshness:'FRESH',expiresAt:new Date(now).toISOString()},0],[{freshness:'STALE',expiresAt:null},0]]){const f=fixture();f.apply('initial');f.apply('dated-selection',{current:()=>workbenchMotionFrameFresh(presentation,dated,'selection',now)});f.flush();assert.equal(f.effects.length,expected);}
 });

@@ -1,19 +1,19 @@
-# Current workspace motion integration — 2026-10-11
+# Overnight motion boundary closure — 2026-10-11
 
 Project: MISSION_CONTROL
-Timestamp: 2026-10-11T15:37:00.662Z
-Task: Integrate exact private linked task/file/event pane motion
-Status: LOCAL_VERIFIED_PARENT_READ_PREVIEW_PUBLISHED
+Timestamp: 2026-10-11T16:04:30.372Z
+Task: Recheck report arrival age at RAF; overnight handoff
+Status: LOCAL_VERIFIED_PENDING_PUBLICATION
 Last Developer: Codex
 Executed by: Codex
 Actual Model: UNKNOWN
-Baseline: 7cff2ed735207e14bf16184330d4a13eaaf09fe5
+Baseline: 239d9d3e7f5b71c11e311445bc54a7ea5355b1e8
 
-Exact313401b seven-file slice reviewed and cherry-picked asf6379aa; current Owner bundle rebuilt. Verified selection gives coordinated180ms visible-pane motion; rapid/remount/reduced-motion/Owner/source refusal cancel it. Fresh appended reports alone receive arrival highlights. No invented activity or execution.
+Terminal null-expiry arrivals now recheck event/file-observation age at frame time; exact five-minute boundary refuses motion. Valid report/selection behavior retained. Focused118/portable909/build/validate/check/root20/browser20 PASS; forbiddenAttempts0. Exact fixed Preview closure follows. No fabricated activity/authority or feature expansion.
 
-Evidence: docs/MC_WORKSPACE_MOTION_INTEGRATION_20261011.md. Portable907/build/validate/check, focused116/root20/browser48 PASS; forbiddenAttempts0. Runtime21785c5 exact fixed Preview READY. Both preflight repairs and task review/SQL/API/scopes/palette preserved. Actual Owner writes0, saved test untouched. Prior prefix preserved there; dated history unchanged.
+Evidence: docs/MC_OVERNIGHT_MOTION_BOUNDARY_20261011.md. Both preflight fixes and task/SQL/API/scopes/palette unchanged. Positively identified old test352980/child352986 received scoped SIGTERM; no live old test, only inactive PID1-owned zombies. Prior prefix preserved there; dated history unchanged.
 
-Next Action: final docs closure/exact SHA publication, then own integration terminal at final work HEAD; no later work-branch commit. Actual served/Owner acceptance remains pending and real task deferred. No Production/SQL/permissions/dispatch/model selector/AWS. Normal CONNECT403 not bypassed; servedCheckedSha null.
+Next Action: finish same Preview/terminal, then pause for morning Owner/device/source Continue and genuine cloud task/Agent/PR-CI/decision acceptance steps listed in the linked handoff. Served CONNECT403 not bypassed. No new phase/Production/SQL/permissions/dispatch/AWS/model selector; actual Owner writes0 and saved test untouched.
 
 # Dated prior stage history
 
