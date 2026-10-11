@@ -43,6 +43,92 @@
       "summary": "Old controller actual retarget regression RED; new click captures tuple/generations before awaits and requires separate existing PR/CI stage. Portable877/build/validate/check, focused18/root20 and actual-app synthetic browser8 PASS; forbidden/external/unexpected0. SQL/ACL untouched, actual Owner decision writes0. Preparing exact same-branch Preview.",
       "result": null,
       "delivery": null
+    },
+    {
+      "id": "completed-owner-review-click-intent",
+      "sequence": 3,
+      "eventAt": "2026-10-11T14:10:48.445Z",
+      "kind": "completed",
+      "summary": "Decision click now captures displayed tuple/generations before awaits; separate existing PR/CI stage required. Report/canonical/requirements/project/run drift rejects, unchanged succeeds, new tuple needs another click. Portable877/focused18/root20/browser8 PASS. Exact40fa1e7 fixed Preview READY; ordinary CONNECT403 blocks served check. No SQL/ACL/actual Owner decision writes.",
+      "result": {
+        "codeSha": "40fa1e794a23213dd20030dabde53588236715ef",
+        "tests": [
+          {
+            "name": "Portable877/build/validate/check; forbiddenAttempts0",
+            "outcome": "PASS"
+          },
+          {
+            "name": "Actual-controller clicked-intent drift18 including old-runtime red regression",
+            "outcome": "PASS"
+          },
+          {
+            "name": "Actual-app synthetic browser8; explicit PR/CI stage, retry/history/mobile/privacy",
+            "outcome": "PASS"
+          },
+          {
+            "name": "Root safe intake20 and immutable prior history",
+            "outcome": "PASS"
+          }
+        ],
+        "nextSteps": "Independent review and genuine non-test saved task remain necessary. Current harmless save-only task never executed; genuine cloud-bound Agent run and actual Owner UI/API acceptance absent. Existing GitHub runtime permissions UNKNOWN. Owner must explicitly click after viewing current PR/CI; changed binding must never be silently retargeted. CONNECT403 is not served validation; no Agent/merge/deploy/candidate authority from acceptance.",
+        "handoff": {
+          "path": "HANDOFF.md",
+          "commitSha": "40fa1e794a23213dd20030dabde53588236715ef"
+        }
+      },
+      "delivery": {
+        "qualification": "AGENT_REPORTED",
+        "scope": {
+          "projectId": "MISSION_CONTROL",
+          "track": "BASELINE",
+          "repositoryId": "JoeyAJ/joey-mission-control",
+          "runId": "codex-mc-owner-review-intent-fix-20261011",
+          "taskId": "mc-owner-review-intent-fix-20261011",
+          "workRef": "codex/mc-command-center-checkpoint-20261006",
+          "codeSha": "40fa1e794a23213dd20030dabde53588236715ef"
+        },
+        "deployment": {
+          "status": "READY",
+          "target": {
+            "provider": "vercel",
+            "project": "joey-mission-control",
+            "environment": "preview"
+          },
+          "id": "dpl_4hiie51J7rZeYxCns3rv4xPKkyJk",
+          "deployedSha": "40fa1e794a23213dd20030dabde53588236715ef",
+          "url": "https://joey-mission-control-git-codex-mc-comma-fceec2-joeyajs-projects.vercel.app/",
+          "observedAt": "2026-10-11T14:10:48.445Z",
+          "evidence": "Connected fixed alias and independent deployment ID exact SHA/READY; target null is Preview. Production unchanged.",
+          "notRequired": null
+        },
+        "verification": {
+          "status": "BLOCKED",
+          "method": "HTTP_FUNCTIONAL_CHECK",
+          "checkedAt": "2026-10-11T14:10:48.445Z",
+          "deploymentId": "dpl_4hiie51J7rZeYxCns3rv4xPKkyJk",
+          "checkedSha": null,
+          "url": "https://joey-mission-control-git-codex-mc-comma-fceec2-joeyajs-projects.vercel.app/",
+          "evidence": "Ordinary HTTPS curl56 CONNECT403 HTTP000 before application; no bypass. Synthetic local browser8 and portable877 PASS establish implementation checks only, not served Owner acceptance.",
+          "notRequired": null
+        },
+        "handoff": {
+          "status": "CURRENT",
+          "path": "HANDOFF.md",
+          "commitSha": "40fa1e794a23213dd20030dabde53588236715ef",
+          "checkedAt": "2026-10-11T14:10:48.445Z",
+          "evidence": "Exact committed root readback, safe intake20 PASS; prior prefix preserved, dated history byte-for-byte unchanged."
+        },
+        "data": {
+          "status": "NOT_REQUIRED",
+          "version": null,
+          "checkedAt": "2026-10-11T14:10:48.445Z",
+          "evidence": null,
+          "notRequired": {
+            "policy": "MC_NO_DATA_CHANGE",
+            "reason": "Bounded controller/view and tests only; existing ledger SQL/config/grants unchanged. No migration, live Owner decisions or harmless-task execution."
+          }
+        }
+      }
     }
   ]
 }
