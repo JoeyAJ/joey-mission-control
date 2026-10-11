@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "mc.repository-run.v2",
+  "taskKind": "FEATURE",
+  "projectId": "MISSION_CONTROL",
+  "track": "BASELINE",
+  "runId": "codex-mc-file-navigation-20261011",
+  "predecessorRunId": "codex-mc-quoted-guard-20261011",
+  "taskId": "mc-file-navigation-20261011",
+  "featureTitle": "Bounded manifest/file history navigation and static-demo no-migration qualification",
+  "agentName": "Codex",
+  "provider": null,
+  "model": null,
+  "repositoryId": "JoeyAJ/joey-mission-control",
+  "reportRef": "mc/progress",
+  "workRef": "codex/mc-command-center-checkpoint-20261006",
+  "baseline": {
+    "ref": "codex/mc-command-center-checkpoint-20261006",
+    "commitSha": "19a15fcbdf653972c22684d313f4519d33b930d6",
+    "handoffPath": "HANDOFF.md",
+    "handoffDigest": "9c08ed79606a865c89483158e4bdea5e419037ced27dabc8e3c105864199ae8e",
+    "contextPaths": [
+      "README.md",
+      "docs/PRODUCT_CHARTER.md",
+      "docs/MC_PHASE_PLAN.md",
+      "docs/STAGE_HANDOFF_TEMPLATE.md"
+    ]
+  },
+  "events": [
+    {
+      "id": "started",
+      "sequence": 1,
+      "eventAt": "2026-10-11T01:42:03.081377Z",
+      "kind": "started",
+      "summary": "Executor healthy, sole MC writer. Inventory existing real metadata projection and pinned University static module source; implement bounded file/task navigation and evidence-driven transitions with no source/diff/terminal expansion.",
+      "result": null,
+      "delivery": null
+    }
+  ]
+}
