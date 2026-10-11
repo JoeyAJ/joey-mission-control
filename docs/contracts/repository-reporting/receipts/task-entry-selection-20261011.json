@@ -1,0 +1,110 @@
+{
+  "qualification": "AGENT_REPORTED_WITH_CONNECTED_GIT_BLOB_AND_PROVIDER_METADATA_READBACK",
+  "task": "mc-task-entry-selection-20261011",
+  "originalBaseline": "caab2cfd68ebe171347034fddba1045f3fbd4e7d",
+  "testedImplementation": "cf7dd346ca5bb7277da6a3d01484e456a2683116",
+  "testedDeployment": {
+    "id": "dpl_4haaVugYGQVkbYhhXJJ61EwetznQ",
+    "state": "READY",
+    "sha": "cf7dd346ca5bb7277da6a3d01484e456a2683116",
+    "fixedAliasMatched": true,
+    "observedAt": "2026-10-11T02:42:51Z",
+    "scope": "DATED_PROVIDER_METADATA_NOT_SERVED_BYTES"
+  },
+  "handoff": "28a9a02e78500937f84d5b431129e6e4a7c6ae91",
+  "handoffDeployment": {
+    "id": "dpl_3vLbUgekKQxMnGiXZVRWnparf7gj",
+    "state": "READY",
+    "sha": "28a9a02e78500937f84d5b431129e6e4a7c6ae91",
+    "fixedAliasMatched": true,
+    "observedAt": "2026-10-11T02:43:36Z",
+    "scope": "DATED_PROVIDER_METADATA_NOT_SERVED_BYTES"
+  },
+  "terminal": {
+    "status": "PUBLISHED",
+    "runId": "codex-mc-task-entry-selection-20261011",
+    "path": ".mission-control/runs/codex-mc-task-entry-selection-20261011.json",
+    "reportCommitSha": "fb37aa15c1e67037621c9d893555d5ae359232cd",
+    "fileSha": "6b1cf08cdbb6c50bfc0ace52a5186bc6b0afdb4b",
+    "sequence": 3,
+    "eventId": "selection-completed",
+    "scopeQualification": "PINNED_REPOSITORY_PROFILE_NOT_SERVER_ACCEPTANCE"
+  },
+  "readback": {
+    "blob": "6b1cf08cdbb6c50bfc0ace52a5186bc6b0afdb4b",
+    "bytes": 6501,
+    "connectedGitHash": true,
+    "strictCodeSchema": true,
+    "scope": "BLOB_SCOPE_ONLY_NOT_OWNER_OR_SERVED",
+    "delivery": "REPORTED_INCOMPLETE",
+    "independentVerification": "PENDING",
+    "joeyAcceptance": "PENDING",
+    "originalPinnedProfile": true,
+    "externalDraft202012": true
+  },
+  "tests": {
+    "portable": 764,
+    "pass": 764,
+    "fail": 0,
+    "buildValidateCheck": "PASS",
+    "focusedSourceOwnerRoutingSelection": 36,
+    "handoffSource": 20,
+    "actualSameClickContinuityBrowser": 2,
+    "oldSimpleWidths": 4,
+    "trueContinueBrowser": 12,
+    "browserExternal": 0,
+    "browserWrites": 0,
+    "forbiddenAttempts": 0
+  },
+  "beforeReproduction": {
+    "widths": [
+      1440,
+      390
+    ],
+    "selected": "codex-mc-file-navigation-20261011",
+    "entered": "synthetic-live-fixture",
+    "sameClick": true,
+    "owner": "SYNTHETIC",
+    "reportBytes": "EXACT_OWN_MC_TERMINAL_AND_PREDECESSORS"
+  },
+  "afterSelection": {
+    "olderV2Run": "codex-mc-file-navigation-20261011",
+    "sequence": 3,
+    "v3Run": "codex-mc-file-observations-20261011",
+    "v3Sequence": 5,
+    "originalHistory": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "refusals": [
+      "missing",
+      "changed immutable blob",
+      "foreign scope",
+      "pending report read with project switch",
+      "logout",
+      "outage"
+    ],
+    "backNavigation": true,
+    "privateRunUrlStorage": false
+  },
+  "servedAttempt": {
+    "attemptAt": "2026-10-11T02:44:09.374385Z",
+    "url": "https://joey-mission-control-git-codex-mc-comma-fceec2-joeyajs-projects.vercel.app/",
+    "curlExit": 56,
+    "httpCode": "000",
+    "error": "curl: (56) CONNECT tunnel failed, response 403",
+    "checkedSha": null,
+    "bypass": false
+  },
+  "derivedDelivery": "REPORTED_INCOMPLETE",
+  "independentVerification": "PENDING",
+  "joeyAcceptance": "PENDING",
+  "historicalReportDiff": "ONLY_NEW_SELECTED_ENTRY_RUN_ADDED_SINCE_MOBILE_TERMINAL",
+  "productionUnchanged": true,
+  "runtimeDiffFromTestedImplementation": "EMPTY",
+  "finalReceiptPublication": "EXACT_REMOTE_READY_ALIAS_CHECKED_SEPARATELY_AFTER_PUSH",
+  "noPostTerminalAppend": true
+}

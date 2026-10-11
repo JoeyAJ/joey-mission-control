@@ -1,7 +1,7 @@
 # Mission Control — preserve selected task on workspace entry
 
 Project: MISSION_CONTROL
-Timestamp: 2026-10-11T02:41:36.817Z
+Timestamp: 2026-10-11T02:45:33.241Z
 Task: Fresh scope-bound selected-run entry from default Joey
 Status: LOCAL_VERIFIED_CLOUD_EVENTS_NOT_ENABLED
 Last Developer: Codex
@@ -24,6 +24,8 @@ Existing MC branch and fixed Preview only. No Production/other-repository write,
 Actual tested progress2 commit8bc8836457f14fac80f7015f28fd961a617e62ef / blobb8f11dcd6ba73eadb9690074025744947d0a7c45; original source baselinecaab2cf unchanged.
 
 Tested selected-entry implementation cf7dd346ca5bb7277da6a3d01484e456a2683116 is exact remote; deployment dpl_4haaVugYGQVkbYhhXJJ61EwetznQ READY, independent fixed alias full SHA/ID match observed2026-10-11T02:42:51Z. Actual normal root GET2026-10-11T02:42:52.027181Z curl56/CONNECT403/HTTP000 before app, checkedSha=null, no bypass. Production unchanged dpl_5GgJ8LhD4Ec73RGz9CEFe1ppZQnh / 8b4945b16a0b23f2e72033aa976fa34f94eabec0. Current handoff/source20 and generated-client rebuild PASS; generic helper33073 bytes/SHA25663baf890fe7bd642b565d02b83a5057a9180f072d5ebaf5b3be91812f502ca80 unchanged. Current handoff consolidation/terminal readback/final receipt identity follows separately; runtime stays identical to tested support.
+
+Actual immutable terminal3 fb37aa15c1e67037621c9d893555d5ae359232cd / blob6b1cf08cdbb6c50bfc0ace52a5186bc6b0afdb4b,6501 bytes. Connected private Git Contents/blob hash/strict code/schema/original pinned profile/external Draft2020-12 PASS. Completed / REPORTED_INCOMPLETE: local tests PASS, served NOT_RUN/BLOCKED checkedSha=null; independent/Joey PENDING. No post-terminal append. Since prior mobile terminale22d3388, report branch only adds this new selected-entry run; all historical report/guard bytes unchanged. Handoff28a9a02e78500937f84d5b431129e6e4a7c6ae91 / dpl_3vLbUgekKQxMnGiXZVRWnparf7gj READY, fixed alias matched full SHA/ID2026-10-11T02:43:36Z. Ordinary root GET2026-10-11T02:44:09.374385Z remains CONNECT403/curl56/HTTP000 before app, no bypass. Runtime diff from testedcf7dd34 empty. Final receipt-only remote/READY/alias identity is checked separately after push. Bounded implementation/tests/support publication/report readback/next handoff are complete; normal served Owner review remains pending. No unrelated feature/policy refinement or Joey installation/manual deployment task.
 
 ## Historical default mobile activity checkpoint (2026-10-11, baseline7567232)
 
