@@ -1,0 +1,52 @@
+{
+  "baseline": "95d850f6779089cd6e6d61863c7079e8065cdcf1",
+  "scope": "SOURCE_ONLY_REFERENCE_THEME",
+  "references": {
+    "color": {
+      "bytes": 92059,
+      "sha256": "ef434c30d244c6e3c353302f10a9ba0823591c3d1d9b27071ac84cb5db0a4f72",
+      "pixelsInspected": true
+    },
+    "overloadedUI": {
+      "bytes": 1533770,
+      "sha256": "ec51b742a97d88a2c78aad42778aa0e4d864f8892e8377b6e0ec44001c2b1f4d",
+      "pixelsInspected": true
+    }
+  },
+  "verification": {
+    "portableTests": 840,
+    "portableFailures": 0,
+    "build": true,
+    "portableSchemaValidation": true,
+    "staticSafety": true,
+    "forbiddenWorkstationAttempts": 0,
+    "browserCases": {
+      "disclosureAndReferenceTheme": 6,
+      "delivery": 6,
+      "fileNavigation": 6,
+      "followAndActualNewEventMotion": 6,
+      "cancelPrivacy": 2,
+      "simpleTakeover": 4,
+      "baselineStyleComparison": 6
+    },
+    "syntheticOwnerAndSource": true,
+    "externalBrowserRequests": 0,
+    "unexpectedBrowserApiWrites": 0,
+    "minimumSampledTextContrast": 8.747271600130002,
+    "minimumSampledControlBorderContrast": 9.653270812878997,
+    "minimumMobileDisclosureHeight": 44,
+    "newEventMotionCases": 6,
+    "newEventAnimationsWithoutReportID": 0,
+    "horizontalOverflow": false
+  },
+  "qualification": {
+    "actualServedOwnerAcceptance": false,
+    "joeyFinalAppearanceAcceptance": false,
+    "terminalEditorOrFileContentAdded": false,
+    "authDatabaseReportContractsChanged": false,
+    "canonicalPush": false,
+    "deployment": false,
+    "privateRawReferenceFilesCommitted": false,
+    "newCredentialsOrPermissions": false
+  }
+}
