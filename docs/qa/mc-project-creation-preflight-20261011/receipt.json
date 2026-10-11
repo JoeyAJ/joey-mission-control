@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "qualification": "LOCAL_VERIFIED_PREFLIGHT_ONLY_PUBLICATION_PENDING",
+  "qualification": "RUNTIME_PREVIEW_READY_PREFLIGHT_ONLY_FINAL_ID_IN_PRIVATE_RECEIPT",
   "baselineSha": "e464f571b9127c2684192fa1c5a96717d4c72142",
   "provisioned": false,
   "developmentReady": false,
@@ -13,7 +13,7 @@
   "harmlessSavedTestChanged": false,
   "servedCheckedSha": null,
   "root": {
-    "bytes": 65302,
+    "bytes": 65375,
     "priorPrefixSha256": "51718faa62604fefe97df5ff5049cae0e2b7f61cf455e56026b12db3c7746508",
     "datedHistorySha256": "8a2a580aca03e58a7f049e97342423cef90f952f78d7cd16d50d097c67531f14",
     "datedHistoryUnchanged": true
@@ -36,5 +36,23 @@
     "externalRequests": 0,
     "unexpectedWrites": 0,
     "forbiddenWorkstationAttempts": 0
+  },
+  "runtimePublication": {
+    "sha": "ff77b07d2e341ae7d1e0d16778c234644ca734e4",
+    "id": "dpl_DKWHy5WtS6greCuRVGjJgC2tKJBa",
+    "readyState": "READY",
+    "target": null,
+    "fixedAliasAndIndependentIdExact": true,
+    "production": {
+      "id": "dpl_5GgJ8LhD4Ec73RGz9CEFe1ppZQnh",
+      "sha": "8b4945b16a0b23f2e72033aa976fa34f94eabec0",
+      "unchanged": true
+    },
+    "servedCheckedSha": null
+  },
+  "developerRun": {
+    "runId": "codex-mc-project-creation-preflight-20261011",
+    "finalTerminal": "After final handoff commit / exact READY; see executor private final-publication.json",
+    "notCloudTaskBound": true
   }
 }

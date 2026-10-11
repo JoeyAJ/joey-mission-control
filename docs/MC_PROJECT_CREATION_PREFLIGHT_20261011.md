@@ -47,3 +47,9 @@ Evidence: docs/MC_OWNER_REVIEW_INTENT_FIX_20261011.md. Portable877/build/validat
 Next Action: runtime40fa1e7 exact Preview READY; terminal3/old28 unchanged. Independent review and Owner device acceptance pending. Genuine non-test saved task absent; real bound Agent run/Owner UI acceptance pending, GitHub permissions UNKNOWN. CONNECT403 not bypassed; servedCheckedSha null. No Production/other repo/AWS/model/dispatch. Do not recreate refused VM artifacts.
 
 ```
+
+## Runtime publication 與最終閉環
+
+Tested runtime `ff77b07d2e341ae7d1e0d16778c234644ca734e4` remote exact、固定 Preview alias與 independent deployment `dpl_DKWHy5WtS6greCuRVGjJgC2tKJBa` 均 exact SHA／READY，target null（Preview）。Production `dpl_5GgJ8LhD4Ec73RGz9CEFe1ppZQnh`／`8b4945b16a0b23f2e72033aa976fa34f94eabec0` 不變。Ordinary HTTPS仍 curl56 CONNECT403／HTTP000 before app，不 bypass、servedCheckedSha:null。
+
+Final docs closure只改交接與證據，功能 tree與上述runtime相同；再核root安全intake20、固定alias／independent ID的最終HEAD／READY後，才以該最終HEAD發布新run terminal。避免terminal後再advance work branch HEAD。New run是實際MC開發工作，未假冒CloudTask／Owner驗收；舊29 report blobs及原header/events必須不變。最終canonical SHA／deployment ID／terminal receipt與external Draft2020-12＋FormatChecker、prefiximmutability／old29證據在executor私有 `/tmp/mc-project-preflight-20261011/final-publication.json`，避免self-referential commit。這份文件的runtime deployment為dated initialpublication；最終alias以該private receipt與run最新event核對。
