@@ -1,4 +1,28 @@
-# Mission Control — new-project draft and bootstrap handoff
+# Mission Control — private cloud draft integration (activation pending)
+
+Project: MISSION_CONTROL
+Timestamp: 2026-10-11T06:54:55.266Z
+Task: Owner private draft API, cloud UI and revision conflict isolation
+Status: LOCAL_VERIFIED_CLOUD_EVENTS_NOT_ENABLED
+DeliveryQualification: DRAFT_TRANSPORT_IMPLEMENTED_ACTIVATION_NOT_APPROVED
+Last Developer: Codex
+Executed by: Codex
+Actual Model: UNKNOWN
+Baseline: be996d53cbd833ff60e93af12f113bb90d63d06c
+
+## Current cloud draft integration checkpoint
+
+Parent requested finishing durable draft integration within existing approved code scope, while withholding SQL/ACL activation. Frontend now wires same-origin GET/POST /api/private/project-drafts for two exact list/save RPCs. Default server-only activation is OFF; no SQL was executed or provider credential created. Existing session-only fallback stays available. Approved provider setup is required before cloud controls are enabled; typed repo/imported revision/source flags cannot grant new access.
+
+Independent SQL review addressed expiry milliseconds, exact-payload replay after lost committed response, removal of unnecessary hard delete, and canonical URL/JS readback parity. SQL also matches UTF16 field limits/Unicode trimming. Revised proposal SHA2561dc75176ef7e837dd4364aacbb82db93c25118861806553a5a2d1aa850185433; two new authenticated list/save RPCs only. New Owner-only table/max12 drafts/max96KiB each, forced RLS/current exact Owner/AAL2/live auth session/NEX membership/CAS. Existing ledgers/data/RPCs/grants remain frozen. No SQL/provider parity PASS is claimed; review-only harness is included.
+
+Actual cloud UI supports private save/readback/reload, explicit conflict choice with local PRD retained, and exact readback recovery without duplicate writes after lost response. Unsaved field edits cannot make stale cloud saves. Refresh cannot silently replace existing local drafts. Generation/Owner checks before/after awaits, logout/expiry/revocation clearing and body/header-only private transport remain. New repo provisioning/source/report/registration/Agent startup are separate pending gates.
+
+Focused38 PASS; synthetic app/official SDK cloud4 widths PASS with two separate browser sessions, exact lost-response readback, outage and pending logout. Intended synthetic draft writes12, external0/unexpected writes0. Dormant fallback4/Continue12/shared brief6 PASS. Final portable804/build/validate/check and original simple4 PASS; forbiddenAttempts0. Source/handoff verification and exact fixed Preview checkpoint follow. Details and exact approval request: docs/MC_PROJECT_DRAFT_INTEGRATION_VERIFICATION_20261011.md and docs/MC_PROJECT_DRAFT_STORAGE_PROPOSAL_20261011.md.
+
+Fresh same-scope run codex-mc-project-draft-integration-20261011 uses immutable baselinebe996d53, predecessor codex-mc-project-onboarding-20261011; started1 commit42db6ec3c29982c7338087066c39dee0cf1f3788/blob5f8a0da80046f09f69dac5a1f930960a17e1a58f. Prior terminal4 remains immutable. Current progress/terminal follows genuine publication checks. Same branch/fixed Preview only, no Production/AWS/other repo/dispatch/model selection/secret/permission activation. Five accepted scope/Owner QA preserved; University candidate and unsigned identities/times stay qualified. Next: publish/review current exact proposal and transport checkpoint; only explicit scoped approval can apply SQL and later enable verified server storage.
+
+# Historical new-project fallback checkpoint
 
 Project: MISSION_CONTROL
 Timestamp: 2026-10-11T06:33:58.021Z

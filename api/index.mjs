@@ -13,6 +13,7 @@ import {createDeploymentRemoteHandoffServer} from '../src/continuity/remote-hand
 import {createDeploymentProjectEntryServer} from '../src/continuity/project-entry-server.mjs';
 import {ownerAuthConfig} from '../public/owner-auth-config.js';
 import {createDeploymentProjectOnboardingServer} from '../src/onboarding/project-onboarding-server.mjs';
+import {createDeploymentProjectDraftStorageServer} from '../src/onboarding/project-draft-storage-server.mjs';
 const stageChanges=JSON.parse(await fs.readFile(new URL('../deployment/stage-changes.safe.json',import.meta.url),'utf8'));
 const snapshot=JSON.parse(await fs.readFile(new URL('../deployment/production-snapshot.json',import.meta.url),'utf8'));
 const projectStates=JSON.parse(await fs.readFile(new URL('../deployment/project-state.v03b.json',import.meta.url),'utf8'));
@@ -46,6 +47,7 @@ export default async function handler(req,res){
   else if(route==='private/repository-runs'&&req.headers.host===new URL(ownerAuthConfig.stageOrigin).host){result=await createDeploymentRepositoryRunServer().handle(req,{project:url.searchParams.get('project')||'MISSION_CONTROL',track:url.searchParams.get('track')||'BASELINE'});}
   else if(route==='private/project-entry'&&req.headers.host===new URL(ownerAuthConfig.stageOrigin).host){result=await createDeploymentProjectEntryServer().handle(req,{project:url.searchParams.get('project')});}
   else if(route==='private/project-onboarding'&&req.headers.host===new URL(ownerAuthConfig.stageOrigin).host){result=await createDeploymentProjectOnboardingServer().handle(req);}
+  else if(route==='private/project-drafts'&&req.headers.host===new URL(ownerAuthConfig.stageOrigin).host){result=await createDeploymentProjectDraftStorageServer().handle(req);}
   else result=productionResponse(req.method,url);
   res.writeHead(result.status,{...securityHeaders,'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store',...result.headers});res.end(JSON.stringify(result.body));}
  catch(error){res.writeHead(error.status||500,{...securityHeaders,'Content-Type':'application/json; charset=utf-8'});res.end(JSON.stringify({error:error.status?error.message:'Production request failed'}));}

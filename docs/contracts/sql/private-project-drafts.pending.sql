@@ -8,7 +8,6 @@ BEGIN
  IF to_regclass('mc_private.project_drafts') IS NOT NULL
   OR to_regprocedure('public.mc_owner_project_draft_list()') IS NOT NULL
   OR to_regprocedure('public.mc_owner_project_draft_save(jsonb,bigint)') IS NOT NULL
-  OR to_regprocedure('public.mc_owner_project_draft_delete(text,bigint)') IS NOT NULL
   OR to_regprocedure('mc_private.project_draft_actor()') IS NOT NULL
   OR to_regprocedure('mc_private.validate_project_draft(jsonb)') IS NOT NULL THEN
   RAISE EXCEPTION 'NEW_OBJECTS_MUST_BE_ABSENT';
@@ -46,7 +45,7 @@ BEGIN
  SELECT * INTO a FROM mc_private.owner_auth_verification();
  IF a.subject IS DISTINCT FROM '6f0ca2ae-83e0-4684-af12-0b37d08182db'::uuid
   OR a.aal IS DISTINCT FROM 'aal2' OR a.session_id IS NULL
-  OR a.expires_at IS NULL OR a.expires_at<=extract(epoch FROM clock_timestamp())
+  OR a.expires_at IS NULL OR a.expires_at<=extract(epoch FROM clock_timestamp())*1000
   OR NOT EXISTS(SELECT 1 FROM mc_private.members m WHERE m.subject=a.subject
    AND m.project_id='NEXAEON' AND m.member_role='OWNER' AND m.active) THEN
   RAISE EXCEPTION 'OWNER_AUTHORIZATION_DENIED' USING ERRCODE='42501';
@@ -57,7 +56,7 @@ REVOKE ALL ON FUNCTION mc_private.project_draft_actor() FROM PUBLIC,anon,authent
 
 CREATE FUNCTION mc_private.validate_project_draft(d jsonb) RETURNS boolean
 LANGUAGE plpgsql IMMUTABLE SET search_path='' AS $body$
-DECLARE p jsonb;k text;v text;lim integer;
+DECLARE p jsonb;k text;v text;lim integer;urlparts text[];
 BEGIN
  IF NOT coalesce(mc_private.exact_keys(d,ARRAY['schemaVersion','draftId','revision','createdAt','updatedAt','project']),false)
   OR d->>'schemaVersion' IS DISTINCT FROM 'mc.project-draft.v1'
@@ -78,7 +77,7 @@ BEGIN
  FOR k IN SELECT unnest(ARRAY['projectId','name','idea','acceptance','repositoryId','branch','environment','deployment','previewUrl']) LOOP
   IF jsonb_typeof(p->k) IS DISTINCT FROM 'string' THEN RETURN false; END IF;
   v:=p->>k;lim:=CASE k WHEN 'idea' THEN 32768 WHEN 'acceptance' THEN 6000 WHEN 'previewUrl' THEN 500 WHEN 'projectId' THEN 64 WHEN 'branch' THEN 120 WHEN 'repositoryId' THEN 160 ELSE 100 END;
-  IF char_length(v)>lim OR v<>btrim(v,E' \t\n\r')
+  IF char_length(v)+(SELECT count(*) FROM regexp_split_to_table(v,'') AS chars(ch) WHERE octet_length(ch)=4)>lim OR v<>btrim(v,U&' \0009\000A\000B\000C\000D\00A0\1680\2000\2001\2002\2003\2004\2005\2006\2007\2008\2009\200A\2028\2029\202F\205F\3000\FEFF')
    OR v~'[[:cntrl:]]' AND (k NOT IN ('idea','acceptance') OR regexp_replace(v,E'[\n\r\t]','','g')~'[[:cntrl:]]')
    OR v~*'-----BEGIN (RSA |EC |OPENSSH )?PRIVATE KEY-----|github_pat_[A-Za-z0-9_]{20,}|gh[pousr]_[A-Za-z0-9]{20,}|sb_secret_[A-Za-z0-9_-]{16,}|Bearer[[:space:]]+[A-Za-z0-9_.-]{30,}' THEN RETURN false; END IF;
  END LOOP;
@@ -86,7 +85,15 @@ BEGIN
   OR p->>'environment' NOT IN ('CODE_ONLY','BACKEND_REQUIRED') OR p->>'deployment' NOT IN ('REQUIRED','NOT_REQUIRED')
   OR p->>'branch' !~ '^[A-Za-z0-9][A-Za-z0-9_./-]*$' OR p->>'branch'~'\.\.|//|/$|\.$|\.lock(/|$)'
   OR p->>'repositoryId'<>'' AND (p->>'repositoryId' !~ '^[A-Za-z0-9][A-Za-z0-9-]{0,38}/[A-Za-z0-9_.-]{1,100}$' OR p->>'repositoryId'~'(/\.{1,2}|\.git)$')
-  OR p->>'previewUrl'<>'' AND (p->>'previewUrl' !~ '^https://[A-Za-z0-9-]+(\.[A-Za-z0-9-]+)+(:[0-9]{1,5})?(/[^?#]*)?$' OR p->>'previewUrl'~'^https://[0-9]+(\.[0-9]+){3}(:|/|$)') THEN RETURN false; END IF;
+  THEN RETURN false; END IF;
+ IF p->>'previewUrl'<>'' THEN
+  -- Reject uncanonical raw RPC input. UI creation canonicalizes before saving.
+  urlparts:=regexp_match(p->>'previewUrl',$url$^https://((?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?[.])+[a-z](?:[a-z0-9-]{0,61}[a-z0-9])?)(?::([1-9][0-9]{0,4}))?/([A-Za-z0-9._~!$&'()*+,;=:@/%-]*)$$url$);
+  IF urlparts IS NULL OR char_length(urlparts[1])>253
+   OR urlparts[2] IS NOT NULL AND (urlparts[2]::integer>65535 OR urlparts[2]::integer=443)
+   OR position('%' IN regexp_replace(urlparts[3],'%[a-fA-F0-9]{2}','','g'))>0
+   OR urlparts[3]~*'(^|/)([.]|%2e){1,2}(/|$)' THEN RETURN false; END IF;
+ END IF;
  RETURN true;
 EXCEPTION WHEN OTHERS THEN RETURN false;
 END $body$;
@@ -135,6 +142,12 @@ BEGIN
  PERFORM pg_advisory_xact_lock(hashtextextended('mc.project_drafts:'||actor::text,0));
  SELECT * INTO old FROM mc_private.project_drafts d WHERE d.owner_subject=actor AND d.draft_id=id FOR UPDATE;
  IF FOUND THEN
+  -- Idempotent replay after a committed write whose response was lost.
+  -- Only the exact same complete validated JSON payload and next revision qualify.
+  IF old.revision=expected_revision+1 AND old.draft=$1 THEN
+   PERFORM mc_private.project_draft_actor();
+   RETURN jsonb_build_object('schemaVersion',1,'qualification','OWNER_PRIVATE_DRAFT_SAVED','draft',old.draft);
+  END IF;
   IF old.revision<>expected_revision OR draft->>'createdAt'<>old.draft->>'createdAt'
    OR (draft->>'updatedAt')::timestamptz<(old.draft->>'updatedAt')::timestamptz THEN
    RAISE EXCEPTION 'DRAFT_REVISION_CONFLICT' USING ERRCODE='40001';
@@ -152,26 +165,11 @@ END $body$;
 REVOKE ALL ON FUNCTION public.mc_owner_project_draft_save(jsonb,bigint) FROM PUBLIC,anon,authenticated,service_role;
 GRANT EXECUTE ON FUNCTION public.mc_owner_project_draft_save(jsonb,bigint) TO authenticated;
 
-CREATE FUNCTION public.mc_owner_project_draft_delete(draft_id text,expected_revision bigint) RETURNS jsonb
-LANGUAGE plpgsql SECURITY DEFINER SET search_path='' AS $body$
-DECLARE actor uuid;removed bigint;
-BEGIN
- actor:=mc_private.project_draft_actor();
- IF $1 IS NULL OR $1!~'^draft_[a-f0-9]{16,32}$' OR $2 IS NULL OR $2<1 OR $2>100000 THEN RAISE EXCEPTION 'DRAFT_INVALID'; END IF;
- PERFORM pg_advisory_xact_lock(hashtextextended('mc.project_drafts:'||actor::text,0));
- DELETE FROM mc_private.project_drafts d WHERE d.owner_subject=actor AND d.draft_id=$1 AND d.revision=$2;
- GET DIAGNOSTICS removed=ROW_COUNT;
- IF removed<>1 THEN RAISE EXCEPTION 'DRAFT_REVISION_CONFLICT' USING ERRCODE='40001'; END IF;
- PERFORM mc_private.project_draft_actor();
- RETURN jsonb_build_object('schemaVersion',1,'qualification','OWNER_PRIVATE_DRAFT_DELETED','draftId',$1,'revision',$2);
-END $body$;
-REVOKE ALL ON FUNCTION public.mc_owner_project_draft_delete(text,bigint) FROM PUBLIC,anon,authenticated,service_role;
-GRANT EXECUTE ON FUNCTION public.mc_owner_project_draft_delete(text,bigint) TO authenticated;
 RESET ROLE;
 REVOKE CREATE ON SCHEMA mc_private,public FROM mc_continuity_executor;
 GRANT mc_continuity_executor TO postgres WITH SET FALSE;
 COMMIT;
 
--- Separate approved rollback transaction: drop only these three new public RPCs,
+-- Separate approved rollback transaction: drop only the two new public RPCs,
 -- then mc_private.project_drafts, validate_project_draft(jsonb), project_draft_actor().
 -- Do not drop/alter existing auth helpers, members, roles, contexts, reports or grants.

@@ -1,0 +1,23 @@
+[
+ {"url":"","valid":true},
+ {"url":"https://example.com/","valid":true},
+ {"url":"https://example.com:8443/a%20b","valid":true},
+ {"url":"https://xn--bcher-kva.example/path","valid":true},
+ {"url":"https://example.com/a%2fb","valid":true},
+ {"url":"https://Example.COM","valid":false},
+ {"url":"https://Example.COM/","valid":false},
+ {"url":"https://example.com","valid":false},
+ {"url":"https://example.com:443/","valid":false},
+ {"url":"https://example.com:08443/","valid":false},
+ {"url":"https://example.com:65536/","valid":false},
+ {"url":"https://example.com/a/../b","valid":false},
+ {"url":"https://example.com/%2e%2E/a","valid":false},
+ {"url":"https://example.com/a b","valid":false},
+ {"url":"https://example.com/%invalid","valid":false},
+ {"url":"https://127.0.0.1/","valid":false},
+ {"url":"https://[::1]/","valid":false},
+ {"url":"https://user:password@example.com/","valid":false},
+ {"url":"https://example.com/?q=x","valid":false},
+ {"url":"https://example.com/#private","valid":false},
+ {"url":"http://example.com/","valid":false}
+]

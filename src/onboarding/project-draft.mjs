@@ -1,4 +1,5 @@
 // Private Owner drafts. Imported draft/packet data carries no connection authority.
+import {canonicalDraftPreviewUrl} from './project-draft-url.mjs';
 export const DRAFT_VERSION='mc.project-draft.v1',BOOTSTRAP_VERSION='mc.project-bootstrap.v1',MAX_DRAFT_BYTES=98304;
 const fields=['projectId','name','idea','acceptance','repositoryId','branch','environment','deployment','previewUrl'];
 const exact=(v,keys)=>v&&typeof v==='object'&&!Array.isArray(v)&&Object.keys(v).length===keys.length&&keys.every(k=>Object.hasOwn(v,k));
@@ -12,7 +13,7 @@ export function projectDraftFields(input){
  if(!/^[A-Z][A-Z0-9_]{2,63}$/.test(p.projectId)||!['CODE_ONLY','BACKEND_REQUIRED'].includes(p.environment)||!['REQUIRED','NOT_REQUIRED'].includes(p.deployment))fail('DRAFT_FIELDS_INVALID');
  if(p.repositoryId&&(!/^[A-Za-z0-9][A-Za-z0-9-]{0,38}\/[A-Za-z0-9_.-]{1,100}$/.test(p.repositoryId)||p.repositoryId.endsWith('.git')||['.','..'].includes(p.repositoryId.split('/')[1])))fail('DRAFT_REPOSITORY_INVALID');
  if(!/^[A-Za-z0-9][A-Za-z0-9_./-]*$/.test(p.branch)||p.branch.includes('..')||p.branch.includes('//')||p.branch.endsWith('/')||p.branch.endsWith('.')||p.branch.split('/').some(s=>s.endsWith('.lock')))fail('DRAFT_BRANCH_INVALID');
- if(p.previewUrl){let u;try{u=new URL(p.previewUrl);}catch{fail('DRAFT_URL_INVALID');}if(u.protocol!=='https:'||u.username||u.password||u.search||u.hash||u.hostname==='localhost'||/^\d+(?:\.\d+){3}$/.test(u.hostname))fail('DRAFT_URL_INVALID');p.previewUrl=u.href;}
+ if(p.previewUrl){let u;try{u=new URL(p.previewUrl);}catch{fail('DRAFT_URL_INVALID');}if(!canonicalDraftPreviewUrl(u.href))fail('DRAFT_URL_INVALID');p.previewUrl=u.href;}
  return p;
 }
 export function validateProjectDraft(v){
@@ -22,12 +23,12 @@ export function validateProjectDraft(v){
 export function createProjectDraft(input,{draftId,now=Date.now()}={}){const at=new Date(now).toISOString();return validateProjectDraft({schemaVersion:DRAFT_VERSION,draftId,revision:1,createdAt:at,updatedAt:at,project:projectDraftFields(input)});}
 export function reviseProjectDraft(draft,input,{now=Date.now()}={}){const d=validateProjectDraft(draft);return validateProjectDraft({...d,project:projectDraftFields(input),revision:d.revision+1,updatedAt:new Date(Math.max(now,Date.parse(d.updatedAt))).toISOString()});}
 export function importProjectDraft(content){if(typeof content!=='string'||new TextEncoder().encode(content).length>MAX_DRAFT_BYTES)fail('DRAFT_TOO_LARGE');let d;try{d=JSON.parse(content);}catch{fail('DRAFT_INVALID');}return validateProjectDraft(d);}
-export function draftReadiness(draft,{capabilities=null,source=null,now=Date.now()}={}){
+export function draftReadiness(draft,{capabilities=null,source=null,cloud=null,now=Date.now()}={}){
  const p=validateProjectDraft(draft).project,scope=capabilities?.scopes?.find(s=>s.repositoryId===p.repositoryId&&s.ref===p.branch),collision=capabilities?.scopes?.some(s=>s.projectId===p.projectId||p.repositoryId&&s.repositoryId===p.repositoryId),found=Boolean(scope&&source?.qualification==='FRESH_EXISTING_SCOPE_READ'&&source.projectId===scope.projectId&&source.repositoryId===p.repositoryId&&source.ref===p.branch&&source.status==='FOUND'&&source.expiresAt>now);
- return {state:collision?'EXISTING_PROJECT_CONFLICT':'PENDING_CONNECTION',repository:p.repositoryId?(found?'EXISTING_SOURCE_CONFIRMED':'PENDING_PRIVATE_VERIFICATION'):'PENDING_PRIVATE_REPOSITORY',source:found?'EXISTING_ENTRY_CONFIRMED':'PENDING_CANONICAL_FILES',environment:p.environment==='CODE_ONLY'?'NOT_REQUIRED':'PENDING_ENVIRONMENT',deployment:p.deployment==='NOT_REQUIRED'?'NOT_REQUIRED':'PENDING_DEPLOYMENT',reporting:'PENDING_REPORT_SCOPE',registration:collision?'USE_EXISTING_PROJECT':'PENDING_REGISTRATION',cloudSave:'NOT_CONNECTED',developmentReady:false,checkedAt:found?source.readAt:null,commitSha:found?source.commitSha:null};
+ return {state:collision?'EXISTING_PROJECT_CONFLICT':'PENDING_CONNECTION',repository:p.repositoryId?(found?'EXISTING_SOURCE_CONFIRMED':'PENDING_PRIVATE_VERIFICATION'):'PENDING_PRIVATE_REPOSITORY',source:found?'EXISTING_ENTRY_CONFIRMED':'PENDING_CANONICAL_FILES',environment:p.environment==='CODE_ONLY'?'NOT_REQUIRED':'PENDING_ENVIRONMENT',deployment:p.deployment==='NOT_REQUIRED'?'NOT_REQUIRED':'PENDING_DEPLOYMENT',reporting:'PENDING_REPORT_SCOPE',registration:collision?'USE_EXISTING_PROJECT':'PENDING_REGISTRATION',cloudSave:capabilities?.cloudDraftPersistence==='OWNER_RPC_AVAILABLE'?(cloud?.selectedConfirmed?'SAVED':cloud?.status||'AVAILABLE'):capabilities?.cloudDraftPersistence==='UNAVAILABLE'?'UNAVAILABLE':'NOT_CONNECTED',developmentReady:false,checkedAt:found?source.readAt:null,commitSha:found?source.commitSha:null};
 }
-export function projectBootstrapPacket(draft,{capabilities=null,source=null,now=Date.now()}={}){
- const d=validateProjectDraft(draft),p=d.project,at=new Date(now).toISOString(),readiness=draftReadiness(d,{capabilities,source,now}),manifest={schemaVersion:BOOTSTRAP_VERSION,qualification:'OWNER_PREPARED_NOT_PROVISIONED',projectId:p.projectId,repositoryId:p.repositoryId||null,branch:p.branch,entryPath:'HANDOFF.md',draftRevision:d.revision,preparedAt:at,repositoryVisibilityRequired:'private',executionAuthorized:false,registration:'PENDING',reporting:'PENDING_SCOPE_APPROVAL',environment:p.environment,deployment:p.deployment};
+export function projectBootstrapPacket(draft,{capabilities=null,source=null,cloud=null,now=Date.now()}={}){
+ const d=validateProjectDraft(draft),p=d.project,at=new Date(now).toISOString(),readiness=draftReadiness(d,{capabilities,source,cloud,now}),manifest={schemaVersion:BOOTSTRAP_VERSION,qualification:'OWNER_PREPARED_NOT_PROVISIONED',projectId:p.projectId,repositoryId:p.repositoryId||null,branch:p.branch,entryPath:'HANDOFF.md',draftRevision:d.revision,preparedAt:at,repositoryVisibilityRequired:'private',executionAuthorized:false,registration:'PENDING',reporting:'PENDING_SCOPE_APPROVAL',environment:p.environment,deployment:p.deployment};
  const files={
  'PRD.md':'# '+p.name+'\n\nProject: '+p.projectId+'\nQualification: OWNER_DRAFT_NOT_IMPLEMENTED\n\n## 構想／需求\n\n'+p.idea+'\n\n## 驗收條件\n\n'+(p.acceptance||'待 Owner 與 Agent 確認。')+'\n',
  'README.md':'# '+p.name+'\n\nProject: '+p.projectId+'\nStatus: BOOTSTRAP_PENDING\n\n先讀 PRD.md、docs/PRODUCT_CHARTER.md、docs/PHASE_PLAN.md 與 HANDOFF.md。此包沒有建立 repo、環境、部署或回報。\n',
