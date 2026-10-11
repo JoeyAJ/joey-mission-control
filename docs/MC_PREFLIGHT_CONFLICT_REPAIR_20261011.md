@@ -37,3 +37,7 @@ Evidence: docs/MC_PROJECT_CREATION_PREFLIGHT_20261011.md. Portable888/build/vali
 Next Action: runtimeff77b07 exact Preview READY. Final SHA/report receipt privately recorded after docs closure. Independent review pending. Real task packet/Owner acceptance deferred until tomorrow. No new repo/SQL/grants/keys/deployment project/Agent dispatch/AWS/Production. CONNECT403 not bypassed; servedCheckedSha null. Plan and offline bundle are not a working project.
 
 ```
+
+## Dated runtime publication
+
+Runtime b22489a12b5aaf30d01b11e9a1cc5e74e18af8bd exact canonical remote and fixed Preview dpl_6TPzLe489jmgtQQLBcWnxHKJb4Mg READY. Connected fixed alias and independent ID match at 2026-10-11T15:21:45.059Z; target:null is Preview under the existing project. Production remains dpl_5GgJ8LhD4Ec73RGz9CEFe1ppZQnh / 8b4945b16a0b23f2e72033aa976fa34f94eabec0. Ordinary GET 2026-10-11T15:21:29.200Z returned curl56 / CONNECT403 / HTTP000 before application; servedCheckedSha:null, no bypass or actual Owner acceptance. Docs-only closure is checked for functional parity before final exact publication. Terminal follows the final work HEAD, with exact final publication/report receipt kept private; no later work-branch commit is needed.

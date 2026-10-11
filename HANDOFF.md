@@ -3,7 +3,7 @@
 Project: MISSION_CONTROL
 Timestamp: 2026-10-11T15:17:53.905Z
 Task: Reserved report ref and per-draft remote conflict protection
-Status: LOCAL_VERIFIED_PENDING_PUBLICATION
+Status: LOCAL_VERIFIED_PARENT_READ_PREVIEW_PUBLISHED
 Last Developer: Codex
 Executed by: Codex
 Actual Model: UNKNOWN
@@ -11,9 +11,9 @@ Baseline: d29123b0599a92ec19386f2414b8f44c91f9ed93
 
 Reserved mc/progress and its parent/child source branches yield CONFLICT, never a ready creation plan. Each remotely changed draft retains its own conflict; repeated preflight, unrelated save/reload and failed reload cannot authorize overwriting newer text. Explicit resolution affects only that draft. No provisioning or execution authority.
 
-Evidence: docs/MC_PREFLIGHT_CONFLICT_REPAIR_20261011.md. RED3 reproduced stale writes; focused60 PASS. Portable898/build/validate/check, focused60/root20/browser8 PASS; forbiddenAttempts0. Exact fixed Preview publication follows. Original six files, task review, SQL/config/source scopes and dated history preserved. Actual Owner writes0; saved test untouched.
+Evidence: docs/MC_PREFLIGHT_CONFLICT_REPAIR_20261011.md. RED3 reproduced stale writes; focused60 PASS. Portable898/build/validate/check, focused60/root20/browser8 PASS; forbiddenAttempts0. Runtimeb22489a exact fixed Preview READY. Original six files, task review, SQL/config/source scopes and dated history preserved. Actual Owner writes0; saved test untouched.
 
-Next Action: finish synthetic checks and publish same Preview, then close own new bugfix run at final work HEAD. Real task/Owner acceptance deferred until tomorrow. No new repo/SQL/grants/keys/deployment project/dispatch/AWS/Production. CONNECT403 is not bypassed; served check unconfirmed.
+Next Action: docs closure and final exact SHA/READY receipt, then own new bugfix terminal at final work HEAD; no post-terminal work HEAD advance. Real task/Owner acceptance deferred until tomorrow. No new repo/SQL/grants/keys/deployment project/dispatch/AWS/Production. CONNECT403 is not bypassed; servedCheckedSha null.
 
 # Dated prior stage history
 
