@@ -17,3 +17,7 @@ Parent's additional equal-time ordering defect is included: timestamp ties sort 
 ## Publication order and real example
 
 First publish tested versioned reader/helper/UI support and verify exact remote SHA/Preview READY/alias. Only then emit a new-version same-scope delivery followup run with predecessor. Use actual existing Git/Vercel observations and an actual permitted fixed-URL attempt only; cloud CONNECT403 stays BLOCKED/unverified, never PASS. Old reports remain byte-for-byte and terminal. Consolidate current HANDOFF, contract, checks, private receipt and next actions. Independent provider/served verification is not ingested through any trusted UI path; it remains absent/pending. Product acceptance remains Joey pending. No background fetch, new credential/permission, SQL, Production or other repository/report change.
+
+## Completed bounded implementation and publication
+
+742 portable checks and applicable browser/security/privacy/reading/Continue regressions PASS. Tested support ec4d82c80b61e2d3a21d110eb21e4bad8ea746ef published READY with exact alias before live v2. Actual new v2 same-scope followup is terminal completed sequence 2 with delivery reported incomplete because permitted GET was CONNECT403 before app; independent/Joey pending, no served SHA invented. All old report bytes retained. Current source/handoff/data, private qualified receipts and later authorized followup boundary are consolidated in HANDOFF and MC_DELIVERY_EVIDENCE_RECEIPT_20261010.md. No new access requested for this implementation.

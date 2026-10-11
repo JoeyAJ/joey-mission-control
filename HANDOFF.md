@@ -1,7 +1,7 @@
 # Mission Control — versioned reported delivery evidence
 
 Project: MISSION_CONTROL
-Timestamp: 2026-10-11T00:04:18.896429Z
+Timestamp: 2026-10-11T00:09:01.055948Z
 Task: Backward-compatible delivery evidence, closure/readiness UI and equal-time event ordering
 Status: LOCAL_VERIFIED_PARENT_READ_PREVIEW_PUBLISHED
 Last Developer: Codex
@@ -17,7 +17,7 @@ Generic copied helper and delivery-template private preparation, mixed-version r
 
 Equal eventAt ties now sort runId then numeric sequence before key; activity latest uses highest numeric sequence. Equal-time z-start/a-progress and reversed-input regressions pass. Prior four independent review fixes remain covered. Six new delivery desktop/mobile/three-locale cases, copied helper/reader, strict contract, twelve reading/focus, four-width fresh-copy, six dynamic lifecycle and promised-clipboard cancellation PASS. Full portable suite now 742 PASS with build/validate/check, after correcting this leading document to the existing legal phase status; no test/parser relaxation. Final current-code contract/helper/handoff/privacy/equal-time 32 PASS. See docs/MC_DELIVERY_EVIDENCE_VERIFICATION_20261010.md. Latest inspected private synthetic screenshots: docs/qa/mc-delivery-evidence-20261010.
 
-Actual development run codex-mc-delivery-evidence-20261010 is v1 (live v2 awaits tested support publication), predecessor codex-mc-activity-follow-20261010. Progress sequence 2 at report commit a0784352fe99c653e7dbf4ab317fcd63bcd47a34, blob 218d9001796787cb90ec31c5d0541973bf448dc2. Baseline stays e63d71bd; previous terminal/other-repository reports are unchanged.
+Actual v1 development run codex-mc-delivery-evidence-20261010 is completed sequence 4 at report commit cd11df40a71020bbfc33529dea52854fcd03474e / blob cf076dfaaa6cc134ebad9dd42736478676f7a396, predecessor codex-mc-activity-follow-20261010; original baseline e63d71bd is unchanged. After tested support publication, new same-scope v2 DELIVERY_FOLLOWUP run codex-mc-delivery-followup-20261011 started and completed sequence 2, predecessor codex-mc-delivery-evidence-20261010, baseline d6487c5b0f6be6102f15eee84448f6d4cbaafefb. Report commit 5667d8a6717afc684139f8cca127f27953a0779f / blob a794d1146a02d650ee70852845ef10bf07592171 was connected-private-Git read back and unchanged parser/hash validated. Code ec4d82c; current handoff pointer d6487c5. Derived state: run completed, delivery REPORTED_INCOMPLETE, deployment reported READY, functional BLOCKED with checkedSha=null, data reasoned NOT_REQUIRED, independent/Joey PENDING. This is bounded attempt/report completion, not full delivery. No post-terminal append. Report branch diff from prior checkpoint only adds these two files; all existing historical bytes/other repo reports are unchanged.
 
 ## Delivery and data qualification
 
@@ -27,7 +27,7 @@ Data: report metadata now supports v2; v1 and private endpoint envelope/allowlis
 
 ## Next Action
 
-Tested support publication and current source/data consolidation are complete. Record actual immutable development completion and bounded v2 delivery followup separately in the qualified receipt. The fixed URL functional check is blocked before app; independently trusted verification/Joey acceptance stays pending. Later authorized followup uses a new same-scope predecessor run after terminal completion, with fresh exact deployment/URL/handoff/data evidence. Actual Owner/clipboard/device, served exact URL and Joey product acceptance remain pending. A next authorized Agent fresh-reads current source and applies the versioned closure contract with its own existing authorization.
+Tested support publication and current source/data consolidation are complete. Actual immutable development/v2 followup receipts are recorded in docs/MC_DELIVERY_EVIDENCE_RECEIPT_20261010.md. The fixed URL functional check is blocked before app; independently trusted verification/Joey acceptance stays pending. Any later authorized followup uses a new same-scope predecessor run after terminal completion, with fresh exact deployment/URL/handoff/data evidence. This documentation closure advances the alias; final exact remote/READY/alias identity is checked separately and does not retroactively verify earlier served content. Actual Owner/clipboard/device, served exact URL and Joey product acceptance remain pending. A next authorized Agent fresh-reads current source and applies the versioned closure contract with its own existing authorization.
 
 ---
 
