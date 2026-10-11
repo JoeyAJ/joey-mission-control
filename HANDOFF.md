@@ -1,7 +1,7 @@
 # Mission Control — shared selected-task focus and project handoff
 
 Project: MISSION_CONTROL
-Timestamp: 2026-10-11T03:34:38.924Z
+Timestamp: 2026-10-11T03:50:37.322Z
 Task: Shared selected-task brief on default phone and desktop workspace
 Status: LOCAL_VERIFIED_CLOUD_EVENTS_NOT_ENABLED
 Last Developer: Codex
@@ -22,6 +22,8 @@ Portable766/build/validate/check PASS, forbiddenAttempts0; selected summary/cont
 Own new v2 FEATURE run codex-mc-selected-task-summary-20261011, predecessor codex-mc-task-entry-selection-20261011; original fresh baselineb895b40 immutable. Started1 connected publicationf05a23911de2c1d4958063937e35830b7e7f8c26 / blob0a2c2dbf895c791e58193514b3300d61a12e5079. Tested progress2 commit9392ca532c7415f9b1d9d9d707cab07793b06a4e / blob612512ff45574bb4498a8aab52855ee6c58fd2ba. CLI source-profile validation PASS. Shell Git credential is invalid; existing authorized connected GitHub provides bounded Contents/Git data CAS publication without new credentials or permissions. Final tested source/Preview/report/handoff receipt follows closure. Historical terminal reports stay immutable.
 
 Only MC existing branch/fixed Preview and own bounded mc/progress. Production, other repositories, SQL, secrets/permissions, AWS, model selection/dispatch and collectors are untouched. Three unsigned source/documentTimestamp values remain unrecorded; University candidate stays JoeyAcceptancePending and Nex CI remains failing/unrepaired. Cloud CONNECT403 is not bypassed; served checkedSha remains null on failure. Continuous approved implementation can proceed without waiting for Owner QA; it never claims that blocked QA passed. No Joey installation/manual deployment task.
+
+Tested support8980266daad30d23f89571d29a8d772e9a0c3041 is exact connected remote and hydrated local HEAD; remote Git treea2e85001a7afb3835396928012921ea1c08f6537 matches the final tested local tree byte-for-byte. Deploymentdpl_FFUFt56XnVMpt9EZyyRBowrThWXq READY, independent fixed alias full SHA/ID match observed2026-10-11T03:49:15Z. Actual ordinary root GET2026-10-11T03:49:47.946796Z remains curl56/CONNECT403/HTTP000 before app, checkedSha=null, no bypass. Final portable766/build/validate/check and final brief6/computed-font cases PASS. Production unchangeddpl_5GgJ8LhD4Ec73RGz9CEFe1ppZQnh /8b4945b16a0b23f2e72033aa976fa34f94eabec0. This current handoff consolidates visible increment, scope, actual tests/support publication and served restriction; own terminal and receipt-only final identity are checked separately. Runtime remains identical to tested support.
 
 ## Historical selected-task entry checkpoint (2026-10-11, baselinecaab2cf)
 
