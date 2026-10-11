@@ -43,6 +43,15 @@
       "summary": "v3 bounded metadata adapter/copied helper/reader/workbench implemented; initial753 checks and six file UI cases PASS, own-key parity fixed; compatible publication before real MC metadata next",
       "result": null,
       "delivery": null
+    },
+    {
+      "id": "verified-support",
+      "sequence": 3,
+      "eventAt": "2026-10-11T01:12:21.637124Z",
+      "kind": "progress",
+      "summary": "Strict opt-in v3 bounded file adapter/helper/private continuation/workbench implemented; 755 portable tests/build/validate/check PASS, 195 external schema cases PASS, file UI6/Continue12/cancellation2 PASS. Compatible support publication next; no file-content upload or other repo action.",
+      "result": null,
+      "delivery": null
     }
   ]
 }
