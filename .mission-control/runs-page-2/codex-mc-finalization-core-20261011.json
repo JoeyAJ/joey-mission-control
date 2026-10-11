@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "mc.repository-run.v2",
+  "taskKind": "FEATURE",
+  "projectId": "MISSION_CONTROL",
+  "track": "BASELINE",
+  "runId": "codex-mc-finalization-core-20261011",
+  "predecessorRunId": "codex-mc-motion-frame-boundary-20261011",
+  "taskId": "mc-finalization-core-20261011",
+  "featureTitle": "Exact reviewed merge-to-MC-Preview workflow with isolated provider fixtures and live execution disabled",
+  "agentName": "Codex",
+  "provider": null,
+  "model": null,
+  "repositoryId": "JoeyAJ/joey-mission-control",
+  "reportRef": "mc/progress",
+  "workRef": "codex/mc-command-center-checkpoint-20261006",
+  "baseline": {
+    "ref": "codex/mc-command-center-checkpoint-20261006",
+    "commitSha": "facbb4cfb3660637003918baa61d585d007dc303",
+    "handoffPath": "HANDOFF.md",
+    "handoffDigest": "076ab10ea54ffc49cd5c9cbdfe9334e168facda8a8d041517b03176b496f7475",
+    "contextPaths": [
+      "README.md",
+      "docs/PRODUCT_CHARTER.md",
+      "docs/MC_PHASE_PLAN.md",
+      "docs/STAGE_HANDOFF_TEMPLATE.md"
+    ]
+  },
+  "events": [
+    {
+      "id": "finalization-core-start-1",
+      "sequence": 1,
+      "eventAt": "2026-10-11T22:02:42.029Z",
+      "kind": "started",
+      "summary": "Parent explicitly resumed missing implementation independently of Owner testing. Selected bounded exact reviewed merge-to-MC-Preview core using current task/review/reconciliation/delivery contracts, specific execution grants, capability gates and recoverable journal/provider adapter. Only isolated fixture effects; live composition disabled, no new credentials/permissions/real merges/Production or save-only task execution.",
+      "result": null,
+      "delivery": null
+    }
+  ]
+}
