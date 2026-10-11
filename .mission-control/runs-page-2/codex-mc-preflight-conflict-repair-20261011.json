@@ -34,6 +34,15 @@
       "summary": "Independent review confirmed reserved report-ref overlap and two remotely changed drafts losing conflict protection. Repairing within existing MC branch/Preview; synthetic fixtures only, no SQL, permissions or provisioning.",
       "result": null,
       "delivery": null
+    },
+    {
+      "id": "preflight-conflict-verified-2",
+      "sequence": 2,
+      "eventAt": "2026-10-11T15:20:09.000Z",
+      "kind": "progress",
+      "summary": "Reserved report-ref equality/parent/child conflicts and per-draft remote conflicts repaired. RED3 reproduced stale saves before repair; focused60/root20/portable898/build/validate/check/browser8 PASS. Both remote list orders, missing/capacity failed reload and exact lost-ack retry covered.20 intended synthetic draft writes; actual Owner/task/unexpected/external0. Preparing same branch/Preview publication; no SQL/permissions/provisioning.",
+      "result": null,
+      "delivery": null
     }
   ]
 }
