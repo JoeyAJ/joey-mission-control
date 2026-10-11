@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "mc.repository-run.v2",
+  "taskKind": "BUGFIX",
+  "projectId": "MISSION_CONTROL",
+  "track": "BASELINE",
+  "runId": "codex-mc-pr-ci-api-key-20261011",
+  "predecessorRunId": "codex-mc-reference-palette-20261011",
+  "taskId": "mc-pr-ci-api-key-20261011",
+  "featureTitle": "Close API-key variants in shared PR-CI provider-label privacy guard without task-validator or SQL changes",
+  "agentName": "Codex",
+  "provider": null,
+  "model": null,
+  "repositoryId": "JoeyAJ/joey-mission-control",
+  "reportRef": "mc/progress",
+  "workRef": "codex/mc-command-center-checkpoint-20261006",
+  "baseline": {
+    "ref": "codex/mc-command-center-checkpoint-20261006",
+    "commitSha": "7a10322e1936f0ecbfe1c854f24bc8a00e895654",
+    "handoffPath": "HANDOFF.md",
+    "handoffDigest": "36c4dd904fdb75c1f52cd0ee13a3eced4169fb759f527a5f9cc0e42240b0e807",
+    "contextPaths": [
+      "README.md",
+      "docs/PRODUCT_CHARTER.md",
+      "docs/MC_PHASE_PLAN.md",
+      "docs/STAGE_HANDOFF_TEMPLATE.md"
+    ]
+  },
+  "events": [
+    {
+      "id": "started-api-key-label-fix",
+      "sequence": 1,
+      "eventAt": "2026-10-11T10:42:27.953Z",
+      "kind": "started",
+      "summary": "Register authorized reviewer API-key label correction on exact7a10322 baseline. Shared PR-CI label guard prepared; task payload and approved SQL unchanged. Verify server/client/DOM and existing source race; publish only fixed Preview.",
+      "result": null,
+      "delivery": null
+    }
+  ]
+}
