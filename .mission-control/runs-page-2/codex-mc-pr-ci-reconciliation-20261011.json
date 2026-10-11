@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "mc.repository-run.v2",
+  "taskKind": "FEATURE",
+  "projectId": "MISSION_CONTROL",
+  "track": "BASELINE",
+  "runId": "codex-mc-pr-ci-reconciliation-20261011",
+  "predecessorRunId": "codex-mc-existing-project-task-20261011",
+  "taskId": "mc-pr-ci-reconciliation-20261011",
+  "featureTitle": "Read-only canonical task and Agent report to exact-commit PR and CI reconciliation",
+  "agentName": "Codex",
+  "provider": null,
+  "model": null,
+  "repositoryId": "JoeyAJ/joey-mission-control",
+  "reportRef": "mc/progress",
+  "workRef": "codex/mc-command-center-checkpoint-20261006",
+  "baseline": {
+    "ref": "codex/mc-command-center-checkpoint-20261006",
+    "commitSha": "fe1a5b6d783e4dd1768b0fd98520524ae2aba21d",
+    "handoffPath": "HANDOFF.md",
+    "handoffDigest": "0c7173379f3aee36a9072e49cb1b63db05b0790720dac2cb10156bcec675534a",
+    "contextPaths": [
+      "README.md",
+      "docs/PRODUCT_CHARTER.md",
+      "docs/MC_PHASE_PLAN.md",
+      "docs/STAGE_HANDOFF_TEMPLATE.md"
+    ]
+  },
+  "events": [
+    {
+      "id": "started-pr-ci",
+      "sequence": 1,
+      "eventAt": "2026-10-11T09:29:08.881Z",
+      "kind": "started",
+      "summary": "Inspect existing runtime credential versus connected-app permissions; implement bounded private exact-commit PR and CI reads, preserving task/report capabilities and no execution.",
+      "result": null,
+      "delivery": null
+    }
+  ]
+}
