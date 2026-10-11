@@ -1,0 +1,23 @@
+# Visible default Joey mobile activity
+
+Direct Joey feedback relayed at02:01UTC: the phone default view showed little visible change while new task/file tools were hidden in advanced navigation. This authorized correction adds 開發動態 above the useful simple overview on existing #joey, a prominent 開啟任務／檔案工作台 button, native Agent/reported-task selection and latest three original dated events. Summaries are visually capped at three lines; full reported history stays in the workspace. Desktop workspace hierarchy is preserved; mobile does not squeeze four columns.
+
+Data uses existing source-confirmed/Owner/scoped reports, original run IDs, numeric sequence/date/Agent declarations. No current-execution inference, fake empty-state events, model chooser or dispatch. Same-scope rereads retain task selection while unconfirmed rows are withheld; project/track changes, denial, outage, expiry and logout clear private rows/options. Existing privacy/copy/source/Owner/CAS gates remain; private paths/run IDs never enter URL/storage. Local handler now explicitly serves the already-public pure report-time.js module; no private endpoint is added.
+
+Actual app / official SDK / private factory browser evidence with synthetic Owner/Auth/GitHub transport: two cases1440/390 PASS. Exact own-MC bytes/Git hashes from mc/progress0d2253f88347ba8665e734cb18ee0a29409f062b replay actual Codex terminal3 and v3 history5/4/3. Tests cover initial #joey visibility, old #joey bookmark reload, task selection, refresh retaining history, project switch/Back/Forward, one-tap workspace/back, outage/logout clearing, overflow/privacy and no fake arrival effect. This is actual report-byte replay with synthetic transport, not served Owner verification.
+
+Before is immutable prior UI756723280f399a7dec9d50716ac1196f483dce49; after is current code. Reviewed private screenshots: docs/qa/mc-mobile-activity-20261011/390-joey-activity-before.png and390-joey-activity-after.png,1440 variants plus1440-joey-activity-workspace.png. These contain synthetic fixtures or own-MC bounded metadata, no source content, credentials, original reference image or prohibited operational artifact.
+
+Original simple takeover375/390/430/1440 regression PASS: focus/sign-in/source/all projects/candidate track/report lifecycle/outage/expiry/promised clipboard/fallback/pending-read switch/history/reload/revocation/logout; external0/writes0. True Continue12 PASS, external0/writes0. Focused25 summary/entry/i18n/module-graph and final handoff20 PASS. Module-graph caught a local public time-module404; browser replay caught task reset during ordinary reread. Both fixed with privacy gates intact. Full portable/build/publication closure is recorded below.
+
+Own v2 FEATURE run codex-mc-mobile-activity-20261011, predecessor codex-mc-file-navigation-20261011; fresh baseline7567232 stays immutable. Started1 ae72a6d06c51ccfdcb5e7a71e048050ddf8782ea / blobe842a9764b527823088d57fcec3540b9d77f2e0a. Progress/terminal/fixed Preview receipts follow closure. Earlier navigation terminal0d2253f / blob3ff91dbd7d434bbcd2150f670ef04538a5c2d408 remains REPORTED_INCOMPLETE and immutable, with connected blob/schema/original source profile/external Draft2020-12 verified. No post-terminal append. Original University report/pinned no-migration policy unchanged.
+
+Served user access steps with existing authorized Owner device:
+
+1. Open the same fixed Preview or existing #joey bookmark, refresh once, select Mission Control. 開發動態 and 開啟任務／檔案工作台 appear above the simple overview.
+2. Select Codex's reported task in Agent／回報任務; inspect the newest three dated events. Unknown/no-startup remains explicit without confirmed reports.
+3. Tap 開啟任務／檔案工作台 for full history/manifest; browser Back returns. Switch project, Back/Forward and refresh the old bookmark; scope remains correct. Logout/outage clears private activity.
+
+Cloud CONNECT403 before app remains separate from provider READY/full SHA. No bypass or served/Joey/full-reference acceptance claim. No Production/other repository write, SQL/state reset, permissions/secrets, AWS, collector, source/diff/terminal or hidden-reasoning capability. This closes the specific visible default-mobile gap.
+
+Final portable762 tests/build/validate/check PASS, forbiddenAttempts0. Focused25, current handoff20, default activity/actual-byte replay2, prior simple takeover4 widths and true Continue12 PASS. All browser external0/writes0. No report schema/helper-policy change in this mobile slice; prior generated helper33073 bytes / SHA25663baf890fe7bd642b565d02b83a5057a9180f072d5ebaf5b3be91812f502ca80 remains unchanged.

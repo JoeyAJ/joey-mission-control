@@ -1,15 +1,28 @@
-# Mission Control — bounded task/file metadata navigation
+# Mission Control — visible default Joey mobile activity
 
 Project: MISSION_CONTROL
-Timestamp: 2026-10-11T02:02:33.854440Z
-Task: Final bounded manifest/file history navigation and source-specific no-migration qualification
+Timestamp: 2026-10-11T02:14:02.457978Z
+Task: Visible default mobile task/activity surface from verified reports
 Status: LOCAL_VERIFIED_CLOUD_EVENTS_NOT_ENABLED
 Last Developer: Codex
 Executed by: Codex
 Actual Model: UNKNOWN
-Baseline: 19a15fcbdf653972c22684d313f4519d33b930d6
+Baseline: 756723280f399a7dec9d50716ac1196f483dce49
 
-## Current navigation checkpoint
+## Current default mobile activity checkpoint
+
+Direct Joey feedback at02:01UTC: mobile default #joey showed little visible change because new task/file UI was hidden in the advanced workspace. The authorized correction keeps the simple overview and adds prominent 開發動態 above it, a scoped Agent/reported-task selector, latest three original dated events and a44px+ 開啟任務／檔案工作台 button. Initial/default #joey and existing #joey bookmarks use the same entry; no route/storage migration or private run/path URL. Reports are original bounded metadata, not fabricated runtime. Native task selection survives ordinary same-scope reread; denial/outage/logout/project/track switch clears private rows/options. Existing copy/fresh-read/source/Owner gates and desktop workspace layout remain.
+
+Actual own-MC report-byte replay at0d2253f88347ba8665e734cb18ee0a29409f062b with synthetic Owner verifies current default/390px/bookmark reload, task selection, three dated events, refresh/history/project switch and one-tap workspace/back. Before is immutable prior UI7567232; after uses current code. Reviewed artifacts and user steps: docs/MC_MOBILE_ACTIVITY_ENTRY_VERIFICATION_20261011.md. Original four-width simple takeover/clipboard/expiry/revocation regression PASS, no external calls/writes. Final portable/source/support publication and own terminal readback are closed separately below; full reference/served Owner/Joey acceptance remains pending.
+
+Fresh own v2 FEATURE run codex-mc-mobile-activity-20261011, predecessor codex-mc-file-navigation-20261011; original source baseline7567232 remains immutable. Started1 ae72a6d06c51ccfdcb5e7a71e048050ddf8782ea / e842a9764b527823088d57fcec3540b9d77f2e0a. Prior navigation terminal3 at0d2253f88347ba8665e734cb18ee0a29409f062b / blob3ff91dbd7d434bbcd2150f670ef04538a5c2d408,6553 bytes: connected Contents/hash/strict schema/original source profile and external Draft2020-12 PASS. Code/handoff7567232 / dpl_28qUFPDyBeMUvZt4m92pCZTsSm6A READY, fixed alias matched02:04:46Z; actual root GET02:04:46.947423Z CONNECT403/curl56/HTTP000 checkedSha=null. That report remains REPORTED_INCOMPLETE, independent/Joey PENDING, no post-terminal append. Report branch adds only these new runs; history/guard preserved.
+
+No model chooser, dispatch, collector, content/diff/terminal, SQL, private storage reset, secrets/permissions, other repository runtime/report/deploy or AWS action. Original University no-migration policy is still exact reviewed SHA/followup/READY bound; old University NOT_RECORDED/BLOCKED report unchanged. Final fixed Preview exact remote/READY/alias evidence is separate from cloud served CONNECT403, never bypassed. No Joey installation or manual deployment task.
+
+Final portable762 tests/build/validate/check PASS, forbiddenAttempts0; focused25/current handoff20 PASS. Mobile default/actual-byte replay2, old simple takeover4 widths and true Continue12 PASS; browser external0/writes0. Prior report schema/helper bytes remain unchanged in this mobile slice. Final support/report publication identities follow closure; no speculative work beyond this authorized correction.
+
+## Historical bounded metadata navigation (2026-10-11, baseline19a15f)
+
 
 Sole MC writer; no dependency on JoeyMac. Existing Explorer gains a reported-task picker, validated v3 task-listed files (including unobserved paths), dated read/change history and linked file/event/detail/graph selection. File selection pauses follow; new observations preserve paused history. Effects occur once for new scope/run/event identity only; repeat polls/remount/age timers cannot fabricate activity or refresh dates. Reduced motion and mobile44px touch/back-to-files controls use existing panes. Private metadata remains transient authenticated memory/DOM, never URL/storage. Source/Owner/generation/fresh-copy gates and candidate qualification remain intact; v1/v2 have no invented manifests.
 
