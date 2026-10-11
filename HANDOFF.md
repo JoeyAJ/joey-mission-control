@@ -3,7 +3,7 @@
 Project: MISSION_CONTROL
 Timestamp: 2026-10-11T12:53:00Z
 Task: Retain per-task conflicts and require fresh cloud-backed CI/handoff
-Status: LOCAL_VERIFIED_PENDING_PUBLICATION
+Status: LOCAL_VERIFIED_PARENT_READ_PREVIEW_PUBLISHED
 Last Developer: Codex
 Executed by: Codex
 Actual Model: UNKNOWN
@@ -13,7 +13,7 @@ Independent review reproduced overwritten selected-task conflict and200 NOT_CONN
 
 Portable859/build/validate/check,focused64 and20 synthetic browser cases PASS. Evidence: docs/MC_TASK_CLOUD_CURRENTNESS_20261011.md. Prior prefix preserved there byte-for-byte; dated history unchanged. Owner save/reload acceptance10:52 UTC retained; harmless task never executed.
 
-Next Action: publish same Preview and terminal; then approved four-object Owner decision storage, native ACL/data/CAS/capacity/rollback checks before activation. Approval12:43:39 UTC; no decision SQL/grants applied yet. Genuine bound task Agent run/UI device acceptance pending; GitHub permissions UNKNOWN. No Production/other repo/secrets/AWS/model/dispatch. CONNECT403 not bypassed; servedCheckedSha null. Do not recreate rejected VM artifacts.
+Next Action: runtime9fb3e7b same Preview exact READY; terminal3/old26 unchanged. Continue approved four-object Owner decision storage, native ACL/data/CAS/capacity/rollback checks before activation. Approval12:43:39 UTC; no decision SQL/grants applied yet. Genuine bound task Agent run/UI device acceptance pending; GitHub permissions UNKNOWN. No Production/other repo/secrets/AWS/model/dispatch. CONNECT403 not bypassed; servedCheckedSha null. Do not recreate rejected VM artifacts.
 
 # Dated prior stage history
 

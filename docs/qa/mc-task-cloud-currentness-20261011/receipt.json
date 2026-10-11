@@ -42,8 +42,28 @@
     "executionAuthorized": false
   },
   "publication": {
-    "state": "PENDING",
-    "servedCheckedSha": null
+    "state": "RUNTIME_PUBLISHED_READY",
+    "runtimeSha": "9fb3e7bda504873d22a6a07c1e00e593aacc84e0",
+    "deploymentId": "dpl_E7xWXWdNWz1bEZjvnXkERDaZu3Gy",
+    "readyState": "READY",
+    "projectId": "prj_X67htPw7vkRI2tuf8817vOUCGQOD",
+    "branch": "codex/mc-command-center-checkpoint-20261006",
+    "repository": "JoeyAJ/joey-mission-control",
+    "fixedPreview": "https://joey-mission-control-git-codex-mc-comma-fceec2-joeyajs-projects.vercel.app/",
+    "aliasAndIndependentIdExact": true,
+    "remoteExact": true,
+    "servedCheckedSha": null,
+    "productionDeploymentIdUnchanged": "dpl_5GgJ8LhD4Ec73RGz9CEFe1ppZQnh",
+    "productionShaUnchanged": "8b4945b16a0b23f2e72033aa976fa34f94eabec0",
+    "observedAt": "2026-10-11T12:55:25Z",
+    "ordinaryCloudHttps": {
+      "checkedAt": "2026-10-11T12:55:26.803594Z",
+      "curlExit": 56,
+      "httpCode": "000",
+      "proxyConnect403": true,
+      "servedCheckedSha": null,
+      "protectionBypass": false
+    }
   },
   "priorCurrentPrefixSha256": "7ad5ab77114525889d74d7362bd853957aa851d4e25635de073b1ff02e474459",
   "datedHistorySha256": "68de1c1e6a0ad588431996926396a6e19777a26ecc6ad7770afd13a3a23a0ea9",
@@ -52,6 +72,19 @@
     "taskIdQualification": "ACTUAL_DEVELOPER_WORK_NOT_OWNER_CLOUD_TASK",
     "startedCommitSha": "5e2da097df20acd54ab9d9ac30b7731c8841545e",
     "startedBlobId": "2c918d5f1722f0e4e72d5036bffcf606fdbe5508",
-    "state": "STARTED"
+    "state": "TERMINAL_COMPLETED",
+    "progressCommitSha": "147d15451922620b076f47d8150096c179aac605",
+    "progressBlobId": "020516b552fb8299e9c3f2b3ea180a486c24bdd7",
+    "pass": true,
+    "schema": "Draft2020-12_WITH_FORMAT_CHECKER",
+    "reportCommitSha": "2ec11587b99a0e787e2e7cdbfc0c7d23b1002999",
+    "blobId": "edf2ceb1f480a963f590d77306d624faed89ae45",
+    "bytes": 6523,
+    "sequence": 3,
+    "remoteExact": true,
+    "headerStartAndProgressImmutable": true,
+    "oldReportBlobsUnchanged": 26,
+    "totalReports": 27,
+    "onlyOwnedPathChanged": true
   }
 }

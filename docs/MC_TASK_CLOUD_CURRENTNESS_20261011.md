@@ -1,6 +1,6 @@
 # 雲端多任務衝突與停用 currentness 修復
 
-基準 `62615bf0054049f093bf70bc4796e8c5dc3ad90b`；實際開發者 Codex，模型 UNKNOWN。資格 LOCAL_VERIFIED_PENDING_PUBLICATION。本次由獨立審查發現兩個真實缺陷；上一版需求綁定不能當成整體驗收通過。
+基準 `62615bf0054049f093bf70bc4796e8c5dc3ad90b`；實際開發者 Codex，模型 UNKNOWN。資格 LOCAL_VERIFIED_PARENT_READ_PREVIEW_PUBLISHED。本次由獨立審查發現兩個真實缺陷；上一版需求綁定不能當成整體驗收通過。
 
 1. selected A／remote 同時變更 A、B 時，單一 conflict 被 B 覆蓋；local A 保留舊 revision，舊 report／CI 被標 MATCH。已用實際 controller／cloud／digest 測試先重現 Missing expected rejection，再修復為每 task 的 conflict Map。快照只投影所選 task 的 conflict，重複讀取不抹除；explicit reload／成功 save 只清該 task，保留其他 conflict。遠端已保存 task 消失也標衝突，不推定 local 有最新資格。
 2. pending CI 的後讀可能合法回200 NOT_CONNECTED／tasks:[]，原程式改 persistence 再把 local 當 session，使舊 CI observed。現在捕捉 operation 開始的 cloud-backed 要求，前後兩次讀取都要 OWNER_RPC_AVAILABLE、selectedConfirmed、完整 remote/local task 相同；sticky cloud-backed 身分直到切 scope／Owner 清除，不從 deactivation／outage 降級成 session MATCH。既有 currentRequirements／task evidence／packet 同步 fail closed，local 需求文字保留。
@@ -13,7 +13,7 @@ focused64、portable859／build／validate／check PASS，forbiddenAttempts0。�
 
 目前 Owner 決策儲存尚未實施或套用。主對話授權證據：Assistant Sentinel_bcb88241570481919e6e8368cfdee9ce（2026-10-11 12:33:29 UTC）詢問在既有私人DB保存「批准／要求修改」及備註／需求版本／成果依據，僅Owner讀寫、20/task及120總筆數、不刪歷史、不新增key、不自動合併／部署／Agent；User Sentinel_242c756311cc8191bdacf2713698fd98（12:43:39 UTC）答「允許」，本writer由parent收到完整 transcript。授權限 [既有四物件提案](MC_OWNER_TASK_DECISION_PERSISTENCE_PROPOSAL_20261011.md)，native ACL／denial／capacity／CAS／idempotency／rollback／資料不變與零fixture殘留PASS後才啟用。APPROVE 必為 Owner acceptance record、executionAuthorized=false，無 dispatch／merge／deploy authority。新 SQL/grants 尚未執行；無其他 scope或容量擴大。
 
-唯一真實開發 run `codex-mc-task-cloud-currentness-20261011`，taskId `mc-task-cloud-currentness-20261011` 非Owner cloud task；predecessor為已terminal需求綁定run，不捏造binding／Agent任務執行。開始已發表，修復發佈exact READY後appendterminal；其他26個report blobs保留。真實bound cloud-task run absent、新UI實機验收pending、runtime GitHub channels UNKNOWN；servedCheckedSha=null，普通CONNECT403不繞過。Production／其他repo／secrets／AWS／model／dispatch不變；不重製被拒VM artifacts。
+唯一真實開發 run `codex-mc-task-cloud-currentness-20261011`，taskId `mc-task-cloud-currentness-20261011` 非Owner cloud task；predecessor為已terminal需求綁定run，不捏造binding／Agent任務執行。本run已terminal3；header/start/progress及其他26個report blobs保留。真實bound cloud-task run absent、新UI實機验收pending、runtime GitHub channels UNKNOWN；servedCheckedSha=null，普通CONNECT403不繞過。Production／其他repo／secrets／AWS／model／dispatch不變；不重製被拒VM artifacts。
 
 ## Preserved prior current checkpoint
 
@@ -38,3 +38,11 @@ Next Action: runtime b3454c5 fixed Preview exact READY; terminal3 verified, old2
 
 End of the preserved prior checkpoint.
 
+
+## 發布與 terminal 證據
+
+功能SHA `9fb3e7bda504873d22a6a07c1e00e593aacc84e0`／`dpl_E7xWXWdNWz1bEZjvnXkERDaZu3Gy` 於固定alias及獨立ID均exact READY、canonical remote/project/branch相符。Production保留 `dpl_5GgJ8LhD4Ec73RGz9CEFe1ppZQnh`／`8b4945b16a0b23f2e72033aa976fa34f94eabec0`。普通HEAD於2026-10-11T12:55:26.803594Z回curl56/CONNECT403/HTTP000，未到app、不繞過；servedCheckedSha=null。
+
+terminal3 report commit `2ec11587b99a0e787e2e7cdbfc0c7d23b1002999`、blob `edf2ceb1f480a963f590d77306d624faed89ae45`，6523bytes；Draft2020-12+format checker PASS。Header/start/progress immutable，其他26 blobs不變，27檔案只有本run路徑改动，不改寫legacy或已terminal。
+
+收尾文件HEAD另以remote、alias及獨立ID核exact READY；功能樹需與已測runtime相同，最後證據存 `/tmp/mc-task-cloud-currentness-20261011/final-publication.json`，避免commit自身SHA循環。Owner儲存仍須完成後續native gates才啟用；本修復不等於整體需求綁定獨立驗收。
