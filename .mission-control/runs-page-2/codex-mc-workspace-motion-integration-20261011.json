@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "mc.repository-run.v2",
+  "taskKind": "FEATURE",
+  "projectId": "MISSION_CONTROL",
+  "track": "BASELINE",
+  "runId": "codex-mc-workspace-motion-integration-20261011",
+  "predecessorRunId": "codex-mc-preflight-conflict-repair-20261011",
+  "taskId": "mc-workspace-motion-integration-20261011",
+  "featureTitle": "Integrate reviewed private linked workspace motion without changing current preflight safeguards",
+  "agentName": "Codex",
+  "provider": null,
+  "model": null,
+  "repositoryId": "JoeyAJ/joey-mission-control",
+  "reportRef": "mc/progress",
+  "workRef": "codex/mc-command-center-checkpoint-20261006",
+  "baseline": {
+    "ref": "codex/mc-command-center-checkpoint-20261006",
+    "commitSha": "7cff2ed735207e14bf16184330d4a13eaaf09fe5",
+    "handoffPath": "HANDOFF.md",
+    "handoffDigest": "04d55527f7d78c251af91702f5a4e344e78c2b5cbd31395e395158655dc29e26",
+    "contextPaths": [
+      "README.md",
+      "docs/PRODUCT_CHARTER.md",
+      "docs/MC_PHASE_PLAN.md",
+      "docs/STAGE_HANDOFF_TEMPLATE.md"
+    ]
+  },
+  "events": [
+    {
+      "id": "motion-integration-start-1",
+      "sequence": 1,
+      "eventAt": "2026-10-11T15:33:49.951Z",
+      "kind": "started",
+      "summary": "Parent authorized exact private313401b motion slice integration onto7cff2ed. Shell/remote exact HEAD verified; reviewed all seven files, renderer base unchanged. Coordinated presentation only, current report/source/Owner guards reused. Preserve reserved-ref and per-draft conflict repairs; no SQL/permissions/Production or fabricated activity.",
+      "result": null,
+      "delivery": null
+    }
+  ]
+}
