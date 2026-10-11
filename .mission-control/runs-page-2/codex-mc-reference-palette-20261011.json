@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "mc.repository-run.v2",
+  "taskKind": "FEATURE",
+  "projectId": "MISSION_CONTROL",
+  "track": "BASELINE",
+  "runId": "codex-mc-reference-palette-20261011",
+  "predecessorRunId": "codex-mc-pr-ci-privacy-source-20261011",
+  "taskId": "mc-reference-palette-20261011",
+  "featureTitle": "Integrate exact authorized pixel-inspected palette while preserving PR-CI privacy and fresh source binding",
+  "agentName": "Codex",
+  "provider": null,
+  "model": null,
+  "repositoryId": "JoeyAJ/joey-mission-control",
+  "reportRef": "mc/progress",
+  "workRef": "codex/mc-command-center-checkpoint-20261006",
+  "baseline": {
+    "ref": "codex/mc-command-center-checkpoint-20261006",
+    "commitSha": "c26e1e9e17411b63240514cf0503cf7ac7566f0e",
+    "handoffPath": "HANDOFF.md",
+    "handoffDigest": "9a769f5ddbb6edcbc3404f73bfd30aeeb387e3b3788c3cf55dad1abe055ce842",
+    "contextPaths": [
+      "README.md",
+      "docs/PRODUCT_CHARTER.md",
+      "docs/MC_PHASE_PLAN.md",
+      "docs/STAGE_HANDOFF_TEMPLATE.md"
+    ]
+  },
+  "events": [
+    {
+      "id": "started-palette-integration",
+      "sequence": 1,
+      "eventAt": "2026-10-11T10:20:42.826Z",
+      "kind": "started",
+      "summary": "Fetch and integrate only named cc174c4 five-file palette commit after d46da15 privacy/source-race fixes; run aggregate and relevant UI/Owner regressions.",
+      "result": null,
+      "delivery": null
+    }
+  ]
+}
