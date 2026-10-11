@@ -1,0 +1,72 @@
+{
+  "pass": true,
+  "actualApp": true,
+  "actualOwnerAuth": false,
+  "actualRemoteRepositoryRead": false,
+  "upstreams": "SYNTHETIC_AUTH_GITHUB_CLIPBOARD",
+  "reads": 28,
+  "githubReads": 396,
+  "external": 0,
+  "writes": 0,
+  "intendedSyntheticCloudWrites": 0,
+  "intendedSyntheticTaskCloudWrites": 0,
+  "cases": [
+    {
+      "width": 375,
+      "pass": true,
+      "actualApp": true,
+      "syntheticOwnerGit": true,
+      "completeTwentyTwoRunScan": true,
+      "twentyVisiblePerPage": true,
+      "pageChangeAndPollRetainsAll": true,
+      "newRunVisible": true,
+      "taskFilterFromCompleteScan": true,
+      "secondPageOutageFailClosed": true,
+      "pendingScopeSwitch": true,
+      "privacy": true
+    },
+    {
+      "width": 390,
+      "pass": true,
+      "actualApp": true,
+      "syntheticOwnerGit": true,
+      "completeTwentyTwoRunScan": true,
+      "twentyVisiblePerPage": true,
+      "pageChangeAndPollRetainsAll": true,
+      "newRunVisible": true,
+      "taskFilterFromCompleteScan": true,
+      "secondPageOutageFailClosed": true,
+      "pendingScopeSwitch": true,
+      "privacy": true
+    },
+    {
+      "width": 430,
+      "pass": true,
+      "actualApp": true,
+      "syntheticOwnerGit": true,
+      "completeTwentyTwoRunScan": true,
+      "twentyVisiblePerPage": true,
+      "pageChangeAndPollRetainsAll": true,
+      "newRunVisible": true,
+      "taskFilterFromCompleteScan": true,
+      "secondPageOutageFailClosed": true,
+      "pendingScopeSwitch": true,
+      "privacy": true
+    },
+    {
+      "width": 1440,
+      "pass": true,
+      "actualApp": true,
+      "syntheticOwnerGit": true,
+      "completeTwentyTwoRunScan": true,
+      "twentyVisiblePerPage": true,
+      "pageChangeAndPollRetainsAll": true,
+      "newRunVisible": true,
+      "taskFilterFromCompleteScan": true,
+      "secondPageOutageFailClosed": true,
+      "pendingScopeSwitch": true,
+      "privacy": true
+    }
+  ],
+  "screenshots": "/tmp/mc-joey-simple-screenshots"
+}

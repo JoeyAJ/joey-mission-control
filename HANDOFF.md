@@ -1,3 +1,22 @@
+# Current PR/CI read-only increment — 2026-10-11
+
+Project: MISSION_CONTROL
+Timestamp: 2026-10-11T09:45:26.058Z
+Task: Existing task / Agent report / exact-commit PR-CI inspection
+Status: LOCAL_VERIFIED_PENDING_PUBLICATION
+Last Developer: Codex
+Executed by: Codex
+Actual Model: UNKNOWN
+Baseline: fe1a5b6d783e4dd1768b0fd98520524ae2aba21d
+
+Private completed-task inspection separates Agent tests from GitHub PR/check/status/Actions metadata. Full report scan and canonical repo/track/exact commit, pre/post Owner/HEAD/report binding, bounded complete reads and expiry/switch/edit/failure clearing; no arbitrary URLs/logs/raw output/storage. CI empty/permission/outage/conflict/overflow stay qualified; no acceptance/merge/deploy action. Report lacks requirements revision; Joey must check current request. University candidate stays pending; main PR cannot qualify it.
+
+Portable840/build/validate/check, focused9 and32 synthetic actual-app browser cases PASS. Live runtime PR/CI permission UNKNOWN; connected-app reads are a distinct credential. Actual Owner HTTP/device acceptance pending; cloud CONNECT403 is not bypassed. Existing approved tasks/drafts ON, fresh Continue and40-run history preserved. New Codex run starts page2, predecessor prior terminal task run; never append that terminal run. SQL/Auth/secrets/permissions/Production/other repo/AWS/model/dispatch unchanged. Do not recreate rejected VM artifacts.
+
+Next Action: verify authorized Preview exact SHA/READY; Owner inspects a completed task via 重新核對 PR／CI. Details and current publication receipt: docs/MC_PR_CI_RECONCILIATION_20261011.md.
+
+# Dated prior stage history
+
 # Mission Control — approved private tasks and bounded report capacity
 
 Project: MISSION_CONTROL

@@ -1,3 +1,4 @@
+import {createDeploymentTaskReconciliationServer} from '../src/tasks/task-reconciliation-server.mjs';
 import {createDeploymentRepositoryRunServer} from '../src/reporting/repository-run-server.mjs';
 import {commandReadout,commandWorkspaceHealth} from '../src/operations/command-readouts.mjs';
 import {phaseSummary} from '../public/phase-summary.js';
@@ -49,6 +50,7 @@ export default async function handler(req,res){
   else if(route==='private/project-entry'&&req.headers.host===new URL(ownerAuthConfig.stageOrigin).host){result=await createDeploymentProjectEntryServer().handle(req,{project:url.searchParams.get('project')});}
   else if(route==='private/project-onboarding'&&req.headers.host===new URL(ownerAuthConfig.stageOrigin).host){result=await createDeploymentProjectOnboardingServer().handle(req);}
   else if(route==='private/project-drafts'&&req.headers.host===new URL(ownerAuthConfig.stageOrigin).host){result=await createDeploymentProjectDraftStorageServer().handle(req);}
+  else if(route==='private/task-reconciliation'&&req.headers.host===new URL(ownerAuthConfig.stageOrigin).host){result=await createDeploymentTaskReconciliationServer().handle(req);}
   else if(route==='private/development-tasks'&&req.headers.host===new URL(ownerAuthConfig.stageOrigin).host){result=await createDeploymentTaskStorageServer().handle(req);}
   else result=productionResponse(req.method,url);
   res.writeHead(result.status,{...securityHeaders,'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store',...result.headers});res.end(JSON.stringify(result.body));}

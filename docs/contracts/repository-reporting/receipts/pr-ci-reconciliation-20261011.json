@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "qualification": "READ_ONLY_RECONCILIATION_SYNTHETIC_VERIFIED_RUNTIME_PERMISSIONS_UNKNOWN",
+  "baselineSha": "fe1a5b6d783e4dd1768b0fd98520524ae2aba21d",
+  "checkedAt": "2026-10-11T09:44:40.018Z",
+  "verification": {
+    "focusedGroups": 9,
+    "portableTests": 840,
+    "portableFailures": 0,
+    "buildPortableValidateCheck": "PASS",
+    "forbiddenPortabilityAttempts": 0,
+    "newBrowserCases": 8,
+    "preservationBrowserCases": 24,
+    "externalRequests": 0,
+    "unexpectedWrites": 0,
+    "intendedSyntheticTaskCloudWrites": 16,
+    "actualOwnerAuth": false,
+    "actualRemoteProviderHttp": false
+  },
+  "permissions": {
+    "executorRuntimeCredentialPresent": false,
+    "runtimePullRequests": "UNKNOWN",
+    "runtimeChecks": "UNKNOWN",
+    "runtimeCommitStatuses": "UNKNOWN",
+    "runtimeActions": "UNKNOWN",
+    "connectedAppQualification": "DISTINCT_CONNECTED_APP_NOT_MC_RUNTIME",
+    "connectedAppRepository": "JoeyAJ/joey-mission-control",
+    "connectedAppInspectedSha": "fe1a5b6d783e4dd1768b0fd98520524ae2aba21d",
+    "connectedAppCommitStatus": {
+      "context": "Vercel",
+      "state": "success"
+    },
+    "connectedAppScopedPrSearchCount": 0,
+    "connectedAppWorkflowWrapperCount": 0,
+    "workflowWrapperCoverage": "FIRST_PAGE_PULL_REQUEST_TRIGGERED_ONLY_NOT_COMPLETE_CI",
+    "minimumFineGrainedRepositoryRead": [
+      "Contents",
+      "Metadata",
+      "Pull requests",
+      "Checks",
+      "Commit statuses",
+      "Actions"
+    ],
+    "allowedRepositories": [
+      "JoeyAJ/joey-mission-control",
+      "JoeyAJ/nexaeon-web",
+      "JoeyAJ/woosongbuddy",
+      "JoeyAJ/namyoung-web3d",
+      "JoeyAJ/joey-asset-system"
+    ],
+    "grantsChanged": false,
+    "credentialDecryptedOrExported": false
+  },
+  "run": {
+    "runId": "codex-mc-pr-ci-reconciliation-20261011",
+    "taskId": "mc-pr-ci-reconciliation-20261011",
+    "predecessorRunId": "codex-mc-existing-project-task-20261011",
+    "path": ".mission-control/runs-page-2/codex-mc-pr-ci-reconciliation-20261011.json",
+    "sequence": 2,
+    "reportCommitSha": "c0067122242a9235cf414ffd251b143e09bba8f9",
+    "blobId": "84a15ce05617c9bacfab87247934fd063e204d63",
+    "qualification": "PINNED_REPOSITORY_PROFILE_NOT_SERVER_ACCEPTANCE",
+    "priorTerminalRunMutated": false,
+    "originalTwentyFilesPreserved": true
+  },
+  "publication": {
+    "state": "PENDING_CURRENT_STAGE_PUBLICATION",
+    "fixedPreview": "https://joey-mission-control-git-codex-mc-comma-fceec2-joeyajs-projects.vercel.app/",
+    "projectId": "prj_X67htPw7vkRI2tuf8817vOUCGQOD",
+    "remoteSha": null,
+    "deploymentId": null,
+    "servedCheckedSha": null
+  },
+  "preserved": {
+    "tasksActivation": "ON_EXISTING_APPROVED",
+    "projectDraftActivation": "ON_EXISTING_APPROVED",
+    "sourceContinueFreshGate": true,
+    "reportCapacity": 40,
+    "modelSelector": false,
+    "automaticMergeDeploy": false,
+    "dispatch": false,
+    "aws": false,
+    "sqlAuthPermissionsSecretsChanged": false,
+    "productionChanged": false,
+    "otherRepositoryChanged": false,
+    "prohibitedVmArtifactsUploaded": false
+  },
+  "remaining": [
+    "Actual Owner signed HTTP and mobile/device acceptance",
+    "MC runtime GitHub read permission independently observed",
+    "Current requirements revision/digest absent from Agent report contract",
+    "Broader Owner decision and approved merge/deploy closure separately scoped"
+  ]
+}
