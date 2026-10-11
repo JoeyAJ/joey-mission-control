@@ -52,6 +52,92 @@
       "summary": "Strict opt-in v3 bounded file adapter/helper/private continuation/workbench implemented; 755 portable tests/build/validate/check PASS, 195 external schema cases PASS, file UI6/Continue12/cancellation2 PASS. Compatible support publication next; no file-content upload or other repo action.",
       "result": null,
       "delivery": null
+    },
+    {
+      "id": "completed-support",
+      "sequence": 4,
+      "eventAt": "2026-10-11T01:14:59.969Z",
+      "kind": "completed",
+      "summary": "MC file metadata implementation/tests and authorized Preview publication complete; root GET remains blocked before app, delivery incomplete, next new v3 bounded observation run.",
+      "result": {
+        "codeSha": "b7a3777b5cb032f2521266a51d85f8d9dadbdf3e",
+        "tests": [
+          {
+            "name": "755 portable tests/build/validate/check, forbidden attempts0",
+            "outcome": "PASS"
+          },
+          {
+            "name": "195 external schema cases and46 source/handoff/helper checks",
+            "outcome": "PASS"
+          },
+          {
+            "name": "Synthetic file6/delivery6/Continue12/cancellation2 browser cases",
+            "outcome": "PASS"
+          },
+          {
+            "name": "Actual served root verification blocked by CONNECT403",
+            "outcome": "NOT_RUN"
+          }
+        ],
+        "nextSteps": "Fresh same-scope v3 predecessor run records actual explicit MC file observations; Owner/device and independent Joey acceptance pending; no network bypass",
+        "handoff": {
+          "path": "HANDOFF.md",
+          "commitSha": "250095f136a1d1629d0d173f668c98f922fea985"
+        }
+      },
+      "delivery": {
+        "qualification": "AGENT_REPORTED",
+        "scope": {
+          "projectId": "MISSION_CONTROL",
+          "track": "BASELINE",
+          "repositoryId": "JoeyAJ/joey-mission-control",
+          "runId": "codex-mc-file-activity-20261011",
+          "taskId": "mc-file-activity-20261011",
+          "workRef": "codex/mc-command-center-checkpoint-20261006",
+          "codeSha": "b7a3777b5cb032f2521266a51d85f8d9dadbdf3e"
+        },
+        "deployment": {
+          "status": "READY",
+          "target": {
+            "provider": "vercel",
+            "project": "joey-mission-control",
+            "environment": "preview"
+          },
+          "id": "dpl_djimJh8xxjCYH8yAZRvJDcpLY4Ci",
+          "deployedSha": "b7a3777b5cb032f2521266a51d85f8d9dadbdf3e",
+          "url": "https://joey-mission-control-git-codex-mc-comma-fceec2-joeyajs-projects.vercel.app/",
+          "observedAt": "2026-10-11T01:13:19Z",
+          "evidence": "Dated connected Vercel deployment and independent fixed alias ID/full Git SHA match; exact normal remote push",
+          "notRequired": null
+        },
+        "verification": {
+          "status": "BLOCKED",
+          "method": "HTTP_FUNCTIONAL_CHECK",
+          "checkedAt": "2026-10-11T01:14:59.879384Z",
+          "deploymentId": "dpl_djimJh8xxjCYH8yAZRvJDcpLY4Ci",
+          "checkedSha": null,
+          "url": "https://joey-mission-control-git-codex-mc-comma-fceec2-joeyajs-projects.vercel.app/",
+          "evidence": "Actual root GET curl exit56 HTTP000 CONNECT tunnel response403 before app; no bypass or served content proof; dated deployment identity only",
+          "notRequired": null
+        },
+        "handoff": {
+          "status": "CURRENT",
+          "path": "HANDOFF.md",
+          "commitSha": "250095f136a1d1629d0d173f668c98f922fea985",
+          "checkedAt": "2026-10-11T01:14:59.969Z",
+          "evidence": "Current committed private handoff/source checks31 PASS; support receipt and next bounded continuation recorded"
+        },
+        "data": {
+          "status": "NOT_REQUIRED",
+          "version": null,
+          "checkedAt": "2026-10-11T01:14:59.969Z",
+          "evidence": null,
+          "notRequired": {
+            "policy": "MC_NO_DATA_CHANGE",
+            "reason": "MC contract/helper/UI metadata only; no SQL/database/data schema or migration change"
+          }
+        }
+      }
     }
   ]
 }
