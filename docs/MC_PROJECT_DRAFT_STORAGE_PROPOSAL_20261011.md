@@ -1,3 +1,5 @@
+> Current approved milestone 2026-10-11: exact Owner cloud draft SQL/ACL install and bounded native/live checks PASS; server-only activation is ON. Real Owner HTTP/device acceptance remains pending; cloud drafts are not task creation or end-to-end PR/approval/merge automation. [Evidence and eight-step gaps](MC_PROJECT_DRAFT_ACTIVATION_VERIFICATION_20261011.md). Earlier OFF/NOT_APPLIED statements below are dated history superseded only for this exact approved milestone.
+
 # Private new-project draft persistence — pending approval
 
 Target: existing Supabase `scmvedfqwlhkyvljymjj`. Status: REVIEW_ONLY_NOT_APPLIED. No SQL was executed. The same-origin API and frontend cloud transport are implemented with activation OFF; no live cloud save is claimed.

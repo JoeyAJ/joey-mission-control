@@ -1,4 +1,26 @@
-# Mission Control — private cloud draft integration (activation pending)
+# Mission Control — approved Owner cloud drafts enabled
+
+Project: MISSION_CONTROL
+Timestamp: 2026-10-11T07:24:53.673Z
+Task: Approved private cloud draft install, native/live checks and Preview activation
+Status: LOCAL_VERIFIED_CLOUD_EVENTS_NOT_ENABLED
+DeliveryQualification: OWNER_CLOUD_DRAFT_RPC_ACTIVATED_SERVED_OWNER_UNVERIFIED
+Last Developer: Codex
+Executed by: Codex
+Actual Model: UNKNOWN
+Baseline: dc0a64fa16f57753cf87a2a62e2e0ee829a8459e
+
+## Current approved draft milestone
+
+Joey approved the exact bounded SQL/ACL proposal at2026-10-11T07:05:55Z. SHA2561dc75176ef7e837dd4364aacbb82db93c25118861806553a5a2d1aa850185433 was applied unchanged to existing Supabase scmvedfqwlhkyvljymjj. New Owner-only table/private helpers/two list-save RPCs only; no Auth/token/old-ledger changes. Before/after eight old table digests, sixteen old function definitions/ACLs and both executor role membership records match; temporary CREATE/SET restored. Forced RLS/exact Owner/AAL2/current session/membership/12x96KiB/CAS/exact retry remain mandatory. Server-only activation ON after gates passed.
+
+Native official isolated PostgreSQL17.11 thirteen check groups PASS, including two native competing connections/observed lock, CAS/retry/capacity and URL/Unicode parity. Container networknone/noports/nomounts/tmpfs removed after tests. Live rollback-only checks PASS, 28 parity cases, save/readback/CAS/replay/role-denial/capacity, zero retained drafts. Live qualification SQL_ADMIN_EMULATED_CLAIMS_WITH_EXISTING_SESSION_METADATA; actual Owner signed-JWT/HTTP/browser acceptance remains unverified. No credentials were read or created.
+
+Dirty local edit→fresh unchanged remote baseline now stays unsaved and can CAS-save; a changed remote baseline still conflicts. Cloud draft save/reload does not create an execution task, register a new repo/source/report scope or start an Agent. Eight-step workflow inventory and smallest next route are in docs/MC_PROJECT_DRAFT_ACTIVATION_VERIFICATION_20261011.md. Direct dispatch/model selection/AWS/Production/other repo remain excluded. Existing scope/candidate/unknown signatures and Nex CI qualifications remain preserved.
+
+Fresh run codex-mc-project-draft-postgres-20261011, v2 DELIVERY_FOLLOWUP, predecessor codex-mc-project-draft-integration-20261011, original baseline dc0a64 unchanged. Started1 published5a3a536214f12b69fff355115cd11e94e48ab9d8/blob84479407863bd6f613aef6c1afc2b242615d642c; immutable pre-approval started event is history, current progress records subsequent approval/install. Testing/publication/terminal and served limits are recorded below when complete.
+
+# Historical dormant cloud draft checkpoint
 
 Project: MISSION_CONTROL
 Timestamp: 2026-10-11T06:59:21.885Z

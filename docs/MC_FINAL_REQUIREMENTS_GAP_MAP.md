@@ -1,3 +1,5 @@
+> Current approved milestone 2026-10-11: exact Owner cloud draft SQL/ACL install and bounded native/live checks PASS; server-only activation is ON. Real Owner HTTP/device acceptance remains pending; cloud drafts are not task creation or end-to-end PR/approval/merge automation. [Evidence and eight-step gaps](MC_PROJECT_DRAFT_ACTIVATION_VERIFICATION_20261011.md). Earlier OFF/NOT_APPLIED statements below are dated history superseded only for this exact approved milestone.
+
 # Current remaining gaps
 
 [Single current acceptance summary](MC_CURRENT_ACCEPTANCE.md) governs current status; [HANDOFF](../HANDOFF.md) records the latest development checkpoint. Actual MC receiving-Agent/report evidence and five-scope Owner reads passed. Exact real clipboard bytes, iPhone one-tap copy and final Joey product acceptance remain pending.

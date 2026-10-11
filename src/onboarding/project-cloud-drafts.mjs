@@ -7,13 +7,13 @@ export function createCloudDraftReconciliation({now=Date.now}={}){
  function requireAvailable(capabilities){if(capabilities?.cloudDraftPersistence!=='OWNER_RPC_AVAILABLE')throw Error('DRAFT_STORAGE_NOT_CONNECTED');}
  function conflicts(id){status='CONFLICT';conflict={draftId:id,remoteRevision:remote.get(id)?.revision||null};throw Object.assign(Error('DRAFT_REVISION_CONFLICT'),{status:409});}
  return {
-  snapshot(drafts,selected){return {status,conflict:structuredClone(conflict),confirmedDraftIds:status==='UNAVAILABLE'?[]:drafts.filter(d=>sameDraft(remote.get(d.draftId),d)).map(d=>d.draftId),selectedConfirmed:Boolean(status!=='UNAVAILABLE'&&selected&&sameDraft(remote.get(selected),drafts.find(d=>d.draftId===selected)))};},
+  snapshot(drafts,selected){return {status,conflict:structuredClone(conflict),confirmedDraftIds:status==='UNAVAILABLE'?[]:drafts.filter(d=>conflict?.draftId!==d.draftId&&sameDraft(remote.get(d.draftId),d)).map(d=>d.draftId),selectedConfirmed:Boolean(status!=='UNAVAILABLE'&&selected&&conflict?.draftId!==selected&&sameDraft(remote.get(selected),drafts.find(d=>d.draftId===selected)))};},
   clear(){status='NOT_CONNECTED';remote.clear();pending.clear();conflict=null;},
   unavailable(){status='UNAVAILABLE';},
   capability(v){if(v==='UNAVAILABLE'){status='UNAVAILABLE';}else if(v!=='OWNER_RPC_AVAILABLE'){status='NOT_CONNECTED';remote.clear();pending.clear();conflict=null;}else if(['NOT_CONNECTED','UNAVAILABLE'].includes(status))status='AVAILABLE';},
   async refresh({capabilities,client,signal,check,drafts,replaceSelected=null}){
    requireAvailable(capabilities);const reply=await client.list({signal});check();if(replaceSelected&&conflict?.draftId===replaceSelected){conflict=null;pending.delete(replaceSelected);}const records=new Map(reply.drafts.map(d=>[d.draftId,validateProjectDraft(d)])),merged=[...drafts];
-   for(const [id,d]of records){const index=merged.findIndex(v=>v.draftId===id),old=remote.get(id);if(index<0){if(merged.length>=12)throw Error('DRAFT_CAPACITY');merged.push(d);}else if(replaceSelected===id)merged[index]=d;else if(!sameDraft(d,merged[index])){conflict={draftId:id,remoteRevision:d.revision};status='CONFLICT';}}
+   for(const [id,d]of records){const index=merged.findIndex(v=>v.draftId===id),old=remote.get(id);if(index<0){if(merged.length>=12)throw Error('DRAFT_CAPACITY');merged.push(d);}else if(replaceSelected===id)merged[index]=d;else if(!sameDraft(d,merged[index])&&(!old||!sameDraft(d,old))){conflict={draftId:id,remoteRevision:d.revision};status='CONFLICT';}}
    if(replaceSelected&&!records.has(replaceSelected))throw Error('DRAFT_CLOUD_RECORD_MISSING');remote=records;if(!conflict)status='AVAILABLE';return merged;
   },
   async save({capabilities,client,signal,check,draft}){

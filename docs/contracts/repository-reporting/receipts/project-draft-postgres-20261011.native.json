@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "pass": true,
+  "syntheticOnly": true,
+  "nativePostgres": true,
+  "liveSupabaseRequests": 0,
+  "liveAuthDataRead": false,
+  "liveSqlApplied": false,
+  "ownerPredicateAdaptation": {
+    "originalExactOwnerReplaced": true,
+    "syntheticOwner": "11111111-1111-4111-8111-111111111111"
+  },
+  "authHelper": "PROTECTED_SYNTHETIC_SESSION_TABLE_NOT_REAL_AUTH_PROVIDER",
+  "checks": [
+    {
+      "name": "completeProposalDDLAndRoleRestorationExactExceptSyntheticOwner",
+      "pass": true
+    },
+    {
+      "name": "forcedRlsRestrictedOwnersAndFixedFunctionSearchPath",
+      "pass": true
+    },
+    {
+      "name": "anonymousServiceRoleDirectTableAndPrivateHelperDenied",
+      "pass": true,
+      "denialCount": 8
+    },
+    {
+      "name": "realAuthenticatedSaveListExactIdempotentReplayAndChangedReplayRefusal",
+      "pass": true
+    },
+    {
+      "name": "foreignOwnerAal1RevokedExpiredMembershipDeniedBeforeMutation",
+      "pass": true
+    },
+    {
+      "name": "foreignOwnedStoredRowNeverReturnedUnderOwnerRls",
+      "pass": true
+    },
+    {
+      "name": "sharedCanonicalUrlFixturesAndUnmodifiedSqlParityHarness",
+      "pass": true,
+      "cases": 21
+    },
+    {
+      "name": "utf16UnicodeTrimByteCapacityAndRefRepoParity",
+      "pass": true,
+      "cases": 7
+    },
+    {
+      "name": "twoNativeConnectionsObservedLockOneCasCommitOneConflict",
+      "pass": true,
+      "observedDatabaseLock": true
+    },
+    {
+      "name": "twoNativeConnectionsExactReplaySingleStoredRowOriginalPayload",
+      "pass": true,
+      "observedDatabaseLock": true
+    },
+    {
+      "name": "concurrentTwelveRowCapacityOneCommitOneRefusal",
+      "pass": true,
+      "observedDatabaseLock": true
+    },
+    {
+      "name": "oversizedUtf8RejectedWithoutStorageMutation",
+      "pass": true
+    },
+    {
+      "name": "existingSyntheticHelperAclsRoleMembershipFrozenLedgersUnchanged",
+      "pass": true
+    }
+  ],
+  "container": {
+    "network": "none",
+    "hostMounts": 0,
+    "publishedPorts": 0,
+    "data": "TASK_TMPFS",
+    "image": "docker.io/library/postgres@sha256:3cec7eb015ba8adb28139fa5c83b8489cdf0e666e53dfdf20f598ae0cc8739e3"
+  },
+  "serverVersion": "17.11 (Debian 17.11-1.pgdg13+2)",
+  "originalProposalSha256": "1dc75176ef7e837dd4364aacbb82db93c25118861806553a5a2d1aa850185433"
+}
