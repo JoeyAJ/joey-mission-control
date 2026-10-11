@@ -1,3 +1,10 @@
+import {runTaskReviewFlow} from './task-review.fixture.mjs';
+import {createDeploymentTaskReviewServer} from '../../src/tasks/task-review-server.mjs';
+import {taskReviewSqlSha256} from '../../src/tasks/task-review-config.mjs';
+import {taskReviewRequest,validateTaskReview} from '../../src/tasks/task-review-contract.mjs';
+import {createTaskRequirements} from '../../src/tasks/task-requirements.mjs';
+import {browserContextDigest} from '../../src/continuity/browser-context-digest.mjs';
+import {ownerAuthConfig as realOwnerPolicy} from '../../public/owner-auth-config.js';
 import {runTaskRequirementsFlow} from './task-requirements-flow.fixture.mjs';
 import {runTaskCloudCurrentness} from './task-cloud-currentness.fixture.mjs';
 import {runTaskReportInspection} from './task-report-inspection.fixture.mjs';
@@ -30,18 +37,19 @@ const onboardingQA=process.env.MC_NEW_PROJECT_QA==='1';
 const cloudQA=process.env.MC_CLOUD_DRAFT_QA==='1';
 const taskQA=process.env.MC_EXISTING_TASK_QA==='1';
 const requirementsQA=process.env.MC_TASK_REQUIREMENTS_QA==='1';
+const taskReviewQA=process.env.MC_TASK_REVIEW_QA==='1';
 const cloudCurrentnessQA=process.env.MC_TASK_CLOUD_CURRENTNESS_QA==='1';
-const taskInspectionQA=process.env.MC_TASK_REPORT_INSPECTION_QA==='1'||requirementsQA||cloudCurrentnessQA;
+const taskInspectionQA=process.env.MC_TASK_REPORT_INSPECTION_QA==='1'||requirementsQA||cloudCurrentnessQA||taskReviewQA;
 const cloudTaskQA=process.env.MC_CLOUD_TASK_QA==='1';
 const capacityQA=process.env.MC_REPORT_CAPACITY_QA==='1';
-const prCiQA=process.env.MC_PR_CI_QA==='1'||requirementsQA||cloudCurrentnessQA;
+const prCiQA=process.env.MC_PR_CI_QA==='1'||requirementsQA||cloudCurrentnessQA||taskReviewQA;
 const require=createRequire(import.meta.url),{chromium}=require(process.env.MC_PLAYWRIGHT_MODULE||(process.env.CODEX_PRIMARY_RUNTIME_NODE_MODULES+'/playwright'));
 const cookieBefore=process.env.MC_QA_REPORT_COOKIE_EXPECT==='before';
 const sourceBefore=process.env.MC_QA_SOURCE_CONTINUITY_EXPECT==='before';
 const OWNER='11111111-1111-4111-8111-111111111111',FACTOR='22222222-2222-4222-8222-222222222222',KEY='SYNTHETIC_SERVER_READ_ONLY_000000',A='a'.repeat(40),B='b'.repeat(40),projects=['NEXAEON','WOOSONG_BUDDY','NAMYOUNG_WEB3D','JOEY_ASSET_SYSTEM'],cases=[];
 const allProjects=['MISSION_CONTROL',...projects],configuration=(p,{track='BASELINE'}={})=>p==='MISSION_CONTROL'?{...mcRemoteHandoffConfiguration,track:'BASELINE'}:projectEntryReadConfiguration(p,{track});
 let origin,bundle,state,service,reportService,taskService,reportReads=0,reads=0,writes=0,external=0,githubReads=0,legacyContinueRequests=0;
-let onboardingService,reconciliationService;
+let onboardingService,reconciliationService,reviewService;let reviewWrites=0;
 let cloudService,cloudWrites=0;
 const encode=v=>Buffer.from(JSON.stringify(v)).toString('base64url');
 const token=()=>state.token||(state.token=encode({alg:'HS256',typ:'JWT'})+'.'+encode({sub:OWNER,role:'authenticated',aal:'aal2',exp:Math.floor(Date.now()/1000)+3600})+'.SYNTHETIC_SIGNATURE');
@@ -62,6 +70,7 @@ const upstream=async(url,options)=>{const u=new URL(url);if(u.origin===origin){a
  const bytes=Buffer.from(project==='MISSION_CONTROL'&&path===c.path?'# Synthetic MC handoff\nProject: MISSION_CONTROL\nTimestamp: '+new Date().toISOString()+'\nTask: Synthetic MC route verification\nStatus: LOCAL_VERIFIED_PENDING_PUBLICATION\nExecuted by: Synthetic MC Fixture Developer\nActual Model: UNKNOWN\n## Next Action\nSynthetic route fixture':path===c.path&&state.documented?'# Synthetic current handoff\nProject: '+project+'\nTimestamp: '+new Date().toISOString()+'\nTask: Synthetic documented current task\nStatus: LOCAL_VERIFIED_PENDING_PUBLICATION\nExecuted by: Explicit Fixture Developer\n## Next Action\nSynthetic documented next step':path===c.path?'# SYNTHETIC_PRIVATE_'+project+'_'+state.version+'\nPlain README with no signed Agent or document time.\n<img src="https://attacker.invalid/x" onerror="globalThis.injected=true">\n## Historical notes\nExecuted by: Historical Agent':'# Synthetic pinned context');return json({type:'file',size:bytes.length,encoding:'base64',content:bytes.toString('base64'),sha:createHash('sha1').update('blob '+bytes.length+'\0').update(bytes).digest('hex')});
 };
 const server=http.createServer(async(req,res)=>{try{const u=new URL(req.url,origin||'http://fixture.invalid');
+ if(u.pathname==='/api/private/task-review-decisions'){const r=await reviewService.handle(req);return send(res,r.body,r.status);}
  if(u.pathname==='/api/private/task-reconciliation'){const r=await reconciliationService.handle(req);return send(res,r.body,r.status);}
  if(u.pathname==='/api/private/development-tasks'){const dormant=createTaskStorageServer({activation:{enabled:false},verifyOwner:createCurrentOwnerVerifier({fetchImpl:upstream,policy}),ownerSubject:OWNER,allowedOrigin:origin});const r=await (state.taskStorageDisabled?dormant:taskService).handle(req);return send(res,r.body,r.status);}
  if(u.pathname==='/api/private/project-drafts'){const r=await cloudService.handle(req);return send(res,r.body,r.status);}
@@ -86,6 +95,25 @@ let taskCloudWrites=0;
 taskService=createTaskStorageServer({activation:cloudTaskQA||taskInspectionQA?taskStorageActivation:{enabled:false},verifyOwner:createCurrentOwnerVerifier({fetchImpl:upstream,policy}),ownerSubject:OWNER,allowedOrigin:origin,port:{async call(action,request){if(state.taskCloudDelay){state.taskCloudDelay=false;await new Promise(resolve=>state.taskCloudRelease=resolve);}if(state.taskCloudOutage)throw Error('unavailable');const rows=state.taskCloudRows||(state.taskCloudRows=new Map());if(action==='list')return {schemaVersion:1,qualification:'OWNER_PRIVATE_DEVELOPMENT_TASKS',tasks:[...rows.values()]};const old=rows.get(request.task.taskId);if(old?.revision===request.expectedRevision+1&&sameTask(old,request.task))return {schemaVersion:1,qualification:'OWNER_PRIVATE_DEVELOPMENT_TASK_SAVED',task:old};if(old&&old.revision!==request.expectedRevision||!old&&request.expectedRevision!==0)throw Object.assign(Error('conflict'),{status:409});assert(rows.size<12||old);rows.set(request.task.taskId,request.task);taskCloudWrites++;if(state.dropTaskCloudAck){state.dropTaskCloudAck=false;throw Error('lost response');}return {schemaVersion:1,qualification:'OWNER_PRIVATE_DEVELOPMENT_TASK_SAVED',task:request.task};}}});
 reportService=createDeploymentRepositoryRunServer({environment:{MC_GITHUB_READ_TOKEN:KEY},fetchImpl:upstream,policy});
 reconciliationService=createDeploymentTaskReconciliationServer({environment:{MC_GITHUB_READ_TOKEN:KEY},fetchImpl:upstream,policy});
+if(taskReviewQA){
+ const activation={enabled:true,projectRef:'scmvedfqwlhkyvljymjj',qualification:'OWNER_TASK_REVIEW_APPROVED_NATIVE_VERIFIED',approvedSqlSha256:taskReviewSqlSha256,providerVerified:true};
+ const reviewFetch=async(raw,options)=>{const u=new URL(raw);if(u.origin!==realOwnerPolicy.origin)return upstream(raw,options);assert.equal(options.headers.Authorization,'Bearer '+token());
+  if(u.pathname==='/auth/v1/user'||u.pathname==='/rest/v1/rpc/mc_owner_session')return upstream(origin+u.pathname,options);
+  if(!state.active||!state.signedIn||state.expiry&&state.expiry<=Date.now())return json({code:'42501'},403);
+  if(u.pathname==='/rest/v1/rpc/mc_owner_development_task_list')return json({schemaVersion:1,qualification:'OWNER_PRIVATE_DEVELOPMENT_TASKS',tasks:[...(state.taskCloudRows||new Map()).values()]});
+  const payload=JSON.parse(options.body),ledger=state.reviewRows||(state.reviewRows=new Map()),base={schemaVersion:1,qualification:'OWNER_TASK_REVIEW_RECORDED',executionAuthorized:false};
+  if(u.pathname==='/rest/v1/rpc/mc_owner_task_review_list'){const r=taskReviewRequest({action:'list',taskId:payload.task_id,afterSequence:payload.after_sequence,pageLimit:payload.page_limit});const rows=ledger.get(r.taskId)||[];return json({...base,taskId:r.taskId,afterSequence:r.afterSequence,sequence:rows.length,records:rows.slice(r.afterSequence,r.afterSequence+r.pageLimit)});}
+  assert.equal(u.pathname,'/rest/v1/rpc/mc_owner_task_review_append');const r=taskReviewRequest({action:'append',review:payload.review,operationId:payload.operation_id,expectedSequence:payload.expected_sequence});validateTaskReview(r.review);
+  if(state.reviewDelay){state.reviewDelay=false;await new Promise(resolve=>state.reviewRelease=resolve);}
+  if(!state.active||state.expiry&&state.expiry<=Date.now())return json({code:'42501'},403);
+  const all=[...ledger.values()].flat(),old=all.find(x=>x.operationId===r.operationId);if(old){assert.deepEqual(old.review,r.review);assert.equal(old.sequence,r.expectedSequence+1);return json({...base,record:old});}
+  const t=state.taskCloudRows.get(r.review.taskId);if(!t||JSON.stringify(await createTaskRequirements(t))!==JSON.stringify(r.review.taskRequirements))return json({code:'40001'},409);
+  const rows=ledger.get(t.taskId)||[];if(rows.length!==r.expectedSequence)return json({code:'40001'},409);if(rows.length>=20||all.length>=120)return json({code:'54000'},409);
+  const row={sequence:rows.length+1,operationId:r.operationId,decisionDigest:await browserContextDigest(r.review),committedAt:new Date().toISOString(),review:r.review};ledger.set(t.taskId,[...rows,row]);reviewWrites++;
+  if(state.dropReviewAck){state.dropReviewAck=false;return json({},500);}return json({...base,record:row});
+ };
+ reviewService=createDeploymentTaskReviewServer({activation,environment:{MC_GITHUB_READ_TOKEN:KEY},fetchImpl:reviewFetch,policy:{...realOwnerPolicy,ownerSubject:OWNER,stageOrigin:origin}});
+}
 bundle=await build({entryPoints:['public/app.js'],bundle:true,format:'esm',write:false,metafile:true,plugins:[{name:'synthetic-four-source',setup(b){
  b.onLoad({filter:/repository-run-client\.mjs$/},async args=>({contents:cookieBefore?(await fs.readFile(args.path,'utf8')).replace("credentials:'same-origin'","credentials:'omit'"):await fs.readFile(args.path,'utf8'),resolveDir:process.cwd()+'/src/reporting'}));
  b.onLoad({filter:/public\/owner-auth-client\.js$/},()=>({contents:"export {mountOwnerBrowserEntry,joeyRunSummary,renderSelectedTaskSummary,projectHandoffWords} from '../src/continuity/owner-browser-entry.mjs';",resolveDir:process.cwd()+'/public'}));
@@ -211,6 +239,7 @@ try{for(const width of [375,390,430,1440]){
  const loaded=async(project,sha=A)=>{await page.waitForFunction(({project,sha})=>{const root=document.querySelector('section[data-joey-simple=true]');return root?.dataset.project===project&&root.dataset.sourceState==='connected'&&root.querySelector('[data-remote-handoff-technical]')?.textContent.includes(sha);},{project,sha});};
  const choose=async project=>{await page.locator('#joey-simple-project').selectOption(project);await loaded(project,state.version===2?B:A);};
  await loaded('NEXAEON');await focusReturn();await expiryRefresh();await loaded('NEXAEON');const other=await context.newPage();await other.bringToFront();await page.bringToFront();await other.close();await focusReturn();await loaded('NEXAEON');await page.locator('#owner-workspace-access').evaluate(n=>n.open=false);
+ if(taskReviewQA){await runTaskReviewFlow({page,width,state,context,errors,cases,assert,A,B});continue;}
  if(cloudCurrentnessQA){await runTaskCloudCurrentness({page,width,state,context,errors,cases,assert,B});continue;}
  if(prCiQA&&!requirementsQA){await taskPrCiQA(page,width,context,errors);continue;}
  if(requirementsQA){await runTaskRequirementsFlow({page,width,state,context,errors,cases,assert,fs,screens,A,B});continue;}
@@ -244,5 +273,5 @@ try{for(const width of [375,390,430,1440]){
  await page.locator('#owner-workspace-access').evaluate(n=>n.open=true);await page.getByRole('button',{name:'登出',exact:true}).click();await page.waitForFunction(()=>document.querySelector('#owner-workspace-access')?.dataset.ownerAuth==='signed_out');assert.equal(await page.locator('.joey-simple-progress dd').filter({hasText:'未記錄'}).count(),4);assert.equal(await page.locator('.joey-simple-instruction').inputValue(),'');
  for(const storage of ['localStorage','sessionStorage'])assert(!await page.evaluate(storage=>JSON.stringify(Object.entries(window[storage])).includes('SYNTHETIC_PRIVATE_')||JSON.stringify(Object.entries(window[storage])).includes('請接手專案'),storage));assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));assert.deepEqual(errors,[]);cases.push({width,locale,pass:true,simpleDefault:true,existingPreviewCookieTransport:true,mcOverviewSelectable:true,mcReloadFocus:true,mcFreshCopy:true,mcWorkspaceReports:true,activeViewFocus:true,observationExpiryRefresh:true,blurReturn:true,actualApp:true,officialSDK:true,repositoryReportView:true,reportLifecycle:true,freshReportCopy:true,unmergedReportHandoff:true,reportFailureCopyRefused:true,reportStale:true,reportOutage:true,fixtureAgentOnly:true,reportInstructions:true,freshCopy:true,candidateSeparate:true,historyReload:true,manualFallback:true,singleTapPromisedClipboard:true,asyncClipboardGate:true,unsupportedClipboard:true,gestureOnlyWriteTextFallback:true,selectWholeInstruction:true,pendingReadSwitch:true,privacyClearing:true,documentedProgress:true,membershipRevocation:true,explicitLogout:true,engineerRoutesPreserved:true});await context.close();
  }
- assert.equal(external,0);assert.equal(writes,0);const report={pass:true,actualApp:true,actualOwnerAuth:false,actualRemoteRepositoryRead:false,upstreams:'SYNTHETIC_AUTH_GITHUB_CLIPBOARD',reads,githubReads,external,writes,intendedSyntheticCloudWrites:cloudWrites,intendedSyntheticTaskCloudWrites:taskCloudWrites,cases,screenshots:screens};await fs.writeFile(process.argv[2]||'/tmp/mc-joey-simple-browser.json',JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify({pass:true,cases:cases.length,reportReads,reads,githubReads,external,writes,cloudWrites,taskCloudWrites,screenshots:screens}));
-}finally{state?.release?.();state?.authRelease?.();for(const release of state?.ciReleases||[])release();await browser.close();await new Promise(resolve=>server.close(resolve));}
+ assert.equal(external,0);assert.equal(writes,0);const report={pass:true,actualApp:true,actualOwnerAuth:false,actualRemoteRepositoryRead:false,upstreams:'SYNTHETIC_AUTH_GITHUB_CLIPBOARD',reads,githubReads,external,writes,intendedSyntheticCloudWrites:cloudWrites,intendedSyntheticTaskCloudWrites:taskCloudWrites,intendedSyntheticReviewWrites:reviewWrites,cases,screenshots:screens};await fs.writeFile(process.argv[2]||'/tmp/mc-joey-simple-browser.json',JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify({pass:true,cases:cases.length,reportReads,reads,githubReads,external,writes,cloudWrites,taskCloudWrites,screenshots:screens}));
+}finally{state?.release?.();state?.authRelease?.();state?.reviewRelease?.();for(const release of state?.ciReleases||[])release();await browser.close();await new Promise(resolve=>server.close(resolve));}

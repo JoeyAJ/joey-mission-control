@@ -1,19 +1,19 @@
-# Current task cloud currentness repair — 2026-10-11
+# Current Owner task acceptance records — 2026-10-11
 
 Project: MISSION_CONTROL
-Timestamp: 2026-10-11T12:53:00Z
-Task: Retain per-task conflicts and require fresh cloud-backed CI/handoff
-Status: LOCAL_VERIFIED_PARENT_READ_PREVIEW_PUBLISHED
+Timestamp: 2026-10-11T13:38:05Z
+Task: Approved bounded private acceptance ledger and UI
+Status: LOCAL_VERIFIED_PENDING_PUBLICATION
 Last Developer: Codex
 Executed by: Codex
 Actual Model: UNKNOWN
-Baseline: 62615bf0054049f093bf70bc4796e8c5dc3ad90b
+Baseline: 86806a73eafcd95993a8734e094115ed6af84564
 
-Independent review reproduced overwritten selected-task conflict and200 NOT_CONNECTED downgrade. Conflicts now persist per task; explicit reload resolves only that task. CI captures cloud-backed state and requires exact selected remote task on both reads. Handoff rereads before private copy. Deactivation/outage/missing task clear current evidence and packet, retaining local text. Binding acceptance remains pending independent review.
+Owner approval12:43:39 UTC covers exactly four objects and original caps. Migration applied; ten existing tables/data and old functions/ACLs/schema/memberships unchanged. Native15 and live10 denial checks PASS; new table has zero rows. Server-only capability ON after gates. Approve/request-changes bind saved task requirements, fresh completed report and exact code/source; executionAuthorized false. No Agent/merge/deploy or candidate promotion.
 
-Portable859/build/validate/check,focused64 and20 synthetic browser cases PASS. Evidence: docs/MC_TASK_CLOUD_CURRENTNESS_20261011.md. Prior prefix preserved there byte-for-byte; dated history unchanged. Owner save/reload acceptance10:52 UTC retained; harmless task never executed.
+Evidence: docs/MC_OWNER_TASK_REVIEW_20261011.md. Runtime tests and fixed Preview closure follow there. Prior prefix preserved byte-for-byte; dated history unchanged. Currentness repair already independently released86806a7 READY, portable859/browser20. Owner save/reload acceptance10:52 UTC retained; harmless task never executed.
 
-Next Action: runtime9fb3e7b same Preview exact READY; terminal3/old26 unchanged. Continue approved four-object Owner decision storage, native ACL/data/CAS/capacity/rollback checks before activation. Approval12:43:39 UTC; no decision SQL/grants applied yet. Genuine bound task Agent run/UI device acceptance pending; GitHub permissions UNKNOWN. No Production/other repo/secrets/AWS/model/dispatch. CONNECT403 not bypassed; servedCheckedSha null. Do not recreate rejected VM artifacts.
+Next Action: finish exact READY publication/readback. Genuine bound task Agent run/new Owner UI device acceptance pending; GitHub permissions UNKNOWN. No Production/other repo/new keys/Auth mutation/AWS/model/dispatch. CONNECT403 not bypassed; servedCheckedSha null. Do not recreate rejected VM artifacts.
 
 # Dated prior stage history
 

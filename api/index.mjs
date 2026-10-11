@@ -16,6 +16,7 @@ import {ownerAuthConfig} from '../public/owner-auth-config.js';
 import {createDeploymentProjectOnboardingServer} from '../src/onboarding/project-onboarding-server.mjs';
 import {createDeploymentProjectDraftStorageServer} from '../src/onboarding/project-draft-storage-server.mjs';
 import {createDeploymentTaskStorageServer} from '../src/tasks/task-storage-server.mjs';
+import {createDeploymentTaskReviewServer} from '../src/tasks/task-review-server.mjs';
 const stageChanges=JSON.parse(await fs.readFile(new URL('../deployment/stage-changes.safe.json',import.meta.url),'utf8'));
 const snapshot=JSON.parse(await fs.readFile(new URL('../deployment/production-snapshot.json',import.meta.url),'utf8'));
 const projectStates=JSON.parse(await fs.readFile(new URL('../deployment/project-state.v03b.json',import.meta.url),'utf8'));
@@ -52,6 +53,7 @@ export default async function handler(req,res){
   else if(route==='private/project-drafts'&&req.headers.host===new URL(ownerAuthConfig.stageOrigin).host){result=await createDeploymentProjectDraftStorageServer().handle(req);}
   else if(route==='private/task-reconciliation'&&req.headers.host===new URL(ownerAuthConfig.stageOrigin).host){result=await createDeploymentTaskReconciliationServer().handle(req);}
   else if(route==='private/development-tasks'&&req.headers.host===new URL(ownerAuthConfig.stageOrigin).host){result=await createDeploymentTaskStorageServer().handle(req);}
+  else if(route==='private/task-review-decisions'&&req.headers.host===new URL(ownerAuthConfig.stageOrigin).host){result=await createDeploymentTaskReviewServer().handle(req);}
   else result=productionResponse(req.method,url);
   res.writeHead(result.status,{...securityHeaders,'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store',...result.headers});res.end(JSON.stringify(result.body));}
  catch(error){res.writeHead(error.status||500,{...securityHeaders,'Content-Type':'application/json; charset=utf-8'});res.end(JSON.stringify({error:error.status?error.message:'Production request failed'}));}

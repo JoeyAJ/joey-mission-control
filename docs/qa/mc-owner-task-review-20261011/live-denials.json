@@ -1,0 +1,15 @@
+{
+  "pass": true,
+  "checks": 10,
+  "actualOwnerJwt": false,
+  "actualOwnerDecisionWrites": 0,
+  "fixtureClaims": false,
+  "rollbackOnly": true,
+  "result": [
+    {
+      "native_denials_pass": true,
+      "review_records": 0,
+      "original_tasks": 1
+    }
+  ]
+}

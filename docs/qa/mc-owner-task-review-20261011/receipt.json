@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "qualification": "APPROVED_NATIVE_AND_LIVE_ACL_VERIFIED_OWNER_DEVICE_ACCEPTANCE_PENDING",
+  "approval": {
+    "at": "2026-10-11T12:43:39Z",
+    "scope": "exact proposed four objects/original capacities/two authenticated RPC EXECUTE"
+  },
+  "baselineSha": "86806a73eafcd95993a8734e094115ed6af84564",
+  "migration": {
+    "target": "scmvedfqwlhkyvljymjj",
+    "name": "mc_owner_task_review_decisions_20261011",
+    "success": true,
+    "sha256": "b2b675098ffc76f6adf1215c90e2947c11d557d09e75f836a2c4b2ebae0c0249",
+    "newObjects": 4,
+    "authenticatedRpcGrants": 2,
+    "newKeys": 0,
+    "newRoles": 0,
+    "oldTenTablesUnchanged": true,
+    "oldFunctionsSchemasMembershipsUnchanged": true,
+    "transientCreateSetRestored": true,
+    "newDecisionRows": 0
+  },
+  "nativeCheckGroups": 15,
+  "liveNativeDenials": 10,
+  "activation": "SERVER_ONLY_EXACT_HASH_NATIVE_VERIFIED",
+  "executionAuthorized": false,
+  "actualOwnerJwtOrDeviceVerified": false,
+  "actualOwnerDecisionWrites": 0,
+  "harmlessSaveTestExecuted": false,
+  "genuineCloudBoundAgentRun": "ABSENT",
+  "runtimeGitHubPermissions": "UNKNOWN",
+  "servedCheckedSha": null,
+  "root": {
+    "bytes": 65253,
+    "priorPrefixSha256": "e42e80701ae8483cc51b0f20c995bd4735bdcea2fae0153a6b1378a916df85d4",
+    "datedHistorySha256": "68de1c1e6a0ad588431996926396a6e19777a26ecc6ad7770afd13a3a23a0ea9",
+    "datedHistoryUnchanged": true
+  },
+  "verification": {
+    "portableTests": 872,
+    "focusedOwnerGroups": 13,
+    "failures": 0,
+    "buildValidateCheck": "PASS",
+    "rootIntakeGroups": 20,
+    "forbiddenWorkstationAttempts": 0,
+    "newOwnerBrowserWidths": 4,
+    "cloudCurrentnessBrowserWidths": 4,
+    "projectsPerWidth": [
+      "WOOSONG_BUDDY/BASELINE",
+      "JOEY_ASSET_SYSTEM/UNIVERSITY_CANDIDATE"
+    ],
+    "actualApp": true,
+    "normalDeploymentFactories": true,
+    "officialSDK": true,
+    "intendedSyntheticTaskWrites": 32,
+    "intendedSyntheticReviewWrites": 24,
+    "externalRequests": 0,
+    "unexpectedWrites": 0,
+    "actualOwnerOrProviderHttp": false
+  }
+}

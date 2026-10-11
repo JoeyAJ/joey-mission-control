@@ -1,0 +1,29 @@
+{
+  "pass": true,
+  "syntheticOnly": true,
+  "nativePostgres": "17.11",
+  "imageSha256": "327daa8fae7178d61f93142f146b098467b345e10997b9eb79f63bd58e5c8f3c",
+  "network": "none",
+  "hostMounts": 0,
+  "actualSupabaseRuntime": false,
+  "liveAuthOrSupabaseRequests": 0,
+  "checks": [
+    "exact migration transaction rollback leaves no new objects",
+    "existing helpers, schema ACLs and role memberships unchanged after commit and rollback",
+    "native forced RLS and exact two authenticated RPC grants; no direct/helper access or CREATE residue",
+    "JS/SQL canonical request+review digest parity, original-time exact retry and acceptance-only acknowledgement",
+    "operation-content conflict, stale CAS and wrong current requirement digest refuse without append",
+    "exact retry returns original dated tuple after task revision changes",
+    "anon/service-role/no-session/AAL1/revoked/expired/nonmember/foreign Owner denial",
+    "no direct authenticated access; forced-RLS denies executor UPDATE/DELETE without extra trigger object",
+    "SQL/JS exact shape, private comment, UTF16 caps, path/run and track validation parity",
+    "20/task capacity,50/page upper bound, contiguous cursor and retry at capacity without history rotation",
+    "two native connections with same sequence produce one immutable record and one CAS refusal",
+    "Owner revocation during native advisory lock wait refuses append after await",
+    "120/Owner shared capacity across tasks, no deletion or silent growth",
+    "two different task writers compete for final Owner slot under the same lock",
+    "decision rollback leaves zero records and exact existing task data"
+  ],
+  "containerRemoved": true,
+  "migrationSha256": "b2b675098ffc76f6adf1215c90e2947c11d557d09e75f836a2c4b2ebae0c0249"
+}
