@@ -1,19 +1,19 @@
-# Current preflight conflict repair — 2026-10-11
+# Current workspace motion integration — 2026-10-11
 
 Project: MISSION_CONTROL
-Timestamp: 2026-10-11T15:17:53.905Z
-Task: Reserved report ref and per-draft remote conflict protection
-Status: LOCAL_VERIFIED_PARENT_READ_PREVIEW_PUBLISHED
+Timestamp: 2026-10-11T15:37:00.662Z
+Task: Integrate exact private linked task/file/event pane motion
+Status: LOCAL_VERIFIED_PENDING_PUBLICATION
 Last Developer: Codex
 Executed by: Codex
 Actual Model: UNKNOWN
-Baseline: d29123b0599a92ec19386f2414b8f44c91f9ed93
+Baseline: 7cff2ed735207e14bf16184330d4a13eaaf09fe5
 
-Reserved mc/progress and its parent/child source branches yield CONFLICT, never a ready creation plan. Each remotely changed draft retains its own conflict; repeated preflight, unrelated save/reload and failed reload cannot authorize overwriting newer text. Explicit resolution affects only that draft. No provisioning or execution authority.
+Exact313401b seven-file slice reviewed and cherry-picked asf6379aa; current Owner bundle rebuilt. Verified selection gives coordinated180ms visible-pane motion; rapid/remount/reduced-motion/Owner/source refusal cancel it. Fresh appended reports alone receive arrival highlights. No invented activity or execution.
 
-Evidence: docs/MC_PREFLIGHT_CONFLICT_REPAIR_20261011.md. RED3 reproduced stale writes; focused60 PASS. Portable898/build/validate/check, focused60/root20/browser8 PASS; forbiddenAttempts0. Runtimeb22489a exact fixed Preview READY. Original six files, task review, SQL/config/source scopes and dated history preserved. Actual Owner writes0; saved test untouched.
+Evidence: docs/MC_WORKSPACE_MOTION_INTEGRATION_20261011.md. Portable907/build/validate/check, focused116/root20/browser48 PASS; forbiddenAttempts0. Fixed Preview pending. Both preflight repairs and task review/SQL/API/scopes/palette preserved. Actual Owner writes0, saved test untouched. Prior prefix preserved there; dated history unchanged.
 
-Next Action: docs closure and final exact SHA/READY receipt, then own new bugfix terminal at final work HEAD; no post-terminal work HEAD advance. Real task/Owner acceptance deferred until tomorrow. No new repo/SQL/grants/keys/deployment project/dispatch/AWS/Production. CONNECT403 is not bypassed; servedCheckedSha null.
+Next Action: complete canonical checks, publish same Preview and close own new integration run at final work HEAD. Actual served/Owner acceptance remains pending and real task deferred. No Production/SQL/permissions/dispatch/model selector/AWS. Normal CONNECT403 will not be bypassed.
 
 # Dated prior stage history
 

@@ -1,0 +1,21 @@
+{
+  "sourceCommit": "313401b1a08f1a5435de3e103a76f276563c555e",
+  "sourceParent": "d29123b0599a92ec19386f2414b8f44c91f9ed93",
+  "canonicalBase": "7cff2ed735207e14bf16184330d4a13eaaf09fe5",
+  "exactFiles": [
+    "docs/MC_WORKSPACE_MOTION_20261011.md",
+    "docs/qa/mc-workspace-motion-20261011/receipt.json",
+    "src/reporting/workbench-motion.mjs",
+    "src/reporting/workbench-view.mjs",
+    "tests/browser/dynamic-workbench-qa.mjs",
+    "tests/browser/workbench-motion-assertions.mjs",
+    "tests/workbench-motion.test.mjs"
+  ],
+  "rendererNoOverlap": true,
+  "generatedBundleExcluded": true,
+  "sourceSevenFilesByteIdenticalAfterIntegration": true,
+  "preflightTaskSqlApiPaletteByteUnchanged": true,
+  "generatedOwnerBundleSha256": "13ebfca7306a0388249423cb6989c0228b023ea7211a42a17de8356d6a9eb86b",
+  "datedHistoryUnchanged": true,
+  "previousRootPrefixPreserved": true
+}

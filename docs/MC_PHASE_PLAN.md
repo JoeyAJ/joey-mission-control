@@ -1,3 +1,7 @@
+# Current bounded integration — linked workspace motion
+
+Exact private motion slice is presentation over existing verified tuples. Both preflight repairs and current source/task/review/privacy qualifications remain preserved. [Canonical integration evidence](MC_WORKSPACE_MOTION_INTEGRATION_20261011.md). No new events, execution, SQL/permission or Production changes.
+
 # Current bounded repair — preflight conflicts
 
 Reserved report-ref overlaps and per-draft remote revision conflicts must fail closed, preserving local text until explicit resolution of that draft. No SQL/permission/provisioning change. [Repair evidence](MC_PREFLIGHT_CONFLICT_REPAIR_20261011.md). Existing acceptance gaps remain qualified.
