@@ -3,9 +3,10 @@ import {ownerAuthConfig} from '../../public/owner-auth-config.js';
 import {boundedPrivateJsonRequest,createCurrentOwnerVerifier} from '../continuity/remote-handoff-server.mjs';
 import {createGitHubRepositoryRunReader} from '../reporting/repository-run-server.mjs';
 import {repositoryRunConfiguration,readRepositoryRuns} from '../reporting/repository-run-source.mjs';
+import {hasSensitiveTaskText} from './development-task.mjs';
 import {RECONCILIATION_VERSION,RECONCILIATION_LIMITS,reconciliationRequest,validateReconciliationReply,failReconciliation as fail} from './task-reconciliation-contract.mjs';
 const sha=/^[a-f0-9]{40}$/,permissions={pullRequests:'Pull requests',checks:'Checks',statuses:'Commit statuses',actions:'Actions'};
-const label=x=>typeof x==='string'&&x.trim()&&x.length<=100&&!/[\u0000-\u001f\u007f]|gh[pousr]_|github_pat_|Bearer\s|sb_secret_|PRIVATE KEY|\beyJ[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.|\b(?:secret|password|token)\s*[:=]/i.test(x)?x:'名稱已隱藏';
+const label=x=>typeof x==='string'&&x.trim()&&x.length<=100&&!hasSensitiveTaskText(x)&&!/[\u0000-\u001f\u007f]|gh[pousr]_|github_pat_|Bearer\s|sb_secret_|PRIVATE KEY|\beyJ[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.|\b(?:secret|password|token)\s*[:=]/i.test(x)?x:'名稱已隱藏';
 export function createGitHubTaskReconciliationReader({credential,configuration,fetchImpl=globalThis.fetch}={}){
  const c=configuration,configured=typeof credential==='string'&&credential.length>=20&&!/\s/.test(credential);
  const get=async(path,signal)=>{if(!configured)throw fail('RECONCILIATION_NOT_CONFIGURED');let hasNext=false;const r=await boundedPrivateJsonRequest(async(url,options)=>{const response=await fetchImpl(url,options);hasNext=/<[^>]+>;\s*rel="next"/.test(response.headers?.get('link')||'');return response;},'https://api.github.com/repos/'+c.repositoryId+'/'+path,{headers:{Authorization:'Bearer '+credential,Accept:'application/vnd.github+json','X-GitHub-Api-Version':'2026-03-10'}},signal,1048576);return {...r,hasNext};};

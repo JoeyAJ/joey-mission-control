@@ -1,19 +1,19 @@
-# Current PR/CI read-only increment — 2026-10-11
+# Current PR/CI reviewer corrections — 2026-10-11
 
 Project: MISSION_CONTROL
-Timestamp: 2026-10-11T09:45:26.058Z
-Task: Existing task / Agent report / exact-commit PR-CI inspection
-Status: LOCAL_VERIFIED_PARENT_READ_PREVIEW_PUBLISHED
+Timestamp: 2026-10-11T10:13:53.295Z
+Task: Quoted credential label privacy and delayed canonical source correlation
+Status: LOCAL_VERIFIED_PENDING_PUBLICATION
 Last Developer: Codex
 Executed by: Codex
 Actual Model: UNKNOWN
-Baseline: fe1a5b6d783e4dd1768b0fd98520524ae2aba21d
+Baseline: 95d850f6779089cd6e6d61863c7079e8065cdcf1
 
-Private completed-task inspection separates Agent tests from GitHub PR/check/status/Actions metadata. Full report scan and canonical repo/track/exact commit, pre/post Owner/HEAD/report binding, bounded complete reads and expiry/switch/edit/failure clearing; no arbitrary URLs/logs/raw output/storage. CI empty/permission/outage/conflict/overflow stay qualified; no acceptance/merge/deploy action. Report lacks requirements revision; Joey must check current request. University candidate stays pending; main PR cannot qualify it.
+Reuse task quoted-key privacy guard in provider redaction and client label/context-ID validation. PR-CI needs current connected FOUND project/track/repo/ref/HEAD equal to captured and returned binding; source reading/change invalidates pending reads, including change-and-return and final Owner await. No stale result or legacy fallback. Exact-code/report/private Owner scope retained.
 
-Portable840/build/validate/check, focused9 and32 synthetic actual-app browser cases PASS. Live runtime PR/CI permission UNKNOWN; connected-app reads are a distinct credential. Actual Owner HTTP/device acceptance pending; cloud CONNECT403 is not bypassed. Existing approved tasks/drafts ON, fresh Continue and40-run history preserved. New Codex run starts page2, predecessor prior terminal task run; never append that terminal run. SQL/Auth/secrets/permissions/Production/other repo/AWS/model/dispatch unchanged. Do not recreate rejected VM artifacts.
+Synthetic focused29 and actual-app privacy/source-race8 PASS; full portable verification and authorized fixed Preview proof follow in docs/MC_PR_CI_REVIEW_FIXES_20261011.md. Prior exact root prefix is preserved there. Original terminal runs/history remain; new BUGFIX run uses page2 and prior PR-CI predecessor. Existing tasks/drafts ON, candidate acceptance pending, unsigned sources UNKNOWN. SQL/Auth/permissions/secrets/Production/other repo/AWS/model/dispatch unchanged.
 
-Next Action: authorized Preview c4d089f READY; Owner inspects a completed task via 重新核對 PR／CI. Details and current publication receipt: docs/MC_PR_CI_RECONCILIATION_20261011.md.
+Next Action: use docs/MC_OWNER_PR_CI_ONE_SCREEN_TEST_20261011.md. Cloud save/reload is independent; MC legacy reports have no compatible task ID. Live runtime GitHub permission and actual Owner acceptance remain unverified; CONNECT403 is not permission proof. No new grant or bypass.
 
 # Dated prior stage history
 

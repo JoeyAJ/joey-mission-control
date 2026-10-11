@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "qualification": "REVIEW_CORRECTIONS_SYNTHETIC_VERIFIED_OWNER_RUNTIME_PENDING",
+  "baselineSha": "95d850f6779089cd6e6d61863c7079e8065cdcf1",
+  "checkedAt": "2026-10-11T10:14:42.272Z",
+  "fixes": [
+    "SERVER_AND_CLIENT_QUOTED_CREDENTIAL_GUARD",
+    "CURRENT_FOUND_SOURCE_TUPLE_AND_GENERATION_AFTER_AWAITS"
+  ],
+  "verification": {
+    "focusedGroups": 29,
+    "portableTests": 843,
+    "portableFailures": 0,
+    "buildValidateCheck": "PASS",
+    "portabilityForbiddenAttempts": 0,
+    "rootGuardGroups": 20,
+    "prCiBrowserCases": 8,
+    "cloudTaskBrowserCases": 4,
+    "intendedSyntheticTaskCloudWrites": 16,
+    "externalRequests": 0,
+    "unexpectedWrites": 0,
+    "actualOwnerAuth": false,
+    "actualProviderHttp": false
+  },
+  "sourceRaceCases": [
+    "INITIALLY_READING_THEN_NEW_HEAD",
+    "DURING_REPORT_REFRESH_CHANGE_AND_RETURN",
+    "PENDING_CLIENT_RESPONSE_CHANGE",
+    "SILENT_SNAPSHOT_CHANGE",
+    "HEAD_CHANGE_AND_RETURN",
+    "PROJECT_TRACK_REPO_REF_CHANGE",
+    "DURING_FINAL_OWNER_AWAIT",
+    "ACTUAL_APP_HELD_AUTHENTICATED_RESPONSE_THEN_SOURCE_REFRESH"
+  ],
+  "runtimeDiagnostic": {
+    "scope": "EXACT_95D850_READY_DEPLOYMENT_READ_ONLY",
+    "deploymentId": "dpl_Am3cD8VpHMKgHYuARHgPu5mA26u6",
+    "sourceFileTree": {
+      "status": 404,
+      "operation": "GET /v6/deployments/{id}/files",
+      "reason": "File tree not found"
+    },
+    "observabilitySchema": {
+      "status": 404,
+      "reason": "Observability Data not found"
+    },
+    "runtimeLogQuery": {
+      "path": "/api/private/task-reconciliation",
+      "window": "30m",
+      "groupBy": "requestPath",
+      "mode": "COUNTS_ONLY_NO_INDIVIDUAL_LOGS",
+      "groupsReturned": 0,
+      "qualification": "BOUNDED_TOP_GROUPS_NOT_PROOF_OF_NO_REQUESTS_OR_CHANNEL_RESULT"
+    },
+    "exactEndpointChannelResultObserved": false,
+    "runtimePermissions": "UNKNOWN",
+    "sessionCredentialOrBypassAccessed": false,
+    "servedBytesVerified": false
+  },
+  "ownerFlow": {
+    "document": "docs/MC_OWNER_PR_CI_ONE_SCREEN_TEST_20261011.md",
+    "cloudSaveReloadIndependentlyTestable": true,
+    "prCiNeedsMatchingCompletedTaskReport": true,
+    "mcPinnedInventorySha": "c0b18069ccb64ba714c9b8df52eb42f17bbbade6",
+    "mcFiles": 21,
+    "mcCompletedReports": 20,
+    "mcDevelopmentTaskCompatibleReportIds": 0,
+    "cloudTaskContentsRead": false,
+    "legacyReportsReassigned": false
+  },
+  "run": {
+    "runId": "codex-mc-pr-ci-privacy-source-20261011",
+    "predecessorRunId": "codex-mc-pr-ci-reconciliation-20261011",
+    "path": ".mission-control/runs-page-2/codex-mc-pr-ci-privacy-source-20261011.json",
+    "sequence": 1,
+    "reportCommitSha": "89a9e7222ef0de95e416ed754429c69065b9abc1",
+    "blobId": "768a5a3d97ca8dc24bf45c5867a76e0208eabed1",
+    "priorTerminalRunsMutated": false
+  },
+  "publication": {
+    "state": "PENDING_AUTHORIZED_FIXED_PREVIEW",
+    "projectId": "prj_X67htPw7vkRI2tuf8817vOUCGQOD",
+    "servedCheckedSha": null
+  },
+  "preserved": {
+    "originalTwentyReportBlobs": true,
+    "priorPageTwoReportBlob": true,
+    "sourceScopesCandidateQualification": true,
+    "tasksDraftsActivation": "ON_EXISTING_APPROVED",
+    "sqlAuthSecretsGrantsChanged": false,
+    "modelAwsDispatchMergeDeployExecutor": false,
+    "productionOrOtherRepositoryChanged": false
+  }
+}
