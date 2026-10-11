@@ -34,6 +34,15 @@
       "summary": "Inspect verified957ac164 handoff/eight-step breakdown. Existing project-specific task handoff already exists; implement the missing task-specific report inspection using existing projection/renderer/disclosure state, no new SQL or permissions. Owner cloud save acceptance stays accepted; never execute the harmless save test.",
       "result": null,
       "delivery": null
+    },
+    {
+      "id": "implemented-scoped-task-report-inspection",
+      "sequence": 2,
+      "eventAt": "2026-10-11T11:25:42.635Z",
+      "kind": "progress",
+      "summary": "Missing task inspection slice implemented with existing source/report projection, report renderer and transient disclosure helper. Same taskId/project/track/repo only, full scan before filter, source failure clears and request revision unrecorded disclosed. Focused34 PASS; dedicated saved-task browser/full aggregate and retained privacy/theme regressions in progress. No new SQL/permission or harmless-task execution; prior Owner save acceptance preserved.",
+      "result": null,
+      "delivery": null
     }
   ]
 }
