@@ -43,6 +43,15 @@
       "summary": "Owner new-project form, private session draft/export/import and full canonical bootstrap implemented. Portable783 and four-width synthetic app QA PASS. Executor healthy. Cloud save needs bounded mc_private.project_drafts plus Owner/AAL2/session list/save/delete RPC with CAS, max12 drafts/98KiB each. No new keys or existing data/ACL changes. New repo read/report scope pending; no provisioning or formal registration claimed.",
       "result": null,
       "delivery": null
+    },
+    {
+      "id": "recovery-checkpoint-3",
+      "sequence": 3,
+      "eventAt": "2026-10-11T06:29:08.671Z",
+      "kind": "progress",
+      "summary": "Authorized recovery rebuilt lost unpublished onboarding from remote09d39f23. Fresh portable784/build/validate/check, focused18, onboarding4 widths and shared brief6 PASS. Durable source ff27b7b pushed; fixed Preview READY exactSHA. Cloud draft SQL/RPC/ACL proposal is review-only, NOT_APPLIED; new source/report grant and registration pending. Existing five scopes preserved. Original run baseline/events unchanged.",
+      "result": null,
+      "delivery": null
     }
   ]
 }
