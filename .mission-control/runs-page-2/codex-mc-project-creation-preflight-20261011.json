@@ -34,6 +34,15 @@
       "summary": "Parent authorized independent bounded new-project preflight while real-task acceptance waits. Existing Owner drafts and six-file bundle inspected. Added deterministic private target proposals, exact source/report requirements, compact ready/missing/conflict view and one-copy plan plus original bundle. No provisioning, SQL/grants/newkeys or Owner task writes. Focused47 PASS; portable and browser checks running.",
       "result": null,
       "delivery": null
+    },
+    {
+      "id": "verified-project-creation-preflight",
+      "sequence": 2,
+      "eventAt": "2026-10-11T14:42:35.159Z",
+      "kind": "progress",
+      "summary": "Preflight exact target/branch/six-files/Preview/source/report plan implemented; gaps and conflicts stay explicit, no target existence/provisioning inferred. Portable887/build/validate/check, focused49/root20/browser8 PASS; expanded phone checked, external/unexpected0. SQL/config/source scope/old bundle/task-review unchanged. Preparing same authorized branch/fixed Preview.",
+      "result": null,
+      "delivery": null
     }
   ]
 }
