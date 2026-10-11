@@ -34,6 +34,15 @@
       "summary": "Independent motion review passed; bounded terminal-null-expiry RAF edge confirmed. Actual old renderer predicate allows a299990ms event after25ms RAF delay. Repairing frame-time event/observation gate only, preserving valid selection/report behavior. Old13:25 test PID being identified read-only; no SQL/permissions/Production or another feature phase.",
       "result": null,
       "delivery": null
+    },
+    {
+      "id": "motion-frame-verified-2",
+      "sequence": 2,
+      "eventAt": "2026-10-11T16:06:28.608Z",
+      "kind": "progress",
+      "summary": "Frame gate rechecks report event/file-observation age, including null terminal expiry. Actual old predicate RED; deterministic+5/+10/+25ms cases preserve valid navigation and refuse five-minute boundary. Portable909/focused118/root20/browser20 PASS; protected preflight/task/SQL/API/scopes/palette unchanged. Identified our orphaned13:25 test and child, scoped PID-handle SIGTERM; no live old test, exited zombies await init. Same Preview closure only; no new phase.",
+      "result": null,
+      "delivery": null
     }
   ]
 }
