@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "qualification": "SCOPED_SAVED_TASK_REPORT_INSPECTION_SYNTHETIC_VERIFIED_REAL_AGENT_PENDING",
+  "baselineSha": "957ac164b57d64ccb0f55b148d24aab6649b2cc6",
+  "checkedAt": "2026-10-11T11:36:28.653962Z",
+  "verification": {
+    "focusedGroups": 34,
+    "portableTests": 848,
+    "failures": 0,
+    "buildValidateCheck": "PASS",
+    "forbiddenWorkstationAttempts": 0,
+    "browserCases": {
+      "savedTaskInspection": 4,
+      "prCi": 8,
+      "existingTask": 4,
+      "cloudTask": 4,
+      "freshContinue": 12,
+      "paletteDisclosure": 6
+    },
+    "totalBrowserCases": 38,
+    "intendedSyntheticTaskWrites": 24,
+    "externalRequests": 0,
+    "unexpectedWrites": 0,
+    "actualOwnerAuth": false,
+    "actualProviderHttp": false,
+    "rootSafeIntakeGroups": 10
+  },
+  "scopeProof": {
+    "pass": true,
+    "baselineSha": "957ac164b57d64ccb0f55b148d24aab6649b2cc6",
+    "sharedApiLabelGuardAndServerContractUnchanged": true,
+    "taskPayloadValidatorAndApprovedSqlUnchanged": true,
+    "ownerAcceptedReceiptUnchanged": true,
+    "freshContinueTransportUnchanged": true,
+    "prCiPostAwaitSourceGenerationGuardsUnchanged": true,
+    "paletteUnchangedWithOnlyScopedTaskButtonWrap": true
+  },
+  "ownerCloudSaveAcceptance": {
+    "qualification": "JOEY_REPORTED_ACTUAL_OWNER_UI_ACCEPTANCE_VIA_PARENT",
+    "reportedAtUtc": "2026-10-11 10:52 UTC",
+    "receipt": "docs/qa/mc-owner-cloud-save-acceptance-20261011/receipt.json",
+    "ownerObservedExactCodeSha": null,
+    "testTaskExecutedOrDispatched": false
+  },
+  "remaining": {
+    "actualMatchingCloudTaskAgentReport": "ABSENT_NOT_FABRICATED_OR_LEGACY_REASSIGNED",
+    "requestRevisionBinding": "UNRECORDED_USER_COMPARISON_REQUIRED",
+    "runtimeGitHubReadPermissions": "UNKNOWN",
+    "newPanelActualDeviceAcceptance": "PENDING",
+    "durableOwnerDecisionMergeDeployPipeline": "NOT_IMPLEMENTED"
+  },
+  "publication": {
+    "state": "LOCAL_PENDING_PUBLICATION",
+    "servedCheckedSha": null
+  },
+  "priorCurrentPrefixSha256": "3ad4786eb86c240dec4da9bff2391372bc2e6f81ebebc3f2ab8c17468c1c066c",
+  "run": {
+    "runId": "codex-mc-task-report-inspection-20261011",
+    "taskId": "mc-task-report-inspection-20261011",
+    "taskIdQualification": "ACTUAL_DEVELOPER_WORK_NOT_OWNER_CLOUD_TASK",
+    "predecessorRunId": "codex-mc-pr-ci-api-key-20261011",
+    "path": ".mission-control/runs-page-2/codex-mc-task-report-inspection-20261011.json",
+    "progressCommitSha": "7bfd564d802c34ab607ce1e9898e4c3c4e83919a",
+    "progressBlobId": "f6c90e5d53362defb5ee0ded4e200e21b889193d",
+    "state": "PROGRESS_2"
+  }
+}

@@ -1,19 +1,19 @@
-# Current PR/CI API-key label correction — 2026-10-11
+# Current saved-task Agent report inspection — 2026-10-11
 
 Project: MISSION_CONTROL
-Timestamp: 2026-10-11T10:47:23.074Z
-Task: Shared provider-label privacy guard for API-key assignment variants
-Status: LOCAL_VERIFIED_PARENT_READ_PREVIEW_PUBLISHED
+Timestamp: 2026-10-11T11:37:03.904767Z
+Task: Inspect exact saved-task Agent progress, tests and final handoff
+Status: LOCAL_VERIFIED_PENDING_PUBLICATION
 Last Developer: Codex
 Executed by: Codex
 Actual Model: UNKNOWN
-Baseline: 7a10322e1936f0ecbfe1c854f24bc8a00e895654
+Baseline: 957ac164b57d64ccb0f55b148d24aab6649b2cc6
 
-Shared PR-CI label/context-ID guard covers API-key assignment variants. Server redacts before response; client rejects unsafe replies; synthetic DOM regressions PASS. Task validator/SQL parity, current-source races, palette/disclosures, candidate qualification and fresh Continue unchanged.
+Existing full task handoff reused. New collapsed task panel uses verified projection/report viewer: full scan then exact taskId/project/track/repo; failure clears,20/page,dated Agent tests and pinned handoff. Request revision remains unrecorded and explicit; completion still needs Joey review. Long task buttons wrap; palette and prior privacy/current-source guards preserved.
 
-Portable845/build/validate/check, focused31/root10 and18 synthetic browser cases PASS incl server-client-DOM8, cloud-task4 and palette/disclosure6. Evidence: docs/MC_PR_CI_API_KEY_LABEL_FIX_20261011.md. Prior current root prefix preserved there byte-for-byte; dated root history unchanged. New receiving-Agent BUGFIX run starts page2 after terminal palette run; no prior terminal append.
+Portable848/build/validate/check,focused34 and38 synthetic browser cases PASS. Evidence: docs/MC_TASK_REPORT_INSPECTION_20261011.md. Prior root prefix preserved there byte-for-byte; dated history unchanged. Owner cloud save/reload accepted10:52 UTC; no repeat or harmless-task execution.
 
-Next Action: fixed Preview635dcfe READY; independent docs/MC_OWNER_CLOUD_SAVE_ACCEPTANCE_20261011.md. Owner save/reload accepted10:52 UTC; receipt docs/MC_OWNER_CLOUD_SAVE_ACCEPTANCE_RECEIPT_20261011.md. Appearance pending; GitHub permission UNKNOWN. No compatible completed cloud-task report; do not click disabled PR/CI or rewrite old reports. SQL/Auth/secrets/grants/Production/other repo/AWS/model/dispatch unchanged; CONNECT403 not bypassed. Do not recreate rejected VM artifacts.
+Next Action: publish same fixed Preview and close own receiving-Agent run. Genuine cloud task report absent; authorized external Agent must use exact real taskId, never rewrite legacy. Runtime GitHub permissions UNKNOWN; request-version binding and durable Owner decisions remain later bounded work. No new SQL/Auth/grants/secrets/other repo/Production/AWS/model/dispatch. CONNECT403 not bypassed; servedCheckedSha null. Do not recreate rejected VM artifacts.
 
 # Dated prior stage history
 

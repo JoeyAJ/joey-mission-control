@@ -2,20 +2,22 @@ import assert from 'node:assert/strict';
 
 // Rendered contrast and interaction checks; no source/report text is collected.
 export async function assertReferenceTheme(page,{mode,width}){
+ const briefScope=mode==='workspace'?'#workspace .selected-task-brief':'section[data-joey-simple=true] .selected-task-brief';
+ const disclosureSelector=briefScope+' .selected-task-disclosure>summary';
  const previous=await page.evaluateHandle(()=>document.activeElement);
- await page.locator('.selected-task-disclosure>summary').first().focus();
+ await page.locator(disclosureSelector).first().focus();
  await page.keyboard.press('Tab');await page.keyboard.press('Shift+Tab');
- const receipt=await page.evaluate(({mode,width})=>{
+ const receipt=await page.evaluate(({mode,width,briefScope,disclosureSelector})=>{
   const style=selector=>{const n=document.querySelector(selector);if(!n)throw Error('Missing theme surface: '+selector);const s=getComputedStyle(n),r=n.getBoundingClientRect();return{color:s.color,background:s.backgroundColor,border:s.borderTopColor,radius:parseFloat(s.borderTopLeftRadius),height:r.height,transition:s.transitionDuration};};
   const rgb=c=>c.match(/[\d.]+/g).slice(0,3).map(Number),lum=c=>rgb(c).map(n=>{n/=255;return n<=.04045?n/12.92:((n+.055)/1.055)**2.4;}).reduce((s,n,i)=>s+n*[.2126,.7152,.0722][i],0),contrast=(a,b)=>(Math.max(lum(a),lum(b))+.05)/(Math.min(lum(a),lum(b))+.05);
-  const body=style('body'),agent=style('.selected-task-agent'),date=style('.selected-task-date'),disclosure=style('.selected-task-disclosure>summary');
+  const body=style('body'),agent=style(briefScope+' .selected-task-agent'),date=style(briefScope+' .selected-task-date'),disclosure=style(disclosureSelector);
   const selector=mode==='joey'?'[data-joey-primary]':'.run-workbench-card[aria-pressed=true]',action=style(selector);
-  const focus=getComputedStyle(document.querySelector('.selected-task-disclosure>summary')).outlineColor;
+  const focus=getComputedStyle(document.querySelector(disclosureSelector)).outlineColor;
   const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
   const card=style(mode==='joey'?'.joey-mobile-activity':'.run-workbench-card');
   const panes=mode==='workspace'?[...document.querySelectorAll('#workspace .command-layout>:is(.command-projects,.command-events,.command-explorer,.command-context)')].map(n=>getComputedStyle(n).backgroundColor):[];
   return{mode,width,body:body.background,action,cardRadius:card.radius,focus,reduced,panes,agentContrast:contrast(agent.color,body.background),dateContrast:contrast(date.color,body.background),disclosureContrast:contrast(disclosure.color,body.background),actionContrast:contrast(action.color,action.background),controlBorderContrast:contrast(action.border,body.background),touchDisclosureHeight:disclosure.height,overflow:document.documentElement.scrollWidth>innerWidth+1};
- },{mode,width});
+ },{mode,width,briefScope,disclosureSelector});
  await previous.evaluate(n=>n?.isConnected&&n.focus({preventScroll:true}));await previous.dispose();
  assert.equal(receipt.body,'rgb(26, 26, 25)');
  assert(receipt.agentContrast>=4.5&&receipt.dateContrast>=4.5&&receipt.disclosureContrast>=4.5);
