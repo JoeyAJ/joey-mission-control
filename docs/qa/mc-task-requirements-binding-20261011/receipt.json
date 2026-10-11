@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "qualification": "TASK_REQUIREMENTS_BINDING_SYNTHETIC_VERIFIED_REAL_BOUND_TASK_RUN_PENDING",
+  "baselineSha": "e35e7aec258286ebb7abacbcef31a4e2e5018567",
+  "checkedAt": "2026-10-11T12:26:09Z",
+  "verification": {
+    "focusedGroups": 61,
+    "portableTests": 856,
+    "failures": 0,
+    "buildValidateCheck": "PASS",
+    "forbiddenWorkstationAttempts": 0,
+    "browserCases": {
+      "requirements": 4,
+      "prCi": 8,
+      "savedTaskInspection": 4,
+      "existingTask": 4,
+      "cloudTask": 4,
+      "paletteDisclosure": 6,
+      "freshContinue": 12
+    },
+    "totalBrowserCases": 42,
+    "intendedSyntheticTaskWrites": 40,
+    "syntheticOtherDeviceMockStateSaves": 8,
+    "externalRequests": 0,
+    "unexpectedWrites": 0,
+    "actualOwnerAuth": false,
+    "actualProviderHttp": false,
+    "rootSafeIntakeGroups": 10
+  },
+  "scopeProof": {
+    "pass": true,
+    "baselineSha": "e35e7aec258286ebb7abacbcef31a4e2e5018567",
+    "taskValidatorAndApprovedSqlUnchanged": true,
+    "sharedApiLabelPrivacyGuardUnchanged": true,
+    "freshSourceCopyTransportUnchanged": true,
+    "paletteUnchanged": true,
+    "actualOwnerCloudSaveAcceptanceUnchanged": true,
+    "sourceAndTaskStoragePermissionsUnchanged": true,
+    "previousPostAwaitSourceGuardsRetained": true,
+    "orderedSourceRaceCases": 10,
+    "sqlAuthCredentialsGrantsWritesPerformed": false
+  },
+  "requirements": {
+    "schemaVersion": "mc.task-requirements.v1",
+    "payload": [
+      "schemaVersion",
+      "projectId",
+      "track",
+      "taskId",
+      "revision",
+      "request"
+    ],
+    "timestampsExcluded": true,
+    "algorithm": "CANONICAL_JSON_UTF8_SHA256",
+    "immutableReportHeader": true,
+    "legacyReportsUpgraded": false,
+    "fullRequestInPrivatePacketOnly": true,
+    "matchingQualification": "EXACT_TASK_REQUIREMENTS_MATCH",
+    "matchingDoesNotEstablishOwnerAcceptanceOrExecution": true,
+    "postAwaitCloudTaskRead": true,
+    "existingSourceGuardsRetained": true
+  },
+  "ownerCloudSaveAcceptance": {
+    "qualification": "JOEY_REPORTED_ACTUAL_OWNER_UI_ACCEPTANCE_VIA_PARENT",
+    "reportedAtUtc": "2026-10-11 10:52 UTC",
+    "receipt": "docs/qa/mc-owner-cloud-save-acceptance-20261011/receipt.json",
+    "ownerObservedExactCodeSha": null,
+    "testTaskExecutedOrDispatched": false
+  },
+  "ownerDecisionProposal": {
+    "path": "docs/MC_OWNER_TASK_DECISION_PERSISTENCE_PROPOSAL_20261011.md",
+    "qualification": "PROPOSAL_ONLY_NOT_IMPLEMENTED_NOT_APPLIED",
+    "sqlOrAclApplied": false,
+    "recordingTriggersExecution": false
+  },
+  "remaining": {
+    "actualMatchingCloudTaskAgentReport": "ABSENT_NOT_FABRICATED_OR_LEGACY_REASSIGNED",
+    "runtimeGitHubReadPermissions": "UNKNOWN",
+    "newBindingActualDeviceAcceptance": "PENDING",
+    "durableOwnerDecisionMergeDeployPipeline": "NOT_IMPLEMENTED"
+  },
+  "publication": {
+    "state": "PENDING",
+    "servedCheckedSha": null
+  },
+  "priorCurrentPrefixSha256": "3e1770c3d9430deecad14e1154448d068a2fa89561510b16c6ef869f463ae3c0",
+  "datedHistorySha256": "68de1c1e6a0ad588431996926396a6e19777a26ecc6ad7770afd13a3a23a0ea9",
+  "run": {
+    "runId": "codex-mc-task-requirements-20261011",
+    "taskId": "mc-task-requirements-20261011",
+    "taskIdQualification": "ACTUAL_DEVELOPER_WORK_NOT_OWNER_CLOUD_TASK",
+    "predecessorRunId": "codex-mc-task-report-inspection-20261011",
+    "path": ".mission-control/runs-page-2/codex-mc-task-requirements-20261011.json",
+    "progressCommitSha": "18696db967f667f73bb784eabe17e9314eae6c1b",
+    "progressBlobId": "395781aa7b219136add52b74ef1d4d53e4ad83bb",
+    "state": "PROGRESS_SEQUENCE_2"
+  }
+}
+

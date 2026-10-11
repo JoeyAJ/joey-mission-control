@@ -6,6 +6,7 @@ import {taskStorageActivation,taskStorageEnabled,taskStorageProposalSha256} from
 import {createTaskStorageClient} from '../src/tasks/task-storage-client.mjs';
 import {validateTaskList,taskStorageRequest,validateTaskRpcReply} from '../src/tasks/task-storage-contract.mjs';
 import {formatDevelopmentTaskInstruction} from '../src/tasks/task-agent-instruction.mjs';
+import {createTaskRequirements} from '../src/tasks/task-requirements.mjs';
 import {formatTakeoverInstruction,MAX_HANDOFF_INSTRUCTION_BYTES} from '../public/takeover-instruction.js';
 import {ownerAuthConfig} from '../public/owner-auth-config.js';
 import {createRepositoryRun,appendRepositoryRunEvent} from '../src/reporting/repository-run-contract.mjs';
@@ -71,4 +72,16 @@ test('task inspection fails closed on source/report movement, denial, partial sc
 test('source subscription updates task evidence without a prepared packet and scope/logout clear all task evidence',async()=>{
  const f=taskInspectionFixture(),task=await f.c.save(input());f.setReports({...f.reportView(),observation:{...f.reportView().observation,runs:[f.row(task.taskId)]}});let emitted;const un=f.c.subscribe(v=>emitted=v);
  f.setSource({...f.sourceView(),status:'reading'});assert.equal(emitted.taskReports.status,'unconfirmed');f.setSource({...f.sourceView(),status:'connected'});assert.equal(emitted.taskReports.observation.runs.length,1);f.c.update({projectId:'JOEY_ASSET_SYSTEM',track:'UNIVERSITY_CANDIDATE'});assert.equal(emitted.tasks.length,0);assert.equal(emitted.taskReports.observation,null);f.c.invalidate('denied');assert.equal(emitted.taskReports.observation,null);un();f.c.dispose();
+});
+
+test('edited requirements leave bound prior and legacy reports historical; only exact current revision and digest affect task status',async()=>{
+ const f=taskInspectionFixture(),t=await f.c.save(input()),binding=await createTaskRequirements(t),old=f.row(t.taskId,'synthetic-bound-v1');old.report.taskRequirements=binding;const legacy=f.row(t.taskId,'synthetic-unbound');f.setReports({...f.reportView(),observation:{...f.reportView().observation,runs:[old,legacy]}});assert.equal(f.c.snapshot().report.agent,'AGENT_REPORTED');assert.deepEqual(f.c.snapshot().taskReports.observation.runs.map(r=>r.requirementsStatus),['MATCH','LEGACY_UNBOUND']);
+ const revised=await f.c.save(input({acceptance:'A changed complete requirement'}));assert.equal(revised.revision,2);assert.equal(f.c.snapshot().report.agent,'HISTORICAL_ONLY');assert.equal(f.c.snapshot().report.tests,'NOT_REPORTED');assert.deepEqual(f.c.snapshot().taskReports.observation.runs.map(r=>r.requirementsStatus),['MISMATCH','LEGACY_UNBOUND']);assert.deepEqual(old.report.taskRequirements,binding);assert(!Object.hasOwn(legacy.report,'taskRequirements'));
+ const fresh=f.row(t.taskId,'synthetic-bound-v2');fresh.report.taskRequirements=await createTaskRequirements(revised);f.setReports({...f.reportView(),observation:{...f.reportView().observation,runs:[old,legacy,fresh]}});assert.equal(f.c.snapshot().report.agent,'AGENT_REPORTED');assert.equal(f.c.snapshot().report.tests,'AGENT_REPORTED');fresh.report.taskRequirements.requestDigest='f'.repeat(64);f.setReports(f.reportView());assert.equal(f.c.snapshot().report.agent,'HISTORICAL_ONLY');f.c.dispose();
+});
+test('repeated fresh handoff retains exact task ID/revision/digest and complete packet; edits create a new binding without rewriting a report',async()=>{
+ const f=fixture(),t=await f.c.save(input()),first=await f.c.prepare(),again=await f.c.copy();assert.deepEqual(first.packet.taskRequirements,again.packet.taskRequirements);assert.equal(first.packet.taskRequirements.revision,1);const lines=again.instruction.split('\n'),meta=JSON.parse(lines.find(s=>s.startsWith('Registration template: ')).slice(23)),packet=JSON.parse(lines.find(s=>s.startsWith('Source packet: ')).slice(15));assert.equal(meta.taskId,t.taskId);assert.deepEqual(meta.taskRequirements,packet.taskRequirements);assert.deepEqual(packet.developmentTask,t);assert.deepEqual(meta.taskRequirements,await createTaskRequirements(t));await f.c.save(input({constraints:'Revised authorized constraints'}));assert.equal(f.c.snapshot().prepared,null);const next=await f.c.prepare();assert.equal(next.packet.developmentTask.taskId,t.taskId);assert.equal(next.packet.taskRequirements.revision,2);assert.notEqual(next.packet.taskRequirements.requestDigest,meta.taskRequirements.requestDigest);f.c.dispose();
+});
+test('explicit edits or a scope switch during fresh handoff cannot resurrect an old requirement packet after await',async()=>{
+ for(const action of ['edit','scope']){const f=fixture();await f.c.save(input());let release;f.wait(new Promise(r=>release=r));const pending=f.c.prepare();pending.catch(()=>{});await new Promise(r=>setImmediate(r));if(action==='edit')f.c.purge();else f.c.update({projectId:'NEXAEON',track:'BASELINE'});release();await assert.rejects(pending);assert.equal(f.c.snapshot().prepared,null);f.c.dispose();}
 });
