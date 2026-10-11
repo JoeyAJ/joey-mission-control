@@ -43,6 +43,88 @@
       "summary": "Exact cc174c4 five-file palette integrated after d46 review fixes; portable843/build/validate/check and54 synthetic actual-app browser cases PASS. Sampled contrast8.74, motion report-ID bound and reduced-motion suppressed. Preparing canonical handoff and fixed Preview publication; actual Owner HTTP/appearance and runtime GitHub permissions remain pending.",
       "result": null,
       "delivery": null
+    },
+    {
+      "id": "completed-palette-integration",
+      "sequence": 3,
+      "eventAt": "2026-10-11T10:32:19.045Z",
+      "kind": "completed",
+      "summary": "Named cc174c4 source-only palette integrated after privacy/source-race fixes. Portable843 and54 synthetic app browser cases PASS; exact canonical runtime and fixed Preview READY. Actual Owner save/reload and appearance remain pending.",
+      "result": {
+        "codeSha": "5536433dcab22bec97c47a923db52a8b12860477",
+        "tests": [
+          {
+            "name": "Portable843/build/validate/check; forbidden workstation attempts0",
+            "outcome": "PASS"
+          },
+          {
+            "name": "54 synthetic actual-app browser cases; true Continue12, privacy-source-race8, cloud-task4 included",
+            "outcome": "PASS"
+          },
+          {
+            "name": "Rendered contrast8.74, mobile44px, report-ID motion/reduced motion; current root safe-intake10",
+            "outcome": "PASS"
+          }
+        ],
+        "nextSteps": "Owner uses existing fixed Preview for cloud save/reload only; no compatible completed new-task run exists for MC legacy IDs, so do not click disabled PR-CI or rewrite reports. Runtime GitHub channels, physical-device/served behavior and Joey final appearance acceptance remain pending. New receiving Agent reads latest canonical handoff and registers a new run; never append this terminal run.",
+        "handoff": {
+          "path": "HANDOFF.md",
+          "commitSha": "5536433dcab22bec97c47a923db52a8b12860477"
+        }
+      },
+      "delivery": {
+        "qualification": "AGENT_REPORTED",
+        "scope": {
+          "projectId": "MISSION_CONTROL",
+          "track": "BASELINE",
+          "repositoryId": "JoeyAJ/joey-mission-control",
+          "runId": "codex-mc-reference-palette-20261011",
+          "taskId": "mc-reference-palette-20261011",
+          "workRef": "codex/mc-command-center-checkpoint-20261006",
+          "codeSha": "5536433dcab22bec97c47a923db52a8b12860477"
+        },
+        "deployment": {
+          "status": "READY",
+          "target": {
+            "provider": "vercel",
+            "project": "joey-mission-control",
+            "environment": "preview"
+          },
+          "id": "dpl_Ap8TvrABijQVhc9QRdaEHGvgBuRC",
+          "deployedSha": "5536433dcab22bec97c47a923db52a8b12860477",
+          "url": "https://joey-mission-control-git-codex-mc-comma-fceec2-joeyajs-projects.vercel.app/",
+          "observedAt": "2026-10-11T10:32:19.045Z",
+          "evidence": "Fixed alias and independently inspected deployment ID READY at exact5536433; canonical remote matches and original Production unchanged.",
+          "notRequired": null
+        },
+        "verification": {
+          "status": "BLOCKED",
+          "method": "HTTP_FUNCTIONAL_CHECK",
+          "checkedAt": "2026-10-11T10:32:19.045Z",
+          "deploymentId": "dpl_Ap8TvrABijQVhc9QRdaEHGvgBuRC",
+          "checkedSha": null,
+          "url": "https://joey-mission-control-git-codex-mc-comma-fceec2-joeyajs-projects.vercel.app/",
+          "evidence": "Ordinary HTTPS HEAD curl56/CONNECT403/HTTP000 before app; no bypass. Actual Owner signed cloud save/reload, live GitHub channels and final appearance remain pending.",
+          "notRequired": null
+        },
+        "handoff": {
+          "status": "CURRENT",
+          "path": "HANDOFF.md",
+          "commitSha": "5536433dcab22bec97c47a923db52a8b12860477",
+          "checkedAt": "2026-10-11T10:32:19.045Z",
+          "evidence": "Canonical current root/source bound to5536433 with prior root prefix preserved byte-for-byte in private integration document."
+        },
+        "data": {
+          "status": "NOT_REQUIRED",
+          "version": null,
+          "checkedAt": "2026-10-11T10:32:19.045Z",
+          "evidence": null,
+          "notRequired": {
+            "policy": "MC_NO_DATA_CHANGE",
+            "reason": "Palette/source-only integration after privacy fixes; existing approved SQL/Auth/task activation unchanged, no live data or credential/grant change."
+          }
+        }
+      }
     }
   ]
 }
