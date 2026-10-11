@@ -1,0 +1,25 @@
+{
+  "verification": {
+    "pass": true,
+    "checks": [
+      "existingLiveOwnerAal2Helper",
+      "saveListReadbackCasExactReplay",
+      "immutableProjectTrackCreatedAt",
+      "foreignAal1ExpiredMissingSessionRoleListSaveDenied",
+      "jsSqlScopeUnicodeUtf16Utf8CredentialCalendarTypedTaskIdParity",
+      "globalTwelveTaskCapacity",
+      "anonServiceRoleDirectTablePrivateValidatorActorDenied"
+    ],
+    "tokensRead": 0,
+    "fixtureCases": 20,
+    "rollbackOnly": true,
+    "authMutations": 0,
+    "qualification": "SQL_ADMIN_EMULATED_CLAIMS_WITH_EXISTING_SESSION_METADATA",
+    "actualOwnerHttp": false
+  },
+  "oldTables": 9,
+  "oldFunctions": 20,
+  "oldDataDigestsUnchanged": true,
+  "oldMetadataAclRoleMembershipUnchanged": true,
+  "retainedTaskFixtures": 0
+}

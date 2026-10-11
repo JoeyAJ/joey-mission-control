@@ -1,5 +1,7 @@
 # Existing-project task storage — exact approval proposal
 
+Current status2026-10-11: separately approved at08:39:39Z, exact SQL installed unchanged and server activation ON after bounded live rollback-only safety gates. See [activation verification](MC_TASK_ACTIVATION_AND_REPORT_CAPACITY_VERIFICATION_20261011.md). The text below is the preserved pre-approval proposal; it does not describe current installation status.
+
 Status: REVIEW_ONLY_NOT_APPLIED. Existing project-draft approval does not authorize development-task storage. No new task SQL/ACL was executed live. The implemented server activation remains OFF.
 
 Target: existing Supabase `scmvedfqwlhkyvljymjj`. Exact [transaction](contracts/sql/private-development-tasks.pending.sql) SHA256 `553d99b407d34d622b53918eb42c6e42146417e71009a47cbf25f8c1dc283194`. It adds four objects only: `mc_private.development_tasks`, `mc_private.validate_development_task(jsonb)`, `public.mc_owner_development_task_list()`, `public.mc_owner_development_task_save(jsonb,bigint)`.

@@ -1,3 +1,25 @@
+# Mission Control — approved private tasks and bounded report capacity
+
+Project: MISSION_CONTROL
+Timestamp: 2026-10-11T09:02:15Z
+Task: Approved existing-project task persistence and bounded reporting maintenance
+Status: LOCAL_VERIFIED_CLOUD_EVENTS_NOT_ENABLED
+DeliveryQualification: TASK_RPC_ACTIVATED_PORTABLE831_TWO_PAGE_REPORTING_PUBLICATION_PENDING
+Last Developer: Codex
+Executed by: Codex
+Actual Model: UNKNOWN
+Baseline: 6deea5e8f0aaba4e8f913b6094c6c2d00037cf6c
+
+Joey separately approved task storage at2026-10-11T08:39:39Z. Exact9758-byte SQL SHA256553d99b407d34d622b53918eb42c6e42146417e71009a47cbf25f8c1dc283194 installed unchanged at existing Supabase scmvedfqwlhkyvljymjj, connected migration success. Four new objects only: private development_tasks/private validator/two public list-save RPCs; reuse existing exact Owner/AAL2/current session/NEXAEON membership.12 tasks/96KiB each/CAS/exact retry/immutable project-track-createdAt; no delete/execution/new key/Auth mutation. Old9 table digests/20 function definitions-ACLs-owner-config/both memberships preserved; transient CREATE/SET restored. Forced RLS/restricted ownership/new RPC authenticated-only/direct table and private-helper denial PASS.20 JS-SQL parity cases and rollback-only save-readback/CAS/retry/denial/capacity PASS; zero retained fixtures. Qualification SQL_ADMIN_EMULATED_CLAIMS_WITH_EXISTING_SESSION_METADATA, actual Owner JWT/HTTP pending. Server-only task capability ON after gates; existing project drafts ON unchanged. SQL pending filename/review comments and old OFF checkpoints remain historical exact bytes.
+
+Reporting now supports exactly .mission-control/runs/ and .mission-control/runs-page-2/,20/page40total on existing mc/progress;16KiB/run64events unchanged. Fresh pinned HEAD and both complete inventories/full blob-schema-prefix-predecessor verification required; no silent truncation/history deletion/rotation/new token/source grant. UI20/page retains full reader state, new21 visible; task copy filters only after full scan and discloses coverage/totals. Strict reply741376/report packet131072/full UTF8 instruction262144 bytes. Immutable cache80x16KiB5min scoped to credential digest/repo/path/blob, always reread HEAD+both listings, no Auth/outage fallback. Bare-Git21/cross-page append/predecessor/original20-blobs unchanged PASS; actual-app21-to22 pagination/task coverage/outage/pending-scope privacy4 widths PASS. Cloud task browser4 widths PASS incl save-reload/fixedID/conflict/unchanged-remote edits/lostack-no-duplicate/candidate separation/logout/outage;16 intended synthetic writes, zero unexpected/external. True Continue12 and existing cloud project draft4/16 intended writes PASS. Full portable831/build/portable validate/check PASS, forbidden workstation attempts0; publication receipt follows.
+
+Own v2 FEATURE run codex-mc-existing-project-task [suffix: 20261011] stays OPEN progress5, report commite1aa802895ae5d1825bce50d80f898942b526469/blobd35159ff6291e68f5c1a997db5e36bd90f6992b6. Original95e60d8 registration baseline/started/prior events immutable; continue same run, no second run created. Live history remains20 physical files; no page2 report written by this task.
+
+Named UI commit5e3ee061fb4f8291419039d7911d19b4e4a8438a is NOT integrated: authorized Library libfile_7cd5211ad3ec8191b31fdd502e6ae2fb version1/5828001bytes/current helper + one fresh bounded retry both download failed. No verified bytes/patch, no private URL fallback. Functional work continued. Source/owner/private details remain private, zhTW default, candidateJoeyAcceptancePending/unsigned times UNKNOWN/Nex CI unrepaired. No Production/other repo/Auth/secrets/new Agent grants/AWS/model selector/direct dispatch/merge/external message. Fixed Preview remote exactSHA/READY verification and terminal closure follow; ordinary CONNECT403 cannot be bypassed, servedCheckedSha=null/Owner acceptance pending. See docs/MC_TASK_ACTIVATION_AND_REPORT_CAPACITY_VERIFICATION_20261011.md and development-tasks-activation-20261011.json receipt.
+
+# Historical pre-activation capacity checkpoint
+
 # Mission Control — two-page repository reporting maintenance checkpoint
 
 Project: MISSION_CONTROL

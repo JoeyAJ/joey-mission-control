@@ -1,5 +1,7 @@
 # Existing-project natural-language task increment
 
+Current status2026-10-11: separate task SQL approval/install and gated activation completed; reporting supports two exact20-file pages/40 total. See [current activation/capacity verification](MC_TASK_ACTIVATION_AND_REPORT_CAPACITY_VERIFICATION_20261011.md). The dated initial increment below remains historical evidence.
+
 Observed: 2026-10-11T08:13:57.988Z. Implemented against immutable baseline95e60d8dd1a4081c6ed20d138cb128e8b85a24a5. Same canonical branch and fixed Preview only. This increment implements the initial task-to-existing-external-Agent path; it does not close Joey's complete eight-step goal.
 
 In the selected existing project, “新增開發任務” captures the complete feature request, acceptance and constraints with a stable private taskId/revision/project/track. Owner/AAL2 session drafts can be retained, downloaded and imported after reload. Unsaved content clears on scope change, expiry, revocation and logout. No task/private source or credential is stored in URL/browser storage. The existing approved cloud **project** draft capability stays ON; new **development task** persistence stays OFF pending its independent [exact SQL proposal](MC_DEVELOPMENT_TASK_STORAGE_PROPOSAL_20261011.md).

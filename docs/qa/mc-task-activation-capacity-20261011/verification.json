@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "pass": true,
+  "actualOwnerAuth": false,
+  "actualLiveOwnerSignedJwtHttp": false,
+  "actualGitHubProviderRead": false,
+  "upstreams": "SYNTHETIC_OWNER_PROVIDER_GITHUB_CLIPBOARD",
+  "cloudTaskCases": 4,
+  "intendedSyntheticTaskCloudWrites": 16,
+  "capacityCases": 4,
+  "capacityTestedCheckpoint": "6deea5e8f0aaba4e8f913b6094c6c2d00037cf6c",
+  "continueCases": 12,
+  "cloudProjectDraftCases": 4,
+  "intendedSyntheticDraftWrites": 16,
+  "unexpectedWrites": 0,
+  "externalRequests": 0,
+  "reportHistoryRewritten": false,
+  "livePageTwoReportsWritten": 0,
+  "fullPortable": {
+    "pass": true,
+    "tests": 831,
+    "failures": 0,
+    "buildOwnerAndReporter": "PASS",
+    "portableValidate": "PASS",
+    "portableCheck": "PASS",
+    "forbiddenWorkstationAttempts": 0
+  }
+}

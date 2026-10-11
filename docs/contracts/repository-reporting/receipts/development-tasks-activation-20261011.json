@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "task": "mc-existing-project-task-20261011",
+  "status": "APPROVED_TASK_SQL_APPLIED_AND_SERVER_ACTIVATED",
+  "approval": {
+    "approvedAt": "2026-10-11T08:39:39Z",
+    "response": "允許",
+    "scope": "Existing Supabase; Owner-only development-task storage;12 tasks; same login; no new key/delete/Agent execution; safety gates before activation"
+  },
+  "sql": {
+    "projectRef": "scmvedfqwlhkyvljymjj",
+    "migrationName": "mc_private_development_tasks_owner_only_20261011",
+    "exactSha256": "553d99b407d34d622b53918eb42c6e42146417e71009a47cbf25f8c1dc283194",
+    "exactBytes": 9758,
+    "applyToolSuccess": true,
+    "newObjects": [
+      "mc_private.development_tasks",
+      "mc_private.validate_development_task(jsonb)",
+      "public.mc_owner_development_task_list()",
+      "public.mc_owner_development_task_save(jsonb,bigint)"
+    ],
+    "unchangedProposal": true
+  },
+  "postflight": {
+    "forcedRls": true,
+    "executorOwner": true,
+    "newRpcAuthenticatedExecuteOnly": true,
+    "noDirectTableOrPrivateValidatorForPublicAnonAuthenticatedService": true,
+    "oldTables": 9,
+    "oldTableDataDigestsUnchanged": true,
+    "oldFunctions": 20,
+    "oldFunctionDefinitionsAclOwnerConfigUnchanged": true,
+    "roleMembershipRecords": 2,
+    "temporaryCreateRevoked": true,
+    "temporarySetRestoredFalse": true,
+    "retainedTaskFixtures": 0
+  },
+  "liveVerification": {
+    "pass": true,
+    "checks": [
+      "existingLiveOwnerAal2Helper",
+      "saveListReadbackCasExactReplay",
+      "immutableProjectTrackCreatedAt",
+      "foreignAal1ExpiredMissingSessionRoleListSaveDenied",
+      "jsSqlScopeUnicodeUtf16Utf8CredentialCalendarTypedTaskIdParity",
+      "globalTwelveTaskCapacity",
+      "anonServiceRoleDirectTablePrivateValidatorActorDenied"
+    ],
+    "tokensRead": 0,
+    "fixtureCases": 20,
+    "rollbackOnly": true,
+    "authMutations": 0,
+    "qualification": "SQL_ADMIN_EMULATED_CLAIMS_WITH_EXISTING_SESSION_METADATA",
+    "actualOwnerHttp": false
+  },
+  "nativePreviousReceipt": "development-tasks-20261011.native.json",
+  "serverActivation": "ON_APPROVED_EXACT_SQL_AFTER_PROVIDER_GATES",
+  "existingProjectDraftCapability": "ON_APPROVED_UNCHANGED",
+  "actualOwnerSignedJwtHttp": "PENDING",
+  "credentialsReadOrCreated": 0,
+  "authRowsMutated": 0,
+  "reportScopeOrAgentGrantAdded": false,
+  "productionModified": false,
+  "ui": {
+    "libraryFileId": "libfile_7cd5211ad3ec8191b31fdd502e6ae2fb",
+    "version": 1,
+    "bytes": 5828001,
+    "fileName": "MC-usability-refinement.zip",
+    "action": "CURRENT_SKILL_PREPARE_MATERIALIZE_AND_CURRENT_TRANSFER_HELPER",
+    "attempts": 2,
+    "error": "library file transfer failed: download failed",
+    "sourceCommit": "5e3ee061fb4f8291419039d7911d19b4e4a8438a",
+    "integrated": false,
+    "privateUrlFallbackUsed": false,
+    "resolution": "AUTHORIZED_SOURCE_ONLY_ISOLATED_GIT_BRANCH_AWAITING_PARENT_VERIFIED_REMOTE_SHA"
+  },
+  "tests": {
+    "portable": 831,
+    "focusedTaskAndInstruction": 21,
+    "mixedVersionRegression": 3,
+    "capacityGroups": 8,
+    "cloudTaskBrowser": 4,
+    "intendedSyntheticTaskWrites": 16,
+    "continueBrowser": 12,
+    "cloudProjectDraftBrowser": 4,
+    "intendedSyntheticProjectDraftWrites": 16,
+    "capacityBrowser": 4,
+    "unexpectedWrites": 0,
+    "externalRequests": 0,
+    "actualOwnerAuth": false,
+    "qa": "../../../qa/mc-task-activation-capacity-20261011/verification.json"
+  },
+  "run": {
+    "sequence": 5,
+    "reportCommitSha": "e1aa802895ae5d1825bce50d80f898942b526469",
+    "fileSha": "d35159ff6291e68f5c1a997db5e36bd90f6992b6",
+    "terminal": false,
+    "baselineAndPriorEventsPreserved": true
+  }
+}
