@@ -46,3 +46,7 @@ Portable845/build/validate/check, focused31/root10 and18 synthetic browser cases
 Next Action: fixed Preview635dcfe READY; independent docs/MC_OWNER_CLOUD_SAVE_ACCEPTANCE_20261011.md. Owner save/reload accepted10:52 UTC; receipt docs/MC_OWNER_CLOUD_SAVE_ACCEPTANCE_RECEIPT_20261011.md. Appearance pending; GitHub permission UNKNOWN. No compatible completed cloud-task report; do not click disabled PR/CI or rewrite old reports. SQL/Auth/secrets/grants/Production/other repo/AWS/model/dispatch unchanged; CONNECT403 not bypassed. Do not recreate rejected VM artifacts.
 
 End of the preserved prior checkpoint.
+
+功能發布 `341c70eb6981dc3fbb7d9efb09ace81f0990cbc8`／`dpl_HeqyDk4q3JaboTyCu6VpLE8mFMB9` 於固定 alias 與獨立 deployment ID 均為 exact SHA／project／branch／READY；canonical remote exact。Production 保留 `dpl_5GgJ8LhD4Ec73RGz9CEFe1ppZQnh`／`8b4945b16a0b23f2e72033aa976fa34f94eabec0`。普通 HEAD 於2026-10-11T11:38:08.555991Z 回 curl56／CONNECT403／HTTP000，沒有到 app 或繞過；servedCheckedSha=null。最終收尾文件 commit 另核 exact READY，功能樹與已測 runtime 一致。
+
+本 run terminal3 已發布並讀回：report commit `d5d7edeeb4f2e21627b1a84e3c805bc94f17ce9c`，blob `02028e75cc045901886e67c687a12b0cddb36356`，6963 bytes。外部 Draft2020-12／format checker PASS；header／started／progress 全部 immutable，其他24個 report blobs 不變。25檔案中24 completed、0 cloud-task-compatible taskId，沒有把本開發 taskId 改成 Owner 雲端任務。Terminal 只證明本切片 coding/runtime READY；delivery 功能實測 BLOCKED／checkedSha=null。新面板實機、真實相符任務 Agent 回報、runtime GitHub channel 與 Owner 決策流程仍保留上述資格。不得 append 任何已 terminal run。

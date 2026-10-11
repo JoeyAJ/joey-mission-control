@@ -1,9 +1,9 @@
 # Current saved-task Agent report inspection — 2026-10-11
 
 Project: MISSION_CONTROL
-Timestamp: 2026-10-11T11:37:03.904767Z
+Timestamp: 2026-10-11T11:40:04.487782Z
 Task: Inspect exact saved-task Agent progress, tests and final handoff
-Status: LOCAL_VERIFIED_PENDING_PUBLICATION
+Status: LOCAL_VERIFIED_PARENT_READ_PREVIEW_PUBLISHED
 Last Developer: Codex
 Executed by: Codex
 Actual Model: UNKNOWN
@@ -13,7 +13,7 @@ Existing full task handoff reused. New collapsed task panel uses verified projec
 
 Portable848/build/validate/check,focused34 and38 synthetic browser cases PASS. Evidence: docs/MC_TASK_REPORT_INSPECTION_20261011.md. Prior root prefix preserved there byte-for-byte; dated history unchanged. Owner cloud save/reload accepted10:52 UTC; no repeat or harmless-task execution.
 
-Next Action: publish same fixed Preview and close own receiving-Agent run. Genuine cloud task report absent; authorized external Agent must use exact real taskId, never rewrite legacy. Runtime GitHub permissions UNKNOWN; request-version binding and durable Owner decisions remain later bounded work. No new SQL/Auth/grants/secrets/other repo/Production/AWS/model/dispatch. CONNECT403 not bypassed; servedCheckedSha null. Do not recreate rejected VM artifacts.
+Next Action: fixed Preview341c70e exact READY; own run terminal3, old24 blobs unchanged. Genuine cloud task report absent; authorized external Agent must use exact real taskId, never rewrite legacy. Runtime GitHub permissions UNKNOWN; request-version binding and durable Owner decisions remain later bounded work. No new SQL/Auth/grants/secrets/other repo/Production/AWS/model/dispatch. CONNECT403 not bypassed; servedCheckedSha null. Do not recreate rejected VM artifacts.
 
 # Dated prior stage history
 
