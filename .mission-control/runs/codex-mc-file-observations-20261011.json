@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "mc.repository-run.v3",
+  "taskKind": "DELIVERY_FOLLOWUP",
+  "activityMode": "EXPLICIT_FILE_METADATA",
+  "activityPaths": [
+    "src/reporting/workbench-view.mjs",
+    "HANDOFF.md"
+  ],
+  "projectId": "MISSION_CONTROL",
+  "track": "BASELINE",
+  "runId": "codex-mc-file-observations-20261011",
+  "predecessorRunId": "codex-mc-file-activity-20261011",
+  "taskId": "mc-file-observations-20261011",
+  "featureTitle": "Actual bounded Codex MC file observations and handoff closure",
+  "agentName": "Codex",
+  "provider": null,
+  "model": null,
+  "repositoryId": "JoeyAJ/joey-mission-control",
+  "reportRef": "mc/progress",
+  "workRef": "codex/mc-command-center-checkpoint-20261006",
+  "baseline": {
+    "ref": "codex/mc-command-center-checkpoint-20261006",
+    "commitSha": "250095f136a1d1629d0d173f668c98f922fea985",
+    "handoffPath": "HANDOFF.md",
+    "handoffDigest": "fe013c460307948e552793bd0397586c26213b0f09e83e924bc1c20dfcbee5a0",
+    "contextPaths": [
+      "README.md",
+      "docs/PRODUCT_CHARTER.md",
+      "docs/MC_PHASE_PLAN.md",
+      "docs/STAGE_HANDOFF_TEMPLATE.md"
+    ]
+  },
+  "events": [
+    {
+      "id": "started",
+      "sequence": 1,
+      "eventAt": "2026-10-11T01:15:59.274Z",
+      "kind": "started",
+      "summary": "Actual Codex bounded MC followup: explicit tracked code/handoff reads and necessary handoff edit, metadata only; support published before this new immutable v3 run.",
+      "result": null,
+      "delivery": null,
+      "activity": null
+    }
+  ]
+}
