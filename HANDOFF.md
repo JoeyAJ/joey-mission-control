@@ -3,17 +3,17 @@
 Project: MISSION_CONTROL
 Timestamp: 2026-10-11T16:04:30.372Z
 Task: Recheck report arrival age at RAF; overnight handoff
-Status: LOCAL_VERIFIED_PENDING_PUBLICATION
+Status: LOCAL_VERIFIED_PARENT_READ_PREVIEW_PUBLISHED
 Last Developer: Codex
 Executed by: Codex
 Actual Model: UNKNOWN
 Baseline: 239d9d3e7f5b71c11e311445bc54a7ea5355b1e8
 
-Terminal null-expiry arrivals now recheck event/file-observation age at frame time; exact five-minute boundary refuses motion. Valid report/selection behavior retained. Focused118/portable909/build/validate/check/root20/browser20 PASS; forbiddenAttempts0. Exact fixed Preview closure follows. No fabricated activity/authority or feature expansion.
+Terminal null-expiry arrivals now recheck event/file-observation age at frame time; exact five-minute boundary refuses motion. Valid report/selection behavior retained. Focused118/portable909/build/validate/check/root20/browser20 PASS; forbiddenAttempts0. Runtime28d5ede exact fixed Preview READY. No fabricated activity/authority or feature expansion.
 
 Evidence: docs/MC_OVERNIGHT_MOTION_BOUNDARY_20261011.md. Both preflight fixes and task/SQL/API/scopes/palette unchanged. Positively identified old test352980/child352986 received scoped SIGTERM; no live old test, only inactive PID1-owned zombies. Prior prefix preserved there; dated history unchanged.
 
-Next Action: finish same Preview/terminal, then pause for morning Owner/device/source Continue and genuine cloud task/Agent/PR-CI/decision acceptance steps listed in the linked handoff. Served CONNECT403 not bypassed. No new phase/Production/SQL/permissions/dispatch/AWS/model selector; actual Owner writes0 and saved test untouched.
+Next Action: final exact docs/Preview receipt and terminal, then pause for the linked morning Owner/source Continue and genuine task/Agent/PR-CI/decision acceptance steps. Served CONNECT403 not bypassed. No new phase/Production/SQL/permissions/dispatch/AWS/model selector; actual Owner writes0 and saved test untouched.
 
 # Dated prior stage history
 

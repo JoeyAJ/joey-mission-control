@@ -45,3 +45,7 @@ Evidence: docs/MC_WORKSPACE_MOTION_INTEGRATION_20261011.md. Portable907/build/va
 Next Action: final docs closure/exact SHA publication, then own integration terminal at final work HEAD; no later work-branch commit. Actual served/Owner acceptance remains pending and real task deferred. No Production/SQL/permissions/dispatch/model selector/AWS. Normal CONNECT403 not bypassed; servedCheckedSha null.
 
 ```
+
+## Dated runtime publication
+
+Runtime28d5edefa89e827a62d5484b5ca2981314914726 exact canonical remote and fixed Previewdpl_3AQAF1xbdxndPtAiPQUs3edsfdC4 READY, alias and independent ID match at2026-10-11T16:09:01.417Z; same project/Preview target:null. Production identity remains dpl_5GgJ8LhD4Ec73RGz9CEFe1ppZQnh / 8b4945b16a0b23f2e72033aa976fa34f94eabec0. Normal GET2026-10-11T16:09:47.489Z returned curl56/CONNECT403/HTTP000 before application, servedCheckedSha:null, no bypass. Current morning handoff/source context is committed before terminal. Docs-only closure is checked for functional parity before final exact Preview. Final work/deployment/report receipt stays private; no work HEAD advance after terminal and no new implementation phase.
