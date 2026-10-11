@@ -34,6 +34,15 @@
       "summary": "Actual Codex implementation of Joey-authorized new-project onboarding. Existing storage inventory has no authorized cloud draft interface; implementing Owner-authenticated private session drafts, export/import, complete canonical bootstrap and exact-scope readiness without provisioning.",
       "result": null,
       "delivery": null
+    },
+    {
+      "id": "onboarding-tested-checkpoint",
+      "sequence": 2,
+      "eventAt": "2026-10-11T04:15:43.798Z",
+      "kind": "progress",
+      "summary": "Owner new-project form, private session draft/export/import and full canonical bootstrap implemented. Portable783 and four-width synthetic app QA PASS. Executor healthy. Cloud save needs bounded mc_private.project_drafts plus Owner/AAL2/session list/save/delete RPC with CAS, max12 drafts/98KiB each. No new keys or existing data/ACL changes. New repo read/report scope pending; no provisioning or formal registration claimed.",
+      "result": null,
+      "delivery": null
     }
   ]
 }
