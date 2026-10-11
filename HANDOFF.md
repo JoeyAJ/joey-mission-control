@@ -21,6 +21,8 @@ No model chooser, dispatch, collector, content/diff/terminal, SQL, private stora
 
 Final portable762 tests/build/validate/check PASS, forbiddenAttempts0; focused25/current handoff20 PASS. Mobile default/actual-byte replay2, old simple takeover4 widths and true Continue12 PASS; browser external0/writes0. Prior report schema/helper bytes remain unchanged in this mobile slice. Final support/report publication identities follow closure; no speculative work beyond this authorized correction.
 
+Tested mobile implementation625c3f51b4694a245262a5317b73f4801c5d9700 exact remote; dpl_21BphymoGbCpF2czo8WHXQBCPyM5 READY, independent fixed alias full SHA/ID match at2026-10-11T02:16:32Z. Actual permitted root GET02:16:32.731340Z curl56/CONNECT403/HTTP000 before app, checkedSha=null, no bypass. Own tested progress2 commit745816534ca91155fe0b8ae7a17c263328070dc8 / blob2db96275fc01026e5e718b6a6559c626333d06f6; original baseline unchanged. This handoff consolidates completed scope/tests/support publication and exact served restriction; own terminal and final docs identity are checked separately, runtime bytes unchanged. Served user steps and before/after: docs/MC_MOBILE_ACTIVITY_ENTRY_VERIFICATION_20261011.md.
+
 ## Historical bounded metadata navigation (2026-10-11, baseline19a15f)
 
 
