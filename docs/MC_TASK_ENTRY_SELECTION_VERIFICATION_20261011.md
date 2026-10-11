@@ -20,3 +20,8 @@ Actual replay uses immutable own-MC terminal e22d33880ed8dee04e771d43a2cedaa616b
 Normal served Owner verification: open the fixed Preview, sign in using the existing Owner flow, choose Mission Control in default Joey, select an older reported task, and immediately tap 開啟任務／檔案工作台. Confirm that exact task and its original dated history. Back to Joey, choose another task and repeat; on mobile select內容 to inspect detail. A missing/changed/revoked report must show unconfirmed/refusal and clear the entry, with no run ID in the URL. No new installation, manual deployment or permissions are required. Report independent/Joey acceptance only after actual review.
 
 Publication/terminal readback receipts follow in the dated closure below. Provider READY/exact SHA never implies served PASS; ordinary cloud root GET CONNECT403 remains a blocker without bypass. MC Production/other repositories/SQL/secrets/permissions/AWS and historical operational artifacts are untouched.
+
+## Dated publication closure
+
+Tested selected-entry implementation cf7dd346ca5bb7277da6a3d01484e456a2683116 is exact remote; deployment dpl_4haaVugYGQVkbYhhXJJ61EwetznQ READY, independent fixed alias full SHA/ID match observed2026-10-11T02:42:51Z. Actual normal root GET2026-10-11T02:42:52.027181Z curl56/CONNECT403/HTTP000 before app, checkedSha=null, no bypass. Production unchanged dpl_5GgJ8LhD4Ec73RGz9CEFe1ppZQnh / 8b4945b16a0b23f2e72033aa976fa34f94eabec0. Current handoff/source20 and generated-client rebuild PASS; generic helper33073 bytes/SHA25663baf890fe7bd642b565d02b83a5057a9180f072d5ebaf5b3be91812f502ca80 unchanged. Current handoff consolidation/terminal readback/final receipt identity follows separately; runtime stays identical to tested support.
+
