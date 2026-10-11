@@ -1,9 +1,9 @@
 # Mission Control — quoted credential fingerprint guard
 
 Project: MISSION_CONTROL
-Timestamp: 2026-10-11T01:29:42.244591Z
+Timestamp: 2026-10-11T01:32:53.524752Z
 Task: Exclude quoted JSON/YAML credential fingerprints in adapter and copied helper
-Status: LOCAL_VERIFIED_PENDING_PUBLICATION
+Status: LOCAL_VERIFIED_CLOUD_EVENTS_NOT_ENABLED
 Last Developer: Codex
 Executed by: Codex
 Actual Model: UNKNOWN
@@ -13,9 +13,9 @@ Baseline: c9a444f35e98b1e3eb848dab7603f492161af738
 
 Independent review found quoted JSON/YAML credential keys bypassed the bounded fingerprint exclusion. The adapter now recognizes closing key quotes for password/token/api_key and other existing credential names, preserving unquoted detection and bounded text scope. Tests read only synthetic task-listed config.json: 56 refusals for read/changed per adapter/copied-helper surface, no prepared fingerprint/output or report mutation, safe config before/after succeeds. No unrelated private scan or further file-activity expansion.
 
-Affected tests25 PASS; final portable757 tests/build/validate/check PASS, zero forbidden attempts; current source/handoff31 PASS. Existing fixed Preview publication follows. Updated generic helper SHA256 ba0e1a68595b0c38772bfa69b79d74669753f22e163fec5d7020a3f428d7e836, 32797 bytes. Historical helper78378a91 receipts remain unchanged. Contract: docs/contracts/MC_FILE_ACTIVITY_V3.md; verification: docs/MC_QUOTED_CREDENTIAL_GUARD_VERIFICATION_20261011.md.
+Affected tests25 PASS; final portable757 tests/build/validate/check PASS, zero forbidden attempts; current source/handoff31 PASS. Tested support6044cbb0d910d9e698207b442f05626df09357af is exact remote, dpl_3yA2cjbaLT77Yka3Dnsw79W5xd1v READY; independent fixed alias matched at01:30:54 UTC. Actual root GET01:30:54.940857Z CONNECT403/curl56/HTTP000 before app, checkedSha=null; Production unchanged. Final docs publication is checked separately; runtime bytes match tested support. Updated generic helper SHA256 ba0e1a68595b0c38772bfa69b79d74669753f22e163fec5d7020a3f428d7e836, 32797 bytes. Historical helper78378a91 receipts remain unchanged. Contract: docs/contracts/MC_FILE_ACTIVITY_V3.md; verification: docs/MC_QUOTED_CREDENTIAL_GUARD_VERIFICATION_20261011.md.
 
-Actual new v2 BUGFIX run codex-mc-quoted-guard-20261011, predecessor codex-mc-file-observations-20261011, fresh baseline c9a444f unchanged. Started1 b9f3d77692157a15b5824446c8d87b16e9e697d2 / 846c5091a94f3196aaf1b56da335119bc72f71a7. Complete existing checks/authorized Preview publication and current handoff, then close this new run with dated evidence and retain old terminal bytes. No Production/other repo/report/SQL/permissions/secrets/AWS action. Prior CONNECT403 is not bypassed; served/Joey acceptance remains pending.
+Actual new v2 BUGFIX run codex-mc-quoted-guard-20261011, predecessor codex-mc-file-observations-20261011, fresh baseline c9a444f unchanged. Started1 b9f3d77692157a15b5824446c8d87b16e9e697d2 / 846c5091a94f3196aaf1b56da335119bc72f71a7. Progress2 b95664a4acdcaf1ede569b75fde2131a334d0d07 / f49836cdbd6b5d6028f70afddf89df872345359e; actual terminal3 ff6fb56d80920dd5a0ff71d5939352adc0b4f5c7 / 0e2d0dcf32542b82371b6a81c53c8262077681e6. Connected Git Contents/hash/strict schema/original profile readback PASS; completed/REPORTED_INCOMPLETE, independent/Joey PENDING. Report branch diff adds only this new run; all historical reports/guard bytes unchanged. All checks/support publication and current handoff are complete. Final docs remote/READY/alias is checked separately; later authorized work uses fresh same-scope predecessor run and retains terminal bytes. Persistent collectors remain inactive; no further live file-activity expansion was performed. No Production/other repo/report/SQL/permissions/secrets/AWS action. Prior CONNECT403 is not bypassed; served/Joey acceptance remains pending.
 
 ## Prior file metadata support checkpoint
 
