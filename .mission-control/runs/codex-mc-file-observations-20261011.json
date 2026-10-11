@@ -100,6 +100,36 @@
         "observedAt": "2026-10-11T01:16:16.637Z",
         "precision": "REPORTER_BOUNDED_READ"
       }
+    },
+    {
+      "id": "handoff-change",
+      "sequence": 4,
+      "eventAt": "2026-10-11T01:17:39.522Z",
+      "kind": "progress",
+      "summary": "Reported observed digest change · HANDOFF.md · metadata only",
+      "result": null,
+      "delivery": null,
+      "activity": {
+        "schemaVersion": "mc.file-activity.v1",
+        "qualification": "AGENT_REPORTED_METADATA",
+        "scope": {
+          "projectId": "MISSION_CONTROL",
+          "track": "BASELINE",
+          "repositoryId": "JoeyAJ/joey-mission-control",
+          "runId": "codex-mc-file-observations-20261011",
+          "taskId": "mc-file-observations-20261011",
+          "workRef": "codex/mc-command-center-checkpoint-20261006"
+        },
+        "actor": "Codex",
+        "action": "FILE_CHANGED",
+        "path": "HANDOFF.md",
+        "contentSha256": "fdfb5ae87f16b3dc831b1d64b9ca36e1b2f227130c781811dff3d07666e43301",
+        "previousContentSha256": "fe013c460307948e552793bd0397586c26213b0f09e83e924bc1c20dfcbee5a0",
+        "byteLength": 8960,
+        "workHeadSha": "f91f371ddcaa55fa5ed7d6cdee08b2a55f494b49",
+        "observedAt": "2026-10-11T01:17:39.522Z",
+        "precision": "OBSERVED_DIGEST_CHANGE"
+      }
     }
   ]
 }
