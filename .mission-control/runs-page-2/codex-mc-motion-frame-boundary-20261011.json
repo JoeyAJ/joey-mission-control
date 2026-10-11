@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "mc.repository-run.v2",
+  "taskKind": "BUGFIX",
+  "projectId": "MISSION_CONTROL",
+  "track": "BASELINE",
+  "runId": "codex-mc-motion-frame-boundary-20261011",
+  "predecessorRunId": "codex-mc-workspace-motion-integration-20261011",
+  "taskId": "mc-motion-frame-boundary-20261011",
+  "featureTitle": "Revalidate terminal report arrival age at RAF; bounded overnight closure",
+  "agentName": "Codex",
+  "provider": null,
+  "model": null,
+  "repositoryId": "JoeyAJ/joey-mission-control",
+  "reportRef": "mc/progress",
+  "workRef": "codex/mc-command-center-checkpoint-20261006",
+  "baseline": {
+    "ref": "codex/mc-command-center-checkpoint-20261006",
+    "commitSha": "239d9d3e7f5b71c11e311445bc54a7ea5355b1e8",
+    "handoffPath": "HANDOFF.md",
+    "handoffDigest": "e76f598191daa982b0f6c2811919371cf0baec59b58f8115093a81a15784845f",
+    "contextPaths": [
+      "README.md",
+      "docs/PRODUCT_CHARTER.md",
+      "docs/MC_PHASE_PLAN.md",
+      "docs/STAGE_HANDOFF_TEMPLATE.md"
+    ]
+  },
+  "events": [
+    {
+      "id": "motion-frame-start-1",
+      "sequence": 1,
+      "eventAt": "2026-10-11T15:57:02.721Z",
+      "kind": "started",
+      "summary": "Independent motion review passed; bounded terminal-null-expiry RAF edge confirmed. Actual old renderer predicate allows a299990ms event after25ms RAF delay. Repairing frame-time event/observation gate only, preserving valid selection/report behavior. Old13:25 test PID being identified read-only; no SQL/permissions/Production or another feature phase.",
+      "result": null,
+      "delivery": null
+    }
+  ]
+}
