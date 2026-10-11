@@ -34,6 +34,15 @@
       "summary": "Assessing existing budgets for versioned metadata-only file events and fixing independent strict schema own-key parity finding",
       "result": null,
       "delivery": null
+    },
+    {
+      "id": "mc-file-activity-slice",
+      "sequence": 2,
+      "eventAt": "2026-10-11T01:01:54.835Z",
+      "kind": "progress",
+      "summary": "v3 bounded metadata adapter/copied helper/reader/workbench implemented; initial753 checks and six file UI cases PASS, own-key parity fixed; compatible publication before real MC metadata next",
+      "result": null,
+      "delivery": null
     }
   ]
 }
