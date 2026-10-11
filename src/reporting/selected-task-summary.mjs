@@ -3,7 +3,7 @@ import {reportTimeNode} from '../../public/report-time.js';
 // A brief of one already validated run. Current project takeover is a separate action.
 export function selectedTaskBrief({presentation:p,projectId,track='BASELINE',sourceConfirmed=false}={}){
  if(!sourceConfirmed||!p||p.projectId!==projectId||p.track!==track)return null;
- return {runId:p.runId,agent:p.agentName,title:p.featureTitle,state:p.currentState,reportedState:p.reportedState,eventAt:p.eventAt,sequence:p.sequence,summary:p.summary,next:p.result?.nextSteps||null,delivery:repositoryDeliveryStatus(p)};
+ return {runId:p.runId,agent:p.agentName,title:p.featureTitle,state:p.currentState,reportedState:p.reportedState,eventAt:p.eventAt,sequence:p.sequence,summary:p.summary,next:p.result?.nextSteps||null,tests:p.result?.tests||[],delivery:repositoryDeliveryStatus(p)};
 }
 const words={
  'zh-TW':{title:'所選任務',dated:'任務最後回報',next:'此任務記錄的下一步',noNext:'此任務尚未記錄下一步。',ready:'交付回報已備妥',incomplete:'交付回報未完整',pending:'MC 獨立驗證／Joey 驗收待確認',deployment:'部署',verification:'網址驗證',handoff:'任務交接',data:'資料',tests:'測試',states:{running:'回報開發中',blocked:'回報受阻',completed:'回報完成',failed:'回報失敗',unconfirmed:'更新逾時 · 目前未確認'},evidence:{READY:'回報 READY',BLOCKED:'驗證受阻',PASS:'回報通過',FAIL:'回報失敗',FAILED:'回報失敗',CURRENT:'回報已整理',STALE:'未更新',APPLIED:'回報已執行',NOT_REQUIRED:'有理由的不適用',AGENT_REPORTED_PASS:'回報通過',NOT_FULLY_REPORTED_PASS:'未完整通過',EVIDENCE_PENDING:'待記錄',VERIFICATION_PENDING:'待記錄',REPORTED_POINTER_FRESH_READ_REQUIRED:'歷史指標待核對',UNRECORDED:'未記錄',UNRECORDED_IN_V1_REPORT:'未記錄',NOT_RECORDED:'未記錄',PENDING:'待完成'}},
@@ -16,11 +16,23 @@ export function projectHandoffWords(locale='zh-TW'){
 export function renderSelectedTaskSummary({doc=document,locale='zh-TW',...input}={}){
  const b=selectedTaskBrief(input),w=words[locale]||words['zh-TW'],el=(tag,text,cls)=>{const n=doc.createElement(tag);if(text)n.textContent=text;if(cls)n.className=cls;return n;},root=el('section',null,'selected-task-brief');root.dataset.selectedTaskSummary=b?'confirmed':'unconfirmed';
  if(!b){root.hidden=true;return root;}
+ const labels=locale==='en'?['Tests & evidence','Report & next step','No test results recorded']:locale==='ko'?['테스트 및 증거','보고 및 다음 단계','테스트 결과 기록 없음']:['測試與依據','回報與下一步','尚未記錄測試結果'];
  root.dataset.selectedTaskRun=b.runId;root.dataset.reportedState=b.reportedState;root.dataset.currentState=b.state;
- root.append(el('small',w.title),el('p',b.agent+' · '+(w.states[b.state]||w.states.unconfirmed),'selected-task-agent'),el('h4',b.title,'selected-task-title'));
+ root.dataset.disclosureScope=JSON.stringify([input.projectId,input.track||'BASELINE',b.runId]);
+ const title=el('details',null,'selected-task-title-disclosure'),titleControl=el('summary');title.dataset.disclosure='task-title';titleControl.append(el('h4',b.title,'selected-task-title'));title.append(titleControl);
+ root.append(el('small',w.title),el('p',b.agent+' · '+(w.states[b.state]||w.states.unconfirmed),'selected-task-agent'),title);
  const dated=el('p',w.dated+' · #'+b.sequence,'selected-task-date');dated.append(reportTimeNode(doc,b.eventAt,{locale}));root.append(dated);
  const delivery=el('section',null,'selected-task-delivery');delivery.dataset.deliveryEvidence='AGENT_REPORTED';delivery.dataset.deliveryStatus=b.delivery.delivery;delivery.dataset.independentVerification='PENDING';delivery.dataset.joeyAcceptance='PENDING';
- delivery.append(el('strong',b.delivery.delivery==='REPORTED_READY'?w.ready:w.incomplete),el('small',w.pending));const grid=el('dl');
- for(const [label,status]of [[w.tests,b.delivery.tests],[w.deployment,b.delivery.deployment],[w.verification,b.delivery.fixedUrl],[w.handoff,b.delivery.handoff],[w.data,b.delivery.migration]])grid.append(el('dt',label),el('dd',w.evidence[status]||w.evidence.NOT_RECORDED));delivery.append(grid);root.append(delivery,el('p',b.summary,'selected-task-latest'),el('h5',w.next),el('p',b.next||w.noNext,'selected-task-next'));
+ delivery.append(el('strong',b.delivery.delivery==='REPORTED_READY'?w.ready:w.incomplete),el('small',w.pending));root.append(delivery);
+ const evidence=el('details',null,'selected-task-disclosure');evidence.dataset.disclosure='task-evidence';evidence.append(el('summary',labels[0]));const grid=el('dl');
+ for(const [label,status]of [[w.tests,b.delivery.tests],[w.deployment,b.delivery.deployment],[w.verification,b.delivery.fixedUrl],[w.handoff,b.delivery.handoff],[w.data,b.delivery.migration]]){
+  grid.append(el('dt',label),el('dd',w.evidence[status]||w.evidence.NOT_RECORDED));
+  if(['BLOCKED','FAIL','FAILED','STALE'].includes(status))delivery.append(el('p',label+' · '+w.evidence[status],'selected-task-alert'));
+ }
+ evidence.append(grid);
+ if(b.tests.length){const tests=el('ul',null,'selected-task-tests');for(const test of b.tests)tests.append(el('li',test.outcome+' · '+test.name));evidence.append(tests);}else evidence.append(el('p',labels[2]));
+ const report=el('details',null,'selected-task-disclosure');report.dataset.disclosure='task-report';report.append(el('summary',labels[1]));
+ const summary=el('p',b.summary,'selected-task-latest');report.append(summary);if(['blocked','failed'].includes(b.reportedState))root.append(el('p',b.summary,'selected-task-blocker'));
+ report.append(el('h5',w.next),el('p',b.next||w.noNext,'selected-task-next'));root.append(evidence,report);
  return root;
 }
