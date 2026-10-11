@@ -3,7 +3,7 @@
 Project: MISSION_CONTROL
 Timestamp: 2026-10-11T15:37:00.662Z
 Task: Integrate exact private linked task/file/event pane motion
-Status: LOCAL_VERIFIED_PENDING_PUBLICATION
+Status: LOCAL_VERIFIED_PARENT_READ_PREVIEW_PUBLISHED
 Last Developer: Codex
 Executed by: Codex
 Actual Model: UNKNOWN
@@ -11,9 +11,9 @@ Baseline: 7cff2ed735207e14bf16184330d4a13eaaf09fe5
 
 Exact313401b seven-file slice reviewed and cherry-picked asf6379aa; current Owner bundle rebuilt. Verified selection gives coordinated180ms visible-pane motion; rapid/remount/reduced-motion/Owner/source refusal cancel it. Fresh appended reports alone receive arrival highlights. No invented activity or execution.
 
-Evidence: docs/MC_WORKSPACE_MOTION_INTEGRATION_20261011.md. Portable907/build/validate/check, focused116/root20/browser48 PASS; forbiddenAttempts0. Fixed Preview pending. Both preflight repairs and task review/SQL/API/scopes/palette preserved. Actual Owner writes0, saved test untouched. Prior prefix preserved there; dated history unchanged.
+Evidence: docs/MC_WORKSPACE_MOTION_INTEGRATION_20261011.md. Portable907/build/validate/check, focused116/root20/browser48 PASS; forbiddenAttempts0. Runtime21785c5 exact fixed Preview READY. Both preflight repairs and task review/SQL/API/scopes/palette preserved. Actual Owner writes0, saved test untouched. Prior prefix preserved there; dated history unchanged.
 
-Next Action: complete canonical checks, publish same Preview and close own new integration run at final work HEAD. Actual served/Owner acceptance remains pending and real task deferred. No Production/SQL/permissions/dispatch/model selector/AWS. Normal CONNECT403 will not be bypassed.
+Next Action: final docs closure/exact SHA publication, then own integration terminal at final work HEAD; no later work-branch commit. Actual served/Owner acceptance remains pending and real task deferred. No Production/SQL/permissions/dispatch/model selector/AWS. Normal CONNECT403 not bypassed; servedCheckedSha null.
 
 # Dated prior stage history
 

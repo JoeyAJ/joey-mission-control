@@ -1025,5 +1025,75 @@
       ],
       "screenshots": "/tmp/mc-joey-simple-screenshots"
     }
-  ]
+  ],
+  "datedRuntimePublication": {
+    "checkedAt": "2026-10-11T15:46:13.947Z",
+    "runtimeSha": "21785c5ba2a057907d2cab39eb60afb7a5ca52cb",
+    "previewId": "dpl_EvZn8kb8phGK5z8EdDXQeqckw1ii",
+    "exactAliasAndIndependentId": true,
+    "productionUnchanged": true,
+    "deployments": [
+      {
+        "lookup": "joey-mission-control-git-codex-mc-comma-fceec2-joeyajs-projects.vercel.app",
+        "id": "dpl_EvZn8kb8phGK5z8EdDXQeqckw1ii",
+        "sha": "21785c5ba2a057907d2cab39eb60afb7a5ca52cb",
+        "readyState": "READY",
+        "target": null,
+        "projectId": "prj_X67htPw7vkRI2tuf8817vOUCGQOD",
+        "alias": [
+          "joey-mission-control-git-codex-mc-comma-fceec2-joeyajs-projects.vercel.app"
+        ],
+        "ready": 1791733461016
+      },
+      {
+        "lookup": "dpl_EvZn8kb8phGK5z8EdDXQeqckw1ii",
+        "id": "dpl_EvZn8kb8phGK5z8EdDXQeqckw1ii",
+        "sha": "21785c5ba2a057907d2cab39eb60afb7a5ca52cb",
+        "readyState": "READY",
+        "target": null,
+        "projectId": "prj_X67htPw7vkRI2tuf8817vOUCGQOD",
+        "alias": [
+          "joey-mission-control-git-codex-mc-comma-fceec2-joeyajs-projects.vercel.app"
+        ],
+        "ready": 1791733461016
+      },
+      {
+        "lookup": "joey-mission-control-one.vercel.app",
+        "id": "dpl_5GgJ8LhD4Ec73RGz9CEFe1ppZQnh",
+        "sha": "8b4945b16a0b23f2e72033aa976fa34f94eabec0",
+        "readyState": "READY",
+        "target": "production",
+        "projectId": "prj_X67htPw7vkRI2tuf8817vOUCGQOD",
+        "alias": [
+          "joey-mission-control-one.vercel.app",
+          "joey-mission-control-joeyajs-projects.vercel.app"
+        ],
+        "ready": 1791528554136
+      }
+    ]
+  },
+  "ordinaryHttps": {
+    "checkedAt": "2026-10-11T15:47:07.266Z",
+    "url": "https://joey-mission-control-git-codex-mc-comma-fceec2-joeyajs-projects.vercel.app/",
+    "curlExitCode": 56,
+    "httpStatus": "000",
+    "diagnostic": "curl: (56) CONNECT tunnel failed, response 403",
+    "servedCheckedSha": null,
+    "bypassAttempted": false
+  },
+  "executorCallbackCheckpoint": {
+    "observedAt": "2026-10-11T15:47:07.266Z",
+    "executorUsable": true,
+    "remoteWorkHead": "21785c5ba2a057907d2cab39eb60afb7a5ca52cb",
+    "workspaceCleanAtCheckpoint": true,
+    "ownTestCommandsComplete": true,
+    "olderTestProcess": {
+      "pid": 352980,
+      "startedAtUtc": "2026-10-11T13:25:20Z",
+      "command": "node --import ./tests/test-environment.mjs --test tests/task-review.test.mjs",
+      "partOfThisIncrement": false,
+      "operationTaken": "NONE"
+    },
+    "uncertainWritesRepeated": false
+  }
 }

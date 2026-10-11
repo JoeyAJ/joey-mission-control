@@ -37,3 +37,7 @@ Evidence: docs/MC_PREFLIGHT_CONFLICT_REPAIR_20261011.md. RED3 reproduced stale w
 Next Action: docs closure and final exact SHA/READY receipt, then own new bugfix terminal at final work HEAD; no post-terminal work HEAD advance. Real task/Owner acceptance deferred until tomorrow. No new repo/SQL/grants/keys/deployment project/dispatch/AWS/Production. CONNECT403 is not bypassed; servedCheckedSha null.
 
 ```
+
+## Dated runtime publication
+
+Runtime 21785c5ba2a057907d2cab39eb60afb7a5ca52cb exact canonical remote and fixed Preview dpl_EvZn8kb8phGK5z8EdDXQeqckw1ii READY; alias and independent ID matched at 2026-10-11T15:46:13.947Z. Existing project and Preview target:null preserved. Production remains dpl_5GgJ8LhD4Ec73RGz9CEFe1ppZQnh / 8b4945b16a0b23f2e72033aa976fa34f94eabec0. Normal GET 2026-10-11T15:47:07.266Z returned curl56 / CONNECT403 / HTTP000 before application, servedCheckedSha:null; no bypass or actual Owner acceptance. A parent disconnect callback was followed by successful shell/remote/metadata read-only checks: clean saved HEAD, current test results retained, no writes/tests/deployments repeated. The older13:25 test process observed at checkpoint predates this integration and was left untouched. Docs-only closure is checked for identical runtime files before final exact Preview publication and own terminal. Exact final work/deployment/report receipt stays private, avoiding work HEAD changes after terminal.
