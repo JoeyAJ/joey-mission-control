@@ -3,6 +3,9 @@ import {supportsDeliveryVersion} from './file-activity.mjs';
 import {isStrictDateTime} from '../canonical/date-time.mjs';
 export const REPORT_VERSION_V2='mc.repository-run.v2';
 export const TASK_KINDS=Object.freeze(['FEATURE','BUGFIX','DOCUMENTATION','DELIVERY_FOLLOWUP']);
+// This public synthetic package's reviewed source identity; never a project-wide waiver.
+export const UNIVERSITY_STATIC_RUNTIME_SHA='d7338420868694ed9bcc36afed90757e660ec182';
+export const UNIVERSITY_STATIC_DATA_POLICY='UNIVERSITY_STATIC_DEMO_NO_MIGRATION';
 const sha=/^[a-f0-9]{40}$/;
 // Public metadata only. A declared target grants no deployment or fetch authority.
 // Fixed URLs: metadata/project-urls.v1.json; provider identity: private inventory receipt.
@@ -12,7 +15,7 @@ const policies={
  WOOSONG_BUDDY:{url:'https://woosong-buddy-app.vercel.app/',target:{provider:'vercel',project:'woosong-buddy-app',environment:'production'},docsPolicy:null,dataPolicy:null},
  NAMYOUNG_WEB3D:{url:'https://namyoung-web3d.vercel.app/',target:{provider:'vercel',project:'namyoung-web3d',environment:'production'},docsPolicy:null,dataPolicy:null}
 };
-export function deliveryPolicy(report){if(report?.projectId==='JOEY_ASSET_SYSTEM'&&report.track==='UNIVERSITY_CANDIDATE')return{url:'https://joey-woosong-admissions-demo.vercel.app/',target:{provider:'vercel',project:'joey-woosong-admissions-demo',environment:'production'},docsPolicy:null,dataPolicy:null};return report?.track==='BASELINE'&&Object.hasOwn(policies,report.projectId)?structuredClone(policies[report.projectId]):null;}
+export function deliveryPolicy(report,{codeSha=null}={}){if(report?.projectId==='JOEY_ASSET_SYSTEM'&&report.track==='UNIVERSITY_CANDIDATE')return{url:'https://joey-woosong-admissions-demo.vercel.app/',target:{provider:'vercel',project:'joey-woosong-admissions-demo',environment:'production'},docsPolicy:null,dataPolicy:report.taskKind==='DELIVERY_FOLLOWUP'&&codeSha===UNIVERSITY_STATIC_RUNTIME_SHA?UNIVERSITY_STATIC_DATA_POLICY:null};return report?.track==='BASELINE'&&Object.hasOwn(policies,report.projectId)?structuredClone(policies[report.projectId]):null;}
 const fail=(code='RUN_REPORT_DELIVERY_INVALID')=>{throw Object.assign(Error(code),{code});};
 function exact(v,keys){if(!v||typeof v!=='object'||Array.isArray(v)||![Object.prototype,null].includes(Object.getPrototypeOf(v))||Object.keys(v).length!==keys.length||Object.keys(v).some(k=>!keys.includes(k)))fail();for(const d of Object.values(Object.getOwnPropertyDescriptors(v)))if(!('value'in d))fail();}
 function text(v,max=500){if(typeof v!=='string'||!v.trim()||v.length>max||/[\u0000-\u001f\u007f]/.test(v)||/Bearer\s|gh[pousr]_|github_pat_|\b(?:password|secret|token)\s*[:=]|PRIVATE KEY|^eyJ[A-Za-z0-9_-]+\.|MC_VERIFIED|INDEPENDENTLY_VERIFIED|https?:\/\/[^\s/]*@/i.test(v))fail();}
@@ -25,7 +28,7 @@ export function validateDeliveryEvidence(value,{report,event}={}){
  if(value===null)return null;
  exact(value,['qualification','scope','deployment','verification','handoff','data']);if(value.qualification!=='AGENT_REPORTED')fail();
  const b=value.scope;exact(b,['projectId','track','repositoryId','runId','taskId','workRef','codeSha']);for(const k of ['projectId','track','repositoryId','runId','taskId','workRef'])if(b[k]!==report[k])fail('RUN_REPORT_DELIVERY_SCOPE_INVALID');if(!sha.test(b.codeSha))fail();if(event.result&&b.codeSha!==event.result.codeSha)fail('RUN_REPORT_DELIVERY_SHA_CONFLICT');
- const policy=deliveryPolicy(report),d=value.deployment,v=value.verification,h=value.handoff,m=value.data;
+ const policy=deliveryPolicy(report,{codeSha:b.codeSha}),d=value.deployment,v=value.verification,h=value.handoff,m=value.data;
  exact(d,['status','target','id','deployedSha','url','observedAt','evidence','notRequired']);if(!['NOT_RECORDED','PENDING','READY','FAILED','NOT_REQUIRED'].includes(d.status))fail();
  if(d.target!==null){exact(d.target,['provider','project','environment']);if(!policy||Object.keys(policy.target).some(k=>d.target[k]!==policy.target[k]))fail('RUN_REPORT_DELIVERY_POLICY_INVALID');}
  nullable(d.id,x=>{text(x,128);if(!/^[A-Za-z0-9][A-Za-z0-9_.-]*$/.test(x))fail();});nullable(d.deployedSha,x=>{if(x!==b.codeSha)fail('RUN_REPORT_DELIVERY_SHA_CONFLICT');});nullable(d.url,x=>permittedUrl(x,policy));nullable(d.observedAt,x=>time(x,event.eventAt));nullable(d.evidence,text);
@@ -42,7 +45,7 @@ export function validateDeliveryEvidence(value,{report,event}={}){
  else{if(![report.baseline.handoffPath,...(report.baseline.contextPaths||[])].includes(h.path)||!sha.test(h.commitSha)||!h.checkedAt||!h.evidence)fail('RUN_REPORT_DELIVERY_SCOPE_INVALID');time(h.checkedAt,event.eventAt);text(h.evidence);if(event.result&&(h.path!==event.result.handoff.path||h.commitSha!==event.result.handoff.commitSha))fail('RUN_REPORT_DELIVERY_SCOPE_INVALID');}
  exact(m,['status','version','checkedAt','evidence','notRequired']);if(!['NOT_RECORDED','PENDING','APPLIED','FAILED','NOT_REQUIRED'].includes(m.status))fail();
  if(m.status==='NOT_RECORDED'){if(['version','checkedAt','evidence','notRequired'].some(k=>m[k]!==null))fail();}
- else if(m.status==='NOT_REQUIRED'){notRequired(m.notRequired,policy?.dataPolicy);if(!m.checkedAt||m.version!==null||m.evidence!==null)fail();time(m.checkedAt,event.eventAt);}
+ else if(m.status==='NOT_REQUIRED'){notRequired(m.notRequired,policy?.dataPolicy);if(policy.dataPolicy===UNIVERSITY_STATIC_DATA_POLICY&&d.status!=='READY')fail('RUN_REPORT_DELIVERY_POLICY_INVALID');if(!m.checkedAt||m.version!==null||m.evidence!==null)fail();time(m.checkedAt,event.eventAt);}
  else{if(m.notRequired!==null||!m.checkedAt||!m.evidence)fail();time(m.checkedAt,event.eventAt);text(m.evidence);nullable(m.version,x=>text(x,100));if(m.status==='APPLIED'&&!m.version)fail();}
  return structuredClone(value);
 }

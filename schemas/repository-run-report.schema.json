@@ -1983,16 +1983,94 @@
             }
           },
           "else": {
-            "properties": {
-              "events": {
-                "items": {
-                  "properties": {
-                    "delivery": {
-                      "properties": {
-                        "data": {
+            "if": {
+              "properties": {
+                "projectId": {
+                  "const": "JOEY_ASSET_SYSTEM"
+                },
+                "track": {
+                  "const": "UNIVERSITY_CANDIDATE"
+                },
+                "taskKind": {
+                  "const": "DELIVERY_FOLLOWUP"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "events": {
+                  "items": {
+                    "properties": {
+                      "delivery": {
+                        "if": {
                           "properties": {
-                            "notRequired": {
-                              "type": "null"
+                            "scope": {
+                              "properties": {
+                                "codeSha": {
+                                  "const": "d7338420868694ed9bcc36afed90757e660ec182"
+                                }
+                              }
+                            },
+                            "deployment": {
+                              "properties": {
+                                "status": {
+                                  "const": "READY"
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "then": {
+                          "properties": {
+                            "data": {
+                              "properties": {
+                                "notRequired": {
+                                  "anyOf": [
+                                    {
+                                      "type": "null"
+                                    },
+                                    {
+                                      "properties": {
+                                        "policy": {
+                                          "const": "UNIVERSITY_STATIC_DEMO_NO_MIGRATION"
+                                        }
+                                      }
+                                    }
+                                  ]
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "else": {
+                          "properties": {
+                            "data": {
+                              "properties": {
+                                "notRequired": {
+                                  "type": "null"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "else": {
+              "properties": {
+                "events": {
+                  "items": {
+                    "properties": {
+                      "delivery": {
+                        "properties": {
+                          "data": {
+                            "properties": {
+                              "notRequired": {
+                                "type": "null"
+                              }
                             }
                           }
                         }
@@ -3062,16 +3140,94 @@
             }
           },
           "else": {
-            "properties": {
-              "events": {
-                "items": {
-                  "properties": {
-                    "delivery": {
-                      "properties": {
-                        "data": {
+            "if": {
+              "properties": {
+                "projectId": {
+                  "const": "JOEY_ASSET_SYSTEM"
+                },
+                "track": {
+                  "const": "UNIVERSITY_CANDIDATE"
+                },
+                "taskKind": {
+                  "const": "DELIVERY_FOLLOWUP"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "events": {
+                  "items": {
+                    "properties": {
+                      "delivery": {
+                        "if": {
                           "properties": {
-                            "notRequired": {
-                              "type": "null"
+                            "scope": {
+                              "properties": {
+                                "codeSha": {
+                                  "const": "d7338420868694ed9bcc36afed90757e660ec182"
+                                }
+                              }
+                            },
+                            "deployment": {
+                              "properties": {
+                                "status": {
+                                  "const": "READY"
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "then": {
+                          "properties": {
+                            "data": {
+                              "properties": {
+                                "notRequired": {
+                                  "anyOf": [
+                                    {
+                                      "type": "null"
+                                    },
+                                    {
+                                      "properties": {
+                                        "policy": {
+                                          "const": "UNIVERSITY_STATIC_DEMO_NO_MIGRATION"
+                                        }
+                                      }
+                                    }
+                                  ]
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "else": {
+                          "properties": {
+                            "data": {
+                              "properties": {
+                                "notRequired": {
+                                  "type": "null"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "else": {
+              "properties": {
+                "events": {
+                  "items": {
+                    "properties": {
+                      "delivery": {
+                        "properties": {
+                          "data": {
+                            "properties": {
+                              "notRequired": {
+                                "type": "null"
+                              }
                             }
                           }
                         }

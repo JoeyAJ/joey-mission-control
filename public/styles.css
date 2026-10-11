@@ -566,8 +566,11 @@ body[data-joey-simple=true] .utility-menu>summary{min-height:44px;box-sizing:bor
 .run-workbench-graph{border:0}.run-workbench-graph .run-workbench-item{margin-left:12px;width:calc(100% - 12px);border-left:2px solid #8e8b58}.run-workbench-graph-root{border-bottom:1px solid #77754a;padding:5px;overflow-wrap:anywhere}
 .run-workbench-detail details{margin:8px 0}.run-workbench-detail summary{cursor:pointer}.run-workbench-detail time{display:block}.run-workbench-detail p{white-space:pre-wrap;overflow-wrap:anywhere}
 .run-event-arrived{animation:run-event-arrival 800ms ease-out 1}@keyframes run-event-arrival{from{background:#4b4d27}to{background:#11140f}}
+.run-file-navigation label,.run-file-navigation select{display:block;max-width:100%;width:100%;min-width:0;box-sizing:border-box}.run-file-navigation select{color:inherit;background:#11140f;margin:6px 0;padding:7px;border:1px solid #363a2a}.run-file-navigation h5{margin:10px 0 5px}.run-file-item[data-new-file-observation=true],.run-workbench-item[data-new-file-observation=true]{border-left:3px solid #b8ae6e}.run-file-navigation nav{min-width:0}
+@media(min-width:769px){.run-file-back{display:none}}
 @media(prefers-reduced-motion:reduce){.run-event-arrived{animation:none}}
 @media(max-width:768px){.run-workbench-item{min-height:44px;font-size:13px}.run-workbench-detail summary{min-height:44px;display:flex;align-items:center}}
+@media(max-width:768px){.run-file-navigation select{min-height:44px;font-size:13px}.run-file-navigation label{font-size:13px}.run-file-navigation .run-workbench-item{margin:7px 0}}
 .run-workbench-handoff{width:min(640px,calc(100vw - 40px));max-height:80vh;overflow:auto;box-sizing:border-box;background:#15180f;color:#d5d5ba;border:1px solid #928c5b;border-radius:8px;padding:20px}.run-workbench-handoff::backdrop{background:#000a}.run-workbench-handoff button{min-height:44px;margin:5px;padding:8px 14px}.run-workbench-handoff textarea{width:100%;box-sizing:border-box;min-height:220px;color:inherit;background:#090d08;white-space:pre-wrap}
 #workspace .run-workbench-graph .run-workbench-item{position:relative;left:auto;top:auto;transform:none;text-align:left;max-width:none}
 #workspace .command-graph[data-private-run-graph=true]>:not([data-run-workbench]),#workspace .command-inspector[data-private-run-details=true]>:not([data-run-workbench]){display:none}

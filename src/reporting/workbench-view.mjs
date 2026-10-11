@@ -1,4 +1,5 @@
 import {fileActivityLabel,renderFileActivity} from './file-activity-view.mjs';
+import {renderFileNavigation,renderManifestFile,markFileObservation,fileNavigationWords} from './file-navigation-view.mjs';
 import {supportsDeliveryVersion} from './file-activity.mjs';
 import {renderDeliveryEvidence} from './delivery-evidence-view.mjs';
 import {createActivityFollow} from './activity-follow.mjs';
@@ -12,7 +13,7 @@ const words={
  ko:{cards:'Agent / 작업 보고',events:'보고 이벤트',explorer:'이벤트 및 결과',detail:'선택한 보고',graph:'보고 관계',unknown:'현재 출처 미확인',empty:'Agent 시작 보고 없음',last:'마지막 확인 · 현재 상태 미확인',current:'현재 확인한 보고',running:'개발 중 보고',blocked:'차단 보고',completed:'완료 보고',failed:'실패 보고',unconfirmed:'현재 미확인',stale:'갱신 지연',attention:'선택 이벤트: 차단 / 실패 보고',limits:'파일 읽기/수정, diff 및 터미널 스트림 미연결. 출처가 보고한 이벤트입니다.',pending:'완료 보고가 Joey 검수를 의미하지 않습니다.',source:'출처 상세',handoff:'보고된 인계',tests:'보고된 테스트',code:'결과 버전',next:'다음 단계',historical:'과거 출처 기록',scope:'BASELINE',candidate:'University 후보'}
 };
 // Transient authenticated UI memory only; no transport/storage, no private URL state.
-export function mountRunWorkbench({owner,doc=document,projectId,track='BASELINE',locale='zh-TW',targets,onProject=()=>{},onSelect=()=>{},now=Date.now}={}){
+export function mountRunWorkbench({owner,doc=document,projectId,track='BASELINE',locale='zh-TW',targets,onProject=()=>{},onSelect=()=>{},onExplore=()=>{},now=Date.now}={}){
  const w=words[locale]||words['zh-TW'];let memory=memories.get(owner);if(!memory){memory={scopes:new Map(),transitions:createWorkbenchTransitions(),activities:new Map()};memories.set(owner,memory);}
  const scope=JSON.stringify([projectId,track]);if(!memory.activities.has(scope))memory.activities.set(scope,createActivityFollow());const activity=memory.activities.get(scope);let latestEvents=[];const el=(tag,text,cls)=>{const n=doc.createElement(tag);if(text)n.textContent=text;if(cls)n.className=cls;return n;};
  const hosts={};for(const key of ['cards','events','explorer','explorerMobile','detail','graph']){hosts[key]=el('section',null,'run-workbench-'+key);hosts[key].dataset.runWorkbench=key==='explorerMobile'?'explorer-mobile':key;targets[key]?.prepend(hosts[key]);}
@@ -30,6 +31,7 @@ export function mountRunWorkbench({owner,doc=document,projectId,track='BASELINE'
   const positions=Object.values(hosts).map(n=>({n,top:n.parentElement?.scrollTop||0}));
   for(const n of Object.values(hosts))n.replaceChildren();
   delete hosts.detail.dataset.selectedRun;delete hosts.detail.dataset.selectedEventSequence;hosts.events.dataset.workbenchState='unconfirmed';
+  delete hosts.detail.dataset.selectedFilePath;
   const auth=owner.dataset.ownerAuth;if(auth!=='verified'){targets.graph.dataset.privateRunGraph='false';targets.detail.dataset.privateRunDetails='false';
    purgePacket();if(dialog.open)dialog.close();
    if(['signed_out','unconfirmed','unconfigured'].includes(auth))clear();
@@ -48,11 +50,18 @@ export function mountRunWorkbench({owner,doc=document,projectId,track='BASELINE'
   if(!fresh){hosts.events.append(el('p',w.unknown,'run-workbench-notice'));hosts.detail.append(el('p',w.unknown));return;}
   if(!projection.events.length){hosts.events.append(el('p',w.empty));return;}
   const followLabels=locale==='ko'?['최신 보고 따라가는 중','과거 기록 읽는 중 · 최신으로 돌아가기']:locale==='en'?['Following latest reports','Reading history · resume latest']:['跟隨最新回報中','閱讀歷史中 · 返回最新'];const follow=button(followLabels[followState.following?0:1],'follow','follow',()=>{if(activity.snapshot().following)activity.pause();else activity.resume(latestEvents);paint(true);});follow.dataset.runFollow=followState.following?'following':'paused';hosts.events.append(follow);
+  const currentRun=projection.runs.find(r=>r.report.runId===followState.runId),fileRows=projection.files.filter(f=>f.runId===followState.runId),selectedFile=fileRows.find(f=>f.path===followState.selectedFilePath),reducedMotion=globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches===true;
+  const selectFile=path=>{activity.selectFile(path,projection.events,currentRun?.report.activityPaths);paint();onSelect();},selectEvent=key=>{activity.selectEvent(key,projection.events);paint();onSelect();},selectTask=id=>{activity.selectRun(id,projection.events);paint();};
+  for(const [host,mode]of [[hosts.explorer,'desktop'],[hosts.explorerMobile,'mobile']])host.append(renderFileNavigation({doc,projection,followState,locale,mode,changes,reducedMotion,onTask:selectTask,onFile:selectFile,onEvent:selectEvent}));
   for(const row of followState.visibleEvents){const label=row.event.activity?fileActivityLabel(row.event.activity,locale):row.event.kind;const b=button(row.agentName+' · '+label,row.key,'event');if(row.event.activity){b.dataset.fileEvent=row.event.activity.action;b.dataset.filePath=row.event.activity.path;}b.append(reportTimeNode(doc,row.event.eventAt,{locale}),el('p',row.event.summary));b.dataset.runEventSequence=String(row.event.sequence);if(changes.includes(row.key)){b.dataset.newReportEvent='true';if(!globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches)b.classList.add('run-event-arrived');}hosts.events.append(b);
-   const x=button(row.agentName+' · '+label+' #'+row.event.sequence,row.key,'explorer');hosts.explorer.append(x);hosts.explorerMobile.append(button(row.agentName+' · '+label+' #'+row.event.sequence,row.key,'explorer-mobile'));
-   const g=button(row.agentName+' → '+label+' #'+row.event.sequence,row.key,'graph');hosts.graph.append(g);
+   if(!fileRows.length){const x=button(row.agentName+' · '+label+' #'+row.event.sequence,row.key,'explorer');hosts.explorer.append(x);hosts.explorerMobile.append(button(row.agentName+' · '+label+' #'+row.event.sequence,row.key,'explorer-mobile'));}
+   if(!selectedFile||selectedFile.history.some(e=>e.key===row.key)){const g=button(row.agentName+' → '+label+' #'+row.event.sequence,row.key,'graph');if(row.event.activity)markFileObservation(g,changes.includes(row.key),{reducedMotion});hosts.graph.append(g);}
   }
-  const row=projection.events.find(e=>e.key===selected);if(!row){hosts.detail.append(el('p',w.unknown));return;}for(const b of hosts.cards.querySelectorAll('[data-card-scope=current]'))b.setAttribute('aria-pressed',String(b.dataset.runSelection===row.runId));const p=projection.runs.find(r=>r.report.runId===row.runId).presentation;
+  for(const f of fileRows){const b=button(f.path,f.key,'file-graph',()=>selectFile(f.path));b.dataset.fileGraphPath=f.path;b.setAttribute('aria-pressed',String(f===selectedFile));markFileObservation(b,f.history.some(e=>changes.includes(e.key)),{reducedMotion});hosts.graph.prepend(b);}
+  const row=projection.events.find(e=>e.key===selected);for(const b of hosts.cards.querySelectorAll('[data-card-scope=current]'))b.setAttribute('aria-pressed',String(b.dataset.runSelection===followState.runId));
+  if(selectedFile){hosts.detail.dataset.selectedFilePath=selectedFile.path;const back=button((fileNavigationWords[locale]||fileNavigationWords['zh-TW']).back,'file-list','file-list',onExplore);back.dataset.fileExplorerBack='true';back.classList.add('run-file-back');hosts.detail.append(back);}
+  if(!row){if(selectedFile&&currentRun){hosts.detail.dataset.selectedRun=currentRun.report.runId;hosts.detail.append(renderManifestFile({doc,file:selectedFile,report:currentRun.report,locale}));}else hosts.detail.append(el('p',w.unknown));}
+  else{const p=projection.runs.find(r=>r.report.runId===row.runId).presentation;
   hosts.detail.append(el('p',row.agentName+' · '+(w[p.currentState]||w.unconfirmed),'run-workbench-agent'),el('h5',row.featureTitle),el('strong',row.event.kind+' · #'+row.event.sequence),reportTimeNode(doc,row.event.eventAt,{locale}),el('p',row.event.summary,'run-workbench-summary'));
   hosts.detail.dataset.selectedEventSequence=String(row.event.sequence);hosts.detail.dataset.selectedRun=row.runId;
   if(row.event.activity)hosts.detail.append(renderFileActivity({doc,locale,activity:row.event.activity,presentation:p,now:now()}));
@@ -62,12 +71,13 @@ export function mountRunWorkbench({owner,doc=document,projectId,track='BASELINE'
   if(row.event.result){const r=row.event.result;hosts.detail.append(el('p',w.pending),el('p',w.code+' · '+r.codeSha),el('p',w.handoff+' · '+r.handoff.path+' @ '+r.handoff.commitSha),el('p',w.next+' · '+r.nextSteps));for(const test of r.tests)hosts.detail.append(el('p',w.tests+' · '+test.outcome+' · '+test.name));const artifact=button(r.handoff.path,row.key,'artifact');artifact.dataset.reportArtifact='handoff';hosts.explorer.append(artifact);const mobileArtifact=button(r.handoff.path,row.key,'artifact-mobile');mobileArtifact.dataset.reportArtifact='handoff';hosts.explorerMobile.append(mobileArtifact);}
   if(!row.event.activity)hosts.detail.append(el('p',projection.runs.find(r=>r.report.runId===row.runId).report.events.some(e=>e.activity)?(locale==='ko'?'명시적 파일 metadata만 보고됨; source/diff/editor/terminal 미연결.':locale==='en'?'Explicit file metadata reported only; source/diff/editor/terminal are unavailable.':'僅接入明確 file metadata 回報；source／diff／editor／terminal 未接入。'):w.limits,'run-workbench-limits'));
   if(!supportsDeliveryVersion(p.schemaVersion)&&row.event.kind==='completed')hosts.detail.append(renderDeliveryEvidence({doc,locale,presentation:{...p,reportedState:row.event.kind,result:row.event.result}}));
+  }
   const handoff=el('button',handoffWords[0],'run-workbench-item');handoff.type='button';handoff.dataset.runHandoffOpen='true';handoff.addEventListener('click',()=>{dialogGeneration++;purgePacket();status.textContent='';dialog.showModal();});hosts.detail.append(handoff);
-  hosts.graph.prepend(el('p',row.runId,'run-workbench-graph-root'));
+  hosts.graph.prepend(el('p',followState.runId,'run-workbench-graph-root'));
   for(const {n,top}of positions)if(n.parentElement)n.parentElement.scrollTop=top;
   if(followState.following&&(scrollLatest||changes.some(key=>followState.visibleEvents.some(e=>e.key===key)))){const current=hosts.events.querySelector('[aria-pressed=true][data-run-control=event]');const column=targets.events;if(current&&column&&column.getClientRects().length){const r=current.getBoundingClientRect(),c=column.getBoundingClientRect();if(r.bottom>c.bottom)column.scrollTop+=r.bottom-c.bottom+8;else if(r.top<c.top)column.scrollTop+=r.top-c.top-8;}}
   if(focus){const b=[...Object.values(hosts).flatMap(n=>[...n.querySelectorAll('[data-run-selection]')])].find(n=>n.dataset.runSelection===focus.key&&n.dataset.runControl===focus.kind);b?.focus({preventScroll:true});}
-  const expiry=projection.runs.map(r=>Date.parse(r.presentation.expiresAt)).filter(t=>t>now());if(expiry.length)timer=setTimeout(paint,Math.min(...expiry)-now()+1);
+  const expiry=[...projection.runs.map(r=>Date.parse(r.presentation.expiresAt)),...projection.files.filter(f=>f.latest).map(f=>Date.parse(f.latest.event.activity.observedAt)+300000),...(row?.event.activity?[Date.parse(row.event.activity.observedAt)+300000]:[])].filter(t=>t>now());if(expiry.length)timer=setTimeout(paint,Math.min(...expiry)-now()+1);
  }
  const unsubSource=owner.sourceController?.subscribe(v=>{sourceView=v;paint();}),unsubReport=owner.repositoryRunsController?.subscribe(v=>{reportView=v;paint();});
  const pauseReading=()=>{if(activity.snapshot().following){activity.pause();paint();}};const wheel=e=>{if(e.deltaY<0)pauseReading();};const keys=e=>{if(['PageUp','Home'].includes(e.key)&&!e.target.matches('input,textarea,select'))pauseReading();};let touchY=null;const touchStart=e=>touchY=e.touches[0]?.clientY;const touchMove=e=>{const y=e.touches[0]?.clientY;if(touchY!==null&&y>touchY+2)pauseReading();touchY=y;};targets.events.addEventListener('wheel',wheel,{passive:true});targets.events.addEventListener('keydown',keys);targets.events.addEventListener('touchstart',touchStart,{passive:true});targets.events.addEventListener('touchmove',touchMove,{passive:true});

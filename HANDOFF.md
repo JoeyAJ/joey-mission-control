@@ -1,15 +1,27 @@
-# Mission Control — quoted credential fingerprint guard
+# Mission Control — bounded task/file metadata navigation
 
 Project: MISSION_CONTROL
-Timestamp: 2026-10-11T01:32:53.524752Z
-Task: Exclude quoted JSON/YAML credential fingerprints in adapter and copied helper
+Timestamp: 2026-10-11T02:02:33.854440Z
+Task: Final bounded manifest/file history navigation and source-specific no-migration qualification
 Status: LOCAL_VERIFIED_CLOUD_EVENTS_NOT_ENABLED
 Last Developer: Codex
 Executed by: Codex
 Actual Model: UNKNOWN
-Baseline: c9a444f35e98b1e3eb848dab7603f492161af738
+Baseline: 19a15fcbdf653972c22684d313f4519d33b930d6
 
-## Current guard fix
+## Current navigation checkpoint
+
+Sole MC writer; no dependency on JoeyMac. Existing Explorer gains a reported-task picker, validated v3 task-listed files (including unobserved paths), dated read/change history and linked file/event/detail/graph selection. File selection pauses follow; new observations preserve paused history. Effects occur once for new scope/run/event identity only; repeat polls/remount/age timers cannot fabricate activity or refresh dates. Reduced motion and mobile44px touch/back-to-files controls use existing panes. Private metadata remains transient authenticated memory/DOM, never URL/storage. Source/Owner/generation/fresh-copy gates and candidate qualification remain intact; v1/v2 have no invented manifests.
+
+Portable761 tests/build/validate/check PASS with zero forbidden attempts; external Draft2020-12 parity204 PASS. Navigation six1440/390 × zhTW/ko/en cases and exact actual MC v3 byte replay two widths PASS, no external calls/writes. Original follow/file/delivery18, true Continue12 and promised-copy cancellation2 PASS. Four focused navigation/policy tests PASS after the final immutable-old-report assertion. Actual replay preserves original codex-mc-file-observations-20261011 dates/digests/read/change qualification and predecessor bytes; synthetic Owner/transport, not served verification. Reviewed desktop/mobile screenshots and exact Owner QA steps: docs/MC_FILE_NAVIGATION_VERIFICATION_20261011.md.
+
+Read-only MC/University architecture inventory: docs/MC_STATIC_DEMO_POLICY_INVENTORY_20261011.md. MC has existing Auth/private API/Supabase and is not globally static. This task uses honest existing MC_NO_DATA_CHANGE; no DB/schema/data changed. New University no-external-migration policy is exact reviewed d7338420868694ed9bcc36afed90757e660ec182 / UNIVERSITY_CANDIDATE / DELIVERY_FOLLOWUP / existing READY target only, reason/time required, version/evidence null; future SHA/task/project cannot inherit. Original University run codex-university-delivery-v2-20261011T013205Z at c4bda815c64e0ac3a548a65432e23978779835fe / blob2166d5e00a6f061e7b93b11c431d6b4b42b39231 remains data NOT_RECORDED/verification BLOCKED. No University runtime/report/deploy, SQL or browser storage write/reset. Generic helper33073 bytes, SHA25663baf890fe7bd642b565d02b83a5057a9180f072d5ebaf5b3be91812f502ca80; old helper receipts remain dated unchanged.
+
+Own new v2 FEATURE run codex-mc-file-navigation-20261011, predecessor codex-mc-quoted-guard-20261011, immutable fresh baseline19a15f. Started1 commit79ca8a4918ca96e85ae716ded4c1f33edb54811d / blob9d3d27ca991dff5f4b23f946d58afc1d91a18940. Actual tested progress2 commit92d739e358aa12b42c36d35c28983796a9d9b451 / blobeae0ae631867d28efb207a4348eaebe1650db4da. Final source/handoff/routing46 and build/validate/check PASS after strict timestamp correction. Terminal/final fixed Preview exact remote/READY/alias and root GET receipts are recorded at closure; no post-terminal append or old report rewrite. All report evidence AGENT_REPORTED, file observations AGENT_REPORTED_METADATA, independent/Joey PENDING. Git Contents/hash verifies blob/scope only.
+
+This is the final bounded metadata alignment slice, not full reference/MC acceptance. Content/diff/editor/terminal/tool-stream/trusted ingestion and persistent collectors remain unavailable; no model chooser/dispatch. No speculative further expansion follows this task. Three unsigned sources/documentTimestamp remain unrecorded; University candidate never promotes to accepted/main; Nex CI remains failing/unrepaired. MC Production, other repo writes, permissions/secrets and revoked AWS pilot untouched. Cloud root CONNECT403 is not bypassed; served checkedSha stays null on failure. Final existing fixed Preview publication and report/handoff closure are the remaining work for this checkpoint, not a Joey installation/deployment task.
+
+## Historical quoted credential guard (2026-10-11, baseline c9a444f)
 
 Independent review found quoted JSON/YAML credential keys bypassed the bounded fingerprint exclusion. The adapter now recognizes closing key quotes for password/token/api_key and other existing credential names, preserving unquoted detection and bounded text scope. Tests read only synthetic task-listed config.json: 56 refusals for read/changed per adapter/copied-helper surface, no prepared fingerprint/output or report mutation, safe config before/after succeeds. No unrelated private scan or further file-activity expansion.
 
