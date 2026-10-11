@@ -43,6 +43,64 @@
       "summary": "Existing-project task contract/form/session export/import and fresh task-bound external-Agent copy implemented; initial14 tests PASS. Early dc7fce3 and input/report qualification correction b65bbcc pushed to same Preview. Existing task storage is read-only; new task SQL/ACL still NOT_APPLIED and activation OFF. Isolated native checks pass roles/RLS/readback/CAS/project-track immutability; parity and browser verification ongoing. No frozen ledger/Production/dispatch/new source access.",
       "result": null,
       "delivery": null
+    },
+    {
+      "id": "existing-task-approval-blocked-3",
+      "sequence": 3,
+      "eventAt": "2026-10-11T08:16:58.764Z",
+      "kind": "blocked",
+      "summary": "Task form/full request/fixed ID/private download-import/fresh external-Agent handoff published2cb0c23, same Preview READY. Portable820/focused15/source46/task4/Continue12/cloud4/fallback4/simple4/brief6 PASS; native10 groups/17 parity PASS. Exact task SQL553d99b4 at scmvedfqwlhkyvljymjj awaits separate approval; task storage OFF. Served CONNECT403 no bypass. MC report capacity20/20 unchanged. Run OPEN pending approval; no new Agent access/dispatch/Production action.",
+      "result": null,
+      "delivery": {
+        "qualification": "AGENT_REPORTED",
+        "scope": {
+          "projectId": "MISSION_CONTROL",
+          "track": "BASELINE",
+          "repositoryId": "JoeyAJ/joey-mission-control",
+          "runId": "codex-mc-existing-project-task-20261011",
+          "taskId": "mc-existing-project-task-20261011",
+          "workRef": "codex/mc-command-center-checkpoint-20261006",
+          "codeSha": "2cb0c23f7fbb4a68f07723191cef823093872ff4"
+        },
+        "deployment": {
+          "status": "READY",
+          "target": {
+            "provider": "vercel",
+            "project": "joey-mission-control",
+            "environment": "preview"
+          },
+          "id": "dpl_2ngwhAigWndB4LLDrbijoL753EkK",
+          "deployedSha": "2cb0c23f7fbb4a68f07723191cef823093872ff4",
+          "url": "https://joey-mission-control-git-codex-mc-comma-fceec2-joeyajs-projects.vercel.app/",
+          "observedAt": "2026-10-11T08:15:42.138Z",
+          "evidence": "Connected provider ID and fixed alias READY/exact SHA; exact canonical remote SHA matched. Preview project prj_X67htPw7vkRI2tuf8817vOUCGQOD.",
+          "notRequired": null
+        },
+        "verification": {
+          "status": "BLOCKED",
+          "method": "HTTP_FUNCTIONAL_CHECK",
+          "checkedAt": "2026-10-11T08:15:42.323Z",
+          "deploymentId": "dpl_2ngwhAigWndB4LLDrbijoL753EkK",
+          "checkedSha": null,
+          "url": "https://joey-mission-control-git-codex-mc-comma-fceec2-joeyajs-projects.vercel.app/",
+          "evidence": "Ordinary exact HTTPS GET curl56/CONNECT403/HTTP000 before app; no bypass. Synthetic task4/Continue12/cloud4/fallback4/simple4/brief6 PASS does not establish served Owner HTTP.",
+          "notRequired": null
+        },
+        "handoff": {
+          "status": "CURRENT",
+          "path": "HANDOFF.md",
+          "commitSha": "2cb0c23f7fbb4a68f07723191cef823093872ff4",
+          "checkedAt": "2026-10-11T08:16:21.157Z",
+          "evidence": "Source includes updated current task/qualification/gaps/exact SQL proposal and native/browser verification; original histories preserved."
+        },
+        "data": {
+          "status": "PENDING",
+          "version": "553d99b407d34d622b53918eb42c6e42146417e71009a47cbf25f8c1dc283194",
+          "checkedAt": "2026-10-11T08:16:21.157Z",
+          "evidence": "New development task SQL/ACL NOT_APPLIED; server OFF pending separate exact proposal approval at existing scmvedfqwlhkyvljymjj. Existing approved project drafts remain ON. Native exact task SQL10 groups/17 parity PASS; zero live task SQL requests.",
+          "notRequired": null
+        }
+      }
     }
   ]
 }
