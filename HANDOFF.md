@@ -1,19 +1,19 @@
-# Current mobile task entry / navigation priority — 2026-10-11
+# Current mobile task entry / navigation release — 2026-10-11
 
 Project: MISSION_CONTROL
-Timestamp: 2026-10-11T22:45:33.679Z
+Timestamp: 2026-10-11T22:50:49.087Z
 Task: Signed-out/checking feedback and visible website/list actions
-Status: LOCAL_VERIFIED_PENDING_PUBLICATION
+Status: LOCAL_VERIFIED_PARENT_READ_PREVIEW_PUBLISHED
 Last Developer: Codex
 Executed by: Codex
 Actual Model: UNKNOWN
 Baseline: facbb4cfb3660637003918baa61d585d007dc303
 
-Task entry now reveals scoped login/checking/loading feedback, focuses existing login/editor, preserves same-scope input and cancels switch intents; unchanged Owner/AAL2/session/membership gates. Reviewed56ea279 site/list slice integrated as5791b0f; exact known URLs/candidate qualification preserved. No hierarchy8049af6.
+Task entry reveals scoped login/checking/loading feedback, focuses login/editor, preserves same-scope input and cancels switch intents; Owner/AAL2/session/membership gates retained. Exact56ea279 navigation slice integrated as5791b0f; candidate pending and known URLs preserved. No hierarchy8049af6.
 
-Evidence: docs/MC_MOBILE_TASK_ENTRY_20261011.md. Signed-out baseline RED; entry3/navigation9(54 scopes), focused137/portable936 PASS. Final root/Preview pending. Existing preflight/motion/privacy and SQL/RLS/Auth settings unchanged. No email/actual Owner/task writes. Fixture finalization core preserved and live disabled; docs/MC_FINALIZATION_CORE_20261011.md details technical gaps and exact action grants.
+Evidence: docs/MC_MOBILE_TASK_ENTRY_20261011.md. Baseline RED; entry3/navigation9(54 scopes), focused137/portable936/build/validate/check/root20 PASS. Runtime6b3465b exact fixed Preview dpl_2ysABZv3ukKtD1eH1QtrmTWy7cEM READY, Production unchanged. Final docs receipt follows. Preflight/motion/SQL/Auth settings unchanged. No email/actual Owner writes. Fixture finalization core22 groups/review4 PASS, live disabled; docs/MC_FINALIZATION_CORE_20261011.md records missing connections/action grants.
 
-Next Action: finish priority Preview/report. Joey approved passwordless direction22:41:48UTC; next inspect nonsecret mail/template/redirect readiness, prefer same-page OTP, retain AAL2/TOTP/privacy. No account-password deletion/settings/SMTP/signup/redirect changes or mail sending without selected flow explanation and exact required approvals. CONNECT403 not bypassed; actual served/Owner acceptance pending. No Production/new keys/SQL/permissions/dispatch/AWS.
+Next Action: finish final exact Preview/terminal, then approved passwordless readiness/code. Joey22:41:48UTC approved direction; prefer same-page OTP with existing TOTP/AAL2/private gates. No password deletion/SMTP/signup/redirect/security changes without exact required approval; no sending before flow explanation. CONNECT403 before app not bypassed, served/Owner acceptance pending. No Production/new keys/SQL/permissions/dispatch/AWS.
 
 # Dated prior stage history
 

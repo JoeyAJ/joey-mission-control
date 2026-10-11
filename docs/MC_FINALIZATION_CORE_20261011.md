@@ -77,3 +77,7 @@ Evidence: docs/MC_FINALIZATION_CORE_20261011.md. New22 tests/focused132/browser 
 Next Action: finish same Preview/terminal. Future live use needs exact action-time tuple/PR/ref and fixed project/Preview grant plus trusted verifier, durable CAS store and existing verified provider capabilities; accepting/testing alone does not connect them. No Production/SQL/new credentials/grants/repos/dispatch/model selector/AWS. CONNECT403 not bypassed; actual served and genuine Agent acceptance pending.
 
 ```
+
+## Combined priority publication
+
+Portable936/focused137/build/portable validation/static safety/root20 PASS, forbiddenAttempts0. Mobile entry3 and navigation9(54 scopes) PASS; core review4, task-cloud4 and project-draft4 remain qualified synthetic fixtures, actual Owner/external/unexpected writes0. Runtime6b3465badd3df8b288dbc8a60e85c589c743f6e3 exact remote and fixed Preview dpl_2ysABZv3ukKtD1eH1QtrmTWy7cEM READY; connected alias and independent ID match, Production original identity unchanged. Ordinary HTTPS CONNECT403/HTTP000 before application, servedCheckedSha=null, no bypass. [Runtime receipt](qa/mc-mobile-task-entry-20261011/runtime-publication.json). Final documentation HEAD is verified independently before terminal in the private final receipt. No post-terminal code advance for this run. Passwordless direction is a separate approved next increment; no email/settings action here.
