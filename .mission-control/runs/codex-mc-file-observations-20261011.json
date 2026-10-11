@@ -40,6 +40,36 @@
       "result": null,
       "delivery": null,
       "activity": null
+    },
+    {
+      "id": "code-read",
+      "sequence": 2,
+      "eventAt": "2026-10-11T01:16:13.228Z",
+      "kind": "progress",
+      "summary": "Reporter bounded read · src/reporting/workbench-view.mjs · metadata only",
+      "result": null,
+      "delivery": null,
+      "activity": {
+        "schemaVersion": "mc.file-activity.v1",
+        "qualification": "AGENT_REPORTED_METADATA",
+        "scope": {
+          "projectId": "MISSION_CONTROL",
+          "track": "BASELINE",
+          "repositoryId": "JoeyAJ/joey-mission-control",
+          "runId": "codex-mc-file-observations-20261011",
+          "taskId": "mc-file-observations-20261011",
+          "workRef": "codex/mc-command-center-checkpoint-20261006"
+        },
+        "actor": "Codex",
+        "action": "FILE_READ",
+        "path": "src/reporting/workbench-view.mjs",
+        "contentSha256": "36db567dab7f322debfeb60de7cbd192a643e538316165878e2e014fbb11bca9",
+        "previousContentSha256": null,
+        "byteLength": 18115,
+        "workHeadSha": "250095f136a1d1629d0d173f668c98f922fea985",
+        "observedAt": "2026-10-11T01:16:13.228Z",
+        "precision": "REPORTER_BOUNDED_READ"
+      }
     }
   ]
 }
