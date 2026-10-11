@@ -43,6 +43,88 @@
       "summary": "Optional immutable revision/digest header, full private task packet verification and exact current-task comparison implemented. Focused60 and new actual-app synthetic requirements4 PASS; legacy/mismatch remain historical, new match only affects current status. Existing guards retained; full regression in progress. Owner decision persistence remains proposal only, no SQL/access changes.",
       "result": null,
       "delivery": null
+    },
+    {
+      "id": "completed-task-requirements",
+      "sequence": 3,
+      "eventAt": "2026-10-11T12:28:22.213226Z",
+      "kind": "completed",
+      "summary": "Immutable task revision and full-request digest bind handoff/report/CI to the exact request. Older or unbound reports remain historical. Focused61/portable856/root10/browser42 PASS; same Preview exact b3454c5 READY. Owner decision proposal remains unapplied; real bound cloud-task Agent run pending.",
+      "result": {
+        "codeSha": "b3454c5b953aa0140d31003b1ab748f84449f466",
+        "tests": [
+          {
+            "name": "Portable856/build/validate/check + focused61: packet digest, immutable binding, legacy preservation, changed-request and cloud-CI races",
+            "outcome": "PASS"
+          },
+          {
+            "name": "Actual-app42 synthetic browser cases: binding4/PR-CI8/inspection4/existing4/cloud4/Continue12/theme6;40 task writes, external-unexpected0",
+            "outcome": "PASS"
+          },
+          {
+            "name": "Root safe-intake10; approved SQL/task validator/privacy/source permission/palette/Owner receipt parity;10 ordered source races retained",
+            "outcome": "PASS"
+          }
+        ],
+        "nextSteps": "An authorized external Agent must receive a genuine saved development task, preserve copied cloud taskId/revision/digest and publish a new bound run. Never execute the harmless save test, rewrite legacy reports or append this terminal run. Matching is Agent attestation, not Owner approval or execution authority. New binding UI actual-device acceptance pending; runtime GitHub channel permissions UNKNOWN. Owner decision persistence proposal lists exact data/ACL/caps and no execution, but remains unapplied pending separate approval of an exact migration. Cloud HTTPS CONNECT403 was not bypassed; servedCheckedSha null. Next Agent reads latest canonical root and starts its own run after this terminal.",
+        "handoff": {
+          "path": "HANDOFF.md",
+          "commitSha": "b3454c5b953aa0140d31003b1ab748f84449f466"
+        }
+      },
+      "delivery": {
+        "qualification": "AGENT_REPORTED",
+        "scope": {
+          "projectId": "MISSION_CONTROL",
+          "track": "BASELINE",
+          "repositoryId": "JoeyAJ/joey-mission-control",
+          "runId": "codex-mc-task-requirements-20261011",
+          "taskId": "mc-task-requirements-20261011",
+          "workRef": "codex/mc-command-center-checkpoint-20261006",
+          "codeSha": "b3454c5b953aa0140d31003b1ab748f84449f466"
+        },
+        "deployment": {
+          "status": "READY",
+          "target": {
+            "provider": "vercel",
+            "project": "joey-mission-control",
+            "environment": "preview"
+          },
+          "id": "dpl_DgLeiQBRZSysKngjTBXggd3612Jp",
+          "deployedSha": "b3454c5b953aa0140d31003b1ab748f84449f466",
+          "url": "https://joey-mission-control-git-codex-mc-comma-fceec2-joeyajs-projects.vercel.app/",
+          "observedAt": "2026-10-11T12:28:22.213226Z",
+          "evidence": "Fixed alias and independent deployment ID exact b3454c5 READY; canonical remote exact, authorized branch/project and original Production unchanged.",
+          "notRequired": null
+        },
+        "verification": {
+          "status": "BLOCKED",
+          "method": "HTTP_FUNCTIONAL_CHECK",
+          "checkedAt": "2026-10-11T12:28:22.213226Z",
+          "deploymentId": "dpl_DgLeiQBRZSysKngjTBXggd3612Jp",
+          "checkedSha": null,
+          "url": "https://joey-mission-control-git-codex-mc-comma-fceec2-joeyajs-projects.vercel.app/",
+          "evidence": "Ordinary HTTPS HEAD curl56/CONNECT403/HTTP000 before app; no bypass. Owner save/reload already accepted independently; new binding-device and real bound task Agent run acceptance pending. Runtime GitHub channels UNKNOWN.",
+          "notRequired": null
+        },
+        "handoff": {
+          "status": "CURRENT",
+          "path": "HANDOFF.md",
+          "commitSha": "b3454c5b953aa0140d31003b1ab748f84449f466",
+          "checkedAt": "2026-10-11T12:28:22.213226Z",
+          "evidence": "Current task-requirements root at b3454c5; prior current prefix preserved byte-for-byte in private binding doc and dated root history unchanged; root safe intake10 PASS."
+        },
+        "data": {
+          "status": "NOT_REQUIRED",
+          "version": null,
+          "checkedAt": "2026-10-11T12:28:22.213226Z",
+          "evidence": null,
+          "notRequired": {
+            "policy": "MC_NO_DATA_CHANGE",
+            "reason": "Task requirements/report binding reuses existing authorized storage; no cloud data schema, SQL, Auth, credentials or grants applied. Owner decision proposal remains unapplied."
+          }
+        }
+      }
     }
   ]
 }
