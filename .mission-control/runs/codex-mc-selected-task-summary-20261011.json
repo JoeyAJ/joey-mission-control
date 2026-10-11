@@ -43,6 +43,88 @@
       "summary": "Shared selected-run brief now shows full task, dated state, v2/v3 delivery gaps and recorded next step before history; fresh current-project handoff is separate. Portable766/build/check PASS, focused18, brief6 locales/devices, actual-byte continuity2, file2, simple4 and Continue12 PASS, external0/writes0. No schema/transport/credentials changes; connected GitHub publication follows.",
       "result": null,
       "delivery": null
+    },
+    {
+      "id": "brief-completed",
+      "sequence": 3,
+      "eventAt": "2026-10-11T03:53:01.489Z",
+      "kind": "completed",
+      "summary": "Shared selected-task brief now unifies phone and desktop Agent/full title/dated state/delivery gaps/recorded next step, with current-project fresh handoff before history. v3 qualification and title inheritance fixed. Portable766 and browser6/continuity2/simple4/Continue12 PASS; fixed Preview READY. Cloud CONNECT403 leaves served and independent Joey acceptance pending.",
+      "result": {
+        "codeSha": "8980266daad30d23f89571d29a8d772e9a0c3041",
+        "tests": [
+          {
+            "name": "Final portable766/build/validate/check forbiddenAttempts0; focused18 and current handoff20",
+            "outcome": "PASS"
+          },
+          {
+            "name": "Shared brief6 locales/devices/reduced motion/fonts; actual-byte continuity2; file2/simple4/Continue12 external0/writes0",
+            "outcome": "PASS"
+          },
+          {
+            "name": "Direct served Owner/device acceptance: ordinary root GET CONNECT403 before app",
+            "outcome": "NOT_RUN"
+          }
+        ],
+        "nextSteps": "Use fixed Preview default Joey, select a reported task and read its full title/dated status/delivery/recorded next step. Current-project copy before history freshly reads current source/reports. Open workspace to retain same run, inspect old event separately from latest task brief. Normal served Owner review remains blocked by cloud CONNECT403, never bypassed. Bounded increment complete; continue future approved work from fresh source.",
+        "handoff": {
+          "path": "HANDOFF.md",
+          "commitSha": "3670115663518180a01a8c746e77953110cf4fb6"
+        }
+      },
+      "delivery": {
+        "qualification": "AGENT_REPORTED",
+        "scope": {
+          "projectId": "MISSION_CONTROL",
+          "track": "BASELINE",
+          "repositoryId": "JoeyAJ/joey-mission-control",
+          "runId": "codex-mc-selected-task-summary-20261011",
+          "taskId": "mc-selected-task-summary-20261011",
+          "workRef": "codex/mc-command-center-checkpoint-20261006",
+          "codeSha": "8980266daad30d23f89571d29a8d772e9a0c3041"
+        },
+        "deployment": {
+          "status": "READY",
+          "target": {
+            "provider": "vercel",
+            "project": "joey-mission-control",
+            "environment": "preview"
+          },
+          "id": "dpl_FFUFt56XnVMpt9EZyyRBowrThWXq",
+          "deployedSha": "8980266daad30d23f89571d29a8d772e9a0c3041",
+          "url": "https://joey-mission-control-git-codex-mc-comma-fceec2-joeyajs-projects.vercel.app/",
+          "observedAt": "2026-10-11T03:49:15Z",
+          "evidence": "Connected GitHub non-force leased branch publication; exact remote/local Git tree matches final tested source. Connected Vercel READY and independent fixed alias matched full SHA/ID. Later handoff-only commit preserves runtime; observations are dated.",
+          "notRequired": null
+        },
+        "verification": {
+          "status": "BLOCKED",
+          "method": "HTTP_FUNCTIONAL_CHECK",
+          "checkedAt": "2026-10-11T03:49:47.946796Z",
+          "deploymentId": "dpl_FFUFt56XnVMpt9EZyyRBowrThWXq",
+          "checkedSha": null,
+          "url": "https://joey-mission-control-git-codex-mc-comma-fceec2-joeyajs-projects.vercel.app/",
+          "evidence": "Actual ordinary root GET after provider observation curl56/CONNECT403/HTTP000 before app. No bypass or served Owner-device acceptance claim.",
+          "notRequired": null
+        },
+        "handoff": {
+          "status": "CURRENT",
+          "path": "HANDOFF.md",
+          "commitSha": "3670115663518180a01a8c746e77953110cf4fb6",
+          "checkedAt": "2026-10-11T03:53:01.489Z",
+          "evidence": "Current consolidated handoff records full selected-task brief, original v2/v3 delivery distinction, correctly separate current-project handoff, actual tests/screens/support publication and served restriction. Source/handoff20 PASS; runtime diff from tested support empty."
+        },
+        "data": {
+          "status": "NOT_REQUIRED",
+          "version": null,
+          "checkedAt": "2026-10-11T03:53:01.489Z",
+          "evidence": null,
+          "notRequired": {
+            "policy": "MC_NO_DATA_CHANGE",
+            "reason": "Validated metadata UI projection, scoped action placement and bounded browser tests only; no database schema/data/migration, SQL, credentials/permissions, private storage or other repository changes."
+          }
+        }
+      }
     }
   ]
 }
