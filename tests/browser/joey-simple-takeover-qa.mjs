@@ -1,4 +1,5 @@
 import {runTaskRequirementsFlow} from './task-requirements-flow.fixture.mjs';
+import {runTaskCloudCurrentness} from './task-cloud-currentness.fixture.mjs';
 import {runTaskReportInspection} from './task-report-inspection.fixture.mjs';
 import {runTaskPrCiFlow} from './task-pr-ci-flow.fixture.mjs';
 import {createDeploymentTaskReconciliationServer} from '../../src/tasks/task-reconciliation-server.mjs';
@@ -29,10 +30,11 @@ const onboardingQA=process.env.MC_NEW_PROJECT_QA==='1';
 const cloudQA=process.env.MC_CLOUD_DRAFT_QA==='1';
 const taskQA=process.env.MC_EXISTING_TASK_QA==='1';
 const requirementsQA=process.env.MC_TASK_REQUIREMENTS_QA==='1';
-const taskInspectionQA=process.env.MC_TASK_REPORT_INSPECTION_QA==='1'||requirementsQA;
+const cloudCurrentnessQA=process.env.MC_TASK_CLOUD_CURRENTNESS_QA==='1';
+const taskInspectionQA=process.env.MC_TASK_REPORT_INSPECTION_QA==='1'||requirementsQA||cloudCurrentnessQA;
 const cloudTaskQA=process.env.MC_CLOUD_TASK_QA==='1';
 const capacityQA=process.env.MC_REPORT_CAPACITY_QA==='1';
-const prCiQA=process.env.MC_PR_CI_QA==='1'||requirementsQA;
+const prCiQA=process.env.MC_PR_CI_QA==='1'||requirementsQA||cloudCurrentnessQA;
 const require=createRequire(import.meta.url),{chromium}=require(process.env.MC_PLAYWRIGHT_MODULE||(process.env.CODEX_PRIMARY_RUNTIME_NODE_MODULES+'/playwright'));
 const cookieBefore=process.env.MC_QA_REPORT_COOKIE_EXPECT==='before';
 const sourceBefore=process.env.MC_QA_SOURCE_CONTINUITY_EXPECT==='before';
@@ -61,7 +63,7 @@ const upstream=async(url,options)=>{const u=new URL(url);if(u.origin===origin){a
 };
 const server=http.createServer(async(req,res)=>{try{const u=new URL(req.url,origin||'http://fixture.invalid');
  if(u.pathname==='/api/private/task-reconciliation'){const r=await reconciliationService.handle(req);return send(res,r.body,r.status);}
- if(u.pathname==='/api/private/development-tasks'){const r=await taskService.handle(req);return send(res,r.body,r.status);}
+ if(u.pathname==='/api/private/development-tasks'){const dormant=createTaskStorageServer({activation:{enabled:false},verifyOwner:createCurrentOwnerVerifier({fetchImpl:upstream,policy}),ownerSubject:OWNER,allowedOrigin:origin});const r=await (state.taskStorageDisabled?dormant:taskService).handle(req);return send(res,r.body,r.status);}
  if(u.pathname==='/api/private/project-drafts'){const r=await cloudService.handle(req);return send(res,r.body,r.status);}
  if(u.pathname==='/api/private/project-onboarding'){if(state.onboardingDelay){state.onboardingDelay=false;await new Promise(resolve=>state.onboardingRelease=resolve);}const r=await onboardingService.handle(req);return send(res,r.body,r.status);}
  if(u.pathname==='/api/private/repository-runs'){if(!req.headers.cookie?.includes('mc_preview_protection_fixture=present')){res.writeHead(302,{Location:'/synthetic-preview-login'});return res.end();}reportReads++;assert.equal(req.headers.authorization,'Bearer '+token());const r=await reportService.handle(req,{project:u.searchParams.get('project'),track:u.searchParams.get('track')||'BASELINE'});return send(res,r.body,r.status);}
@@ -209,6 +211,7 @@ try{for(const width of [375,390,430,1440]){
  const loaded=async(project,sha=A)=>{await page.waitForFunction(({project,sha})=>{const root=document.querySelector('section[data-joey-simple=true]');return root?.dataset.project===project&&root.dataset.sourceState==='connected'&&root.querySelector('[data-remote-handoff-technical]')?.textContent.includes(sha);},{project,sha});};
  const choose=async project=>{await page.locator('#joey-simple-project').selectOption(project);await loaded(project,state.version===2?B:A);};
  await loaded('NEXAEON');await focusReturn();await expiryRefresh();await loaded('NEXAEON');const other=await context.newPage();await other.bringToFront();await page.bringToFront();await other.close();await focusReturn();await loaded('NEXAEON');await page.locator('#owner-workspace-access').evaluate(n=>n.open=false);
+ if(cloudCurrentnessQA){await runTaskCloudCurrentness({page,width,state,context,errors,cases,assert,B});continue;}
  if(prCiQA&&!requirementsQA){await taskPrCiQA(page,width,context,errors);continue;}
  if(requirementsQA){await runTaskRequirementsFlow({page,width,state,context,errors,cases,assert,fs,screens,A,B});continue;}
  if(taskInspectionQA){await runTaskReportInspection({page,width,state,context,errors,cases,assert,fs,screens,A,B});continue;}

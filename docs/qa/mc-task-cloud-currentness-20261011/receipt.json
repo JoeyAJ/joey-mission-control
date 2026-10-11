@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "qualification": "INDEPENDENT_REVIEW_DEFECTS_REPAIRED_SYNTHETICALLY_BINDING_ACCEPTANCE_PENDING",
+  "baselineSha": "62615bf0054049f093bf70bc4796e8c5dc3ad90b",
+  "checkedAt": "2026-10-11T12:53:00Z",
+  "verification": {
+    "portableTests": 859,
+    "focusedGroups": 64,
+    "newGroups": 3,
+    "failures": 0,
+    "buildValidateCheck": "PASS",
+    "forbiddenWorkstationAttempts": 0,
+    "totalBrowserCases": 20,
+    "browserCases": {
+      "cloudCurrentness": 4,
+      "requirements": 4,
+      "prCi": 8,
+      "cloudTask": 4
+    },
+    "intendedSyntheticTaskWrites": 48,
+    "externalRequests": 0,
+    "unexpectedWrites": 0,
+    "actualOwnerOrProviderHttp": false,
+    "rootSafeIntakeGroups": 10
+  },
+  "regressions": {
+    "bothRemoteTaskOrders": true,
+    "bothCiCloudReads": true,
+    "perTaskConflictRetention": true,
+    "explicitReloadSelectedOnly": true,
+    "legitimate200NotConnectedRefused": true,
+    "noCloudBackedToSessionDowngrade": true,
+    "pendingHandoffRefusedBeforeClipboard": true,
+    "localUserTextPreserved": true
+  },
+  "ownerDecisionStorage": {
+    "approvalReceivedAt": "2026-10-11 12:43:39 UTC",
+    "evidence": "Sentinel_242c756311cc8191bdacf2713698fd98",
+    "scope": "FOUR_PROPOSED_OBJECTS_ORIGINAL_CAPS_OWNER_ONLY_TWO_RPC_EXECUTE",
+    "sqlOrGrantsApplied": false,
+    "activation": "NOT_IMPLEMENTED_PENDING_NATIVE_GATES",
+    "executionAuthorized": false
+  },
+  "publication": {
+    "state": "PENDING",
+    "servedCheckedSha": null
+  },
+  "priorCurrentPrefixSha256": "7ad5ab77114525889d74d7362bd853957aa851d4e25635de073b1ff02e474459",
+  "datedHistorySha256": "68de1c1e6a0ad588431996926396a6e19777a26ecc6ad7770afd13a3a23a0ea9",
+  "run": {
+    "runId": "codex-mc-task-cloud-currentness-20261011",
+    "taskIdQualification": "ACTUAL_DEVELOPER_WORK_NOT_OWNER_CLOUD_TASK",
+    "startedCommitSha": "5e2da097df20acd54ab9d9ac30b7731c8841545e",
+    "startedBlobId": "2c918d5f1722f0e4e72d5036bffcf606fdbe5508",
+    "state": "STARTED"
+  }
+}
