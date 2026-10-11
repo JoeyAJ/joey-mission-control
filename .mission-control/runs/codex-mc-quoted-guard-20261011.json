@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "mc.repository-run.v2",
+  "taskKind": "BUGFIX",
+  "projectId": "MISSION_CONTROL",
+  "track": "BASELINE",
+  "runId": "codex-mc-quoted-guard-20261011",
+  "predecessorRunId": "codex-mc-file-observations-20261011",
+  "taskId": "mc-quoted-guard-20261011",
+  "featureTitle": "Reject quoted JSON/YAML credential fingerprints in bounded file reporter",
+  "agentName": "Codex",
+  "provider": null,
+  "model": null,
+  "repositoryId": "JoeyAJ/joey-mission-control",
+  "reportRef": "mc/progress",
+  "workRef": "codex/mc-command-center-checkpoint-20261006",
+  "baseline": {
+    "ref": "codex/mc-command-center-checkpoint-20261006",
+    "commitSha": "c9a444f35e98b1e3eb848dab7603f492161af738",
+    "handoffPath": "HANDOFF.md",
+    "handoffDigest": "34a72d807ac68cc2b4d67c281c5f950aced1d62799f408a05663579f07b1e7d3",
+    "contextPaths": [
+      "README.md",
+      "docs/PRODUCT_CHARTER.md",
+      "docs/MC_PHASE_PLAN.md",
+      "docs/STAGE_HANDOFF_TEMPLATE.md"
+    ]
+  },
+  "events": [
+    {
+      "id": "started",
+      "sequence": 1,
+      "eventAt": "2026-10-11T01:28:41.035739Z",
+      "kind": "started",
+      "summary": "Independent review identified quoted credential-key exclusion gap. Executor healthy; patch and synthetic task-listed config regressions implemented, affected/full checks pending. No live file metadata expansion or unrelated private reads.",
+      "result": null,
+      "delivery": null
+    }
+  ]
+}
