@@ -34,6 +34,88 @@
       "summary": "Actual receiving Agent fixes reproduced quoted credential label leak and pending canonical source race; preserve exact repo/track/commit binding and existing Owner task/report gates.",
       "result": null,
       "delivery": null
+    },
+    {
+      "id": "completed-review-fixes",
+      "sequence": 2,
+      "eventAt": "2026-10-11T10:18:44.917Z",
+      "kind": "completed",
+      "summary": "Quoted credential names redacted/rejected and pending source correlation fail closed. Code pushed and exact fixed Preview READY; actual Owner runtime verification pending.",
+      "result": {
+        "codeSha": "d46da151a9932fe24481cd6a392a7766a3194159",
+        "tests": [
+          {
+            "name": "Portable843 / build / validate / check; forbidden attempts0",
+            "outcome": "PASS"
+          },
+          {
+            "name": "Focused29 with ordered actual-client source races; root guard20",
+            "outcome": "PASS"
+          },
+          {
+            "name": "Actual-app PR-CI8 and cloud-task4 synthetic cases; unexpected/external0",
+            "outcome": "PASS"
+          }
+        ],
+        "nextSteps": "Integrate only the newly authorized palette commit cc174c4 after this verified runtime. Actual Owner cloud save/reload can be tested independently. PR-CI needs a real completed matching task report; legacy MC IDs cannot enable the button. Runtime channel results and Owner device acceptance remain pending. Use a new receiving-Agent run after this terminal bugfix.",
+        "handoff": {
+          "path": "HANDOFF.md",
+          "commitSha": "d46da151a9932fe24481cd6a392a7766a3194159"
+        }
+      },
+      "delivery": {
+        "qualification": "AGENT_REPORTED",
+        "scope": {
+          "projectId": "MISSION_CONTROL",
+          "track": "BASELINE",
+          "repositoryId": "JoeyAJ/joey-mission-control",
+          "runId": "codex-mc-pr-ci-privacy-source-20261011",
+          "taskId": "mc-pr-ci-privacy-source-20261011",
+          "workRef": "codex/mc-command-center-checkpoint-20261006",
+          "codeSha": "d46da151a9932fe24481cd6a392a7766a3194159"
+        },
+        "deployment": {
+          "status": "READY",
+          "target": {
+            "provider": "vercel",
+            "project": "joey-mission-control",
+            "environment": "preview"
+          },
+          "id": "dpl_8hBbRyeZ4AyZ5LFY2ZFe4CaK8XBN",
+          "deployedSha": "d46da151a9932fe24481cd6a392a7766a3194159",
+          "url": "https://joey-mission-control-git-codex-mc-comma-fceec2-joeyajs-projects.vercel.app/",
+          "observedAt": "2026-10-11T10:18:44.917Z",
+          "evidence": "Fixed alias and independent deployment ID READY at exact d46da15; original Production unchanged.",
+          "notRequired": null
+        },
+        "verification": {
+          "status": "BLOCKED",
+          "method": "HTTP_FUNCTIONAL_CHECK",
+          "checkedAt": "2026-10-11T10:18:44.917Z",
+          "deploymentId": "dpl_8hBbRyeZ4AyZ5LFY2ZFe4CaK8XBN",
+          "checkedSha": null,
+          "url": "https://joey-mission-control-git-codex-mc-comma-fceec2-joeyajs-projects.vercel.app/",
+          "evidence": "Cloud HEAD CONNECT403 / HTTP000 before app; no bypass. Vercel count/schema/file-tree reads cannot prove authenticated channel result. Runtime permissions and Owner acceptance pending.",
+          "notRequired": null
+        },
+        "handoff": {
+          "status": "CURRENT",
+          "path": "HANDOFF.md",
+          "commitSha": "d46da151a9932fe24481cd6a392a7766a3194159",
+          "checkedAt": "2026-10-11T10:18:44.917Z",
+          "evidence": "Canonical source code/root intake bound to d46da15; original root checkpoint copied intact into private correction document."
+        },
+        "data": {
+          "status": "NOT_REQUIRED",
+          "version": null,
+          "checkedAt": "2026-10-11T10:18:44.917Z",
+          "evidence": null,
+          "notRequired": {
+            "policy": "MC_NO_DATA_CHANGE",
+            "reason": "Privacy and correlation bug fixes only; no live SQL/Auth/data or credential/grant change."
+          }
+        }
+      }
     }
   ]
 }
