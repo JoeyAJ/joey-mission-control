@@ -34,6 +34,15 @@
       "summary": "Review found default Joey selectedTask was local and onWorkspace forwarded only project/track. Reproduce actual same-click older-run entry, then carry a one-shot scope-bound in-memory selection through fresh report validation with missing/changed/foreign/Back regressions. No private URL/storage or unrelated feature.",
       "result": null,
       "delivery": null
+    },
+    {
+      "id": "tested-selection",
+      "sequence": 2,
+      "eventAt": "2026-10-11T02:40:51.057Z",
+      "kind": "progress",
+      "summary": "Reproduced older-run same-click loss at 1440/390. One-shot in-memory scoped report selection now requires fresh source/report exact blob+digest+sequence. Portable764/build/check, focused36, actual-byte same-click2 with missing/changed/foreign/Back/pending-switch refusals, simple4 and true Continue12 PASS; external0/writes0. No URL/storage IDs. Publication/readback follows.",
+      "result": null,
+      "delivery": null
     }
   ]
 }
