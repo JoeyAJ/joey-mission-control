@@ -34,6 +34,15 @@
       "summary": "Register authorized reviewer API-key label correction on exact7a10322 baseline. Shared PR-CI label guard prepared; task payload and approved SQL unchanged. Verify server/client/DOM and existing source race; publish only fixed Preview.",
       "result": null,
       "delivery": null
+    },
+    {
+      "id": "verified-api-key-label-boundaries",
+      "sequence": 2,
+      "eventAt": "2026-10-11T10:47:21.742Z",
+      "kind": "progress",
+      "summary": "Ten API-key assignment variants covered server/client; final focused31 PASS. Actual-app cloud-task4 and palette/disclosure6 PASS, task payload/SQL/source race/palette unchanged. Preliminary portable845 and PR-CI8 PASS; final expanded prefix guard aggregate and PR-CI DOM run in progress. Actual Owner save/reload and runtime permissions remain pending/UNKNOWN.",
+      "result": null,
+      "delivery": null
     }
   ]
 }
