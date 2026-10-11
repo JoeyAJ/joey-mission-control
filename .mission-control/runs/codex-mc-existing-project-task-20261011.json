@@ -34,6 +34,15 @@
       "summary": "Start authorized existing-project task form and source-bound external Agent handoff from95e60d8. Existing approved cloud task reader is historical MC-only/read-only; project drafts cannot store tasks. Build independent bounded task contract and session fallback; new live task SQL/ACL remains OFF pending exact approval. No dispatch/Agent access/merge/AWS/Production change.",
       "result": null,
       "delivery": null
+    },
+    {
+      "id": "existing-task-checkpoint-2",
+      "sequence": 2,
+      "eventAt": "2026-10-11T08:00:53.994Z",
+      "kind": "progress",
+      "summary": "Existing-project task contract/form/session export/import and fresh task-bound external-Agent copy implemented; initial14 tests PASS. Early dc7fce3 and input/report qualification correction b65bbcc pushed to same Preview. Existing task storage is read-only; new task SQL/ACL still NOT_APPLIED and activation OFF. Isolated native checks pass roles/RLS/readback/CAS/project-track immutability; parity and browser verification ongoing. No frozen ledger/Production/dispatch/new source access.",
+      "result": null,
+      "delivery": null
     }
   ]
 }
