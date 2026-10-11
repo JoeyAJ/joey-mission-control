@@ -34,6 +34,15 @@
       "summary": "Joey22:41:48UTC approved passwordless direction; priority navigation/task feedback release45cebef READY closed. Begin bounded same-page existing Owner email OTP code and local tests, preserving TOTP/AAL2/session/membership. Auth config read not exposed; template readiness unknown and June3 template restriction requires checking. No mail/settings/signup/SMTP/redirect/password deletion or new credentials; deployed OTP remains disabled until verified readiness.",
       "result": null,
       "delivery": null
+    },
+    {
+      "id": "owner-email-otp-progress-2",
+      "sequence": 2,
+      "eventAt": "2026-10-11T23:05:41.547Z",
+      "kind": "progress",
+      "summary": "Same-page SDK OTP prepared: existing users only, exact Owner, retained TOTP/AAL2/session/member gates, no callback or extra credential storage. Portable945/focused47/browser21/password5/mobile entry3 PASS. Read-only current settings200 email enabled/signup+anonymous closed; template/plan/SMTP readiness unconfirmed, Auth-management read not exposed. Concrete single-body template proposal prepared; deployed switch off, emails/settings/Owner writes0.",
+      "result": null,
+      "delivery": null
     }
   ]
 }
