@@ -1,0 +1,26 @@
+import {repositoryDeliveryStatus} from './delivery-evidence.mjs';
+import {reportTimeNode} from '../../public/report-time.js';
+// A brief of one already validated run. Current project takeover is a separate action.
+export function selectedTaskBrief({presentation:p,projectId,track='BASELINE',sourceConfirmed=false}={}){
+ if(!sourceConfirmed||!p||p.projectId!==projectId||p.track!==track)return null;
+ return {runId:p.runId,agent:p.agentName,title:p.featureTitle,state:p.currentState,reportedState:p.reportedState,eventAt:p.eventAt,sequence:p.sequence,summary:p.summary,next:p.result?.nextSteps||null,delivery:repositoryDeliveryStatus(p)};
+}
+const words={
+ 'zh-TW':{title:'所選任務',dated:'任務最後回報',next:'此任務記錄的下一步',noNext:'此任務尚未記錄下一步。',ready:'交付回報已備妥',incomplete:'交付回報未完整',pending:'MC 獨立驗證／Joey 驗收待確認',deployment:'部署',verification:'網址驗證',handoff:'任務交接',data:'資料',tests:'測試',states:{running:'回報開發中',blocked:'回報受阻',completed:'回報完成',failed:'回報失敗',unconfirmed:'更新逾時 · 目前未確認'},evidence:{READY:'回報 READY',BLOCKED:'驗證受阻',PASS:'回報通過',FAIL:'回報失敗',FAILED:'回報失敗',CURRENT:'回報已整理',STALE:'未更新',APPLIED:'回報已執行',NOT_REQUIRED:'有理由的不適用',AGENT_REPORTED_PASS:'回報通過',NOT_FULLY_REPORTED_PASS:'未完整通過',EVIDENCE_PENDING:'待記錄',VERIFICATION_PENDING:'待記錄',REPORTED_POINTER_FRESH_READ_REQUIRED:'歷史指標待核對',UNRECORDED:'未記錄',UNRECORDED_IN_V1_REPORT:'未記錄',NOT_RECORDED:'未記錄',PENDING:'待完成'}},
+ en:{title:'Selected task',dated:'Last task report',next:'Next step recorded for this task',noNext:'No next step recorded for this task.',ready:'Delivery reported ready',incomplete:'Delivery report incomplete',pending:'MC independent verification / Joey acceptance pending',deployment:'Deployment',verification:'URL check',handoff:'Task handoff',data:'Data',tests:'Tests',states:{running:'Reported working',blocked:'Reported blocked',completed:'Reported completed',failed:'Reported failed',unconfirmed:'Update overdue · currently unconfirmed'},evidence:{READY:'Reported READY',BLOCKED:'Verification blocked',PASS:'Reported pass',FAIL:'Reported failure',FAILED:'Reported failure',CURRENT:'Reported consolidated',STALE:'Outdated',APPLIED:'Reported applied',NOT_REQUIRED:'Reasoned N/A',AGENT_REPORTED_PASS:'Reported pass',NOT_FULLY_REPORTED_PASS:'Not fully passed',EVIDENCE_PENDING:'Pending evidence',VERIFICATION_PENDING:'Pending evidence',REPORTED_POINTER_FRESH_READ_REQUIRED:'Historical pointer needs check',UNRECORDED:'Not recorded',UNRECORDED_IN_V1_REPORT:'Not recorded',NOT_RECORDED:'Not recorded',PENDING:'Pending'}},
+ ko:{title:'선택 작업',dated:'작업의 마지막 보고',next:'이 작업에 기록된 다음 단계',noNext:'이 작업의 다음 단계 기록 없음.',ready:'전달 준비 완료 보고',incomplete:'전달 보고 미완료',pending:'MC 독립 검증 / Joey 검수 대기',deployment:'배포',verification:'URL 검증',handoff:'작업 인계',data:'데이터',tests:'테스트',states:{running:'진행 보고',blocked:'차단 보고',completed:'완료 보고',failed:'실패 보고',unconfirmed:'갱신 지연 · 현재 미확인'},evidence:{READY:'READY 보고',BLOCKED:'검증 차단',PASS:'통과 보고',FAIL:'실패 보고',FAILED:'실패 보고',CURRENT:'정리 보고',STALE:'갱신 필요',APPLIED:'적용 보고',NOT_REQUIRED:'사유 있는 해당 없음',AGENT_REPORTED_PASS:'통과 보고',NOT_FULLY_REPORTED_PASS:'통과 미완료',EVIDENCE_PENDING:'증거 대기',VERIFICATION_PENDING:'증거 대기',REPORTED_POINTER_FRESH_READ_REQUIRED:'과거 포인터 확인 필요',UNRECORDED:'기록 없음',UNRECORDED_IN_V1_REPORT:'기록 없음',NOT_RECORDED:'기록 없음',PENDING:'대기'}}
+};
+export function projectHandoffWords(locale='zh-TW'){
+ return locale==='en'?['Continue the current project','Recheck the latest project source and reports. The selected task above retains its dated evidence.']:locale==='ko'?['현재 프로젝트 이어가기','최신 프로젝트 출처와 보고를 다시 확인합니다. 위 선택 작업은 날짜 있는 증거를 유지합니다.']:['接續目前專案','重新核對最新專案來源與回報；上方所選任務保留其記錄當時的證據。'];
+}
+export function renderSelectedTaskSummary({doc=document,locale='zh-TW',...input}={}){
+ const b=selectedTaskBrief(input),w=words[locale]||words['zh-TW'],el=(tag,text,cls)=>{const n=doc.createElement(tag);if(text)n.textContent=text;if(cls)n.className=cls;return n;},root=el('section',null,'selected-task-brief');root.dataset.selectedTaskSummary=b?'confirmed':'unconfirmed';
+ if(!b){root.hidden=true;return root;}
+ root.dataset.selectedTaskRun=b.runId;root.dataset.reportedState=b.reportedState;root.dataset.currentState=b.state;
+ root.append(el('small',w.title),el('p',b.agent+' · '+(w.states[b.state]||w.states.unconfirmed),'selected-task-agent'),el('h4',b.title,'selected-task-title'));
+ const dated=el('p',w.dated+' · #'+b.sequence,'selected-task-date');dated.append(reportTimeNode(doc,b.eventAt,{locale}));root.append(dated);
+ const delivery=el('section',null,'selected-task-delivery');delivery.dataset.deliveryEvidence='AGENT_REPORTED';delivery.dataset.deliveryStatus=b.delivery.delivery;delivery.dataset.independentVerification='PENDING';delivery.dataset.joeyAcceptance='PENDING';
+ delivery.append(el('strong',b.delivery.delivery==='REPORTED_READY'?w.ready:w.incomplete),el('small',w.pending));const grid=el('dl');
+ for(const [label,status]of [[w.tests,b.delivery.tests],[w.deployment,b.delivery.deployment],[w.verification,b.delivery.fixedUrl],[w.handoff,b.delivery.handoff],[w.data,b.delivery.migration]])grid.append(el('dt',label),el('dd',w.evidence[status]||w.evidence.NOT_RECORDED));delivery.append(grid);root.append(delivery,el('p',b.summary,'selected-task-latest'),el('h5',w.next),el('p',b.next||w.noNext,'selected-task-next'));
+ return root;
+}

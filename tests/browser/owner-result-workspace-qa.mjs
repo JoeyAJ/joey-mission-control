@@ -15,7 +15,7 @@ const sdk=`export function createClient(){metrics.clients++;return{auth:{getUser
  throw Error('Unexpected synthetic RPC '+name);
  }};}`;
 const bundle=await build({stdin:{contents:"export {renderCommandWorkspace} from './public/command-workspace.js';",resolveDir:process.cwd()},bundle:true,format:'iife',globalName:'fixture',write:false,plugins:[{name:'synthetic-result-source',setup(b){
- b.onLoad({filter:/public\/owner-auth-client\.js$/},()=>({contents:"export {mountOwnerBrowserEntry,joeyRunSummary} from '../src/continuity/owner-browser-entry.mjs';",resolveDir:process.cwd()+'/public'}));
+ b.onLoad({filter:/public\/owner-auth-client\.js$/},()=>({contents:"export {mountOwnerBrowserEntry,joeyRunSummary,renderSelectedTaskSummary,projectHandoffWords} from '../src/continuity/owner-browser-entry.mjs';",resolveDir:process.cwd()+'/public'}));
  b.onLoad({filter:/public\/vm-link-config\.js$/},()=>({contents:'export const vmLinkConfig={enabled:false};'}));
  b.onLoad({filter:/public\/owner-auth-config\.js$/},()=>({contents:`export const ownerAuthConfig={origin:'https://synthetic.invalid',publishableKey:'sb_publishable_SYNTHETIC_ONLY',stageOrigin:location.origin,ownerSubject:'${owner}',authSetupVerified:true,sessionBridgeVerified:true,coordinatorReadSetupVerified:true,ownerDecisionSetupVerified:false};export const ownerAuthSetupStatus=()=>({status:'unconfigured'});`}));
  b.onResolve({filter:/^@supabase\/supabase-js$/},()=>({path:'sdk',namespace:'synthetic'}));b.onLoad({filter:/.*/,namespace:'synthetic'},()=>({contents:sdk}));

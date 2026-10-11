@@ -1,3 +1,9 @@
+# Current bounded increment — shared selected task brief
+
+Default phone and desktop now share selected-run Agent/full task/dated state/delivery gaps/recorded next step before history, with separately scoped fresh current-project handoff. v3 latest-result delivery qualification is explicit. Existing panes, continuity/copy/source/Owner/privacy/motion/candidate boundaries remain. Portable766/build/check, focused18, brief6 locales/devices, actual-byte continuity2, file2, simple4 and Continue12 PASS. [Verification](MC_SELECTED_TASK_BRIEF_VERIFICATION_20261011.md); exact Preview/report/handoff closure is in HANDOFF. Joey authorized continued implementation without waiting for visual acceptance; served QA remains honestly pending when blocked.
+
+## Historical selected-entry bugfix
+
 # Current bounded bugfix — selected task workspace entry
 
 Parent review required actual same-click proof. Default Joey now forwards one-shot scope/report-bound in-memory selection through fresh source/report rereads; older selected run/history remains, missing/changed/foreign/pending-scope changes refuse and clear. Portable764/build/check, source36, actual-byte desktop/mobile2, simple4 and true Continue12 PASS. Existing copy/privacy/candidate/history gates unchanged. [Verification](MC_TASK_ENTRY_SELECTION_VERIFICATION_20261011.md); exact current Preview/report receipts are in HANDOFF. Served Owner/Joey acceptance remains pending; no unrelated policy/features.

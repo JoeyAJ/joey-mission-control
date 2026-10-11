@@ -53,7 +53,7 @@ service=createDeploymentRemoteHandoffServer({environment:{MC_GITHUB_READ_TOKEN:K
 reportService=createDeploymentRepositoryRunServer({environment:{MC_GITHUB_READ_TOKEN:KEY},fetchImpl:upstream,policy});
 bundle=await build({entryPoints:['public/app.js'],bundle:true,format:'esm',write:false,metafile:true,plugins:[{name:'synthetic-four-source',setup(b){
  b.onLoad({filter:/repository-run-client\.mjs$/},async args=>({contents:cookieBefore?(await fs.readFile(args.path,'utf8')).replace("credentials:'same-origin'","credentials:'omit'"):await fs.readFile(args.path,'utf8'),resolveDir:process.cwd()+'/src/reporting'}));
- b.onLoad({filter:/public\/owner-auth-client\.js$/},()=>({contents:"export {mountOwnerBrowserEntry,joeyRunSummary} from '../src/continuity/owner-browser-entry.mjs';",resolveDir:process.cwd()+'/public'}));
+ b.onLoad({filter:/public\/owner-auth-client\.js$/},()=>({contents:"export {mountOwnerBrowserEntry,joeyRunSummary,renderSelectedTaskSummary,projectHandoffWords} from '../src/continuity/owner-browser-entry.mjs';",resolveDir:process.cwd()+'/public'}));
  b.onLoad({filter:/owner-auth-config\.js$/},()=>({contents:'export const ownerAuthConfig='+JSON.stringify(policy)+';export const ownerAuthSetupStatus=()=>({status:"unconfigured",ownerIdentityEntryAvailable:true});'}));
  b.onLoad({filter:/task-workflow-config\.js$/},()=>({contents:'export const taskWorkflowConfig={enabled:false,projectSourceSyncEnabled:true};'}));
  b.onLoad({filter:/vm-link-config\.js$/},()=>({contents:'export const vmLinkConfig={enabled:false};'}));

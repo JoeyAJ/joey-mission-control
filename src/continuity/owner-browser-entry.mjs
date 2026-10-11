@@ -134,3 +134,5 @@ export function mountOwnerBrowserEntry({doc=document,locale='zh-TW',projectId,tr
 }
 
 export {joeyRunSummary} from '../reporting/joey-run-summary.mjs';
+
+export {renderSelectedTaskSummary,projectHandoffWords} from '../reporting/selected-task-summary.mjs';

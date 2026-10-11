@@ -1,15 +1,29 @@
-# Mission Control — preserve selected task on workspace entry
+# Mission Control — shared selected-task focus and project handoff
 
 Project: MISSION_CONTROL
-Timestamp: 2026-10-11T02:45:33.241Z
-Task: Fresh scope-bound selected-run entry from default Joey
+Timestamp: 2026-10-11T03:34:38.924Z
+Task: Shared selected-task brief on default phone and desktop workspace
 Status: LOCAL_VERIFIED_CLOUD_EVENTS_NOT_ENABLED
 Last Developer: Codex
 Executed by: Codex
 Actual Model: UNKNOWN
-Baseline: caab2cfd68ebe171347034fddba1045f3fbd4e7d
+Baseline: b895b402dd9f1f6d64e223bed0c680f7df23a6a1
 
-## Current selected-task entry checkpoint
+## Current selected-task brief checkpoint
+
+Joey authorized continued dynamic MC work through parent at2026-10-11T03:19:53Z, without waiting for visual acceptance. Actual latest baseline verified through connected GitHub ref and exact HANDOFF blobfd7679bace7498c69f3e7b87c8581947bd21ee5e. Phone task picker/events used the selected run while Agent/result/copy areas used project-wide facts; native selection truncated the task title, delivery/next steps were hidden in workspace and copy followed long history. Parent review also found v3 latest results lost explicit delivery qualification. This coherent increment fixes that information mismatch using existing truthful report contracts.
+
+One shared selected-task brief now shows complete title, Agent, dated reported/current state, numeric latest sequence, compact tests/deployment/URL/task-handoff/data qualification, original summary and that run's recorded next step. Both phone and desktop use the same renderer/projection; selecting historical events leaves task-latest facts explicitly dated above and historical event detail separate. v1/v2/v3 keep honest ready/incomplete and independent/Joey PENDING. No completion, Git blob or current source read becomes acceptance.
+
+Default phone places selected brief and the existing fresh current-project copy action before event history. The copy scope explicitly rereads the latest project source/reports; selected historical evidence retains its recorded scope and next step. Project-wide overview is separately labeled. Desktop puts the same compact brief before transcript, with current-project handoff using the existing fresh-gated dialog; Agent cards/Explorer/detail/graph remain coordinated. Old duplicated historical document summary is suppressed when fresh run metadata is present. No new menu layer, motion, runtime telemetry or summary-text parsing. Private selection remains transient memory/DOM; continuity, source/Owner/expiry/generation/candidate gates remain.
+
+Portable766/build/validate/check PASS, forbiddenAttempts0; selected summary/continuity/follow18 PASS. Shared brief6 (1440/390 × zhTW/ko/en), original actual own-MC report-byte same-click continuity2, file metadata/follow2, simple takeover4 widths and true Continue12 PASS; browser external0/writes0. Phone uses reduced motion in the new matrix. Reviewed screenshots and normal Owner steps: docs/MC_SELECTED_TASK_BRIEF_VERIFICATION_20261011.md. Local synthetic Owner/transport is separate from actual served/device/Joey acceptance. Existing helper/schema/report bytes unchanged; browser fixture public export lists follow the extended renderer exports without relaxing gates.
+
+Own new v2 FEATURE run codex-mc-selected-task-summary-20261011, predecessor codex-mc-task-entry-selection-20261011; original fresh baselineb895b40 immutable. Started1 connected publicationf05a23911de2c1d4958063937e35830b7e7f8c26 / blob0a2c2dbf895c791e58193514b3300d61a12e5079. Tested progress2 commit9392ca532c7415f9b1d9d9d707cab07793b06a4e / blob612512ff45574bb4498a8aab52855ee6c58fd2ba. CLI source-profile validation PASS. Shell Git credential is invalid; existing authorized connected GitHub provides bounded Contents/Git data CAS publication without new credentials or permissions. Final tested source/Preview/report/handoff receipt follows closure. Historical terminal reports stay immutable.
+
+Only MC existing branch/fixed Preview and own bounded mc/progress. Production, other repositories, SQL, secrets/permissions, AWS, model selection/dispatch and collectors are untouched. Three unsigned source/documentTimestamp values remain unrecorded; University candidate stays JoeyAcceptancePending and Nex CI remains failing/unrepaired. Cloud CONNECT403 is not bypassed; served checkedSha remains null on failure. Continuous approved implementation can proceed without waiting for Owner QA; it never claims that blocked QA passed. No Joey installation/manual deployment task.
+
+## Historical selected-task entry checkpoint (2026-10-11, baselinecaab2cf)
 
 Parent review clarified prior screenshots were not same-click continuity proof. Actual older task selection followed immediately by 開啟任務／檔案工作台 reproduced the defect before implementation at1440/390: codex-mc-file-navigation-20261011 entered synthetic-live-fixture. Default Joey kept selectedTask locally but onWorkspace forwarded only project/track. Historical mobile publication is retained below; its screenshots did not establish selected-run continuity.
 

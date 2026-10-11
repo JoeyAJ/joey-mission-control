@@ -8,7 +8,7 @@ import {productionResponse} from '../../api/index.mjs';
 const require=createRequire(import.meta.url),{chromium}=require(process.env.MC_PLAYWRIGHT_MODULE||(process.env.CODEX_PRIMARY_RUNTIME_NODE_MODULES+'/playwright'));
 const PREVIEW='https://joey-mission-control-git-codex-mc-comma-fceec2-joeyajs-projects.vercel.app';
 const bundle=await build({entryPoints:['public/app.js'],bundle:true,format:'esm',write:false,plugins:[{name:'synthetic-origin-policy',setup(b){
- b.onLoad({filter:/public\/owner-auth-client\.js$/},()=>({contents:"export {mountOwnerBrowserEntry,joeyRunSummary} from '../src/continuity/owner-browser-entry.mjs';",resolveDir:process.cwd()+'/public'}));
+ b.onLoad({filter:/public\/owner-auth-client\.js$/},()=>({contents:"export {mountOwnerBrowserEntry,joeyRunSummary,renderSelectedTaskSummary,projectHandoffWords} from '../src/continuity/owner-browser-entry.mjs';",resolveDir:process.cwd()+'/public'}));
  b.onLoad({filter:/owner-auth-config\.js$/},async args=>({contents:(await fs.readFile(args.path,'utf8')).replace(/origin:'[^']*'/,'origin:'+JSON.stringify(PREVIEW)).replace(/publishableKey:'[^']*'/,"publishableKey:'sb_publishable_SYNTHETIC'").replace(/ownerSubject:'[^']*'/,"ownerSubject:'11111111-1111-4111-8111-111111111111'"),resolveDir:process.cwd()+'/public'}));
  b.onLoad({filter:/task-workflow-config\.js$/},()=>({contents:'export const taskWorkflowConfig={enabled:false,projectSourceSyncEnabled:true};'}));
  b.onLoad({filter:/vm-link-config\.js$/},()=>({contents:'export const vmLinkConfig={enabled:false};'}));
