@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "mc.repository-run.v2",
+  "taskKind": "DELIVERY_FOLLOWUP",
+  "projectId": "MISSION_CONTROL",
+  "track": "BASELINE",
+  "runId": "codex-mc-delivery-followup-20261011",
+  "predecessorRunId": "codex-mc-delivery-evidence-20261010",
+  "taskId": "mc-delivery-evidence-stage-20261010",
+  "featureTitle": "受權 MC delivery followup：真实 metadata 與 functional BLOCKED",
+  "agentName": "Codex",
+  "provider": null,
+  "model": null,
+  "repositoryId": "JoeyAJ/joey-mission-control",
+  "reportRef": "mc/progress",
+  "workRef": "codex/mc-command-center-checkpoint-20261006",
+  "baseline": {
+    "ref": "codex/mc-command-center-checkpoint-20261006",
+    "commitSha": "d6487c5b0f6be6102f15eee84448f6d4cbaafefb",
+    "handoffPath": "HANDOFF.md",
+    "handoffDigest": "0202dea83be6f5f9ca71628a9207f38678cce6c70aa2a4cb976ea02b3d4575d9",
+    "contextPaths": [
+      "README.md",
+      "docs/PRODUCT_CHARTER.md",
+      "docs/MC_PHASE_PLAN.md",
+      "docs/STAGE_HANDOFF_TEMPLATE.md"
+    ]
+  },
+  "events": [
+    {
+      "id": "mc-delivery-v2-start",
+      "sequence": 1,
+      "eventAt": "2026-10-11T00:05:38.112143Z",
+      "kind": "started",
+      "summary": "在 tested reader/helper 支援 ec4d82c 已 Preview READY／exact alias SHA 核對後，開始新的同scope v2 delivery followup；不修改或append既有terminal history。",
+      "result": null,
+      "delivery": null
+    }
+  ]
+}
