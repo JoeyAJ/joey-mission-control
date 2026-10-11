@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "qualification": "LOCAL_VERIFIED_OWNER_REVIEW_CLICK_INTENT_PUBLISHED_PENDING",
+  "qualification": "PUBLISHED_EXACT_PREVIEW_READY_OWNER_DEVICE_ACCEPTANCE_PENDING",
   "baselineSha": "9b87948fc058e3a691f3ac87ac978417dd29ce6f",
   "executionAuthorized": false,
   "sqlOrAclChanges": false,
@@ -11,7 +11,7 @@
   "genuineCloudBoundAgentRun": "ABSENT",
   "runtimeGitHubPermissions": "UNKNOWN",
   "root": {
-    "bytes": 65160,
+    "bytes": 65217,
     "priorPrefixSha256": "6ff700f0a994606e677c07b57b8a643625e0ae47e73c48e685b8c11744188a4c",
     "datedHistorySha256": "8a2a580aca03e58a7f049e97342423cef90f952f78d7cd16d50d097c67531f14",
     "datedHistoryUnchanged": true
@@ -36,5 +36,37 @@
     "unexpectedWrites": 0,
     "actualOwnerProviderHttp": false,
     "forbiddenWorkstationAttempts": 0
-  }
+  },
+  "runtimePublication": {
+    "sha": "40fa1e794a23213dd20030dabde53588236715ef",
+    "deploymentId": "dpl_4hiie51J7rZeYxCns3rv4xPKkyJk",
+    "readyState": "READY",
+    "fixedAliasAndIndependentIdExact": true,
+    "target": null,
+    "servedCheckedSha": null,
+    "ordinaryHttps": "curl56 CONNECT403 HTTP000 before app; no bypass",
+    "productionUnchanged": {
+      "id": "dpl_5GgJ8LhD4Ec73RGz9CEFe1ppZQnh",
+      "sha": "8b4945b16a0b23f2e72033aa976fa34f94eabec0"
+    }
+  },
+  "developerReport": {
+    "schemaFormatChecked": true,
+    "headerAndPriorEventsImmutable": true,
+    "prior28BlobsUnchanged": true,
+    "totalReports": 29,
+    "remoteExact": true,
+    "bytes": 6519,
+    "publication": {
+      "status": "PUBLISHED",
+      "runId": "codex-mc-owner-review-intent-fix-20261011",
+      "path": ".mission-control/runs-page-2/codex-mc-owner-review-intent-fix-20261011.json",
+      "reportCommitSha": "ab4c7314acdf06aef24134f6fa30bbaf58ece6df",
+      "fileSha": "db1ae34c50be427910f70e1d0bb4376d38f9938b",
+      "sequence": 3,
+      "eventId": "completed-owner-review-click-intent",
+      "scopeQualification": "PINNED_REPOSITORY_PROFILE_NOT_SERVER_ACCEPTANCE"
+    }
+  },
+  "restoredCheckpointAncestor": "ed04d315162d01bcfed56f71166e57d6251ad31b"
 }

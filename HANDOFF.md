@@ -3,7 +3,7 @@
 Project: MISSION_CONTROL
 Timestamp: 2026-10-11T14:07:40.528Z
 Task: Bind Owner decision to the displayed exact tuple
-Status: LOCAL_VERIFIED_PENDING_PUBLICATION
+Status: LOCAL_VERIFIED_PARENT_READ_PREVIEW_PUBLISHED
 Last Developer: Codex
 Executed by: Codex
 Actual Model: UNKNOWN
@@ -13,7 +13,7 @@ Independent probe reproduced approval auto-reconcile replacing report/source tup
 
 Evidence: docs/MC_OWNER_REVIEW_INTENT_FIX_20261011.md. Portable877/build/validate/check, focused18/root20/browser8 PASS; forbiddenAttempts0. No SQL/grants/keys or actual Owner decisions; existing ledger unchanged. Prior prefix preserved there byte-for-byte; dated history unchanged. Harmless saved test never executed.
 
-Next Action: complete checks, commit/push same branch and fixed Preview exact READY. Genuine non-test saved task absent; real bound Agent run/Owner UI acceptance pending, GitHub permissions UNKNOWN. CONNECT403 not bypassed; servedCheckedSha null. No Production/other repo/AWS/model/dispatch. Do not recreate refused VM artifacts.
+Next Action: runtime40fa1e7 exact Preview READY; terminal3/old28 unchanged. Independent review and Owner device acceptance pending. Genuine non-test saved task absent; real bound Agent run/Owner UI acceptance pending, GitHub permissions UNKNOWN. CONNECT403 not bypassed; servedCheckedSha null. No Production/other repo/AWS/model/dispatch. Do not recreate refused VM artifacts.
 
 # Dated prior stage history
 

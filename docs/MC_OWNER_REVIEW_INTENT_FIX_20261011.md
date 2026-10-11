@@ -45,3 +45,11 @@ Evidence: docs/MC_OWNER_TASK_REVIEW_20261011.md. Portable872/build/validate/chec
 Next Action: independent review and Owner device acceptance. Genuine bound task Agent run/new Owner UI device acceptance pending; GitHub permissions UNKNOWN. No Production/other repo/new keys/Auth mutation/AWS/model/dispatch. CONNECT403 not bypassed; servedCheckedSha null. Do not recreate rejected VM artifacts.
 
 ```
+
+## Exact runtime publication 與 terminal 收尾
+
+Runtime `40fa1e794a23213dd20030dabde53588236715ef` 已 push canonical branch，remote exact。固定 Preview alias與 independent deployment `dpl_4hiie51J7rZeYxCns3rv4xPKkyJk` 均 exact SHA／READY、target null（Preview），build metadata取得成功。Production `dpl_5GgJ8LhD4Ec73RGz9CEFe1ppZQnh`／`8b4945b16a0b23f2e72033aa976fa34f94eabec0` 未變。HTTPS仍 curl56 CONNECT403／HTTP000 before app，不 bypass，servedCheckedSha:null。
+
+新的 actual bugfix run `codex-mc-owner-review-intent-fix-20261011` 在 `mc/progress` terminal sequence3／commit `ab4c7314acdf06aef24134f6fa30bbaf58ece6df`／blob `db1ae34c50be427910f70e1d0bb4376d38f9938b`，6519bytes；external Draft2020-12＋FormatChecker PASS，header/start/progress immutable，舊28 blob unchanged／total29、remote exact。此前 terminal沒有 append。此 run是實際修復工作，不冒充雲端 saved task 的 Agent完成回報。Delivery READY metadata＋BLOCKED served，MC_NO_DATA_CHANGE。
+
+Root安全 intake20 PASS、prior prefix exact preserved／dated history unchanged，`ed04d315162d01bcfed56f71166e57d6251ad31b` 仍為 ancestor。最後 docs-only closure維持 runtime功能 tree相同；精確 final SHA／READY證據放 executor私有 `/tmp/mc-owner-review-intent-20261011/final-publication.json`，避免自我引用 commit。
