@@ -1,3 +1,5 @@
+import {fileActivityLabel,renderFileActivity} from './file-activity-view.mjs';
+import {supportsDeliveryVersion} from './file-activity.mjs';
 import {renderDeliveryEvidence} from './delivery-evidence-view.mjs';
 import {createActivityFollow} from './activity-follow.mjs';
 import {workbenchProjection,createWorkbenchTransitions} from './workbench-projection.mjs';
@@ -46,19 +48,20 @@ export function mountRunWorkbench({owner,doc=document,projectId,track='BASELINE'
   if(!fresh){hosts.events.append(el('p',w.unknown,'run-workbench-notice'));hosts.detail.append(el('p',w.unknown));return;}
   if(!projection.events.length){hosts.events.append(el('p',w.empty));return;}
   const followLabels=locale==='ko'?['최신 보고 따라가는 중','과거 기록 읽는 중 · 최신으로 돌아가기']:locale==='en'?['Following latest reports','Reading history · resume latest']:['跟隨最新回報中','閱讀歷史中 · 返回最新'];const follow=button(followLabels[followState.following?0:1],'follow','follow',()=>{if(activity.snapshot().following)activity.pause();else activity.resume(latestEvents);paint(true);});follow.dataset.runFollow=followState.following?'following':'paused';hosts.events.append(follow);
-  for(const row of followState.visibleEvents){const b=button(row.agentName+' · '+row.event.kind,row.key,'event');b.append(reportTimeNode(doc,row.event.eventAt,{locale}),el('p',row.event.summary));b.dataset.runEventSequence=String(row.event.sequence);if(changes.includes(row.key)){b.dataset.newReportEvent='true';if(!globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches)b.classList.add('run-event-arrived');}hosts.events.append(b);
-   const x=button(row.agentName+' · '+row.event.kind+' #'+row.event.sequence,row.key,'explorer');hosts.explorer.append(x);hosts.explorerMobile.append(button(row.agentName+' · '+row.event.kind+' #'+row.event.sequence,row.key,'explorer-mobile'));
-   const g=button(row.agentName+' → '+row.event.kind+' #'+row.event.sequence,row.key,'graph');hosts.graph.append(g);
+  for(const row of followState.visibleEvents){const label=row.event.activity?fileActivityLabel(row.event.activity,locale):row.event.kind;const b=button(row.agentName+' · '+label,row.key,'event');if(row.event.activity){b.dataset.fileEvent=row.event.activity.action;b.dataset.filePath=row.event.activity.path;}b.append(reportTimeNode(doc,row.event.eventAt,{locale}),el('p',row.event.summary));b.dataset.runEventSequence=String(row.event.sequence);if(changes.includes(row.key)){b.dataset.newReportEvent='true';if(!globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches)b.classList.add('run-event-arrived');}hosts.events.append(b);
+   const x=button(row.agentName+' · '+label+' #'+row.event.sequence,row.key,'explorer');hosts.explorer.append(x);hosts.explorerMobile.append(button(row.agentName+' · '+label+' #'+row.event.sequence,row.key,'explorer-mobile'));
+   const g=button(row.agentName+' → '+label+' #'+row.event.sequence,row.key,'graph');hosts.graph.append(g);
   }
   const row=projection.events.find(e=>e.key===selected);if(!row){hosts.detail.append(el('p',w.unknown));return;}for(const b of hosts.cards.querySelectorAll('[data-card-scope=current]'))b.setAttribute('aria-pressed',String(b.dataset.runSelection===row.runId));const p=projection.runs.find(r=>r.report.runId===row.runId).presentation;
   hosts.detail.append(el('p',row.agentName+' · '+(w[p.currentState]||w.unconfirmed),'run-workbench-agent'),el('h5',row.featureTitle),el('strong',row.event.kind+' · #'+row.event.sequence),reportTimeNode(doc,row.event.eventAt,{locale}),el('p',row.event.summary,'run-workbench-summary'));
   hosts.detail.dataset.selectedEventSequence=String(row.event.sequence);hosts.detail.dataset.selectedRun=row.runId;
-  if(p.schemaVersion==='mc.repository-run.v2')hosts.detail.append(renderDeliveryEvidence({doc,locale,presentation:{...p,reportedState:row.event.kind,result:row.event.result,delivery:row.event.delivery}}));
+  if(row.event.activity)hosts.detail.append(renderFileActivity({doc,locale,activity:row.event.activity,presentation:p,now:now()}));
+  if(supportsDeliveryVersion(p.schemaVersion))hosts.detail.append(renderDeliveryEvidence({doc,locale,presentation:{...p,reportedState:row.event.kind,result:row.event.result,delivery:row.event.delivery}}));
   if(['blocked','failed'].includes(row.event.kind))hosts.detail.append(el('p',w.attention,'run-workbench-attention'));
   const proof=el('details'),caption=el('summary',w.source);proof.append(caption,el('p','ISO · '+row.event.eventAt),el('p',row.runId+' · '+row.source.repositoryId+' @ '+row.source.resolvedCommitSha),el('p',row.source.path),el('p','Source read ISO · '+row.source.readAt));hosts.detail.append(proof);
   if(row.event.result){const r=row.event.result;hosts.detail.append(el('p',w.pending),el('p',w.code+' · '+r.codeSha),el('p',w.handoff+' · '+r.handoff.path+' @ '+r.handoff.commitSha),el('p',w.next+' · '+r.nextSteps));for(const test of r.tests)hosts.detail.append(el('p',w.tests+' · '+test.outcome+' · '+test.name));const artifact=button(r.handoff.path,row.key,'artifact');artifact.dataset.reportArtifact='handoff';hosts.explorer.append(artifact);const mobileArtifact=button(r.handoff.path,row.key,'artifact-mobile');mobileArtifact.dataset.reportArtifact='handoff';hosts.explorerMobile.append(mobileArtifact);}
-  hosts.detail.append(el('p',w.limits,'run-workbench-limits'));
-  if(p.schemaVersion!=='mc.repository-run.v2'&&row.event.kind==='completed')hosts.detail.append(renderDeliveryEvidence({doc,locale,presentation:{...p,reportedState:row.event.kind,result:row.event.result}}));
+  if(!row.event.activity)hosts.detail.append(el('p',projection.runs.find(r=>r.report.runId===row.runId).report.events.some(e=>e.activity)?(locale==='ko'?'명시적 파일 metadata만 보고됨; source/diff/editor/terminal 미연결.':locale==='en'?'Explicit file metadata reported only; source/diff/editor/terminal are unavailable.':'僅接入明確 file metadata 回報；source／diff／editor／terminal 未接入。'):w.limits,'run-workbench-limits'));
+  if(!supportsDeliveryVersion(p.schemaVersion)&&row.event.kind==='completed')hosts.detail.append(renderDeliveryEvidence({doc,locale,presentation:{...p,reportedState:row.event.kind,result:row.event.result}}));
   const handoff=el('button',handoffWords[0],'run-workbench-item');handoff.type='button';handoff.dataset.runHandoffOpen='true';handoff.addEventListener('click',()=>{dialogGeneration++;purgePacket();status.textContent='';dialog.showModal();});hosts.detail.append(handoff);
   hosts.graph.prepend(el('p',row.runId,'run-workbench-graph-root'));
   for(const {n,top}of positions)if(n.parentElement)n.parentElement.scrollTop=top;

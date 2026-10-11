@@ -99,14 +99,6 @@
       "projectId": "JOEY_ASSET_SYSTEM",
       "track": "BASELINE",
       "reason": "Joey-confirmed legacy-named current application is a ChatGPT Site; canonical production and immutable deployed source/target binding are not established. Namyoung Web3D is a separate repository/app; no inheritance."
-    },
-    {
-      "projectId": "JOEY_ASSET_SYSTEM",
-      "track": "UNIVERSITY_CANDIDATE",
-      "sourceRef": "migration/university-v04-portable",
-      "handoffBlob": "0cf6d82c4cf9e0e5b3415e444847345d912f70af",
-      "historicalDemoUrl": "https://joey-woosong-admissions-demo.vercel.app/",
-      "reason": "Module DEPLOYMENT_HANDOFF records a prior synthetic demo only, not current candidate/provider/output binding or new deployment authority. Portable source explicitly excludes provider publishing. Exact module-only dist/privacy review and authorized demo project/source mapping remain unresolved. No whole-monorepo deploy, main acceptance or real-student data."
     }
   ],
   "constraints": {
@@ -117,5 +109,32 @@
     "productionChanges": false,
     "independentVerification": "PENDING",
     "joeyAcceptance": "PENDING"
+  },
+  "approvedCandidate": {
+    "projectId": "JOEY_ASSET_SYSTEM",
+    "track": "UNIVERSITY_CANDIDATE",
+    "policyEnabled": true,
+    "authorization": "Parent-relayed user approval 2026-10-11T00:45:40Z, module-only existing target",
+    "url": "https://joey-woosong-admissions-demo.vercel.app/",
+    "target": {
+      "provider": "vercel",
+      "project": "joey-woosong-admissions-demo",
+      "environment": "production"
+    },
+    "providerProjectId": "prj_8dQF6TpiI3EHAHo6MrIsiKcKIzhO",
+    "providerTeamId": "team_zpwdbE1o53BqrXSXxPfcKxKV",
+    "historicalProductionObservation": {
+      "deploymentId": "dpl_7mE4n4MyR9DXn51xK2S8iKJuoDgf",
+      "state": "READY",
+      "release": "0.4.0-admissions-candidate",
+      "providerGitSha": null,
+      "qualification": "PARENT_RELAYED_READ_ONLY_NOT_NEW_RELEASE"
+    },
+    "newReleaseDeployed": false,
+    "sourceBinding": "Actual module-dist sourceSHA/build/manifest receipt required; do not infer provider Git SHA",
+    "moduleOnly": true,
+    "wholeRepoDeploymentAuthorized": false,
+    "mcDeploymentPerformed": false,
+    "nAPolicyEnabled": false
   }
 }

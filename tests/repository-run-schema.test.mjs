@@ -40,6 +40,7 @@ export function schemaParityCorpus(){
   const r=deliveryRun({scope:{...deliveryScope,projectId:'JOEY_ASSET_SYSTEM',track}});r.events[0].delivery=emptyDeliveryEvidence(r,'b'.repeat(40));add('Asset '+track+' unrecorded',r,true);
   add('Asset '+track+' inherited URL denied',changed(r,r=>r.events[0].delivery.deployment={...good.events[1].delivery.deployment}));
  }
+ const university=deliveryRun({scope:{...deliveryScope,projectId:'JOEY_ASSET_SYSTEM',track:'UNIVERSITY_CANDIDATE',ref:'migration/university-v04-portable',path:'DEVELOPMENT.md'}});const ud=emptyDeliveryEvidence(university,'b'.repeat(40)),up=deliveryPolicy(university);ud.deployment={status:'READY',target:up.target,id:'dpl_manual_fixture',deployedSha:'b'.repeat(40),url:up.url,observedAt:deliveryAt,evidence:'Synthetic manual module package source SHA/manifest binding, not provider Git metadata',notRequired:null};university.events[0].delivery=ud;add('authorized module-only University target',university,true);add('University no inherited data waiver',changed(university,r=>r.events[0].delivery.data=good.events[1].delivery.data));add('University target not Asset baseline',changed(university,r=>{r.track='BASELINE';r.events[0].delivery.scope.track='BASELINE';}));
  return rows;
 }
 test('standalone strict v1/v2 structure and static target policies match code validator',()=>{
@@ -52,5 +53,13 @@ test('schema-only does not certify semantic equality, lifecycle, source binding 
 });
 test('metadata policies are cloned, baseline-only, fixed HTTPS and grant no N/A or executable capability',()=>{
  const projects=['NEXAEON','WOOSONG_BUDDY','NAMYOUNG_WEB3D'];for(const projectId of projects){const p=deliveryPolicy({projectId,track:'BASELINE'});assert.equal(p.target.environment,'production');assert.equal(p.docsPolicy,null);assert.equal(p.dataPolicy,null);p.target.project='tampered';assert.notEqual(deliveryPolicy({projectId,track:'BASELINE'}).target.project,'tampered');assert.equal(deliveryPolicy({projectId,track:'UNIVERSITY_CANDIDATE'}),null);}
- assert.equal(deliveryPolicy({projectId:'JOEY_ASSET_SYSTEM',track:'BASELINE'}),null);assert.equal(deliveryPolicy({projectId:'JOEY_ASSET_SYSTEM',track:'UNIVERSITY_CANDIDATE'}),null);assert.equal(deliveryPolicy({projectId:'UNKNOWN',track:'BASELINE'}),null);
+ assert.equal(deliveryPolicy({projectId:'JOEY_ASSET_SYSTEM',track:'BASELINE'}),null);const university=deliveryPolicy({projectId:'JOEY_ASSET_SYSTEM',track:'UNIVERSITY_CANDIDATE'});assert.equal(university.target.project,'joey-woosong-admissions-demo');assert.equal(university.dataPolicy,null);assert.equal(deliveryPolicy({projectId:'UNKNOWN',track:'BASELINE'}),null);
+});
+test('strict standalone header and every nested object reject own JSON prototype-named keys',()=>{
+ for(const key of ['toString','constructor','__proto__'])for(const target of [r=>r,r=>r.baseline,r=>r.events[0],r=>r.events[1].result,r=>r.events[1].result.handoff,r=>r.events[1].result.tests[0],r=>r.events[1].delivery,r=>r.events[1].delivery.scope,r=>r.events[1].delivery.deployment,r=>r.events[1].delivery.deployment.target,r=>r.events[1].delivery.verification,r=>r.events[1].delivery.handoff,r=>r.events[1].delivery.data,r=>r.events[1].delivery.data.notRequired]){
+  const r=deliveryCompleted();Object.defineProperty(target(r),key,{enumerable:true,configurable:true,writable:true,value:'untrusted'});const parsed=JSON.parse(JSON.stringify(r));assert.equal(validate(schema,parsed).valid,false,key);assert.equal(contract(parsed),false,key);
+ }
+ const inherited=Object.create({secret:{type:'string'}});inherited.safe={type:'string'};
+ assert.equal(validate({type:'object',properties:inherited,additionalProperties:false},JSON.parse('{"secret":"x"}')).valid,false);
+ assert.equal(validate({type:'object',properties:inherited,additionalProperties:true},JSON.parse('{"secret":42}')).valid,true);
 });

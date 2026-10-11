@@ -1,4 +1,5 @@
-import {repositoryDeliveryStatus,REPORT_VERSION_V2} from './delivery-evidence.mjs';
+import {supportsDeliveryVersion} from './file-activity.mjs';
+import {repositoryDeliveryStatus} from './delivery-evidence.mjs';
 import {reportTimeNode} from '../../public/report-time.js';
 const words={
  'zh-TW':{title:'交付證據 · Agent 回報',ready:'交付回報已備妥',incomplete:'交付回報未完整',independent:'MC 獨立驗證待確認',acceptance:'Joey 驗收待確認',dated:'證據只描述記錄當時的部署；固定網址移動後需重新驗證。',v1:'此 v1 回報未記錄部署、功能驗證與資料狀態。',missing:'缺少或未完成',detail:'交付紀錄',task:'任務類型',deployment:'部署',verification:'功能／網址驗證',handoff:'目前交接',data:'資料／migration',tests:'測試',time:'檢查時間',reason:'不適用原因',target:'部署目標',id:'部署 ID',code:'部署版本',url:'公開網址',notRecorded:'未記錄',pending:'待完成',pass:'回報通過',fail:'回報失敗',blocked:'驗證受阻',current:'回報交接已整理',stale:'交接未更新',applied:'回報已執行',na:'有理由的不適用',providerReady:'回報 READY'},
@@ -8,7 +9,7 @@ const words={
 export function renderDeliveryEvidence({doc=document,presentation,locale='zh-TW'}={}){
  const p=presentation,w=words[locale]||words['zh-TW'],d=repositoryDeliveryStatus(p),el=(tag,text)=>{const n=doc.createElement(tag);if(text)n.textContent=text;return n;},root=el('section');root.className='run-workbench-delivery';root.dataset.deliveryEvidence='AGENT_REPORTED';root.dataset.deliveryStatus=d.delivery;root.dataset.independentVerification='PENDING';root.dataset.joeyAcceptance='PENDING';root.dataset.deploymentEvidence=d.deployment;root.dataset.fixedUrlEvidence=d.fixedUrl;
  root.append(el('h5',w.title),el('strong',d.delivery==='REPORTED_READY'?w.ready:w.incomplete),el('p',w.independent+' · '+w.acceptance));
- if(p.schemaVersion!==REPORT_VERSION_V2){root.append(el('p',w.v1));return root;}
+ if(!supportsDeliveryVersion(p.schemaVersion)){root.append(el('p',w.v1));return root;}
  const labels={deployment:w.deployment,verification:w.verification,handoff:w.handoff,data:w.data,tests:w.tests};if(d.missing?.length)root.append(el('p',w.missing+' · '+d.missing.map(k=>labels[k]).join(' / ')));
  const e=p.delivery;if(!e)return root;
  const statuses={NOT_RECORDED:w.notRecorded,PENDING:w.pending,READY:w.providerReady,FAILED:w.fail,FAIL:w.fail,PASS:w.pass,BLOCKED:w.blocked,CURRENT:w.current,STALE:w.stale,APPLIED:w.applied,NOT_REQUIRED:w.na};

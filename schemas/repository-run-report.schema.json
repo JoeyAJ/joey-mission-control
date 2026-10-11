@@ -1,12 +1,15 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "description": "Strict v1/v2 Agent-reported JSON structure and static target/status policy. repository-run-contract.mjs additionally enforces scope equality, lifecycle, timestamps/order, byte limits, source/profile/path binding and semantic evidence relations; schema validation alone is not MC acceptance.",
+  "description": "Strict v1/v2/v3 Agent-reported JSON structure and static target/status policy. repository-run-contract.mjs additionally enforces scope equality, lifecycle, timestamps/order, byte limits, source/profile/path binding and semantic evidence relations; schema validation alone is not MC acceptance.",
   "oneOf": [
     {
       "$ref": "#/$defs/v1"
     },
     {
       "$ref": "#/$defs/v2"
+    },
+    {
+      "$ref": "#/$defs/v3"
     }
   ],
   "$defs": {
@@ -1797,17 +1800,1191 @@
           "if": {
             "properties": {
               "projectId": {
-                "enum": [
-                  "MISSION_CONTROL",
-                  "NEXAEON",
-                  "WOOSONG_BUDDY",
-                  "NAMYOUNG_WEB3D"
-                ]
+                "const": "JOEY_ASSET_SYSTEM"
+              },
+              "track": {
+                "const": "UNIVERSITY_CANDIDATE"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "events": {
+                "items": {
+                  "properties": {
+                    "delivery": {
+                      "properties": {
+                        "deployment": {
+                          "properties": {
+                            "target": {
+                              "anyOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "type": "object",
+                                  "additionalProperties": false,
+                                  "required": [
+                                    "provider",
+                                    "project",
+                                    "environment"
+                                  ],
+                                  "properties": {
+                                    "provider": {
+                                      "const": "vercel"
+                                    },
+                                    "project": {
+                                      "const": "joey-woosong-admissions-demo"
+                                    },
+                                    "environment": {
+                                      "const": "production"
+                                    }
+                                  }
+                                }
+                              ]
+                            },
+                            "url": {
+                              "anyOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "const": "https://joey-woosong-admissions-demo.vercel.app/"
+                                }
+                              ]
+                            }
+                          }
+                        },
+                        "verification": {
+                          "properties": {
+                            "url": {
+                              "anyOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "const": "https://joey-woosong-admissions-demo.vercel.app/"
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "anyOf": [
+              {
+                "properties": {
+                  "projectId": {
+                    "enum": [
+                      "MISSION_CONTROL",
+                      "NEXAEON",
+                      "WOOSONG_BUDDY",
+                      "NAMYOUNG_WEB3D"
+                    ]
+                  },
+                  "track": {
+                    "const": "BASELINE"
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "projectId": {
+                    "const": "JOEY_ASSET_SYSTEM"
+                  },
+                  "track": {
+                    "const": "UNIVERSITY_CANDIDATE"
+                  }
+                }
+              }
+            ]
+          },
+          "else": {
+            "properties": {
+              "events": {
+                "items": {
+                  "properties": {
+                    "delivery": {
+                      "properties": {
+                        "deployment": {
+                          "properties": {
+                            "target": {
+                              "type": "null"
+                            },
+                            "url": {
+                              "type": "null"
+                            }
+                          }
+                        },
+                        "verification": {
+                          "properties": {
+                            "url": {
+                              "type": "null"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "projectId": {
+                "const": "MISSION_CONTROL"
               },
               "track": {
                 "const": "BASELINE"
               }
             }
+          },
+          "then": {
+            "properties": {
+              "events": {
+                "items": {
+                  "properties": {
+                    "delivery": {
+                      "properties": {
+                        "data": {
+                          "properties": {
+                            "notRequired": {
+                              "anyOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "properties": {
+                                    "policy": {
+                                      "const": "MC_NO_DATA_CHANGE"
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "events": {
+                "items": {
+                  "properties": {
+                    "delivery": {
+                      "properties": {
+                        "data": {
+                          "properties": {
+                            "notRequired": {
+                              "type": "null"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "projectId": {
+                "const": "MISSION_CONTROL"
+              },
+              "track": {
+                "const": "BASELINE"
+              },
+              "taskKind": {
+                "const": "DOCUMENTATION"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "events": {
+                "items": {
+                  "properties": {
+                    "delivery": {
+                      "properties": {
+                        "deployment": {
+                          "properties": {
+                            "notRequired": {
+                              "anyOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "properties": {
+                                    "policy": {
+                                      "const": "MC_DOCUMENTATION_ONLY"
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        },
+                        "verification": {
+                          "properties": {
+                            "notRequired": {
+                              "anyOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "properties": {
+                                    "policy": {
+                                      "const": "MC_DOCUMENTATION_ONLY"
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "events": {
+                "items": {
+                  "properties": {
+                    "delivery": {
+                      "properties": {
+                        "deployment": {
+                          "properties": {
+                            "notRequired": {
+                              "type": "null"
+                            }
+                          }
+                        },
+                        "verification": {
+                          "properties": {
+                            "notRequired": {
+                              "type": "null"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "activityPath": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 160,
+      "pattern": "^[A-Za-z0-9_-][A-Za-z0-9_.-]*(?:/[A-Za-z0-9_-][A-Za-z0-9_.-]*)*$",
+      "allOf": [
+        {
+          "not": {
+            "pattern": "\\.\\."
+          }
+        },
+        {
+          "pattern": "(?:\\.m?[jt]sx?|\\.css|\\.html|\\.md|\\.json|\\.py)$"
+        },
+        {
+          "not": {
+            "pattern": "(?:^|/)(?:[nN][oO][dD][eE]_[mM][oO][dD][uU][lL][eE][sS]|[vV][eE][nN][dD][oO][rR]|[dD][iI][sS][tT]|[bB][uU][iI][lL][dD]|[cC][oO][vV][eE][rR][aA][gG][eE]|[dD][aA][tT][aA]|[pP][rR][iI][vV][aA][tT][eE]|[sS][eE][cC][rR][eE][tT]s?|[cC][rR][eE][dD][eE][nN][tT][iI][aA][lL]s?|[bB][aA][cC][kK][uU][pP][sS]?)(?:/|\\.|$)|(?:^|/)[^/]*(?:[cC][rR][eE][dD][eE][nN][tT][iI][aA][lL]|[pP][aA][sS][sS][wW][oO][rR][dD]|[sS][eE][cC][rR][eE][tT]|[tT][oO][kK][eE][nN]|[iI][nN][vV][eE][nN][tT][oO][rR][yY]|[lL][eE][dD][gG][eE][rR]|[tT][rR][aA][nN][sS][cC][rR][iI][pP][tT]|[rR][eE][aA][sS][oO][nN][iI][nN][gG])[^/]*(?:\\.|/|$)"
+          }
+        }
+      ]
+    },
+    "activity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaVersion",
+        "qualification",
+        "scope",
+        "actor",
+        "action",
+        "path",
+        "contentSha256",
+        "previousContentSha256",
+        "byteLength",
+        "workHeadSha",
+        "observedAt",
+        "precision"
+      ],
+      "properties": {
+        "schemaVersion": {
+          "const": "mc.file-activity.v1"
+        },
+        "qualification": {
+          "const": "AGENT_REPORTED_METADATA"
+        },
+        "scope": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "projectId",
+            "track",
+            "repositoryId",
+            "runId",
+            "taskId",
+            "workRef"
+          ],
+          "properties": {
+            "projectId": {
+              "type": "string",
+              "pattern": "^[_A-Z][_A-Z0-9]{0,79}$"
+            },
+            "track": {
+              "enum": [
+                "BASELINE",
+                "UNIVERSITY_CANDIDATE"
+              ]
+            },
+            "repositoryId": {
+              "type": "string",
+              "pattern": "^[-A-Za-z0-9_.]+/[-A-Za-z0-9_.]+$"
+            },
+            "runId": {
+              "$ref": "#/$defs/identifier"
+            },
+            "taskId": {
+              "$ref": "#/$defs/identifier"
+            },
+            "workRef": {
+              "$ref": "#/$defs/safeRelative"
+            }
+          }
+        },
+        "actor": {
+          "$ref": "#/$defs/text100"
+        },
+        "action": {
+          "enum": [
+            "FILE_READ",
+            "FILE_CHANGED"
+          ]
+        },
+        "path": {
+          "$ref": "#/$defs/activityPath"
+        },
+        "contentSha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "previousContentSha256": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            }
+          ]
+        },
+        "byteLength": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65536
+        },
+        "workHeadSha": {
+          "$ref": "#/$defs/sha40"
+        },
+        "observedAt": {
+          "$ref": "#/$defs/dateTime"
+        },
+        "precision": {
+          "enum": [
+            "REPORTER_BOUNDED_READ",
+            "OBSERVED_DIGEST_CHANGE"
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "action": {
+                "const": "FILE_READ"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "previousContentSha256": {
+                "type": "null"
+              },
+              "precision": {
+                "const": "REPORTER_BOUNDED_READ"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "previousContentSha256": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "precision": {
+                "const": "OBSERVED_DIGEST_CHANGE"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "eventV3": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "sequence",
+        "eventAt",
+        "kind",
+        "summary",
+        "result",
+        "delivery",
+        "activity"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 64
+        },
+        "eventAt": {
+          "$ref": "#/$defs/dateTime"
+        },
+        "kind": {
+          "enum": [
+            "started",
+            "progress",
+            "heartbeat",
+            "blocked",
+            "completed",
+            "failed"
+          ]
+        },
+        "summary": {
+          "$ref": "#/$defs/text500"
+        },
+        "result": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/result"
+            }
+          ]
+        },
+        "delivery": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/delivery"
+            }
+          ]
+        },
+        "activity": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/activity"
+            }
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "completed"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "result": {
+                "$ref": "#/$defs/result"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "result": {
+                "type": "null"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "progress"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "activity": {
+                "type": "null"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "v3": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaVersion",
+        "projectId",
+        "track",
+        "runId",
+        "predecessorRunId",
+        "taskId",
+        "featureTitle",
+        "agentName",
+        "provider",
+        "model",
+        "repositoryId",
+        "reportRef",
+        "workRef",
+        "baseline",
+        "events",
+        "taskKind",
+        "activityMode",
+        "activityPaths"
+      ],
+      "properties": {
+        "schemaVersion": {
+          "const": "mc.repository-run.v3"
+        },
+        "projectId": {
+          "type": "string",
+          "pattern": "^[_A-Z][_A-Z0-9]{0,79}$"
+        },
+        "track": {
+          "enum": [
+            "BASELINE",
+            "UNIVERSITY_CANDIDATE"
+          ]
+        },
+        "runId": {
+          "$ref": "#/$defs/identifier"
+        },
+        "predecessorRunId": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/identifier"
+            }
+          ]
+        },
+        "taskId": {
+          "$ref": "#/$defs/identifier"
+        },
+        "featureTitle": {
+          "$ref": "#/$defs/text500"
+        },
+        "agentName": {
+          "$ref": "#/$defs/text100"
+        },
+        "provider": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/text100"
+            }
+          ]
+        },
+        "model": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/text100"
+            }
+          ]
+        },
+        "repositoryId": {
+          "type": "string",
+          "pattern": "^[-A-Za-z0-9_.]+/[-A-Za-z0-9_.]+$"
+        },
+        "reportRef": {
+          "const": "mc/progress"
+        },
+        "workRef": {
+          "$ref": "#/$defs/safeRelative"
+        },
+        "baseline": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "ref",
+            "commitSha",
+            "handoffPath",
+            "handoffDigest"
+          ],
+          "properties": {
+            "ref": {
+              "$ref": "#/$defs/safeRelative"
+            },
+            "commitSha": {
+              "$ref": "#/$defs/sha40"
+            },
+            "handoffPath": {
+              "$ref": "#/$defs/safeRelative"
+            },
+            "handoffDigest": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            "contextPaths": {
+              "type": "array",
+              "maxItems": 4,
+              "uniqueItems": true,
+              "items": {
+                "$ref": "#/$defs/safeRelative"
+              }
+            }
+          }
+        },
+        "events": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 64,
+          "items": {
+            "$ref": "#/$defs/eventV3"
+          },
+          "contains": {
+            "type": "object",
+            "required": [
+              "activity"
+            ],
+            "properties": {
+              "activity": {
+                "type": "object"
+              }
+            }
+          },
+          "minContains": 0,
+          "maxContains": 8
+        },
+        "taskKind": {
+          "enum": [
+            "FEATURE",
+            "BUGFIX",
+            "DOCUMENTATION",
+            "DELIVERY_FOLLOWUP"
+          ]
+        },
+        "activityMode": {
+          "const": "EXPLICIT_FILE_METADATA"
+        },
+        "activityPaths": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 8,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/activityPath"
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "track": {
+                "const": "UNIVERSITY_CANDIDATE"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "projectId": {
+                "const": "JOEY_ASSET_SYSTEM"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "projectId": {
+                "const": "MISSION_CONTROL"
+              },
+              "track": {
+                "const": "BASELINE"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "events": {
+                "items": {
+                  "properties": {
+                    "delivery": {
+                      "properties": {
+                        "deployment": {
+                          "properties": {
+                            "target": {
+                              "anyOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "type": "object",
+                                  "additionalProperties": false,
+                                  "required": [
+                                    "provider",
+                                    "project",
+                                    "environment"
+                                  ],
+                                  "properties": {
+                                    "provider": {
+                                      "const": "vercel"
+                                    },
+                                    "project": {
+                                      "const": "joey-mission-control"
+                                    },
+                                    "environment": {
+                                      "const": "preview"
+                                    }
+                                  }
+                                }
+                              ]
+                            },
+                            "url": {
+                              "anyOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "const": "https://joey-mission-control-git-codex-mc-comma-fceec2-joeyajs-projects.vercel.app/"
+                                }
+                              ]
+                            }
+                          }
+                        },
+                        "verification": {
+                          "properties": {
+                            "url": {
+                              "anyOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "const": "https://joey-mission-control-git-codex-mc-comma-fceec2-joeyajs-projects.vercel.app/"
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "projectId": {
+                "const": "NEXAEON"
+              },
+              "track": {
+                "const": "BASELINE"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "events": {
+                "items": {
+                  "properties": {
+                    "delivery": {
+                      "properties": {
+                        "deployment": {
+                          "properties": {
+                            "target": {
+                              "anyOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "type": "object",
+                                  "additionalProperties": false,
+                                  "required": [
+                                    "provider",
+                                    "project",
+                                    "environment"
+                                  ],
+                                  "properties": {
+                                    "provider": {
+                                      "const": "vercel"
+                                    },
+                                    "project": {
+                                      "const": "nexaeon-web"
+                                    },
+                                    "environment": {
+                                      "const": "production"
+                                    }
+                                  }
+                                }
+                              ]
+                            },
+                            "url": {
+                              "anyOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "const": "https://nexaeon-web.vercel.app/"
+                                }
+                              ]
+                            }
+                          }
+                        },
+                        "verification": {
+                          "properties": {
+                            "url": {
+                              "anyOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "const": "https://nexaeon-web.vercel.app/"
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "projectId": {
+                "const": "WOOSONG_BUDDY"
+              },
+              "track": {
+                "const": "BASELINE"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "events": {
+                "items": {
+                  "properties": {
+                    "delivery": {
+                      "properties": {
+                        "deployment": {
+                          "properties": {
+                            "target": {
+                              "anyOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "type": "object",
+                                  "additionalProperties": false,
+                                  "required": [
+                                    "provider",
+                                    "project",
+                                    "environment"
+                                  ],
+                                  "properties": {
+                                    "provider": {
+                                      "const": "vercel"
+                                    },
+                                    "project": {
+                                      "const": "woosong-buddy-app"
+                                    },
+                                    "environment": {
+                                      "const": "production"
+                                    }
+                                  }
+                                }
+                              ]
+                            },
+                            "url": {
+                              "anyOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "const": "https://woosong-buddy-app.vercel.app/"
+                                }
+                              ]
+                            }
+                          }
+                        },
+                        "verification": {
+                          "properties": {
+                            "url": {
+                              "anyOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "const": "https://woosong-buddy-app.vercel.app/"
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "projectId": {
+                "const": "NAMYOUNG_WEB3D"
+              },
+              "track": {
+                "const": "BASELINE"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "events": {
+                "items": {
+                  "properties": {
+                    "delivery": {
+                      "properties": {
+                        "deployment": {
+                          "properties": {
+                            "target": {
+                              "anyOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "type": "object",
+                                  "additionalProperties": false,
+                                  "required": [
+                                    "provider",
+                                    "project",
+                                    "environment"
+                                  ],
+                                  "properties": {
+                                    "provider": {
+                                      "const": "vercel"
+                                    },
+                                    "project": {
+                                      "const": "namyoung-web3d"
+                                    },
+                                    "environment": {
+                                      "const": "production"
+                                    }
+                                  }
+                                }
+                              ]
+                            },
+                            "url": {
+                              "anyOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "const": "https://namyoung-web3d.vercel.app/"
+                                }
+                              ]
+                            }
+                          }
+                        },
+                        "verification": {
+                          "properties": {
+                            "url": {
+                              "anyOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "const": "https://namyoung-web3d.vercel.app/"
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "projectId": {
+                "const": "JOEY_ASSET_SYSTEM"
+              },
+              "track": {
+                "const": "UNIVERSITY_CANDIDATE"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "events": {
+                "items": {
+                  "properties": {
+                    "delivery": {
+                      "properties": {
+                        "deployment": {
+                          "properties": {
+                            "target": {
+                              "anyOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "type": "object",
+                                  "additionalProperties": false,
+                                  "required": [
+                                    "provider",
+                                    "project",
+                                    "environment"
+                                  ],
+                                  "properties": {
+                                    "provider": {
+                                      "const": "vercel"
+                                    },
+                                    "project": {
+                                      "const": "joey-woosong-admissions-demo"
+                                    },
+                                    "environment": {
+                                      "const": "production"
+                                    }
+                                  }
+                                }
+                              ]
+                            },
+                            "url": {
+                              "anyOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "const": "https://joey-woosong-admissions-demo.vercel.app/"
+                                }
+                              ]
+                            }
+                          }
+                        },
+                        "verification": {
+                          "properties": {
+                            "url": {
+                              "anyOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "const": "https://joey-woosong-admissions-demo.vercel.app/"
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "anyOf": [
+              {
+                "properties": {
+                  "projectId": {
+                    "enum": [
+                      "MISSION_CONTROL",
+                      "NEXAEON",
+                      "WOOSONG_BUDDY",
+                      "NAMYOUNG_WEB3D"
+                    ]
+                  },
+                  "track": {
+                    "const": "BASELINE"
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "projectId": {
+                    "const": "JOEY_ASSET_SYSTEM"
+                  },
+                  "track": {
+                    "const": "UNIVERSITY_CANDIDATE"
+                  }
+                }
+              }
+            ]
           },
           "else": {
             "properties": {

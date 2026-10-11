@@ -1,6 +1,6 @@
 # Optional model-neutral workbench event adapter design
 
-Design only. Current `mc.repository-run.v1` and explicit delivery `mc.repository-run.v2` reject file/tool observation fields; delivery snapshots do not implement this adapter. No hook, CLI watcher, event service, persistent access, credential or background process is enabled. File/diff/terminal capability remains unavailable in the UI.
+First metadata slice now implemented by explicit opt-in `mc.repository-run.v3` / `mc.file-activity.v1`: bounded tracked-file reporter reads and same-run observed digest changes; contract MC_FILE_ACTIVITY_V3.md. v1/v2 remain strict and reject file observation fields. Raw file/diff/editor/terminal collection below remains design only. No hook, CLI watcher, event service, persistent access, credential or background process is enabled. Only actual structured file metadata can appear; file contents/diff/editor/terminal remain unavailable.
 
 A future adapter may normalize an explicitly attributed receiving-Agent event into a bounded versioned envelope: schema version, canonical project/track/repository/work ref, run/task/event ID, sequence, source event timestamp, receiving timestamp, explicit Agent identity, observed action and exact source artifact binding. Model/provider remain optional. It must independently prove the existing Owner/read authorization and source/run lineage; event declaration alone grants nothing.
 

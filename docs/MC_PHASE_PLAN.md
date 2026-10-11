@@ -228,3 +228,8 @@ Private continuity core proposal: docs/MC_PRIVATE_PERSISTENCE_PROPOSAL.md recomm
 ## 2026-10-11 schema and fixed target metadata followup
 
 Standalone repository-run schema supports strict v1/v2 structure and static target/N/A policy, with code-only semantic/source gates explicit. Read-only authoritative inventory permits existing Nex/Buddy/Nam BASELINE fixed target declarations only; Asset/University remain unresolved and disabled, no new N/A or deploy/fetch authority. Current tests, reporting and publication qualification are in HANDOFF.md and docs/MC_SCHEMA_TARGET_POLICY_VERIFICATION_20261011.md. Model-neutral takeover uses a fresh same-scope predecessor run for terminal followup. Real file/tool events remain design-gated by docs/contracts/MC_OPTIONAL_WORKBENCH_EVENTS.md; no collector or execution capability is delivered.
+
+
+## 2026-10-11 explicit file metadata slice
+
+Versioned opt-in v3 adds task-listed bounded tracked read/observed digest-change metadata with exact Agent/scope/time/lineage, within existing budgets. Workbench follows/selects metadata and dated precision; no source/diff/editor/terminal collection or persistent hook. v1/v2/history/source/Owner/CAS gates remain. Own-key standalone schema parity fix and proof are in docs/MC_FILE_ACTIVITY_VERIFICATION_20261011.md; contract docs/contracts/MC_FILE_ACTIVITY_V3.md. Accepting feature Agent owns authorized public deployment/fixed URL/MC/handoff closure. University candidate exact module-only target now approved; actual release/manifest receipts remain the separate worker responsibility. Unchanged data cannot be APPLIED; other no-change policies remain unavailable.

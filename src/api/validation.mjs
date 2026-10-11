@@ -20,16 +20,16 @@ export function validate(schema, data) {
     }
 
     // Standard composition used by versioned contracts. Branch errors are local.
-    const matches = candidate => {
+    const matches = (candidate, candidateValue = value) => {
       const start = errors.length;
-      walk(candidate, value, pointer, root);
+      walk(candidate, candidateValue, pointer, root);
       const valid = errors.length === start;
       errors.splice(start);
       return valid;
     };
     for (const child of current.allOf || []) walk(child, value, pointer, root);
-    if (current.anyOf && !current.anyOf.some(matches)) errors.push(`${pointer} matches no alternative`);
-    if (current.oneOf && current.oneOf.filter(matches).length !== 1) errors.push(`${pointer} must match exactly one alternative`);
+    if (current.anyOf && !current.anyOf.some(child => matches(child))) errors.push(`${pointer} matches no alternative`);
+    if (current.oneOf && current.oneOf.filter(child => matches(child)).length !== 1) errors.push(`${pointer} must match exactly one alternative`);
     if (current.not && matches(current.not)) errors.push(`${pointer} forbidden value`);
     if (current.if) {
       const branch = matches(current.if) ? current.then : current.else;
@@ -59,6 +59,10 @@ export function validate(schema, data) {
       if (current.minItems !== undefined && value.length < current.minItems) errors.push(`${pointer} has too few items`);
       if (current.maxItems !== undefined && value.length > current.maxItems) errors.push(`${pointer} has too many items`);
       if (current.uniqueItems && new Set(value.map(item => JSON.stringify(item))).size !== value.length) errors.push(`${pointer} items must be unique`);
+      if (current.contains) {
+        const count = value.filter(item => matches(current.contains, item)).length;
+        if (count < (current.minContains ?? 1) || current.maxContains !== undefined && count > current.maxContains) errors.push(`${pointer} contains count`);
+      }
       if (current.items) value.forEach((item, index) => walk(current.items, item, `${pointer}[${index}]`, root));
       return;
     }
@@ -73,10 +77,10 @@ export function validate(schema, data) {
       }
       for (const key of current.required || []) if (value[key] === undefined) errors.push(`${pointer}.${key} required`);
       if (current.additionalProperties === false) {
-        for (const key of Object.keys(value)) if (!(key in (current.properties || {}))) errors.push(`${pointer}.${key} unknown`);
+        for (const key of Object.keys(value)) if (!Object.hasOwn(current.properties || {}, key)) errors.push(`${pointer}.${key} unknown`);
       }
       for (const [key, child] of Object.entries(value)) {
-        const childSchema = current.properties?.[key] || (typeof current.additionalProperties === 'object' ? current.additionalProperties : null);
+        const childSchema = Object.hasOwn(current.properties || {}, key) ? current.properties[key] : (typeof current.additionalProperties === 'object' ? current.additionalProperties : null);
         if (childSchema) walk(childSchema, child, `${pointer}.${key}`, root);
       }
     }

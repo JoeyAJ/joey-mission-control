@@ -1,5 +1,7 @@
 # Strict schema and fixed delivery metadata
 
+Dated stage receipt. Subsequent explicit University module-only target approval (2026-10-11 00:45:40 UTC) supersedes the candidate-disabled inventory below; Asset BASELINE stays disabled. See `MC_FILE_ACTIVITY_VERIFICATION_20261011.md` and the updated private target inventory. This does not claim a new University release or MC deployment authority over that project.
+
 MC-only scope: synchronize standalone v1/v2 structure, add already-confirmed target metadata, improve model-neutral takeover instructions and validate isolation. No target policy grants deploy/fetch authority. No other repository/report/deployment, SQL, access, secrets, dispatch, model selector or AWS pilot action is included.
 
 ## Contract and parity

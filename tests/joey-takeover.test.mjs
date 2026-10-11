@@ -11,3 +11,6 @@ test('the simple candidate instruction remains explicitly pending and preserves 
  const p=packet();p.track='UNIVERSITY_CANDIDATE';p.source.requestedRef='migration/university-v04-portable';p.source.path='DEVELOPMENT.md';p.progress={task:'Synthetic documented task',nextAction:'Synthetic documented next step',lastAgent:'Explicit Fixture Developer'};
  const text=formatTakeoverInstruction(p);assert(text.includes('JoeyAcceptancePending'));assert(text.includes('不得當成 main 或已驗收成果'));assert(text.includes('migration/university-v04-portable'));assert(text.includes('/blob/'+sha+'/DEVELOPMENT.md'));assert(text.includes('最近開發者: Explicit Fixture Developer'));assert(text.includes('Synthetic documented next step'));
 });
+test('cross-agent continuation assigns existing authorized public deployment ownership and truthful capability limits',()=>{
+ for(const p of [packet(),{...packet(),track:'UNIVERSITY_CANDIDATE'}]){const text=formatTakeoverInstruction(p);for(const phrase of ['接下 feature 任務的 Agent 負責 tests','部署不是例行留給 Joey','只 push code 不算','資料未變更不能標 APPLIED','mc.repository-run.v3','EXPLICIT_FILE_METADATA','file-event --packet','不裝 hook/daemon','manual dist']){assert(text.includes(phrase),phrase);}}
+});
