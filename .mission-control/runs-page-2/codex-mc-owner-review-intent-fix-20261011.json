@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "mc.repository-run.v2",
+  "taskKind": "FEATURE",
+  "projectId": "MISSION_CONTROL",
+  "track": "BASELINE",
+  "runId": "codex-mc-owner-review-intent-fix-20261011",
+  "predecessorRunId": "codex-mc-owner-task-review-20261011",
+  "taskId": "mc-owner-review-intent-fix-20261011",
+  "featureTitle": "Bind Owner review click to the displayed exact tuple; reject drift before append",
+  "agentName": "Codex",
+  "provider": null,
+  "model": null,
+  "repositoryId": "JoeyAJ/joey-mission-control",
+  "reportRef": "mc/progress",
+  "workRef": "codex/mc-command-center-checkpoint-20261006",
+  "baseline": {
+    "ref": "codex/mc-command-center-checkpoint-20261006",
+    "commitSha": "9b87948fc058e3a691f3ac87ac978417dd29ce6f",
+    "handoffPath": "HANDOFF.md",
+    "handoffDigest": "1503b33496322fdab67ef6e8f81adbd3bf9143afa67077795c88ab5ee270be89",
+    "contextPaths": [
+      "README.md",
+      "docs/PRODUCT_CHARTER.md",
+      "docs/MC_PHASE_PLAN.md",
+      "docs/STAGE_HANDOFF_TEMPLATE.md"
+    ]
+  },
+  "events": [
+    {
+      "id": "started-owner-review-intent-fix",
+      "sequence": 1,
+      "eventAt": "2026-10-11T14:05:58.407Z",
+      "kind": "started",
+      "summary": "Independent actual-controller probe found review click auto-reconcile substituted report/canonical tuples. Bounded browser fix stages existing PR/CI before a distinct Owner click, captures displayed tuple/generations synchronously and rejects drift. No SQL, grants or actual Owner decisions. Old runtime red; focused18 and browser8 green.",
+      "result": null,
+      "delivery": null
+    }
+  ]
+}
