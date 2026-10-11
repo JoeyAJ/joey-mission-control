@@ -1,0 +1,1 @@
+{"origin":"https://scmvedfqwlhkyvljymjj.supabase.co","path":"/auth/v1/settings","readOnly":true,"httpStatus":200,"fields":{"disableSignup":true,"anonymousUsers":false,"email":true},"qualification":"SERVER_SETTINGS_CLOSED"}

@@ -1,19 +1,19 @@
-# Current mobile task entry / navigation release — 2026-10-11
+# Current Owner email OTP preparation — 2026-10-11
 
 Project: MISSION_CONTROL
-Timestamp: 2026-10-11T22:50:49.087Z
-Task: Signed-out/checking feedback and visible website/list actions
-Status: LOCAL_VERIFIED_PARENT_READ_PREVIEW_PUBLISHED
+Timestamp: 2026-10-11T23:06:24.079Z
+Task: Same-page existing Owner OTP; readiness disabled
+Status: LOCAL_VERIFIED_PENDING_PUBLICATION
 Last Developer: Codex
 Executed by: Codex
 Actual Model: UNKNOWN
-Baseline: facbb4cfb3660637003918baa61d585d007dc303
+Baseline: 45cebef30f958934674619fc7e90b25324579d99
 
-Task entry reveals scoped login/checking/loading feedback, focuses login/editor, preserves same-scope input and cancels switch intents; Owner/AAL2/session/membership gates retained. Exact56ea279 navigation slice integrated as5791b0f; candidate pending and known URLs preserved. No hierarchy8049af6.
+Priority navigation/task feedback45cebef fixed Preview dpl_3kGhMssHDph5WvTAnxmCwnubYHNo READY. OTP code prepared with shouldCreateUser:false, exact Owner, scoped transient challenge/currentness; existing password/TOTP/AAL2/live-session/member gates retained. Deployed switch OFF, no mail/settings change or extra credential storage.
 
-Evidence: docs/MC_MOBILE_TASK_ENTRY_20261011.md. Baseline RED; entry3/navigation9(54 scopes), focused137/portable936/build/validate/check/root20 PASS. Runtime6b3465b exact fixed Preview dpl_2ysABZv3ukKtD1eH1QtrmTWy7cEM READY, Production unchanged. Final docs receipt follows. Preflight/motion/SQL/Auth settings unchanged. No email/actual Owner writes. Fixture finalization core22 groups/review4 PASS, live disabled; docs/MC_FINALIZATION_CORE_20261011.md records missing connections/action grants.
+Evidence: docs/MC_OWNER_EMAIL_OTP_20261011.md; portable945/focused47/build/validate/check, OTP browser21/password5/mobile entry3 PASS. Current settings GET200: email ON, signup/anonymous OFF. Auth-management template/plan/SMTP read unavailable; project created2026-10-07 may face June3 template restriction. Single pending body proposal is reviewable. Final root/Preview pending; core preserved/live disabled, actual Owner writes0.
 
-Next Action: finish final exact Preview/terminal, then approved passwordless readiness/code. Joey22:41:48UTC approved direction; prefer same-page OTP with existing TOTP/AAL2/private gates. No password deletion/SMTP/signup/redirect/security changes without exact required approval; no sending before flow explanation. CONNECT403 before app not bypassed, served/Owner acceptance pending. No Production/new keys/SQL/permissions/dispatch/AWS.
+Next Action: finish disabled-code exact Preview/report. Then fresh nonsecret GET /v1/projects/scmvedfqwlhkyvljymjj/config/auth through existing authorized connection; verify template/OTP length/plan/mail readiness. Exact approval needed only for actual body/settings change; no mail before qualified flow. No password deletion/signup/SMTP/redirect/SQL/grants/new keys/Production/dispatch/AWS. CONNECT403 not bypassed; served/Owner acceptance pending.
 
 # Dated prior stage history
 

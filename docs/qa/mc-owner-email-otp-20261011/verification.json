@@ -1,0 +1,30 @@
+{
+  "checkedAt": "2026-10-11T23:05:41.547Z",
+  "qualification": "LOCAL_SYNTHETIC_NOT_OWNER_MAIL_OR_SERVED_ACCEPTANCE",
+  "baseline": "45cebef30f958934674619fc7e90b25324579d99",
+  "portableTests": 945,
+  "focusedTests": 47,
+  "otpSdkBrowserCases": 21,
+  "passwordSdkCompatibilityCases": 5,
+  "mobileTaskEntryCases": 3,
+  "build": "PASS",
+  "portableValidate": "PASS",
+  "staticSafety": "PASS",
+  "forbiddenAttempts": 0,
+  "actualEmailSent": 0,
+  "actualOwnerWrites": 0,
+  "externalRequests": 0,
+  "unexpectedWrites": 0,
+  "deployedOtpEnabled": false,
+  "authSettingsChanged": false,
+  "publicSettingsRead": {
+    "httpStatus": 200,
+    "disableSignup": true,
+    "anonymousUsers": false,
+    "email": true
+  },
+  "managementTemplateRead": "CAPABILITY_NOT_EXPOSED",
+  "projectCreatedAt": "2026-10-07T00:10:12.932926Z",
+  "templatePlanSmtpReadiness": "UNCONFIRMED",
+  "finalizationLiveEnabled": false
+}

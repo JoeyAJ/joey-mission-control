@@ -1,3 +1,7 @@
+# Current approved Owner OTP preparation — 2026-10-11
+
+Priority mobile task feedback/site navigation45cebef exact fixed Preview READY. Same-page existing-user-only email OTP is locally implemented/tested but deployment readiness remains OFF. Existing TOTP/AAL2/live session/member gates and password flow unchanged. Current public Auth settings200 email ON/signup+anonymous OFF; exact Auth-management template/plan/SMTP/OTP-length read is unavailable. No email/settings action. See MC_OWNER_EMAIL_OTP_20261011.md for concrete proposal and next authorized read. Finalization core preserved/live disabled; no dispatch/Production/SQL/new credentials.
+
 # Current user priority — task-entry feedback and public website/list navigation
 
 Actual signed-out UI path fixed with visible scoped feedback and existing login focus; pending checks resume only under verified Owner, preserving auth/privacy and same-scope edits. Reviewed exact56ea279 navigation integrated; hierarchy8049af6 excluded. [Evidence and approved next passwordless direction](MC_MOBILE_TASK_ENTRY_20261011.md). No auth policy/mail/settings changes in this release; live finalization remains disabled.
