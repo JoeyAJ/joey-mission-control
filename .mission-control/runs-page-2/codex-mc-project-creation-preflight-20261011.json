@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "mc.repository-run.v2",
+  "taskKind": "FEATURE",
+  "projectId": "MISSION_CONTROL",
+  "track": "BASELINE",
+  "runId": "codex-mc-project-creation-preflight-20261011",
+  "predecessorRunId": "codex-mc-owner-review-intent-fix-20261011",
+  "taskId": "mc-project-creation-preflight-20261011",
+  "featureTitle": "Actionable private new-project creation preflight; no provisioning or new access",
+  "agentName": "Codex",
+  "provider": null,
+  "model": null,
+  "repositoryId": "JoeyAJ/joey-mission-control",
+  "reportRef": "mc/progress",
+  "workRef": "codex/mc-command-center-checkpoint-20261006",
+  "baseline": {
+    "ref": "codex/mc-command-center-checkpoint-20261006",
+    "commitSha": "e464f571b9127c2684192fa1c5a96717d4c72142",
+    "handoffPath": "HANDOFF.md",
+    "handoffDigest": "0511103a595d33a7c4bb3dab05cf2d118af44429e7631567381e8b03e28addd4",
+    "contextPaths": [
+      "README.md",
+      "docs/PRODUCT_CHARTER.md",
+      "docs/MC_PHASE_PLAN.md",
+      "docs/STAGE_HANDOFF_TEMPLATE.md"
+    ]
+  },
+  "events": [
+    {
+      "id": "started-project-creation-preflight",
+      "sequence": 1,
+      "eventAt": "2026-10-11T14:35:42.338Z",
+      "kind": "started",
+      "summary": "Parent authorized independent bounded new-project preflight while real-task acceptance waits. Existing Owner drafts and six-file bundle inspected. Added deterministic private target proposals, exact source/report requirements, compact ready/missing/conflict view and one-copy plan plus original bundle. No provisioning, SQL/grants/newkeys or Owner task writes. Focused47 PASS; portable and browser checks running.",
+      "result": null,
+      "delivery": null
+    }
+  ]
+}
