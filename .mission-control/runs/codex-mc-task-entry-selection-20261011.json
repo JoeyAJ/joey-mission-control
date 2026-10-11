@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "mc.repository-run.v2",
+  "taskKind": "BUGFIX",
+  "projectId": "MISSION_CONTROL",
+  "track": "BASELINE",
+  "runId": "codex-mc-task-entry-selection-20261011",
+  "predecessorRunId": "codex-mc-mobile-activity-20261011",
+  "taskId": "mc-task-entry-selection-20261011",
+  "featureTitle": "Preserve scoped selected reported task when entering workspace from default Joey",
+  "agentName": "Codex",
+  "provider": null,
+  "model": null,
+  "repositoryId": "JoeyAJ/joey-mission-control",
+  "reportRef": "mc/progress",
+  "workRef": "codex/mc-command-center-checkpoint-20261006",
+  "baseline": {
+    "ref": "codex/mc-command-center-checkpoint-20261006",
+    "commitSha": "caab2cfd68ebe171347034fddba1045f3fbd4e7d",
+    "handoffPath": "HANDOFF.md",
+    "handoffDigest": "2d5b3e193338f75e9773bdf59ba3f2bf56382bec944533f2fa9f8c87590408f1",
+    "contextPaths": [
+      "README.md",
+      "docs/PRODUCT_CHARTER.md",
+      "docs/MC_PHASE_PLAN.md",
+      "docs/STAGE_HANDOFF_TEMPLATE.md"
+    ]
+  },
+  "events": [
+    {
+      "id": "started",
+      "sequence": 1,
+      "eventAt": "2026-10-11T02:27:14.438Z",
+      "kind": "started",
+      "summary": "Review found default Joey selectedTask was local and onWorkspace forwarded only project/track. Reproduce actual same-click older-run entry, then carry a one-shot scope-bound in-memory selection through fresh report validation with missing/changed/foreign/Back regressions. No private URL/storage or unrelated feature.",
+      "result": null,
+      "delivery": null
+    }
+  ]
+}
