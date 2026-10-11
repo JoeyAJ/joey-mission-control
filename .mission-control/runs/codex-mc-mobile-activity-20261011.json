@@ -34,6 +34,15 @@
       "summary": "Direct Joey mobile feedback: default overview hid new dynamic workspace. Preserve simple overview; add prominent task/activity surface and file-workspace entry using verified current scoped Agent reports. No fake activity or new source/execution capability.",
       "result": null,
       "delivery": null
+    },
+    {
+      "id": "mobile-tested",
+      "sequence": 2,
+      "eventAt": "2026-10-11T02:15:51.567Z",
+      "kind": "progress",
+      "summary": "Visible default Joey activity tested: portable762/build/validate/check PASS, focused25/handoff20 PASS; actual MC report-byte replay1440/390 initial/bookmark/reload/task/refresh/history/project/workspace/outage/logout2, old simple takeover4 widths and true Continue12 PASS, external0/writes0. Before/after reviewed; same-scope reread preserves selection. Fixed Preview/served check closure follows, no full reference acceptance.",
+      "result": null,
+      "delivery": null
     }
   ]
 }
