@@ -3,9 +3,15 @@ import {isStrictDateTime} from '../canonical/date-time.mjs';
 export const REPORT_VERSION_V2='mc.repository-run.v2';
 export const TASK_KINDS=Object.freeze(['FEATURE','BUGFIX','DOCUMENTATION','DELIVERY_FOLLOWUP']);
 const sha=/^[a-f0-9]{40}$/;
-const fixedUrl='https://joey-mission-control-git-codex-mc-comma-fceec2-joeyajs-projects.vercel.app/';
-// Public application policy only; no repository, Owner or credential configuration.
-export function deliveryPolicy(report){return report.projectId==='MISSION_CONTROL'&&report.track==='BASELINE'?{url:fixedUrl,target:{provider:'vercel',project:'joey-mission-control',environment:'preview'},docsPolicy:'MC_DOCUMENTATION_ONLY',dataPolicy:'MC_NO_DATA_CHANGE'}:null;}
+// Public metadata only. A declared target grants no deployment or fetch authority.
+// Fixed URLs: metadata/project-urls.v1.json; provider identity: private inventory receipt.
+const policies={
+ MISSION_CONTROL:{url:'https://joey-mission-control-git-codex-mc-comma-fceec2-joeyajs-projects.vercel.app/',target:{provider:'vercel',project:'joey-mission-control',environment:'preview'},docsPolicy:'MC_DOCUMENTATION_ONLY',dataPolicy:'MC_NO_DATA_CHANGE'},
+ NEXAEON:{url:'https://nexaeon-web.vercel.app/',target:{provider:'vercel',project:'nexaeon-web',environment:'production'},docsPolicy:null,dataPolicy:null},
+ WOOSONG_BUDDY:{url:'https://woosong-buddy-app.vercel.app/',target:{provider:'vercel',project:'woosong-buddy-app',environment:'production'},docsPolicy:null,dataPolicy:null},
+ NAMYOUNG_WEB3D:{url:'https://namyoung-web3d.vercel.app/',target:{provider:'vercel',project:'namyoung-web3d',environment:'production'},docsPolicy:null,dataPolicy:null}
+};
+export function deliveryPolicy(report){return report?.track==='BASELINE'&&Object.hasOwn(policies,report.projectId)?structuredClone(policies[report.projectId]):null;}
 const fail=(code='RUN_REPORT_DELIVERY_INVALID')=>{throw Object.assign(Error(code),{code});};
 function exact(v,keys){if(!v||typeof v!=='object'||Array.isArray(v)||![Object.prototype,null].includes(Object.getPrototypeOf(v))||Object.keys(v).length!==keys.length||Object.keys(v).some(k=>!keys.includes(k)))fail();for(const d of Object.values(Object.getOwnPropertyDescriptors(v)))if(!('value'in d))fail();}
 function text(v,max=500){if(typeof v!=='string'||!v.trim()||v.length>max||/[\u0000-\u001f\u007f]/.test(v)||/Bearer\s|gh[pousr]_|github_pat_|\b(?:password|secret|token)\s*[:=]|PRIVATE KEY|^eyJ[A-Za-z0-9_-]+\.|MC_VERIFIED|INDEPENDENTLY_VERIFIED|https?:\/\/[^\s/]*@/i.test(v))fail();}

@@ -19,10 +19,27 @@ export function validate(schema, data) {
       return;
     }
 
+    // Standard composition used by versioned contracts. Branch errors are local.
+    const matches = candidate => {
+      const start = errors.length;
+      walk(candidate, value, pointer, root);
+      const valid = errors.length === start;
+      errors.splice(start);
+      return valid;
+    };
+    for (const child of current.allOf || []) walk(child, value, pointer, root);
+    if (current.anyOf && !current.anyOf.some(matches)) errors.push(`${pointer} matches no alternative`);
+    if (current.oneOf && current.oneOf.filter(matches).length !== 1) errors.push(`${pointer} must match exactly one alternative`);
+    if (current.not && matches(current.not)) errors.push(`${pointer} forbidden value`);
+    if (current.if) {
+      const branch = matches(current.if) ? current.then : current.else;
+      if (branch) walk(branch, value, pointer, root);
+    }
+
     if (current.type) {
       const allowed = Array.isArray(current.type) ? current.type : [current.type];
       const actual = value === null ? 'null' : Array.isArray(value) ? 'array' : typeof value;
-      if (!allowed.includes(actual)) {
+      if (!allowed.includes(actual) && !(allowed.includes('integer') && Number.isSafeInteger(value))) {
         errors.push(`${pointer} must be ${allowed.join('|')}`);
         return;
       }
@@ -32,11 +49,15 @@ export function validate(schema, data) {
     if (current.enum && !current.enum.includes(value)) errors.push(`${pointer} is not allowed`);
     if (current.pattern && typeof value === 'string' && !new RegExp(current.pattern).test(value)) errors.push(`${pointer} pattern`);
     if (current.minLength !== undefined && typeof value === 'string' && value.length < current.minLength) errors.push(`${pointer} too short`);
+    if (current.maxLength !== undefined && typeof value === 'string' && value.length > current.maxLength) errors.push(`${pointer} too long`);
+    if (current.minimum !== undefined && typeof value === 'number' && value < current.minimum) errors.push(`${pointer} below minimum`);
+    if (current.maximum !== undefined && typeof value === 'number' && value > current.maximum) errors.push(`${pointer} above maximum`);
     if (current.format === 'date-time' && !isStrictDateTime(value)) errors.push(`${pointer} invalid date-time`);
     if (current.safePath && typeof value === 'string' && (!path.isAbsolute(value) || value.includes('\0'))) errors.push(`${pointer} unsafe path`);
 
     if (Array.isArray(value)) {
       if (current.minItems !== undefined && value.length < current.minItems) errors.push(`${pointer} has too few items`);
+      if (current.maxItems !== undefined && value.length > current.maxItems) errors.push(`${pointer} has too many items`);
       if (current.uniqueItems && new Set(value.map(item => JSON.stringify(item))).size !== value.length) errors.push(`${pointer} items must be unique`);
       if (current.items) value.forEach((item, index) => walk(current.items, item, `${pointer}[${index}]`, root));
       return;

@@ -1,0 +1,121 @@
+{
+  "schemaVersion": 1,
+  "qualification": "READ_ONLY_TARGET_INVENTORY_NOT_DEPLOYMENT_AUTHORITY",
+  "recordedAt": "2026-10-11 00:28:04 UTC",
+  "authorityPaths": [
+    "docs/V0.2_PROJECT_URL_AUTHORITY.md",
+    "metadata/project-urls.v1.json"
+  ],
+  "targets": [
+    {
+      "projectId": "NEXAEON",
+      "track": "BASELINE",
+      "policyEnabled": true,
+      "url": "https://nexaeon-web.vercel.app/",
+      "target": {
+        "provider": "vercel",
+        "project": "nexaeon-web",
+        "environment": "production"
+      },
+      "providerProjectId": "prj_UjMrdbyixkdO72EKHHKCB98DaoVv",
+      "repositoryId": "JoeyAJ/nexaeon-web",
+      "providerObservation": {
+        "deploymentId": "dpl_EXZHzoZZ2MquFqU2Kt7WtY7RjmQK",
+        "state": "READY",
+        "sha": "62dd99b5e190163a1e4bc6ad410155336934f935",
+        "branch": "main"
+      },
+      "readOnly": true,
+      "newDeployment": false,
+      "nAPolicyEnabled": false
+    },
+    {
+      "projectId": "WOOSONG_BUDDY",
+      "track": "BASELINE",
+      "policyEnabled": true,
+      "url": "https://woosong-buddy-app.vercel.app/",
+      "target": {
+        "provider": "vercel",
+        "project": "woosong-buddy-app",
+        "environment": "production"
+      },
+      "providerProjectId": "prj_lKT2cNfJ3I2FMTwuvSmahGPUDaHh",
+      "repositoryId": "JoeyAJ/woosongbuddy",
+      "providerObservation": {
+        "deploymentId": "dpl_HSFAD2kUU2Pkt2RD1JgAsCaXBy5r",
+        "state": "READY",
+        "sha": "f9952c5494fc047cb4f7046a93b4098755281a0f",
+        "branch": "main"
+      },
+      "readOnly": true,
+      "newDeployment": false,
+      "nAPolicyEnabled": false
+    },
+    {
+      "projectId": "NAMYOUNG_WEB3D",
+      "track": "BASELINE",
+      "policyEnabled": true,
+      "url": "https://namyoung-web3d.vercel.app/",
+      "target": {
+        "provider": "vercel",
+        "project": "namyoung-web3d",
+        "environment": "production"
+      },
+      "providerProjectId": "prj_ROefEtbCUNNWQRN73ZS8mHcmLW9q",
+      "repositoryId": "JoeyAJ/namyoung-web3d",
+      "providerObservation": {
+        "deploymentId": "dpl_3vLFaVmLioaBurdmQZuSgxrZnVMp",
+        "state": "READY",
+        "sha": "81a8d099d674d6c47dfa399bae6b8f8eaa14801a",
+        "branch": "main"
+      },
+      "readOnly": true,
+      "newDeployment": false,
+      "nAPolicyEnabled": false
+    }
+  ],
+  "sourceBlobs": [
+    {
+      "repositoryId": "JoeyAJ/nexaeon-web",
+      "ref": "main",
+      "path": "README.md",
+      "blob": "1307357a5fb37ef8df5c1fa08503ef4f1022328f"
+    },
+    {
+      "repositoryId": "JoeyAJ/woosongbuddy",
+      "ref": "main",
+      "path": "README.md",
+      "blob": "b87e1e03a206637209b00ef4ee9d81334ecf8776"
+    },
+    {
+      "repositoryId": "JoeyAJ/namyoung-web3d",
+      "ref": "main",
+      "path": "docs/PRODUCTION_REBUILD.md",
+      "blob": "9b3e50170d4baec411fa545b11d15936b0069451"
+    }
+  ],
+  "disabled": [
+    {
+      "projectId": "JOEY_ASSET_SYSTEM",
+      "track": "BASELINE",
+      "reason": "Joey-confirmed legacy-named current application is a ChatGPT Site; canonical production and immutable deployed source/target binding are not established. Namyoung Web3D is a separate repository/app; no inheritance."
+    },
+    {
+      "projectId": "JOEY_ASSET_SYSTEM",
+      "track": "UNIVERSITY_CANDIDATE",
+      "sourceRef": "migration/university-v04-portable",
+      "handoffBlob": "0cf6d82c4cf9e0e5b3415e444847345d912f70af",
+      "historicalDemoUrl": "https://joey-woosong-admissions-demo.vercel.app/",
+      "reason": "Module DEPLOYMENT_HANDOFF records a prior synthetic demo only, not current candidate/provider/output binding or new deployment authority. Portable source explicitly excludes provider publishing. Exact module-only dist/privacy review and authorized demo project/source mapping remain unresolved. No whole-monorepo deploy, main acceptance or real-student data."
+    }
+  ],
+  "constraints": {
+    "metadataOnly": true,
+    "automaticFetch": false,
+    "otherRepositoryWrites": false,
+    "otherDeployments": false,
+    "productionChanges": false,
+    "independentVerification": "PENDING",
+    "joeyAcceptance": "PENDING"
+  }
+}

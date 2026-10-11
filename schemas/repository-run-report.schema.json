@@ -1,242 +1,2113 @@
 {
-  "type": "object",
-  "additionalProperties": false,
-  "required": [
-    "schemaVersion",
-    "projectId",
-    "track",
-    "runId",
-    "predecessorRunId",
-    "taskId",
-    "featureTitle",
-    "agentName",
-    "provider",
-    "model",
-    "repositoryId",
-    "reportRef",
-    "workRef",
-    "baseline",
-    "events"
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "Strict v1/v2 Agent-reported JSON structure and static target/status policy. repository-run-contract.mjs additionally enforces scope equality, lifecycle, timestamps/order, byte limits, source/profile/path binding and semantic evidence relations; schema validation alone is not MC acceptance.",
+  "oneOf": [
+    {
+      "$ref": "#/$defs/v1"
+    },
+    {
+      "$ref": "#/$defs/v2"
+    }
   ],
-  "properties": {
-    "schemaVersion": {
-      "const": "mc.repository-run.v1"
-    },
-    "projectId": {
-      "type": "string",
-      "pattern": "^[_A-Z][_A-Z0-9]{0,79}$"
-    },
-    "track": {
-      "enum": [
-        "BASELINE",
-        "UNIVERSITY_CANDIDATE"
-      ]
-    },
-    "runId": {
-      "type": "string",
-      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,95}$"
-    },
-    "predecessorRunId": {
-      "type": [
-        "string",
-        "null"
-      ],
-      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,95}$"
-    },
-    "taskId": {
-      "type": "string",
-      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,95}$"
-    },
-    "featureTitle": {
-      "type": "string",
-      "minLength": 1,
-      "maxLength": 500
-    },
-    "agentName": {
-      "type": "string",
-      "minLength": 1,
-      "maxLength": 100
-    },
-    "provider": {
-      "type": [
-        "string",
-        "null"
-      ],
-      "maxLength": 100
-    },
-    "model": {
-      "type": [
-        "string",
-        "null"
-      ],
-      "maxLength": 100
-    },
-    "repositoryId": {
-      "type": "string",
-      "pattern": "^[-A-Za-z0-9_.]+/[-A-Za-z0-9_.]+$"
-    },
-    "reportRef": {
-      "const": "mc/progress"
-    },
-    "workRef": {
-      "type": "string",
-      "maxLength": 200
-    },
-    "baseline": {
+  "$defs": {
+    "target": {
       "type": "object",
       "additionalProperties": false,
       "required": [
-        "ref",
-        "commitSha",
-        "handoffPath",
-        "handoffDigest"
+        "provider",
+        "project",
+        "environment"
       ],
       "properties": {
-        "ref": {
-          "type": "string",
-          "maxLength": 200
+        "provider": {
+          "$ref": "#/$defs/text100"
+        },
+        "project": {
+          "$ref": "#/$defs/text100"
+        },
+        "environment": {
+          "$ref": "#/$defs/text100"
+        }
+      }
+    },
+    "notRequired": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "policy",
+        "reason"
+      ],
+      "properties": {
+        "policy": {
+          "$ref": "#/$defs/text100"
+        },
+        "reason": {
+          "$ref": "#/$defs/evidenceText"
+        }
+      }
+    },
+    "deployment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "target",
+        "id",
+        "deployedSha",
+        "url",
+        "observedAt",
+        "evidence",
+        "notRequired"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "NOT_RECORDED",
+            "PENDING",
+            "READY",
+            "FAILED",
+            "NOT_REQUIRED"
+          ]
+        },
+        "target": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/target"
+            }
+          ]
+        },
+        "id": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string",
+              "maxLength": 128,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]*$",
+              "allOf": [
+                {
+                  "$ref": "#/$defs/evidenceText"
+                }
+              ]
+            }
+          ]
+        },
+        "deployedSha": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/sha40"
+            }
+          ]
+        },
+        "url": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 250,
+              "pattern": "[^\\s]",
+              "not": {
+                "pattern": "[\\u0000-\\u001f\\u007f]|[bB][eE][aA][rR][eE][rR]\\s|[gG][hH][pPoOuUsSrR]_|[gG][iI][tT][hH][uU][bB]_[pP][aA][tT]_|\\b(?:[pP][aA][sS][sS][wW][oO][rR][dD]|[sS][eE][cC][rR][eE][tT]|[tT][oO][kK][eE][nN])\\s*[:=]|[pP][rR][iI][vV][aA][tT][eE] [kK][eE][yY]|^[eE][yY][jJ][A-Za-z0-9_-]+\\."
+              }
+            }
+          ]
+        },
+        "observedAt": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/dateTime"
+            }
+          ]
+        },
+        "evidence": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/evidenceText"
+            }
+          ]
+        },
+        "notRequired": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/notRequired"
+            }
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "NOT_RECORDED"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "target": {
+                "type": "null"
+              },
+              "id": {
+                "type": "null"
+              },
+              "deployedSha": {
+                "type": "null"
+              },
+              "url": {
+                "type": "null"
+              },
+              "observedAt": {
+                "type": "null"
+              },
+              "evidence": {
+                "type": "null"
+              },
+              "notRequired": {
+                "type": "null"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "NOT_REQUIRED"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "target": {
+                "type": "null"
+              },
+              "id": {
+                "type": "null"
+              },
+              "deployedSha": {
+                "type": "null"
+              },
+              "url": {
+                "type": "null"
+              },
+              "observedAt": {
+                "type": "null"
+              },
+              "evidence": {
+                "type": "null"
+              },
+              "notRequired": {
+                "$ref": "#/$defs/notRequired"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "PENDING",
+                  "READY",
+                  "FAILED"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "target": {
+                "$ref": "#/$defs/target"
+              },
+              "observedAt": {
+                "$ref": "#/$defs/dateTime"
+              },
+              "evidence": {
+                "$ref": "#/$defs/evidenceText"
+              },
+              "notRequired": {
+                "type": "null"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "READY"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "deployedSha": {
+                "$ref": "#/$defs/sha40"
+              },
+              "url": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "verification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "method",
+        "checkedAt",
+        "deploymentId",
+        "checkedSha",
+        "url",
+        "evidence",
+        "notRequired"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "NOT_RECORDED",
+            "PASS",
+            "FAIL",
+            "BLOCKED",
+            "NOT_REQUIRED"
+          ]
+        },
+        "method": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "enum": [
+                "HTTP_FUNCTIONAL_CHECK",
+                "BROWSER",
+                "OWNER_DEVICE",
+                "SYNTHETIC_FIXTURE"
+              ]
+            }
+          ]
+        },
+        "checkedAt": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/dateTime"
+            }
+          ]
+        },
+        "deploymentId": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 128,
+              "pattern": "[^\\s]",
+              "not": {
+                "pattern": "[\\u0000-\\u001f\\u007f]|[bB][eE][aA][rR][eE][rR]\\s|[gG][hH][pPoOuUsSrR]_|[gG][iI][tT][hH][uU][bB]_[pP][aA][tT]_|\\b(?:[pP][aA][sS][sS][wW][oO][rR][dD]|[sS][eE][cC][rR][eE][tT]|[tT][oO][kK][eE][nN])\\s*[:=]|[pP][rR][iI][vV][aA][tT][eE] [kK][eE][yY]|^[eE][yY][jJ][A-Za-z0-9_-]+\\."
+              }
+            }
+          ]
+        },
+        "checkedSha": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/sha40"
+            }
+          ]
+        },
+        "url": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 250,
+              "pattern": "[^\\s]",
+              "not": {
+                "pattern": "[\\u0000-\\u001f\\u007f]|[bB][eE][aA][rR][eE][rR]\\s|[gG][hH][pPoOuUsSrR]_|[gG][iI][tT][hH][uU][bB]_[pP][aA][tT]_|\\b(?:[pP][aA][sS][sS][wW][oO][rR][dD]|[sS][eE][cC][rR][eE][tT]|[tT][oO][kK][eE][nN])\\s*[:=]|[pP][rR][iI][vV][aA][tT][eE] [kK][eE][yY]|^[eE][yY][jJ][A-Za-z0-9_-]+\\."
+              }
+            }
+          ]
+        },
+        "evidence": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/evidenceText"
+            }
+          ]
+        },
+        "notRequired": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/notRequired"
+            }
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "NOT_RECORDED"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "method": {
+                "type": "null"
+              },
+              "checkedAt": {
+                "type": "null"
+              },
+              "deploymentId": {
+                "type": "null"
+              },
+              "checkedSha": {
+                "type": "null"
+              },
+              "url": {
+                "type": "null"
+              },
+              "evidence": {
+                "type": "null"
+              },
+              "notRequired": {
+                "type": "null"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "NOT_REQUIRED"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "method": {
+                "type": "null"
+              },
+              "checkedAt": {
+                "type": "null"
+              },
+              "deploymentId": {
+                "type": "null"
+              },
+              "checkedSha": {
+                "type": "null"
+              },
+              "url": {
+                "type": "null"
+              },
+              "evidence": {
+                "type": "null"
+              },
+              "notRequired": {
+                "$ref": "#/$defs/notRequired"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "PASS",
+                  "FAIL",
+                  "BLOCKED"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "method": {
+                "enum": [
+                  "HTTP_FUNCTIONAL_CHECK",
+                  "BROWSER",
+                  "OWNER_DEVICE",
+                  "SYNTHETIC_FIXTURE"
+                ]
+              },
+              "checkedAt": {
+                "$ref": "#/$defs/dateTime"
+              },
+              "deploymentId": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128,
+                "pattern": "[^\\s]",
+                "not": {
+                  "pattern": "[\\u0000-\\u001f\\u007f]|[bB][eE][aA][rR][eE][rR]\\s|[gG][hH][pPoOuUsSrR]_|[gG][iI][tT][hH][uU][bB]_[pP][aA][tT]_|\\b(?:[pP][aA][sS][sS][wW][oO][rR][dD]|[sS][eE][cC][rR][eE][tT]|[tT][oO][kK][eE][nN])\\s*[:=]|[pP][rR][iI][vV][aA][tT][eE] [kK][eE][yY]|^[eE][yY][jJ][A-Za-z0-9_-]+\\."
+                }
+              },
+              "url": {
+                "type": "string"
+              },
+              "evidence": {
+                "$ref": "#/$defs/evidenceText"
+              },
+              "notRequired": {
+                "type": "null"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "PASS"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "checkedSha": {
+                "$ref": "#/$defs/sha40"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "BLOCKED"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "checkedSha": {
+                "type": "null"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "handoffEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "path",
+        "commitSha",
+        "checkedAt",
+        "evidence"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "NOT_RECORDED",
+            "CURRENT",
+            "STALE"
+          ]
+        },
+        "path": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/safeRelative"
+            }
+          ]
         },
         "commitSha": {
-          "type": "string",
-          "pattern": "^[a-f0-9]{40}$"
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/sha40"
+            }
+          ]
         },
-        "handoffPath": {
-          "type": "string",
-          "maxLength": 200
+        "checkedAt": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/dateTime"
+            }
+          ]
         },
-        "handoffDigest": {
-          "type": "string",
-          "pattern": "^[a-f0-9]{64}$"
+        "evidence": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/evidenceText"
+            }
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "NOT_RECORDED"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "path": {
+                "type": "null"
+              },
+              "commitSha": {
+                "type": "null"
+              },
+              "checkedAt": {
+                "type": "null"
+              },
+              "evidence": {
+                "type": "null"
+              }
+            }
+          }
         },
-        "contextPaths": {
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "CURRENT",
+                  "STALE"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "path": {
+                "$ref": "#/$defs/safeRelative"
+              },
+              "commitSha": {
+                "$ref": "#/$defs/sha40"
+              },
+              "checkedAt": {
+                "$ref": "#/$defs/dateTime"
+              },
+              "evidence": {
+                "$ref": "#/$defs/evidenceText"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "dataEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "version",
+        "checkedAt",
+        "evidence",
+        "notRequired"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "NOT_RECORDED",
+            "PENDING",
+            "APPLIED",
+            "FAILED",
+            "NOT_REQUIRED"
+          ]
+        },
+        "version": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/evidenceText100"
+            }
+          ]
+        },
+        "checkedAt": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/dateTime"
+            }
+          ]
+        },
+        "evidence": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/evidenceText"
+            }
+          ]
+        },
+        "notRequired": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/notRequired"
+            }
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "NOT_RECORDED"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "version": {
+                "type": "null"
+              },
+              "checkedAt": {
+                "type": "null"
+              },
+              "evidence": {
+                "type": "null"
+              },
+              "notRequired": {
+                "type": "null"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "NOT_REQUIRED"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "version": {
+                "type": "null"
+              },
+              "evidence": {
+                "type": "null"
+              },
+              "checkedAt": {
+                "$ref": "#/$defs/dateTime"
+              },
+              "notRequired": {
+                "$ref": "#/$defs/notRequired"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "PENDING",
+                  "APPLIED",
+                  "FAILED"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "checkedAt": {
+                "$ref": "#/$defs/dateTime"
+              },
+              "evidence": {
+                "$ref": "#/$defs/evidenceText"
+              },
+              "notRequired": {
+                "type": "null"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "APPLIED"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "version": {
+                "$ref": "#/$defs/evidenceText100"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "codeSha",
+        "tests",
+        "nextSteps",
+        "handoff"
+      ],
+      "properties": {
+        "codeSha": {
+          "$ref": "#/$defs/sha40"
+        },
+        "tests": {
           "type": "array",
-          "maxItems": 4,
-          "uniqueItems": true,
+          "minItems": 1,
+          "maxItems": 12,
           "items": {
-            "type": "string",
-            "maxLength": 200,
-            "pattern": "^[A-Za-z0-9_./-]+$"
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "name",
+              "outcome"
+            ],
+            "properties": {
+              "name": {
+                "$ref": "#/$defs/text150"
+              },
+              "outcome": {
+                "enum": [
+                  "PASS",
+                  "FAIL",
+                  "NOT_RUN"
+                ]
+              }
+            }
+          }
+        },
+        "nextSteps": {
+          "$ref": "#/$defs/text1000"
+        },
+        "handoff": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "path",
+            "commitSha"
+          ],
+          "properties": {
+            "path": {
+              "$ref": "#/$defs/safeRelative"
+            },
+            "commitSha": {
+              "$ref": "#/$defs/sha40"
+            }
           }
         }
       }
     },
-    "events": {
-      "type": "array",
-      "minItems": 1,
-      "maxItems": 64,
-      "items": {
-        "type": "object",
-        "additionalProperties": false,
-        "required": [
-          "id",
-          "sequence",
-          "eventAt",
-          "kind",
-          "summary",
-          "result"
-        ],
-        "properties": {
-          "id": {
-            "type": "string",
-            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,95}$"
-          },
-          "sequence": {
-            "type": "integer",
-            "minimum": 1,
-            "maximum": 64
-          },
-          "eventAt": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "kind": {
-            "enum": [
-              "started",
-              "progress",
-              "heartbeat",
-              "blocked",
-              "completed",
-              "failed"
-            ]
-          },
-          "summary": {
-            "type": "string",
-            "minLength": 1,
-            "maxLength": 500
-          },
-          "result": {
-            "type": [
-              "object",
-              "null"
-            ],
-            "additionalProperties": false,
-            "required": [
-              "codeSha",
-              "tests",
-              "nextSteps",
-              "handoff"
-            ],
+    "eventV1": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "sequence",
+        "eventAt",
+        "kind",
+        "summary",
+        "result"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 64
+        },
+        "eventAt": {
+          "$ref": "#/$defs/dateTime"
+        },
+        "kind": {
+          "enum": [
+            "started",
+            "progress",
+            "heartbeat",
+            "blocked",
+            "completed",
+            "failed"
+          ]
+        },
+        "summary": {
+          "$ref": "#/$defs/text500"
+        },
+        "result": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/result"
+            }
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
             "properties": {
-              "codeSha": {
-                "type": "string",
-                "pattern": "^[a-f0-9]{40}$"
-              },
-              "tests": {
-                "type": "array",
-                "minItems": 1,
-                "maxItems": 12,
-                "items": {
-                  "type": "object",
-                  "additionalProperties": false,
-                  "required": [
-                    "name",
-                    "outcome"
-                  ],
-                  "properties": {
-                    "name": {
-                      "type": "string",
-                      "minLength": 1,
-                      "maxLength": 150
-                    },
-                    "outcome": {
-                      "enum": [
-                        "PASS",
-                        "FAIL",
-                        "NOT_RUN"
-                      ]
-                    }
+              "kind": {
+                "const": "completed"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "result": {
+                "$ref": "#/$defs/result"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "result": {
+                "type": "null"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "delivery": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "qualification",
+        "scope",
+        "deployment",
+        "verification",
+        "handoff",
+        "data"
+      ],
+      "properties": {
+        "qualification": {
+          "const": "AGENT_REPORTED"
+        },
+        "scope": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "projectId",
+            "track",
+            "repositoryId",
+            "runId",
+            "taskId",
+            "workRef",
+            "codeSha"
+          ],
+          "properties": {
+            "projectId": {
+              "type": "string",
+              "pattern": "^[_A-Z][_A-Z0-9]{0,79}$"
+            },
+            "track": {
+              "enum": [
+                "BASELINE",
+                "UNIVERSITY_CANDIDATE"
+              ]
+            },
+            "repositoryId": {
+              "type": "string",
+              "pattern": "^[-A-Za-z0-9_.]+/[-A-Za-z0-9_.]+$"
+            },
+            "runId": {
+              "$ref": "#/$defs/identifier"
+            },
+            "taskId": {
+              "$ref": "#/$defs/identifier"
+            },
+            "workRef": {
+              "$ref": "#/$defs/safeRelative"
+            },
+            "codeSha": {
+              "$ref": "#/$defs/sha40"
+            }
+          }
+        },
+        "deployment": {
+          "$ref": "#/$defs/deployment"
+        },
+        "verification": {
+          "$ref": "#/$defs/verification"
+        },
+        "handoff": {
+          "$ref": "#/$defs/handoffEvidence"
+        },
+        "data": {
+          "$ref": "#/$defs/dataEvidence"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "verification": {
+                "properties": {
+                  "status": {
+                    "enum": [
+                      "PASS",
+                      "FAIL",
+                      "BLOCKED"
+                    ]
                   }
                 }
-              },
-              "nextSteps": {
-                "type": "string",
-                "minLength": 1,
-                "maxLength": 1000
-              },
-              "handoff": {
-                "type": "object",
-                "additionalProperties": false,
-                "required": [
-                  "path",
-                  "commitSha"
-                ],
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "deployment": {
                 "properties": {
-                  "path": {
-                    "type": "string",
-                    "maxLength": 200
-                  },
-                  "commitSha": {
-                    "type": "string",
-                    "pattern": "^[a-f0-9]{40}$"
+                  "status": {
+                    "const": "READY"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "verification": {
+                "properties": {
+                  "status": {
+                    "const": "NOT_REQUIRED"
+                  }
+                }
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "deployment": {
+                "properties": {
+                  "status": {
+                    "const": "NOT_REQUIRED"
                   }
                 }
               }
             }
           }
         }
+      ]
+    },
+    "eventV2": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "sequence",
+        "eventAt",
+        "kind",
+        "summary",
+        "result",
+        "delivery"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 64
+        },
+        "eventAt": {
+          "$ref": "#/$defs/dateTime"
+        },
+        "kind": {
+          "enum": [
+            "started",
+            "progress",
+            "heartbeat",
+            "blocked",
+            "completed",
+            "failed"
+          ]
+        },
+        "summary": {
+          "$ref": "#/$defs/text500"
+        },
+        "result": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/result"
+            }
+          ]
+        },
+        "delivery": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/delivery"
+            }
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "completed"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "result": {
+                "$ref": "#/$defs/result"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "result": {
+                "type": "null"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "v1": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaVersion",
+        "projectId",
+        "track",
+        "runId",
+        "predecessorRunId",
+        "taskId",
+        "featureTitle",
+        "agentName",
+        "provider",
+        "model",
+        "repositoryId",
+        "reportRef",
+        "workRef",
+        "baseline",
+        "events"
+      ],
+      "properties": {
+        "schemaVersion": {
+          "const": "mc.repository-run.v1"
+        },
+        "projectId": {
+          "type": "string",
+          "pattern": "^[_A-Z][_A-Z0-9]{0,79}$"
+        },
+        "track": {
+          "enum": [
+            "BASELINE",
+            "UNIVERSITY_CANDIDATE"
+          ]
+        },
+        "runId": {
+          "$ref": "#/$defs/identifier"
+        },
+        "predecessorRunId": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/identifier"
+            }
+          ]
+        },
+        "taskId": {
+          "$ref": "#/$defs/identifier"
+        },
+        "featureTitle": {
+          "$ref": "#/$defs/text500"
+        },
+        "agentName": {
+          "$ref": "#/$defs/text100"
+        },
+        "provider": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/text100"
+            }
+          ]
+        },
+        "model": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/text100"
+            }
+          ]
+        },
+        "repositoryId": {
+          "type": "string",
+          "pattern": "^[-A-Za-z0-9_.]+/[-A-Za-z0-9_.]+$"
+        },
+        "reportRef": {
+          "const": "mc/progress"
+        },
+        "workRef": {
+          "$ref": "#/$defs/safeRelative"
+        },
+        "baseline": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "ref",
+            "commitSha",
+            "handoffPath",
+            "handoffDigest"
+          ],
+          "properties": {
+            "ref": {
+              "$ref": "#/$defs/safeRelative"
+            },
+            "commitSha": {
+              "$ref": "#/$defs/sha40"
+            },
+            "handoffPath": {
+              "$ref": "#/$defs/safeRelative"
+            },
+            "handoffDigest": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            "contextPaths": {
+              "type": "array",
+              "maxItems": 4,
+              "uniqueItems": true,
+              "items": {
+                "$ref": "#/$defs/safeRelative"
+              }
+            }
+          }
+        },
+        "events": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 64,
+          "items": {
+            "$ref": "#/$defs/eventV1"
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "track": {
+                "const": "UNIVERSITY_CANDIDATE"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "projectId": {
+                "const": "JOEY_ASSET_SYSTEM"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "v2": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaVersion",
+        "projectId",
+        "track",
+        "runId",
+        "predecessorRunId",
+        "taskId",
+        "featureTitle",
+        "agentName",
+        "provider",
+        "model",
+        "repositoryId",
+        "reportRef",
+        "workRef",
+        "baseline",
+        "events",
+        "taskKind"
+      ],
+      "properties": {
+        "schemaVersion": {
+          "const": "mc.repository-run.v2"
+        },
+        "projectId": {
+          "type": "string",
+          "pattern": "^[_A-Z][_A-Z0-9]{0,79}$"
+        },
+        "track": {
+          "enum": [
+            "BASELINE",
+            "UNIVERSITY_CANDIDATE"
+          ]
+        },
+        "runId": {
+          "$ref": "#/$defs/identifier"
+        },
+        "predecessorRunId": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/identifier"
+            }
+          ]
+        },
+        "taskId": {
+          "$ref": "#/$defs/identifier"
+        },
+        "featureTitle": {
+          "$ref": "#/$defs/text500"
+        },
+        "agentName": {
+          "$ref": "#/$defs/text100"
+        },
+        "provider": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/text100"
+            }
+          ]
+        },
+        "model": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/text100"
+            }
+          ]
+        },
+        "repositoryId": {
+          "type": "string",
+          "pattern": "^[-A-Za-z0-9_.]+/[-A-Za-z0-9_.]+$"
+        },
+        "reportRef": {
+          "const": "mc/progress"
+        },
+        "workRef": {
+          "$ref": "#/$defs/safeRelative"
+        },
+        "baseline": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "ref",
+            "commitSha",
+            "handoffPath",
+            "handoffDigest"
+          ],
+          "properties": {
+            "ref": {
+              "$ref": "#/$defs/safeRelative"
+            },
+            "commitSha": {
+              "$ref": "#/$defs/sha40"
+            },
+            "handoffPath": {
+              "$ref": "#/$defs/safeRelative"
+            },
+            "handoffDigest": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            "contextPaths": {
+              "type": "array",
+              "maxItems": 4,
+              "uniqueItems": true,
+              "items": {
+                "$ref": "#/$defs/safeRelative"
+              }
+            }
+          }
+        },
+        "events": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 64,
+          "items": {
+            "$ref": "#/$defs/eventV2"
+          }
+        },
+        "taskKind": {
+          "enum": [
+            "FEATURE",
+            "BUGFIX",
+            "DOCUMENTATION",
+            "DELIVERY_FOLLOWUP"
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "track": {
+                "const": "UNIVERSITY_CANDIDATE"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "projectId": {
+                "const": "JOEY_ASSET_SYSTEM"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "projectId": {
+                "const": "MISSION_CONTROL"
+              },
+              "track": {
+                "const": "BASELINE"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "events": {
+                "items": {
+                  "properties": {
+                    "delivery": {
+                      "properties": {
+                        "deployment": {
+                          "properties": {
+                            "target": {
+                              "anyOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "type": "object",
+                                  "additionalProperties": false,
+                                  "required": [
+                                    "provider",
+                                    "project",
+                                    "environment"
+                                  ],
+                                  "properties": {
+                                    "provider": {
+                                      "const": "vercel"
+                                    },
+                                    "project": {
+                                      "const": "joey-mission-control"
+                                    },
+                                    "environment": {
+                                      "const": "preview"
+                                    }
+                                  }
+                                }
+                              ]
+                            },
+                            "url": {
+                              "anyOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "const": "https://joey-mission-control-git-codex-mc-comma-fceec2-joeyajs-projects.vercel.app/"
+                                }
+                              ]
+                            }
+                          }
+                        },
+                        "verification": {
+                          "properties": {
+                            "url": {
+                              "anyOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "const": "https://joey-mission-control-git-codex-mc-comma-fceec2-joeyajs-projects.vercel.app/"
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "projectId": {
+                "const": "NEXAEON"
+              },
+              "track": {
+                "const": "BASELINE"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "events": {
+                "items": {
+                  "properties": {
+                    "delivery": {
+                      "properties": {
+                        "deployment": {
+                          "properties": {
+                            "target": {
+                              "anyOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "type": "object",
+                                  "additionalProperties": false,
+                                  "required": [
+                                    "provider",
+                                    "project",
+                                    "environment"
+                                  ],
+                                  "properties": {
+                                    "provider": {
+                                      "const": "vercel"
+                                    },
+                                    "project": {
+                                      "const": "nexaeon-web"
+                                    },
+                                    "environment": {
+                                      "const": "production"
+                                    }
+                                  }
+                                }
+                              ]
+                            },
+                            "url": {
+                              "anyOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "const": "https://nexaeon-web.vercel.app/"
+                                }
+                              ]
+                            }
+                          }
+                        },
+                        "verification": {
+                          "properties": {
+                            "url": {
+                              "anyOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "const": "https://nexaeon-web.vercel.app/"
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "projectId": {
+                "const": "WOOSONG_BUDDY"
+              },
+              "track": {
+                "const": "BASELINE"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "events": {
+                "items": {
+                  "properties": {
+                    "delivery": {
+                      "properties": {
+                        "deployment": {
+                          "properties": {
+                            "target": {
+                              "anyOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "type": "object",
+                                  "additionalProperties": false,
+                                  "required": [
+                                    "provider",
+                                    "project",
+                                    "environment"
+                                  ],
+                                  "properties": {
+                                    "provider": {
+                                      "const": "vercel"
+                                    },
+                                    "project": {
+                                      "const": "woosong-buddy-app"
+                                    },
+                                    "environment": {
+                                      "const": "production"
+                                    }
+                                  }
+                                }
+                              ]
+                            },
+                            "url": {
+                              "anyOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "const": "https://woosong-buddy-app.vercel.app/"
+                                }
+                              ]
+                            }
+                          }
+                        },
+                        "verification": {
+                          "properties": {
+                            "url": {
+                              "anyOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "const": "https://woosong-buddy-app.vercel.app/"
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "projectId": {
+                "const": "NAMYOUNG_WEB3D"
+              },
+              "track": {
+                "const": "BASELINE"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "events": {
+                "items": {
+                  "properties": {
+                    "delivery": {
+                      "properties": {
+                        "deployment": {
+                          "properties": {
+                            "target": {
+                              "anyOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "type": "object",
+                                  "additionalProperties": false,
+                                  "required": [
+                                    "provider",
+                                    "project",
+                                    "environment"
+                                  ],
+                                  "properties": {
+                                    "provider": {
+                                      "const": "vercel"
+                                    },
+                                    "project": {
+                                      "const": "namyoung-web3d"
+                                    },
+                                    "environment": {
+                                      "const": "production"
+                                    }
+                                  }
+                                }
+                              ]
+                            },
+                            "url": {
+                              "anyOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "const": "https://namyoung-web3d.vercel.app/"
+                                }
+                              ]
+                            }
+                          }
+                        },
+                        "verification": {
+                          "properties": {
+                            "url": {
+                              "anyOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "const": "https://namyoung-web3d.vercel.app/"
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "projectId": {
+                "enum": [
+                  "MISSION_CONTROL",
+                  "NEXAEON",
+                  "WOOSONG_BUDDY",
+                  "NAMYOUNG_WEB3D"
+                ]
+              },
+              "track": {
+                "const": "BASELINE"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "events": {
+                "items": {
+                  "properties": {
+                    "delivery": {
+                      "properties": {
+                        "deployment": {
+                          "properties": {
+                            "target": {
+                              "type": "null"
+                            },
+                            "url": {
+                              "type": "null"
+                            }
+                          }
+                        },
+                        "verification": {
+                          "properties": {
+                            "url": {
+                              "type": "null"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "projectId": {
+                "const": "MISSION_CONTROL"
+              },
+              "track": {
+                "const": "BASELINE"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "events": {
+                "items": {
+                  "properties": {
+                    "delivery": {
+                      "properties": {
+                        "data": {
+                          "properties": {
+                            "notRequired": {
+                              "anyOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "properties": {
+                                    "policy": {
+                                      "const": "MC_NO_DATA_CHANGE"
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "events": {
+                "items": {
+                  "properties": {
+                    "delivery": {
+                      "properties": {
+                        "data": {
+                          "properties": {
+                            "notRequired": {
+                              "type": "null"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "projectId": {
+                "const": "MISSION_CONTROL"
+              },
+              "track": {
+                "const": "BASELINE"
+              },
+              "taskKind": {
+                "const": "DOCUMENTATION"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "events": {
+                "items": {
+                  "properties": {
+                    "delivery": {
+                      "properties": {
+                        "deployment": {
+                          "properties": {
+                            "notRequired": {
+                              "anyOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "properties": {
+                                    "policy": {
+                                      "const": "MC_DOCUMENTATION_ONLY"
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        },
+                        "verification": {
+                          "properties": {
+                            "notRequired": {
+                              "anyOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "properties": {
+                                    "policy": {
+                                      "const": "MC_DOCUMENTATION_ONLY"
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "events": {
+                "items": {
+                  "properties": {
+                    "delivery": {
+                      "properties": {
+                        "deployment": {
+                          "properties": {
+                            "notRequired": {
+                              "type": "null"
+                            }
+                          }
+                        },
+                        "verification": {
+                          "properties": {
+                            "notRequired": {
+                              "type": "null"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "sha40": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{40}$"
+    },
+    "dateTime": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "identifier": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,95}$",
+      "not": {
+        "pattern": "[\\u0000-\\u001f\\u007f]|[bB][eE][aA][rR][eE][rR]\\s|[gG][hH][pPoOuUsSrR]_|[gG][iI][tT][hH][uU][bB]_[pP][aA][tT]_|\\b(?:[pP][aA][sS][sS][wW][oO][rR][dD]|[sS][eE][cC][rR][eE][tT]|[tT][oO][kK][eE][nN])\\s*[:=]|[pP][rR][iI][vV][aA][tT][eE] [kK][eE][yY]|^[eE][yY][jJ][A-Za-z0-9_-]+\\."
+      }
+    },
+    "safeRelative": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200,
+      "pattern": "^[A-Za-z0-9_./-]+$",
+      "not": {
+        "pattern": "[\\u0000-\\u001f\\u007f]|[bB][eE][aA][rR][eE][rR]\\s|[gG][hH][pPoOuUsSrR]_|[gG][iI][tT][hH][uU][bB]_[pP][aA][tT]_|\\b(?:[pP][aA][sS][sS][wW][oO][rR][dD]|[sS][eE][cC][rR][eE][tT]|[tT][oO][kK][eE][nN])\\s*[:=]|[pP][rR][iI][vV][aA][tT][eE] [kK][eE][yY]|^[eE][yY][jJ][A-Za-z0-9_-]+\\."
+      },
+      "allOf": [
+        {
+          "not": {
+            "pattern": "^/|\\.\\."
+          }
+        }
+      ]
+    },
+    "evidenceText": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 500,
+      "pattern": "[^\\s]",
+      "not": {
+        "pattern": "[\\u0000-\\u001f\\u007f]|[bB][eE][aA][rR][eE][rR]\\s|[gG][hH][pPoOuUsSrR]_|[gG][iI][tT][hH][uU][bB]_[pP][aA][tT]_|\\b(?:[pP][aA][sS][sS][wW][oO][rR][dD]|[sS][eE][cC][rR][eE][tT]|[tT][oO][kK][eE][nN])\\s*[:=]|[pP][rR][iI][vV][aA][tT][eE] [kK][eE][yY]|^[eE][yY][jJ][A-Za-z0-9_-]+\\."
+      },
+      "allOf": [
+        {
+          "not": {
+            "pattern": "[mM][cC]_[vV][eE][rR][iI][fF][iI][eE][dD]|[iI][nN][dD][eE][pP][eE][nN][dD][eE][nN][tT][lL][yY]_[vV][eE][rR][iI][fF][iI][eE][dD]|[hH][tT][tT][pP][sS]?://[^\\s/]*@"
+          }
+        }
+      ]
+    },
+    "evidenceText100": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 100,
+      "pattern": "[^\\s]",
+      "not": {
+        "pattern": "[\\u0000-\\u001f\\u007f]|[bB][eE][aA][rR][eE][rR]\\s|[gG][hH][pPoOuUsSrR]_|[gG][iI][tT][hH][uU][bB]_[pP][aA][tT]_|\\b(?:[pP][aA][sS][sS][wW][oO][rR][dD]|[sS][eE][cC][rR][eE][tT]|[tT][oO][kK][eE][nN])\\s*[:=]|[pP][rR][iI][vV][aA][tT][eE] [kK][eE][yY]|^[eE][yY][jJ][A-Za-z0-9_-]+\\."
+      },
+      "allOf": [
+        {
+          "not": {
+            "pattern": "[mM][cC]_[vV][eE][rR][iI][fF][iI][eE][dD]|[iI][nN][dD][eE][pP][eE][nN][dD][eE][nN][tT][lL][yY]_[vV][eE][rR][iI][fF][iI][eE][dD]|[hH][tT][tT][pP][sS]?://[^\\s/]*@"
+          }
+        }
+      ]
+    },
+    "text100": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 100,
+      "pattern": "[^\\s]",
+      "not": {
+        "pattern": "[\\u0000-\\u001f\\u007f]|[bB][eE][aA][rR][eE][rR]\\s|[gG][hH][pPoOuUsSrR]_|[gG][iI][tT][hH][uU][bB]_[pP][aA][tT]_|\\b(?:[pP][aA][sS][sS][wW][oO][rR][dD]|[sS][eE][cC][rR][eE][tT]|[tT][oO][kK][eE][nN])\\s*[:=]|[pP][rR][iI][vV][aA][tT][eE] [kK][eE][yY]|^[eE][yY][jJ][A-Za-z0-9_-]+\\."
+      }
+    },
+    "text150": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 150,
+      "pattern": "[^\\s]",
+      "not": {
+        "pattern": "[\\u0000-\\u001f\\u007f]|[bB][eE][aA][rR][eE][rR]\\s|[gG][hH][pPoOuUsSrR]_|[gG][iI][tT][hH][uU][bB]_[pP][aA][tT]_|\\b(?:[pP][aA][sS][sS][wW][oO][rR][dD]|[sS][eE][cC][rR][eE][tT]|[tT][oO][kK][eE][nN])\\s*[:=]|[pP][rR][iI][vV][aA][tT][eE] [kK][eE][yY]|^[eE][yY][jJ][A-Za-z0-9_-]+\\."
+      }
+    },
+    "text200": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200,
+      "pattern": "[^\\s]",
+      "not": {
+        "pattern": "[\\u0000-\\u001f\\u007f]|[bB][eE][aA][rR][eE][rR]\\s|[gG][hH][pPoOuUsSrR]_|[gG][iI][tT][hH][uU][bB]_[pP][aA][tT]_|\\b(?:[pP][aA][sS][sS][wW][oO][rR][dD]|[sS][eE][cC][rR][eE][tT]|[tT][oO][kK][eE][nN])\\s*[:=]|[pP][rR][iI][vV][aA][tT][eE] [kK][eE][yY]|^[eE][yY][jJ][A-Za-z0-9_-]+\\."
+      }
+    },
+    "text500": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 500,
+      "pattern": "[^\\s]",
+      "not": {
+        "pattern": "[\\u0000-\\u001f\\u007f]|[bB][eE][aA][rR][eE][rR]\\s|[gG][hH][pPoOuUsSrR]_|[gG][iI][tT][hH][uU][bB]_[pP][aA][tT]_|\\b(?:[pP][aA][sS][sS][wW][oO][rR][dD]|[sS][eE][cC][rR][eE][tT]|[tT][oO][kK][eE][nN])\\s*[:=]|[pP][rR][iI][vV][aA][tT][eE] [kK][eE][yY]|^[eE][yY][jJ][A-Za-z0-9_-]+\\."
+      }
+    },
+    "text1000": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1000,
+      "pattern": "[^\\s]",
+      "not": {
+        "pattern": "[\\u0000-\\u001f\\u007f]|[bB][eE][aA][rR][eE][rR]\\s|[gG][hH][pPoOuUsSrR]_|[gG][iI][tT][hH][uU][bB]_[pP][aA][tT]_|\\b(?:[pP][aA][sS][sS][wW][oO][rR][dD]|[sS][eE][cC][rR][eE][tT]|[tT][oO][kK][eE][nN])\\s*[:=]|[pP][rR][iI][vV][aA][tT][eE] [kK][eE][yY]|^[eE][yY][jJ][A-Za-z0-9_-]+\\."
       }
     }
-  },
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "description": "Private self-reported Agent run metadata. Semantic transitions, timestamps, byte limits and canonical scope are additionally checked by repository-run-contract.mjs."
+  }
 }
