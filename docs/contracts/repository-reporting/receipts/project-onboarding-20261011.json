@@ -1,0 +1,126 @@
+{
+  "qualification": "AGENT_REPORTED_WITH_EXACT_GIT_BLOB_AND_CONNECTED_PROVIDER_METADATA_READBACK",
+  "task": "mc-project-onboarding-20261011",
+  "runId": "codex-mc-project-onboarding-20261011",
+  "originalBaseline": "09d39f23a0fcf528aabd6e7d1f4f7623fdba481c",
+  "recovery": {
+    "authorizedAt": "2026-10-11T06:08:50Z",
+    "restoredCheckout": "32b77ee",
+    "unpublishedPriorCommit": "52dfceb2edfedd8a9726c69b5b98cd2a494b6ad0",
+    "priorTree": "d051ff52e77ee6378ba59e2bd6185d42324c5ae0",
+    "priorCodeRecovered": false,
+    "remoteBaselineVerified": "09d39f23a0fcf528aabd6e7d1f4f7623fdba481c",
+    "soleWriter": true,
+    "newCredentialCreated": false
+  },
+  "testedRuntime": "ff27b7b4182eb4090332a3c43f89184ad55a8d33",
+  "sourceConsolidation": "cf1ee7061efa8291632e79d4151b0bda5c517ec4",
+  "exactConsolidationTree": "55dd14c87b8b3a4e602ce05bca0a023e35221233",
+  "runtimeDiffFromTested": "EMPTY",
+  "supportDeployment": {
+    "id": "dpl_9D4nkmsv91vU6rPZRDwUkNgovdML",
+    "state": "READY",
+    "sha": "ff27b7b4182eb4090332a3c43f89184ad55a8d33",
+    "observedAt": "2026-10-11T06:30:24.871Z",
+    "fixedAliasMatched": true,
+    "scope": "DATED_PROVIDER_METADATA_NOT_SERVED_BYTES"
+  },
+  "consolidationDeployment": {
+    "id": "dpl_3QXKwmqmDRw6jidj7jdVCc7sB196",
+    "state": "READY",
+    "sha": "cf1ee7061efa8291632e79d4151b0bda5c517ec4",
+    "observedAt": "2026-10-11T06:31:37.636Z",
+    "fixedAliasMatched": true,
+    "scope": "DATED_PROVIDER_METADATA_NOT_SERVED_BYTES"
+  },
+  "progress": {
+    "status": "PUBLISHED",
+    "runId": "codex-mc-project-onboarding-20261011",
+    "path": ".mission-control/runs/codex-mc-project-onboarding-20261011.json",
+    "reportCommitSha": "b21c5b532ec0364564073c75ac1951dec9cdbfc0",
+    "fileSha": "2736fd9649e48893e93faa9c402d1736a0334681",
+    "sequence": 3,
+    "eventId": "recovery-checkpoint-3",
+    "scopeQualification": "PINNED_REPOSITORY_PROFILE_NOT_SERVER_ACCEPTANCE"
+  },
+  "terminal": {
+    "status": "PUBLISHED",
+    "runId": "codex-mc-project-onboarding-20261011",
+    "path": ".mission-control/runs/codex-mc-project-onboarding-20261011.json",
+    "reportCommitSha": "1c00a29f778d5f57010000d768e15ca4e552d093",
+    "fileSha": "6f54589ff4aaeb8de5b226a26c1b61ec9dab4a2d",
+    "sequence": 4,
+    "eventId": "recovered-onboarding-completion-4",
+    "scopeQualification": "PINNED_REPOSITORY_PROFILE_NOT_SERVER_ACCEPTANCE",
+    "bytes": 7219,
+    "sha256": "747fe1e4b03c3936cd81992e2e3386cd10004cfccb14d4ddf988951b37a595c6"
+  },
+  "readback": {
+    "exactGitBlob": true,
+    "strictCodeSchema": true,
+    "pinnedOriginalSourceProfile": true,
+    "externalDraft202012WithFormatCheck": true,
+    "originalHeaderAndFirstTwoEventsUnchanged": true,
+    "delivery": "REPORTED_INCOMPLETE",
+    "independentVerification": "PENDING",
+    "joeyAcceptance": "PENDING",
+    "scope": "PRIVATE_GIT_REPORT_ONLY_NOT_SERVED_OWNER_ACCEPTANCE"
+  },
+  "checks": {
+    "portable": 784,
+    "focused": 18,
+    "currentSourceHandoff": 30,
+    "onboardingWidths": [
+      375,
+      390,
+      430,
+      1440
+    ],
+    "onboardingCases": 4,
+    "originalTakeoverCases": 4,
+    "trueContinueCases": 12,
+    "sharedBriefCases": 6,
+    "build": "PASS",
+    "validate": "PASS",
+    "staticCheck": "PASS",
+    "externalBrowserCalls": 0,
+    "browserWrites": 0,
+    "forbiddenAttempts": 0
+  },
+  "servedVerification": {
+    "status": "BLOCKED",
+    "method": "HTTP_FUNCTIONAL_CHECK",
+    "checkedAt": "2026-10-11T06:32:00Z",
+    "deploymentId": "dpl_3QXKwmqmDRw6jidj7jdVCc7sB196",
+    "checkedSha": null,
+    "url": "https://joey-mission-control-git-codex-mc-comma-fceec2-joeyajs-projects.vercel.app/",
+    "evidence": "Ordinary HTTPS GET failed curl56 CONNECT403 HTTP000 before app. No bypass or served Owner acceptance.",
+    "notRequired": null
+  },
+  "cloudDraftPersistence": {
+    "status": "NOT_CONNECTED",
+    "proposal": "docs/contracts/sql/private-project-drafts.pending.sql",
+    "target": "scmvedfqwlhkyvljymjj",
+    "activation": "NOT_APPLIED_PENDING_PARENT_APPROVAL",
+    "dataChange": false
+  },
+  "newSourceReportRegistration": "PENDING_EXACT_NAMED_SCOPE",
+  "newRepositoryProvisioned": false,
+  "endToEndOnboarding": "INCOMPLETE",
+  "production": {
+    "id": "dpl_5GgJ8LhD4Ec73RGz9CEFe1ppZQnh",
+    "state": "READY",
+    "sha": "8b4945b16a0b23f2e72033aa976fa34f94eabec0",
+    "observedAt": "2026-10-11T06:31:21.920Z"
+  },
+  "scopeBoundaries": {
+    "existingFiveScopeOwnerQA": "PRESERVED",
+    "university": "CANDIDATE_JOEY_ACCEPTANCE_PENDING",
+    "unsignedIdentityTimestamps": "UNKNOWN",
+    "nexCI": "UNREPAIRED",
+    "awsPilot": "NOT_STARTED",
+    "dispatchOrModelSelector": "NOT_ADDED",
+    "deniedOperationalArtifacts": "NOT_RECREATED"
+  },
+  "finalReceiptOnlyIdentity": "CHECKED_SEPARATELY_AFTER_PUSH"
+}
