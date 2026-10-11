@@ -136,5 +136,18 @@
     "wholeRepoDeploymentAuthorized": false,
     "mcDeploymentPerformed": false,
     "nAPolicyEnabled": false
+  },
+  "parentRelayedCandidatePublication": {
+    "qualification": "PARENT_RELAY_AGENT_REPORTED_NOT_MC_VERIFIED",
+    "reportedRelease": "0.5-admissions-candidate",
+    "sourceSha": "d7338420868694ed9bcc36afed90757e660ec182",
+    "handoffSha": "a5ca4853925c3d55ea0f888364d843e262be6fe7",
+    "deploymentId": "dpl_6tiMfCGpmJ37MeFYmNLtHQF2Ermo",
+    "reportedState": "READY",
+    "reportCommitSha": "2ef658bedd6f8c04e37075fbec595b17c742799c",
+    "providerGitBinding": "NOT_ASSUMED",
+    "independentVerification": "PENDING",
+    "joeyAcceptance": "PENDING",
+    "cloudDirectServedCheck": "BLOCKED_NOT_PASS"
   }
 }
