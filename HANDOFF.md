@@ -1,9 +1,9 @@
 # Mission Control — strict v1/v2 schema and scoped target metadata
 
 Project: MISSION_CONTROL
-Timestamp: 2026-10-11T00:30:48.492039Z
+Timestamp: 2026-10-11T00:35:37.024196Z
 Task: Strict standalone schema parity, fixed target inventory and model-neutral continuation
-Status: LOCAL_VERIFIED_PENDING_PUBLICATION
+Status: LOCAL_VERIFIED_CLOUD_EVENTS_NOT_ENABLED
 Last Developer: Codex
 Executed by: Codex
 Actual Model: UNKNOWN
@@ -21,17 +21,17 @@ Model-neutral takeover now gives the actual v2 event envelope/helper commands an
 
 745 portable tests PASS with build/validate/check and zero forbidden attempts. New target desktop/mobile × three-language QA: 18 PASS, zero external calls/writes; inspected synthetic mobile/desktop screenshots. Final contract/helper/source-schema/takeover checks: 26 PASS, plus final standalone schema 3 PASS after tightening deployment-ID text. Original MC delivery 6 PASS and four-source fresh Continue 12 PASS, with zero external calls/writes. Final current source/schema/handoff checks 41 PASS. Verification and private synthetic evidence: docs/MC_SCHEMA_TARGET_POLICY_VERIFICATION_20261011.md / docs/qa/mc-schema-targets-20261011.
 
-Actual new v2 BUGFIX run codex-mc-schema-targets-20261011, predecessor codex-mc-delivery-followup-20261011, retains registration baseline e535e33b. Started sequence 1 commit 9e220498f83b7e8cb3104ae0577998d2bcb09e40 / blob 9816d146679894f55190eabe82b2c617206bc47b; meaningful parity/inventory progress sequence 2 commit 3c59d49c45d4b6708baad65c38bf957b1ef24833 / blob 4f7d426843aad5b583c75b3e4064c7377c557b39. Reporting is AGENT_REPORTED; final tested publication, bounded URL check and terminal receipt follow. Prior terminal development/followup receipts remain in docs/MC_DELIVERY_EVIDENCE_RECEIPT_20261010.md; neither old run is appended or converted.
+Actual new v2 BUGFIX run codex-mc-schema-targets-20261011, predecessor codex-mc-delivery-followup-20261011, retains registration baseline e535e33b. Started sequence 1 commit 9e220498f83b7e8cb3104ae0577998d2bcb09e40 / blob 9816d146679894f55190eabe82b2c617206bc47b; meaningful parity/inventory progress sequence 2 commit 3c59d49c45d4b6708baad65c38bf957b1ef24833 / blob 4f7d426843aad5b583c75b3e4064c7377c557b39. Reporting is AGENT_REPORTED; terminal receipt follows current handoff consolidation. Prior terminal development/followup receipts remain in docs/MC_DELIVERY_EVIDENCE_RECEIPT_20261010.md; neither old run is appended or converted.
 
 ## Delivery and data qualification
 
-Tested reader/helper support ec4d82c80b61e2d3a21d110eb21e4bad8ea746ef is exact remote and published. Vercel dpl_CySQnbFJSAXxT5DP3WWujhHVnR7K READY; independent fixed-alias lookup matches full SHA at 2026-10-11 00:02:43 UTC. Production remains dpl_5GgJ8LhD4Ec73RGz9CEFe1ppZQnh / 8b4945b16a0b23f2e72033aa976fa34f94eabec0. Actual GET of permitted fixed URL at that time failed curl exit 56 / CONNECT tunnel 403 / HTTP 000 before app. No bypass; functional result BLOCKED, checked served SHA absent. Live v2 may now be emitted; it cannot claim full delivery. Dated alias observations remain historical after movement. No served/device/Joey acceptance is claimed.
+Tested support dbfc1df7688fa0c4260fe1f5bbe286200cd47795 is exact remote and published. Vercel dpl_CoqsUgyqmuPf37guyrGFZnu3ZQS7 READY; independent fixed-alias lookup matches ID/full SHA at 2026-10-11 00:33:58 UTC. Production remains dpl_5GgJ8LhD4Ec73RGz9CEFe1ppZQnh / 8b4945b16a0b23f2e72033aa976fa34f94eabec0. Actual permitted root GET at 00:33:58.852684Z failed curl exit56 / CONNECT tunnel403 / HTTP000 before app. No bypass; functional BLOCKED, checkedSha=null. No served/device/Joey acceptance is claimed. Dated alias observations remain historical after movement. Receipt: docs/MC_SCHEMA_TARGET_POLICY_RECEIPT_20261011.md.
 
-Data: report metadata now supports v2; v1 and private endpoint envelope/allowlist remain unchanged. No SQL, database schema/data migration or credentials/permissions change. Fine-grained telemetry/external Agent collector and independently trusted delivery ingestion remain inactive; those exact access changes need explicit approval. No Production, other repo/report, AWS, model selector or dispatch change.
+Data: standalone strict v1/v2 contract and fixed public metadata only, no SQL/database schema/data migration or credentials/permissions change. Existing report lifecycle/source/private endpoint/CAS/history bounds remain. Fine-grained file/tool/cloud event adapter and trusted delivery ingestion are inactive; LOCAL_VERIFIED_CLOUD_EVENTS_NOT_ENABLED qualifies that absence, not deployment failure or parent review. No Production/other repo/report/AWS/model selector/dispatch action.
 
 ## Next Action
 
-Finish original MC delivery/four-source regressions, publish this tested MC support to the existing fixed Preview, independently query exact remote SHA/deployment READY/fixed alias, attempt only the permitted root GET and record actual blocked result with checkedSha=null if CONNECT403 recurs. Consolidate current handoff/receipt and complete this new immutable run with code/test/deployment/check/handoff/data evidence; full delivery and independent/Joey acceptance stay pending while functional verification is blocked. A later authorized followup requires a new same-scope predecessor run and fresh exact evidence. Never ask Joey to perform installation/terminal cleanup here.
+Tests, support publication and actual root GET attempt are complete. Current handoff/data consolidation is recorded; complete this new run with tested code/deployment, actual BLOCKED check, this current handoff and explicit MC no-DB-change reason, then retain its terminal bytes. Independent/Joey acceptance and full delivery remain pending while served verification is blocked. Any later authorized followup needs a new same-project/track/repository predecessor run and fresh exact deployment/URL/handoff/data evidence. Normal Owner/device/clipboard verification and the actual file/activity source gates remain next; no bypass or installation/terminal cleanup request to Joey. University target/output/current-source consolidation and Nex failing CI remain separate authorized-project work. Final docs publication advances the alias; dated blocked GET does not verify later served content.
 
 ## Historical checkpoints
 
