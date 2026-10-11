@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "mc.repository-run.v2",
+  "taskKind": "FEATURE",
+  "projectId": "MISSION_CONTROL",
+  "track": "BASELINE",
+  "runId": "codex-mc-existing-project-task-20261011",
+  "predecessorRunId": "codex-mc-project-draft-postgres-20261011",
+  "taskId": "mc-existing-project-task-20261011",
+  "featureTitle": "Existing-project natural-language task and fresh source-bound external Agent handoff",
+  "agentName": "Codex",
+  "provider": null,
+  "model": null,
+  "repositoryId": "JoeyAJ/joey-mission-control",
+  "reportRef": "mc/progress",
+  "workRef": "codex/mc-command-center-checkpoint-20261006",
+  "baseline": {
+    "ref": "codex/mc-command-center-checkpoint-20261006",
+    "commitSha": "95e60d8dd1a4081c6ed20d138cb128e8b85a24a5",
+    "handoffPath": "HANDOFF.md",
+    "handoffDigest": "908727f4ee1fdc5de103655620166a478ad5ed6191564c8e37a6559053b9cbe8",
+    "contextPaths": [
+      "README.md",
+      "docs/PRODUCT_CHARTER.md",
+      "docs/MC_PHASE_PLAN.md",
+      "docs/STAGE_HANDOFF_TEMPLATE.md"
+    ]
+  },
+  "events": [
+    {
+      "id": "existing-task-start-1",
+      "sequence": 1,
+      "eventAt": "2026-10-11T07:38:51.687Z",
+      "kind": "started",
+      "summary": "Start authorized existing-project task form and source-bound external Agent handoff from95e60d8. Existing approved cloud task reader is historical MC-only/read-only; project drafts cannot store tasks. Build independent bounded task contract and session fallback; new live task SQL/ACL remains OFF pending exact approval. No dispatch/Agent access/merge/AWS/Production change.",
+      "result": null,
+      "delivery": null
+    }
+  ]
+}
