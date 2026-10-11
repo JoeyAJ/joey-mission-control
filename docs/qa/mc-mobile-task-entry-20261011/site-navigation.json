@@ -1,0 +1,188 @@
+{
+  "pass": true,
+  "cases": [
+    {
+      "width": 1440,
+      "locale": "zh-TW",
+      "pass": true,
+      "scopes": 6,
+      "beforeCaptureOnly": false,
+      "mobileReachable": true,
+      "newTabIsolated": true,
+      "projectListAndBack": true,
+      "unverifiedUnavailable": true
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "pass": true,
+      "scopes": 6,
+      "beforeCaptureOnly": false,
+      "mobileReachable": true,
+      "newTabIsolated": true,
+      "projectListAndBack": true,
+      "unverifiedUnavailable": true
+    },
+    {
+      "width": 1440,
+      "locale": "ko",
+      "pass": true,
+      "scopes": 6,
+      "beforeCaptureOnly": false,
+      "mobileReachable": true,
+      "newTabIsolated": true,
+      "projectListAndBack": true,
+      "unverifiedUnavailable": true
+    },
+    {
+      "width": 390,
+      "locale": "zh-TW",
+      "pass": true,
+      "scopes": 6,
+      "beforeCaptureOnly": false,
+      "mobileReachable": true,
+      "newTabIsolated": true,
+      "projectListAndBack": true,
+      "unverifiedUnavailable": true
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "pass": true,
+      "scopes": 6,
+      "beforeCaptureOnly": false,
+      "mobileReachable": true,
+      "newTabIsolated": true,
+      "projectListAndBack": true,
+      "unverifiedUnavailable": true
+    },
+    {
+      "width": 390,
+      "locale": "ko",
+      "pass": true,
+      "scopes": 6,
+      "beforeCaptureOnly": false,
+      "mobileReachable": true,
+      "newTabIsolated": true,
+      "projectListAndBack": true,
+      "unverifiedUnavailable": true
+    },
+    {
+      "width": 320,
+      "locale": "zh-TW",
+      "pass": true,
+      "scopes": 6,
+      "beforeCaptureOnly": false,
+      "mobileReachable": true,
+      "newTabIsolated": true,
+      "projectListAndBack": true,
+      "unverifiedUnavailable": true
+    },
+    {
+      "width": 320,
+      "locale": "en",
+      "pass": true,
+      "scopes": 6,
+      "beforeCaptureOnly": false,
+      "mobileReachable": true,
+      "newTabIsolated": true,
+      "projectListAndBack": true,
+      "unverifiedUnavailable": true
+    },
+    {
+      "width": 320,
+      "locale": "ko",
+      "pass": true,
+      "scopes": 6,
+      "beforeCaptureOnly": false,
+      "mobileReachable": true,
+      "newTabIsolated": true,
+      "projectListAndBack": true,
+      "unverifiedUnavailable": true
+    }
+  ],
+  "scopes": [
+    [
+      "NEXAEON",
+      "BASELINE",
+      "https://nexaeon-web.vercel.app/"
+    ],
+    [
+      "WOOSONG_BUDDY",
+      "BASELINE",
+      "https://woosong-buddy-app.vercel.app/"
+    ],
+    [
+      "NAMYOUNG_WEB3D",
+      "BASELINE",
+      "https://namyoung-web3d.vercel.app/"
+    ],
+    [
+      "JOEY_ASSET_SYSTEM",
+      "BASELINE",
+      "https://namyoung-asset-lab.joeyaj.chatgpt.site/"
+    ],
+    [
+      "JOEY_ASSET_SYSTEM",
+      "UNIVERSITY_CANDIDATE",
+      "https://joey-woosong-admissions-demo.vercel.app/"
+    ],
+    [
+      "MISSION_CONTROL",
+      "BASELINE",
+      null
+    ]
+  ],
+  "navigationIntents": [
+    "https://nexaeon-web.vercel.app/",
+    "https://woosong-buddy-app.vercel.app/",
+    "https://namyoung-web3d.vercel.app/",
+    "https://namyoung-asset-lab.joeyaj.chatgpt.site/",
+    "https://joey-woosong-admissions-demo.vercel.app/",
+    "https://nexaeon-web.vercel.app/",
+    "https://woosong-buddy-app.vercel.app/",
+    "https://namyoung-web3d.vercel.app/",
+    "https://namyoung-asset-lab.joeyaj.chatgpt.site/",
+    "https://joey-woosong-admissions-demo.vercel.app/",
+    "https://nexaeon-web.vercel.app/",
+    "https://woosong-buddy-app.vercel.app/",
+    "https://namyoung-web3d.vercel.app/",
+    "https://namyoung-asset-lab.joeyaj.chatgpt.site/",
+    "https://joey-woosong-admissions-demo.vercel.app/",
+    "https://nexaeon-web.vercel.app/",
+    "https://woosong-buddy-app.vercel.app/",
+    "https://namyoung-web3d.vercel.app/",
+    "https://namyoung-asset-lab.joeyaj.chatgpt.site/",
+    "https://joey-woosong-admissions-demo.vercel.app/",
+    "https://nexaeon-web.vercel.app/",
+    "https://woosong-buddy-app.vercel.app/",
+    "https://namyoung-web3d.vercel.app/",
+    "https://namyoung-asset-lab.joeyaj.chatgpt.site/",
+    "https://joey-woosong-admissions-demo.vercel.app/",
+    "https://nexaeon-web.vercel.app/",
+    "https://woosong-buddy-app.vercel.app/",
+    "https://namyoung-web3d.vercel.app/",
+    "https://namyoung-asset-lab.joeyaj.chatgpt.site/",
+    "https://joey-woosong-admissions-demo.vercel.app/",
+    "https://nexaeon-web.vercel.app/",
+    "https://woosong-buddy-app.vercel.app/",
+    "https://namyoung-web3d.vercel.app/",
+    "https://namyoung-asset-lab.joeyaj.chatgpt.site/",
+    "https://joey-woosong-admissions-demo.vercel.app/",
+    "https://nexaeon-web.vercel.app/",
+    "https://woosong-buddy-app.vercel.app/",
+    "https://namyoung-web3d.vercel.app/",
+    "https://namyoung-asset-lab.joeyaj.chatgpt.site/",
+    "https://joey-woosong-admissions-demo.vercel.app/",
+    "https://nexaeon-web.vercel.app/",
+    "https://woosong-buddy-app.vercel.app/",
+    "https://namyoung-web3d.vercel.app/",
+    "https://namyoung-asset-lab.joeyaj.chatgpt.site/",
+    "https://joey-woosong-admissions-demo.vercel.app/"
+  ],
+  "privateRequests": 0,
+  "writes": 0,
+  "externalRequestsSent": 0,
+  "realOwnerAcceptance": false,
+  "liveTargetVerification": false
+}

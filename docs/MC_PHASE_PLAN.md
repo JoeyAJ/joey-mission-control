@@ -1,3 +1,11 @@
+# Current user priority — task-entry feedback and public website/list navigation
+
+Actual signed-out UI path fixed with visible scoped feedback and existing login focus; pending checks resume only under verified Owner, preserving auth/privacy and same-scope edits. Reviewed exact56ea279 navigation integrated; hierarchy8049af6 excluded. [Evidence and approved next passwordless direction](MC_MOBILE_TASK_ENTRY_20261011.md). No auth policy/mail/settings changes in this release; live finalization remains disabled.
+
+# Current useful increment — recoverable exact-reviewed finalization core
+
+Fixture-executable merge→fixed MC Preview logic with task/review/report/PR/target binding and action/capability/journal gates is implemented. Live writer composition, exact action grants and provider/store connections remain disabled/missing independently of Owner testing. [Code and precise activation boundaries](MC_FINALIZATION_CORE_20261011.md). No SQL/permission or Production changes.
+
 # Overnight closure — motion frame freshness boundary
 
 Frame-time report arrivals recheck event/observation age including terminal null-expiry. Morning acceptance and remaining gaps are in the [overnight handoff](MC_OVERNIGHT_MOTION_BOUNDARY_20261011.md); no next implementation phase starts. Source/task/SQL/permissions and both preflight repairs remain unchanged.

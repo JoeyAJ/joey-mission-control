@@ -1,19 +1,19 @@
-# Overnight motion boundary closure — 2026-10-11
+# Current mobile task entry / navigation priority — 2026-10-11
 
 Project: MISSION_CONTROL
-Timestamp: 2026-10-11T16:04:30.372Z
-Task: Recheck report arrival age at RAF; overnight handoff
-Status: LOCAL_VERIFIED_PARENT_READ_PREVIEW_PUBLISHED
+Timestamp: 2026-10-11T22:45:33.679Z
+Task: Signed-out/checking feedback and visible website/list actions
+Status: LOCAL_VERIFIED_PENDING_PUBLICATION
 Last Developer: Codex
 Executed by: Codex
 Actual Model: UNKNOWN
-Baseline: 239d9d3e7f5b71c11e311445bc54a7ea5355b1e8
+Baseline: facbb4cfb3660637003918baa61d585d007dc303
 
-Terminal null-expiry arrivals now recheck event/file-observation age at frame time; exact five-minute boundary refuses motion. Valid report/selection behavior retained. Focused118/portable909/build/validate/check/root20/browser20 PASS; forbiddenAttempts0. Runtime28d5ede exact fixed Preview READY. No fabricated activity/authority or feature expansion.
+Task entry now reveals scoped login/checking/loading feedback, focuses existing login/editor, preserves same-scope input and cancels switch intents; unchanged Owner/AAL2/session/membership gates. Reviewed56ea279 site/list slice integrated as5791b0f; exact known URLs/candidate qualification preserved. No hierarchy8049af6.
 
-Evidence: docs/MC_OVERNIGHT_MOTION_BOUNDARY_20261011.md. Both preflight fixes and task/SQL/API/scopes/palette unchanged. Positively identified old test352980/child352986 received scoped SIGTERM; no live old test, only inactive PID1-owned zombies. Prior prefix preserved there; dated history unchanged.
+Evidence: docs/MC_MOBILE_TASK_ENTRY_20261011.md. Signed-out baseline RED; entry3/navigation9(54 scopes), focused137/portable936 PASS. Final root/Preview pending. Existing preflight/motion/privacy and SQL/RLS/Auth settings unchanged. No email/actual Owner/task writes. Fixture finalization core preserved and live disabled; docs/MC_FINALIZATION_CORE_20261011.md details technical gaps and exact action grants.
 
-Next Action: final exact docs/Preview receipt and terminal, then pause for the linked morning Owner/source Continue and genuine task/Agent/PR-CI/decision acceptance steps. Served CONNECT403 not bypassed. No new phase/Production/SQL/permissions/dispatch/AWS/model selector; actual Owner writes0 and saved test untouched.
+Next Action: finish priority Preview/report. Joey approved passwordless direction22:41:48UTC; next inspect nonsecret mail/template/redirect readiness, prefer same-page OTP, retain AAL2/TOTP/privacy. No account-password deletion/settings/SMTP/signup/redirect changes or mail sending without selected flow explanation and exact required approvals. CONNECT403 not bypassed; actual served/Owner acceptance pending. No Production/new keys/SQL/permissions/dispatch/AWS.
 
 # Dated prior stage history
 

@@ -1,0 +1,17 @@
+{
+  "checkedAt": "2026-10-11T22:49:28.881Z",
+  "qualification": "ISOLATED_FIXTURE_NOT_LIVE_ACCEPTANCE",
+  "newGroupedTests": 22,
+  "focusedCoreTests": 132,
+  "coreStagePortableTests": 931,
+  "combinedReleasePortableTests": 936,
+  "reviewBrowserWidths": 4,
+  "taskCloudBrowserWidths": 4,
+  "projectDraftBrowserWidths": 4,
+  "actualOwnerWrites": 0,
+  "externalRequests": 0,
+  "liveFactoryZeroIO": true,
+  "liveExecutionDisabled": true,
+  "newExecutionRoute": false,
+  "browserBundlePrivateModulesAbsent": true
+}
