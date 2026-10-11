@@ -7,7 +7,7 @@ import {createRepositoryRun,appendRepositoryRunEvent} from '../../src/reporting/
 import {repositoryRunConfiguration} from '../../src/reporting/repository-run-source.mjs';
 import {RECONCILIATION_VERSION} from '../../src/tasks/task-reconciliation-contract.mjs';
 import {deliveryPolicy} from '../../src/reporting/delivery-evidence.mjs';
-import {FINALIZATION_VERSION,finalizationIntentDigest} from '../../src/tasks/task-finalization-contract.mjs';
+import {FINALIZATION_VERSION,finalizationIntentDigest,finalizationSame} from '../../src/tasks/task-finalization-contract.mjs';
 import {createFinalizationProviderAdapter} from '../../src/tasks/task-finalization-provider.mjs';
 import {createTaskFinalizationWorkflow} from '../../src/tasks/task-finalization-workflow.mjs';
 
@@ -25,9 +25,12 @@ export async function finalizationFixture({store:providedStore=null}={}){
  const intent={schemaVersion:FINALIZATION_VERSION,operationId:'22222222-2222-4222-8222-222222222222',reviewRecord:record,pullRequestNumber:7,mergeMethod:'merge',deployment:configuration.deployment},intentDigest=await finalizationIntentDigest(intent);
  const actor={subject:ownerSubject,status:'authenticated',role:'OWNER',aal:'aal2',verified:true,memberActive:true,sessionActive:true,projects:['NEXAEON'],expiresAt:FINALIZATION_FIXTURE_NOW+600000};
  const state={clock:FINALIZATION_FIXTURE_NOW,task,record:structuredClone(record),reportContent,blob,canonicalHead:FA,workHead:FB,reportHead:FC,merge:null,deployment:null,servedStatus:'PASS',actions:new Set(['MERGE_PR','DEPLOY_VERIFIED_MERGE_RESULT_PREVIEW']),actor,current:true,capPatch:{},evidencePatch:null,readHook:null,ownerHook:null,authorizationHook:null,casHook:null,mergeHook:null,deployHook:null,lookupHook:null,mergeLoss:false,deployLoss:false,hiddenMerge:false,hiddenDeployment:false,merges:0,deploys:0,reads:0,ownerReads:0,authorizationReads:0};
+ state.authorizationGrant={schemaVersion:1,qualification:'ISOLATED_FIXTURE_ACTION_AUTHORIZATION',authorizationId:'33333333-3333-4333-8333-333333333333',subject:ownerSubject,intentDigest,actions:[...state.actions],issuedAt:state.clock,expiresAt:state.clock+60000};
+ const ownMerges=new Map();
+ const currentGrant=({intentDigest:expected,action,authorizationId}={})=>state.actions.has(action)&&state.authorizationGrant?.intentDigest===expected&&(!authorizationId||authorizationId===state.authorizationGrant.authorizationId)?{...structuredClone(state.authorizationGrant),actions:[...state.actions]}:null;
  const records=new Map(),store=providedStore||{async load(id){return structuredClone(records.get(id)||null);},async compareAndSwap(id,expected,next){if(state.casHook)await state.casHook(next);const current=records.get(id);if((current?.revision||0)!==expected)return false;records.set(id,structuredClone(next));return true;}};
  const transport={qualification:'ISOLATED_FINALIZATION_FIXTURE',networkAccess:'NONE',
-  async capabilities(){return {qualification:'ISOLATED_FIXTURE_PROVIDER_CAPABILITIES',intentDigest,expiresAt:state.clock+60000,conditionalMergeRefs:true,previewDeploy:true,completeOperationLookup:true,requiredChecksVerified:true,...state.capPatch};},
+  async capabilities(){return {qualification:'ISOLATED_FIXTURE_PROVIDER_CAPABILITIES',intentDigest,expiresAt:state.clock+60000,conditionalMergeRefs:true,previewDeploy:true,completeOperationLookup:true,requiredChecksVerified:true,effectAuthorizationBoundary:true,trustedOperationCorrelation:true,...state.capPatch};},
   async evidence(){
    state.reads++;if(state.readHook)await state.readHook();const t=state.task,binding=await createTaskRequirements(t);
    const request={schemaVersion:RECONCILIATION_VERSION,projectId:t.projectId,track:t.track,taskId:t.taskId,taskRevision:t.revision,taskRequirements:binding,runId:review.runId};
@@ -35,19 +38,23 @@ export async function finalizationFixture({store:providedStore=null}={}){
    const evidence={qualification:'ISOLATED_FIXTURE_CURRENT_EVIDENCE',task:t,cloudConfirmed:true,reviewRecord:state.record,reviewSequence:state.record.sequence,reconciliation:ci,reportContent:state.reportContent,reportBlobId:state.blob,mergeable:true};if(state.evidencePatch)state.evidencePatch(evidence);return structuredClone(evidence);
   },
   async findMerge(){if(state.lookupHook)await state.lookupHook('merge');return state.hiddenMerge?null:structuredClone(state.merge);},
-  async merge({expectedHeadSha,expectedBaseSha,operationId}){
-   if(state.mergeHook)await state.mergeHook();if(expectedHeadSha!==state.workHead||expectedBaseSha!==state.canonicalHead||operationId!==intent.operationId)throw Error('Fixture conditional ref conflict');
-   state.merges++;state.canonicalHead=FM;state.merge={qualification:'ISOLATED_FIXTURE_MERGE_OBSERVATION',pullRequestNumber:7,headSha:FB,baseBeforeSha:FA,mergeSha:FM,parents:[FA,FB],canonicalHeadSha:FM};
-   if(state.mergeLoss){state.mergeLoss=false;throw Error('PRIVATE_PROVIDER_DIAGNOSTIC_NOT_RETURNED');}return structuredClone(state.merge);
+  authorizationAtEffect(request){state.effectAuthorizationReads=(state.effectAuthorizationReads||0)+1;return currentGrant(request);},
+  async findOwnMerge({operationId,intentDigest:expected}){const own=ownMerges.get(operationId);return own?.intentDigest===expected?structuredClone(own):null;},
+  async merge(request,commitEffect){
+   if(state.mergeHook)await state.mergeHook();if(typeof commitEffect!=='function')throw Error('Atomic authorization boundary required');
+   const receipt=commitEffect(request,()=>{const {expectedHeadSha,expectedBaseSha,operationId,intentDigest:boundDigest}=request;if(expectedHeadSha!==state.workHead||expectedBaseSha!==state.canonicalHead||operationId!==intent.operationId)throw Error('Fixture conditional ref conflict');
+    state.merges++;state.canonicalHead=FM;state.merge={qualification:'ISOLATED_FIXTURE_MERGE_OBSERVATION',operationId,intentDigest:boundDigest,pullRequestNumber:7,headSha:FB,baseBeforeSha:FA,mergeSha:FM,parents:[FA,FB],canonicalHeadSha:FM};ownMerges.set(operationId,structuredClone(state.merge));return structuredClone(state.merge);});
+   if(state.mergeLoss){state.mergeLoss=false;throw Error('PRIVATE_PROVIDER_DIAGNOSTIC_NOT_RETURNED');}return receipt;
   },
   async findDeployment(){if(state.lookupHook)await state.lookupHook('deployment');return state.hiddenDeployment?null:structuredClone(state.deployment);},
-  async deployPreview({codeSha,target,operationId}){
-   if(state.deployHook)await state.deployHook();if(codeSha!==FM||JSON.stringify(target)!==JSON.stringify(configuration.deployment)||operationId!==intent.operationId)throw Error('Fixture target conflict');
-   state.deploys++;state.deployment={qualification:'ISOLATED_FIXTURE_DEPLOYMENT_OBSERVATION',id:'dpl_fixture',operationId,target,codeSha,state:'BUILDING'};
-   if(state.deployLoss){state.deployLoss=false;throw Error('PRIVATE_PROVIDER_DIAGNOSTIC_NOT_RETURNED');}return structuredClone(state.deployment);
+  async deployPreview(request,commitEffect){
+   if(state.deployHook)await state.deployHook();if(typeof commitEffect!=='function')throw Error('Atomic authorization boundary required');
+   const receipt=commitEffect(request,()=>{const {codeSha,target,operationId}=request;const own=ownMerges.get(operationId);if(!own||!finalizationSame(own,request.merge))throw Error('Unattributed merge');if(codeSha!==FM||JSON.stringify(target)!==JSON.stringify(configuration.deployment)||operationId!==intent.operationId)throw Error('Fixture target conflict');
+    state.deploys++;state.deployment={qualification:'ISOLATED_FIXTURE_DEPLOYMENT_OBSERVATION',id:'dpl_fixture',operationId,target,codeSha,state:'BUILDING'};return structuredClone(state.deployment);});
+   if(state.deployLoss){state.deployLoss=false;throw Error('PRIVATE_PROVIDER_DIAGNOSTIC_NOT_RETURNED');}return receipt;
   },
   async verifyServed(){return {qualification:'ISOLATED_FIXTURE_SERVED_OBSERVATION',status:state.servedStatus,deploymentId:'dpl_fixture',codeSha:state.servedStatus==='PASS'?FM:null,url:configuration.deployment.fixedUrl};}
  };
- const provider=createFinalizationProviderAdapter({configuration,fixtureTransport:transport}),options={configuration,provider,store,inspectOwner:async()=>{state.ownerReads++;if(state.ownerHook)await state.ownerHook();return structuredClone(state.actor);},readAuthorization:async({intentDigest:expected,action})=>{state.authorizationReads++;if(state.authorizationHook)await state.authorizationHook(action);if(!state.actions.has(action))return null;return {schemaVersion:1,qualification:'ISOLATED_FIXTURE_ACTION_AUTHORIZATION',authorizationId:'33333333-3333-4333-8333-333333333333',subject:ownerSubject,intentDigest:expected,actions:[...state.actions],issuedAt:state.clock,expiresAt:state.clock+60000};},stillCurrent:()=>state.current,now:()=>state.clock};
+ const provider=createFinalizationProviderAdapter({configuration,fixtureTransport:transport,now:()=>state.clock}),options={configuration,provider,store,inspectOwner:async()=>{state.ownerReads++;if(state.ownerHook)await state.ownerHook();return structuredClone(state.actor);},readAuthorization:async({intentDigest:expected,action})=>{state.authorizationReads++;if(state.authorizationHook)await state.authorizationHook(action);return currentGrant({intentDigest:expected,action});},stillCurrent:()=>state.current,now:()=>state.clock};
  return {configuration,intent,intentDigest,state,store,records,transport,provider,options,engine:createTaskFinalizationWorkflow(options),restart:()=>createTaskFinalizationWorkflow(options),revise(){state.task=reviseDevelopmentTask(state.task,{...state.task.request,acceptance:'New exact Owner revision'},{now:state.clock+1});}};
 }

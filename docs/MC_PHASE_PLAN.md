@@ -1,3 +1,7 @@
+# Current bounded fixture boundary repair — 2026-10-11
+
+Exact grant checks now execute synchronously at fixture mutation; recovery requires independent own-operation correlation. Live execution remains hard-disabled, no routes/real effects. Navigation/mobile/inactive OTP and source/API/SQL/reporting/preflight are unchanged. See MC_FINALIZATION_EFFECT_BOUNDARY_20261011.md for deterministic RED/repair and precise missing live connections. OTP activation remains a separate dashboard readiness wait.
+
 # Current approved Owner OTP preparation — 2026-10-11
 
 Priority mobile task feedback/site navigation45cebef exact fixed Preview READY. Same-page existing-user-only email OTP is locally implemented/tested but deployment readiness remains OFF. Existing TOTP/AAL2/live session/member gates and password flow unchanged. Current public Auth settings200 email ON/signup+anonymous OFF; exact Auth-management template/plan/SMTP/OTP-length read is unavailable. No email/settings action. See MC_OWNER_EMAIL_OTP_20261011.md for concrete proposal and next authorized read. Finalization core preserved/live disabled; no dispatch/Production/SQL/new credentials.

@@ -1,0 +1,33 @@
+{
+  "checkedAt": "2026-10-11T23:37:57.504Z",
+  "qualification": "LOCAL_ISOLATED_FIXTURE_NOT_LIVE_ACCEPTANCE",
+  "baseline": "625ff30ff466d1f81eb2091eb3ea5a8f9b96641b",
+  "baselineRed": {
+    "groups": 8,
+    "failed": 7,
+    "passed": 1,
+    "fourFinalPreflightExpireRevokeProbesExecutedOldEffects": true,
+    "externalMatchingMergeWasFalselyAdopted": true,
+    "echoedFieldFailureAlsoChecksNewDistinctDiagnostic": true
+  },
+  "finalizationGroups": 33,
+  "newBoundaryGroups": 11,
+  "focusedTests": 88,
+  "portableTests": 956,
+  "build": "PASS",
+  "portableValidate": "PASS",
+  "staticSafety": "PASS",
+  "forbiddenAttempts": 0,
+  "atomicFixtureCommitBoundary": true,
+  "independentProviderOwnMergeLedger": true,
+  "knownNotStartedIdentityTracked": true,
+  "unknownOutcomeBlindRetry": false,
+  "clientBundleNavigationMobileInactiveOtpByteUnchanged": true,
+  "protectedApiSqlSourcePrivacyPreflightReportingUnchanged": true,
+  "liveFactoryEnabled": false,
+  "actualOwnerWrites": 0,
+  "actualMergeDeployEffects": 0,
+  "actualEmailSent": 0,
+  "newCredentialsPermissionsRoutes": false,
+  "externalRequests": 0
+}

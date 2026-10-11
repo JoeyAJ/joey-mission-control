@@ -1,19 +1,19 @@
-# Current Owner email OTP preparation — 2026-10-11
+# Current finalization fixture boundary repair — 2026-10-11
 
 Project: MISSION_CONTROL
-Timestamp: 2026-10-11T23:06:24.079Z
-Task: Same-page existing Owner OTP; readiness disabled
-Status: LOCAL_VERIFIED_PARENT_READ_PREVIEW_PUBLISHED
+Timestamp: 2026-10-11T23:37:57.504Z
+Task: Effect grant boundary and own-merge recovery
+Status: LOCAL_VERIFIED_PENDING_PUBLICATION
 Last Developer: Codex
 Executed by: Codex
 Actual Model: UNKNOWN
-Baseline: 45cebef30f958934674619fc7e90b25324579d99
+Baseline: 625ff30ff466d1f81eb2091eb3ea5a8f9b96641b
 
-Priority navigation/task feedback45cebef fixed Preview dpl_3kGhMssHDph5WvTAnxmCwnubYHNo READY. OTP code prepared with shouldCreateUser:false, exact Owner, scoped transient challenge/currentness; existing password/TOTP/AAL2/live-session/member gates retained. Deployed switch OFF, no mail/settings change or extra credential storage.
+Fixture commit boundary rereads exact grant/expiry/revocation/payload after provider awaits, synchronously with mutation. Known-not-started proof permits guarded CAS retry; uncertainty never repeats effects. Merge recovery requires independent own-operation ledger, not attempt marker/matching PR or echoed IDs; unattributed merge blocks deployment/adoption. Live factory still OFF, no actual merge/deploy.
 
-Evidence: docs/MC_OWNER_EMAIL_OTP_20261011.md; portable945/focused47/build/validate/check, OTP browser21/password5/mobile entry3 PASS. Current settings GET200: email ON, signup/anonymous OFF. Auth-management template/plan/SMTP read unavailable; project created2026-10-07 may face June3 template restriction. Single pending body proposal is reviewable. Runtimec97a250 exact fixed Preview dpl_6bDyUTJTEduX2F47XsSGRpLX77Jq READY; root20 PASS, core preserved/live disabled, actual Owner writes0.
+Evidence: docs/MC_FINALIZATION_EFFECT_BOUNDARY_20261011.md. Baseline RED7/8; new11+old22 groups, focused88/portable956/build/validate/check PASS. Root/Preview pending. Navigation/mobile/client bundle/inactive OTP/source/API/SQL/preflight byte unchanged; actual Owner/mail/actions0. Prior prefix/history preserved.
 
-Next Action: finish final docs exact Preview/report. Then fresh nonsecret GET /v1/projects/scmvedfqwlhkyvljymjj/config/auth through existing authorized connection; verify template/OTP length/plan/mail readiness. Exact approval needed only for actual body/settings change; no mail before qualified flow. No password deletion/signup/SMTP/redirect/SQL/grants/new keys/Production/dispatch/AWS. CONNECT403 not bypassed; served/Owner acceptance pending.
+Next Action: finish exact same Preview/report. Live still needs trusted revocation lifecycle and authority at provider acceptance, conditional refs/CI, durable CAS/nonexecution proof and own-operation correlation/unknown lookup/served verification. External adoption has no grant/route. OTP remains false awaiting dashboard nonsecret template/plan/mail read; no sending/settings/password/SMTP/signup/redirect/new keys/permissions/Production/dispatch/AWS. CONNECT403 not bypassed, served/Owner acceptance pending.
 
 # Dated prior stage history
 

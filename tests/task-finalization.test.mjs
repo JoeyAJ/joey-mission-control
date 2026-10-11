@@ -76,7 +76,7 @@ test('forged checkpoint or deployment/merge provider substitution refuses follow
  const h=await finalizationFixture();await h.engine.advance(h.intent);await h.engine.advance(h.intent);h.state.deployment.codeSha=FB;assert.equal((await h.engine.advance(h.intent)).state,'DEPLOYMENT_OBSERVATION_CONFLICT');assert.equal(h.state.deploys,1);
 });
 test('unrelated preexisting provider merge cannot be adopted as execution authority',async()=>{
- const f=await finalizationFixture();await f.transport.merge({expectedHeadSha:FB,expectedBaseSha:FA,operationId:f.intent.operationId});f.state.merges=0;const r=await f.engine.advance(f.intent);assert.equal(r.state,'UNRELATED_MERGE_REQUIRES_NEW_AUTHORIZATION');assert.equal(f.state.deploys,0);
+ const f=await finalizationFixture();f.state.canonicalHead=FM;f.state.merge={qualification:'ISOLATED_FIXTURE_MERGE_OBSERVATION',pullRequestNumber:7,headSha:FB,baseBeforeSha:FA,mergeSha:FM,parents:[FA,FB],canonicalHeadSha:FM};const r=await f.engine.advance(f.intent);assert.equal(r.state,'UNATTRIBUTED_MERGE_REQUIRES_EXPLICIT_ADOPTION');assert.equal(f.state.deploys,0);
 });
 test('checkpoint file survives a reconstructed engine after acknowledgement loss; no real network/repository/deployment write',async()=>{
  const dir=await fs.mkdtemp(path.join(os.tmpdir(),'mc-finalization-fixture-')),file=path.join(dir,'private-checkpoint.json');let tail=Promise.resolve();

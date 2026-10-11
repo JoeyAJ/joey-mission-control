@@ -45,14 +45,15 @@ export function validateFixtureExecutionGrant(g,{intentDigest,action,ownerSubjec
  return structuredClone(g);
 }
 export function validateFixtureCapabilities(v,{intentDigest,now}){
- exact(v,['qualification','intentDigest','expiresAt','conditionalMergeRefs','previewDeploy','completeOperationLookup','requiredChecksVerified']);
- if(v.qualification!=='ISOLATED_FIXTURE_PROVIDER_CAPABILITIES'||v.intentDigest!==intentDigest||!Number.isSafeInteger(v.expiresAt)||v.expiresAt<=now||v.expiresAt>now+60000||['conditionalMergeRefs','previewDeploy','completeOperationLookup','requiredChecksVerified'].some(k=>v[k]!==true))throw finalizationFailure('PROVIDER_CAPABILITY_UNCONFIRMED');
+ exact(v,['qualification','intentDigest','expiresAt','conditionalMergeRefs','previewDeploy','completeOperationLookup','requiredChecksVerified','effectAuthorizationBoundary','trustedOperationCorrelation']);
+ if(v.qualification!=='ISOLATED_FIXTURE_PROVIDER_CAPABILITIES'||v.intentDigest!==intentDigest||!Number.isSafeInteger(v.expiresAt)||v.expiresAt<=now||v.expiresAt>now+60000||['conditionalMergeRefs','previewDeploy','completeOperationLookup','requiredChecksVerified','effectAuthorizationBoundary','trustedOperationCorrelation'].some(k=>v[k]!==true))throw finalizationFailure('PROVIDER_CAPABILITY_UNCONFIRMED');
  return structuredClone(v);
 }
-export function validateFixtureMerge(v,intent){
- exact(v,['qualification','pullRequestNumber','headSha','baseBeforeSha','mergeSha','parents','canonicalHeadSha']);
+export function validateFixtureMerge(v,intent,intentDigest){
+ exact(v,['qualification','pullRequestNumber','headSha','baseBeforeSha','mergeSha','parents','canonicalHeadSha',...(Object.hasOwn(v,'operationId')?['operationId']:[]),...(Object.hasOwn(v,'intentDigest')?['intentDigest']:[])]);
  const r=intent.reviewRecord.review;
  if(v.qualification!=='ISOLATED_FIXTURE_MERGE_OBSERVATION'||v.pullRequestNumber!==intent.pullRequestNumber||v.headSha!==r.codeSha||v.baseBeforeSha!==r.canonicalHeadSha||!finalizationSha(v.mergeSha)||v.canonicalHeadSha!==v.mergeSha||!finalizationSame(v.parents,[r.canonicalHeadSha,r.codeSha]))throw finalizationFailure('MERGE_OBSERVATION_CONFLICT');
+ if(v.operationId!==intent.operationId||!digest(intentDigest)||v.intentDigest!==intentDigest)throw finalizationFailure('UNATTRIBUTED_MERGE_REQUIRES_EXPLICIT_ADOPTION');
  return structuredClone(v);
 }
 export function validateFixtureDeployment(v,intent,merge){
@@ -93,6 +94,6 @@ export function emptyFinalizationCheckpoint(intent,intentDigest){return {schemaV
 export function validateFinalizationCheckpoint(v,intent,intentDigest){
  exact(v,['schemaVersion','operationId','intentDigest','revision','mergeAttempted','deployAttempted','merge','deployment','verification']);
  if(v.schemaVersion!==FINALIZATION_VERSION||v.operationId!==intent.operationId||v.intentDigest!==intentDigest||!digest(v.intentDigest)||!Number.isSafeInteger(v.revision)||v.revision<0||v.revision>64||typeof v.mergeAttempted!=='boolean'||typeof v.deployAttempted!=='boolean'||v.deployAttempted&&!v.mergeAttempted||v.merge&&!v.mergeAttempted||v.deployment&&(!v.deployAttempted||!v.merge)||v.verification&&!v.deployment)throw finalizationFailure('CHECKPOINT_CONFLICT');
- if(v.merge)validateFixtureMerge(v.merge,intent);if(v.deployment)validateFixtureDeployment(v.deployment,intent,v.merge);if(v.verification)validateFixtureVerification(v.verification,intent,v.deployment);
+ if(v.merge)validateFixtureMerge(v.merge,intent,intentDigest);if(v.deployment)validateFixtureDeployment(v.deployment,intent,v.merge);if(v.verification)validateFixtureVerification(v.verification,intent,v.deployment);
  return structuredClone(v);
 }
