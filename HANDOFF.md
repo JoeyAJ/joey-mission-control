@@ -1,4 +1,24 @@
-# Mission Control — approved Owner cloud drafts enabled
+# Mission Control — existing-project task form development checkpoint
+
+Project: MISSION_CONTROL
+Timestamp: 2026-10-11T07:51:47.989Z
+Task: Existing-project natural-language task and fresh source-bound external Agent handoff
+Status: LOCAL_VERIFIED_CLOUD_EVENTS_NOT_ENABLED
+DeliveryQualification: EXISTING_TASK_FORM_IMPLEMENTED_TASK_STORAGE_PENDING_APPROVAL
+Last Developer: Codex
+Executed by: Codex
+Actual Model: UNKNOWN
+Baseline: 95e60d8dd1a4081c6ed20d138cb128e8b85a24a5
+
+Existing approved mc_task_events_read is historical MC-only/read-only, local Inbox is not the Preview backend, and strict project-draft schema cannot store execution tasks. None grants a reusable task writer. This increment creates independent mc.development-task.v1 specifications with fixed taskId/revision/project/track/full feature/acceptance/constraints; task scope cannot grant repo/source/Agent access. Owner/AAL2 memory drafts/download/import and per-task fresh source/report copy are implemented. Cloud task storage remains OFF; no new live SQL/ACL executed. The reviewed Owner cloud project-draft milestone remains ON and unchanged.
+
+Initial focused14 PASS. Source-copy uses the existing fresh-before-copy gate, current project/track/generation and current report confirmation, plus Owner checks and private clearing. Task request, Agent report, tests, unconnected PR/CI and qualified deployment remain separate; copying does not start an Agent. University candidate remains pending. Browser/native proposal verification and full regression follow. Task data is not put into URL/browser storage; no frozen ledger, new grant/executor/model/AWS/Production/other-repo action.
+
+Own immutable v2 FEATURE run codex-mc-existing-project-task-20261011 started1 published950e32b435fea083aa3732a653222823b65c340f/blobcf9294b30d2de6d4106612f710a8c51975afb8c9, original baseline95e60d8, predecessor codex-mc-project-draft-postgres-20261011. Existing report budget is unchanged; this is the final available MC run slot and remains open through genuine checkpoints pending task storage approval. No extra run or deletion/rotation is inferred.
+
+Integration boundary with independent visual branch: functional edits are new src/tasks/*, small attachment/update/privacy hooks in src/continuity/owner-browser-entry.mjs and public/joey-takeover.js, API private development-tasks route, tests and regenerated owner-auth-client.js. No palette/style changes; preserve new task host during later reviewed UI integration. Exact new SQL scope is docs/contracts/sql/private-development-tasks.pending.sql, review only; new Owner-only task specification table/private validator/two list-save RPCs, using existing project_draft_actor/canonical_json/exact_keys. No task-event journal overload or Agent execution queue.
+
+# Historical approved Owner cloud draft activation checkpoint
 
 Project: MISSION_CONTROL
 Timestamp: 2026-10-11T07:24:53.673Z
