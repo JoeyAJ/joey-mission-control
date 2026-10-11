@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "mc.repository-run.v2",
+  "taskKind": "BUGFIX",
+  "projectId": "MISSION_CONTROL",
+  "track": "BASELINE",
+  "runId": "codex-mc-pr-ci-privacy-source-20261011",
+  "predecessorRunId": "codex-mc-pr-ci-reconciliation-20261011",
+  "taskId": "mc-pr-ci-privacy-source-20261011",
+  "featureTitle": "Reviewer fixes: quoted credential label privacy and pending PR-CI canonical source correlation",
+  "agentName": "Codex",
+  "provider": null,
+  "model": null,
+  "repositoryId": "JoeyAJ/joey-mission-control",
+  "reportRef": "mc/progress",
+  "workRef": "codex/mc-command-center-checkpoint-20261006",
+  "baseline": {
+    "ref": "codex/mc-command-center-checkpoint-20261006",
+    "commitSha": "95d850f6779089cd6e6d61863c7079e8065cdcf1",
+    "handoffPath": "HANDOFF.md",
+    "handoffDigest": "5dd2fc56cd12eace5a56d35d8f00ec46f2a308d7e940b12706856b590f3ecbd4",
+    "contextPaths": [
+      "README.md",
+      "docs/PRODUCT_CHARTER.md",
+      "docs/MC_PHASE_PLAN.md",
+      "docs/STAGE_HANDOFF_TEMPLATE.md"
+    ]
+  },
+  "events": [
+    {
+      "id": "started-review-fixes",
+      "sequence": 1,
+      "eventAt": "2026-10-11T10:02:25.281Z",
+      "kind": "started",
+      "summary": "Actual receiving Agent fixes reproduced quoted credential label leak and pending canonical source race; preserve exact repo/track/commit binding and existing Owner task/report gates.",
+      "result": null,
+      "delivery": null
+    }
+  ]
+}
