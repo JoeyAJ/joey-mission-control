@@ -1,0 +1,89 @@
+{
+  "qualification": "AGENT_REPORTED_WITH_CONNECTED_GIT_TREE_BLOB_AND_PROVIDER_METADATA_READBACK",
+  "task": "mc-selected-task-summary-20261011",
+  "originalBaseline": "b895b402dd9f1f6d64e223bed0c680f7df23a6a1",
+  "testedImplementation": "8980266daad30d23f89571d29a8d772e9a0c3041",
+  "exactTestedGitTree": "a2e85001a7afb3835396928012921ea1c08f6537",
+  "supportDeployment": {
+    "id": "dpl_FFUFt56XnVMpt9EZyyRBowrThWXq",
+    "state": "READY",
+    "sha": "8980266daad30d23f89571d29a8d772e9a0c3041",
+    "fixedAliasMatched": true,
+    "observedAt": "2026-10-11T03:49:15Z",
+    "scope": "DATED_PROVIDER_METADATA_NOT_SERVED_BYTES"
+  },
+  "handoff": "3670115663518180a01a8c746e77953110cf4fb6",
+  "handoffDeployment": {
+    "id": "dpl_DSaxQyDEKkeL2fekkK5uCybyxJRU",
+    "state": "READY",
+    "sha": "3670115663518180a01a8c746e77953110cf4fb6",
+    "fixedAliasMatched": true,
+    "observedAt": "2026-10-11T03:52:00Z",
+    "scope": "DATED_PROVIDER_METADATA_NOT_SERVED_BYTES"
+  },
+  "terminal": {
+    "commitSha": "8e685fbc4ecb363f204751ad275b2a0475cc939a",
+    "blob": "d7d7e6af49833051318476372d978b3303ffc51f",
+    "sequence": 3,
+    "runId": "codex-mc-selected-task-summary-20261011",
+    "bytes": 6836
+  },
+  "readback": {
+    "blob": "d7d7e6af49833051318476372d978b3303ffc51f",
+    "bytes": 6836,
+    "connectedGitHash": true,
+    "strictCodeSchema": true,
+    "delivery": "REPORTED_INCOMPLETE",
+    "independentVerification": "PENDING",
+    "joeyAcceptance": "PENDING",
+    "scope": "BLOB_SCOPE_ONLY_NOT_SERVED_OWNER_ACCEPTANCE",
+    "originalPinnedProfile": true,
+    "externalDraft202012": true
+  },
+  "tests": {
+    "portable": 766,
+    "pass": 766,
+    "fail": 0,
+    "buildValidateCheck": "PASS",
+    "focusedSummaryContinuityFollow": 18,
+    "handoffSource": 20,
+    "sharedBriefDeviceLocaleBrowser": 6,
+    "actualMCBytesContinuityBrowser": 2,
+    "fileMetadataFollowBrowser": 2,
+    "oldSimpleWidths": 4,
+    "trueContinueBrowser": 12,
+    "browserExternal": 0,
+    "browserWrites": 0,
+    "forbiddenAttempts": 0,
+    "computedTitleFont": "desktop14px mobile15px",
+    "mobileReducedMotion": true
+  },
+  "visibleChanges": [
+    "shared selected-run Agent/full title/dated state/latest sequence",
+    "selected-run tests/deployment/URL/task-handoff/data qualification and recorded next step",
+    "fresh current-project handoff action before phone event history",
+    "desktop compact brief retains existing coordinated panes",
+    "v3 latest-result reported-ready/incomplete qualification explicit",
+    "separately labeled project-wide overview"
+  ],
+  "privateState": "AUTHENTICATED_MEMORY_DOM_ONLY_NO_RUN_URL_OR_STORAGE",
+  "servedAttempt": {
+    "attemptAt": "2026-10-11T03:49:47.946796Z",
+    "action": "normal_root_GET",
+    "url": "https://joey-mission-control-git-codex-mc-comma-fceec2-joeyajs-projects.vercel.app/",
+    "curlExit": 56,
+    "httpCode": "000",
+    "error": "curl: (56) CONNECT tunnel failed, response 403",
+    "checkedSha": null,
+    "bypass": false
+  },
+  "derivedDelivery": "REPORTED_INCOMPLETE",
+  "independentVerification": "PENDING",
+  "joeyAcceptance": "PENDING",
+  "historicalReports": "PRESERVED_IMMUTABLE",
+  "productionUnchanged": true,
+  "runtimeDiffFromTestedImplementation": "EMPTY",
+  "publicationTransport": "EXISTING_CONNECTED_GITHUB_CONTENTS_AND_NON_FORCE_LEASED_GIT_DATA_NO_NEW_CREDENTIALS",
+  "finalReceiptPublication": "EXACT_REMOTE_READY_ALIAS_CHECKED_SEPARATELY_AFTER_PUSH",
+  "noPostTerminalAppend": true
+}
