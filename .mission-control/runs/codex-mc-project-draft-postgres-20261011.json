@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "mc.repository-run.v2",
+  "taskKind": "DELIVERY_FOLLOWUP",
+  "projectId": "MISSION_CONTROL",
+  "track": "BASELINE",
+  "runId": "codex-mc-project-draft-postgres-20261011",
+  "predecessorRunId": "codex-mc-project-draft-integration-20261011",
+  "taskId": "mc-project-draft-postgres-20261011",
+  "featureTitle": "Isolated native PostgreSQL draft proposal role, CAS and parity verification before live approval",
+  "agentName": "Codex",
+  "provider": null,
+  "model": null,
+  "repositoryId": "JoeyAJ/joey-mission-control",
+  "reportRef": "mc/progress",
+  "workRef": "codex/mc-command-center-checkpoint-20261006",
+  "baseline": {
+    "ref": "codex/mc-command-center-checkpoint-20261006",
+    "commitSha": "dc0a64fa16f57753cf87a2a62e2e0ee829a8459e",
+    "handoffPath": "HANDOFF.md",
+    "handoffDigest": "0676dbc7281aaf3f6fe7fad2ac3bbeca2f7d187f20267e379ac1329568744fce",
+    "contextPaths": [
+      "README.md",
+      "docs/PRODUCT_CHARTER.md",
+      "docs/MC_PHASE_PLAN.md",
+      "docs/STAGE_HANDOFF_TEMPLATE.md"
+    ]
+  },
+  "events": [
+    {
+      "id": "draft-postgres-start-1",
+      "sequence": 1,
+      "eventAt": "2026-10-11T07:05:56.289Z",
+      "kind": "started",
+      "summary": "Check existing local runtime and verify draft SQL in isolated official PostgreSQL with synthetic identities. Existing Docker available, no cached PostgreSQL; official digest fixed. No live Supabase request, credential, SQL or activation; flag remains OFF.",
+      "result": null,
+      "delivery": null
+    }
+  ]
+}
