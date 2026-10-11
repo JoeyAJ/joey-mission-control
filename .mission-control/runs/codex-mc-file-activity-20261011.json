@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "mc.repository-run.v2",
+  "taskKind": "FEATURE",
+  "projectId": "MISSION_CONTROL",
+  "track": "BASELINE",
+  "runId": "codex-mc-file-activity-20261011",
+  "predecessorRunId": "codex-mc-schema-targets-20261011",
+  "taskId": "mc-file-activity-20261011",
+  "featureTitle": "Explicit opt-in bounded file metadata adapter and workbench",
+  "agentName": "Codex",
+  "provider": null,
+  "model": null,
+  "repositoryId": "JoeyAJ/joey-mission-control",
+  "reportRef": "mc/progress",
+  "workRef": "codex/mc-command-center-checkpoint-20261006",
+  "baseline": {
+    "ref": "codex/mc-command-center-checkpoint-20261006",
+    "commitSha": "6961725c0e75901f9ecf9d45fdf8433496a4cb30",
+    "handoffPath": "HANDOFF.md",
+    "handoffDigest": "c0cdc55286f00903a0b647acc1b196baa4c039d51c6984282ef537e746e48ee6",
+    "contextPaths": [
+      "README.md",
+      "docs/PRODUCT_CHARTER.md",
+      "docs/MC_PHASE_PLAN.md",
+      "docs/STAGE_HANDOFF_TEMPLATE.md"
+    ]
+  },
+  "events": [
+    {
+      "id": "mc-file-activity-start",
+      "sequence": 1,
+      "eventAt": "2026-10-11T00:45:57.094Z",
+      "kind": "started",
+      "summary": "Assessing existing budgets for versioned metadata-only file events and fixing independent strict schema own-key parity finding",
+      "result": null,
+      "delivery": null
+    }
+  ]
+}
