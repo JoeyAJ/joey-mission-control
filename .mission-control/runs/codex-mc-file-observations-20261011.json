@@ -70,6 +70,36 @@
         "observedAt": "2026-10-11T01:16:13.228Z",
         "precision": "REPORTER_BOUNDED_READ"
       }
+    },
+    {
+      "id": "handoff-read",
+      "sequence": 3,
+      "eventAt": "2026-10-11T01:16:16.637Z",
+      "kind": "progress",
+      "summary": "Reporter bounded read · HANDOFF.md · metadata only",
+      "result": null,
+      "delivery": null,
+      "activity": {
+        "schemaVersion": "mc.file-activity.v1",
+        "qualification": "AGENT_REPORTED_METADATA",
+        "scope": {
+          "projectId": "MISSION_CONTROL",
+          "track": "BASELINE",
+          "repositoryId": "JoeyAJ/joey-mission-control",
+          "runId": "codex-mc-file-observations-20261011",
+          "taskId": "mc-file-observations-20261011",
+          "workRef": "codex/mc-command-center-checkpoint-20261006"
+        },
+        "actor": "Codex",
+        "action": "FILE_READ",
+        "path": "HANDOFF.md",
+        "contentSha256": "fe013c460307948e552793bd0397586c26213b0f09e83e924bc1c20dfcbee5a0",
+        "previousContentSha256": null,
+        "byteLength": 7641,
+        "workHeadSha": "250095f136a1d1629d0d173f668c98f922fea985",
+        "observedAt": "2026-10-11T01:16:16.637Z",
+        "precision": "REPORTER_BOUNDED_READ"
+      }
     }
   ]
 }
