@@ -1,19 +1,19 @@
-# Current Owner callback custody race checkpoint — 2026-10-12
+# Current Owner Magic Link activation — 2026-10-12
 
 Project: MISSION_CONTROL
-Timestamp: 2026-10-12T02:06:37.331Z
-Task: Prevent late callback cleanup from signing out newer Owner session
+Timestamp: 2026-10-12T02:27:00.379Z
+Task: Guarded explicit Owner Magic Link after callback race repair
 Status: LOCAL_VERIFIED_PENDING_PUBLICATION
 Last Developer: Codex
 Executed by: Codex
 Actual Model: UNKNOWN
-Baseline: bca65762223cf6aab2538c13ad5c4be27c860830
+Baseline: 0ab33f94857f04bec889c46dd70ed08ed7b64cfc
 
-Reviewer found A late failure/disposal could signOut B in shared SDK custody. Both verification stages now isolated; checked SDK session enters existing custody once under a callback lock and unchanged-snapshot check. No callback shared logout/removal; late denied/disposed/success A cannot erase or replace B. Existing Owner/live-session/member/AAL/TOTP checks retained. Focused12 and pinned SDK two-page race3/retained callback27 PASS; old bca6576 probe RED with B custody removed. Final968/build/validate/static safety PASS; forbidden attempts0.
+Stale A callback can no longer revoke/remove B. Both SDK inspections isolated; one locked, unchanged-snapshot custody commit. Race3/retained27 browser and focused12/full968/build/validate/safety PASS; old bca probe RED. Repaired OFF callback0ab33f9/dpl_5he96g1mcC1y4rhhNuazgBUs9Jwv READY, exact alias/SHA verified. Callback page/routing/config unchanged from parent served OFF verification01:51UTC.
 
-Activation still OFF while repaired callback is tested/published. Parent verified disabled callback01:51UTC, no mail/settings. Same approved callback, recovery preserved, numeric OTP false. Continue existing run38, no new run/capacity/history change. Parent real Email/TOTP acceptance remains pending. Production dpl_5GgJ8LhD4Ec73RGz9CEFe1ppZQnh/8b4945b unchanged; no automatic mail/Auth/SMTP/MFA/RLS/credentials change. Finalization live OFF, review executionAuthorized:false.
+Approved manual flow flags enabled after those gates. Activated54 focused/27 SDK browser/3 mobile task-entry PASS, including retained password plus TOTP with email form present; zero actual email/external calls. Final activation bundle/Preview publication follows in same run38. Numeric OTP false; recovery/Owner/live-session/member/AAL/TOTP/drafts/CAS/scope gates retained. Real Email/TOTP/Owner acceptance pending; ordinary cloud HTTPS still CONNECT403, no bypass.
 
-Evidence: docs/MC_OWNER_EMAIL_CALLBACK_CUSTODY_RACE_20261012.md. Next: verified exact fixed OFF Preview deployment, then approved manual-flow activation and final Preview verification. Ordinary cloud HTTPS CONNECT403 remains, no bypass.
+Production remains dpl_5GgJ8LhD4Ec73RGz9CEFe1ppZQnh/8b4945b. No automatic mail/Auth/SMTP/MFA/RLS/credentials/data changes; review executionAuthorized:false, finalization live OFF. No new run/capacity/history changes. Evidence: docs/MC_OWNER_EMAIL_CALLBACK_CUSTODY_RACE_20261012.md and QA activation receipts. Parent arranges real user-triggered Email/TOTP verification.
 
 # Dated prior stage history
 

@@ -1,0 +1,19 @@
+{
+  "offSha": "0ab33f94857f04bec889c46dd70ed08ed7b64cfc",
+  "offDeployment": "dpl_5he96g1mcC1y4rhhNuazgBUs9Jwv",
+  "offReadyExactAliasVerified": true,
+  "callbackPageConfigRoutingUnchangedFromParentServedOffSha": "bca65762223cf6aab2538c13ad5c4be27c860830",
+  "parentServedOffAt": "2026-10-12T01:51:00Z",
+  "manualFlowEnabled": true,
+  "numericOtpEnabled": false,
+  "fullBeforeActivation": 968,
+  "activatedFocused": 54,
+  "activatedSdkCases": 27,
+  "activatedMobileTaskCases": 3,
+  "actualEmails": 0,
+  "actualAuthSettingsChanged": false,
+  "actualOwnerAcceptance": "PENDING",
+  "currentCloudServedHttps": "BLOCKED_CONNECT_403",
+  "reviewExecutionAuthorized": false,
+  "liveFinalizationEnabled": false
+}
