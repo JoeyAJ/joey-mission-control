@@ -1,0 +1,20 @@
+{
+  "pass": true,
+  "reportHead": "bc3d76b1af577d793d77e2a53fc1bd66575c9251",
+  "currentRecords": 11,
+  "limit": 11,
+  "activeRuns": [
+    "codex-mc-owner-email-magic-link-20261012"
+  ],
+  "retainedPredecessors": [
+    {
+      "runId": "codex-mc-owner-review-intent-fix-20261011",
+      "commitSha": "6e6035f0de9297031570b1e1412dd3825929b81a",
+      "blobId": "db1ae34c50be427910f70e1d0bb4376d38f9938b"
+    }
+  ],
+  "all29OriginalBodiesRecoverable": true,
+  "kept11OriginalBlobsUnchanged": true,
+  "reportDeploymentExcluded": true,
+  "verification": "ACTUAL_GIT_BYTES_AND_PRODUCTION_READER_NOT_SERVED_OWNER"
+}

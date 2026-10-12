@@ -1,0 +1,202 @@
+{
+  "qualification": "CANONICAL_LOCAL_SYNTHETIC_BROWSER_INTEGRATION_NOT_REAL_OWNER_ACCEPTANCE",
+  "portableBeforeReviewedRepairs": {
+    "pass": 991,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0
+  },
+  "postRepairFocused": {
+    "pass": 29,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0
+  },
+  "integrationBrowserCases": 60,
+  "nativeRepairBrowserCases": 6,
+  "jobs": [
+    {
+      "name": "network",
+      "summary": {
+        "pass": true,
+        "cases": 6,
+        "external": 0,
+        "writes": 0,
+        "screens": "/workspace/mc-recovery/modules-integration/network"
+      },
+      "exit": 0,
+      "elapsedSeconds": 89.07,
+      "timeoutSeconds": 180
+    },
+    {
+      "name": "motion",
+      "summary": {
+        "pass": true,
+        "cases": 6,
+        "external": 0,
+        "writes": 0,
+        "screens": "/workspace/mc-recovery/modules-integration/motion"
+      },
+      "exit": 0,
+      "elapsedSeconds": 91.99,
+      "timeoutSeconds": 150
+    },
+    {
+      "name": "focus",
+      "summary": {
+        "pass": true,
+        "cases": 6,
+        "external": 0,
+        "writes": 0,
+        "screens": "/workspace/mc-recovery/modules-integration/focus"
+      },
+      "exit": 0,
+      "elapsedSeconds": 70.77,
+      "timeoutSeconds": 120
+    },
+    {
+      "name": "candidate",
+      "summary": {
+        "pass": true,
+        "cases": 6,
+        "external": 0,
+        "writes": 0,
+        "screens": "/workspace/mc-recovery/modules-integration/candidate"
+      },
+      "exit": 0,
+      "elapsedSeconds": 68.92,
+      "timeoutSeconds": 120
+    },
+    {
+      "name": "disclosure",
+      "summary": {
+        "pass": true,
+        "cases": 6,
+        "external": 0,
+        "writes": 0,
+        "screens": "/workspace/mc-recovery/modules-integration/disclosure"
+      },
+      "exit": 0,
+      "elapsedSeconds": 65.31,
+      "timeoutSeconds": 150
+    },
+    {
+      "name": "privacy",
+      "summary": {
+        "pass": true,
+        "cases": 2,
+        "external": 0,
+        "writes": 0,
+        "screens": "/workspace/mc-recovery/modules-integration/privacy"
+      },
+      "exit": 0,
+      "elapsedSeconds": 32.07,
+      "timeoutSeconds": 90
+    },
+    {
+      "name": "delivery",
+      "summary": {
+        "pass": true,
+        "cases": 6,
+        "external": 0,
+        "writes": 0,
+        "screens": "/workspace/mc-recovery/modules-integration/delivery"
+      },
+      "exit": 0,
+      "elapsedSeconds": 74.78,
+      "timeoutSeconds": 150
+    },
+    {
+      "name": "simple",
+      "summary": {
+        "pass": true,
+        "cases": 4,
+        "reportReads": 187,
+        "reads": 292,
+        "githubReads": 1391,
+        "external": 0,
+        "writes": 0,
+        "cloudWrites": 0,
+        "taskCloudWrites": 0,
+        "screenshots": "/tmp/mc-joey-simple-screenshots"
+      },
+      "exit": 0,
+      "elapsedSeconds": 133.64,
+      "timeoutSeconds": 180
+    },
+    {
+      "name": "task-entry",
+      "summary": {
+        "pass": true,
+        "cases": 3,
+        "reportReads": 12,
+        "reads": 24,
+        "githubReads": 66,
+        "external": 0,
+        "writes": 0,
+        "cloudWrites": 0,
+        "taskCloudWrites": 0,
+        "screenshots": "/tmp/mc-joey-simple-screenshots"
+      },
+      "exit": 0,
+      "elapsedSeconds": 22.69,
+      "timeoutSeconds": 160
+    },
+    {
+      "name": "new-project",
+      "summary": {
+        "pass": true,
+        "cases": 4,
+        "reportReads": 12,
+        "reads": 40,
+        "githubReads": 160,
+        "external": 0,
+        "writes": 0,
+        "cloudWrites": 0,
+        "taskCloudWrites": 0,
+        "screenshots": "/tmp/mc-project-onboarding-screenshots"
+      },
+      "exit": 0,
+      "elapsedSeconds": 57.23,
+      "timeoutSeconds": 180
+    },
+    {
+      "name": "navigation",
+      "summary": {
+        "pass": true,
+        "cases": 9,
+        "scopeChecks": 54,
+        "privateRequests": 0,
+        "writes": 0,
+        "externalRequestsSent": 0,
+        "screens": "/workspace/mc-recovery/modules-integration/navigation"
+      },
+      "exit": 0,
+      "elapsedSeconds": 56.7,
+      "timeoutSeconds": 240
+    },
+    {
+      "name": "auth-denial",
+      "summary": {
+        "pass": true,
+        "cases": 2,
+        "externalRequests": 0
+      },
+      "exit": 0,
+      "elapsedSeconds": 4.23,
+      "timeoutSeconds": 60
+    }
+  ],
+  "independentReview": "GO; candidate pixels and repair replay passed",
+  "bundleRebuiltAfterRepairs": true,
+  "legacyOverviewFixture": "MAINTENANCE_DEBT_NOT_CLAIMED_PASS",
+  "journalV2Applied": false,
+  "realOwnerDeviceAcceptance": false,
+  "finalHandoffSourceTests": {
+    "pass": 12,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0
+  },
+  "ownerBundleSha256": "afbefcf57e08d7a1d11e5f9453e0a35e267394d170e547592bf0ff055f0bc3eb"
+}

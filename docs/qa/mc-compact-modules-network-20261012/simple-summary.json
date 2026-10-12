@@ -1,0 +1,15 @@
+{
+  "qualification": "COMPLETE_PASS_LOG_SUMMARY; INDIVIDUAL_RECEIPT_NOT_RETAINED_BY_HARNESS",
+  "summary": {
+    "pass": true,
+    "cases": 4,
+    "reportReads": 187,
+    "reads": 292,
+    "githubReads": 1391,
+    "external": 0,
+    "writes": 0,
+    "cloudWrites": 0,
+    "taskCloudWrites": 0,
+    "screenshots": "/tmp/mc-joey-simple-screenshots"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "pass": true,
+  "cases": [
+    {
+      "name": "pointercancel-keyboard",
+      "pass": true
+    },
+    {
+      "name": "pointerup-keyboard",
+      "pass": true
+    },
+    {
+      "name": "native-drag-click-only",
+      "pass": true
+    },
+    {
+      "name": "retired-selection-empty-zh-TW",
+      "pass": true
+    },
+    {
+      "name": "retired-selection-empty-ko",
+      "pass": true
+    },
+    {
+      "name": "retired-selection-empty-en",
+      "pass": true
+    }
+  ],
+  "externalRequests": 0,
+  "qualification": "NATIVE_RENDERER_SYNTHETIC_CONFIRMED_MODEL_NOT_REAL_OWNER"
+}

@@ -1,0 +1,8 @@
+{
+  "qualification": "COMPLETE_PASS_LOG_SUMMARY; INDIVIDUAL_RECEIPT_NOT_RETAINED_BY_HARNESS",
+  "summary": {
+    "pass": true,
+    "cases": 2,
+    "externalRequests": 0
+  }
+}

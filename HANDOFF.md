@@ -1,17 +1,17 @@
-# Current visible Workspace motion — 2026-10-12
+# Current compact modules and report relationship graph — 2026-10-12
 
 Project: MISSION_CONTROL
-Timestamp: 2026-10-12T07:30:00.000Z
-Task: Visible pane reflow and validated report selection motion
+Timestamp: 2026-10-12T09:50:00.000Z
+Task: Compact Joey overview and source-backed interactive report graph
 Status: LOCAL_VERIFIED_PENDING_PUBLICATION
 Last Developer: Codex
 Executed by: Codex
 Actual Model: UNKNOWN
-Baseline: 84482523c42ea644174c4fff81a166751e0916b5
+Baseline: 1b16fed7f25a59f33f126a2969ca66d912d4083b
 
-Integrated exact motion source bd82f14 on the canonical branch. Desktop Reports/Files/Evidence/Overview visibly reflow existing panes over460ms; validated selection/new reports animate420ms. Focus-band task/delivery stays opaque and stationary; detailed summaries can animate. Mobile native tabs remain. Reduced motion, expiry, Owner refusal and unchanged idle guard movement. No fake typing, terminal stream or Agent execution.
+Integrated exact399cb6a. Joey uses concise project/progress/Agent/task fields with optional details. Workspace graph has native nodes, SVG edges, drag/pan/zoom and keyboard selection over validated task/event/file facts. Dashed event order is not dependency; manifest is not observation. Reviewed02af4e8 fixes cancelled-drag keyboard swallowing and absent-selection phantom task labels. No fake stream or execution.
 
-Combined portable986/build/safety and final subset39 PASS. Canonical browser motion6, focus6, candidate6, privacy2, delivery6 and disclosure/theme6 PASS with synthetic Owner/providers, no external writes. Final theme/navigation/privacy checks and exact Preview receipt follow in docs/MC_VISIBLE_WORKSPACE_MOTION_20261012.md. Actual current report HEAD bc3d76b1af577d793d77e2a53fc1bd66575c9251 retains11; historical bodies remain Git-recoverable. No new run, task mutation, SQL/Auth settings or Production change. Saved test untouched, finalization OFF, review executionAuthorized:false. Manual Magic Link retained; real Owner/email/TOTP/device acceptance pending Parent. Private journal draft paused outside source; not approval-ready or applied. Full reference fidelity/live streams remain unavailable.
+Canonical portable991/build/safety before repairs, post-fix focused29/native repair6 PASS; rebuilt SDK. Independent reviewer GO; repaired integration browser60 PASS. Current matrix/provider receipt: docs/MC_COMPACT_MODULES_NETWORK_20261012.md and adjacent QA. Legacy overview fixture is maintenance debt, not a claimed PASS. MC report HEADbc3d76b1af577d793d77e2a53fc1bd66575c9251/eleven original current blobs and29 archived bodies preserved; no new run or saved-test access. Auth/SQL/Production unchanged; finalization OFF, review executionAuthorized:false. Journal v2 frozen/unapplied. Real Owner/email/TOTP/device acceptance remains pending Parent.
 
 # Dated prior stage history
 

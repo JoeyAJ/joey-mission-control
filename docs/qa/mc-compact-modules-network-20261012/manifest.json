@@ -1,0 +1,81 @@
+{
+  "qualification": "CANONICAL_SYNTHETIC_BROWSER_SOURCE_AND_ACTUAL_GIT_REPORT_VERIFICATION",
+  "files": {
+    "preserved-boundaries.json": {
+      "bytes": 1501,
+      "sha256": "8c10accf9a822c44c59103a0d7d9242c9e27a1374589f2eff8a1405c7b4d8666"
+    },
+    "auth-denial-summary.json": {
+      "bytes": 175,
+      "sha256": "62991d6d88e1f9c946f095c0b29e06e35c6bb7df7e723578a7a5a0af75b66ebd"
+    },
+    "focus.json": {
+      "bytes": 3256,
+      "sha256": "ea566780f5f1b656e28edbd2994302e59c2115eb1c1cc3649fad98896c122be5"
+    },
+    "delivery.json": {
+      "bytes": 2256,
+      "sha256": "0335d80721eb4dfaa17e53d93cf12b3eb2721475ef48abe8ff6c86a71b4806a0"
+    },
+    "candidate.json": {
+      "bytes": 3262,
+      "sha256": "9cf49b3af9bc83de0a278d2643a80416237d1902182d416d761092578f181c7f"
+    },
+    "network.json": {
+      "bytes": 2746,
+      "sha256": "36fd0cb14b79952859f2e3d576f56fbe980b11c48b59297af7d272476fbd840a"
+    },
+    "review-go.json": {
+      "bytes": 607,
+      "sha256": "b634dbdaa7957a48a88274b290470eef6aa244a73b6a7b492c04a02061cf4c7f"
+    },
+    "live-eleven.json": {
+      "bytes": 610,
+      "sha256": "a275db2ac66219d762606aba0ffcd710a6943afcd7bce14fec6c0c1cd6634b3f"
+    },
+    "auth-denial.json": {
+      "bytes": 297,
+      "sha256": "d1c032a87a67ccd37cd8f812dad2a54d52c3bc5a6014b14dcef2fb84d049cde8"
+    },
+    "known-limitations.md": {
+      "bytes": 1669,
+      "sha256": "76efcbdd8bbfe557ee34e30361e248e6d767de61a8c88b011642cb79f606db14"
+    },
+    "motion.json": {
+      "bytes": 4328,
+      "sha256": "07f41b2ae62d40abbd615eabad21ed4c030d9ac9a45ac753b6957c0ddfd8becf"
+    },
+    "new-project.json": {
+      "bytes": 2407,
+      "sha256": "268c92b7b31fb984c9292119721f8e9b174c5e924f18787aa2491705ef877503"
+    },
+    "simple-summary.json": {
+      "bytes": 353,
+      "sha256": "1d38e858458f23d23147d341119801c7778f42f5ede799227d01ddc6d97e09c6"
+    },
+    "disclosure.json": {
+      "bytes": 3588,
+      "sha256": "9e4ab9fa7ce4b0d04a2ff953d3531627b4f68488b17e550bc182676a1f986176"
+    },
+    "repair-native-browser.json": {
+      "bytes": 583,
+      "sha256": "90dd7374b6279f198ec059a9ace1a01ac85cb5a2bfde7fceb9fb9e63371d20fb"
+    },
+    "test-summary.json": {
+      "bytes": 4785,
+      "sha256": "9b75062148f9cfd54c08846d202a7bf940f63d43849df983bccbcab4fb2f1313"
+    },
+    "navigation.json": {
+      "bytes": 5288,
+      "sha256": "764f7e48fcffbec34cc4afa953a5569f4f898e80e22a9a78d7954e879d853a7f"
+    },
+    "privacy.json": {
+      "bytes": 678,
+      "sha256": "413a167ab1486850e2bb6e4b50c04f5c3d4580f638caa5f3f4e988364efc73a2"
+    },
+    "task-entry-summary.json": {
+      "bytes": 349,
+      "sha256": "92b54af4734cdd6923e7ff2b8b250d7a903f6ca2e8185d3518e79525153cf0f4"
+    }
+  }
+}
