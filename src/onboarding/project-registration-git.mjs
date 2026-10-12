@@ -18,6 +18,18 @@ export function createRegistrationGitPort({credential,activation=projectRegistra
   };
   const identity=async signal=>{const r=await request('',{signal,limit:65536});if(Number(r.id)!==c.repositoryNumericId||r.full_name!==c.repositoryId||r.private!==true||r.visibility!=='private'||r.archived!==false||r.disabled!==false)failure('REGISTRATION_PRIVATE_IDENTITY_MISMATCH',409);};
   const head=async signal=>{const r=await request('/git/ref/heads/'+c.ref,{signal,limit:65536});if(r.object?.type!=='commit'||!sha(r.object.sha))failure();return r.object.sha;};
+  const assertTargetAbsent=async(projectId,expectedHeadSha,signal)=>{
+    registrationMemoryPaths(projectId);
+    if(await head(signal)!==expectedHeadSha)failure('REGISTRATION_CATALOG_HEAD_CONFLICT',409);
+    const commit=await request('/git/commits/'+expectedHeadSha,{signal,limit:65536});if(commit.sha!==expectedHeadSha||!sha(commit.tree?.sha))failure();
+    const readTree=async id=>{const t=await request('/git/trees/'+id,{signal,limit:262144});if(t.sha!==id||t.truncated!==false||!Array.isArray(t.tree)||t.tree.length>2048)failure('REGISTRATION_GIT_ENTRY_INVALID',409);return t.tree;};
+    const parents=(await readTree(commit.tree.sha)).filter(e=>e.path==='PROJECTS');
+    if(!parents.length)return;
+    if(parents.length!==1||parents[0].type!=='tree'||parents[0].mode!=='040000'||!sha(parents[0].sha))failure('REGISTRATION_TARGET_CONFLICT',409);
+    // No contents read or recursive scan: any existing target entry is protected,
+    // including an unlisted directory, symlink, submodule or ordinary file.
+    if((await readTree(parents[0].sha)).some(e=>e.path===projectId))failure('REGISTRATION_TARGET_CONFLICT',409);
+  };
   if(!['APPROVED_REMOTE_GIT','LOCAL_GIT_FIXTURE'].includes(sourceQualification))failure('REGISTRATION_PORT_NOT_CONFIGURED');
   return Object.freeze({qualification:'SCOPED_GIT_REGISTRATION_PORT',sourceQualification,configured,
     async readSnapshot({signal,expectedCommitSha}={}) {
@@ -39,11 +51,14 @@ export function createRegistrationGitPort({credential,activation=projectRegistra
       await identity(signal);if(await head(signal)!==headSha)failure('REGISTRATION_CATALOG_HEAD_CONFLICT',409);
       return validateRegistrationCatalog({headSha,files},ownerSubject);
     },
-    async commitFiles({expectedHeadSha,projectId,files,signal}) {
+    async commitFiles({expectedHeadSha,projectId,files,signal,beforeMutation}) {
       if(!sha(expectedHeadSha))failure('REGISTRATION_REQUEST_INVALID',400);
       const paths=[...roots,...registrationMemoryPaths(projectId)];if(Object.keys(files).length!==8||paths.some(p=>typeof files[p]!=='string'||Buffer.byteLength(files[p])>(roots.includes(p)?1048576:98304)))failure('REGISTRATION_SCOPE_DENIED',403);
+      if(typeof beforeMutation!=='function')failure('REGISTRATION_SCOPE_DENIED',403);
       await identity(signal);
+      await assertTargetAbsent(projectId,expectedHeadSha,signal);
       const input={branch:{repositoryNameWithOwner:c.repositoryId,refName:c.ref},expectedHeadOid:expectedHeadSha,fileChanges:{additions:paths.map(path=>({path,contents:Buffer.from(files[path]).toString('base64')})),deletions:[]},message:{headline:'Register verified private project '+projectId}};
+      await beforeMutation();
       const r=await request('/graphql',{method:'POST',signal,body:{query:'mutation RegisterPrivateProject($input:CreateCommitOnBranchInput!){createCommitOnBranch(input:$input){commit{oid}ref{target{oid}}}}',variables:{input}},limit:65536});
       if(r.errors?.length)failure(r.errors.some(e=>e.type==='STALE_DATA')?'REGISTRATION_CATALOG_HEAD_CONFLICT':'REGISTRATION_CATALOG_UNAVAILABLE',r.errors.some(e=>e.type==='STALE_DATA')?409:503);
       const result=r.data?.createCommitOnBranch;if(!sha(result?.commit?.oid)||result.ref?.target?.oid!==result.commit.oid)failure();return {commitSha:result.commit.oid};
@@ -66,7 +81,7 @@ export function createAtomicGitRegistryWriter({port,ownerSubject,expectedHeadSha
     const entry={receipt,baseCatalogHeadSha:before.headSha,memoryHashes:Object.fromEntries(newPaths.map(p=>[p,contentDigest(candidate.memoryFiles[p])]))};
     const ledger={...before.ledger,entries:[...before.ledger.entries,entry]}, files={[REGISTRY_PATH]:candidate.registryText,[INDEX_PATH]:candidate.memoryIndexText,[LEDGER_PATH]:JSON.stringify(ledger,null,2)+'\n',...Object.fromEntries(newPaths.map(p=>[p,candidate.memoryFiles[p]]))};
     await authorize();assertIssuedRegistrationReceipt(receipt,now());
-    const committed=await port.commitFiles({expectedHeadSha:before.headSha,projectId:receipt.projectId,files,signal});if(!sha(committed?.commitSha))failure('REGISTRATION_READBACK_MISMATCH');
+    const committed=await port.commitFiles({expectedHeadSha:before.headSha,projectId:receipt.projectId,files,signal,beforeMutation:async()=>{await authorize();assertIssuedRegistrationReceipt(receipt,now());}});if(!sha(committed?.commitSha))failure('REGISTRATION_READBACK_MISMATCH');
     const after=validateRegistrationCatalog(await port.readSnapshot({signal,expectedCommitSha:committed.commitSha}),ownerSubject);
     if(after.headSha!==committed.commitSha||Object.entries(files).some(([p,content])=>after.files[p]!==content))failure('REGISTRATION_READBACK_MISMATCH');
     await authorize();return result(after,after.ledger.entries.find(e=>e.receipt.requestId===receipt.requestId).receipt,false);
