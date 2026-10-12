@@ -24,7 +24,7 @@ function fixture({project = {}, resources = {backend:null, deployment:null}} = {
   const request = {schemaVersion:REGISTRATION_VERSION, mode:'IMPORT_EXISTING_PRIVATE_REPOSITORY', requestId:'synthetic-import-1', draftId:draft.draftId, draftRevision:draft.revision, projectId:fields.projectId, repositoryId:fields.repositoryId, repositoryNumericId:12345, ref:fields.branch, baselineSha:SHA, expectedRegistryDigest:contentDigest(REGISTRY), expectedIndexDigest:contentDigest(INDEX), files:Object.fromEntries(REGISTRATION_FILES.map(p => [p, contentDigest(contents[p])])), resources};
   const state = {clock:NOW, drafts:[draft], actor:{subject:OWNER, role:'OWNER', aal:'aal2', verified:true, sessionActive:true, expiresAt:NOW + 60000}, repository:{id:12345, full_name:fields.repositoryId, private:true, visibility:'private', archived:false, disabled:false}, heads:[SHA,SHA], contents, readCount:0, identityCount:0, draftCount:0, authCount:0, gate:null, filePatch:null, identityAfter:null, resourcePatch:null};
   const writer = createLocalProjectRegistryWriter({registryText:REGISTRY, memoryIndexText:INDEX, now:() => state.clock});
-  const repositoryReader = {configured:true, async inspectIdentity(q) { assert.equal(q.repositoryId, request.repositoryId); state.identityCount++; return state.identityCount > 1 && state.identityAfter ? state.identityAfter : state.repository; }, async resolveRevision(q) { assert.equal(q.ref, request.ref); return {commitSha:state.heads.shift() ?? SHA}; }, async readFile(q) { state.readCount++; assert(REGISTRATION_FILES.includes(q.path)); assert.equal(q.commitSha,SHA); if(state.gate) await state.gate; const content=state.contents[q.path]; return {...{status:'FOUND', entryType:'file', content, blobId:blob(content), commitSha:SHA}, ...state.filePatch}; }};
+  const repositoryReader = {configured:true, async inspectIdentity(q) { assert.equal(q.repositoryId, request.repositoryId); state.identityCount++; return state.identityCount > 1 && state.identityAfter ? state.identityAfter : state.repository; }, async resolveRevision(q) { assert.equal(q.ref, request.ref); return {commitSha:state.heads.shift() ?? SHA}; }, async readFile(q) { state.readCount++; assert(REGISTRATION_FILES.includes(q.path)); assert.equal(q.commitSha,SHA); if(state.gate) await state.gate; const content=state.contents[q.path],blobId=blob(content); return {...{status:'FOUND', entryType:'file', content, blobId, commitSha:SHA,gitTreeEntry:{path:q.path,mode:'100644',blobId,commitSha:SHA}}, ...state.filePatch}; }};
   const draftPort = {async call(action, input, token) { assert.equal(action,'list'); assert.equal(input,null); assert.equal(token,TOKEN); state.draftCount++; return {schemaVersion:1, qualification:'OWNER_PRIVATE_DRAFTS', drafts:state.drafts}; }};
   const resourceReader = {async read(q) { return {qualification:'INDEPENDENT_CONFIGURATION_READ', projectId:q.projectId, repositoryId:q.repositoryId, repositoryNumericId:q.repositoryNumericId, ref:q.ref, baselineSha:q.baselineSha, target:q.target, readAt:state.clock, ...state.resourcePatch}; }};
   const policy = () => ({qualification:'EXACT_PRIVATE_PROJECT_REGISTRATION_POLICY', ownerSubject:OWNER, approvalRef:'synthetic-approval', expiresAt:NOW + 60000, target:Object.fromEntries(['draftId','draftRevision','projectId','repositoryId','repositoryNumericId','ref','baselineSha','expectedRegistryDigest','expectedIndexDigest','files','resources'].map(k=>[k,request[k]]))});
@@ -166,7 +166,68 @@ test('reusing a request ID with a different revision binding refuses an idempote
   const f=fixture(); assert.equal((await f.server().handle(f.req())).status,200); f.request.expectedRegistryDigest=f.writer.inspect().digest; assert.equal((await f.server().handle(f.req())).body.error,'REGISTRATION_REPLAY_CONFLICT'); assert.equal(f.writer.inspect().receipts.length,1);
 });
 test('duplicate project and case-insensitive repository identities cannot be overwritten', async () => {
-  for(const suffix of ['\nproject_id: SYNTHETIC_NEW\n','\ngithub: https://github.com/synthetic/NEW-PROJECT.git\n']) {const f=fixture(), text=REGISTRY+suffix; f.request.expectedRegistryDigest=contentDigest(text); const writer=createLocalProjectRegistryWriter({registryText:text,memoryIndexText:INDEX,now:()=>NOW}); assert.equal((await f.server({writer}).handle(f.req())).body.error,'REGISTRATION_TARGET_CONFLICT'); assert.equal(writer.inspect().registryText,text);}
+  for(const suffix of ['\nproject_id: SYNTHETIC_NEW\n','\ngithub: https://github.com/synthetic/NEW-PROJECT.git\n','\nrepository_numeric_id: 12345\n']) {const f=fixture(), text=REGISTRY+suffix; f.request.expectedRegistryDigest=contentDigest(text); const writer=createLocalProjectRegistryWriter({registryText:text,memoryIndexText:INDEX,now:()=>NOW}); const before=writer.inspect(); assert.equal((await f.server({writer}).handle(f.req())).body.error,'REGISTRATION_TARGET_CONFLICT'); assert.deepEqual(writer.inspect(),before);}
+});
+test('stable repository numeric ID prevents a second import under a renamed repo and different project', async () => {
+  const f=fixture(); assert.equal((await f.server().handle(f.req())).status,200);
+  const g=fixture({project:{projectId:'RENAMED_PROJECT',repositoryId:'Synthetic/renamed-repo'}}), before=f.writer.inspect();
+  g.request.requestId='renamed-request'; g.request.expectedRegistryDigest=before.digest; g.request.expectedIndexDigest=before.indexDigest;
+  const reply=await g.server({writer:f.writer}).handle(g.req()); assert.equal(reply.body.error,'REGISTRATION_TARGET_CONFLICT'); assert.deepEqual(f.writer.inspect(),before);
+});
+test('a name sanitized to empty falls back to project ID and remains discoverable through the actual projection', async () => {
+  const f=fixture({project:{name:'###'}}); assert.equal((await f.server().handle(f.req())).status,200);
+  const root=await fs.mkdtemp(path.join(os.tmpdir(),'mc-name-fallback-'));
+  try {
+    const snapshot=f.writer.inspect(); await fs.writeFile(path.join(root,'PROJECT_REGISTRY_V1.0.md'),snapshot.registryText); await fs.writeFile(path.join(root,'MEMORY_INDEX.md'),snapshot.memoryIndexText);
+    for(const [file,content] of Object.entries(snapshot.memoryFiles)){await fs.mkdir(path.dirname(path.join(root,file)),{recursive:true});await fs.writeFile(path.join(root,file),content);}
+    await fs.mkdir(path.join(root,'HANDOFF/HISTORY'),{recursive:true});await fs.writeFile(path.join(root,'HANDOFF/LATEST.md'),'# Existing synthetic handoff\nProject: EXISTING_PROJECT\nStatus: UNKNOWN\n');
+    const registry=await loadRegistry(root); const item=registry.production.find(p=>p.id==='SYNTHETIC_NEW'); assert.equal(item.name,'SYNTHETIC_NEW'); assert.equal(item.github,'Synthetic/new-project'); assert.equal(item.storedHead,SHA);
+    const projection=await buildProjection(root,{projectUrlMetadata:{projects:[]},reconciliationMetadata:{projects:{}}}); const p=projection.projects.find(p=>p.id==='SYNTHETIC_NEW'); assert.equal(p.where.repository.value,'Synthetic/new-project'); assert.equal(p.where.storedCommit.value,SHA);
+  } finally {await fs.rm(root,{recursive:true,force:true});}
+});
+function treeReaderFixture(mutate=()=>{}) {
+  const f=fixture(), urls=[], rootSha='c'.repeat(40), docsSha='d'.repeat(40), controlSha='e'.repeat(40);
+  const reader=createProjectRegistrationRepositoryReader({credential:'synthetic-read-credential',repositoryId:f.request.repositoryId,ref:f.request.ref,fetchImpl:async(target)=>{
+    const u=new URL(target);urls.push(u.pathname); let data;
+    if(u.pathname==='/repos/Synthetic/new-project') data=f.state.repository;
+    else if(u.pathname.includes('/git/ref/')) data={object:{type:'commit',sha:SHA}};
+    else if(u.pathname.includes('/git/commits/')) data={sha:SHA,tree:{sha:rootSha}};
+    else if(u.pathname.includes('/git/trees/')) {
+      const treeSha=u.pathname.split('/').at(-1), directory=treeSha===docsSha?'docs/':treeSha===controlSha?'.mission-control/':'';
+      const entries=REGISTRATION_FILES.filter(p=>p.startsWith(directory)&&!p.slice(directory.length).includes('/')).map(p=>({path:p.slice(directory.length),mode:'100644',type:'blob',sha:blob(f.state.contents[p])}));
+      if(!directory)entries.push({path:'docs',mode:'040000',type:'tree',sha:docsSha},{path:'.mission-control',mode:'040000',type:'tree',sha:controlSha}); data={sha:treeSha,truncated:false,tree:entries};
+    } else if(u.pathname.includes('/contents/')) { const p=u.pathname.split('/contents/')[1], content=f.state.contents[p]; data={type:'file',path:p,size:Buffer.byteLength(content),encoding:'base64',content:Buffer.from(content).toString('base64'),sha:blob(content)}; }
+    else throw Error('UNEXPECTED_PRIVATE_TARGET');
+    mutate(u,data);return new Response(JSON.stringify(data));
+  }}); return {f,reader,urls};
+}
+test('Git tree symlink and submodule entries are rejected before dereferenced PRD bytes can be requested', async () => {
+  for(const mode of ['120000','160000']) {
+    const {f,reader,urls}=treeReaderFixture((u,d)=>{if(u.pathname.endsWith('/git/trees/'+'c'.repeat(40))){const p=d.tree.find(e=>e.path==='PRD.md');p.mode=mode;p.type=mode==='160000'?'commit':'blob';}});
+    const before=f.writer.inspect(), r=await f.server({repositoryReader:reader}).handle(f.req());assert.equal(r.body.error,'REGISTRATION_GIT_ENTRY_INVALID');assert(!urls.some(u=>u.endsWith('/contents/PRD.md')));assert.deepEqual(f.writer.inspect(),before);
+  }
+});
+test('symlink ancestors, truncated or duplicate trees and foreign commit/tree IDs are refused without unexpected reads', async () => {
+  for(const mutate of [
+    (u,d)=>{if(u.pathname.includes('/git/trees/')){const e=d.tree.find(e=>e.path==='docs');if(e){e.mode='120000';e.type='blob';}}},
+    (u,d)=>{if(u.pathname.includes('/git/trees/'))d.truncated=true;},
+    (u,d)=>{if(u.pathname.includes('/git/trees/'))d.tree.push({...d.tree[0]});},
+    (u,d)=>{if(u.pathname.includes('/git/commits/'))d.sha='b'.repeat(40);},
+    (u,d)=>{if(u.pathname.includes('/git/trees/'))d.sha='b'.repeat(40);}
+  ]) {const {f,reader,urls}=treeReaderFixture(mutate);assert.equal((await f.server({repositoryReader:reader}).handle(f.req())).body.error,'REGISTRATION_GIT_ENTRY_INVALID');assert.equal(f.writer.inspect().receipts.length,0);assert(!urls.some(u=>/\/contents\/.*(?:\.\.\/|unexpected)/.test(u)));}
+});
+test('Contents path/blob disagreement with the proven tree cannot issue a receipt', async () => {
+  for(const patch of [{path:'unexpected/target'},{sha:'b'.repeat(40)},{submodule_git_url:'https://unexpected.invalid/'},{target:'unexpected/target'}]) {
+    const {f,reader,urls}=treeReaderFixture((u,d)=>{if(u.pathname.endsWith('/contents/PRD.md'))Object.assign(d,patch);}); assert.equal((await f.server({repositoryReader:reader}).handle(f.req())).body.error,'REGISTRATION_GIT_ENTRY_INVALID');assert.equal(f.writer.inspect().receipts.length,0);assert(!urls.some(u=>u.includes('unexpected')));
+  }
+});
+test('only the seven exact paths are traversable and regular executable mode remains allowed', async () => {
+  const {f,reader,urls}=treeReaderFixture((u,d)=>{if(u.pathname.includes('/git/trees/'))for(const e of d.tree)if(e.type==='blob')e.mode='100755';});
+  await assert.rejects(reader.readFile({repositoryId:f.request.repositoryId,commitSha:SHA,path:'docs/../PRD.md',maxBytes:98304}),/REGISTRATION_SCOPE_DENIED/);assert.equal(urls.length,0);
+  const reply=await f.server({repositoryReader:reader}).handle(f.req());assert.equal(reply.status,200);assert.equal(reply.body.receipt.files['PRD.md'].gitMode,'100755');
+});
+test('a receipt requires pinned tree evidence matching each canonical path, blob, mode and commit', async () => {
+  for(const patch of [{path:'README.md'},{mode:'120000'},{commitSha:'b'.repeat(40)},{blobId:'b'.repeat(40)}]) {const f=fixture();f.state.filePatch={gitTreeEntry:{path:'HANDOFF.md',mode:'100644',commitSha:SHA,blobId:blob(f.state.contents['HANDOFF.md']),...patch}};assert.equal((await f.server().handle(f.req())).body.error,'REGISTRATION_GIT_ENTRY_INVALID');assert.equal(f.writer.inspect().receipts.length,0);}
 });
 test('serialized receipts and client-forged receipts cannot be used as writer authority', async () => {
   const f=fixture(), r=await f.server().handle(f.req()), receipt=r.body.receipt; const other=createLocalProjectRegistryWriter({registryText:REGISTRY,memoryIndexText:INDEX,now:()=>NOW}); await assert.rejects(other.commit({receipt,expectedDigest:contentDigest(REGISTRY),expectedIndexDigest:contentDigest(INDEX),authorize:async()=>{}}),/REGISTRATION_RECEIPT_NOT_SERVER_ISSUED/); assert.equal(other.inspect().receipts.length,0);
@@ -191,11 +252,18 @@ test('scoped GitHub reader only issues supported reads to the exact repo/ref/fil
     const u=new URL(target); requests.push({u,options}); assert.equal(u.origin,'https://api.github.com'); assert.equal(options.redirect,'error'); assert(!options.method || options.method==='GET');
     if(u.pathname==='/repos/Synthetic/new-project')return new Response(JSON.stringify(f.state.repository));
     if(u.pathname.includes('/git/ref/'))return new Response(JSON.stringify({object:{type:'commit',sha:SHA}}));
+    if(u.pathname.includes('/git/commits/'))return new Response(JSON.stringify({sha:SHA,tree:{sha:'c'.repeat(40)}}));
+    if(u.pathname.includes('/git/trees/')){
+      const treeSha=u.pathname.split('/').at(-1),directory=treeSha==='d'.repeat(40)?'docs/':treeSha==='e'.repeat(40)?'.mission-control/':'';
+      const entries=REGISTRATION_FILES.filter(p=>p.startsWith(directory)&&!p.slice(directory.length).includes('/')).map(p=>({path:p.slice(directory.length),mode:'100644',type:'blob',sha:blob(f.state.contents[p])}));
+      if(!directory)entries.push({path:'docs',mode:'040000',type:'tree',sha:'d'.repeat(40)},{path:'.mission-control',mode:'040000',type:'tree',sha:'e'.repeat(40)});
+      return new Response(JSON.stringify({sha:treeSha,truncated:false,tree:entries}));
+    }
     const p=u.pathname.split('/contents/')[1], content=f.state.contents[p]; assert.equal(u.searchParams.get('ref'),SHA);
-    return new Response(JSON.stringify({type:'file',size:Buffer.byteLength(content),encoding:'base64',content:Buffer.from(content).toString('base64'),sha:blob(content),download_url:'https://arbitrary.invalid/private'}));
+    return new Response(JSON.stringify({type:'file',path:p,size:Buffer.byteLength(content),encoding:'base64',content:Buffer.from(content).toString('base64'),sha:blob(content),download_url:'https://arbitrary.invalid/private'}));
   }});
-  assert.equal((await f.server({repositoryReader:reader}).handle(f.req())).status,200); assert.equal(requests.length,13);
-  await assert.rejects(reader.inspectIdentity({repositoryId:'Synthetic/foreign'})); await assert.rejects(reader.resolveRevision({repositoryId:f.request.repositoryId,ref:'other'})); await assert.rejects(reader.readFile({repositoryId:f.request.repositoryId,commitSha:SHA,path:'private.env',maxBytes:98304})); assert.equal(requests.length,13);
+  assert.equal((await f.server({repositoryReader:reader}).handle(f.req())).status,200); assert.equal(requests.length,17);
+  await assert.rejects(reader.inspectIdentity({repositoryId:'Synthetic/foreign'})); await assert.rejects(reader.resolveRevision({repositoryId:f.request.repositoryId,ref:'other'})); await assert.rejects(reader.readFile({repositoryId:f.request.repositoryId,commitSha:SHA,path:'private.env',maxBytes:98304})); assert.equal(requests.length,17);
 });
 test('custom source branch stores a baseline without claiming a main or Production observation', async () => {
   const f=fixture({project:{branch:'development'}}); assert.equal((await f.server().handle(f.req())).status,200); assert.match(f.writer.inspect().registryText,/github_main_head: null/); assert.match(f.writer.inspect().registryText,/production_source_sha: null/);

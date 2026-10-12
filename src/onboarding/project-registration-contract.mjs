@@ -89,9 +89,10 @@ export function verifyRegistrationObservation({request, draft, repository, headB
   for (const path of REGISTRATION_FILES) {
     const f = files[path];
     requireValue(f?.status === 'FOUND' && f.entryType === 'file' && f.commitSha === r.baselineSha && sha(f.blobId) && typeof f.content === 'string' && Buffer.byteLength(f.content) > 0 && Buffer.byteLength(f.content) <= 98304 && contentDigest(f.content) === r.files[path], 'REGISTRATION_FILE_MISMATCH', 409);
+    requireValue(exact(f.gitTreeEntry, ['path', 'mode', 'blobId', 'commitSha']) && f.gitTreeEntry.path === path && f.gitTreeEntry.commitSha === r.baselineSha && f.gitTreeEntry.blobId === f.blobId && ['100644', '100755'].includes(f.gitTreeEntry.mode), 'REGISTRATION_GIT_ENTRY_INVALID', 409);
     const bytes = Buffer.from(f.content);
     requireValue(createHash('sha1').update(Buffer.concat([Buffer.from('blob ' + bytes.length + '\0'), bytes])).digest('hex') === f.blobId, 'REGISTRATION_BLOB_MISMATCH', 409);
-    evidence[path] = {sha256:r.files[path], blobId:f.blobId};
+    evidence[path] = {sha256:r.files[path], blobId:f.blobId, gitMode:f.gitTreeEntry.mode};
   }
   let profile;
   try {
