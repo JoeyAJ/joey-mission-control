@@ -1,0 +1,32 @@
+{
+  "pass": true,
+  "officialSDK": true,
+  "syntheticOnly": true,
+  "actualEmailSent": 0,
+  "cases": [
+    {
+      "mode": "denied",
+      "pass": true,
+      "newerSessionPreserved": true,
+      "sharedCustodyRemovals": 0,
+      "revocations": 0,
+      "unexpectedRequests": 0
+    },
+    {
+      "mode": "disposed",
+      "pass": true,
+      "newerSessionPreserved": true,
+      "sharedCustodyRemovals": 0,
+      "revocations": 0,
+      "unexpectedRequests": 0
+    },
+    {
+      "mode": "stale-success",
+      "pass": true,
+      "newerSessionPreserved": true,
+      "sharedCustodyRemovals": 0,
+      "revocations": 0,
+      "unexpectedRequests": 0
+    }
+  ]
+}

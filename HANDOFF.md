@@ -1,19 +1,19 @@
-# Current cloud recovery and Magic Link checkpoint — 2026-10-12
+# Current Owner callback custody race checkpoint — 2026-10-12
 
 Project: MISSION_CONTROL
-Timestamp: 2026-10-12T01:35:03.427Z
-Task: Recover hierarchy and guarded explicit Owner Magic Link
-Status: LOCAL_VERIFIED_CALLBACK_OFF_PREVIEW_PUBLICATION
+Timestamp: 2026-10-12T02:06:37.331Z
+Task: Prevent late callback cleanup from signing out newer Owner session
+Status: LOCAL_VERIFIED_PENDING_PUBLICATION
 Last Developer: Codex
 Executed by: Codex
 Actual Model: UNKNOWN
-Baseline: d9a7beb18b8e6c0fd8d31db5ef6f6a25fa2e37cb
+Baseline: bca65762223cf6aab2538c13ad5c4be27c860830
 
-Private archive SHA/paths/31 hashes verified; exact f322232/9be5430 lineage recovered. Final966 tests/build/validate/check PASS, forbidden attempts0. Current executor hierarchy focus12/remainder24 and official SDK Magic Link27 browser cases PASS, synthetic only; prior files/motion/follow/delivery24 stay dated evidence. No Mac use.
+Reviewer found A late failure/disposal could signOut B in shared SDK custody. Both verification stages now isolated; checked SDK session enters existing custody once under a callback lock and unchanged-snapshot check. No callback shared logout/removal; late denied/disposed/success A cannot erase or replace B. Existing Owner/live-session/member/AAL/TOTP checks retained. Focused12 and pinned SDK two-page race3/retained callback27 PASS; old bca6576 probe RED with B custody removed. Final968/build/validate/static safety PASS; forbidden attempts0.
 
-Callback and manual flow prepared with activation false; numeric OTP false. Exact callback allowlist approved00:11UTC; no settings/mail/credentials changes. Ordinary served HTTPS CONNECT403 before app, no bypass. Publish only fixed Preview; identity follows in existing runs37/38. Productiondpl_5GgJ8LhD4Ec73RGz9CEFe1ppZQnh/8b4945b unchanged.
+Activation still OFF while repaired callback is tested/published. Parent verified disabled callback01:51UTC, no mail/settings. Same approved callback, recovery preserved, numeric OTP false. Continue existing run38, no new run/capacity/history change. Parent real Email/TOTP acceptance remains pending. Production dpl_5GgJ8LhD4Ec73RGz9CEFe1ppZQnh/8b4945b unchanged; no automatic mail/Auth/SMTP/MFA/RLS/credentials change. Finalization live OFF, review executionAuthorized:false.
 
-Evidence: docs/MC_CLOUD_RECOVERY_AND_MAGIC_LINK_20261012.md. Parent must verify served callback before same run38 activation and real Email/TOTP acceptance. No new run/capacity/history change; Owner/session/member/TOTP/drafts/CAS/scope guards retained, review executionAuthorized:false and finalization live OFF.
+Evidence: docs/MC_OWNER_EMAIL_CALLBACK_CUSTODY_RACE_20261012.md. Next: verified exact fixed OFF Preview deployment, then approved manual-flow activation and final Preview verification. Ordinary cloud HTTPS CONNECT403 remains, no bypass.
 
 # Dated prior stage history
 

@@ -25,9 +25,9 @@ export function createOwnerEmailLoginRequest({policy,owner,createClient,location
   }catch(error){throw fail(['EMAIL_LOGIN_RATE_LIMITED','EMAIL_LOGIN_INVALIDATED'].includes(error?.message)?error.message:'EMAIL_LOGIN_REQUEST_UNCONFIRMED');}finally{busy=false;}
  },dispose(){closed=true;client?.auth.stopAutoRefresh();}});
 }
-export function createOwnerEmailLoginCallback({policy,owner,createClient,location=globalThis.location,history=globalThis.history,now=Date.now}={}){
+export function createOwnerEmailLoginCallback({policy,owner,createClient,location=globalThis.location,history=globalThis.history,now=Date.now,storage,sessionLock}={}){
  // Capture/scrub before constructing any SDK client or making any network request.
- const captured=captureOwnerEmailLogin({location,history});let credentials=captured.credentials,closed=false,busy=false,status=captured.status,isolated=null,persistent=null;
+ const captured=captureOwnerEmailLogin({location,history});let credentials=captured.credentials,closed=false,busy=false,status=captured.status,isolated=null,checked=null;
  const configured=emailLoginPolicyValid(policy,owner)&&policy.enabled===true&&policy.callbackDeploymentVerified===true&&location?.origin===owner.stageOrigin&&location?.pathname===ownerEmailLoginPath&&typeof createClient==='function';
  if(configured){owner=Object.freeze({...owner});policy=Object.freeze({...policy});}
  if(!configured){if(credentials){credentials.access_token='';credentials.refresh_token='';}credentials=null;status='UNCONFIGURED';}
@@ -35,10 +35,23 @@ export function createOwnerEmailLoginCallback({policy,owner,createClient,locatio
  async function inspect(client){current();const user=await client.auth.getUser();current();if(user.error||user.data?.user?.id!==owner.ownerSubject||user.data?.user?.is_anonymous===true)throw fail('OWNER_DENIED');const assurance=await client.auth.mfa.getAuthenticatorAssuranceLevel();current();if(assurance.error)throw fail('SESSION_UNCONFIRMED');const r=await client.rpc('mc_owner_session',{project:'NEXAEON'});current();const v=r.data;if(r.error||!v||v.subject!==owner.ownerSubject||v.role!=='OWNER'||v.projectId!=='NEXAEON'||v.sessionActive!==true||v.memberActive!==true||!['aal1','aal2'].includes(v.aal)||v.aal!==assurance.data?.currentLevel||!Number.isSafeInteger(v.expiresAt)||v.expiresAt<=now())throw fail('OWNER_DENIED');return v;}
  return Object.freeze({configured,view:()=>safe(closed?'CLOSED':status),async complete(){
   if(!configured||closed||busy||!credentials)return safe(status);busy=true;const tokens={...credentials};credentials.access_token='';credentials.refresh_token='';credentials=null;status='CHECKING';
-  try{isolated=createClient(owner.origin,owner.publishableKey,{auth:{persistSession:false,autoRefreshToken:false,detectSessionInUrl:false,flowType:'implicit',storageKey:'mc-owner-email-callback-isolated-v1'}});const set=await isolated.auth.setSession(tokens);current();if(set.error)throw fail('INVALID_LINK');await inspect(isolated);current();
-   // Only a remotely checked, live, member Owner session enters the already approved SDK custody.
-   persistent=createClient(owner.origin,owner.publishableKey,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:false,storageKey:'mc-owner-session-v1'}});const accepted=await persistent.auth.setSession(tokens);current();if(accepted.error)throw fail('SESSION_UNCONFIRMED');const verified=await inspect(persistent);current();status=verified.aal==='aal2'?'OWNER_SESSION_RECHECK_REQUIRED':'EXISTING_TOTP_REQUIRED';return safe(status);
-  }catch(error){status=['OWNER_DENIED','INVALID_LINK','EMAIL_LOGIN_INVALIDATED'].includes(error?.message)?error.message:'SESSION_UNCONFIRMED';if(persistent)try{await persistent.auth.signOut({scope:'local'});}catch{}return safe(status);
-  }finally{tokens.access_token='';tokens.refresh_token='';busy=false;isolated?.auth.stopAutoRefresh();}
- },dispose(){closed=true;if(credentials){credentials.access_token='';credentials.refresh_token='';credentials=null;}isolated?.auth.stopAutoRefresh();persistent?.auth.stopAutoRefresh();}});
+  try{
+   // Read the custody revision before any awaits. All callbacks serialize their one commit.
+   const custody=storage||globalThis.localStorage,key='mc-owner-session-v1',before=custody.getItem(key);
+   if(before!==null&&typeof before!=='string')throw fail('SESSION_UNCONFIRMED');
+   const commit=sessionLock||(operation=>{const locks=globalThis.navigator?.locks;if(typeof locks?.request!=='function')throw fail('SESSION_UNCONFIRMED');return locks.request('mc-owner-email-login-commit-v1',{mode:'exclusive'},operation);});
+   isolated=createClient(owner.origin,owner.publishableKey,{auth:{persistSession:false,autoRefreshToken:false,detectSessionInUrl:false,flowType:'implicit',storageKey:'mc-owner-email-callback-isolated-v1'}});const set=await isolated.auth.setSession(tokens);current();if(set.error)throw fail('INVALID_LINK');await inspect(isolated);current();
+   // The second check is quarantined too: no shared writes, broadcast or revocation on failure.
+   const firstSession=set.data?.session;if(!firstSession)throw fail('SESSION_UNCONFIRMED');
+   checked=createClient(owner.origin,owner.publishableKey,{auth:{persistSession:false,autoRefreshToken:false,detectSessionInUrl:false,storageKey:'mc-owner-email-callback-checked-v1'}});
+   const accepted=await checked.auth.setSession({access_token:firstSession.access_token,refresh_token:firstSession.refresh_token});current();if(accepted.error)throw fail('SESSION_UNCONFIRMED');const verified=await inspect(checked);current();
+   const session=accepted.data?.session,validToken=v=>typeof v==='string'&&v.length>0&&v.length<=8192&&/^[A-Za-z0-9._~-]+$/.test(v);
+   if(!session||!validToken(session.access_token)||!validToken(session.refresh_token)||session.user?.id!==owner.ownerSubject||session.user?.is_anonymous===true||!Number.isSafeInteger(session.expires_at)||session.expires_at*1000<=now())throw fail('SESSION_UNCONFIRMED');
+   const serialized=JSON.stringify(session);if(serialized.length>65536)throw fail('SESSION_UNCONFIRMED');
+   await commit(()=>{current();if(custody.getItem(key)!==before||verified.expiresAt<=now()||session.expires_at*1000<=now())throw fail('EMAIL_LOGIN_INVALIDATED');
+    // One synchronous write in existing SDK format/custody; there is no post-write await or cleanup.
+    custody.setItem(key,serialized);status=verified.aal==='aal2'?'OWNER_SESSION_RECHECK_REQUIRED':'EXISTING_TOTP_REQUIRED';});return safe(status);
+  }catch(error){status=['OWNER_DENIED','INVALID_LINK','EMAIL_LOGIN_INVALIDATED'].includes(error?.message)?error.message:'SESSION_UNCONFIRMED';return safe(status);
+  }finally{tokens.access_token='';tokens.refresh_token='';busy=false;isolated?.auth.stopAutoRefresh();checked?.auth.stopAutoRefresh();}
+ },dispose(){closed=true;if(credentials){credentials.access_token='';credentials.refresh_token='';credentials=null;}isolated?.auth.stopAutoRefresh();checked?.auth.stopAutoRefresh();}});
 }
