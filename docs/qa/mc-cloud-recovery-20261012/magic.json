@@ -1,0 +1,225 @@
+{
+  "pass": true,
+  "officialSDK": true,
+  "syntheticOnly": true,
+  "external": 0,
+  "realEmailSent": 0,
+  "cases": [
+    {
+      "width": 320,
+      "mode": "normal",
+      "pass": true,
+      "requests": 1,
+      "mfa": 1,
+      "authReads": 17
+    },
+    {
+      "width": 320,
+      "mode": "aal2",
+      "pass": true,
+      "requests": 1,
+      "mfa": 0,
+      "authReads": 12
+    },
+    {
+      "width": 320,
+      "mode": "wrong-owner",
+      "pass": true,
+      "requests": 0,
+      "mfa": 0,
+      "authReads": 2
+    },
+    {
+      "width": 320,
+      "mode": "anonymous",
+      "pass": true,
+      "requests": 0,
+      "mfa": 0,
+      "authReads": 2
+    },
+    {
+      "width": 320,
+      "mode": "inactive",
+      "pass": true,
+      "requests": 0,
+      "mfa": 0,
+      "authReads": 2
+    },
+    {
+      "width": 320,
+      "mode": "revoked",
+      "pass": true,
+      "requests": 0,
+      "mfa": 0,
+      "authReads": 2
+    },
+    {
+      "width": 320,
+      "mode": "expired",
+      "pass": true,
+      "requests": 0,
+      "mfa": 0,
+      "authReads": 2
+    },
+    {
+      "width": 320,
+      "mode": "recovery",
+      "pass": true,
+      "requests": 0,
+      "mfa": 0,
+      "authReads": 0
+    },
+    {
+      "width": 320,
+      "mode": "query",
+      "pass": true,
+      "requests": 0,
+      "mfa": 0,
+      "authReads": 0
+    },
+    {
+      "width": 390,
+      "mode": "normal",
+      "pass": true,
+      "requests": 1,
+      "mfa": 1,
+      "authReads": 17
+    },
+    {
+      "width": 390,
+      "mode": "aal2",
+      "pass": true,
+      "requests": 1,
+      "mfa": 0,
+      "authReads": 12
+    },
+    {
+      "width": 390,
+      "mode": "wrong-owner",
+      "pass": true,
+      "requests": 0,
+      "mfa": 0,
+      "authReads": 2
+    },
+    {
+      "width": 390,
+      "mode": "anonymous",
+      "pass": true,
+      "requests": 0,
+      "mfa": 0,
+      "authReads": 2
+    },
+    {
+      "width": 390,
+      "mode": "inactive",
+      "pass": true,
+      "requests": 0,
+      "mfa": 0,
+      "authReads": 2
+    },
+    {
+      "width": 390,
+      "mode": "revoked",
+      "pass": true,
+      "requests": 0,
+      "mfa": 0,
+      "authReads": 2
+    },
+    {
+      "width": 390,
+      "mode": "expired",
+      "pass": true,
+      "requests": 0,
+      "mfa": 0,
+      "authReads": 2
+    },
+    {
+      "width": 390,
+      "mode": "recovery",
+      "pass": true,
+      "requests": 0,
+      "mfa": 0,
+      "authReads": 0
+    },
+    {
+      "width": 390,
+      "mode": "query",
+      "pass": true,
+      "requests": 0,
+      "mfa": 0,
+      "authReads": 0
+    },
+    {
+      "width": 1440,
+      "mode": "normal",
+      "pass": true,
+      "requests": 1,
+      "mfa": 1,
+      "authReads": 17
+    },
+    {
+      "width": 1440,
+      "mode": "aal2",
+      "pass": true,
+      "requests": 1,
+      "mfa": 0,
+      "authReads": 12
+    },
+    {
+      "width": 1440,
+      "mode": "wrong-owner",
+      "pass": true,
+      "requests": 0,
+      "mfa": 0,
+      "authReads": 2
+    },
+    {
+      "width": 1440,
+      "mode": "anonymous",
+      "pass": true,
+      "requests": 0,
+      "mfa": 0,
+      "authReads": 2
+    },
+    {
+      "width": 1440,
+      "mode": "inactive",
+      "pass": true,
+      "requests": 0,
+      "mfa": 0,
+      "authReads": 2
+    },
+    {
+      "width": 1440,
+      "mode": "revoked",
+      "pass": true,
+      "requests": 0,
+      "mfa": 0,
+      "authReads": 2
+    },
+    {
+      "width": 1440,
+      "mode": "expired",
+      "pass": true,
+      "requests": 0,
+      "mfa": 0,
+      "authReads": 2
+    },
+    {
+      "width": 1440,
+      "mode": "recovery",
+      "pass": true,
+      "requests": 0,
+      "mfa": 0,
+      "authReads": 0
+    },
+    {
+      "width": 1440,
+      "mode": "query",
+      "pass": true,
+      "requests": 0,
+      "mfa": 0,
+      "authReads": 0
+    }
+  ]
+}

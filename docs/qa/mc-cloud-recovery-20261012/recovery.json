@@ -1,0 +1,36 @@
+{
+  "checkedAt": "2026-10-12T01:31:25.800006+00:00",
+  "privateRepository": "JoeyAJ/joey-mission-control",
+  "transferBlobSha": "662eb67e2e7f7b1a633915f86ab0029018c6b425",
+  "archiveBytes": 470676,
+  "archiveSha256": "9a4f249feda4984a99c3e3516bc6b997ef96147f4af185dae900c061bde583e2",
+  "safeArchivePaths": true,
+  "verifiedManifestFiles": 31,
+  "restoredExactCommits": [
+    "f3222324bf3cc6c14110abd0c109692e08e08323",
+    "9be543021c7d071371114ef70f46f24248619b76"
+  ],
+  "currentExecutorBrowserCases": 51,
+  "magicLinkBrowserCases": 27,
+  "hierarchyFocusCases": 12,
+  "hierarchyRemainingCases": 24,
+  "allUpstreamsSynthetic": true,
+  "actualEmailSent": 0,
+  "authSettingsChanged": false,
+  "numericOtpEnabled": false,
+  "magicLinkEnabled": false,
+  "liveFinalizationEnabled": false,
+  "reportsExistingRunsOnly": [
+    37,
+    38
+  ],
+  "productionDeployment": "dpl_5GgJ8LhD4Ec73RGz9CEFe1ppZQnh",
+  "productionSha": "8b4945b16a0b23f2e72033aa976fa34f94eabec0",
+  "finalPortableTests": 966,
+  "build": "PASS",
+  "validate": "PASS",
+  "staticSafety": "PASS",
+  "forbiddenAttempts": 0,
+  "ownedExitedChildrenReaped": 760,
+  "servedCallbackStatus": "BLOCKED_CONNECT_403_BEFORE_APP"
+}

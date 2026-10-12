@@ -1,19 +1,19 @@
-# Current hierarchy integration checkpoint — 2026-10-12
+# Current cloud recovery and Magic Link checkpoint — 2026-10-12
 
 Project: MISSION_CONTROL
-Timestamp: 2026-10-12T00:22:55.070Z
-Task: Shared project/Agent/state/task/handoff context
-Status: LOCAL_VERIFIED_PENDING_PUBLICATION
+Timestamp: 2026-10-12T01:35:03.427Z
+Task: Recover hierarchy and guarded explicit Owner Magic Link
+Status: LOCAL_VERIFIED_CALLBACK_OFF_PREVIEW_PUBLICATION
 Last Developer: Codex
 Executed by: Codex
 Actual Model: UNKNOWN
 Baseline: d9a7beb18b8e6c0fd8d31db5ef6f6a25fa2e37cb
 
-Reviewed3e8fd2b eight-file slice cherry-picked asf322232; latest Owner bundle rebuilt. Focus/candidate12 + files/motion/follow/delivery24 browser cases, focused68/portable956/build/validate/check PASS. Remaining disclosure/privacy/simple/mobile/sites blocked by thread/process error11 and renderer failure. No product regression assertion established. Canonical remote/fixed Preview stayd9a7beb; no push/deploy.
+Private archive SHA/paths/31 hashes verified; exact f322232/9be5430 lineage recovered. Final966 tests/build/validate/check PASS, forbidden attempts0. Current executor hierarchy focus12/remainder24 and official SDK Magic Link27 browser cases PASS, synthetic only; prior files/motion/follow/delivery24 stay dated evidence. No Mac use.
 
-Evidence: docs/MC_WORKSPACE_HIERARCHY_INTEGRATION_20261011.md and QA receipt. Core repair/Source/Auth/SQL/inactive OTP/mobile/nav guards retained. Only own-child reaper and optional fresh single-process QA used; PID1/global limits unchanged, sudo absent. Actual Owner/mail/actions0.
+Callback and manual flow prepared with activation false; numeric OTP false. Exact callback allowlist approved00:11UTC; no settings/mail/credentials changes. Ordinary served HTTPS CONNECT403 before app, no bypass. Publish only fixed Preview; identity follows in existing runs37/38. Productiondpl_5GgJ8LhD4Ec73RGz9CEFe1ppZQnh/8b4945b unchanged.
 
-Next Action: recover browser-capable executor and resume same integration run37/40; no new run/history removal/enlargement. Resolve remaining checks before release. Then dedicated owner-email-login.html/explicit Magic Link; exact callback addition approved+verified00:11UTC, no reapproval. Numeric OTP false; keep recovery/SiteURL/MFA/drafts. No automatic mail/new settings/credentials/permissions/Production/dispatch/AWS; served CONNECT403 not bypassed.
+Evidence: docs/MC_CLOUD_RECOVERY_AND_MAGIC_LINK_20261012.md. Parent must verify served callback before same run38 activation and real Email/TOTP acceptance. No new run/capacity/history change; Owner/session/member/TOTP/drafts/CAS/scope guards retained, review executionAuthorized:false and finalization live OFF.
 
 # Dated prior stage history
 

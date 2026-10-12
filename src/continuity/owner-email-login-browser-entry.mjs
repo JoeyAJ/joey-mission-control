@@ -1,0 +1,10 @@
+import {createClient} from '@supabase/supabase-js';
+import {ownerAuthConfig} from '../../public/owner-auth-config.js';
+import {ownerEmailLoginConfig} from '../../public/owner-email-login-config.js';
+import {createOwnerEmailLoginCallback} from './owner-email-login.mjs';
+const callback=createOwnerEmailLoginCallback({policy:ownerEmailLoginConfig,owner:ownerAuthConfig,createClient}),root=document.querySelector('#owner-email-login-root'),title=document.createElement('h1'),status=document.createElement('p'),back=document.createElement('a');
+title.textContent='MC Email 登入';back.textContent='回到 MC，完成原有驗證器驗證';back.href=ownerAuthConfig.stageOrigin+'/#joey?owner=signin';back.hidden=true;root.append(title,status,back);
+const words={LINK_REQUIRED:'請由信箱中的登入連結開啟這一頁。',INVALID_LINK:'登入連結無效或已過期，請回到 MC 重新請求。',URL_SCRUB_FAILED:'無法安全完成登入，請關閉此頁。',UNCONFIGURED:'這個登入入口尚未準備完成。',CHECKING:'正在確認 Owner 登入…',OWNER_DENIED:'這次登入未通過 Owner／有效 session 確認。',SESSION_UNCONFIRMED:'目前無法確認登入，請回到 MC 再試。',EMAIL_LOGIN_INVALIDATED:'這次登入已取消。',EXISTING_TOTP_REQUIRED:'Owner Email 已確認；回到 MC 完成原有驗證器驗證。',OWNER_SESSION_RECHECK_REQUIRED:'Owner session 已確認；回到 MC 重新確認私人工作區。'};
+status.textContent=words[callback.view().status]||words.CHECKING;
+if(callback.configured&&callback.view().status==='CAPTURED')void callback.complete().then(view=>{status.textContent=words[view.status]||words.SESSION_UNCONFIRMED;back.hidden=!['EXISTING_TOTP_REQUIRED','OWNER_SESSION_RECHECK_REQUIRED'].includes(view.status);});
+window.addEventListener('pagehide',()=>callback.dispose());
