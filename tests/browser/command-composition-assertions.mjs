@@ -9,3 +9,8 @@ export async function assertCommandComposition(page,width){
  else assert(receipt.taskFont>=18);
  return receipt;
 }
+
+export async function assertToolbarBoundary(page){
+ const receipt=await page.evaluate(()=>{const box=n=>{const r=n.getBoundingClientRect();return {left:r.left,right:r.right,top:r.top,bottom:r.bottom,height:r.height};},head=document.querySelector('.command-workspace-head');return {viewport:innerWidth,head:box(head),focus:box(document.querySelector('.command-focus')),owner:box(document.querySelector('.command-owner-access')),children:[...head.children].filter(n=>n.getBoundingClientRect().height>0).map(box)};});
+ assert(receipt.head.right<=receipt.owner.left+1,JSON.stringify(receipt));assert(receipt.head.bottom<=receipt.focus.top+1,JSON.stringify(receipt));for(const child of receipt.children){assert(child.left>=receipt.head.left-1&&child.right<=receipt.head.right+1,JSON.stringify(receipt));assert(child.top>=receipt.head.top-1&&child.bottom<=receipt.head.bottom+1&&child.bottom<=receipt.focus.top+1,JSON.stringify(receipt));}return receipt;
+}

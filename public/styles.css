@@ -780,7 +780,7 @@ body[data-active-module=workspace] main{padding:16px}
 #workspace .command-focus{grid-area:focus}
 #workspace .command-layout{grid-area:stage}
 #workspace .command-source-bar{grid-area:status}
-#workspace .command-workspace-head{min-height:60px;padding:14px 20px;box-sizing:border-box}
+#workspace .command-workspace-head{height:auto;min-height:60px;padding:14px 20px;box-sizing:border-box}
 #workspace .command-workspace-head h3{font-size:21px;color:var(--mc-cyan);font-weight:600;letter-spacing:-.02em}
 #workspace .command-workspace-head button{min-height:40px;font-size:12px;border-radius:10px}
 #workspace .command-owner-access>summary{font-size:12px;min-height:44px}

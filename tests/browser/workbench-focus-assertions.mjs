@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import {assertCommandComposition} from './command-composition-assertions.mjs';
+import {assertCommandComposition,assertToolbarBoundary} from './command-composition-assertions.mjs';
 
 export async function runWorkbenchFocusQA({page,width,locale,state,ready,refresh,screens,projectId='MISSION_CONTROL',candidate=false,before=false}){
  const mobile=width<=768,detail=()=>page.locator('[data-run-workbench=detail]');
@@ -13,7 +13,7 @@ export async function runWorkbenchFocusQA({page,width,locale,state,ready,refresh
   assert.equal(await brief().getAttribute('data-selected-task-run'),'synthetic-live-fixture');
   assert.equal(await page.locator('[data-selected-task-summary=confirmed]').count(),1);
   assert.equal(await page.locator('[data-run-workbench=events] [data-selected-task-summary]').count(),0);
-  if(process.env.MC_COMPOSITION_QA)await assertCommandComposition(page,width);
+  if(process.env.MC_COMPOSITION_QA)await assertCommandComposition(page,width);if(process.env.MC_TOOLBAR_BOUNDARY_QA)await assertToolbarBoundary(page);
   if(process.env.MC_WORKSPACE_RAIL_QA){assert.equal(await page.locator('.run-agent-group').count(),3);assert((await page.locator('.run-agent-group[data-reported-agent="Synthetic Codex"]').innerText()).includes('Synthetic configuration'));assert((await page.locator('.run-latest-preview').innerText()).includes('Synthetic fixture declares development started'));assert.equal(await page.locator('.command-project-source-history').evaluate(n=>n.open),false);}
   if(candidate){assert((await brief().locator('.run-focus-scope').innerText()).includes('University'));assert.equal(await brief().locator('[data-delivery-evidence]').getAttribute('data-joey-acceptance'),'PENDING');}
   assert((await brief().locator('.run-focus-project').innerText()).includes(projectId==='JOEY_ASSET_SYSTEM'?'Joey':'Mission Control'));

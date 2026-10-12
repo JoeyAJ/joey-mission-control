@@ -1,0 +1,26 @@
+{
+  "pass": true,
+  "cases": [
+    {
+      "projectId": "MISSION_CONTROL",
+      "candidate": false,
+      "width": 872,
+      "locale": "en",
+      "pass": true,
+      "currentProjectActionVisible": true,
+      "oneSelectedOverview": true,
+      "linkedAgentTask": true,
+      "persistentAcrossMobilePanes": true,
+      "nativeKeyboardDisclosure": true,
+      "disclosureAndFocusAfterReread": true,
+      "blockerAlwaysVisible": true,
+      "datedStateQualified": true,
+      "emptyAndRefusalCleared": true,
+      "reducedMotion": false
+    }
+  ],
+  "external": 0,
+  "writes": 0,
+  "realOwnerAcceptance": false,
+  "browserResourceMode": "DEFAULT"
+}
