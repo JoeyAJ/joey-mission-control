@@ -73,7 +73,7 @@ export function renderCommandWorkspace(manifests,{doc=document,locale='zh-TW',re
  const w=workspaceWords(locale),el=(tag,value,cls)=>{const n=doc.createElement(tag);if(value)n.textContent=value;if(cls)n.className=cls;return n;},button=(label,fn,cls)=>{const b=el('button',label,cls||'button-glass');b.type='button';b.addEventListener('click',fn);return b;},safe=v=>safeWorkspaceText(localized(v,locale));
  const navigate=onNavigate;onNavigate=next=>navigate({...next,filterKind:next.filterKind??filterKind});
  const extras={},m=manifests.find(m=>m.project_id===context.project)||manifests[0];
- const root=el('section',null,'command-workspace liquid-glass');root.id='command-workspace';root.dataset.panel=panel;root.setAttribute('aria-label',w.title);
+ const root=el('section',null,'command-workspace liquid-glass');root.id='command-workspace';root.dataset.composition='command-center';root.dataset.panel=panel;root.setAttribute('aria-label',w.title);
  const head=el('header',null,'command-workspace-head');head.append(el('h3',w.title),el('small',w.candidate));const refresh=button(reading?w.reading:w.refresh,onRefresh);refresh.disabled=reading;refresh.dataset.commandRefresh='true';head.append(refresh,button(w.back,onBack));const ownerEntry=mountOwnerBrowserEntry({doc,locale,projectId:m?.project_id,track:context.track});root.append(head,ownerEntry);
  const boundary=el('details',null,'command-runtime');boundary.dataset.runtime='disconnected';boundary.append(el('summary',w.live+' · '+(manifests.some(m=>m.privateReadonlyRestore)?w.privateMode:readOnly?w.snapshot:w.local)),el('p',w.reason),el('p',w.refreshLimit));extras.boundary=boundary;
  taskObservationView=taskObservationPresentation(taskObservationView);
