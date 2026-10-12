@@ -1,5 +1,7 @@
 # Minimal dynamic project connection — local checkpoint
 
+> Historical checkpoint. Independent HOLD and corrected real-router/restricted-role evidence are recorded in [runtime repair](MC_DYNAMIC_PROJECT_RUNTIME_REPAIR_20261012.md). This file is not current acceptance.
+
 Project: MISSION_CONTROL
 Timestamp: 2026-10-12T22:33:28.000Z
 Status: LOCAL_TESTED_NOT_PUBLISHED_NOT_ACTIVATED

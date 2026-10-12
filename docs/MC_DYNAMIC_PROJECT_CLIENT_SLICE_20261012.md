@@ -1,5 +1,7 @@
 # Authorized new-project client connection — private review candidate
 
+> Historical checkpoint. Independent HOLD and corrected real-router/restricted-role evidence are recorded in [runtime repair](MC_DYNAMIC_PROJECT_RUNTIME_REPAIR_20261012.md). This file is not current acceptance.
+
 Project: MISSION_CONTROL
 Timestamp: 2026-10-12T22:48:00.000Z
 Status: LOCAL_END_TO_END_SYNTHETIC_VERIFIED_PRIVATE_REVIEW_PENDING

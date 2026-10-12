@@ -34,6 +34,6 @@ export async function readRepositoryRuns({configuration,reader,signal,now=Date.n
  }catch(error){cancelled();return fail(error?.code||'REPOSITORY_RUN_UNAVAILABLE');}
 }
 
-export async function readRepositoryRunEvidence({configuration,reader,runId,signal,now=Date.now}={}){
- const reports=await readRepositoryRuns({configuration,reader,signal,now});if(reports.status!=='FOUND'||reports.runs.some(r=>r.report.runId===runId)||!reports.retention)return reports;const row=await reader.readRetainedRun({repositoryId:configuration.repositoryId,commitSha:reports.source.resolvedCommitSha,runId,signal});return row?{...reports,runs:[...reports.runs,row],retainedEvidenceLookup:true}:reports;
+export async function readRepositoryRunEvidence({configuration,reader,runId,signal,now=Date.now,scopeAuthority=null}={}){
+ const reports=await readRepositoryRuns({configuration,reader,signal,now,scopeAuthority});if(reports.status!=='FOUND'||reports.runs.some(r=>r.report.runId===runId)||!reports.retention)return reports;const row=await reader.readRetainedRun({repositoryId:configuration.repositoryId,commitSha:reports.source.resolvedCommitSha,runId,signal});return row?{...reports,runs:[...reports.runs,row],retainedEvidenceLookup:true}:reports;
 }

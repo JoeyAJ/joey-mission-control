@@ -1,26 +1,31 @@
-# Authorized new-project client slice — private review checkpoint
+# Dynamic-project integration repair — guarded private review
 
 Project: MISSION_CONTROL
-Timestamp: 2026-10-12T22:48:00.000Z
-Task: Connect explicit project authorization to picker, task RPC and Agent handoff
-Status: LOCAL_SYNTHETIC_VERIFIED_PRIVATE_REVIEW_PENDING
+Timestamp: 2026-10-12T23:30:37.000Z
+Task: Complete runtime scope routes, real router and revision-bound review/handoff; repair independent HOLD
+Status: LOCAL_VERIFIED_PENDING_PUBLICATION
 Last Developer: Codex
 Executed by: Codex
 Actual Model: UNKNOWN
 Baseline: e1a5c88bac4c28b73034d5f1aa6e82ed4af57540
+Prior reviewed/HOLD source: 0e60883249dc1fa76014be79ca82e7b1789051a6
 
 ## Summary
 
-The actual picker and existing task/source/report UI consume a separately Owner-authorized registered project. Synthetic end-to-end selection, RPC save, first bound report and project-specific handoff pass. Registration alone remains unavailable; revocation purges selection. No real Agent, task, repository creation or deployment ran.
+One real app/router synthetic workflow now selects an explicitly authorized new project, saves its task through scoped RPC, reads completed reports and PR/tests, records request changes for rev1, saves rev2, records approval for that exact tuple, and prepares final handoff with the current Owner review. The fixture includes one fixed and two authorized dynamic projects. Registration-only stays disabled; revocation purges private selection. No actual Agent, task/repository creation or live deployment ran.
 
 ## Verification
 
-123 related unit tests and the synthetic new-project browser flow plus four maintained existing UI cases pass; build passes. Disposable PostgreSQL validates proposed scope SQL and exact rollback with a synthetic session helper. Live SQL/grants/credentials and actual Owner/Agent acceptance are unchanged and unverified. See [client slice evidence and remaining activation work](docs/MC_DYNAMIC_PROJECT_CLIENT_SLICE_20261012.md). Existing eleven reports/history and Production remain unchanged.
+The four independent HOLD groups are repaired and tested: real router/current scope; generation-fenced catalog and retained same-scope form; scope-safe global task list with physical capacity/CAS; structural immutable SQL CHECK plus grant-enforced read/write boundaries using fresh clock after locks. Apply/rollback uses a non-superuser postgres fixture with ADMIN membership, SET/INHERIT false at rest, the recorded temporary ownership protocol, and exact ACL/volatility restoration. Native auth helpers remain synthetic. [Evidence, schema contracts and activation steps](docs/MC_DYNAMIC_PROJECT_RUNTIME_REPAIR_20261012.md).
 
 ## Next Action
 
-Review this source-only private candidate. Complete authoritative runtime grant/routing and review/reconciliation consumer wiring, independently review the exact SQL against the installed baseline, and activate one specifically authorized private project only after required connection/approval. Registry writer binding remains pending. Autonomous dispatch/provision/merge/deploy remain OFF.
+Independent review of this coherent source/SQL candidate. Runtime activation remains OFF; SQL and grants are NOT APPLIED. Verify exact installed schema/membership preconditions before any explicit SQL approval. Morning secure registry binding is separately pending. Then one reviewed canonical Preview release and actual Owner/Agent acceptance. Autonomous dispatch/provision/merge/deploy and Production remain unchanged.
 
-## Previous handoff
+## Integration boundary
 
-Canonical e1a5c88 root bytes are preserved in [previous handoff](docs/history/HANDOFF_20261012_e1a5c88.md); older linked history remains intact. This guarded private review branch must not deploy.
+vercel.json deploymentEnabled:false is review-branch-only. Eventual canonical integration must retain its original vercel.json (read its exact blob from canonical e1a5c88) and exclude review guard ancestry from canonical commits. Do not blindly merge this guarded review commit. The current canonical e1a5c88 tree is the source of truth.
+
+## History
+
+[Prior private handoff](docs/history/HANDOFF_20261012_0e608832.md) and linked e1a5c88/older archives remain byte-exact. The earlier component-only fixture is not real-router evidence and is superseded by this repair.
