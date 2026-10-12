@@ -17,7 +17,7 @@ export function developmentTaskResumeCandidates(packet){
 }
 export function formatDevelopmentTaskInstruction(packet){
  const task=validateDevelopmentTask(packet?.developmentTask),taskRequirements=validateTaskRequirements(packet?.taskRequirements);if(taskRequirements.revision!==task.revision)throw Error('TASK_REQUIREMENTS_INVALID');if(packet.sourceStatus!=='FOUND'||packet.projectId!==task.projectId||(packet.track||'BASELINE')!==task.track||!packet.repositoryReports)throw Error('TASK_HANDOFF_SCOPE_INVALID');
- const reportSlots=packet.repositoryReports.coverage?.totalReportFiles??packet.repositoryReports.runs.length+(packet.repositoryReports.maintenanceAudit?.resolvedRejections?.length||0),matches=(packet.repositoryReports.runs||[]).filter(r=>r.taskId===task.taskId),title=task.request.feature.replace(/\s+/g,' ').slice(0,400);
+ const rolling=packet.projectId==='MISSION_CONTROL'&&packet.repositoryReports.retention?.currentLimit===11;const reportSlots=packet.repositoryReports.coverage?.totalReportFiles??packet.repositoryReports.runs.length+(packet.repositoryReports.maintenanceAudit?.resolvedRejections?.length||0),matches=(packet.repositoryReports.runs||[]).filter(r=>r.taskId===task.taskId),title=task.request.feature.replace(/\s+/g,' ').slice(0,400);
  const meta={schemaVersion:'mc.repository-run.v2',taskKind:'FEATURE',runId:'__NEW_RUN_ID__',predecessorRunId:matches.length===1?matches[0].runId:null,taskId:task.taskId,taskRequirements,featureTitle:title,agentName:'__ACTUAL_AGENT_NAME__',provider:null,model:null};
  const base=formatTakeoverInstruction(packet).split('\n').map(line=>line.startsWith('Registration template: ')?'Registration template: '+JSON.stringify(meta):line.startsWith('Source packet: ')?'Source packet: '+JSON.stringify({...repositoryRunSourcePacket(packet),developmentTask:task,taskRequirements}):line).join('\n');
  const resumable=developmentTaskResumeCandidates(packet);
@@ -31,8 +31,8 @@ export function formatDevelopmentTaskInstruction(packet){
   ...(resumable.length?['既有同需求未結束 run 可供明確續寫；不自動選擇、不推定仍在執行或已停止。只有原 writer 或有明確接續授權與原 receipts 的接手者可續寫，顯示名稱相同本身不是身分／授權證明；新 Agent 保留新 run／predecessor 路徑。',
    '先閱讀本次最新 canonical 來源；續寫的 registration／舊 baseline 必須保留，不能用最新 source packet 取代。下列 originalPacket 尚未讀取其 immutable 入口；先用自己既有授權核對該 SHA 的 source-profile 與 HANDOFF digest，再記實際 readAt／sourceStatus=FOUND，並把上方完整 Development task 加回 originalPacket.developmentTask（不重複或改寫需求）。沒有這項核對不能 append。',
    ...resumable.map(r=>'Resume candidate: '+JSON.stringify(r)),
-   '明確選定 run，核對原 workRef／registration／完整 report 與最新 HEAD/blob/sequence；有其他 writer、terminal、需求或 receipt 漂移即停止重讀。未滿64events的既有 run 續寫不占新 slot；容量40/40只阻擋新 run，不授權刪除歷史或覆寫。',
+   '明確選定 run，核對原 workRef／registration／完整 report 與最新 HEAD/blob/sequence；有其他 writer、terminal、需求或 receipt 漂移即停止重讀。未滿64events的既有 run 續寫不占新 slot；'+(rolling?'目前11筆 rolling 進度，active run 不封存；只有已核准 marker 的 reporter 可原子輪替 terminal 並保留 exact Git recovery/evidence refs。':'容量40/40只阻擋新 run，不授權刪除歷史或覆寫。'),
    '續寫使用 append，不能重新 started：node /你的暫存路徑/mc-reporter.mjs append --packet original-source-packet.json --meta original-registration.json --run <明確選定runId> --event event.json --expected-file-sha <重新核對的expectedFileSha> --expected-sequence <重新核對的expectedSequence> --publish。event sequence=expectedSequence+1，保留原 schema的delivery／activity envelope；只有真實PUBLISHED receipt才算新回報。']:[]),
-  ...(reportSlots>=MAX_TOTAL_RUNS?['回報容量已達 '+MAX_TOTAL_RUNS+'/'+MAX_TOTAL_RUNS+'；新 run 註冊會被既有 guard 拒絕。請回報這個精確阻礙，不刪除／輪替歷史、不增加預算或假稱新 Agent 已開工。需要獨立核准的容量維護方案。']:[]),
+  ...(!rolling&&reportSlots>=MAX_TOTAL_RUNS?['回報容量已達 '+MAX_TOTAL_RUNS+'/'+MAX_TOTAL_RUNS+'；新 run 註冊會被既有 guard 拒絕。請回報這個精確阻礙，不刪除／輪替歷史、不增加預算或假稱新 Agent 已開工。需要獨立核准的容量維護方案。']:[]),
   '先檢查同 taskId 的已有 run/workRef；多個匹配 run 要明確選擇 predecessor，不能默默替換 active run。只有已發布 started/progress/result 才建立 Agent 回報，請維持此 taskId。',base].join('\n');if(new TextEncoder().encode(instruction).length>MAX_HANDOFF_INSTRUCTION_BYTES)throw Error('HANDOFF_INSTRUCTION_TOO_LARGE');return instruction;
 }

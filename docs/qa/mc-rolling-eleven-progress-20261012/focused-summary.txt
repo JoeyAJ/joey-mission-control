@@ -1,0 +1,1 @@
+Existing reader/server/capacity/task45 PASS. Combined retention/task/reconciliation/review/requirements/resume/takeover50 PASS. Final retention8 PASS, including archived evidence Owner loss purge. Fresh build/module/schema PASS. Actual Git migrations and writes are isolated bare fixtures; no live/external writes. Full canonical combined verification follows UI integration.

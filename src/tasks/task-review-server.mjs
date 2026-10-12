@@ -6,7 +6,7 @@ import {createTaskRpcPort} from './task-storage-server.mjs';
 import {createTaskRequirements,taskRequirementsStatus} from './task-requirements.mjs';
 import {canonicalTaskJson} from './development-task.mjs';
 import {createGitHubRepositoryRunReader} from '../reporting/repository-run-server.mjs';
-import {repositoryRunConfiguration,readRepositoryRuns} from '../reporting/repository-run-source.mjs';
+import {repositoryRunConfiguration,readRepositoryRunEvidence} from '../reporting/repository-run-source.mjs';
 import {createGitHubTaskReconciliationReader,createTaskReconciliationServer} from './task-reconciliation-server.mjs';
 import {RECONCILIATION_VERSION} from './task-reconciliation-contract.mjs';
 async function boundedJson(response,limit){let bytes=0,text='';const decoder=new TextDecoder('utf-8',{fatal:true});for await(const chunk of response.body){bytes+=chunk.length;if(bytes>limit)throw fail('TASK_REVIEW_UNCONFIRMED',503);text+=decoder.decode(chunk,{stream:true});}return JSON.parse(text+decoder.decode());}
@@ -50,7 +50,7 @@ export function createDeploymentTaskReviewServer({environment=process.env,fetchI
  const freshEvidence=async(review,token,{signal}={})=>{
   const c=repositoryRunConfiguration(review.projectId,{track:review.track});if(c.repositoryId!==review.repositoryId||c.entry.ref!==review.canonicalRef||c.reportRef!==review.reportRef)throw fail('TASK_REVIEW_SCOPE_DENIED',403);
   const task=async()=>{const list=await taskPort.call('list',null,token,{signal}),t=list.tasks.find(t=>t.taskId===review.taskId);if(!t||t.projectId!==review.projectId||t.track!==review.track||taskRequirementsStatus(review.taskRequirements,await createTaskRequirements(t))!=='MATCH')throw fail('TASK_REVIEW_REQUIREMENTS_CHANGED',409);};await task();
-  const reader=createGitHubRepositoryRunReader({credential:environment.MC_GITHUB_READ_TOKEN,fetchImpl,configuration:c,now}),reports=await readRepositoryRuns({configuration:c,reader,signal,now});if(reports.status!=='FOUND'||reports.inventory?.truncated!==false)throw fail('TASK_REVIEW_REPORT_UNAVAILABLE',503);
+  const reader=createGitHubRepositoryRunReader({credential:environment.MC_GITHUB_READ_TOKEN,fetchImpl,configuration:c,now}),reports=await readRepositoryRunEvidence({configuration:c,reader,runId:review.runId,signal,now});if(reports.status!=='FOUND'||reports.inventory?.truncated!==false)throw fail('TASK_REVIEW_REPORT_UNAVAILABLE',503);
   const rows=reports.runs.filter(r=>r.report.runId===review.runId&&r.report.taskId===review.taskId),row=rows[0],event=row?.report.events.at(-1);
   if(rows.length!==1||event?.kind!=='completed'||event.result?.codeSha!==review.codeSha||event.sequence!==review.reportSequence||row.report.workRef!==review.workRef||row.source.path!==review.reportPath||row.source.providerBlobId!==review.reportBlobId||reports.source.resolvedCommitSha!==review.reportHeadSha||taskRequirementsStatus(row.report.taskRequirements,review.taskRequirements)!=='MATCH')throw fail('TASK_REVIEW_REPORT_CHANGED',409);
   const server=createTaskReconciliationServer({configuration:c,repositoryReader:reader,metadataReader:createGitHubTaskReconciliationReader({credential:environment.MC_GITHUB_READ_TOKEN,fetchImpl,configuration:c}),verifyOwner,ownerSubject:policy.ownerSubject,allowedOrigin:policy.stageOrigin,now}),request={schemaVersion:RECONCILIATION_VERSION,projectId:review.projectId,track:review.track,taskId:review.taskId,taskRevision:review.taskRequirements.revision,taskRequirements:review.taskRequirements,runId:review.runId};

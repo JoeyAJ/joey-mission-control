@@ -1,19 +1,17 @@
-# Current reported workspace UI integration — 2026-10-12
+# Current recoverable eleven-record progress retention — 2026-10-12
 
 Project: MISSION_CONTROL
-Timestamp: 2026-10-12T04:20:00.000Z
-Task: Reviewed session rail and visible Development Workspace entry
+Timestamp: 2026-10-12T05:20:00.000Z
+Task: Eleven current progress records with safe continuation and pinned evidence
 Status: LOCAL_VERIFIED_PENDING_PUBLICATION
 Last Developer: Codex
 Executed by: Codex
 Actual Model: UNKNOWN
-Baseline: 94816da3c293c05c4ac0a2134e430183e135e212
+Baseline: e88ad2963b9e175e7a72a5462a0f73e3916cc118
 
-Integrated reviewed UI source bafdd912 with current task resume and Auth generation/logout fixes. Simple Joey Development Workspace tile appears above project picker; reports group by project/Agent with dated latest event and expandable history. MC branch label corrected; existing timer expires five-minute Joey review cue, including terminal failure.
+User requested eleven progress records without affecting further development. MC-only total11 retains all nonterminal runs and newest terminal history in remaining slots. Recoverable terminal retirement and new report publication are one non-force/CAS Git transaction; original bodies remain reachable with exact commit/path/blob references. Native archived task evidence remains Owner-readable and eligible for independent CI/review; no current activity claim. A twelfth active run refuses before remote write, without changing11.
 
-Combined browser rail6/candidate6/SimpleJoey4 and deadline/refusal/disposal6 PASS; no external writes. Full portable/build verification recorded in docs/MC_UI_SESSION_RAIL_INTEGRATION_20261012.md and QA receipts. Run40 is this actual integration, unchanged40 cap; other reports/history retained. Run38 real email acceptance remains pending.
-
-Save-only task untouched, finalization live OFF, review executionAuthorized:false; private Owner/AAL2/TOTP/source/CAS and fixed Preview-only scope retained. Production unchanged. Full reference redesign and live editor/terminal feeds incomplete. Exact project creation/finalization permissions, provider atomicity and durable CAS dependencies documented; capacity60 proposal is not implemented.
+Local migration/rollover/resume/archived-evidence and original guard tests run with isolated Git and synthetic providers. Source/Preview publication and actual retention follow verified checks; no live migration yet at this source checkpoint. Other projects/history/source/privacy/SQL/Auth/Production unchanged; save-only task untouched; finalization OFF and review executionAuthorized:false. Numeric OTP OFF, manual Magic Link retained; real email/TOTP acceptance pending Parent. Evidence: docs/MC_ROLLING_ELEVEN_PROGRESS_20261012.md. Full dynamic reference UI worker is separate and integration remains pending.
 
 # Dated prior stage history
 
