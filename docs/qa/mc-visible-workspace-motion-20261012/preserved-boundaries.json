@@ -1,0 +1,40 @@
+{
+  "pass": true,
+  "baseSha": "84482523c42ea644174c4fff81a166751e0916b5",
+  "sourceFiles": [
+    {
+      "path": "public/owner-email-login.html",
+      "unchanged": true,
+      "sha256": "93526b7aee18a77426ed139101f209c4e37c12d7b7e3ff8e238df08b28ffcee3"
+    },
+    {
+      "path": "public/owner-password-recovery.html",
+      "unchanged": true,
+      "sha256": "e28775c61e5fb80aaca75394f9b78eac1754a2afaac74f922a527560df4e0b24"
+    },
+    {
+      "path": "src/continuity/owner-session-custody.mjs",
+      "unchanged": true,
+      "sha256": "daf4eb93591ea23c7c1c772d024f6de325fcd95153f39e6bdeae7b27f44924e3"
+    },
+    {
+      "path": "vercel.json",
+      "unchanged": true,
+      "sha256": "e143f8a9803ced72276d80e06603c2c93064d8e648fae7674d03fa097408781c"
+    },
+    {
+      "path": "package.json",
+      "unchanged": true,
+      "sha256": "6b48280f84be155d48aee24752aa4f47d480291ab32f9429330dc1c420e2aa6d"
+    },
+    {
+      "path": "package-lock.json",
+      "unchanged": true,
+      "sha256": "dc28258a7bc8c3a7a02606b138afa4e33d10776ec2b104b368a5223b85741759"
+    }
+  ],
+  "authSettingsChanged": false,
+  "reportWrites": 0,
+  "savedTestReadOrWritten": false,
+  "journalApplied": false
+}

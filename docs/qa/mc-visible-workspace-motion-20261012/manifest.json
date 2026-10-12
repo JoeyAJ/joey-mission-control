@@ -1,0 +1,53 @@
+{
+  "qualification": "LOCAL_BROWSER_SYNTHETIC_PROVIDERS_SOURCE_BOUNDARIES_AND_ACTUAL_GIT_REPORT_BYTES",
+  "files": {
+    "preserved-boundaries.json": {
+      "bytes": 1192,
+      "sha256": "ac76d406f1b95422524461152a33f559e3163c2c196b8cd5803f6baa20bdb1be"
+    },
+    "disclosure-final.json": {
+      "bytes": 3558,
+      "sha256": "d68b04001eb26a204a987d05080ca34b94333e4d80990b094caf2f7e306dd40c"
+    },
+    "focus.json": {
+      "bytes": 3226,
+      "sha256": "a888bf5664369e4fdc959e9e2e05559f58c5acbb91ae5019485300f708ab7b13"
+    },
+    "delivery.json": {
+      "bytes": 2226,
+      "sha256": "83826347e3a78ee73e6a6e11fe93d6eb4024b9cfc738b13a7db934b3b37785ee"
+    },
+    "candidate.json": {
+      "bytes": 3232,
+      "sha256": "c97d39a45b76f2e19fe27fe620edb163a4f0cc7023c9d420341a9c2d27908845"
+    },
+    "default-theme-final.json": {
+      "bytes": 468,
+      "sha256": "8b9a54c93b10d725cd6e65fc39be70d93576e6f229435650e53c94df19a7e2bd"
+    },
+    "live-eleven.json": {
+      "bytes": 610,
+      "sha256": "a275db2ac66219d762606aba0ffcd710a6943afcd7bce14fec6c0c1cd6634b3f"
+    },
+    "auth-denial.json": {
+      "bytes": 297,
+      "sha256": "d1c032a87a67ccd37cd8f812dad2a54d52c3bc5a6014b14dcef2fb84d049cde8"
+    },
+    "test-summary.json": {
+      "bytes": 909,
+      "sha256": "91a7a62fbb3f44e697ce408239f2d6827542a6495285363723885f83fe3173b9"
+    },
+    "visible-controlled.json": {
+      "bytes": 4298,
+      "sha256": "c72461b07802eb6b82d7a9daf8e2d90ad6f993429b8b299d53de3131199a3699"
+    },
+    "navigation.json": {
+      "bytes": 5288,
+      "sha256": "764f7e48fcffbec34cc4afa953a5569f4f898e80e22a9a78d7954e879d853a7f"
+    },
+    "privacy.json": {
+      "bytes": 648,
+      "sha256": "f705ff79da198c6ae22df2994ff989bad4843a70041ed744556078076c4a01ec"
+    }
+  }
+}

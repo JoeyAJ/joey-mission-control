@@ -1,0 +1,17 @@
+{
+  "pass": true,
+  "cases": [
+    {
+      "status": 401,
+      "pass": true,
+      "currentAndCachedPrivateDOMCleared": true
+    },
+    {
+      "status": 403,
+      "pass": true,
+      "currentAndCachedPrivateDOMCleared": true
+    }
+  ],
+  "externalRequests": 0,
+  "realOwnerAcceptance": false
+}

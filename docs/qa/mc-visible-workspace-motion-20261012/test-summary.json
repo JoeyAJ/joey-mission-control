@@ -1,0 +1,35 @@
+{
+  "qualification": "LOCAL_SYNTHETIC_BROWSER_AND_PORTABLE_SOURCE_CHECKS",
+  "combinedPortable": {
+    "tests": 986,
+    "pass": 986,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0
+  },
+  "finalSubset": {
+    "tests": 39,
+    "pass": 39,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0
+  },
+  "browserCases": {
+    "motion": 6,
+    "focus": 6,
+    "candidate": 6,
+    "privacy": 2,
+    "delivery": 6,
+    "disclosureTheme": 6,
+    "defaultTheme": 1,
+    "retainedAuthDenial": 2,
+    "navigation": 9
+  },
+  "knownLimitations": [
+    "Extra old Joey overview fixture reads hidden innerText; not counted as passing",
+    "Initial navigation90s and subset60s timed out; same checks passed bounded retries",
+    "Synthetic Owner/providers; real served Owner/email/TOTP/device acceptance pending",
+    "No live Agent terminal/code stream",
+    "Journal proposal paused local-only/not approval-ready"
+  ]
+}

@@ -1,17 +1,17 @@
-# Current recoverable eleven-record progress retention — 2026-10-12
+# Current visible Workspace motion — 2026-10-12
 
 Project: MISSION_CONTROL
-Timestamp: 2026-10-12T05:20:00.000Z
-Task: Eleven current progress records with safe continuation and pinned evidence
+Timestamp: 2026-10-12T07:30:00.000Z
+Task: Visible pane reflow and validated report selection motion
 Status: LOCAL_VERIFIED_PENDING_PUBLICATION
 Last Developer: Codex
 Executed by: Codex
 Actual Model: UNKNOWN
-Baseline: e88ad2963b9e175e7a72a5462a0f73e3916cc118
+Baseline: 84482523c42ea644174c4fff81a166751e0916b5
 
-User requested eleven progress records without affecting further development. MC-only total11 retains all nonterminal runs and newest terminal history in remaining slots. Recoverable terminal retirement and new report publication are one non-force/CAS Git transaction; original bodies remain reachable with exact commit/path/blob references. Native archived task evidence remains Owner-readable and eligible for independent CI/review; no current activity claim. A twelfth active run refuses before remote write, without changing11.
+Integrated exact motion source bd82f14 on the canonical branch. Desktop Reports/Files/Evidence/Overview visibly reflow existing panes over460ms; validated selection/new reports animate420ms. Focus-band task/delivery stays opaque and stationary; detailed summaries can animate. Mobile native tabs remain. Reduced motion, expiry, Owner refusal and unchanged idle guard movement. No fake typing, terminal stream or Agent execution.
 
-Portable983/build/safety and local retention8 PASS. Substantial composition19ed56e integrated;872px English toolbar overflow reproduced/fixed and passed. Browser regressions use synthetic providers. Source/Preview publication and actual retention follow verified checks; no live migration yet at this source checkpoint. Other projects/history/source/privacy/SQL/Auth/Production unchanged; save-only task untouched; finalization OFF and review executionAuthorized:false. Numeric OTP OFF, manual Magic Link retained; real email/TOTP acceptance pending Parent. Evidence: docs/MC_ROLLING_ELEVEN_PROGRESS_20261012.md. Substantial reference composition is integrated; full reference fidelity and served real Owner/device acceptance remain pending.
+Combined portable986/build/safety and final subset39 PASS. Canonical browser motion6, focus6, candidate6, privacy2, delivery6 and disclosure/theme6 PASS with synthetic Owner/providers, no external writes. Final theme/navigation/privacy checks and exact Preview receipt follow in docs/MC_VISIBLE_WORKSPACE_MOTION_20261012.md. Actual current report HEAD bc3d76b1af577d793d77e2a53fc1bd66575c9251 retains11; historical bodies remain Git-recoverable. No new run, task mutation, SQL/Auth settings or Production change. Saved test untouched, finalization OFF, review executionAuthorized:false. Manual Magic Link retained; real Owner/email/TOTP/device acceptance pending Parent. Private journal draft paused outside source; not approval-ready or applied. Full reference fidelity/live streams remain unavailable.
 
 # Dated prior stage history
 

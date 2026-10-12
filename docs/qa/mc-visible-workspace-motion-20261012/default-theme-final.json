@@ -1,0 +1,21 @@
+{
+  "pass": true,
+  "cases": [
+    {
+      "width": 1440,
+      "locale": "en",
+      "pass": true,
+      "sourceReportFactory": true,
+      "owner": "SYNTHETIC",
+      "visiblePoll": false,
+      "reducedMotion": false,
+      "crossPaneSelection": true,
+      "persistentLastConfirmedScope": true,
+      "denialCleared": true
+    }
+  ],
+  "external": 0,
+  "writes": 0,
+  "realOwnerAcceptance": false,
+  "browserResourceMode": "SINGLE_PROCESS_FRESH_BROWSER_PER_CASE"
+}
