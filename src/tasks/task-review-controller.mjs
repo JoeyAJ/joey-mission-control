@@ -1,3 +1,4 @@
+import {taskReviewReworkInput} from './task-review-rework.mjs';
 import {canonicalTaskJson} from './development-task.mjs';
 import {validateTaskReview,TASK_REVIEW_VERSION,sameTaskReviewBinding,validateTaskReviewReply,verifyTaskReviewDigests} from './task-review-contract.mjs';
 // Records are private, dated attestations. Only a fresh bound cloud task can be reviewed.
@@ -29,6 +30,15 @@ export function createTaskReviews({tasks,source,reports,client,now=Date.now,rand
    const reply=await verifyTaskReviewDigests(validateTaskReviewReply(await client.append({review:request.review,operationId:request.operationId,expectedSequence:request.expectedSequence},{signal}),request,now()));check(g,c);if(!sameTaskReviewBinding(review,binding(decision,comment)))throw Error('TASK_REVIEW_INVALIDATED');
    records=[...records.filter(r=>r.operationId!==reply.record.operationId),reply.record].sort((a,b)=>a.sequence-b.sequence);sequence=Math.max(sequence,reply.record.sequence);ack=reply.record;pending=null;status='recorded';until(Math.min(reply.expiresAt,tasks.snapshot().reconciliation.expiresAt));return reply;
   });},
+  async prepareRework({stillClean=()=>true}={}){
+   if(busy||disposed)throw Error('TASK_REVIEW_BUSY');if(!stillClean())throw Error('TASK_REWORK_UNSAVED_EDITS');const c=capture(),record=structuredClone(records.at(-1));
+   if(!record||record.review.decision!=='REQUEST_CHANGES'||!record.review.comment.trim()||!sameTaskReviewBinding(record.review,binding(record.review.decision,record.review.comment)))throw Error('TASK_REWORK_CURRENT_REVIEW_REQUIRED');
+   const g=generation;busy=true;emit();
+   try{const input=await taskReviewReworkInput({task:c.task,record});check(g,c);if(canonicalTaskJson(records.at(-1))!==canonicalTaskJson(record))throw Error('TASK_REWORK_INVALIDATED');
+    return await tasks.save(input,{expectedTask:c.task,beforeSave:()=>{if(disposed||!stillClean()||c.sourceEpoch!==sourceEpoch||c.reportEpoch!==reportEpoch)throw Error('TASK_REWORK_INVALIDATED');}});
+   }finally{if(g===generation){busy=false;emit();}}
+  },
+  canPrepareRework(){try{const record=records.at(-1);return !busy&&!disposed&&record?.review.decision==='REQUEST_CHANGES'&&Boolean(record.review.comment.trim())&&sameTaskReviewBinding(record.review,binding(record.review.decision,record.review.comment));}catch{return false;}},
   canRecord(runId){try{return binding('APPROVE','').runId===runId;}catch{return false;}},
   current(record){try{return sameTaskReviewBinding(record.review,binding(record.review.decision,record.review.comment));}catch{return false;}},
   dispose(){disposed=true;clear();unsubTask();unsubSource?.();unsubReport?.();listeners.clear();}
