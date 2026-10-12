@@ -59,6 +59,20 @@ case-insensitive repository full name **and stable numeric repository ID**. Rece
 times are immutable historical registration observations; fresh verification is
 reported separately. Ledger bytes and the linked Markdown files are read from one
 catalog commit, never from different branch-head observations.
+Reserve the existing source repository IDs in the initial ledger too, so an
+existing project cannot be reimported after a rename. These numeric IDs were read
+from current connected GitHub metadata (all five repositories are private):
+
+| Existing repository | Reserved numeric ID |
+|---|---|
+| `JoeyAJ/joey-mission-control` | `1404959099` |
+| `JoeyAJ/nexaeon-web` | `1250989709` |
+| `JoeyAJ/woosongbuddy` | `1183908659` |
+| `JoeyAJ/namyoung-web3d` | `1402869585` |
+| `JoeyAJ/joey-asset-system` | `1403778863` |
+
+These reservations are existing-scope identity metadata, not invented registration
+receipts or a migration of the existing projects/University track into this catalog.
 
 Initialize a data-only tree containing empty valid registry/index/ledger documents
 and `vercel.json` with `{"git":{"deploymentEnabled":false}}`. Include that guard in
@@ -162,6 +176,12 @@ In the existing **新增專案** flow, after confirming the saved cloud draft, a
    with existing project cards; public snapshot/API data stays unchanged. Record
    new source scopes through this private catalog reader rather than inventing
    database membership or silently extending the five-scope capability response.
+   Project each new card from its parsed registry/memory documents with the existing
+   pure `buildProjectProjection` builder. Do not call the old filesystem-wide
+   `buildProjection` against the data branch: it requires a global Mac HANDOFF tree
+   and local Git observations that this catalog does not contain. The real entry
+   HANDOFF comes from the approved source repository; no replacement global handoff
+   or local workspace is fabricated.
 5. Resolve new projects' entry/context reads from their approved recorded exact
    source profile, and recheck current repository numeric identity/privacy, freshness
    and regular Git entries. Enable source-backed handoff/copy only after current
