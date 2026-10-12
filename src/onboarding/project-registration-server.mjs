@@ -2,6 +2,7 @@ import {validateDraftStorageReply, sameDraft} from './project-draft-storage-cont
 import {REGISTRATION_MAX_BYTES, REGISTRATION_MAX_AGE_MS, REGISTRATION_FILES, registrationJson, registrationRequest, registrationPolicy, registrationError, verifyRegistrationObservation} from './project-registration-contract.mjs';
 
 const result = (status, body) => ({status, body, headers:{'Cache-Control':'private, no-store', Vary:'Authorization', Pragma:'no-cache'}});
+const publicErrors = new Set(['OWNER_AUTHORIZATION_DENIED', ...['BLOB_MISMATCH','BODY_TOO_LARGE','BOOTSTRAP_MISMATCH','DRAFT_CONFLICT','FILE_MISMATCH','HANDOFF_MISMATCH','HEAD_CHANGED','INDEX_FORMAT_UNSUPPORTED','INDEX_INVALID','INDEX_REVISION_CONFLICT','JSON_REQUIRED','NOT_ACTIVATED','OBSERVATION_EXPIRED','PORT_NOT_CONFIGURED','PRIVATE_IDENTITY_MISMATCH','PRIVATE_READ_UNAVAILABLE','RECEIPT_NOT_SERVER_ISSUED','REGISTRY_INVALID','REGISTRY_REVISION_CONFLICT','REPLAY_CONFLICT','REPORT_REF_CONFLICT','REQUEST_INVALID','RESOURCE_MISMATCH','RESOURCE_READER_NOT_CONFIGURED','SCOPE_DENIED','SOURCE_PROFILE_MISMATCH','TARGET_CONFLICT'].map(c => 'REGISTRATION_' + c)]);
 async function body(req) {
   if (!/^application\/json(?:;\s*charset=utf-8)?$/i.test(req.headers?.['content-type'] || '')) throw registrationError('REGISTRATION_JSON_REQUIRED', 415);
   const length = req.headers?.['content-length'];
@@ -89,9 +90,10 @@ export function createProjectRegistrationServer({policy = null, ownerSubject, al
         await owner();
       }});
       const finalActor = await owner();
-      return result(200, {schemaVersion:1, ...registration, expiresAt:Math.min(receipt.expiresAt, finalActor.expiresAt), developmentReady:false, executionAuthorized:false, verifiedDelivery:false});
+      const expiresAt = Math.min(receipt.expiresAt, finalActor.expiresAt);
+      return result(200, {schemaVersion:1, ...registration, currentVerification:{qualification:'INDEPENDENT_PRIVATE_REPOSITORY_READ', baselineSha:receipt.baselineSha, observedAt:receipt.observedAt, expiresAt}, expiresAt, developmentReady:false, executionAuthorized:false, verifiedDelivery:false});
     } catch (e) {
-      const known = e?.code === 'OWNER_AUTHORIZATION_DENIED' || /^REGISTRATION_[A-Z_]+$/.test(e?.code || '');
+      const known = publicErrors.has(e?.code);
       const status = known && [400,401,403,409,413,415,503].includes(e.status) ? e.status : e instanceof SyntaxError ? 400 : 503;
       return result(status, {error:known ? e.code : status === 400 ? 'REGISTRATION_REQUEST_INVALID' : 'REGISTRATION_PRIVATE_READ_UNAVAILABLE'});
     } finally { clearTimeout(timer); signal?.removeEventListener('abort', cancel); }

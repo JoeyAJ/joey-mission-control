@@ -105,7 +105,10 @@ Responses keep `liveRegistered:false`, `developmentReady:false`,
 Source/report scopes remain `PENDING_EXPLICIT_ACTIVATION`. Authorization is also
 checked before returning a response; a revoked session receives no private receipt.
 A lost response may follow a successful local commit, so retries must use the same
-idempotency key and original expected digests.
+idempotency key and original expected digests. The immutable `receipt` retains
+its original commit observation time, including on replay. `currentVerification`
+separately reports the fresh independent read and expiry; an expired original
+receipt is never relabelled as a new registration or a fresh commit receipt.
 
 ## Smallest live activation prerequisite
 
@@ -116,6 +119,10 @@ the seven exact document reads and hashes, and registry/index revision digests.
 This must authorize only private source reads and the canonical registration write;
 it does not include repo creation, report writes, provider provisioning, deployment,
 access grants, or arbitrary repository/path collection.
+Name the canonical writer's actual private destination separately: writes are
+limited to `PROJECT_REGISTRY_V1.0.md`, `MEMORY_INDEX.md`, the five new
+`PROJECTS/<projectId>/*.md` files and its private receipt/idempotency ledger. No
+canonical repository location is inferred from a source repository name.
 
 Then wire the existing Owner verifier and draft RPC read port, an approved exact
 repository reader using existing credential management, and a durable canonical
@@ -157,6 +164,10 @@ profile mismatches, resource receipt binding, expiry, forged receipt rejection,
 concurrent CAS, replay conflicts, duplicate targets and atomic failure. Network
 transport is injected; the portability guard reports zero forbidden attempts.
 This candidate changes no UI, so new desktop/mobile screenshots are not applicable.
+Final validation: **34 focused tests and 1,025 portable tests passed**. The portable
+run also rebuilt the bundle, checked all five existing schemas, validated the four
+existing projects/case/handoffs/Continue payloads, and passed static safety checks.
+All guarded runs reported zero forbidden attempts. No deployment was performed.
 
 Cherry-pick the implementation commit after the checkpoint, or apply the portable
 patch from canonical base. Re-run `npm run verify:portable`; keep the factory
