@@ -30,10 +30,14 @@ export function createWorkbenchPaneMotion({requestFrame=globalThis.requestAnimat
     // Fade in only the newly rendered facts. Never retain an old-content snapshot.
     for(const n of panes){if(!n.isConnected||!n.getClientRects().length||!n.animate)continue;
      n.dataset.workbenchMotion=kind;n.dataset.workbenchMotionBinding=binding;nodes.add(n);
-     const a=n.animate([{opacity:.88,transform:'translateY(3px)'},{opacity:1,transform:'translateY(0)'}],{duration:180,easing:'cubic-bezier(.2,.8,.2,1)'});animations.add(a);
+     const critical=n.dataset.runWorkbench==='focus';
+     const a=n.animate([{opacity:critical?1:.68,transform:critical?'translateX(0)':'translateX(24px)'},{opacity:1,transform:'translateX(0)'}],{duration:420,easing:'cubic-bezier(.2,.8,.2,1)'});animations.add(a);
      const finish=()=>{animations.delete(a);if(ticket===generation){removeMark(n);nodes.delete(n);}};
      a.finished.then(finish,finish);
     }
+    // Longer visual transitions must stop at the same eligibility boundary.
+    const watch=()=>{if(ticket!==generation)return;frame=null;if(!current()||reduced()){previous=requested=intent=null;cancel();return;}if(animations.size)frame=requestFrame(watch);};
+    if(animations.size)frame=requestFrame(watch);
    });
   },
   pause(){cancel();previous=requested=null;},
