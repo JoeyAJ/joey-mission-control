@@ -95,6 +95,67 @@
           }
         }
       }
+    },
+    {
+      "id": "owner-email-magic-link-activated-3",
+      "sequence": 3,
+      "eventAt": "2026-10-12T02:32:23.635Z",
+      "kind": "progress",
+      "summary": "Fixed stale A cleanup cannot revoke/remove newer B; old-SHA probe RED, pinned SDK race3/retained27 and full968/build PASS. Repaired OFF0ab33f9 READY verified; parent served unchanged OFF page01:51UTC. Approved manual flow ON in b56e224, exact fixed Preview READY. Activated54 focused/27 SDK/3 mobile/29 source checks PASS. No real email/Auth/settings/Production change. Same run awaits actual user-triggered Email/TOTP acceptance; cloud current HTTPS CONNECT403, no bypass.",
+      "result": null,
+      "delivery": {
+        "qualification": "AGENT_REPORTED",
+        "scope": {
+          "projectId": "MISSION_CONTROL",
+          "track": "BASELINE",
+          "repositoryId": "JoeyAJ/joey-mission-control",
+          "runId": "codex-mc-owner-email-magic-link-20261012",
+          "taskId": "mc-owner-email-magic-link-20261012",
+          "workRef": "codex/mc-command-center-checkpoint-20261006",
+          "codeSha": "b56e224ee6790ee1b743e9e23063499665f6429f"
+        },
+        "deployment": {
+          "status": "READY",
+          "target": {
+            "provider": "vercel",
+            "project": "joey-mission-control",
+            "environment": "preview"
+          },
+          "id": "dpl_HsYP1RKGisxD3JsaNCw6Z6XwgxT6",
+          "deployedSha": "b56e224ee6790ee1b743e9e23063499665f6429f",
+          "url": "https://joey-mission-control-git-codex-mc-comma-fceec2-joeyajs-projects.vercel.app/",
+          "observedAt": "2026-10-12T02:32:23.635Z",
+          "evidence": "Exact canonical remote SHA and independent deployment ID/fixed alias both READY, target null Preview; repaired OFF0ab33f9 verified before enabling manual flags.",
+          "notRequired": null
+        },
+        "verification": {
+          "status": "BLOCKED",
+          "method": "HTTP_FUNCTIONAL_CHECK",
+          "checkedAt": "2026-10-12T02:32:23.635Z",
+          "deploymentId": "dpl_HsYP1RKGisxD3JsaNCw6Z6XwgxT6",
+          "checkedSha": null,
+          "url": "https://joey-mission-control-git-codex-mc-comma-fceec2-joeyajs-projects.vercel.app/",
+          "evidence": "Current cloud ordinary callback GET curl56/CONNECT403/HTTP000 before app. Parent served unchanged OFF page01:51UTC; current real Email/TOTP acceptance pending. No bypass.",
+          "notRequired": null
+        },
+        "handoff": {
+          "status": "CURRENT",
+          "path": "HANDOFF.md",
+          "commitSha": "b56e224ee6790ee1b743e9e23063499665f6429f",
+          "checkedAt": "2026-10-12T02:32:23.635Z",
+          "evidence": "Exact pushed source includes dated activation gate/test/acceptance handoff; callback custody race report and receipts are included."
+        },
+        "data": {
+          "status": "NOT_REQUIRED",
+          "version": null,
+          "checkedAt": "2026-10-12T02:32:23.635Z",
+          "evidence": null,
+          "notRequired": {
+            "policy": "MC_NO_DATA_CHANGE",
+            "reason": "Browser/Auth-client implementation only; no schema/data or Auth settings mutation."
+          }
+        }
+      }
     }
   ]
 }
