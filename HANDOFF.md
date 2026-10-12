@@ -1,3 +1,19 @@
+# Current private registration integration — 2026-10-12
+
+Project: MISSION_CONTROL
+Task: Reviewed private registration code and guarded empty catalog setup
+Status: REVIEWED_CODE_INTEGRATED_RUNTIME_BINDING_UNAVAILABLE
+Baseline: 6861fa68c87b89e84e0d75482304e56fe4aa8097
+Reviewed repair: 623995ce551d39b7b3288c17c6a7c24621a5e3fa
+
+Joey approved registration infrastructure2026-10-12T14:05Z; parent independent repairGO received before setup. Integrated exact repaired code, initialized private data-only mc/registry8ecae766a50bc9793f1dcb6bb64349e815e81676 with initial deployment guard, zero registrations; no Vercel project/other branch setting change. Remote/tree/catalog validationPASS, branch-filtered deployment counts0. No sample project/task execution.
+
+Portable1079/build/validate/checkPASS; focused63 rerunPASS; actual-app synthetic Owner/source browser20 cases at375/390/430/1440PASS, four intended local Git commits and draft saves, external requests/writes0/task writes0. Screenshots remain local. Runtime writer binding is unavailable; enabled:false with approved-but-unavailable qualification and localized unavailable message. Read token not decrypted/repurposed. Secure binding requires direct user/admin entry in Vercel's project Secret form, canonical Preview branch only; new credentials need separate authorization. No agent secret transfer/form exists.
+
+No live registration, actual Owner/providerHTTP or served Preview proof. Baseline ordinary GETCONNECT403 remains unbypassed; current code publication receipt follows separately. Supabase Owner/AAL2/current session, installed finalization journal, eleven original current reports/archive history, saved-only task and Production preserved. Automatic dispatch/merge/deployOFF. OverallMC acceptance pending. Details: docs/MC_PRIVATE_REGISTRATION_INTEGRATION_20261012.md.
+
+# Dated prior checkpoint
+
 # Current qualified private Owner closure recovery — 2026-10-12
 
 Project: MISSION_CONTROL
