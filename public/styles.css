@@ -876,3 +876,113 @@ body[data-joey-simple=true] .joey-workbench-entry .joey-workspace-secondary{--gl
 @media(min-width:769px) and (max-width:1150px){#workspace .command-workspace:is([data-pane-focus=reports],[data-pane-focus=files]) .command-layout{grid-template-columns:175px minmax(0,1fr) 250px}#workspace .command-workspace[data-pane-focus=evidence] .command-layout{grid-template-columns:175px minmax(0,1fr) 360px}}
 @media(max-width:768px){#workspace .command-pane-views{display:none}#workspace .command-layout{transition:none}}
 @media(prefers-reduced-motion:reduce){#workspace .command-layout{transition:none!important}}
+
+/* Compact source modules and an actual report relationship network. */
+#workspace .command-layout:has([data-run-workbench=events][data-workbench-state=confirmed]) .command-events>h4{display:none}
+#workspace .run-workbench-history{margin:12px 0;background:var(--mc-charcoal)}
+#workspace .run-workbench-history>summary{display:flex;align-items:center;flex-wrap:wrap;gap:8px 12px;padding:16px;font-size:13px}
+#workspace .run-workbench-history>summary :is(strong,small){margin:0;font-size:12px}
+#workspace .run-workbench-history>summary>small{margin-left:auto;color:var(--mc-muted)}
+#workspace .run-workbench-focus-brief .selected-task-title-disclosure>summary{padding:14px 20px}
+#workspace .run-focus-heading .selected-task-title{font-size:17px}
+#workspace .run-focus-project{font-size:16px}
+#workspace .command-events,#workspace .command-layout>.command-explorer{padding:18px}
+#workspace .run-file-navigation [hidden]{display:none!important}
+#workspace .command-context[data-inspector-tab=graph]:has([data-network=source-backed]) .command-graph{order:1;flex:1;min-height:250px;padding:12px}
+#workspace .command-context[data-inspector-tab=graph]:has([data-network=source-backed]) .command-inspector{order:2;display:block;flex:0 0 auto;max-height:190px;overflow:auto;padding:12px;border-top:1px solid var(--mc-separator)}
+#workspace .command-context[data-inspector-tab=graph] .command-inspector-tabs{order:0}
+#workspace .command-context[data-inspector-tab=graph] .run-workbench-detail>h4{margin-bottom:8px}
+#workspace .run-workbench-graph{padding:0;min-width:0}
+#workspace .run-workbench-graph>h4{display:none}
+#workspace .run-network-controls{display:flex;gap:4px;align-items:center;min-height:36px}
+#workspace .run-network-controls>span{flex:1;font-size:10px;color:var(--mc-muted)}
+#workspace .run-network-controls button{min-height:36px;min-width:36px;padding:3px;border:1px solid var(--mc-outline);border-radius:8px;color:var(--mc-text);background:var(--mc-charcoal);font-size:19px}
+#workspace .run-network-viewport{height:170px;position:relative;overflow:hidden;touch-action:none;cursor:grab;border:1px solid var(--mc-separator);border-radius:14px;margin:8px 0;background:radial-gradient(circle at 50% 50%,#25293680,var(--mc-charcoal) 80%)}
+#workspace .command-context[data-inspector-tab=graph] .run-network-viewport{height:clamp(240px,34dvh,360px)}
+#workspace .run-network-viewport:active{cursor:grabbing}
+#workspace .run-network-stage{position:absolute;inset:0;transform-origin:0 0;pointer-events:none}
+#workspace .run-network-edges{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
+#workspace .run-network-edges line{stroke:var(--mc-outline);stroke-width:1.2;vector-effect:non-scaling-stroke}
+#workspace .run-network-edges [data-network-edge=event-order]{stroke:var(--mc-periwinkle);stroke-dasharray:4 4;stroke-width:1;opacity:.7}
+#workspace .run-network-edges [data-network-edge=file-observation]{stroke:var(--mc-cyan);stroke-width:1.3}
+#workspace .run-network-stage .run-network-node{position:absolute;transform:translate(-50%,-50%);left:50%;top:50%;pointer-events:auto;display:flex;align-items:center;justify-content:center;width:44px;height:44px;min-height:44px;margin:0;padding:0;border:0!important;border-radius:50%;background:transparent!important;box-shadow:none!important;cursor:grab;overflow:visible}
+#workspace .run-network-dot{width:13px;height:13px;background:var(--mc-periwinkle);border:2px solid var(--mc-charcoal);border-radius:50%;box-shadow:0 0 0 1px var(--mc-outline);pointer-events:none}
+#workspace [data-network-node-kind=task] .run-network-dot{width:20px;height:20px;background:var(--mc-cyan)}
+#workspace [data-network-node-kind=file] .run-network-dot{background:var(--mc-charcoal);border-color:var(--mc-periwinkle);border-radius:4px}
+#workspace .run-network-node[aria-pressed=true] .run-network-dot{background:var(--mc-cyan);box-shadow:0 0 0 4px #24d3ef28}
+#workspace .run-network-label{position:absolute;top:34px;left:50%;transform:translateX(-50%);width:94px;text-align:center;font-size:10px;line-height:1.35;color:var(--mc-text);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;pointer-events:none}
+#workspace .run-network-legend{font-size:10px;color:var(--mc-muted)}
+#workspace .run-network-legend>summary{min-height:32px;cursor:pointer}
+#workspace .run-network-legend p{font-size:11px;line-height:1.5}
+/* Joey first screen: project/actions, concise progress, optional evidence. */
+.joey-takeover[data-hierarchy=compact]{display:flex;flex-direction:column;gap:14px}
+body[data-joey-simple=true]>header,body[data-joey-simple=true]>main{max-width:1100px}
+.joey-takeover[data-hierarchy=compact]>*{width:100%;box-sizing:border-box;margin:0}
+.joey-takeover[data-hierarchy=compact] .joey-command-title{font-size:25px;letter-spacing:-.02em}
+.joey-takeover[data-hierarchy=compact] .joey-command-intro{font-size:13px}
+.joey-takeover[data-hierarchy=compact] .joey-project-picker{padding:14px 18px;gap:10px 16px}
+.joey-project-choice{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.joey-project-choice>label{flex:0 0 100%;margin:0}
+.joey-project-choice>select{flex:1 1 240px;width:auto;min-width:0;margin:0;font-size:15px;min-height:42px}
+.joey-project-choice>.owner-development-task{flex:0 0 auto;margin:0}
+.joey-project-choice>.owner-development-task:has(.development-task-panel:not([hidden])){flex-basis:100%}
+.joey-project-choice>details{flex:0 0 auto;width:auto;margin:0;padding:0;border:0;min-height:42px}
+.joey-project-choice>details>summary{min-height:42px;border:1px solid var(--mc-outline);border-radius:9px;padding:9px 12px;box-sizing:border-box}
+.joey-project-choice>details[open]{flex-basis:100%}
+.joey-takeover[data-hierarchy=compact] .joey-workbench-entry{grid-column:1/-1;display:flex;flex-direction:row;align-items:center;gap:10px;flex-wrap:wrap;min-height:0;padding:10px 0 0;border:0;border-top:1px solid var(--mc-separator);border-radius:0;background:none;box-shadow:none}
+.joey-takeover[data-hierarchy=compact] .joey-workbench-entry h3{font-size:13px;margin:0;color:var(--mc-muted)}
+.joey-takeover[data-hierarchy=compact] .joey-workbench-entry p{font-size:11px;margin:0;color:var(--mc-muted)}
+.joey-takeover[data-hierarchy=compact] .joey-workbench-entry small{font-size:10px;margin:0;padding:0}
+body[data-joey-simple=true] .joey-takeover[data-hierarchy=compact] .joey-workbench-entry .joey-workspace-secondary{--glass-surface:var(--mc-charcoal);width:auto;min-height:38px;margin:0 0 0 auto;font-size:12px;padding:6px 12px;color:var(--mc-cyan);font-weight:500;border-color:var(--mc-outline)}
+.joey-takeover[data-hierarchy=compact] .joey-command-activity{min-height:0;padding:18px 22px;margin:0;width:100%}
+.joey-takeover[data-hierarchy=compact] .joey-command-activity>header{margin-bottom:12px}
+.joey-takeover[data-hierarchy=compact] .joey-command-activity>header h3{font-size:17px}
+.joey-command-summary{display:grid;grid-template-columns:1fr 1fr 1.5fr;gap:6px 20px;margin:0 0 12px}
+.joey-command-summary dt{font-size:11px;color:var(--mc-muted);grid-row:1}
+.joey-command-summary dd{grid-row:2;margin:0;min-width:0;font-size:15px;color:var(--mc-text);line-height:1.5}
+.joey-command-summary dd small{display:block;font-size:10px;color:var(--mc-periwinkle);line-height:1.5}
+.joey-command-summary [data-joey-quick-field=task]{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.joey-takeover[data-hierarchy=compact] .joey-activity-status{font-size:10px;margin:8px 0;color:var(--mc-muted)}
+.joey-takeover[data-hierarchy=compact] .project-handoff-scope{display:grid;grid-template-columns:1fr auto;gap:6px 16px;margin:0;padding:12px 0 0;border-top:1px solid var(--mc-separator)}
+.joey-takeover[data-hierarchy=compact] .project-handoff-scope>h4{grid-column:1;font-size:12px;margin:0}
+.joey-takeover[data-hierarchy=compact] .joey-project-overview-scope{display:none}
+.joey-takeover[data-hierarchy=compact] .joey-live-overview{grid-column:1;display:grid;grid-template-columns:90px 1fr;margin:0;gap:5px 12px;font-size:13px}
+.joey-takeover[data-hierarchy=compact] [data-joey-overview-field=decision]{font-weight:600;color:var(--mc-periwinkle)}
+.joey-takeover[data-hierarchy=compact] .joey-simple-hint{grid-column:1;font-size:10px;margin:0}
+.joey-takeover[data-hierarchy=compact] .joey-simple-primary{grid-column:2;grid-row:1/4;align-self:center;min-height:44px;width:auto;margin:0;font-size:13px;padding:10px 18px}
+.joey-takeover[data-hierarchy=compact] :is(.joey-simple-instruction,.joey-simple-select-all){grid-column:1/-1}
+.joey-takeover[data-hierarchy=compact] :is(.joey-task-details,.joey-handoff-details,.joey-project-records){width:100%;grid-column:1/-1;margin:6px 0 0;border-top:1px solid var(--mc-separator);padding-top:4px}
+.joey-takeover[data-hierarchy=compact] :is(.joey-task-details,.joey-handoff-details,.joey-project-records)>summary{min-height:40px;display:flex;align-items:center;color:var(--mc-muted);font-size:12px;cursor:pointer}
+.joey-takeover[data-hierarchy=compact] :is(.joey-simple-account,.joey-simple-technical){padding:0;font-size:12px;min-height:0}
+.joey-takeover[data-hierarchy=compact] .joey-supporting-records{padding:14px}
+@media(max-width:768px){#workspace .run-focus-heading .selected-task-title{font-size:16px}#workspace .run-network-controls button{min-height:44px;min-width:44px}#workspace .run-network-viewport,#workspace .command-context[data-inspector-tab=graph] .run-network-viewport{height:290px}#workspace .command-context[data-inspector-tab=graph]:has([data-network=source-backed]) .command-inspector{max-height:none}.joey-takeover[data-hierarchy=compact] .joey-command-title{font-size:24px}.joey-takeover[data-hierarchy=compact] .joey-project-picker{padding:12px}.joey-takeover[data-hierarchy=compact] .joey-project-choice>select{flex-basis:100%}.joey-takeover[data-hierarchy=compact] .joey-workbench-entry .joey-workspace-secondary{margin-left:0;width:100%}.joey-takeover[data-hierarchy=compact] .joey-command-activity{padding:16px}.joey-command-summary{grid-template-columns:1fr 1fr}.joey-command-summary dt:nth-of-type(3){grid-column:1/-1;grid-row:3;margin-top:8px}.joey-command-summary dd:nth-of-type(3){grid-column:1/-1;grid-row:4}.joey-takeover[data-hierarchy=compact] .project-handoff-scope{grid-template-columns:1fr}.joey-takeover[data-hierarchy=compact] .joey-simple-primary{grid-column:1;grid-row:auto;width:100%}}
+
+#workspace .run-network-node::before,#workspace .run-network-node::after{display:none}
+#workspace .command-graph:has([data-network=source-backed]){flex:0 0 44%;min-height:260px}
+
+.joey-project-choice>:is([data-development-task],.new-project-entry){flex:0 0 auto;width:auto;margin:0;padding:0;border:0}
+.joey-project-choice>:is([data-development-task],.new-project-entry):has(.new-project-panel:not([hidden])){flex:1 0 100%}
+.joey-project-choice>:is([data-development-task],.new-project-entry)>button{width:auto;min-height:42px;font-size:12px}
+
+.joey-takeover[data-hierarchy=compact] .joey-workbench-entry{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 12px}
+.joey-takeover[data-hierarchy=compact] .joey-workbench-entry h3{grid-column:1;grid-row:1}
+.joey-takeover[data-hierarchy=compact] .joey-workbench-entry p{grid-column:1;grid-row:2}
+.joey-takeover[data-hierarchy=compact] .joey-workbench-entry [hidden]{display:none!important}
+body[data-joey-simple=true] .joey-takeover[data-hierarchy=compact] .joey-workbench-entry .joey-workspace-secondary{grid-column:2;grid-row:1/3;margin:0}
+@media(max-width:768px){body[data-joey-simple=true] .joey-takeover[data-hierarchy=compact] .joey-workbench-entry .joey-workspace-secondary{grid-column:1/-1;grid-row:3;min-height:44px;width:100%;margin-top:4px}}
+
+#workspace .run-network-controls button{position:static;transform:none;left:auto;top:auto;max-width:none;width:auto}
+#workspace .run-network-controls button::before,#workspace .run-network-controls button::after{display:none}
+
+#workspace .command-context[data-inspector-tab=graph]:has([data-network=source-backed]) .command-graph{display:flex;flex-direction:column;overflow:hidden;min-height:260px}
+#workspace .command-context[data-inspector-tab=graph] .run-workbench-graph{display:flex;flex-direction:column;flex:1;min-height:0}
+#workspace .command-context[data-inspector-tab=graph] .run-network-viewport{flex:1;min-height:180px;height:auto}
+#workspace .command-context[data-inspector-tab=graph]:has([data-network=source-backed]) .command-inspector{max-height:140px}
+
+#workspace .command-graph .run-network-node[data-network-node]::before,#workspace .command-graph .run-network-node[data-network-node]::after{display:none!important}
+#workspace .run-network-controls button{flex:0 0 36px;width:36px;min-width:36px;text-align:center}
+#workspace .run-network-controls>span{min-width:0;line-height:1.4}
+@media(max-width:768px){#workspace .run-network-controls button{flex-basis:44px;width:44px;min-width:44px}}
+
+.joey-takeover[data-hierarchy=compact] :is(.joey-task-details,.joey-handoff-details,.joey-project-records)>summary::before{content:'▸';margin-right:8px;color:var(--mc-periwinkle)}
+.joey-takeover[data-hierarchy=compact] :is(.joey-task-details,.joey-handoff-details,.joey-project-records)[open]>summary::before{content:'▾'}
