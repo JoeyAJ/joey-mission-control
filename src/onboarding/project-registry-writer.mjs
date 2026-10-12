@@ -4,18 +4,19 @@ function registryIdentities(text) {
   if (typeof text !== 'string' || Buffer.byteLength(text) > 1048576 || text.includes('\0')) throw registrationError('REGISTRATION_REGISTRY_INVALID', 503);
   const ids = [...text.matchAll(/^(?:project_id|system_id):\s*([^\r\n]+)$/gm)].map(m => m[1].trim());
   const repositories = [...text.matchAll(/^github:\s*([^\r\n]+)$/gm)].map(m => m[1].trim().replace(/^https:\/\/github\.com\//, '').replace(/\.git\/?$/, '').replace(/\/$/, '').toLowerCase());
-  return {ids, repositories};
+  const repositoryNumericIds = [...text.matchAll(/^repository_numeric_id:\s*(\d+)\s*$/gm)].map(m => Number(m[1]));
+  return {ids, repositories, repositoryNumericIds};
 }
 export function renderProjectRegistryRegistration(text, receipt, {now = Date.now()} = {}) {
   assertIssuedRegistrationReceipt(receipt, now);
   const existing = registryIdentities(text);
-  if (existing.ids.includes(receipt.projectId) || existing.repositories.includes(receipt.repositoryId.toLowerCase())) throw registrationError('REGISTRATION_TARGET_CONFLICT', 409);
+  if (existing.ids.includes(receipt.projectId) || existing.repositories.includes(receipt.repositoryId.toLowerCase()) || existing.repositoryNumericIds.includes(receipt.repositoryNumericId)) throw registrationError('REGISTRATION_TARGET_CONFLICT', 409);
   const numbers = [...text.matchAll(/^###\s+(\d+)\. /gm)].map(m => Number(m[1]));
   if (numbers.some(n => !Number.isSafeInteger(n) || n < 1 || n > 100000)) throw registrationError('REGISTRATION_REGISTRY_INVALID', 503);
   const number = Math.max(0, ...numbers) + 1;
   // Existing reader consumes single-line scalar fields. Newlines and markup in
   // the human name never enter its numbered heading or YAML structure.
-  const name = receipt.name.replace(/[\r\n`#<>]/g, ' ').trim();
+  const name = receipt.name.replace(/[\r\n`#<>]/g, ' ').trim() || receipt.projectId;
   const values = {project_id:receipt.projectId, local_master:null, github:receipt.repositoryId, branch:receipt.ref,
     local_head:receipt.baselineSha, github_main_head:receipt.ref === 'main' ? receipt.baselineSha : null,
     production_source_sha:null, production:null, alignment:'REGISTRY_VERIFIED_SCOPES_PENDING',
@@ -44,7 +45,7 @@ function renderIndex(text, receipt) {
   if (typeof text !== 'string' || Buffer.byteLength(text) > 1048576 || text.includes('\0')) throw registrationError('REGISTRATION_INDEX_INVALID', 503);
   if (text.includes('`' + receipt.projectId + '`') || text.includes('PROJECTS/' + receipt.projectId + '/')) throw registrationError('REGISTRATION_TARGET_CONFLICT', 409);
   const directory = 'PROJECTS/' + receipt.projectId;
-  const name = receipt.name.replace(/[|`\r\n#<>\[\]()]/g, ' ').trim();
+  const name = receipt.name.replace(/[|`\r\n#<>\[\]()]/g, ' ').trim() || receipt.projectId;
   const row = '| ' + name + ' (`' + receipt.projectId + '`) | [M](' + directory + '/PROJECT_MEMORY.md) | [S](' + directory + '/CURRENT_STATE.md) | `null` |\n';
   const marker = /^## Production Development Registry\s*$/m, match = marker.exec(text);
   if (!match) return text.replace(/\s*$/, '\n') + '\n## Production Development Registry\n\n| Project | Memory | Current State | Canonical Local Master |\n|---|---|---|---|\n' + row;

@@ -69,31 +69,38 @@
       "files": {
         "HANDOFF.md": {
           "sha256": "9e445065de6b9ae6fbb376d805e07354e61948b1b545d61a791992ae029cd81e",
-          "blobId": "45b9ae211657b995178f19e971b92289b2fd51f9"
+          "blobId": "45b9ae211657b995178f19e971b92289b2fd51f9",
+          "gitMode": "100644"
         },
         "PRD.md": {
           "sha256": "344e8ceb27224ef8033223597143a75ae9b08063d6b85ed36c84f0ffb7f2eb7b",
-          "blobId": "499b0ea255d23b196b3ae2de16a078fc70682044"
+          "blobId": "499b0ea255d23b196b3ae2de16a078fc70682044",
+          "gitMode": "100644"
         },
         "README.md": {
           "sha256": "38a76115ecde943107e00b5ec3de264338d7439afaf7a3b359b04cf53b156d0f",
-          "blobId": "1510d131778c479867b3769b754789e61e40e246"
+          "blobId": "1510d131778c479867b3769b754789e61e40e246",
+          "gitMode": "100644"
         },
         "docs/PRODUCT_CHARTER.md": {
           "sha256": "4d3d7241158574afd27e17210c34ec05535b2c274d280a3bbb129859189438d0",
-          "blobId": "667256f63806a64584d477ab5955e0a93e80b33c"
+          "blobId": "667256f63806a64584d477ab5955e0a93e80b33c",
+          "gitMode": "100644"
         },
         "docs/PHASE_PLAN.md": {
           "sha256": "c12f6b1a76812e2e1676fcd948b32989cc9931e159ea5f8aefe3b0f7bb04b1d5",
-          "blobId": "c2519c4cb6174406d72cdd7ebb232fe1190a4468"
+          "blobId": "c2519c4cb6174406d72cdd7ebb232fe1190a4468",
+          "gitMode": "100644"
         },
         ".mission-control/bootstrap.json": {
           "sha256": "93c4bea3d822013b00658a4aef47949ef602503a096a38aa9ace3ced2879f592",
-          "blobId": "419cd8026f6f7388ca9d6359e2252d5b4895da7c"
+          "blobId": "419cd8026f6f7388ca9d6359e2252d5b4895da7c",
+          "gitMode": "100644"
         },
         ".mission-control/source-profile.json": {
           "sha256": "7aa5f2b49fc5d1649fc3096b150577128af6cbf9ead929027358c8acf0e7b013",
-          "blobId": "c9d1820650cac3a026bf02c64ec253dea58abfe9"
+          "blobId": "c9d1820650cac3a026bf02c64ec253dea58abfe9",
+          "gitMode": "100644"
         }
       },
       "sourceProfile": {
@@ -170,31 +177,38 @@
         "files": {
           "HANDOFF.md": {
             "sha256": "9e445065de6b9ae6fbb376d805e07354e61948b1b545d61a791992ae029cd81e",
-            "blobId": "45b9ae211657b995178f19e971b92289b2fd51f9"
+            "blobId": "45b9ae211657b995178f19e971b92289b2fd51f9",
+            "gitMode": "100644"
           },
           "PRD.md": {
             "sha256": "344e8ceb27224ef8033223597143a75ae9b08063d6b85ed36c84f0ffb7f2eb7b",
-            "blobId": "499b0ea255d23b196b3ae2de16a078fc70682044"
+            "blobId": "499b0ea255d23b196b3ae2de16a078fc70682044",
+            "gitMode": "100644"
           },
           "README.md": {
             "sha256": "38a76115ecde943107e00b5ec3de264338d7439afaf7a3b359b04cf53b156d0f",
-            "blobId": "1510d131778c479867b3769b754789e61e40e246"
+            "blobId": "1510d131778c479867b3769b754789e61e40e246",
+            "gitMode": "100644"
           },
           "docs/PRODUCT_CHARTER.md": {
             "sha256": "4d3d7241158574afd27e17210c34ec05535b2c274d280a3bbb129859189438d0",
-            "blobId": "667256f63806a64584d477ab5955e0a93e80b33c"
+            "blobId": "667256f63806a64584d477ab5955e0a93e80b33c",
+            "gitMode": "100644"
           },
           "docs/PHASE_PLAN.md": {
             "sha256": "c12f6b1a76812e2e1676fcd948b32989cc9931e159ea5f8aefe3b0f7bb04b1d5",
-            "blobId": "c2519c4cb6174406d72cdd7ebb232fe1190a4468"
+            "blobId": "c2519c4cb6174406d72cdd7ebb232fe1190a4468",
+            "gitMode": "100644"
           },
           ".mission-control/bootstrap.json": {
             "sha256": "93c4bea3d822013b00658a4aef47949ef602503a096a38aa9ace3ced2879f592",
-            "blobId": "419cd8026f6f7388ca9d6359e2252d5b4895da7c"
+            "blobId": "419cd8026f6f7388ca9d6359e2252d5b4895da7c",
+            "gitMode": "100644"
           },
           ".mission-control/source-profile.json": {
             "sha256": "7aa5f2b49fc5d1649fc3096b150577128af6cbf9ead929027358c8acf0e7b013",
-            "blobId": "c9d1820650cac3a026bf02c64ec253dea58abfe9"
+            "blobId": "c9d1820650cac3a026bf02c64ec253dea58abfe9",
+            "gitMode": "100644"
           }
         },
         "sourceProfile": {

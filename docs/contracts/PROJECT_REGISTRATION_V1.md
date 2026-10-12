@@ -72,7 +72,14 @@ The server loads the saved draft through the existing Owner draft `list` API,
 rejects project/repository collisions with other drafts, and checks Owner/session
 and policy validity around awaited reads. It independently checks repository ID,
 full name, private visibility, archive/disabled flags, the branch HEAD and seven
-pinned files. Both SHA256 content hashes and Git SHA1 blob identities are checked.
+pinned files. Before Contents API requests, the reader resolves the pinned Git
+commit's tree and follows only direct ancestor directory entries for the seven
+allowed paths. Ancestors must have mode `040000` and type `tree`; each final entry
+must have mode `100644` or `100755` and type `blob`. Symlinks (`120000`), submodules
+(`160000`), truncated/duplicate trees and traversal requests are rejected without
+following a target. The Contents response path/blob must agree with that tree entry.
+Both SHA256 content hashes and Git SHA1 blob identities are then checked. Receipts
+retain the proven regular-file Git mode.
 The manifest, HANDOFF project and source profile must agree with the saved draft.
 Repository identity/privacy and HEAD are read again after document verification
 and at the final writer authorization boundary. A complete verification expires
@@ -85,7 +92,9 @@ memory index, five canonical memory documents and receipt/idempotency ledger aft
 the final authorization callback and both revision checks. Existing target memory
 and registry entries cannot be overwritten. Identical retries return the original
 result; different payloads under the same key conflict. A concurrent revision loses
-CAS. Exported/serialized receipts cannot be reimported as writer authority: only
+CAS. Repository numeric IDs also remain unique after renames. A display name that
+sanitizes to empty falls back to the valid project ID, so the existing registry
+reader cannot silently omit a committed entry. Exported/serialized receipts cannot be reimported as writer authority: only
 receipts issued by the current verification process are accepted.
 
 The generated registry uses the existing reader's fields. `local_head` represents
@@ -164,10 +173,13 @@ profile mismatches, resource receipt binding, expiry, forged receipt rejection,
 concurrent CAS, replay conflicts, duplicate targets and atomic failure. Network
 transport is injected; the portability guard reports zero forbidden attempts.
 This candidate changes no UI, so new desktop/mobile screenshots are not applicable.
-Final validation: **34 focused tests and 1,025 portable tests passed**. The portable
+Initial validation: **34 focused tests and 1,025 portable tests passed**. The portable
 run also rebuilt the bundle, checked all five existing schemas, validated the four
 existing projects/case/handoffs/Continue payloads, and passed static safety checks.
 All guarded runs reported zero forbidden attempts. No deployment was performed.
+Review repair validation: **41 focused tests and 1,032 portable tests passed**,
+including pinned-tree symlink/submodule rejection before Contents reads, ancestor
+and blob/path checks, empty-name projection and stable numeric repo ID uniqueness.
 
 Cherry-pick the implementation commit after the checkpoint, or apply the portable
 patch from canonical base. Re-run `npm run verify:portable`; keep the factory
@@ -177,3 +189,6 @@ GitHub REST endpoint behavior was checked against primary documentation:
 [repository identity](https://docs.github.com/en/rest/repos/repos#get-a-repository),
 [Git reference](https://docs.github.com/en/rest/git/refs#get-a-reference), and
 [pinned repository content](https://docs.github.com/en/rest/repos/contents#get-repository-content).
+The Contents documentation explicitly permits symlink dereferencing; regular-file
+identity therefore comes from the pinned
+[Git tree](https://docs.github.com/en/rest/git/trees#get-a-tree), before content reads.
