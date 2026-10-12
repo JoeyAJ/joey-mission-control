@@ -12,7 +12,7 @@ export function renderFileNavigation({doc,projection,followState,locale='zh-TW',
  const w=fileNavigationWords[locale]||fileNavigationWords['zh-TW'],el=(tag,text)=>{const n=doc.createElement(tag);if(text)n.textContent=text;return n;};
  const root=el('section');root.dataset.fileNavigation=mode;root.className='run-file-navigation';
  const label=el('label',w.task),select=el('select');select.setAttribute('aria-label',w.task);select.dataset.fileTaskSelect=mode;select.dataset.runSelection='task-selection';select.dataset.runControl='file-task-'+mode;
- for(const {report}of projection.runs){const option=el('option',report.featureTitle+' · '+report.agentName);option.value=report.runId;select.append(option);}select.value=followState.runId||'';select.addEventListener('change',()=>onTask(select.value));label.append(select);root.append(label,el('h5',w.files));
+ for(const {report}of projection.runs){const option=el('option',report.featureTitle+' · '+report.agentName);option.value=report.runId;select.append(option);}select.value=followState.runId||'';select.addEventListener('change',()=>onTask(select.value));label.append(select);label.hidden=projection.runs.length<=1;root.append(label,el('h5',w.files));
  const files=projection.files.filter(f=>f.runId===followState.runId),selected=files.find(f=>f.path===followState.selectedFilePath);
  if(!files.length){root.append(el('p',w.none));return root;}
  const nav=el('nav');nav.setAttribute('aria-label',w.files);root.append(nav);
