@@ -986,3 +986,26 @@ body[data-joey-simple=true] .joey-takeover[data-hierarchy=compact] .joey-workben
 
 .joey-takeover[data-hierarchy=compact] :is(.joey-task-details,.joey-handoff-details,.joey-project-records)>summary::before{content:'▸';margin-right:8px;color:var(--mc-periwinkle)}
 .joey-takeover[data-hierarchy=compact] :is(.joey-task-details,.joey-handoff-details,.joey-project-records)[open]>summary::before{content:'▾'}
+
+/* Saved idea -> prepared private files. All provisioning stays explicitly pending. */
+.new-project-bootstrap{margin:16px 0}
+.new-project-bootstrap-summary{padding:16px;border:1px solid var(--mc-outline,#5588a2);border-radius:14px;background:var(--mc-charcoal,#1a1a19)}
+.new-project-bootstrap-summary h3{font-size:17px;margin:0 0 12px;color:var(--mc-cyan,#24d3ef)}
+.new-project-bootstrap-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;list-style:none;padding:0;margin:0 0 16px}
+.new-project-bootstrap-steps li{font-size:12px;padding:10px;border:1px solid var(--mc-separator,#475569);border-radius:9px;color:var(--mc-muted,#a5b4fd)}
+.new-project-bootstrap-steps [data-step-state=prepared]{border-color:var(--mc-outline,#5588a2);color:var(--mc-cyan,#24d3ef)}
+.new-project-bootstrap-summary>strong{display:block;font-size:15px}
+.new-project-bootstrap-summary>p{font-size:12px;color:var(--mc-muted,#a5b4fd);margin:8px 0}
+.new-project-bootstrap-summary dl{display:grid;grid-template-columns:110px minmax(0,1fr);gap:5px 12px;font-size:12px;margin:12px 0}
+.new-project-bootstrap-summary dt{color:var(--mc-muted,#a5b4fd)}
+.new-project-bootstrap-summary dd{margin:0;overflow-wrap:anywhere}
+.new-project-bootstrap-summary summary{min-height:40px;display:flex;align-items:center;cursor:pointer;font-size:12px}
+.new-project-bootstrap-summary summary::before{content:'▸';margin-right:8px}.new-project-bootstrap-summary details[open]>summary::before{content:'▾'}
+.new-project-bootstrap-summary ul{font:12px/1.7 ui-monospace,monospace;padding-left:20px}
+.new-project-bootstrap-actions{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 18px}
+.new-project-bootstrap-actions button{flex:1 1 160px;min-height:44px;padding:10px 12px;border-radius:9px}
+.new-project-bootstrap-actions button[data-new-project-action=zip]{width:auto;font-size:13px;margin:0}
+.new-project-bootstrap-actions [hidden]{display:none!important}
+.new-project-readiness>[data-new-project-state]{font-size:12px;color:var(--mc-muted,#a5b4fd);margin:10px 0}
+.new-project-readiness>[hidden]{display:none!important}
+@media(max-width:640px){.new-project-bootstrap-steps{grid-template-columns:1fr;gap:5px}.new-project-bootstrap-steps li{padding:8px}.new-project-bootstrap-summary{padding:12px}.new-project-bootstrap-summary dl{grid-template-columns:1fr;gap:3px}.new-project-bootstrap-summary dd{margin-bottom:6px}.new-project-bootstrap-actions{flex-direction:column}.new-project-bootstrap-actions button{flex:auto;width:100%}}
