@@ -64,7 +64,7 @@ export function mountJoeyTakeover({doc=document,project='NEXAEON',track='BASELIN
   if(busy){hint.textContent=w.copying;action.disabled=true;}
   else if(!controller){hint.textContent=w.unavailable;action.disabled=true;}
   else if(auth==='checking'){hint.textContent=w.checking;action.disabled=true;}
-  else if(auth!=='verified'&&owner.querySelector('form button[type=submit]')?.disabled){hint.textContent=w.checking;action.disabled=true;}
+  else if(auth!=='verified'&&owner.querySelector('.owner-auth-body>form button[type=submit]')?.disabled){hint.textContent=w.checking;action.disabled=true;}
   else if(auth!=='verified'){hint.textContent=auth==='waiting'?w.verify:auth==='signed_out'?w.signin:w.denied;action.textContent=w.login;}
   else if(view?.status==='denied'){hint.textContent=w.denied;action.textContent=w.login;}
   else if(view?.status==='reading'){hint.textContent=w.reading;action.disabled=true;}

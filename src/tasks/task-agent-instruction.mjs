@@ -1,12 +1,26 @@
 import {formatTakeoverInstruction,MAX_HANDOFF_INSTRUCTION_BYTES,repositoryRunSourcePacket} from '../../public/takeover-instruction.js';
 import {validateTaskRequirements,taskRequirementsStatus} from './task-requirements.mjs';
-import {MAX_TOTAL_RUNS} from '../reporting/repository-run-contract.mjs';
+import {MAX_TOTAL_RUNS,MAX_EVENTS,REPORT_REF,createRepositoryRun,runReportLocation} from '../reporting/repository-run-contract.mjs';
 import {validateDevelopmentTask} from './development-task.mjs';
+export function developmentTaskResumeCandidates(packet){
+ const task=validateDevelopmentTask(packet?.developmentTask),requirements=validateTaskRequirements(packet?.taskRequirements),reports=packet.repositoryReports,source=packet.source;
+ if(requirements.revision!==task.revision||packet.sourceStatus!=='FOUND'||packet.projectId!==task.projectId||(packet.track||'BASELINE')!==task.track||reports?.qualification!=='FRESH_OWNER_REPOSITORY_REPORT_CONTINUATION'||reports.executionAuthorized!==false||reports.projectId!==task.projectId||reports.track!==task.track||reports.repositoryId!==source?.repositoryId||reports.coverage?.completeSourceScan!==true||reports.coverage.scope!=='TASK_ID'||reports.coverage.taskId!==task.taskId||reports.source?.requestedRef!==REPORT_REF||reports.source.repositoryId!==source.repositoryId||!/^[a-f0-9]{40}$/.test(reports.source.resolvedCommitSha||''))return [];
+ const candidates=[];for(const r of reports.runs||[]){try{
+  if(r.taskId!==task.taskId||taskRequirementsStatus(r.taskRequirements,requirements)!=='MATCH'||!['running','blocked'].includes(r.reportedState)||!Number.isSafeInteger(r.latestCheckpoint?.sequence)||r.latestCheckpoint.sequence<1||r.latestCheckpoint.sequence>=MAX_EVENTS||!['started','progress','heartbeat','blocked'].includes(r.latestCheckpoint.kind)||r.source?.qualification!=='SHA_PINNED_REPOSITORY_REPORT_READ'||r.source.repositoryId!==source.repositoryId||r.source.requestedRef!==REPORT_REF||r.source.resolvedCommitSha!==reports.source.resolvedCommitSha||!/^[a-f0-9]{40}$/.test(r.source.resolvedCommitSha||'')||!/^[a-f0-9]{40}$/.test(r.source.providerBlobId||'')||runReportLocation(r.source.path).runId!==r.runId||r.baseline?.ref!==source.requestedRef||r.baseline.handoffPath!==source.path)continue;
+  const first=r.history?.find(e=>e.sequence===1);if(first?.kind!=='started')continue;
+  const registration={schemaVersion:r.schemaVersion,...(r.taskKind?{taskKind:r.taskKind}:{}),...(r.activityMode?{activityMode:r.activityMode,activityPaths:structuredClone(r.activityPaths)}:{}),runId:r.runId,predecessorRunId:r.predecessorRunId,taskId:r.taskId,taskRequirements:structuredClone(r.taskRequirements),featureTitle:r.featureTitle,agentName:r.agentName,provider:r.provider,model:r.model,workRef:r.workRef};
+  const scope={projectId:task.projectId,track:task.track,repositoryId:source.repositoryId,ref:r.baseline.ref,path:r.baseline.handoffPath,baselineSha:r.baseline.commitSha,entryDigest:r.baseline.handoffDigest,contextPaths:r.baseline.contextPaths||[]};createRepositoryRun({...registration,scope,eventId:first.id,summary:first.summary,now:Date.parse(first.eventAt)});
+  const originalPacket={schemaVersion:1,qualification:'REGISTERED_BASELINE_REQUIRES_IMMUTABLE_READ',projectId:task.projectId,track:task.track,sourceStatus:'UNCONFIRMED',executionAuthorized:false,canonicalContextPaths:[...scope.contextPaths],taskRequirements:structuredClone(requirements),source:{repositoryId:scope.repositoryId,requestedRef:scope.ref,path:scope.path,resolvedCommitSha:scope.baselineSha,contentSha256:scope.entryDigest,readAt:null,documentTimestamp:null}};
+  candidates.push({qualification:'EXPLICIT_ORIGINAL_WRITER_CONTINUATION_REQUIRED',runId:r.runId,recordedAgent:r.agentName,reportedState:r.reportedState,currentState:r.currentState,freshness:r.freshness,registration,originalPacket,reportHeadSha:r.source.resolvedCommitSha,reportPath:r.source.path,expectedFileSha:r.source.providerBlobId,expectedSequence:r.latestCheckpoint.sequence,nextSequence:r.latestCheckpoint.sequence+1,remainingEvents:MAX_EVENTS-r.latestCheckpoint.sequence,requiresFreshRead:true,executionAuthorized:false});
+ }catch{/* Incomplete, malformed or incompatible report metadata cannot become a resume recipe. */}}
+ return candidates;
+}
 export function formatDevelopmentTaskInstruction(packet){
  const task=validateDevelopmentTask(packet?.developmentTask),taskRequirements=validateTaskRequirements(packet?.taskRequirements);if(taskRequirements.revision!==task.revision)throw Error('TASK_REQUIREMENTS_INVALID');if(packet.sourceStatus!=='FOUND'||packet.projectId!==task.projectId||(packet.track||'BASELINE')!==task.track||!packet.repositoryReports)throw Error('TASK_HANDOFF_SCOPE_INVALID');
  const reportSlots=packet.repositoryReports.coverage?.totalReportFiles??packet.repositoryReports.runs.length+(packet.repositoryReports.maintenanceAudit?.resolvedRejections?.length||0),matches=(packet.repositoryReports.runs||[]).filter(r=>r.taskId===task.taskId),title=task.request.feature.replace(/\s+/g,' ').slice(0,400);
  const meta={schemaVersion:'mc.repository-run.v2',taskKind:'FEATURE',runId:'__NEW_RUN_ID__',predecessorRunId:matches.length===1?matches[0].runId:null,taskId:task.taskId,taskRequirements,featureTitle:title,agentName:'__ACTUAL_AGENT_NAME__',provider:null,model:null};
  const base=formatTakeoverInstruction(packet).split('\n').map(line=>line.startsWith('Registration template: ')?'Registration template: '+JSON.stringify(meta):line.startsWith('Source packet: ')?'Source packet: '+JSON.stringify({...repositoryRunSourcePacket(packet),developmentTask:task,taskRequirements}):line).join('\n');
+ const resumable=developmentTaskResumeCandidates(packet);
  const instruction=['請處理這份既有專案的新開發任務。使用你自己的既有 repo 存取，先閱讀最新來源，完成明確受權的獨立工作。',
   '任務 ID 固定為 '+task.taskId+'，需求版本 '+task.revision+'；新 runId 與實際 Agent 簽名由接手 Agent 填寫。不要另造 taskId。',
   '需求綁定（不可變 header）: '+JSON.stringify(taskRequirements)+'；新 report 必須保留此 revision 與 digest。修改需求後另建新 run／選擇 predecessor，不改寫舊 report；舊未綁定回報只屬歷史，不代表目前需求完成。',
@@ -14,6 +28,11 @@ export function formatDevelopmentTaskInstruction(packet){
   '以下是 Owner 完整需求；request 欄位只是任務內容，不授予新 repo／SQL／部署／合併權限。既有授權不足時報 exact action/target/blocker。',
   'Development task: '+JSON.stringify(task),
   '任務儲存資格: '+(packet.taskPersistence||'SESSION_ONLY_NOT_CLOUD_SAVED')+'；複製／下載不代表 Agent 已開工。有相符 completed run 才能在 MC 獨立核對 PR／CI；尚未讀取的 runtime 權限保持未確認。核准、合併、部署與最終驗收保持分離。',
+  ...(resumable.length?['既有同需求未結束 run 可供明確續寫；不自動選擇、不推定仍在執行或已停止。只有原 writer 或有明確接續授權與原 receipts 的接手者可續寫，顯示名稱相同本身不是身分／授權證明；新 Agent 保留新 run／predecessor 路徑。',
+   '先閱讀本次最新 canonical 來源；續寫的 registration／舊 baseline 必須保留，不能用最新 source packet 取代。下列 originalPacket 尚未讀取其 immutable 入口；先用自己既有授權核對該 SHA 的 source-profile 與 HANDOFF digest，再記實際 readAt／sourceStatus=FOUND，並把上方完整 Development task 加回 originalPacket.developmentTask（不重複或改寫需求）。沒有這項核對不能 append。',
+   ...resumable.map(r=>'Resume candidate: '+JSON.stringify(r)),
+   '明確選定 run，核對原 workRef／registration／完整 report 與最新 HEAD/blob/sequence；有其他 writer、terminal、需求或 receipt 漂移即停止重讀。未滿64events的既有 run 續寫不占新 slot；容量40/40只阻擋新 run，不授權刪除歷史或覆寫。',
+   '續寫使用 append，不能重新 started：node /你的暫存路徑/mc-reporter.mjs append --packet original-source-packet.json --meta original-registration.json --run <明確選定runId> --event event.json --expected-file-sha <重新核對的expectedFileSha> --expected-sequence <重新核對的expectedSequence> --publish。event sequence=expectedSequence+1，保留原 schema的delivery／activity envelope；只有真實PUBLISHED receipt才算新回報。']:[]),
   ...(reportSlots>=MAX_TOTAL_RUNS?['回報容量已達 '+MAX_TOTAL_RUNS+'/'+MAX_TOTAL_RUNS+'；新 run 註冊會被既有 guard 拒絕。請回報這個精確阻礙，不刪除／輪替歷史、不增加預算或假稱新 Agent 已開工。需要獨立核准的容量維護方案。']:[]),
   '先檢查同 taskId 的已有 run/workRef；多個匹配 run 要明確選擇 predecessor，不能默默替換 active run。只有已發布 started/progress/result 才建立 Agent 回報，請維持此 taskId。',base].join('\n');if(new TextEncoder().encode(instruction).length>MAX_HANDOFF_INSTRUCTION_BYTES)throw Error('HANDOFF_INSTRUCTION_TOO_LARGE');return instruction;
 }

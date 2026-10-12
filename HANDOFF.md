@@ -1,19 +1,19 @@
-# Current Owner session generation fence — 2026-10-12
+# Current explicit task handoff resumption — 2026-10-12
 
 Project: MISSION_CONTROL
-Timestamp: 2026-10-12T03:03:17.976Z
-Task: Honor main MC logout across pending callback and cross-tab ABA
+Timestamp: 2026-10-12T03:46:20.664Z
+Task: Original-writer task run resumption without duplicate registration
 Status: LOCAL_VERIFIED_PENDING_PUBLICATION
 Last Developer: Codex
 Executed by: Codex
 Actual Model: UNKNOWN
-Baseline: b56e224ee6790ee1b743e9e23063499665f6429f
+Baseline: 91a517efd259d4d9d933d03c9f0f439def07d605
 
-Empty session bytes were not a revision: A could resume after B completed and main logout restored empty. Main SDK custody writes/removals now advance a nonsecret generation, including empty logout; callback snapshot/commit uses generation plus bytes under the same lock:mc-owner-session-v1 as main SDK. Official pinned navigatorLock preserves acquire timeout semantics. No callback shared cleanup/revocation. Owner/session/member/AAL/TOTP and staged checks retained.
+Private task copy lists matching nonterminal candidates with original header/baseline/workRef/CAS. Original writer or explicitly authorized continuation must verify ownership and immutable source; name alone is insufficient. UNCONFIRMED template prevents direct append. Terminal/full/unbound/mismatched/cross-scope rows excluded; new Agent/predecessor retained. No dispatch or repeated private request per candidate.
 
-Focused27, pinned SDK race6 and retained login27 PASS; b56 cross-tab ABA probe RED. Full969/build/validate/static safety PASS, forbidden attempts0. Manual flow remains approved/enabled, numeric OTP false; real mail test held pending parent verification. Same fixed Preview/run38 publication follows. No new run/capacity/history/settings/credentials/data or automatic email; Production remains dpl_5GgJ8LhD4Ec73RGz9CEFe1ppZQnh/8b4945b. Review executionAuthorized:false, finalization live OFF.
+Focused31/browser4 widths × Buddy/candidate PASS, synthetic only; isolated Git resumes one run and rejects stale CAS. Overview password-pending selector corrected after email panel insertion. Full974/build/validate/safety PASS; forbidden attempts0. Save-only task untouched; Auth generation/TOTP/Owner/private-source guards retained, finalization live OFF, review executionAuthorized:false.
 
-Evidence: docs/MC_OWNER_SESSION_GENERATION_FENCE_20261012.md. Parent real Email/TOTP/Owner acceptance pending; cloud ordinary HTTPS CONNECT403, no bypass. No source execution on Joey Mac.
+Run38 email acceptance cannot be repurposed; distinct increment uses39/40 unchanged cap. Live project creation/source/report registration and dispatch/finalization still need exact grants/capabilities/CAS. No resources/credentials/settings/Production/automatic email. Evidence: docs/MC_TASK_RESUME_HANDOFF_20261012.md. Hierarchy is visible on #workspace; full reference redesign/editor/terminal feeds incomplete. Parent real Email/TOTP acceptance independent and pending.
 
 # Dated prior stage history
 
