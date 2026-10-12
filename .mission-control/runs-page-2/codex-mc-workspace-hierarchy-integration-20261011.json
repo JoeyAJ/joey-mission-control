@@ -43,6 +43,88 @@
       "summary": "Exact3e8fd2b integrated locallyf322232, latest Owner bundle rebuilt. Focused68/portable956/build/validate/check/root20 and actual browser36 PASS. Remaining disclosure/privacy/simple/mobile/sites blocked by process/thread EAGAIN/renderer failure; direct/owned-child-reaper runners did not resolve, sudo absent. Product guards/core/OTP intact, canonical remote/Preview stayd9a7beb. One run37/40, no capacity/history change. Callback exact URL approved separately; no mail/settings changes.",
       "result": null,
       "delivery": null
+    },
+    {
+      "id": "workspace-hierarchy-recovered-3",
+      "sequence": 3,
+      "eventAt": "2026-10-12T01:38:42.274Z",
+      "kind": "completed",
+      "summary": "Recovered exact source/commit lineage; hierarchy focus12 and remaining24 browser PASS, prior file/motion/follow/delivery24 separately dated. Final966/build/validate/safety PASS; fixed Preview exact READY/alias bca6576. Ordinary root/callback CONNECT403 before app; served and independent/Joey acceptance pending. No new run/capacity/history or Production change.",
+      "result": {
+        "codeSha": "bca65762223cf6aab2538c13ad5c4be27c860830",
+        "tests": [
+          {
+            "name": "Final portable966/build/validate/static safety; no forbidden workstation attempts",
+            "outcome": "PASS"
+          },
+          {
+            "name": "Current executor hierarchy focus12 and remaining24 synthetic browser cases",
+            "outcome": "PASS"
+          },
+          {
+            "name": "Official SDK Magic Link callback27 synthetic browser cases",
+            "outcome": "PASS"
+          }
+        ],
+        "nextSteps": "Parent served exact callback check; same Magic Link run38 activation after gate. Real Owner/Email/TOTP and independent/Joey acceptance pending.",
+        "handoff": {
+          "path": "HANDOFF.md",
+          "commitSha": "bca65762223cf6aab2538c13ad5c4be27c860830"
+        }
+      },
+      "delivery": {
+        "qualification": "AGENT_REPORTED",
+        "scope": {
+          "projectId": "MISSION_CONTROL",
+          "track": "BASELINE",
+          "repositoryId": "JoeyAJ/joey-mission-control",
+          "runId": "codex-mc-workspace-hierarchy-integration-20261011",
+          "taskId": "mc-workspace-hierarchy-integration-20261011",
+          "workRef": "codex/mc-command-center-checkpoint-20261006",
+          "codeSha": "bca65762223cf6aab2538c13ad5c4be27c860830"
+        },
+        "deployment": {
+          "status": "READY",
+          "target": {
+            "provider": "vercel",
+            "project": "joey-mission-control",
+            "environment": "preview"
+          },
+          "id": "dpl_8bfBzHutuhCjTiHMyPVgwzRpWRmo",
+          "deployedSha": "bca65762223cf6aab2538c13ad5c4be27c860830",
+          "url": "https://joey-mission-control-git-codex-mc-comma-fceec2-joeyajs-projects.vercel.app/",
+          "observedAt": "2026-10-12T01:38:42.274Z",
+          "evidence": "Authenticated provider deployment ID and independent fixed alias read both READY with exact canonical branch/SHA; target null is Preview.",
+          "notRequired": null
+        },
+        "verification": {
+          "status": "BLOCKED",
+          "method": "HTTP_FUNCTIONAL_CHECK",
+          "checkedAt": "2026-10-12T01:38:42.274Z",
+          "deploymentId": "dpl_8bfBzHutuhCjTiHMyPVgwzRpWRmo",
+          "checkedSha": null,
+          "url": "https://joey-mission-control-git-codex-mc-comma-fceec2-joeyajs-projects.vercel.app/",
+          "evidence": "Ordinary callback GET returned curl56/CONNECT403/HTTP000 before app; no served content, no bypass or Owner/device claim.",
+          "notRequired": null
+        },
+        "handoff": {
+          "status": "CURRENT",
+          "path": "HANDOFF.md",
+          "commitSha": "bca65762223cf6aab2538c13ad5c4be27c860830",
+          "checkedAt": "2026-10-12T01:38:42.274Z",
+          "evidence": "Canonical source push and exact remote SHA readback; current handoff retains limits and inactive callback gate."
+        },
+        "data": {
+          "status": "NOT_REQUIRED",
+          "version": null,
+          "checkedAt": "2026-10-12T01:38:42.274Z",
+          "evidence": null,
+          "notRequired": {
+            "policy": "MC_NO_DATA_CHANGE",
+            "reason": "Presentation/Auth-client callback only; no SQL/data migration or live data mutation."
+          }
+        }
+      }
     }
   ]
 }
