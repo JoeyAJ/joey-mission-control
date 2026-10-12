@@ -1,0 +1,19 @@
+import test from 'node:test';import assert from 'node:assert/strict';
+import {closureFixture,signal} from './helpers/task-closure-fixture.mjs';
+import {createDevelopmentTasks} from '../src/tasks/development-task-controller.mjs';
+import {createTaskReviews} from '../src/tasks/task-review-controller.mjs';
+import {createTaskClosure} from '../src/tasks/task-closure-controller.mjs';
+test('native source advance, historical read and CI refresh preserve recovery without current-review eligibility',async()=>{
+ const x=await closureFixture(),f=x.f,r=f.state.record,rv=r.review,clock=()=>f.state.clock;
+ const source=signal({status:'connected',observation:{status:'FOUND',projectId:'MISSION_CONTROL',track:'BASELINE',source:{repositoryId:rv.repositoryId,requestedRef:rv.canonicalRef,resolvedCommitSha:f.state.canonicalHead}}});
+ const reports=signal({status:'connected',observation:{status:'FOUND',projectId:'MISSION_CONTROL',track:'BASELINE',source:{repositoryId:rv.repositoryId,resolvedCommitSha:f.state.reportHead},runs:[{report:JSON.parse(f.state.reportContent),source:{providerBlobId:f.state.blob,path:rv.reportPath}}]}});reports.refresh=async()=>{};reports.continuationCurrent=()=>true;
+ const tasks=createDevelopmentTasks({ownerSubject:f.state.actor.subject,inspectIdentity:x.options.inspectOwner,source,reports,client:{list:async()=>({persistence:'OWNER_RPC_AVAILABLE',tasks:[f.state.task]})},reconciliationClient:{inspect:async()=> (await f.transport.evidence()).reconciliation},projectId:'MISSION_CONTROL',now:clock,setTimer:()=>0,clearTimer:()=>{}});
+ let rows=[];const history={capability:async()=>({enabled:true,expiresAt:clock()+60000}),list:async()=>({schemaVersion:1,qualification:'OWNER_TASK_REVIEW_RECORDED',taskId:f.state.task.taskId,afterSequence:0,sequence:rows.length,records:rows,expiresAt:clock()+60000,executionAuthorized:false}),append:async()=>{rows=[r];return {schemaVersion:1,qualification:'OWNER_TASK_REVIEW_RECORDED',record:r,expiresAt:clock()+60000,executionAuthorized:false};}};
+ const reviews=createTaskReviews({tasks,source,reports,client:history,now:clock,randomId:()=>r.operationId,setTimer:()=>0,clearTimer:()=>{}});
+ const c=createTaskClosure({...x.options,tasks,reviews,source,reports,reviewHistoryClient:history});
+ try{await tasks.open();await tasks.reconcile(rv.runId);await reviews.record({runId:rv.runId,decision:'APPROVE',comment:rv.comment});assert(reviews.current(r));await c.initialize(7);await c.markPending('merge');const b=x.row.binding,m={qualification:'UNVERIFIED_PROVIDER_RECEIPT_REFERENCE',pullRequestNumber:7,headSha:b.codeSha,baseBeforeSha:b.baseSha,mergeSha:'d'.repeat(40),parents:[b.baseSha,b.codeSha],canonicalHeadSha:'d'.repeat(40),operationId:r.operationId,intentDigest:b.intentDigest};await c.saveReferences(JSON.stringify({merge:m,deployment:null,verification:null}));
+ f.state.canonicalHead=m.mergeSha;source.set({...source.value,observation:{...source.value.observation,source:{...source.value.observation.source,resolvedCommitSha:m.mergeSha}}});assert.equal(reviews.snapshot().records.length,0);assert.equal(tasks.snapshot().reconciliation,null);
+ await c.loadRecoveryDecisions();assert.equal(c.snapshot().recoveryRecords[0].operationId,r.operationId);await tasks.reconcile(rv.runId);assert.equal(reviews.snapshot().records.length,0);assert.equal(c.snapshot().recoveryRecords.length,1);assert.equal(reviews.current(r),false);await c.recover(r.operationId);assert.equal(c.snapshot().currentReview,false);assert.equal(c.snapshot().currentBinding,false);assert.equal(c.snapshot().manualDeployRecordable,true);assert.throws(()=>c.markPending('merge'));await c.markPending('deployment');assert.equal(x.row.checkpoint.deployAttempted,true);assert.equal(f.state.merges,0);assert.equal(f.state.deploys,0);
+ source.set({status:'denied'});assert.deepEqual(c.snapshot().recoveryRecords,[]);assert.equal(c.snapshot().record,null);
+ }finally{c.dispose();reviews.dispose();tasks.dispose();}
+});
