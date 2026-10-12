@@ -125,7 +125,7 @@ if(taskReviewQA){
 }
 bundle=await build({entryPoints:['public/app.js'],bundle:true,format:'esm',write:false,metafile:true,plugins:[{name:'synthetic-four-source',setup(b){
  b.onLoad({filter:/repository-run-client\.mjs$/},async args=>({contents:cookieBefore?(await fs.readFile(args.path,'utf8')).replace("credentials:'same-origin'","credentials:'omit'"):await fs.readFile(args.path,'utf8'),resolveDir:process.cwd()+'/src/reporting'}));
- b.onLoad({filter:/public\/owner-auth-client\.js$/},()=>({contents:"export {mountOwnerBrowserEntry,joeyRunSummary,renderSelectedTaskSummary,projectHandoffWords} from '../src/continuity/owner-browser-entry.mjs';",resolveDir:process.cwd()+'/public'}));
+ b.onLoad({filter:/public\/owner-auth-client\.js$/},()=>({contents:"export {mountOwnerBrowserEntry,createOwnerProjectConnectionClient,joeyRunSummary,renderSelectedTaskSummary,projectHandoffWords} from '../src/continuity/owner-browser-entry.mjs';",resolveDir:process.cwd()+'/public'}));
  if(process.env.MC_TASK_ENTRY_BEFORE==='1')for(const file of ['src/tasks/development-task-view.mjs','src/continuity/owner-browser-entry.mjs'])b.onLoad({filter:new RegExp(file.replaceAll('.', '\\.').replaceAll('/', '\\/')+'$')},()=>({contents:execFileSync('git',['show','facbb4cfb3660637003918baa61d585d007dc303:'+file],{encoding:'utf8'}),resolveDir:process.cwd()+'/'+file.slice(0,file.lastIndexOf('/'))}));
  b.onLoad({filter:/owner-auth-config\.js$/},()=>({contents:'export const ownerAuthConfig='+JSON.stringify(policy)+';export const ownerAuthSetupStatus=()=>({status:"unconfigured",ownerIdentityEntryAvailable:true});'}));
  b.onLoad({filter:/task-workflow-config\.js$/},()=>({contents:'export const taskWorkflowConfig={enabled:false,projectSourceSyncEnabled:true};'}));

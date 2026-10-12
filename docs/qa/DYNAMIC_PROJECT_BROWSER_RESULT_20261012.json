@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "actualPicker": true,
+  "actualTaskForm": true,
+  "actualRpcClient": true,
+  "projectId": "AUTHORIZED_FIXTURE",
+  "taskId": "task_65b78c574d976b4cf76884dd",
+  "firstReportRunId": "first-report",
+  "boundRequirements": {
+    "schemaVersion": "mc.task-requirements.v1",
+    "revision": 1,
+    "requestDigest": "74d90e21a159c735dab29a5e4b4e7a2647fd5b75335a78bc87d900b0a73f818f"
+  },
+  "registrationOnlyDisabled": true,
+  "legacyFourOptionsPreserved": true,
+  "revocationPurged": true,
+  "externalRequests": 0,
+  "rpcCalls": 5,
+  "synthetic": true,
+  "realExecution": false
+}

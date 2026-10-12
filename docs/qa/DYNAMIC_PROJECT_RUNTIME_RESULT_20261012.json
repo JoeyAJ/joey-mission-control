@@ -1,0 +1,39 @@
+{
+  "passed": true,
+  "realAppRouter": true,
+  "authorizedDynamicProjects": 2,
+  "ownerGlobalFixtureTasks": 3,
+  "sameMountedTaskFormRetained": true,
+  "requestChangesRevision": 1,
+  "approvedRevision": 2,
+  "prTestEvidenceObserved": true,
+  "actualPicker": true,
+  "actualTaskForm": true,
+  "actualRpcClient": true,
+  "projectId": "AUTHORIZED_FIXTURE",
+  "taskId": "task_02f93862c8326166703824bc",
+  "firstReportRunId": "first-report",
+  "boundRequirements": {
+    "schemaVersion": "mc.task-requirements.v1",
+    "revision": 2,
+    "requestDigest": "15d3a77f9ea0c1e849f03b6ab31a236ff9be690014bd1052fe49bbbc5a8f592f"
+  },
+  "firstReportRequirements": {
+    "schemaVersion": "mc.task-requirements.v1",
+    "revision": 1,
+    "requestDigest": "03d38b66fbf23fb8029548d26cf73adfca5a8b1cbe402edef881c00dc7787584"
+  },
+  "reportRunIds": [
+    "first-report",
+    "second-report"
+  ],
+  "finalHandoffCurrentReview": true,
+  "approvedReviewOperation": "4ae8fdb9-bfa7-4b3f-a229-0c6a7b4c9b86",
+  "registrationOnlyDisabled": true,
+  "legacyFourOptionsPreserved": true,
+  "revocationPurged": true,
+  "externalRequests": 0,
+  "rpcCalls": 24,
+  "synthetic": true,
+  "realExecution": false
+}

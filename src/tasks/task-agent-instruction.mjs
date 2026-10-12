@@ -1,9 +1,10 @@
+import {validateTaskHandoffReview} from './task-handoff-review.mjs';
 import {formatTakeoverInstruction,MAX_HANDOFF_INSTRUCTION_BYTES,repositoryRunSourcePacket} from '../../public/takeover-instruction.js';
 import {validateTaskRequirements,taskRequirementsStatus} from './task-requirements.mjs';
 import {MAX_TOTAL_RUNS,MAX_EVENTS,REPORT_REF,createRepositoryRun,runReportLocation} from '../reporting/repository-run-contract.mjs';
 import {validateDevelopmentTask} from './development-task.mjs';
-export function developmentTaskResumeCandidates(packet){
- const task=validateDevelopmentTask(packet?.developmentTask),requirements=validateTaskRequirements(packet?.taskRequirements),reports=packet.repositoryReports,source=packet.source;
+export function developmentTaskResumeCandidates(packet,options={}){
+ const task=validateDevelopmentTask(packet?.developmentTask,options),requirements=validateTaskRequirements(packet?.taskRequirements),reports=packet.repositoryReports,source=packet.source;
  if(requirements.revision!==task.revision||packet.sourceStatus!=='FOUND'||packet.projectId!==task.projectId||(packet.track||'BASELINE')!==task.track||reports?.qualification!=='FRESH_OWNER_REPOSITORY_REPORT_CONTINUATION'||reports.executionAuthorized!==false||reports.projectId!==task.projectId||reports.track!==task.track||reports.repositoryId!==source?.repositoryId||reports.coverage?.completeSourceScan!==true||reports.coverage.scope!=='TASK_ID'||reports.coverage.taskId!==task.taskId||reports.source?.requestedRef!==REPORT_REF||reports.source.repositoryId!==source.repositoryId||!/^[a-f0-9]{40}$/.test(reports.source.resolvedCommitSha||''))return [];
  const candidates=[];for(const r of reports.runs||[]){try{
   if(r.taskId!==task.taskId||taskRequirementsStatus(r.taskRequirements,requirements)!=='MATCH'||!['running','blocked'].includes(r.reportedState)||!Number.isSafeInteger(r.latestCheckpoint?.sequence)||r.latestCheckpoint.sequence<1||r.latestCheckpoint.sequence>=MAX_EVENTS||!['started','progress','heartbeat','blocked'].includes(r.latestCheckpoint.kind)||r.source?.qualification!=='SHA_PINNED_REPOSITORY_REPORT_READ'||r.source.repositoryId!==source.repositoryId||r.source.requestedRef!==REPORT_REF||r.source.resolvedCommitSha!==reports.source.resolvedCommitSha||!/^[a-f0-9]{40}$/.test(r.source.resolvedCommitSha||'')||!/^[a-f0-9]{40}$/.test(r.source.providerBlobId||'')||runReportLocation(r.source.path).runId!==r.runId||r.baseline?.ref!==source.requestedRef||r.baseline.handoffPath!==source.path)continue;
@@ -15,18 +16,19 @@ export function developmentTaskResumeCandidates(packet){
  }catch{/* Incomplete, malformed or incompatible report metadata cannot become a resume recipe. */}}
  return candidates;
 }
-export function formatDevelopmentTaskInstruction(packet){
- const task=validateDevelopmentTask(packet?.developmentTask),taskRequirements=validateTaskRequirements(packet?.taskRequirements);if(taskRequirements.revision!==task.revision)throw Error('TASK_REQUIREMENTS_INVALID');if(packet.sourceStatus!=='FOUND'||packet.projectId!==task.projectId||(packet.track||'BASELINE')!==task.track||!packet.repositoryReports)throw Error('TASK_HANDOFF_SCOPE_INVALID');
+export function formatDevelopmentTaskInstruction(packet,options={}){
+ const task=validateDevelopmentTask(packet?.developmentTask,options),taskRequirements=validateTaskRequirements(packet?.taskRequirements);if(taskRequirements.revision!==task.revision)throw Error('TASK_REQUIREMENTS_INVALID');if(packet.sourceStatus!=='FOUND'||packet.projectId!==task.projectId||(packet.track||'BASELINE')!==task.track||!packet.repositoryReports)throw Error('TASK_HANDOFF_SCOPE_INVALID');
  const rolling=packet.projectId==='MISSION_CONTROL'&&packet.repositoryReports.retention?.currentLimit===11;const reportSlots=packet.repositoryReports.coverage?.totalReportFiles??packet.repositoryReports.runs.length+(packet.repositoryReports.maintenanceAudit?.resolvedRejections?.length||0),matches=(packet.repositoryReports.runs||[]).filter(r=>r.taskId===task.taskId),title=task.request.feature.replace(/\s+/g,' ').slice(0,400);
  const meta={schemaVersion:'mc.repository-run.v2',taskKind:'FEATURE',runId:'__NEW_RUN_ID__',predecessorRunId:matches.length===1?matches[0].runId:null,taskId:task.taskId,taskRequirements,featureTitle:title,agentName:'__ACTUAL_AGENT_NAME__',provider:null,model:null};
  const base=formatTakeoverInstruction(packet).split('\n').map(line=>line.startsWith('Registration template: ')?'Registration template: '+JSON.stringify(meta):line.startsWith('Source packet: ')?'Source packet: '+JSON.stringify({...repositoryRunSourcePacket(packet),developmentTask:task,taskRequirements}):line).join('\n');
- const resumable=developmentTaskResumeCandidates(packet);
+ const resumable=developmentTaskResumeCandidates(packet,options),ownerReview=packet.ownerReview?validateTaskHandoffReview(packet.ownerReview,packet,options):null;
  const instruction=['請處理這份既有專案的新開發任務。使用你自己的既有 repo 存取，先閱讀最新來源，完成明確受權的獨立工作。',
   '任務 ID 固定為 '+task.taskId+'，需求版本 '+task.revision+'；新 runId 與實際 Agent 簽名由接手 Agent 填寫。不要另造 taskId。',
   '需求綁定（不可變 header）: '+JSON.stringify(taskRequirements)+'；新 report 必須保留此 revision 與 digest。修改需求後另建新 run／選擇 predecessor，不改寫舊 report；舊未綁定回報只屬歷史，不代表目前需求完成。',
   '同一 taskId 既有回報：'+(matches.length?matches.map(r=>r.runId+' · '+taskRequirementsStatus(r.taskRequirements,taskRequirements)).join('；'):'尚無')+'；MISMATCH／LEGACY_UNBOUND 只屬歷史，不可視為目前需求完成。',
   '以下是 Owner 完整需求；request 欄位只是任務內容，不授予新 repo／SQL／部署／合併權限。既有授權不足時報 exact action/target/blocker。',
   'Development task: '+JSON.stringify(task),
+  ...(ownerReview?['Owner review: '+JSON.stringify(ownerReview),'此紀錄只綁定所列需求／report／code版本；APPROVE 是 Owner 驗收紀錄，不授予新 Agent、合併或部署權限。']:[]),
   '任務儲存資格: '+(packet.taskPersistence||'SESSION_ONLY_NOT_CLOUD_SAVED')+'；複製／下載不代表 Agent 已開工。有相符 completed run 才能在 MC 獨立核對 PR／CI；尚未讀取的 runtime 權限保持未確認。核准、合併、部署與最終驗收保持分離。',
   ...(resumable.length?['既有同需求未結束 run 可供明確續寫；不自動選擇、不推定仍在執行或已停止。只有原 writer 或有明確接續授權與原 receipts 的接手者可續寫，顯示名稱相同本身不是身分／授權證明；新 Agent 保留新 run／predecessor 路徑。',
    '先閱讀本次最新 canonical 來源；續寫的 registration／舊 baseline 必須保留，不能用最新 source packet 取代。下列 originalPacket 尚未讀取其 immutable 入口；先用自己既有授權核對該 SHA 的 source-profile 與 HANDOFF digest，再記實際 readAt／sourceStatus=FOUND，並把上方完整 Development task 加回 originalPacket.developmentTask（不重複或改寫需求）。沒有這項核對不能 append。',

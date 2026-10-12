@@ -1,0 +1,10 @@
+import {ownerAuthConfig} from '../../public/owner-auth-config.js';
+import {boundedPrivateJsonRequest} from '../continuity/remote-handoff-server.mjs';
+const fail=(code='PROJECT_RUNTIME_AUTHORIZATION_DENIED',status=403)=>Object.assign(Error(code),{code,status});
+// A combined native read checks live Owner and the project's explicit grant in
+// one database statement. No user metadata, cached JWT claims or local grant cache.
+export function createProjectGrantRpcPort({fetchImpl=globalThis.fetch,policy=ownerAuthConfig,now=Date.now}={}){
+ if(policy.origin!==ownerAuthConfig.origin||policy.publishableKey!==ownerAuthConfig.publishableKey)throw fail('FIXED_TASK_PROVIDER_REQUIRED');
+ async function call(action,projectId,token,{signal}={}){if(typeof token!=='string'||!/^[A-Za-z0-9_.-]{20,8192}$/.test(token)||projectId!==null&&!/^[A-Z][A-Z0-9_]{2,63}$/.test(projectId))throw fail();const r=await boundedPrivateJsonRequest(fetchImpl,policy.origin+'/rest/v1/rpc/mc_owner_project_connection_'+action,{method:'POST',headers:{apikey:policy.publishableKey,Authorization:'Bearer '+token,'Content-Type':'application/json'},body:JSON.stringify(projectId?{project:projectId}:{}),redirect:'error',cache:'no-store'},signal,65536);if(r.status!==200)throw fail(r.status===401||r.status===403||r.data?.code==='42501'?'PROJECT_RUNTIME_AUTHORIZATION_DENIED':'PROJECT_RUNTIME_BINDING_UNAVAILABLE',r.status===401||r.status===403||r.data?.code==='42501'?403:503);const v=r.data,a=v?.actor;if(v?.schemaVersion!==1||v.qualification!=='OWNER_EXPLICIT_PROJECT_RUNTIME_AUTHORIZATION'||a?.subject!==policy.ownerSubject||a.role!=='OWNER'||a.aal!=='aal2'||a.verified!==true||a.sessionActive!==true||a.identityProject!=='NEXAEON'||!Number.isSafeInteger(a.expiresAt)||a.expiresAt<=now()||a.expiresAt>now()+30000||!Array.isArray(v.grants)||v.grants.length>32||action==='authorize'&&(v.grants.length!==1||v.grants[0]?.projectId!==projectId))throw fail();return structuredClone(v);}
+ return Object.freeze({authorize:(projectId,token,options)=>call('authorize',projectId,token,options),catalog:(token,options)=>call('catalog',null,token,options)});
+}

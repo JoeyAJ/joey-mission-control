@@ -1,0 +1,60 @@
+{
+  "targetProjectRef": "scmvedfqwlhkyvljymjj",
+  "state": "REVIEW_ONLY_NOT_APPROVED_NOT_APPLIED",
+  "codeReviewGo": "ef3b26bfcbbe1a3e9a57316b95d17c85ac36ed4b_RUNTIME_OFF_ONLY",
+  "applyOrder": [
+    "dynamic-project-scopes.pending.sql",
+    "dynamic-project-runtime-authorization.pending.sql"
+  ],
+  "rollbackOrder": [
+    "dynamic-project-runtime-authorization.rollback.sql",
+    "dynamic-project-scopes.rollback.sql"
+  ],
+  "files": [
+    {
+      "path": "docs/contracts/sql/dynamic-project-scopes.pending.sql",
+      "bytes": 40052,
+      "sha256": "b14968e6fb4ec339579083ab5831f6ed8f5669e9d5e136034d5b226aa252d5d3"
+    },
+    {
+      "path": "docs/contracts/sql/dynamic-project-runtime-authorization.pending.sql",
+      "bytes": 4036,
+      "sha256": "cf0dbcfa26d928fb43bb0157c5a33213840837f760d41e7e44e72e6301511a8e"
+    },
+    {
+      "path": "docs/contracts/sql/dynamic-project-runtime-authorization.rollback.sql",
+      "bytes": 455,
+      "sha256": "98fa4b27b4af56824aa43d7e598303558eae52c7432602ec0b5d0c4802ace2cd"
+    },
+    {
+      "path": "docs/contracts/sql/dynamic-project-scopes.rollback.sql",
+      "bytes": 1826,
+      "sha256": "5cb9e88aff2b83e8e045ed1c3d0a259df8cb7aa7d7d8c4840ae857d1acfe0ef1"
+    },
+    {
+      "path": "docs/contracts/sql/dynamic-project-runtime.preflight.sql",
+      "bytes": 3843,
+      "sha256": "a23049ce4a25d6a630d173cfa225e2f54d133187ccbc1278610d53fc37ec5ca3"
+    }
+  ],
+  "preflight": {
+    "readOnly": true,
+    "executedOnLive": true,
+    "metadataOnly": true,
+    "observedAt": "2026-10-12T23:51:52.269511+00:00",
+    "schemaFingerprintMatches": true,
+    "installationHold": [
+      "Enforce both recorded executor membership rows before install",
+      "Compare/test PostgreSQL17 live role attributes against fixture"
+    ]
+  },
+  "rollbackConditions": [
+    "same restricted ownership protocol",
+    "existing verified Owner context for RLS history inspection when rows exist",
+    "stop for explicit recovery plan if dynamic history exists",
+    "never delete task/review/report rows"
+  ],
+  "noAutomaticGrantRows": true,
+  "activationEnabled": false,
+  "installationState": "HOLD_NOT_APPROVED"
+}
