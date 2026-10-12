@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {createDevelopmentTask} from '../src/tasks/development-task.mjs';
 import {createTaskRequirements} from '../src/tasks/task-requirements.mjs';
 import {TASK_REVIEW_VERSION} from '../src/tasks/task-review-contract.mjs';
-import {taskReviewReworkInput} from '../src/tasks/task-review-rework.mjs';
+import {taskReviewReworkInput,captureTaskReworkLease,assertTaskReworkLease} from '../src/tasks/task-review-rework.mjs';
 import {browserContextDigest} from '../src/continuity/browser-context-digest.mjs';
 
 const now=Date.parse('2026-10-12T16:00:00Z'),sha='a'.repeat(40);
@@ -24,4 +24,12 @@ test('approval, empty opinions, wrong scope/revision and corrupt decision proof 
 test('a full constraints field refuses rework without truncating either original text or review',async()=>{
  const f=await fixture();f.task.request.constraints='x'.repeat(6000);f.record.review.taskRequirements=await createTaskRequirements(f.task);f.record.decisionDigest=await browserContextDigest(f.record.review);const before=structuredClone(f);
  await assert.rejects(taskReviewReworkInput(f),/CONSTRAINTS_CAPACITY/);assert.deepEqual(f,before);
+});
+test('captured rework deadlines survive live-view cleanup and fail exactly at either expiry',()=>{
+ const view={reviewExpiresAt:now+1000,inspectionExpiresAt:now+2000},lease=captureTaskReworkLease(view,now);
+ view.reviewExpiresAt=0;view.inspectionExpiresAt=0;assert(Object.isFrozen(lease));assert.equal(assertTaskReworkLease(lease,now+999),true);assert.throws(()=>assertTaskReworkLease(lease,now+1000),/TASK_REWORK_EXPIRED/);
+ const inspectionFirst=captureTaskReworkLease({reviewExpiresAt:now+2000,inspectionExpiresAt:now+1000},now);assert.throws(()=>assertTaskReworkLease(inspectionFirst,now+1000),/TASK_REWORK_EXPIRED/);
+});
+test('missing, invalid or already expired review/inspection deadlines cannot be captured',()=>{
+ for(const patch of [{},{reviewExpiresAt:now,inspectionExpiresAt:now+1},{reviewExpiresAt:now+1,inspectionExpiresAt:now},{reviewExpiresAt:now+1,inspectionExpiresAt:NaN},{reviewExpiresAt:now+1,inspectionExpiresAt:'later'}])assert.throws(()=>captureTaskReworkLease(patch,now),/TASK_REWORK_EXPIRED/);
 });

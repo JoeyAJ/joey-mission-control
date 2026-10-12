@@ -3,6 +3,14 @@ import {createTaskRequirements,taskRequirementsStatus} from './task-requirements
 import {validateTaskReviewRecord} from './task-review-contract.mjs';
 import {browserContextDigest} from '../continuity/browser-context-digest.mjs';
 
+export function assertTaskReworkLease(lease,now=Date.now()) {
+ if(!Number.isSafeInteger(now)||!Number.isSafeInteger(lease?.reviewExpiresAt)||!Number.isSafeInteger(lease?.inspectionExpiresAt)||lease.reviewExpiresAt<=now||lease.inspectionExpiresAt<=now)throw Error('TASK_REWORK_EXPIRED');
+ return true;
+}
+export function captureTaskReworkLease({reviewExpiresAt,inspectionExpiresAt}={},now=Date.now()) {
+ const lease={reviewExpiresAt,inspectionExpiresAt};assertTaskReworkLease(lease,now);return Object.freeze(lease);
+}
+
 // An explicit local edit from a recorded Owner opinion; never an execution grant.
 export async function taskReviewReworkInput({task,record}={}) {
  const t=validateDevelopmentTask(task),r=validateTaskReviewRecord(record),review=r.review;
