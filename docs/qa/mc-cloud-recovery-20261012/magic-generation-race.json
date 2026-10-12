@@ -1,0 +1,56 @@
+{
+  "pass": true,
+  "officialSDK": true,
+  "syntheticOnly": true,
+  "actualEmailSent": 0,
+  "cases": [
+    {
+      "mode": "denied",
+      "pass": true,
+      "newerSessionPreserved": true,
+      "sharedCustodyRemovals": 0,
+      "revocations": 0,
+      "unexpectedRequests": 0
+    },
+    {
+      "mode": "disposed",
+      "pass": true,
+      "newerSessionPreserved": true,
+      "sharedCustodyRemovals": 0,
+      "revocations": 0,
+      "unexpectedRequests": 0
+    },
+    {
+      "mode": "stale-success",
+      "pass": true,
+      "newerSessionPreserved": true,
+      "sharedCustodyRemovals": 0,
+      "revocations": 0,
+      "unexpectedRequests": 0
+    },
+    {
+      "mode": "logout-same-tab",
+      "pass": true,
+      "logoutHonored": true,
+      "sessionResurrection": false,
+      "revocations": 1,
+      "unexpectedRequests": 0
+    },
+    {
+      "mode": "logout-cross-tab",
+      "pass": true,
+      "logoutHonored": true,
+      "sessionResurrection": false,
+      "revocations": 1,
+      "unexpectedRequests": 0
+    },
+    {
+      "mode": "logout-empty-cross-tab",
+      "pass": true,
+      "logoutHonored": true,
+      "sessionResurrection": false,
+      "revocations": 0,
+      "unexpectedRequests": 0
+    }
+  ]
+}

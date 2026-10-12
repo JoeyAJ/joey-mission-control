@@ -1,3 +1,4 @@
+import {createOwnerSessionCustody,ownerSessionLock} from './owner-session-custody.mjs';
 // Default-template Magic Link only. No signup/password/MFA/security mutation or automatic email.
 export const ownerEmailLoginPath='/owner-email-login.html';
 const safe=status=>Object.freeze({status,privateAccessEnabled:false,executionAuthorized:false});
@@ -36,10 +37,9 @@ export function createOwnerEmailLoginCallback({policy,owner,createClient,locatio
  return Object.freeze({configured,view:()=>safe(closed?'CLOSED':status),async complete(){
   if(!configured||closed||busy||!credentials)return safe(status);busy=true;const tokens={...credentials};credentials.access_token='';credentials.refresh_token='';credentials=null;status='CHECKING';
   try{
-   // Read the custody revision before any awaits. All callbacks serialize their one commit.
-   const custody=storage||globalThis.localStorage,key='mc-owner-session-v1',before=custody.getItem(key);
-   if(before!==null&&typeof before!=='string')throw fail('SESSION_UNCONFIRMED');
-   const commit=sessionLock||(operation=>{const locks=globalThis.navigator?.locks;if(typeof locks?.request!=='function')throw fail('SESSION_UNCONFIRMED');return locks.request('mc-owner-email-login-commit-v1',{mode:'exclusive'},operation);});
+   // Snapshot under the same lock used by the main SDK; logout leaves a generation tombstone.
+   const custody=createOwnerSessionCustody(storage),commit=sessionLock||ownerSessionLock;
+   const before=await commit(()=>{current();return custody.snapshot();});current();
    isolated=createClient(owner.origin,owner.publishableKey,{auth:{persistSession:false,autoRefreshToken:false,detectSessionInUrl:false,flowType:'implicit',storageKey:'mc-owner-email-callback-isolated-v1'}});const set=await isolated.auth.setSession(tokens);current();if(set.error)throw fail('INVALID_LINK');await inspect(isolated);current();
    // The second check is quarantined too: no shared writes, broadcast or revocation on failure.
    const firstSession=set.data?.session;if(!firstSession)throw fail('SESSION_UNCONFIRMED');
@@ -48,9 +48,9 @@ export function createOwnerEmailLoginCallback({policy,owner,createClient,locatio
    const session=accepted.data?.session,validToken=v=>typeof v==='string'&&v.length>0&&v.length<=8192&&/^[A-Za-z0-9._~-]+$/.test(v);
    if(!session||!validToken(session.access_token)||!validToken(session.refresh_token)||session.user?.id!==owner.ownerSubject||session.user?.is_anonymous===true||!Number.isSafeInteger(session.expires_at)||session.expires_at*1000<=now())throw fail('SESSION_UNCONFIRMED');
    const serialized=JSON.stringify(session);if(serialized.length>65536)throw fail('SESSION_UNCONFIRMED');
-   await commit(()=>{current();if(custody.getItem(key)!==before||verified.expiresAt<=now()||session.expires_at*1000<=now())throw fail('EMAIL_LOGIN_INVALIDATED');
+   await commit(()=>{current();if(!custody.unchanged(before)||verified.expiresAt<=now()||session.expires_at*1000<=now())throw fail('EMAIL_LOGIN_INVALIDATED');
     // One synchronous write in existing SDK format/custody; there is no post-write await or cleanup.
-    custody.setItem(key,serialized);status=verified.aal==='aal2'?'OWNER_SESSION_RECHECK_REQUIRED':'EXISTING_TOTP_REQUIRED';});return safe(status);
+    custody.commit(serialized);status=verified.aal==='aal2'?'OWNER_SESSION_RECHECK_REQUIRED':'EXISTING_TOTP_REQUIRED';});return safe(status);
   }catch(error){status=['OWNER_DENIED','INVALID_LINK','EMAIL_LOGIN_INVALIDATED'].includes(error?.message)?error.message:'SESSION_UNCONFIRMED';return safe(status);
   }finally{tokens.access_token='';tokens.refresh_token='';busy=false;isolated?.auth.stopAutoRefresh();checked?.auth.stopAutoRefresh();}
  },dispose(){closed=true;if(credentials){credentials.access_token='';credentials.refresh_token='';credentials=null;}isolated?.auth.stopAutoRefresh();checked?.auth.stopAutoRefresh();}});

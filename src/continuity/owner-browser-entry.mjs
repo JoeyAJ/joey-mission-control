@@ -1,3 +1,4 @@
+import {withOwnerSessionCustody} from './owner-session-custody.mjs';
 import {createTaskReconciliationClient} from '../tasks/task-reconciliation-client.mjs';
 import {createProjectDraftStorageClient} from '../onboarding/project-draft-storage-client.mjs';
 import {mountRunWorkbench} from '../reporting/workbench-view.mjs';
@@ -69,7 +70,7 @@ export function mountOwnerBrowserEntry({doc=document,locale='zh-TW',projectId,tr
  if(!gate){root.dataset.ownerAuth='unconfigured';badge.textContent=w.unconfirmed;text.textContent=w.pending;return root;}
  const emailOtpEnabled=ownerEmailOtpConfig.enabled===true&&ownerEmailOtpConfig.qualification==='VERIFIED_EMAIL_OTP_TEMPLATE';
  let client;
- const port=activePort||(activePort=createSupabaseOwnerAuth({createClient:(...args)=>{client=activeClient=createClient(...args);return client;},ownerSubject:ownerAuthConfig.ownerSubject,authSetupVerified:ownerAuthConfig.authSetupVerified,emailOtpEnabled,stageOrigin:globalThis.location.origin,verifyCurrentSession:async({projectId})=>{const r=await client.rpc('mc_owner_session',{project:projectId});if(r.error){const error=Error('SESSION_BRIDGE_FAILED');error.status=r.status;error.code=r.error.code;throw error;}return r.data;}}));
+ const port=activePort||(activePort=createSupabaseOwnerAuth({createClient:(...args)=>{client=activeClient=createClient(args[0],args[1],withOwnerSessionCustody(args[2]));return client;},ownerSubject:ownerAuthConfig.ownerSubject,authSetupVerified:ownerAuthConfig.authSetupVerified,emailOtpEnabled,stageOrigin:globalThis.location.origin,verifyCurrentSession:async({projectId})=>{const r=await client.rpc('mc_owner_session',{project:projectId});if(r.error){const error=Error('SESSION_BRIDGE_FAILED');error.status=r.status;error.code=r.error.code;throw error;}return r.data;}}));
  const sessionProject=()=>projectId==='MISSION_CONTROL'?'NEXAEON':projectId;
  const onboardingToken=async()=>{const r=await activeClient.auth.getSession();if(r.error)throw Error('OWNER_SESSION_UNAVAILABLE');return r.data?.session?.access_token;};
  const onboarding=mountProjectOnboarding({doc,locale,requireSignIn:()=>{if(root.dataset.ownerAuth==='verified')return true;root.open=true;root.querySelector('input:not([hidden])')?.focus();return false;},controller:createProjectOnboarding({ownerSubject:ownerAuthConfig.ownerSubject,inspectIdentity:p=>port.inspectSession(p),client:createProjectOnboardingClient({getAccessToken:onboardingToken}),sourceClient:createRemoteHandoffClient({getAccessToken:onboardingToken}),storageClient:createProjectDraftStorageClient({getAccessToken:onboardingToken})})});root.newProjectSource=onboarding.root;

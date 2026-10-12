@@ -1,19 +1,19 @@
-# Current Owner Magic Link activation — 2026-10-12
+# Current Owner session generation fence — 2026-10-12
 
 Project: MISSION_CONTROL
-Timestamp: 2026-10-12T02:27:00.379Z
-Task: Guarded explicit Owner Magic Link after callback race repair
+Timestamp: 2026-10-12T03:03:17.976Z
+Task: Honor main MC logout across pending callback and cross-tab ABA
 Status: LOCAL_VERIFIED_PENDING_PUBLICATION
 Last Developer: Codex
 Executed by: Codex
 Actual Model: UNKNOWN
-Baseline: 0ab33f94857f04bec889c46dd70ed08ed7b64cfc
+Baseline: b56e224ee6790ee1b743e9e23063499665f6429f
 
-Stale A callback can no longer revoke/remove B. Both SDK inspections isolated; one locked, unchanged-snapshot custody commit. Race3/retained27 browser and focused12/full968/build/validate/safety PASS; old bca probe RED. Repaired OFF callback0ab33f9/dpl_5he96g1mcC1y4rhhNuazgBUs9Jwv READY, exact alias/SHA verified. Callback page/routing/config unchanged from parent served OFF verification01:51UTC.
+Empty session bytes were not a revision: A could resume after B completed and main logout restored empty. Main SDK custody writes/removals now advance a nonsecret generation, including empty logout; callback snapshot/commit uses generation plus bytes under the same lock:mc-owner-session-v1 as main SDK. Official pinned navigatorLock preserves acquire timeout semantics. No callback shared cleanup/revocation. Owner/session/member/AAL/TOTP and staged checks retained.
 
-Approved manual flow flags enabled after those gates. Activated54 focused/27 SDK browser/3 mobile task-entry PASS, including retained password plus TOTP with email form present; zero actual email/external calls. Final activation bundle/Preview publication follows in same run38. Numeric OTP false; recovery/Owner/live-session/member/AAL/TOTP/drafts/CAS/scope gates retained. Real Email/TOTP/Owner acceptance pending; ordinary cloud HTTPS still CONNECT403, no bypass.
+Focused27, pinned SDK race6 and retained login27 PASS; b56 cross-tab ABA probe RED. Full969/build/validate/static safety PASS, forbidden attempts0. Manual flow remains approved/enabled, numeric OTP false; real mail test held pending parent verification. Same fixed Preview/run38 publication follows. No new run/capacity/history/settings/credentials/data or automatic email; Production remains dpl_5GgJ8LhD4Ec73RGz9CEFe1ppZQnh/8b4945b. Review executionAuthorized:false, finalization live OFF.
 
-Production remains dpl_5GgJ8LhD4Ec73RGz9CEFe1ppZQnh/8b4945b. No automatic mail/Auth/SMTP/MFA/RLS/credentials/data changes; review executionAuthorized:false, finalization live OFF. No new run/capacity/history changes. Evidence: docs/MC_OWNER_EMAIL_CALLBACK_CUSTODY_RACE_20261012.md and QA activation receipts. Parent arranges real user-triggered Email/TOTP verification.
+Evidence: docs/MC_OWNER_SESSION_GENERATION_FENCE_20261012.md. Parent real Email/TOTP/Owner acceptance pending; cloud ordinary HTTPS CONNECT403, no bypass. No source execution on Joey Mac.
 
 # Dated prior stage history
 
