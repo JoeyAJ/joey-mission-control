@@ -1,0 +1,44 @@
+{
+  "checkedAt": "2026-10-12T00:22:55.070Z",
+  "qualification": "LOCAL_SYNTHETIC_PARTIAL_BROWSER_NOT_SERVED_ACCEPTANCE",
+  "baseline": "d9a7beb18b8e6c0fd8d31db5ef6f6a25fa2e37cb",
+  "sourceCommit": "3e8fd2b1d4a2becf51622ab8fa479f2a8b882a2d",
+  "localCherryPick": "f3222324bf3cc6c14110abd0c109692e08e08323",
+  "focusedTests": 68,
+  "portableTests": 956,
+  "build": "PASS",
+  "portableValidate": "PASS",
+  "staticSafety": "PASS",
+  "forbiddenAttempts": 0,
+  "completedBrowserCases": 36,
+  "browserModes": {
+    "focus": 6,
+    "candidate": 6,
+    "files": 6,
+    "follow": 6,
+    "delivery": 6,
+    "motion": 6
+  },
+  "remainingBrowserModes": [
+    "disclosure/reference theme",
+    "privacy/cancellation",
+    "Simple Joey",
+    "mobile task entry",
+    "site navigation"
+  ],
+  "blocker": "PROCESS_THREAD_RESOURCE_UNAVAILABLE_ERRNO_11",
+  "resourceObservations": {
+    "pid1": "tail",
+    "zombieCount": 31715,
+    "dominantZombieGroups": "30883 git, 335 chromium, 326 esbuild, 161 crashpad; PID1-owned at inspection",
+    "ownChildSubreaperUsed": true,
+    "globalLimitsOrPid1Changed": false,
+    "sudoAvailable": false
+  },
+  "canonicalRemoteAndPreviewUnchanged": true,
+  "liveFinalizationEnabled": false,
+  "otpEnabled": false,
+  "actualOwnerWrites": 0,
+  "actualMail": 0,
+  "externalRequests": 0
+}

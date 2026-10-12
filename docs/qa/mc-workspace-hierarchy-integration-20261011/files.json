@@ -1,0 +1,86 @@
+{
+  "pass": true,
+  "cases": [
+    {
+      "width": 1440,
+      "locale": "zh-TW",
+      "pass": true,
+      "multipleFilesRuns": true,
+      "notObserved": true,
+      "pauseNewObservations": true,
+      "linkedSelection": true,
+      "reducedMotion": false,
+      "mobileTouch": false,
+      "scopeAndDenial": true,
+      "noPrivateUrl": true
+    },
+    {
+      "width": 1440,
+      "locale": "ko",
+      "pass": true,
+      "multipleFilesRuns": true,
+      "notObserved": true,
+      "pauseNewObservations": true,
+      "linkedSelection": true,
+      "reducedMotion": true,
+      "mobileTouch": false,
+      "scopeAndDenial": true,
+      "noPrivateUrl": true
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "pass": true,
+      "multipleFilesRuns": true,
+      "notObserved": true,
+      "pauseNewObservations": true,
+      "linkedSelection": true,
+      "reducedMotion": false,
+      "mobileTouch": false,
+      "scopeAndDenial": true,
+      "noPrivateUrl": true
+    },
+    {
+      "width": 390,
+      "locale": "zh-TW",
+      "pass": true,
+      "multipleFilesRuns": true,
+      "notObserved": true,
+      "pauseNewObservations": true,
+      "linkedSelection": true,
+      "reducedMotion": false,
+      "mobileTouch": true,
+      "scopeAndDenial": true,
+      "noPrivateUrl": true
+    },
+    {
+      "width": 390,
+      "locale": "ko",
+      "pass": true,
+      "multipleFilesRuns": true,
+      "notObserved": true,
+      "pauseNewObservations": true,
+      "linkedSelection": true,
+      "reducedMotion": true,
+      "mobileTouch": true,
+      "scopeAndDenial": true,
+      "noPrivateUrl": true
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "pass": true,
+      "multipleFilesRuns": true,
+      "notObserved": true,
+      "pauseNewObservations": true,
+      "linkedSelection": true,
+      "reducedMotion": false,
+      "mobileTouch": true,
+      "scopeAndDenial": true,
+      "noPrivateUrl": true
+    }
+  ],
+  "external": 0,
+  "writes": 0,
+  "realOwnerAcceptance": false
+}

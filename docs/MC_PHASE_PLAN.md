@@ -1,3 +1,7 @@
+# Current hierarchy integration checkpoint — 2026-10-12
+
+Exact3e8fd2b slice integrated locallyf322232; Owner bundle rebuilt, focused68/portable956/browser36/root20 PASS. Remaining browser regression blocked by thread/process resource errors; canonical remote/fixed Preview heldd9a7beb. Resume this same integration run37/40; no capacity/history changes. Core repair and all guards/inactive OTP preserved. Dedicated owner-email-login.html exact allowlist approved+verified00:11UTC; prepare explicit Magic Link after integration, no mail or config mutation. See MC_WORKSPACE_HIERARCHY_INTEGRATION_20261011.md.
+
 # Current bounded fixture boundary repair — 2026-10-11
 
 Exact grant checks now execute synchronously at fixture mutation; recovery requires independent own-operation correlation. Live execution remains hard-disabled, no routes/real effects. Navigation/mobile/inactive OTP and source/API/SQL/reporting/preflight are unchanged. See MC_FINALIZATION_EFFECT_BOUNDARY_20261011.md for deterministic RED/repair and precise missing live connections. OTP activation remains a separate dashboard readiness wait.

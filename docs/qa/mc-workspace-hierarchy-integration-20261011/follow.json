@@ -1,0 +1,75 @@
+{
+  "pass": true,
+  "cases": [
+    {
+      "width": 1440,
+      "locale": "zh-TW",
+      "pass": true,
+      "twoRuns": true,
+      "selectedRunLocked": true,
+      "backgroundUnread": true,
+      "manualPauseResume": true,
+      "scrollAndNoReplay": true,
+      "historicalCardRunPreserved": true
+    },
+    {
+      "width": 1440,
+      "locale": "ko",
+      "pass": true,
+      "twoRuns": true,
+      "selectedRunLocked": true,
+      "backgroundUnread": true,
+      "manualPauseResume": true,
+      "scrollAndNoReplay": true,
+      "historicalCardRunPreserved": true
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "pass": true,
+      "twoRuns": true,
+      "selectedRunLocked": true,
+      "backgroundUnread": true,
+      "manualPauseResume": true,
+      "scrollAndNoReplay": true,
+      "historicalCardRunPreserved": true
+    },
+    {
+      "width": 390,
+      "locale": "zh-TW",
+      "pass": true,
+      "twoRuns": true,
+      "selectedRunLocked": true,
+      "backgroundUnread": true,
+      "manualPauseResume": true,
+      "scrollAndNoReplay": true,
+      "historicalCardRunPreserved": true
+    },
+    {
+      "width": 390,
+      "locale": "ko",
+      "pass": true,
+      "twoRuns": true,
+      "selectedRunLocked": true,
+      "backgroundUnread": true,
+      "manualPauseResume": true,
+      "scrollAndNoReplay": true,
+      "historicalCardRunPreserved": true
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "pass": true,
+      "twoRuns": true,
+      "selectedRunLocked": true,
+      "backgroundUnread": true,
+      "manualPauseResume": true,
+      "scrollAndNoReplay": true,
+      "historicalCardRunPreserved": true
+    }
+  ],
+  "external": 0,
+  "writes": 0,
+  "realOwnerAcceptance": false,
+  "browserResourceMode": "SINGLE_PROCESS_FRESH_BROWSER_PER_CASE"
+}

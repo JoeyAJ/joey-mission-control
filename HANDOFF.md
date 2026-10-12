@@ -1,19 +1,19 @@
-# Current finalization fixture boundary repair — 2026-10-11
+# Current hierarchy integration checkpoint — 2026-10-12
 
 Project: MISSION_CONTROL
-Timestamp: 2026-10-11T23:37:57.504Z
-Task: Effect grant boundary and own-merge recovery
-Status: LOCAL_VERIFIED_PARENT_READ_PREVIEW_PUBLISHED
+Timestamp: 2026-10-12T00:22:55.070Z
+Task: Shared project/Agent/state/task/handoff context
+Status: LOCAL_VERIFIED_PENDING_PUBLICATION
 Last Developer: Codex
 Executed by: Codex
 Actual Model: UNKNOWN
-Baseline: 625ff30ff466d1f81eb2091eb3ea5a8f9b96641b
+Baseline: d9a7beb18b8e6c0fd8d31db5ef6f6a25fa2e37cb
 
-Fixture commit boundary rereads exact grant/expiry/revocation/payload after provider awaits, synchronously with mutation. Known-not-started proof permits guarded CAS retry; uncertainty never repeats effects. Merge recovery requires independent own-operation ledger, not attempt marker/matching PR or echoed IDs; unattributed merge blocks deployment/adoption. Live factory still OFF, no actual merge/deploy.
+Reviewed3e8fd2b eight-file slice cherry-picked asf322232; latest Owner bundle rebuilt. Focus/candidate12 + files/motion/follow/delivery24 browser cases, focused68/portable956/build/validate/check PASS. Remaining disclosure/privacy/simple/mobile/sites blocked by thread/process error11 and renderer failure. No product regression assertion established. Canonical remote/fixed Preview stayd9a7beb; no push/deploy.
 
-Evidence: docs/MC_FINALIZATION_EFFECT_BOUNDARY_20261011.md. Baseline RED7/8; new11+old22 groups, focused88/portable956/build/validate/check PASS. Runtime8408e1d fixed Preview dpl_5aEd3G72Zs3qGFeK7sKMfhgTFYsj READY; root20 PASS. Navigation/mobile/client bundle/inactive OTP/source/API/SQL/preflight byte unchanged; actual Owner/mail/actions0. Prior prefix/history preserved.
+Evidence: docs/MC_WORKSPACE_HIERARCHY_INTEGRATION_20261011.md and QA receipt. Core repair/Source/Auth/SQL/inactive OTP/mobile/nav guards retained. Only own-child reaper and optional fresh single-process QA used; PID1/global limits unchanged, sudo absent. Actual Owner/mail/actions0.
 
-Next Action: finish final docs exact Preview/report. Live still needs trusted revocation lifecycle and authority at provider acceptance, conditional refs/CI, durable CAS/nonexecution proof and own-operation correlation/unknown lookup/served verification. External adoption has no grant/route. OTP remains false awaiting dashboard nonsecret template/plan/mail read; no sending/settings/password/SMTP/signup/redirect/new keys/permissions/Production/dispatch/AWS. CONNECT403 not bypassed, served/Owner acceptance pending.
+Next Action: recover browser-capable executor and resume same integration run37/40; no new run/history removal/enlargement. Resolve remaining checks before release. Then dedicated owner-email-login.html/explicit Magic Link; exact callback addition approved+verified00:11UTC, no reapproval. Numeric OTP false; keep recovery/SiteURL/MFA/drafts. No automatic mail/new settings/credentials/permissions/Production/dispatch/AWS; served CONNECT403 not bypassed.
 
 # Dated prior stage history
 
