@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "mc.repository-run.v2",
+  "taskKind": "FEATURE",
+  "projectId": "MISSION_CONTROL",
+  "track": "BASELINE",
+  "runId": "codex-mc-ui-session-rail-integration-20261012",
+  "predecessorRunId": "codex-mc-task-resume-handoff-20261012",
+  "taskId": "mc-ui-session-rail-integration-20261012",
+  "featureTitle": "Integrate reviewed reported session rail and visible Development Workspace tile",
+  "agentName": "Codex",
+  "provider": null,
+  "model": null,
+  "repositoryId": "JoeyAJ/joey-mission-control",
+  "reportRef": "mc/progress",
+  "workRef": "codex/mc-command-center-checkpoint-20261006",
+  "baseline": {
+    "ref": "codex/mc-command-center-checkpoint-20261006",
+    "commitSha": "94816da3c293c05c4ac0a2134e430183e135e212",
+    "handoffPath": "HANDOFF.md",
+    "handoffDigest": "790a4c1be32b1e01ebd8a29d141ec207ab1f006bcdafd77631a20d7f85856ded",
+    "contextPaths": [
+      "README.md",
+      "docs/PRODUCT_CHARTER.md",
+      "docs/MC_PHASE_PLAN.md",
+      "docs/STAGE_HANDOFF_TEMPLATE.md"
+    ]
+  },
+  "events": [
+    {
+      "id": "ui-session-rail-integration-start-1",
+      "sequence": 1,
+      "eventAt": "2026-10-12T04:02:36.047Z",
+      "kind": "started",
+      "summary": "Exact UI bafdd912 source inspected and cherry-picked locally; native review found MC branch label and terminal-failure cue deadline, both corrected. Mounted boundary/refusal/disposal6 PASS. Preserve current Auth generation/task-resume logic; no full-reference claim, Auth/backend or actual task execution. No valid open UI run exists; use final slot40 within unchanged cap, no extra run/history deletion. Combined QA/publication follows.",
+      "result": null,
+      "delivery": null
+    }
+  ]
+}
