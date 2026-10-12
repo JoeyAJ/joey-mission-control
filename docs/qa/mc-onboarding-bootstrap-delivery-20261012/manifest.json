@@ -1,0 +1,38 @@
+{
+  "simple.json": {
+    "bytes": 5362,
+    "sha256": "f76197dad2b6f0161a0337979825c6cba79d30265ad83582169ba1a4091a36b5"
+  },
+  "bootstrap-session.json": {
+    "bytes": 2369,
+    "sha256": "efaf14113229b32a5750c0ee2edc903b59242c9f0a44fd63c68eb4058feabe09"
+  },
+  "live-eleven.json": {
+    "bytes": 610,
+    "sha256": "a275db2ac66219d762606aba0ffcd710a6943afcd7bce14fec6c0c1cd6634b3f"
+  },
+  "task-entry.json": {
+    "bytes": 1902,
+    "sha256": "146b529dd86c4fa65ba499ef1c170e8c6268210fa6c5b0d1a2b06375712d9583"
+  },
+  "new-project.json": {
+    "bytes": 2407,
+    "sha256": "268c92b7b31fb984c9292119721f8e9b174c5e924f18787aa2491705ef877503"
+  },
+  "job-status.json": {
+    "bytes": 841,
+    "sha256": "8da69d4166444f90d03184ae5214ca3b2b9b620caec31565ff9df09a8d1ef280"
+  },
+  "bootstrap-cloud.json": {
+    "bytes": 2358,
+    "sha256": "6623a9bbed38ac594a3ff7feeaf3e275530daddd1db21104f9eb35a3c5a1932c"
+  },
+  "cloud-draft.json": {
+    "bytes": 3180,
+    "sha256": "57cbbe49a0daeaffa4e2d09cecf6f91170c847011fdaae7ae327290daca41347"
+  },
+  "test-summary.json": {
+    "bytes": 558,
+    "sha256": "a3d9d737432d932253683c28509784cdde63f252ed3b2e05fa3df0963d8d182d"
+  }
+}

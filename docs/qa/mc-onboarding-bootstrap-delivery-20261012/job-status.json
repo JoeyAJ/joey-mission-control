@@ -1,0 +1,50 @@
+[
+  {
+    "name": "unit",
+    "exit": 0,
+    "elapsedSeconds": 2.85,
+    "timeoutSeconds": 75
+  },
+  {
+    "name": "build",
+    "exit": 0,
+    "elapsedSeconds": 22.12,
+    "timeoutSeconds": 75
+  },
+  {
+    "name": "bootstrap-session",
+    "exit": 0,
+    "elapsedSeconds": 51.83,
+    "timeoutSeconds": 180
+  },
+  {
+    "name": "bootstrap-cloud",
+    "exit": 0,
+    "elapsedSeconds": 64.07,
+    "timeoutSeconds": 180
+  },
+  {
+    "name": "new-project",
+    "exit": 0,
+    "elapsedSeconds": 63.63,
+    "timeoutSeconds": 150
+  },
+  {
+    "name": "cloud-draft",
+    "exit": 0,
+    "elapsedSeconds": 117.67,
+    "timeoutSeconds": 180
+  },
+  {
+    "name": "simple",
+    "exit": 0,
+    "elapsedSeconds": 127.74,
+    "timeoutSeconds": 180
+  },
+  {
+    "name": "task-entry",
+    "exit": 0,
+    "elapsedSeconds": 24.58,
+    "timeoutSeconds": 120
+  }
+]

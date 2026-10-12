@@ -1,0 +1,14 @@
+{
+  "qualification": "CANONICAL_SYNTHETIC_BROWSER_NOT_REAL_PROVISIONING",
+  "unitPass": 67,
+  "browserCases": 23,
+  "workerPortableReported": 998,
+  "workerPortableRerunByCanonicalWriter": false,
+  "independentReview": "GO; ZIP/capture/source review passed",
+  "journalClosureNotIncluded": true,
+  "liveJournalInstalledButFrontendClosureUnpublished": true,
+  "noRealCloudOrProviderWrite": true,
+  "realOwnerDeviceAcceptance": false,
+  "ownerBundleSha256": "c8c48f1a495dd12dc5d920f8d142feb0b652ddcb0c77a47d5c836d988f115775",
+  "finalHandoffSourceTests": 12
+}

@@ -1,17 +1,17 @@
-# Current compact modules and report relationship graph — 2026-10-12
+# Current usable private bootstrap preparation — 2026-10-12
 
 Project: MISSION_CONTROL
-Timestamp: 2026-10-12T09:50:00.000Z
-Task: Compact Joey overview and source-backed interactive report graph
+Timestamp: 2026-10-12T12:00:00.000Z
+Task: Saved idea to prepared private ZIP and complete Agent handoff
 Status: LOCAL_VERIFIED_PENDING_PUBLICATION
 Last Developer: Codex
 Executed by: Codex
 Actual Model: UNKNOWN
-Baseline: 1b16fed7f25a59f33f126a2969ca66d912d4083b
+Baseline: cab187ea5208fabe82d47cfe47bdf32cc3d4f0c1
 
-Integrated exact399cb6a. Joey uses concise project/progress/Agent/task fields with optional details. Workspace graph has native nodes, SVG edges, drag/pan/zoom and keyboard selection over validated task/event/file facts. Dashed event order is not dependency; manifest is not observation. Reviewed02af4e8 fixes cancelled-drag keyboard swallowing and absent-selection phantom task labels. No fake stream or execution.
+Integrated reviewed ffec82fe: saved draft/plan produces eleven-file private UTF-8 ZIP with the six canonical files unchanged, first-mission checklist, next steps, scope request, plan and complete Agent instructions. Preparation/export never provisions, registers, grants access or dispatches. Owner/conflict/dirty/expiry/revocation guards retained; source/report branch separation preserved. Compact UI and repaired source graph remain.
 
-Canonical portable991/build/safety before repairs, post-fix focused29/native repair6 PASS; rebuilt SDK. Independent reviewer GO; repaired integration browser60 PASS. Current matrix/provider receipt: docs/MC_COMPACT_MODULES_NETWORK_20261012.md and adjacent QA. Legacy overview fixture is maintenance debt, not a claimed PASS. MC report HEADbc3d76b1af577d793d77e2a53fc1bd66575c9251/eleven original current blobs and29 archived bodies preserved; no new run or saved-test access. Auth/SQL/Production unchanged; finalization OFF, review executionAuthorized:false. Journal v2 frozen/unapplied. Real Owner/email/TOTP/device acceptance remains pending Parent.
+Canonical targeted67/build and browser23 PASS with synthetic providers; worker998 portable and independent ZIP/source/capture review GO. Final handoff/report/deployment receipts: docs/MC_ONBOARDING_BOOTSTRAP_DELIVERY_20261012.md and adjacent QA. MC report HEADbc3d76b1af577d793d77e2a53fc1bd66575c9251/eleven original current records and29 recoverable archived bodies unchanged. No new run, saved-test access, Auth or Production change. Approved exact journal v2 installed with catalog/role-denial checks; app closure source remains unpublished on separate local branch. Automatic execution OFF, review executionAuthorized:false. Real Owner/device acceptance and live provisioning remain pending.
 
 # Dated prior stage history
 
