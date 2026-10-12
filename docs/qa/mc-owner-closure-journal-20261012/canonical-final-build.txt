@@ -1,0 +1,13 @@
+
+> joey-mission-control@0.3.0-e build
+> node scripts/build.mjs
+
+Portable generic Agent reporter built (45522 bytes); no credential/private allowlist.
+Pinned official Owner SDK browser bundles built; no source map/private repository included.
+V0.3 static bundle, module syntax and runtime/activity/product/canonical schemas verified. No deployment performed.
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice
+QA_SUBREAPER owned_exited_children_reaped=1 child_exit=0

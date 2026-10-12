@@ -1,0 +1,27 @@
+✔ native source advance, historical read and CI refresh preserve recovery without current-review eligibility (4590.700208ms)
+✔ closure mounting creates no operation, and Owner decisions cannot execute or dispatch (256.966703ms)
+✔ explicit initialize binds exact native task/code/CI/review and deterministic durable decision ID (602.739398ms)
+✔ lost save acknowledgement recovers the same operation with no duplicate row or false marker reset (1278.717212ms)
+✔ missing/changed Owner review, stale CI, foreign PR and unsaved or dirty task refuse before write (645.308444ms)
+✔ scope/Owner drift during a journal read purges records and never releases a new CAS (942.921383ms)
+✔ Owner revocation after response removes private journal acknowledgement (68.054962ms)
+✔ revoked attempted step can receive an explicit operator reference without enabling another effect (211.578877ms)
+✔ operator JSON cannot manufacture a receipt, status, fixture authority or verification; draft stays qualified (414.336767ms)
+✔ historical progress recovery after source movement does not become a current review/grant (191.709566ms)
+✔ other existing projects can export a qualified handoff but cannot widen the MC storage pilot (58.080502ms)
+✔ SDK journal port calls only installed RPC, bounds replies, and sanitizes denied/provider errors (23.954544ms)
+✔ Owner denial after committed CAS erases closure code/CI/review and journal state (137.295781ms)
+✔ foreign task/scope CI cannot be displayed as a fresh current tuple (41.715738ms)
+✔ manual deployment handoff can be recorded after observed merge head with unchanged original Owner decision (551.384103ms)
+✔ historical decision reads cannot replace current-review eligibility and expire without a deployment gate (1164.135689ms)
+✔ historical recovery decisions purge on task edits, conflicting decisions and Owner denial (206.943309ms)
+✔ deployment pending refuses CAS when historical lease expires during awaited journal load (339.602482ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 18
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 9579.950709
+QA_SUBREAPER owned_exited_children_reaped=0 child_exit=0

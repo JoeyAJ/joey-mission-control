@@ -1,17 +1,19 @@
-# Current usable private bootstrap preparation — 2026-10-12
+# Current qualified private Owner closure recovery — 2026-10-12
 
 Project: MISSION_CONTROL
-Timestamp: 2026-10-12T12:00:00.000Z
-Task: Saved idea to prepared private ZIP and complete Agent handoff
+Timestamp: 2026-10-12T13:20:14.000Z
+Task: Owner closure journal recovery with historical-decision and awaited-expiry guards
 Status: LOCAL_VERIFIED_PENDING_PUBLICATION
 Last Developer: Codex
 Executed by: Codex
 Actual Model: UNKNOWN
-Baseline: cab187ea5208fabe82d47cfe47bdf32cc3d4f0c1
+Baseline: 8d0a4ab99d5ac46e72e864e9ceed465418c7356c
 
-Integrated reviewed ffec82fe: saved draft/plan produces eleven-file private UTF-8 ZIP with the six canonical files unchanged, first-mission checklist, next steps, scope request, plan and complete Agent instructions. Preparation/export never provisions, registers, grants access or dispatches. Owner/conflict/dirty/expiry/revocation guards retained; source/report branch separation preserved. Compact UI and repaired source graph remain.
+Integrated independently approved904d1a0 source exactly. Explicit closure progress binds original currentOwner decision/task/code/report/run/PR; separate Owner history reader preserves historical recovery through source/CI refreshes without weakening current review. Pending manual-deploy metadata rechecks captured decision/lease and full eligibility immediately beforeCAS; expired awaitedload sends noCAS. Revoke and existing receipt settlement work. Handoff remains a qualified draft; automatic dispatch/merge/deployOFF, executionAuthorized:false/productAccepted:false.
 
-Canonical targeted67/build and browser23 PASS with synthetic providers; worker998 portable and independent ZIP/source/capture review GO. Final handoff/report/deployment receipts: docs/MC_ONBOARDING_BOOTSTRAP_DELIVERY_20261012.md and adjacent QA. MC report HEADbc3d76b1af577d793d77e2a53fc1bd66575c9251/eleven original current records and29 recoverable archived bodies unchanged. No new run, saved-test access, Auth or Production change. Approved exact journal v2 installed with catalog/role-denial checks; app closure source remains unpublished on separate local branch. Automatic execution OFF, review executionAuthorized:false. Real Owner/device acceptance and live provisioning remain pending.
+18 closure/native-controller units,6 synthetic browser cases and freshbuildPASS. Eight affected review project/width flowsPASS across bounded mobile/isolated desktopruns; originalfullmatrixtimeouts retained, not counted as all-matrixPASS. Independent code/race/pixelreviewGO. Source/QA:docs/MC_OWNER_CLOSURE_JOURNAL_20261012.md and adjacentQA. ActualOwnerHTTP pending; parent arranges validation.
+
+Auth/MagicLink/SDK privacy protections, installed exactjournalSQL/roles/RLS, saved-onlytask, MC progressHEADbc3d76b1af577d793d77e2a53fc1bd66575c9251/elevenoriginalcurrentrecords plus29recoverablearchives andProductionunchanged. No newrun/historycapacity/settings/grants or liveprovider effects. ExactPreviewpublicationreceipt follows separately.
 
 # Dated prior stage history
 

@@ -1,0 +1,18 @@
+{"reviewCase":375,"project":"WOOSONG_BUDDY","track":"BASELINE","pass":true}
+{"reviewCase":375,"project":"JOEY_ASSET_SYSTEM","track":"UNIVERSITY_CANDIDATE","pass":true}
+{"reviewCase":390,"project":"WOOSONG_BUDDY","track":"BASELINE","pass":true}
+{"reviewCase":390,"project":"JOEY_ASSET_SYSTEM","track":"UNIVERSITY_CANDIDATE","pass":true}
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+page.waitForFunction: Timeout 10000ms exceeded.
+    at reviewReady (/workspace/mc-owner-closure/tests/browser/task-review.fixture.mjs:5:29)
+    at runTaskReviewFlow (/workspace/mc-owner-closure/tests/browser/task-review.fixture.mjs:14:439)
+    at async file:///workspace/mc-owner-closure/tests/browser/joey-simple-takeover-qa.mjs:272:19 {
+  log: [],
+  name: 'TimeoutError'
+}
+
+Node.js v24.19.0
+QA_SUBREAPER owned_exited_children_reaped=4 child_exit=1

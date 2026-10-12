@@ -1,0 +1,35 @@
+{
+  "pass": true,
+  "actualApp": true,
+  "actualOwnerAuth": false,
+  "actualRemoteRepositoryRead": false,
+  "upstreams": "SYNTHETIC_AUTH_GITHUB_CLIPBOARD",
+  "reads": 16,
+  "githubReads": 365,
+  "external": 0,
+  "writes": 0,
+  "intendedSyntheticCloudWrites": 0,
+  "intendedSyntheticTaskCloudWrites": 4,
+  "intendedSyntheticReviewWrites": 6,
+  "cases": [
+    {
+      "width": 1440,
+      "pass": true,
+      "actualApp": true,
+      "normalDeploymentFactory": true,
+      "officialSDK": true,
+      "syntheticOnly": true,
+      "ownerDecisionBound": true,
+      "explicitPrCiStageRequired": true,
+      "approveExecutionAuthorized": false,
+      "requestChangesOnly": true,
+      "exactLostResponseRetry": true,
+      "reloadDatedHistory": true,
+      "newRequirementsRequireNewReport": true,
+      "pendingProjectSwitchClears": true,
+      "privateBodyOnly": true,
+      "candidateQualificationPreserved": true
+    }
+  ],
+  "screenshots": "/tmp/mc-joey-simple-screenshots"
+}

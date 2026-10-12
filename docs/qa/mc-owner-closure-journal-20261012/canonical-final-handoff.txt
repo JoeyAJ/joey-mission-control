@@ -1,0 +1,19 @@
+✔ classifies handoff by body evidence not neutral title (14.134672ms)
+✔ fails closed on ambiguous handoff (3.388421ms)
+✔ fails closed on malformed recognized-entity handoff (5.195409ms)
+✔ fails closed on impossible calendar timestamps (17.321836ms)
+✔ keeps global latest and derives per entity latest from history (96.21855ms)
+✔ per-entity latest is selected by timestamp rather than LATEST filename priority (43.922929ms)
+✔ rejects LATEST and HISTORY symlink escapes using canonical realpaths (41.022483ms)
+✔ current attributed checkpoint owns summary and next steps; preserved releases cannot overwrite it (4.798361ms)
+✔ explicit history section ends current extraction without changing original bytes; fenced titles are not record boundaries (2.126438ms)
+✔ parses fenced metadata, sections and tables (14.851095ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1316.372011
+QA_SUBREAPER owned_exited_children_reaped=0 child_exit=0

@@ -1,0 +1,4 @@
+{"reviewCase":1440,"project":"WOOSONG_BUDDY","track":"BASELINE","pass":true}
+{"reviewCase":1440,"project":"JOEY_ASSET_SYSTEM","track":"UNIVERSITY_CANDIDATE","pass":true}
+{"pass":true,"cases":1,"reportReads":16,"reads":16,"githubReads":365,"external":0,"writes":0,"cloudWrites":0,"taskCloudWrites":4,"screenshots":"/tmp/mc-joey-simple-screenshots"}
+QA_SUBREAPER owned_exited_children_reaped=4 child_exit=0

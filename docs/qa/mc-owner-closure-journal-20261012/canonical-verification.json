@@ -1,0 +1,14 @@
+{
+  "reviewedSource": "904d1a0d7f50379befa5168e2f0ef6c42e94e3b8",
+  "canonicalSourceExactFiles": 10,
+  "canonicalUnitPass": 18,
+  "browserPass": 6,
+  "affectedInteropProjectWidthFlows": 8,
+  "fullMatrixRunsIncomplete": true,
+  "ownerBundleSha256": "5bc59c8a847e723c26ef50b763700b0d3122ff5d6163f1b53a54eb64979b1b8d",
+  "isolatedAndCanonicalBundleEqual": true,
+  "realOwnerHttp": false,
+  "realJournalTestRows": 0,
+  "executionAuthorized": false,
+  "productAccepted": false
+}

@@ -1,0 +1,39 @@
+{
+  "pass": true,
+  "cases": [
+    {
+      "width": 1440,
+      "name": "explicit-private-store-and-manual-reference-settlement",
+      "pass": true
+    },
+    {
+      "width": 1440,
+      "name": "decision-id-durable-recovery-no-new-row",
+      "pass": true
+    },
+    {
+      "width": 1440,
+      "name": "owner-denial-purges-private-closure",
+      "pass": true
+    },
+    {
+      "width": 390,
+      "name": "explicit-private-store-and-manual-reference-settlement",
+      "pass": true
+    },
+    {
+      "width": 390,
+      "name": "decision-id-durable-recovery-no-new-row",
+      "pass": true
+    },
+    {
+      "width": 390,
+      "name": "owner-denial-purges-private-closure",
+      "pass": true
+    }
+  ],
+  "externalRequests": 0,
+  "realOwnerHttp": false,
+  "realJournalRowsCreated": 0,
+  "qualification": "NATIVE_BROWSER_SYNTHETIC_OWNER_JOURNAL_SERVER"
+}
