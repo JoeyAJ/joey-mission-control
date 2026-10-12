@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "mc.repository-run.v2",
+  "taskKind": "FEATURE",
+  "projectId": "MISSION_CONTROL",
+  "track": "BASELINE",
+  "runId": "codex-mc-owner-email-magic-link-20261012",
+  "predecessorRunId": "codex-mc-workspace-hierarchy-integration-20261011",
+  "taskId": "mc-owner-email-magic-link-20261012",
+  "featureTitle": "Default-template explicit Owner Magic Link and exact dedicated callback with preserved TOTP/private session gates",
+  "agentName": "Codex",
+  "provider": null,
+  "model": null,
+  "repositoryId": "JoeyAJ/joey-mission-control",
+  "reportRef": "mc/progress",
+  "workRef": "codex/mc-command-center-checkpoint-20261006",
+  "baseline": {
+    "ref": "codex/mc-command-center-checkpoint-20261006",
+    "commitSha": "9be543021c7d071371114ef70f46f24248619b76",
+    "handoffPath": "HANDOFF.md",
+    "handoffDigest": "2a02b46ed204764af294f93f4f1dafbbfea436df2dae742ad230313c08f5132f",
+    "contextPaths": [
+      "README.md",
+      "docs/PRODUCT_CHARTER.md",
+      "docs/MC_PHASE_PLAN.md",
+      "docs/STAGE_HANDOFF_TEMPLATE.md"
+    ]
+  },
+  "events": [
+    {
+      "id": "owner-email-magic-link-start-1",
+      "sequence": 1,
+      "eventAt": "2026-10-12T00:37:41.267Z",
+      "kind": "started",
+      "summary": "Parent verified exact owner-email-login.html allowlist addition00:11UTC and authorized explicit Magic Link after default-template/no-SMTP readiness. Prepared callback/session scrub and manual button code, new9/focused32 tests PASS; activation false until tests/exact callback deployment. Hierarchy integration preserved locally9be5430, browser remainder resource-blocked; canonical Preview stilld9a7beb. No mail/config/password/signup/RLS or live workflow action.",
+      "result": null,
+      "delivery": null
+    }
+  ]
+}
