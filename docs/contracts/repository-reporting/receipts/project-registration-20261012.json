@@ -1,0 +1,224 @@
+{
+  "schemaVersion": 1,
+  "qualification": "SYNTHETIC_LOCAL_VERIFICATION_ONLY",
+  "canonicalBase": "cab187ea5208fabe82d47cfe47bdf32cc3d4f0c1",
+  "externalNetworkCalls": 0,
+  "externalWrites": 0,
+  "privateReadCallsAreInjectedSynthetic": true,
+  "injectedReadCalls": 26,
+  "liveRegistered": false,
+  "sqlAclCredentialChanges": false,
+  "inactiveStatus": 503,
+  "importStatus": 200,
+  "replayStatus": 200,
+  "request": {
+    "schemaVersion": "mc.project-registration.v1",
+    "mode": "IMPORT_EXISTING_PRIVATE_REPOSITORY",
+    "requestId": "synthetic-review-import",
+    "draftId": "draft_aaaaaaaaaaaaaaaaaaaaaaaa",
+    "draftRevision": 1,
+    "projectId": "SYNTHETIC_IMPORT",
+    "repositoryId": "Synthetic/already-created",
+    "repositoryNumericId": 12345,
+    "ref": "development",
+    "baselineSha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "expectedRegistryDigest": "ee57fa700bf363659298baec89f4176d20a25c2e699ac267ca0967589b09f31f",
+    "expectedIndexDigest": "3842816b533afe02d270ba6932cb4b78f3d5ae3a2c66255c352afd2eacf582c8",
+    "files": {
+      "HANDOFF.md": "9e445065de6b9ae6fbb376d805e07354e61948b1b545d61a791992ae029cd81e",
+      "PRD.md": "344e8ceb27224ef8033223597143a75ae9b08063d6b85ed36c84f0ffb7f2eb7b",
+      "README.md": "38a76115ecde943107e00b5ec3de264338d7439afaf7a3b359b04cf53b156d0f",
+      "docs/PRODUCT_CHARTER.md": "4d3d7241158574afd27e17210c34ec05535b2c274d280a3bbb129859189438d0",
+      "docs/PHASE_PLAN.md": "c12f6b1a76812e2e1676fcd948b32989cc9931e159ea5f8aefe3b0f7bb04b1d5",
+      ".mission-control/bootstrap.json": "93c4bea3d822013b00658a4aef47949ef602503a096a38aa9ace3ced2879f592",
+      ".mission-control/source-profile.json": "7aa5f2b49fc5d1649fc3096b150577128af6cbf9ead929027358c8acf0e7b013"
+    },
+    "resources": {
+      "backend": null,
+      "deployment": null
+    }
+  },
+  "localResponse": {
+    "schemaVersion": 1,
+    "qualification": "LOCAL_REGISTRY_CANDIDATE_ONLY",
+    "registryDigest": "a49b8e475924a3504cde5cfb324df8f44fd57e0b7fa4c39f4bb58a806f0e6cb7",
+    "indexDigest": "aa03b11983af33b804df1dd6cfa22d5ddc1e6bf341e6a7347669f87368e1d85e",
+    "canonicalMemoryPaths": [
+      "PROJECTS/SYNTHETIC_IMPORT/PROJECT_MEMORY.md",
+      "PROJECTS/SYNTHETIC_IMPORT/CURRENT_STATE.md",
+      "PROJECTS/SYNTHETIC_IMPORT/NEXT_ACTIONS.md",
+      "PROJECTS/SYNTHETIC_IMPORT/ARCHITECTURE.md",
+      "PROJECTS/SYNTHETIC_IMPORT/DECISIONS.md"
+    ],
+    "receipt": {
+      "schemaVersion": "mc.project-registration.v1",
+      "qualification": "INDEPENDENT_PRIVATE_REPOSITORY_IMPORT",
+      "mode": "IMPORT_EXISTING_PRIVATE_REPOSITORY",
+      "requestId": "synthetic-review-import",
+      "requestDigest": "e9b83adc7a6972daa72dad36b9a2e66048cc0a6cc7debc35d273184d8754beed",
+      "ownerSubject": "synthetic-review-owner",
+      "approvalRef": "synthetic-review-approval",
+      "draftId": "draft_aaaaaaaaaaaaaaaaaaaaaaaa",
+      "draftRevision": 1,
+      "projectId": "SYNTHETIC_IMPORT",
+      "name": "Synthetic private import / 私人匯入 / 비공개 가져오기",
+      "repositoryId": "Synthetic/already-created",
+      "repositoryNumericId": 12345,
+      "ref": "development",
+      "baselineSha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "files": {
+        "HANDOFF.md": {
+          "sha256": "9e445065de6b9ae6fbb376d805e07354e61948b1b545d61a791992ae029cd81e",
+          "blobId": "45b9ae211657b995178f19e971b92289b2fd51f9"
+        },
+        "PRD.md": {
+          "sha256": "344e8ceb27224ef8033223597143a75ae9b08063d6b85ed36c84f0ffb7f2eb7b",
+          "blobId": "499b0ea255d23b196b3ae2de16a078fc70682044"
+        },
+        "README.md": {
+          "sha256": "38a76115ecde943107e00b5ec3de264338d7439afaf7a3b359b04cf53b156d0f",
+          "blobId": "1510d131778c479867b3769b754789e61e40e246"
+        },
+        "docs/PRODUCT_CHARTER.md": {
+          "sha256": "4d3d7241158574afd27e17210c34ec05535b2c274d280a3bbb129859189438d0",
+          "blobId": "667256f63806a64584d477ab5955e0a93e80b33c"
+        },
+        "docs/PHASE_PLAN.md": {
+          "sha256": "c12f6b1a76812e2e1676fcd948b32989cc9931e159ea5f8aefe3b0f7bb04b1d5",
+          "blobId": "c2519c4cb6174406d72cdd7ebb232fe1190a4468"
+        },
+        ".mission-control/bootstrap.json": {
+          "sha256": "93c4bea3d822013b00658a4aef47949ef602503a096a38aa9ace3ced2879f592",
+          "blobId": "419cd8026f6f7388ca9d6359e2252d5b4895da7c"
+        },
+        ".mission-control/source-profile.json": {
+          "sha256": "7aa5f2b49fc5d1649fc3096b150577128af6cbf9ead929027358c8acf0e7b013",
+          "blobId": "c9d1820650cac3a026bf02c64ec253dea58abfe9"
+        }
+      },
+      "sourceProfile": {
+        "projectId": "SYNTHETIC_IMPORT",
+        "track": "BASELINE",
+        "repositoryId": "Synthetic/already-created",
+        "ref": "development",
+        "path": "HANDOFF.md",
+        "contextPaths": [
+          "PRD.md",
+          "README.md",
+          "docs/PRODUCT_CHARTER.md",
+          "docs/PHASE_PLAN.md"
+        ]
+      },
+      "resources": {
+        "backend": null,
+        "deployment": null
+      },
+      "observedAt": 1791806400000,
+      "expiresAt": 1791806430000,
+      "environmentStatus": "PENDING_CONFIGURATION",
+      "deploymentStatus": "PENDING_CONFIGURATION",
+      "sourceReadScope": "PENDING_EXPLICIT_ACTIVATION",
+      "reportWriteScope": "PENDING_EXPLICIT_ACTIVATION",
+      "developmentReady": false,
+      "executionAuthorized": false,
+      "verifiedDelivery": false,
+      "joeyAcceptance": "PENDING"
+    },
+    "replay": false,
+    "liveRegistered": false,
+    "expiresAt": 1791806430000,
+    "developmentReady": false,
+    "executionAuthorized": false,
+    "verifiedDelivery": false
+  },
+  "candidateArtifacts": {
+    "qualification": "LOCAL_REGISTRY_CANDIDATE_ONLY",
+    "digest": "a49b8e475924a3504cde5cfb324df8f44fd57e0b7fa4c39f4bb58a806f0e6cb7",
+    "indexDigest": "aa03b11983af33b804df1dd6cfa22d5ddc1e6bf341e6a7347669f87368e1d85e",
+    "registryText": "# Synthetic canonical registry\n\n### 1. Synthetic private import / 私人匯入 / 비공개 가져오기\n\n```yaml\nproject_id: SYNTHETIC_IMPORT\nlocal_master: null\ngithub: Synthetic/already-created\nbranch: development\nlocal_head: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\ngithub_main_head: null\nproduction_source_sha: null\nproduction: null\nalignment: REGISTRY_VERIFIED_SCOPES_PENDING\nrepository_numeric_id: 12345\ncanonical_entry: HANDOFF.md\ncanonical_entry_sha256: 9e445065de6b9ae6fbb376d805e07354e61948b1b545d61a791992ae029cd81e\nregistration_receipt: synthetic-review-import\nregistration_qualification: INDEPENDENT_PRIVATE_REPOSITORY_IMPORT\nbackend_ref: null\ndeployment_project_ref: null\ndeployment_preview: null\n```\n",
+    "memoryIndexText": "# Synthetic memory index\n## Production Development Registry\n| Project | Memory | Current State | Canonical Local Master |\n|---|---|---|---|\n| Synthetic private import / 私人匯入 / 비공개 가져오기 (`SYNTHETIC_IMPORT`) | [M](PROJECTS/SYNTHETIC_IMPORT/PROJECT_MEMORY.md) | [S](PROJECTS/SYNTHETIC_IMPORT/CURRENT_STATE.md) | `null` |\n\n## Systems Registry\n| System | Memory | Current State | Canonical Local Master |\n|---|---|---|---|\n",
+    "memoryFiles": {
+      "PROJECTS/SYNTHETIC_IMPORT/PROJECT_MEMORY.md": "# SYNTHETIC_IMPORT\n\n## Purpose\n\nRead the verified PRD.md in the recorded private repository for the Owner idea and acceptance criteria.\n\n## Registered source\n\nRepository: Synthetic/already-created\nBranch: development\nVerified baseline: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\nEntry: HANDOFF.md\nEntry SHA256: 9e445065de6b9ae6fbb376d805e07354e61948b1b545d61a791992ae029cd81e\nObservedAt: 2026-10-12T12:00:00.000Z\nQualification: INDEPENDENT_PRIVATE_REPOSITORY_IMPORT\n",
+      "PROJECTS/SYNTHETIC_IMPORT/CURRENT_STATE.md": "# SYNTHETIC_IMPORT state\n\n## Current Stage\n\nPrivate repository imported and canonical documents verified at the recorded baseline. Source and report activation are pending; development execution and delivery remain unverified.\n\n## Blockers\n\nExact source read scope and report write scope are pending activation. Backend: PENDING_CONFIGURATION. Deployment: PENDING_CONFIGURATION. Joey acceptance: PENDING.\n",
+      "PROJECTS/SYNTHETIC_IMPORT/NEXT_ACTIONS.md": "# SYNTHETIC_IMPORT next actions\n\n## Recommended Next Step\n\nActivate the approved exact source/report scopes and verify the runtime connection. Then follow the real repository HANDOFF.md and obtain an actual Agent start report.\n\n## Blockers\n\nRegistration does not grant execution, report writes, backend access or deployment authority.\n",
+      "PROJECTS/SYNTHETIC_IMPORT/ARCHITECTURE.md": "# SYNTHETIC_IMPORT architecture\n\n## Registered source\n\nRepository: Synthetic/already-created\nBranch: development\nVerified baseline: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\nEntry: HANDOFF.md\nEntry SHA256: 9e445065de6b9ae6fbb376d805e07354e61948b1b545d61a791992ae029cd81e\nObservedAt: 2026-10-12T12:00:00.000Z\nQualification: INDEPENDENT_PRIVATE_REPOSITORY_IMPORT\n\nNo architecture or live service has been inferred from registration.\n",
+      "PROJECTS/SYNTHETIC_IMPORT/DECISIONS.md": "# SYNTHETIC_IMPORT decisions\n\n## Registration\n\nAn existing private repository was independently read; MC did not create it. Configuration observations are separate from verified delivery. Approval reference: synthetic-review-approval.\n"
+    },
+    "receipts": [
+      {
+        "schemaVersion": "mc.project-registration.v1",
+        "qualification": "INDEPENDENT_PRIVATE_REPOSITORY_IMPORT",
+        "mode": "IMPORT_EXISTING_PRIVATE_REPOSITORY",
+        "requestId": "synthetic-review-import",
+        "requestDigest": "e9b83adc7a6972daa72dad36b9a2e66048cc0a6cc7debc35d273184d8754beed",
+        "ownerSubject": "synthetic-review-owner",
+        "approvalRef": "synthetic-review-approval",
+        "draftId": "draft_aaaaaaaaaaaaaaaaaaaaaaaa",
+        "draftRevision": 1,
+        "projectId": "SYNTHETIC_IMPORT",
+        "name": "Synthetic private import / 私人匯入 / 비공개 가져오기",
+        "repositoryId": "Synthetic/already-created",
+        "repositoryNumericId": 12345,
+        "ref": "development",
+        "baselineSha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "files": {
+          "HANDOFF.md": {
+            "sha256": "9e445065de6b9ae6fbb376d805e07354e61948b1b545d61a791992ae029cd81e",
+            "blobId": "45b9ae211657b995178f19e971b92289b2fd51f9"
+          },
+          "PRD.md": {
+            "sha256": "344e8ceb27224ef8033223597143a75ae9b08063d6b85ed36c84f0ffb7f2eb7b",
+            "blobId": "499b0ea255d23b196b3ae2de16a078fc70682044"
+          },
+          "README.md": {
+            "sha256": "38a76115ecde943107e00b5ec3de264338d7439afaf7a3b359b04cf53b156d0f",
+            "blobId": "1510d131778c479867b3769b754789e61e40e246"
+          },
+          "docs/PRODUCT_CHARTER.md": {
+            "sha256": "4d3d7241158574afd27e17210c34ec05535b2c274d280a3bbb129859189438d0",
+            "blobId": "667256f63806a64584d477ab5955e0a93e80b33c"
+          },
+          "docs/PHASE_PLAN.md": {
+            "sha256": "c12f6b1a76812e2e1676fcd948b32989cc9931e159ea5f8aefe3b0f7bb04b1d5",
+            "blobId": "c2519c4cb6174406d72cdd7ebb232fe1190a4468"
+          },
+          ".mission-control/bootstrap.json": {
+            "sha256": "93c4bea3d822013b00658a4aef47949ef602503a096a38aa9ace3ced2879f592",
+            "blobId": "419cd8026f6f7388ca9d6359e2252d5b4895da7c"
+          },
+          ".mission-control/source-profile.json": {
+            "sha256": "7aa5f2b49fc5d1649fc3096b150577128af6cbf9ead929027358c8acf0e7b013",
+            "blobId": "c9d1820650cac3a026bf02c64ec253dea58abfe9"
+          }
+        },
+        "sourceProfile": {
+          "projectId": "SYNTHETIC_IMPORT",
+          "track": "BASELINE",
+          "repositoryId": "Synthetic/already-created",
+          "ref": "development",
+          "path": "HANDOFF.md",
+          "contextPaths": [
+            "PRD.md",
+            "README.md",
+            "docs/PRODUCT_CHARTER.md",
+            "docs/PHASE_PLAN.md"
+          ]
+        },
+        "resources": {
+          "backend": null,
+          "deployment": null
+        },
+        "observedAt": 1791806400000,
+        "expiresAt": 1791806430000,
+        "environmentStatus": "PENDING_CONFIGURATION",
+        "deploymentStatus": "PENDING_CONFIGURATION",
+        "sourceReadScope": "PENDING_EXPLICIT_ACTIVATION",
+        "reportWriteScope": "PENDING_EXPLICIT_ACTIVATION",
+        "developmentReady": false,
+        "executionAuthorized": false,
+        "verifiedDelivery": false,
+        "joeyAcceptance": "PENDING"
+      }
+    ]
+  }
+}
