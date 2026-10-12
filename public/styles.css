@@ -858,3 +858,21 @@ body[data-joey-simple=true] .joey-workbench-entry .joey-workspace-secondary{--gl
 .joey-simple-links:empty{display:none}
 @media(max-width:768px){body[data-joey-simple=true]>header{padding:16px 18px}body[data-joey-simple=true]>main{padding:18px 18px 42px}.joey-takeover[data-composition=command-center]{grid-template-columns:minmax(0,1fr);gap:16px}.joey-command-title,.joey-command-intro,.joey-sites-row,.joey-project-picker,.joey-workbench-entry,.joey-command-activity,.joey-supporting-records,.joey-simple-account,.joey-simple-technical{grid-column:1}.joey-takeover .joey-command-title{font-size:30px}.joey-project-picker{grid-template-columns:minmax(0,1fr);padding:16px;gap:12px}.joey-scope-choice:has(select[hidden]){display:none}.joey-workbench-entry{padding:24px;min-height:280px}.joey-workbench-entry h3{font-size:28px}.joey-workbench-entry p{font-size:14px}.joey-command-activity{padding:20px;min-height:0}}
 @media(max-width:768px){#workspace .command-workspace[data-composition=command-center]{display:flex;grid-template-areas:none;grid-template-columns:none;grid-template-rows:none}#workspace .command-owner-access{position:relative;inset:auto;width:100%;border-left:0;align-self:auto}#workspace .command-owner-access>summary{height:auto;min-height:44px}#workspace .command-owner-access[open] .owner-auth-body{width:calc(100vw - 48px);right:4px}}
+
+/* User-driven pane reflow. Report animation remains bound to validated facts. */
+#workspace .command-workspace[data-composition=command-center]{grid-template-rows:auto auto auto minmax(0,1fr) auto;grid-template-areas:"head auth" "focus focus" "views views" "stage stage" "status status"}
+#workspace .command-pane-views{grid-area:views;display:flex;align-items:center;gap:8px;padding:10px 20px;border-bottom:1px solid var(--mc-separator);background:var(--mc-charcoal)}
+#workspace .command-pane-views>span{font-size:11px;letter-spacing:.06em;color:var(--mc-muted);margin-right:auto}
+#workspace .command-pane-views button{font-size:12px;min-height:36px;padding:6px 15px;border:1px solid var(--mc-outline);border-radius:9px}
+#workspace .command-pane-views button[aria-pressed=true]{color:var(--mc-cyan);border-color:var(--mc-cyan);box-shadow:inset 0 -2px var(--mc-cyan)}
+#workspace .command-layout{transition:grid-template-columns 460ms cubic-bezier(.2,.8,.2,1),grid-template-rows 460ms cubic-bezier(.2,.8,.2,1)}
+#workspace .command-workspace[data-pane-focus=reports] .command-layout{grid-template-columns:216px minmax(0,1fr) 280px;grid-template-rows:minmax(0,1.7fr) minmax(0,.3fr)}
+#workspace .command-workspace[data-pane-focus=files] .command-layout{grid-template-columns:216px minmax(0,1fr) 280px;grid-template-rows:minmax(0,.55fr) minmax(0,1.45fr)}
+#workspace .command-workspace[data-pane-focus=evidence] .command-layout{grid-template-columns:216px minmax(0,1fr) 480px;grid-template-rows:minmax(0,1.2fr) minmax(0,.8fr)}
+#workspace .command-workspace[data-pane-focus=evidence] .command-graph{flex-basis:42%}
+#workspace .command-workspace[data-pane-focus=files] .command-layout>.command-explorer,#workspace .command-workspace[data-pane-focus=reports] .command-events,#workspace .command-workspace[data-pane-focus=evidence] .command-context{box-shadow:inset 0 3px var(--mc-cyan)}
+#workspace [data-workbench-motion=report]{border-color:var(--mc-cyan);box-shadow:inset 3px 0 var(--mc-cyan)}
+#workspace [data-workbench-motion=selection]{box-shadow:inset 3px 0 var(--mc-periwinkle)}
+@media(min-width:769px) and (max-width:1150px){#workspace .command-workspace:is([data-pane-focus=reports],[data-pane-focus=files]) .command-layout{grid-template-columns:175px minmax(0,1fr) 250px}#workspace .command-workspace[data-pane-focus=evidence] .command-layout{grid-template-columns:175px minmax(0,1fr) 360px}}
+@media(max-width:768px){#workspace .command-pane-views{display:none}#workspace .command-layout{transition:none}}
+@media(prefers-reduced-motion:reduce){#workspace .command-layout{transition:none!important}}

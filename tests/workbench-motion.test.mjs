@@ -5,17 +5,20 @@ function fixture(){
  const frames=new Map(),effects=[];let id=0;const listeners=new Set(),query={matches:false,addEventListener:(_,f)=>listeners.add(f),removeEventListener:(_,f)=>listeners.delete(f)};
  const m=createWorkbenchPaneMotion({requestFrame:f=>{frames.set(++id,f);return id;},cancelFrame:id=>frames.delete(id)});m.connect(query);
  const pane=(visible=true)=>({dataset:{},isConnected:true,getClientRects:()=>visible?[{}]:[],animate:(frames,options)=>{let reject;const a={frames,options,cancelled:false,finished:new Promise((_,r)=>reject=r),cancel(){this.cancelled=true;reject();}};effects.push(a);return a;}});
- const panes=[pane(),pane(),pane(false)],apply=(binding,extra={})=>m.apply({binding,panes,...extra}),flush=()=>{for(const f of [...frames.values()])f();frames.clear();},reduce=value=>{query.matches=value;for(const f of listeners)f();};
+ const panes=[pane(),pane(),pane(false)],apply=(binding,extra={})=>m.apply({binding,panes,...extra}),flush=()=>{const queued=[...frames.values()];frames.clear();for(const f of queued)f();},reduce=value=>{query.matches=value;for(const f of listeners)f();};
  return{m,panes,apply,flush,reduce,effects,frames,listeners,query};
 }
 test('initial/idle renders do not animate; a changed tuple coordinates visible panes only',()=>{
- const f=fixture();f.apply('A');f.flush();f.apply('A');assert.equal(f.effects.length,0);f.apply('B');f.flush();assert.equal(f.effects.length,2);assert(f.panes.slice(0,2).every(n=>n.dataset.workbenchMotionBinding==='B'));assert.equal(f.panes[2].dataset.workbenchMotion,undefined);assert(f.effects.every(a=>a.options.duration===180));
+ const f=fixture();f.apply('A');f.flush();f.apply('A');assert.equal(f.effects.length,0);f.apply('B');f.flush();assert.equal(f.effects.length,2);assert(f.panes.slice(0,2).every(n=>n.dataset.workbenchMotionBinding==='B'));assert.equal(f.panes[2].dataset.workbenchMotion,undefined);assert(f.effects.every(a=>a.options.duration===420));
 });
 test('rapid changes cancel queued and in-flight old selection effects',()=>{
  const f=fixture();f.apply('A');f.apply('B');f.apply('C');f.flush();assert.equal(f.effects.length,2);assert(f.panes.slice(0,2).every(n=>n.dataset.workbenchMotionBinding==='C'));f.apply('D');assert(f.effects.every(a=>a.cancelled));f.flush();assert(f.panes.slice(0,2).every(n=>n.dataset.workbenchMotionBinding==='D'));
 });
 test('Owner/freshness drift before the frame suppresses pending motion and recovery starts still',()=>{
  const f=fixture();f.apply('A');f.apply('B',{current:()=>false});f.flush();assert.equal(f.effects.length,0);f.apply('C');f.flush();assert.equal(f.effects.length,0);f.apply('D',{eligible:false});assert(f.panes.every(n=>!n.dataset.workbenchMotionBinding));
+});
+test('eligibility expiry during a visible transition cancels every pane before another frame',()=>{
+ const f=fixture();let current=true;f.apply('A');f.apply('B',{current:()=>current});f.flush();assert.equal(f.effects.length,2);current=false;f.flush();assert(f.effects.every(a=>a.cancelled));assert(f.panes.every(n=>!n.dataset.workbenchMotion));assert.equal(f.frames.size,0);current=true;f.apply('B');f.flush();assert.equal(f.effects.length,2);
 });
 test('after a transient read gap only a validated new report can start arrival motion',()=>{
  const f=fixture();f.apply('A');f.m.reset();f.apply('B',{kind:'report'});f.flush();assert.equal(f.effects.length,2);assert(f.panes.slice(0,2).every(n=>n.dataset.workbenchMotion==='report'));f.m.reset();f.apply('C');f.flush();assert.equal(f.effects.length,2);

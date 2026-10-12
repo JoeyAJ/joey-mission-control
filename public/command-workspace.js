@@ -4,6 +4,26 @@ import {renderStageChanges,renderStageChangeGraph} from './stage-changes.js';
 import {renderPrivateContinuityStatus} from './private-continuity-status.js';
 import {mountOwnerBrowserEntry} from './owner-auth-client.js';
 import {ownerAuthConfig} from './owner-auth-config.js';
+// Presentation controls only: no source access, report mutation or execution claims.
+const paneViewWords={
+ 'zh-TW':{label:'工作視角',overview:'總覽',reports:'回報',files:'檔案',evidence:'證據',note:'切換視角會展開對應面板；不代表 Agent 正在執行。'},
+ en:{label:'Workspace view',overview:'Overview',reports:'Reports',files:'Files',evidence:'Evidence',note:'Changing views expands the relevant pane; it does not indicate Agent execution.'},
+ ko:{label:'작업 보기',overview:'전체',reports:'보고',files:'파일',evidence:'근거',note:'보기를 바꾸면 해당 패널이 확장됩니다. Agent 실행 상태를 나타내지 않습니다.'}
+};
+const paneViews=new WeakMap();
+export function mountWorkspacePanePresentation({root,layout,doc=root.ownerDocument,locale='zh-TW',scope}={}){
+ const words=paneViewWords[locale]||paneViewWords['zh-TW'],query=doc.defaultView?.matchMedia('(prefers-reduced-motion: reduce)'),memory=paneViews.get(doc)||new Map();paneViews.set(doc,memory);
+ const bar=doc.createElement('div');bar.className='command-pane-views';bar.setAttribute('role','group');bar.setAttribute('aria-label',words.label);bar.title=words.note;
+ const label=doc.createElement('span');label.textContent=words.label;bar.append(label);
+ let current=memory.get(scope)||'overview',disposed=false;
+ const setView=name=>{if(disposed)return;current=name;memory.set(scope,name);root.dataset.paneFocus=name;for(const button of bar.querySelectorAll('button'))button.setAttribute('aria-pressed',String(button.dataset.paneFocusControl===name));};
+ for(const name of ['overview','reports','files','evidence']){const button=doc.createElement('button');button.type='button';button.className='button-glass';button.dataset.paneFocusControl=name;button.textContent=words[name];button.addEventListener('click',()=>setView(name));bar.append(button);}
+ root.insertBefore(bar,layout);setView(current);
+ // CSS reflows the existing panes; a preference change stops in-flight reflow.
+ const stop=()=>{if(query?.matches)for(const animation of layout.getAnimations())animation.finish();};query?.addEventListener('change',stop);
+ return{dispose(){disposed=true;query?.removeEventListener('change',stop);}};
+}
+
 // A navigation entry only. No invented MC progress or new database project scope.
 export function withRemoteHandoffWorkspace(manifests,{origin=globalThis.location?.origin}={}){
  if(origin!==ownerAuthConfig.stageOrigin||manifests.some(m=>m.project_id==='MISSION_CONTROL'))return manifests;
@@ -107,6 +127,7 @@ export function renderCommandWorkspace(manifests,{doc=document,locale='zh-TW',re
  const graph=stageChangeView&&((context.item||'').startsWith('stage-')||right.dataset.inspectorTab==='changes')?renderStageChangeGraph(stageChangeView,{doc,locale,item:context.item,onNavigate:item=>onNavigate({...context,item,panel:'context',inspectorTab:'changes'})}):renderEvidenceGraph(events,selected,{...m,product:{...m.product,name:safe(m.product?.name)}},{el,button,w,locale,onNavigate});right.append(graph);if(extras.changes){extras.changes.open=true;right.append(extras.changes);}else right.append(el('p',w.withheld,'command-changes command-changes-unavailable'));layout.append(right);root.append(layout);
  const sourceHistory=el('details',null,'command-project-source-history');sourceHistory.dataset.disclosure='project-source-history';sourceHistory.dataset.disclosureScope=JSON.stringify([m.project_id,context.track||'BASELINE','source']);sourceHistory.append(el('summary',locale==='ko'?'프로젝트 출처 / 기록':locale==='en'?'Project source / history':'專案來源／歷史'));for(const node of [work,label,eventList,extras.task,extras.observer,feed.querySelector('.command-public-empty'),ownerEntry.projectTakeoverSource,ownerEntry.remoteHandoffSource,ownerEntry.repositoryRunsSource])if(node?.parentElement===feed)sourceHistory.append(node);feed.append(sourceHistory);
  const status=el('footer',null,'command-source-bar');status.append(el('span',w.live,'command-source-runtime'),el('span',safe(m.product?.name)||m.project_id),el('span',w.recorded+' · '+events.length),el('span',w.readTime+' · '+(lastReadAt||w.unknown),'command-source-readtime'));root.append(status);
- const dynamic=ownerEntry.mountWorkbench?.({projectId:m.project_id,projectName:safe(m.product?.name)||m.project_id,track:context.track||'BASELINE',locale,initialRunSelection,targets:{focus,cards:root.querySelector('.command-projects'),events:feed,explorer:layout.querySelector('.command-explorer'),explorerMobile:right.querySelector('.command-explorer-mobile'),detail:inspect,graph},onSelect:()=>{if(panel!=='context'||right.dataset.inspectorTab!=='context')onNavigate({...context,panel:'context',inspectorTab:'context'});},onExplore:()=>onNavigate({...context,panel:'context',inspectorTab:'explorer'}),onProject:next=>onNavigate({...next,module:'console',panel:'events'})});root.disposeWorkbench=()=>dynamic?.dispose();
+ const presentation=mountWorkspacePanePresentation({root,layout,doc,locale,scope:JSON.stringify([m.project_id,context.track||'BASELINE'])});
+ const dynamic=ownerEntry.mountWorkbench?.({projectId:m.project_id,projectName:safe(m.product?.name)||m.project_id,track:context.track||'BASELINE',locale,initialRunSelection,targets:{focus,cards:root.querySelector('.command-projects'),events:feed,explorer:layout.querySelector('.command-explorer'),explorerMobile:right.querySelector('.command-explorer-mobile'),detail:inspect,graph},onSelect:()=>{if(panel!=='context'||right.dataset.inspectorTab!=='context')onNavigate({...context,panel:'context',inspectorTab:'context'});},onExplore:()=>onNavigate({...context,panel:'context',inspectorTab:'explorer'}),onProject:next=>onNavigate({...next,module:'console',panel:'events'})});root.disposeWorkbench=()=>{presentation.dispose();dynamic?.dispose();};
  root.dataset.readingKey=JSON.stringify([context.item||selected?.id||'',right.dataset.inspectorTab,selected?.sourceRevision??selected?.ownerRevision??m.sourceReadout?.readoutVersion??m.canonicalState?.metadata?.revision??null,selected?.eventTime||null]);return root;
 }
