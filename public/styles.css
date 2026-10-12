@@ -742,3 +742,26 @@ body[data-joey-simple=true] .joey-simple-primary{background:#fff;color:#0b0b0b;b
 #workspace .run-card-agent{display:block;margin:0 0 4px;color:var(--mc-muted);line-height:1.45;font-size:11px}
 #workspace .run-workbench-card[aria-pressed=true] .run-card-agent{color:var(--mc-cyan)}
 @media(max-width:768px){#workspace .run-workbench-focus-brief .selected-task-title-disclosure>summary{padding:10px 12px;gap:6px}#workspace .run-focus-heading{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:7px 10px}#workspace .run-focus-field:nth-child(3){grid-column:1/-1}#workspace .run-focus-more{display:none}#workspace .run-focus-heading :is(.run-focus-project,.selected-task-agent){font-size:12px}#workspace .run-focus-heading .selected-task-title{font-size:14px}#workspace .run-workbench-focus-brief>.selected-task-delivery{padding:6px 12px;gap:3px 8px}#workspace .run-focus-details{padding:10px 12px;max-height:min(190px,28dvh)}#workspace .run-focus-details summary{min-height:44px;display:flex;align-items:center}#workspace .run-workbench-focus-brief>.selected-task-blocker{padding:4px 12px 7px}}
+
+/* Reported session rail and a source-backed activity stage. */
+#workspace .run-project-group{margin:12px 0 16px;padding:0 0 12px;border-bottom:1px solid var(--mc-separator)}
+#workspace .run-project-group>h5{font-size:10px;color:var(--mc-muted);font-weight:400;line-height:1.5;margin:0 0 12px}
+#workspace .run-agent-group{border-left:1px solid var(--mc-outline);padding-left:10px;margin:12px 0}
+#workspace .run-agent-group>h6{font-size:13px;color:var(--mc-cyan);margin:0 0 6px;overflow-wrap:anywhere}
+#workspace .run-agent-group .run-workbench-card{margin:6px 0;border-radius:14px}
+#workspace .run-joey-review{border-color:var(--mc-magenta);color:var(--mc-magenta);min-height:44px;width:auto;margin:0;padding:6px 12px}
+#workspace .command-project{min-height:44px;border-radius:8px;margin:4px 0;padding:8px 10px}
+#workspace .command-project :is(small,.command-project-session){display:none}
+#workspace .run-workbench-history{border:1px solid var(--mc-outline);border-radius:14px;padding:0;margin:12px 0 18px}
+#workspace .run-workbench-history>summary{padding:16px;min-height:44px;cursor:pointer}
+#workspace .run-workbench-history>summary :is(strong,time,small){display:block;margin-top:7px}
+#workspace .run-latest-label{color:var(--mc-cyan);font-size:11px}
+#workspace .run-latest-preview{color:var(--mc-text);font-size:15px;line-height:1.6;margin:12px 0;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+#workspace .run-workbench-history[open]>.run-workbench-item{width:calc(100% - 20px);margin:8px 10px}
+#workspace .command-project-source-history{border-top:1px solid var(--mc-separator);margin-top:14px;padding:8px 0}
+#workspace .command-project-source-history>summary{min-height:44px;display:flex;align-items:center;color:var(--mc-muted);cursor:pointer;font-size:12px}
+.joey-workbench-entry{border:1px solid var(--mc-outline);border-left:3px solid var(--mc-cyan);border-radius:16px;padding:16px;margin:12px 0;background:var(--mc-selected)}
+.joey-workbench-entry h3{color:var(--mc-cyan);font-size:20px;margin:0 0 8px}
+.joey-workbench-entry p{font-size:14px;line-height:1.6;margin:6px 0;color:var(--mc-text)}
+.joey-workbench-entry small{display:block;color:var(--mc-muted);font-size:12px;margin:8px 0}
+.joey-workbench-entry .joey-workspace-secondary{width:100%;min-height:44px;margin-top:10px;color:var(--mc-cyan);border-color:var(--mc-cyan)}
