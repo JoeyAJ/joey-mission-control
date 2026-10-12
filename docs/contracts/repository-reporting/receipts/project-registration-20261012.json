@@ -126,6 +126,12 @@
     },
     "replay": false,
     "liveRegistered": false,
+    "currentVerification": {
+      "qualification": "INDEPENDENT_PRIVATE_REPOSITORY_READ",
+      "baselineSha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "observedAt": 1791806400000,
+      "expiresAt": 1791806430000
+    },
     "expiresAt": 1791806430000,
     "developmentReady": false,
     "executionAuthorized": false,

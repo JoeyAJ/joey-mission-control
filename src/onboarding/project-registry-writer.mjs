@@ -10,7 +10,9 @@ export function renderProjectRegistryRegistration(text, receipt, {now = Date.now
   assertIssuedRegistrationReceipt(receipt, now);
   const existing = registryIdentities(text);
   if (existing.ids.includes(receipt.projectId) || existing.repositories.includes(receipt.repositoryId.toLowerCase())) throw registrationError('REGISTRATION_TARGET_CONFLICT', 409);
-  const number = Math.max(0, ...[...text.matchAll(/^###\s+(\d+)\. /gm)].map(m => Number(m[1]))) + 1;
+  const numbers = [...text.matchAll(/^###\s+(\d+)\. /gm)].map(m => Number(m[1]));
+  if (numbers.some(n => !Number.isSafeInteger(n) || n < 1 || n > 100000)) throw registrationError('REGISTRATION_REGISTRY_INVALID', 503);
+  const number = Math.max(0, ...numbers) + 1;
   // Existing reader consumes single-line scalar fields. Newlines and markup in
   // the human name never enter its numbered heading or YAML structure.
   const name = receipt.name.replace(/[\r\n`#<>]/g, ' ').trim();
@@ -46,7 +48,8 @@ function renderIndex(text, receipt) {
   const row = '| ' + name + ' (`' + receipt.projectId + '`) | [M](' + directory + '/PROJECT_MEMORY.md) | [S](' + directory + '/CURRENT_STATE.md) | `null` |\n';
   const marker = /^## Production Development Registry\s*$/m, match = marker.exec(text);
   if (!match) return text.replace(/\s*$/, '\n') + '\n## Production Development Registry\n\n| Project | Memory | Current State | Canonical Local Master |\n|---|---|---|---|\n' + row;
-  const start = match.index + match[0].length, remainder = text.slice(start);
+  const start = match.index + match[0].length, allRemainder = text.slice(start), boundary = /^## /m.exec(allRemainder);
+  const remainder = boundary ? allRemainder.slice(0, boundary.index) : allRemainder;
   const table = /^\| Project \| Memory \| Current State \| Canonical Local Master \|\r?\n\|[- |:]+\|\r?\n(?:\|[^\r\n]+\|\r?\n)*/m.exec(remainder);
   if (!table) throw registrationError('REGISTRATION_INDEX_FORMAT_UNSUPPORTED', 503);
   const end = start + table.index + table[0].length;

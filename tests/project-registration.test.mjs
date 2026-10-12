@@ -141,6 +141,10 @@ test('concurrent registry revision changes lose CAS; same request replay does no
   const f=fixture(), server=f.server(); assert.equal((await server.handle(f.req())).status,200); const text=f.writer.inspect().registryText; const replay=await server.handle(f.req()); assert.equal(replay.status,200); assert.equal(replay.body.replay,true); assert.equal(f.writer.inspect().registryText,text); assert.equal(f.writer.inspect().receipts.length,1);
   f.request.requestId='new-request'; const r=await f.server().handle(f.req()); assert.equal(r.body.error,'REGISTRATION_REGISTRY_REVISION_CONFLICT'); assert.equal(f.writer.inspect().receipts.length,1);
 });
+test('an expired original commit receipt stays historical while replay separately verifies current source', async () => {
+  const f=fixture(), server=f.server(), first=await server.handle(f.req()); f.state.clock=NOW+30001;
+  const replay=await server.handle(f.req()); assert.equal(replay.status,200); assert.deepEqual(replay.body.receipt,first.body.receipt); assert(replay.body.receipt.expiresAt<f.state.clock); assert.equal(replay.body.currentVerification.observedAt,f.state.clock); assert(replay.body.currentVerification.expiresAt>f.state.clock); assert.equal(f.writer.inspect().receipts.length,1);
+});
 test('concurrent imports share atomic registry CAS and commit only one candidate', async () => {
   const f=fixture(), g=fixture({project:{projectId:'SYNTHETIC_OTHER',repositoryId:'Synthetic/other'}}); g.request.requestId='synthetic-import-2';
   const replies=await Promise.all([f.server().handle(f.req()),g.server({writer:f.writer}).handle(g.req())]);
@@ -177,7 +181,8 @@ test('hostile JSON objects are rejected without running serialization or accesso
 });
 test('request size, content type, malformed JSON, provider details and aborts stay bounded', async () => {
   const f=fixture(); for(const [req,status] of [[{...f.req(),body:'{'},400],[{...f.req(),body:'x'.repeat(16385)},413],[{...f.req(),headers:{...f.req().headers,'content-type':'text/plain'}},415]]) assert.equal((await f.server().handle(req)).status,status);
-  const r=await f.server({repositoryReader:{configured:true,async inspectIdentity(){throw Error('sensitive provider token / private URL');}}}).handle(f.req()); assert.deepEqual(r.body,{error:'REGISTRATION_PRIVATE_READ_UNAVAILABLE'});
+  for (const failure of [Error('sensitive provider token / private URL'),Object.assign(Error('hidden diagnostic'),{code:'REGISTRATION_PRIVATE_SECRET_VALUE',status:503})]) {const r=await f.server({repositoryReader:{configured:true,async inspectIdentity(){throw failure;}}}).handle(f.req()); assert.deepEqual(r.body,{error:'REGISTRATION_PRIVATE_READ_UNAVAILABLE'});}
+  assert.equal((await f.server().handle(f.req({...f.request,ref:'a/../b'}))).status,400);
   const abort=new AbortController();abort.abort();assert.equal((await f.server().handle(f.req(),{signal:abort.signal})).status,503);assert.equal(f.writer.inspect().receipts.length,0);
 });
 test('scoped GitHub reader only issues supported reads to the exact repo/ref/files and never follows provider URLs', async () => {

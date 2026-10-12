@@ -59,7 +59,8 @@ export function registrationRequest(input) {
   requireValue(v.schemaVersion === REGISTRATION_VERSION && v.mode === 'IMPORT_EXISTING_PRIVATE_REPOSITORY' && id(v.requestId) && /^draft_[a-f0-9]{16,32}$/.test(v.draftId) && Number.isSafeInteger(v.draftRevision) && v.draftRevision > 0 && v.draftRevision <= 100000);
   requireValue(/^[A-Z][A-Z0-9_]{2,63}$/.test(v.projectId) && Number.isSafeInteger(v.repositoryNumericId) && v.repositoryNumericId > 0 && sha(v.baselineSha) && hash(v.expectedRegistryDigest) && hash(v.expectedIndexDigest));
   // Reuse the existing draft's repository/ref rules; a derived repository is not accepted here.
-  validateProjectDraft({schemaVersion:'mc.project-draft.v1', draftId:v.draftId, revision:v.draftRevision, createdAt:'2026-01-01T00:00:00.000Z', updatedAt:'2026-01-01T00:00:00.000Z', project:{projectId:v.projectId, name:'Registration validation', idea:'Registration validation', acceptance:'', repositoryId:v.repositoryId, branch:v.ref, environment:'CODE_ONLY', deployment:'NOT_REQUIRED', previewUrl:''}});
+  try { validateProjectDraft({schemaVersion:'mc.project-draft.v1', draftId:v.draftId, revision:v.draftRevision, createdAt:'2026-01-01T00:00:00.000Z', updatedAt:'2026-01-01T00:00:00.000Z', project:{projectId:v.projectId, name:'Registration validation', idea:'Registration validation', acceptance:'', repositoryId:v.repositoryId, branch:v.ref, environment:'CODE_ONLY', deployment:'NOT_REQUIRED', previewUrl:''}}); }
+  catch { throw registrationError('REGISTRATION_REQUEST_INVALID'); }
   requireValue(v.repositoryId !== '' && !['MC', 'MISSION_CONTROL', 'NEXAEON', 'WOOSONG_BUDDY', 'NAMYOUNG_WEB3D', 'JOEY_ASSET_SYSTEM'].includes(v.projectId));
   requireValue(v.ref !== 'mc' && v.ref !== 'mc/progress' && !v.ref.startsWith('mc/progress/'), 'REGISTRATION_REPORT_REF_CONFLICT', 409);
   requireValue(exact(v.files, REGISTRATION_FILES) && REGISTRATION_FILES.every(p => hash(v.files[p])));
