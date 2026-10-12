@@ -1,3 +1,4 @@
+import {assertProjectScope} from '../projects/project-scope-authority.mjs';
 // Server-only fixed repository/ref/path scope. Credentials remain in normal runtime.
 const base={legacyPath:null,entryQualification:'DOCUMENTED_BASELINE_ENTRY',executionAuthorized:false};
 const records={
@@ -7,7 +8,8 @@ const records={
  JOEY_ASSET_SYSTEM:{...base,projectId:'JOEY_ASSET_SYSTEM',repositoryId:'JoeyAJ/joey-asset-system',ref:'main',path:'README.md',expectedBaseline:'eb03e2a9d86abf8b53acfe207fb6737d255ba0d4',contextPaths:['SYSTEM_CHARTER.md','cases/CASE_001_NAMYOUNG/README.md','provenance/CASE_001_NAMYOUNG_RECOVERY.md']}
 };
 const university={...base,projectId:'JOEY_ASSET_SYSTEM',repositoryId:'JoeyAJ/joey-asset-system',ref:'migration/university-v04-portable',path:'DEVELOPMENT.md',expectedBaseline:'77b6766e790c7794bb1fc691f3f3dd3f4a4fe5c6',entryQualification:'SEPARATE_CANDIDATE_JOEY_ACCEPTANCE_PENDING',contextPaths:['modules/education/university-lifecycle/docs/HANDOFF.md','docs/UNIVERSITY_PORTABLE_MIGRATION.md','docs/CASE_002_UNIVERSITY_HANDOFF.md']};
-export function projectEntryReadConfiguration(projectId,{track='BASELINE'}={}){
+export function projectEntryReadConfiguration(projectId,{track='BASELINE',scopeAuthority=null}={}){
+ if(scopeAuthority)return assertProjectScope(scopeAuthority,projectId,track,'source');
  if(!Object.hasOwn(records,projectId)||!['BASELINE','UNIVERSITY_CANDIDATE'].includes(track)||track==='UNIVERSITY_CANDIDATE'&&projectId!=='JOEY_ASSET_SYSTEM')throw Error('PROJECT_ENTRY_SCOPE_DENIED');
  return {...structuredClone(track==='UNIVERSITY_CANDIDATE'?university:records[projectId]),track};
 }

@@ -45,7 +45,7 @@ await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));origin='http://
 const policy={origin,publishableKey:'sb_publishable_SYNTHETIC',stageOrigin:origin,ownerSubject:OWNER,authSetupVerified:true,sessionBridgeVerified:true,privateReadSetupVerified:false,coordinatorReadSetupVerified:false,ownerDecisionSetupVerified:false};
 service=createDeploymentRemoteHandoffServer({environment:{MC_GITHUB_READ_TOKEN:KEY},fetchImpl:upstream,policy});reportService=createDeploymentRepositoryRunServer({environment:{MC_GITHUB_READ_TOKEN:KEY},fetchImpl:upstream,policy});
 bundle=await build({entryPoints:['public/app.js'],bundle:true,format:'esm',write:false,metafile:true,plugins:[{name:'synthetic-four-source',setup(b){
- b.onLoad({filter:/public\/owner-auth-client\.js$/},()=>({contents:"export {mountOwnerBrowserEntry,joeyRunSummary,renderSelectedTaskSummary,projectHandoffWords} from '../src/continuity/owner-browser-entry.mjs';",resolveDir:process.cwd()+'/public'}));
+ b.onLoad({filter:/public\/owner-auth-client\.js$/},()=>({contents:"export {mountOwnerBrowserEntry,createOwnerProjectConnectionClient,joeyRunSummary,renderSelectedTaskSummary,projectHandoffWords} from '../src/continuity/owner-browser-entry.mjs';",resolveDir:process.cwd()+'/public'}));
  b.onLoad({filter:/owner-auth-config\.js$/},()=>({contents:'export const ownerAuthConfig='+JSON.stringify(policy)+';export const ownerAuthSetupStatus=()=>({status:"unconfigured",ownerIdentityEntryAvailable:true});'}));
  b.onLoad({filter:/task-workflow-config\.js$/},()=>({contents:'export const taskWorkflowConfig={enabled:false,projectSourceSyncEnabled:true};'}));
  b.onLoad({filter:/vm-link-config\.js$/},()=>({contents:'export const vmLinkConfig={enabled:false};'}));

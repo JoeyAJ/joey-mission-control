@@ -1,33 +1,26 @@
-# Current private registration integration — 2026-10-12
+# Authorized new-project client slice — private review checkpoint
 
 Project: MISSION_CONTROL
-Timestamp: 2026-10-12T14:52:28.000Z
-Task: Reviewed private registration code and guarded empty catalog setup
-Status: LOCAL_VERIFIED_PARENT_READ_PREVIEW_PUBLISHED
+Timestamp: 2026-10-12T22:48:00.000Z
+Task: Connect explicit project authorization to picker, task RPC and Agent handoff
+Status: LOCAL_SYNTHETIC_VERIFIED_PRIVATE_REVIEW_PENDING
 Last Developer: Codex
 Executed by: Codex
 Actual Model: UNKNOWN
-Baseline: 6861fa68c87b89e84e0d75482304e56fe4aa8097
-Reviewed repair: 623995ce551d39b7b3288c17c6a7c24621a5e3fa
+Baseline: e1a5c88bac4c28b73034d5f1aa6e82ed4af57540
 
 ## Summary
 
-Joey approved registration infrastructure2026-10-12T14:05Z; parent independent repairGO received before setup. Integrated exact repaired code, initialized private data-only mc/registry8ecae766a50bc9793f1dcb6bb64349e815e81676 with initial deployment guard, zero registrations; no Vercel project/other branch setting change. Remote/tree/catalog validationPASS, branch-filtered deployment counts0. No sample project/task execution.
+The actual picker and existing task/source/report UI consume a separately Owner-authorized registered project. Synthetic end-to-end selection, RPC save, first bound report and project-specific handoff pass. Registration alone remains unavailable; revocation purges selection. No real Agent, task, repository creation or deployment ran.
 
 ## Verification
 
-Portable1079/build/validate/checkPASS before the registration header edit; focused63 rerunPASS; actual-app synthetic Owner/source browser20 cases at375/390/430/1440PASS, four intended local Git commits and draft saves, external requests/writes0/task writes0. Screenshots remain local. Runtime writer binding is unavailable; enabled:false with approved-but-unavailable qualification and localized unavailable message. Read token not decrypted/repurposed. Secure binding requires direct user/admin entry in Vercel's project Secret form, canonical Preview branch only; new credentials need separate authorization. No agent secret transfer/form exists.
-
-## Changes
-
-A subsequent full regression found the registration header lacked its required Timestamp and the document exceeded the existing64KiB reader limit. This local correction restores the structured current checkpoint and preserves the entire prior document byte-for-byte in the linked historical archive. No reader budget, runtime authority, report history or SQL changed. Publication of this correction requires parent coordination.
-
-No live registration, actual Owner/providerHTTP or served Preview proof. Baseline ordinary GETCONNECT403 remains unbypassed; current code publication receipt follows separately. Supabase Owner/AAL2/current session, installed finalization journal, eleven original current reports/archive history, saved-only task and Production preserved. Automatic dispatch/merge/deployOFF. OverallMC acceptance pending. Details: docs/MC_PRIVATE_REGISTRATION_INTEGRATION_20261012.md.
+123 related unit tests and the synthetic new-project browser flow plus four maintained existing UI cases pass; build passes. Disposable PostgreSQL validates proposed scope SQL and exact rollback with a synthetic session helper. Live SQL/grants/credentials and actual Owner/Agent acceptance are unchanged and unverified. See [client slice evidence and remaining activation work](docs/MC_DYNAMIC_PROJECT_CLIENT_SLICE_20261012.md). Existing eleven reports/history and Production remain unchanged.
 
 ## Next Action
 
-Parent coordinates the reviewed header correction and next implementation release. Current canonical9bad17b Preview dpl_4Lhmzc2afENsRrQPUce8Dz3XgKwr is providerREADY with the fixed alias independently verified; actualserved/OwnerHTTP remain unverified. Credential setup is deferred to2026-10-13 09:30 Asia/Seoul. Keep registrationOFF; no live task execution or automatic merge/deploy.
+Review this source-only private candidate. Complete authoritative runtime grant/routing and review/reconciliation consumer wiring, independently review the exact SQL against the installed baseline, and activate one specifically authorized private project only after required connection/approval. Registry writer binding remains pending. Autonomous dispatch/provision/merge/deploy remain OFF.
 
-# Dated prior checkpoint history
+## Previous handoff
 
-The complete prior registration and Owner closure checkpoints, including every dated historical record, remain byte-exact in [the9bad17b HANDOFF archive](docs/history/HANDOFF_20261012_9bad17b.md). History is retained separately so the bounded current reader can consume this checkpoint without borrowing historical fields.
+Canonical e1a5c88 root bytes are preserved in [previous handoff](docs/history/HANDOFF_20261012_e1a5c88.md); older linked history remains intact. This guarded private review branch must not deploy.

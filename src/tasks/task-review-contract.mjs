@@ -1,3 +1,4 @@
+import {assertProjectScope} from '../projects/project-scope-authority.mjs';
 // Private Owner acceptance records. No execution or provider verification authority.
 import {validateTaskScope,canonicalTaskJson} from './development-task.mjs';
 import {validateTaskRequirements} from './task-requirements.mjs';
@@ -17,9 +18,9 @@ const id=x=>typeof x==='string'&&/^[A-Za-z0-9][A-Za-z0-9_.-]{0,95}$/.test(x);
 const ref=x=>typeof x==='string'&&x.length<=255&&/^[-A-Za-z0-9_./]+$/.test(x)&&!x.includes('..')&&!x.startsWith('/')&&!x.startsWith('-')&&!x.endsWith('/')&&!x.includes('//');
 const taskId=x=>typeof x==='string'&&/^task_[a-f0-9]{24}$/.test(x);
 export const validReviewOperationId=x=>typeof x==='string'&&/^[a-f0-9]{8}-(?:[a-f0-9]{4}-){3}[a-f0-9]{12}$/.test(x)&&x!=='00000000-0000-0000-0000-000000000000';
-export function validateTaskReview(v){
+export function validateTaskReview(v,{scopeAuthority=null}={}){
  exactReviewKeys(v,['schemaVersion','projectId','track','taskId','taskRequirements','repositoryId','canonicalRef','canonicalHeadSha','reportRef','reportPath','reportHeadSha','reportBlobId','reportSequence','runId','workRef','codeSha','decision','comment']);
- validateTaskScope(v.projectId,v.track);validateTaskRequirements(v.taskRequirements);
+ validateTaskScope(v.projectId,v.track,scopeAuthority);if(scopeAuthority){const c=assertProjectScope(scopeAuthority,v.projectId,v.track,'review');if(v.repositoryId!==c.repositoryId||v.canonicalRef!==c.ref)throw failTaskReview();}validateTaskRequirements(v.taskRequirements);
  if(v.schemaVersion!==TASK_REVIEW_VERSION||!taskId(v.taskId)||typeof v.repositoryId!=='string'||v.repositoryId.length>200||!/^[-A-Za-z0-9_.]+\/[-A-Za-z0-9_.]+$/.test(v.repositoryId)||!ref(v.canonicalRef)||!ref(v.workRef)||['canonicalHeadSha','reportHeadSha','reportBlobId','codeSha'].some(k=>!sha(v[k]))||v.reportRef!=='mc/progress'||!id(v.runId)||![`.mission-control/runs/${v.runId}.json`,`.mission-control/runs-page-2/${v.runId}.json`].includes(v.reportPath)||!Number.isSafeInteger(v.reportSequence)||v.reportSequence<2||v.reportSequence>MAX_EVENTS||!['APPROVE','REQUEST_CHANGES'].includes(v.decision)||typeof v.comment!=='string'||v.comment.length>TASK_REVIEW_LIMITS.commentCharacters||bytes(v.comment)>TASK_REVIEW_LIMITS.commentBytes||[...v.comment].some(c=>c.codePointAt(0)>=0xd800&&c.codePointAt(0)<=0xdfff)||hasSensitiveReconciliationLabel(v.comment.replace(/[\n\r\t]/g,' '))||/(?:\b[a-z]{2,12}:\/\/|\b(?:javascript|data|file):)/i.test(v.comment)||bytes(canonicalTaskJson(v))>TASK_REVIEW_LIMITS.reviewBytes)throw failTaskReview();
  return structuredClone(v);
 }

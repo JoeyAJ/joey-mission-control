@@ -1,3 +1,5 @@
+import {createProjectConnectionClient} from '../projects/project-connection-client.mjs';
+import {mountAuthorizedProjectEntry} from '../projects/authorized-project-browser-entry.mjs';
 import {createTaskClosure} from '../tasks/task-closure-controller.mjs';
 import {createOwnerJournalSdkPort} from '../tasks/task-closure-journal.mjs';
 import {withOwnerSessionCustody} from './owner-session-custody.mjs';
@@ -62,7 +64,8 @@ const mfaCopy={
 };
 let activePort=null,activeClient=null;
 const mounted=new WeakMap(),projects=new Set(['NEXAEON','WOOSONG_BUDDY','NAMYOUNG_WEB3D','JOEY_ASSET_SYSTEM','MISSION_CONTROL']);
-export function mountOwnerBrowserEntry({doc=document,locale='zh-TW',projectId,track='BASELINE'}={}){
+export function mountOwnerBrowserEntry({doc=document,locale='zh-TW',projectId,track='BASELINE',projectConnection=null}={}){
+ if(!projects.has(projectId)&&projectConnection&&activeClient&&activePort)return mountAuthorizedProjectEntry({doc,locale,connection:projectConnection,ownerSubject:ownerAuthConfig.ownerSubject,inspectIdentity:p=>activePort.inspectSession(p),getAccessToken:async()=>{const r=await activeClient.auth.getSession();if(r.error)throw Error('OWNER_SESSION_UNAVAILABLE');return r.data?.session?.access_token;}});
  const gate=projects.has(projectId)&&ownerAuthConfig.authSetupVerified===true&&ownerAuthConfig.sessionBridgeVerified===true&&!!ownerAuthConfig.ownerSubject&&globalThis.location?.origin===ownerAuthConfig.stageOrigin;
  const prior=mounted.get(doc);
  if(gate&&prior?.isConnected){const focused=prior.contains(doc.activeElement)?doc.activeElement:null;prior.update({locale,projectId,track});if(focused)queueMicrotask(()=>{if(focused.isConnected&&!focused.hidden)focused.focus({preventScroll:true});});return prior;}
@@ -164,3 +167,6 @@ export function mountOwnerBrowserEntry({doc=document,locale='zh-TW',projectId,tr
 export {joeyRunSummary} from '../reporting/joey-run-summary.mjs';
 
 export {renderSelectedTaskSummary,projectHandoffWords} from '../reporting/selected-task-summary.mjs';
+
+// Shared picker transport uses the existing authenticated session, never a new key.
+export function createOwnerProjectConnectionClient(){return createProjectConnectionClient({getAccessToken:async()=>{if(!activeClient||!activePort)throw Error('OWNER_REQUIRED');const actor=await activePort.inspectSession('NEXAEON');if(actor?.status!=='authenticated'||actor.role!=='OWNER'||actor.aal!=='aal2'||actor.verified!==true||actor.memberActive!==true||actor.sessionActive!==true||actor.subject!==ownerAuthConfig.ownerSubject||actor.expiresAt<=Date.now())throw Error('OWNER_REQUIRED');const r=await activeClient.auth.getSession();if(r.error)throw Error('OWNER_SESSION_UNAVAILABLE');return r.data?.session?.access_token;}});}

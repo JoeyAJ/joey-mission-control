@@ -1,6 +1,6 @@
 import {canonicalTaskJson,validateDevelopmentTask,sameTask,reviseDevelopmentTask,MAX_TASKS} from './development-task.mjs';
 const equalRequest=(a,b)=>a?.projectId===b?.projectId&&a?.track===b?.track&&canonicalTaskJson(a?.request)===canonicalTaskJson(b?.request);
-export function createTaskCloudReconciliation({now=Date.now}={}){
+export function createTaskCloudReconciliation({now=Date.now,scopeAuthority=null}={}){
  let remote=new Map(),pending=new Map(),status='NOT_CONNECTED';const conflicts=new Map(),cloudBacked=new Set();
  const recordConflict=(id,revision=remote.get(id)?.revision||null)=>{conflicts.set(id,{taskId:id,remoteRevision:revision});status='CONFLICT';};
  const conflictError=id=>{recordConflict(id);throw Object.assign(Error('TASK_REVISION_CONFLICT'),{status:409});};
@@ -12,7 +12,7 @@ export function createTaskCloudReconciliation({now=Date.now}={}){
   async refresh({client,signal,check,tasks,replace=null,scope=null}){
    let reply;try{reply=await client.list({signal});check();}catch(e){status='UNAVAILABLE';throw e;}
    if(reply.persistence!=='OWNER_RPC_AVAILABLE'){status='NOT_CONNECTED';remote.clear();pending.clear();return {tasks,persistence:reply.persistence};}
-   const latest=new Map(reply.tasks.filter(t=>!scope||t.projectId===scope.projectId&&t.track===scope.track).map(t=>[t.taskId,validateDevelopmentTask(t)])),merged=[...tasks];
+   const latest=new Map(reply.tasks.filter(t=>!scope||t.projectId===scope.projectId&&t.track===scope.track).map(t=>[t.taskId,validateDevelopmentTask(t,{scopeAuthority})])),merged=[...tasks];
    if(replace&&!latest.has(replace))throw Error('TASK_CLOUD_RECORD_MISSING');
    for(const [id,t]of latest){const index=merged.findIndex(v=>v.taskId===id),old=remote.get(id);cloudBacked.add(id);
     if(index<0){if(merged.length>=MAX_TASKS)throw Error('TASK_CAPACITY');merged.push(t);}
@@ -29,7 +29,7 @@ export function createTaskCloudReconciliation({now=Date.now}={}){
    if(conflicts.has(task.taskId))conflictError(task.taskId);const baseline=remote.get(task.taskId);
    if(latest&&sameTask(latest,task)){remote.set(task.taskId,latest);cloudBacked.add(task.taskId);settled('SAVED');return structuredClone(latest);}
    if(latest&&(!baseline||!sameTask(latest,baseline))||!latest&&baseline)conflictError(task.taskId);
-   const candidate=latest?reviseDevelopmentTask(latest,task.request,{now:Math.max(now(),Date.parse(task.updatedAt))}):{...task,revision:1},request={task:candidate,expectedRevision:latest?.revision||0};pending.set(task.taskId,{request,local:task});
+   const candidate=latest?reviseDevelopmentTask(latest,task.request,{now:Math.max(now(),Date.parse(task.updatedAt)),scopeAuthority}):{...task,revision:1},request={task:candidate,expectedRevision:latest?.revision||0};pending.set(task.taskId,{request,local:task});
    try{const ack=await client.save(request,{signal});check();remote.set(task.taskId,ack.task);cloudBacked.add(task.taskId);pending.delete(task.taskId);conflicts.delete(task.taskId);settled('SAVED');return ack.task;}
    catch(e){check();if(e.status===409)conflictError(task.taskId);status='UNCONFIRMED_WRITE';throw e;}
   }

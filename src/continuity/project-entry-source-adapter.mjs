@@ -21,8 +21,8 @@ function metadata(document,projectId,now){
  if(timestamp&&(!isStrictDateTime(timestamp)||Date.parse(timestamp)>now()+300000))conflicts.push('ENTRY_TIMESTAMP_CONFLICT');
  return {timestamp:timestamp&&isStrictDateTime(timestamp)?timestamp:null,conflicts,progress:{qualification:'DOCUMENT_REPORTED',metadataStatus:field('Last Developer')||field('Executed by')||field('Agent')?'EXPLICIT_PRIMARY_ENTRY_HEADER':'SIGNATURE_NOT_RECORDED',task:field('Task'),recordedStatus:field('Status'),summary:null,changes:null,verification:null,nextAction:null,decisionRequired:null,lastAgent:field('Last Developer')||field('Executed by')||field('Agent'),lastModel:field('Actual Model')||field('Model')}};
 }
-export async function readProjectEntrySource({projectId,track='BASELINE',reader,signal,now=Date.now,maxBytes=65536}={}){
- const c=projectEntryReadConfiguration(projectId,{track});
+export async function readProjectEntrySource({projectId,track='BASELINE',reader,signal,now=Date.now,maxBytes=65536,scopeAuthority=null}={}){
+ const c=projectEntryReadConfiguration(projectId,{track,scopeAuthority});
  if(typeof reader?.resolveRevision!=='function'||typeof reader?.readFile!=='function'||!Number.isInteger(maxBytes)||maxBytes<1||maxBytes>65536)throw Error('PROJECT_ENTRY_READER_UNCONFIGURED');
  const cancelled=()=>{if(signal?.aborted)throw Error('PROJECT_ENTRY_READ_CANCELLED');};
  const observation={schemaVersion:1,projectId,track,status:'UNAVAILABLE',primaryEntryStatus:null,primaryEntryPath:c.path,entryMode:'ROOT',entryQualification:c.entryQualification,sourceReadIsProductAcceptance:false,document:null,progress:null,contextDocuments:[],conflicts:[],freshness:'DOCUMENT_TIME_UNKNOWN',baselineChanged:false,currentAgent:null,currentModel:null,runtimeConnected:false,executionAuthorized:false,errorCategory:null,source:{qualification:'REMOTE_FILE_READ',repositoryId:c.repositoryId,requestedRef:c.ref,expectedBaseline:c.expectedBaseline,resolvedCommitSha:null,path:c.path,providerBlobId:null,contentSha256:null,readAt:new Date(now()).toISOString(),documentTimestamp:null}};

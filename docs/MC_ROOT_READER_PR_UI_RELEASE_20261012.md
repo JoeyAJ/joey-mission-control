@@ -1,0 +1,21 @@
+# Reviewed current-root, PR metadata and module navigation release
+
+Qualification: independently source-reviewed implementation, local regression verified; canonical publication/provider completion recorded separately. Actual OwnerHTTP/served/visual-fidelity acceptance remains unverified. Rework is excluded.
+
+Base canonical:9bad17b98fbf557dcc66f5667b2c8c1461e31e08. Approved sources: root51ae2fd3a60db615d21eeab711ee5cff42d717fb, PR metadata515c3ec2ef380e493fa231bc56aeb70ece20b9db, UI ddeb03665eb00255fe6c2b7aa8374fe43f12d3d2. Parent supplied independent GO for all three. Neither review-branch deployment guard is included.
+
+Root restoration: current structured checkpoint has requiredTimestamp/project/task/status/attribution and remains5696bytes, below the unchanged65536-byte reader limit. The entire prior67397-byte document remains in docs/history/HANDOFF_20261012_9bad17b.md, exactGitblob78f18efdd9043b1ba1b9e4f6654bc29fe011ee61 and SHA256dd88161ec20a92b2a9e639405c65248182763c8a4c915207ac465fc3f32bcf94. Dated local repair remains separately preserved in the root. History is linked at the same sourceSHA; no fixed Owner context allowlist or automatic archive read was added. A generated next-Agent packet uses the exact immutable root path/SHA and discovers preserved history through that root. Document attribution is not signed execution or product acceptance.
+
+PR parsing accepts merge observations only with valid date-time and closed/non-draft state. Malformed/missing merge fields becomeCONFLICT with no claims; the client independently refuses contradictory merged/open/draft claims. Valid closed merged/unmerged remain distinct. No merge/deploy operation or permission change.
+
+UI changes only public/joey-takeover.js, public/command-workspace.js and public/styles.css: overview/tasks/sources focus/disclosure shortcuts, guarded task/project creation area, mobile module controls and keyboard/reduced-motion behavior. Current versus historical task and reported-delivery qualifications remain. Source-only GO is not independent visual acceptance.
+
+After shell Git transport became unavailable, the existing supported GitHub connection fetched all nine exactUI source/test/doc files at ddeb036 and verified their GitblobIDs before local import. No new credential, extraction, secret transmission or interactive setup. Canonical publication uses the same existing authorized repository connection, one expected-head/ref update and no forced overwrite. This tooling connection is not a deployed registry writer.
+
+Combined verification: portable1082/1082PASS, build/schema validation/static safetyPASS, forbiddenAttempts0. Navigation9 browsercases/54scopes at1440/390/320 andzhTW/en/koPASS; task-entry3 browsercases at320/390/1440PASS with grouped creation/module checks. Existing officialSDK and synthetic upstreams; external requests/writes0, task writes0. Screenshots remain local and unuploaded. Regenerated official Owner bundle matches the approved canonical source. Checks happened after the final root prefix; this corrects the earlier registration release's missed post-document-edit root regression.
+
+Preserved: vercel.json application settings, OwnerAuth/AAL2/current-session guards, installedSQL/grants, saved-only task, eleven current progress reports/recovery history atbc3d76b1af577d793d77e2a53fc1bd66575c9251, guarded empty registry8ecae766a50bc9793f1dcb6bb64349e815e81676, Production8b4945b16a0b23f2e72033aa976fa34f94eabec0. Runtime registration remainsOFF with writer binding unavailable. No automatic dispatch/merge/deploy, real task or new grant.
+
+Rework dbbaa634 remainsHOLD. Its source-supported captured review/CI expiry issue has an isolated repair for renewed review; the denied reviewer race probe was not rerun or routed around. Ordinary pure clock-boundary unit checks and existing permitted controller tests are separate local evidence. No rework source/handler is included in this release.
+
+Monitor the one auto-deployment to terminal state and verify exact source/alias. Existing CONNECT403 remains unbypassed; providerREADY alone does not establish served bytes or actual OwnerHTTP. Credential creation/binding is deferred until2026-10-13 09:30Asia/Seoul, withJoey-only secret entry; no interaction tonight. OverallMC remains incomplete.

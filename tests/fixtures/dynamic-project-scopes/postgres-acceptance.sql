@@ -1,0 +1,28 @@
+SET mc_test.owner_active='true';
+DO $$BEGIN IF EXISTS(SELECT 1 FROM mc_private.explicit_project_scope_grants) THEN RAISE EXCEPTION 'initial grants';END IF;IF has_table_privilege('authenticated','mc_private.explicit_project_scope_grants','SELECT') OR has_table_privilege('service_role','mc_private.explicit_project_scope_grants','INSERT') OR has_function_privilege('anon','mc_private.explicit_project_scope_allowed(text,text,text,text,text)','EXECUTE') THEN RAISE EXCEPTION 'ACL';END IF;END$$;
+SET ROLE mc_continuity_executor;
+DO $$BEGIN IF mc_private.explicit_project_scope_allowed('AUTHORIZED_FIXTURE','BASELINE','task',NULL,NULL) THEN RAISE EXCEPTION 'registration alone';END IF;END$$;
+RESET ROLE;
+INSERT INTO mc_private.explicit_project_scope_grants VALUES ('11111111-1111-4111-8111-111111111111','AUTHORIZED_FIXTURE','{"schemaVersion": "mc.project-scope-grant.v1", "projectId": "AUTHORIZED_FIXTURE", "ownerSubject": "11111111-1111-4111-8111-111111111111", "repositoryId": "JoeyAJ/synthetic-fixture", "repositoryNumericId": 99999999, "ref": "main", "registrationRequestDigest": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb", "approvalRef": "synthetic-explicit-grant", "revision": 1, "expiresAt": 9999999999999, "revoked": false, "capabilities": {"sourceRead": true, "reportRead": true, "reportWrite": true, "task": true, "review": true}}'::jsonb);
+SET ROLE mc_continuity_executor;
+DO $$BEGIN
+ IF NOT mc_private.validate_development_task('{"schemaVersion": "mc.development-task.v1", "taskId": "task_aaaaaaaaaaaaaaaaaaaaaaaa", "revision": 1, "createdAt": "2026-10-12T22:30:00.000Z", "updatedAt": "2026-10-12T22:30:00.000Z", "projectId": "AUTHORIZED_FIXTURE", "track": "BASELINE", "request": {"feature": "Synthetic task", "acceptance": "First bound report", "constraints": "No execution"}}'::jsonb) OR NOT mc_private.validate_task_review('{"schemaVersion": "mc.owner-task-review.v1", "projectId": "AUTHORIZED_FIXTURE", "track": "BASELINE", "taskId": "task_aaaaaaaaaaaaaaaaaaaaaaaa", "taskRequirements": {"schemaVersion": "mc.task-requirements.v1", "revision": 1, "requestDigest": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"}, "repositoryId": "JoeyAJ/synthetic-fixture", "canonicalRef": "main", "canonicalHeadSha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "reportRef": "mc/progress", "reportPath": ".mission-control/runs/first-report.json", "reportHeadSha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "reportBlobId": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "reportSequence": 2, "runId": "first-report", "workRef": "feature/fixture", "codeSha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "decision": "REQUEST_CHANGES", "comment": "Synthetic opinion"}'::jsonb) THEN RAISE EXCEPTION 'full validators';END IF;
+ IF NOT mc_private.explicit_project_scope_allowed('AUTHORIZED_FIXTURE','BASELINE','task',NULL,NULL) THEN RAISE EXCEPTION 'explicit task';END IF;
+ IF NOT mc_private.explicit_project_scope_allowed('AUTHORIZED_FIXTURE','BASELINE','review','JoeyAJ/synthetic-fixture','main') THEN RAISE EXCEPTION 'explicit review';END IF;
+ IF mc_private.explicit_project_scope_allowed('AUTHORIZED_FIXTURE','BASELINE','review','JoeyAJ/foreign','main') OR mc_private.explicit_project_scope_allowed('AUTHORIZED_FIXTURE','UNIVERSITY_CANDIDATE','task',NULL,NULL) OR mc_private.explicit_project_scope_allowed('OTHER_FIXTURE','BASELINE','task',NULL,NULL) THEN RAISE EXCEPTION 'foreign scope';END IF;
+END$$;
+RESET ROLE;
+UPDATE mc_private.explicit_project_scope_grants SET grant_document=jsonb_set(grant_document,'{revoked}','true');
+SET ROLE mc_continuity_executor;
+DO $$BEGIN IF mc_private.explicit_project_scope_allowed('AUTHORIZED_FIXTURE','BASELINE','task',NULL,NULL) THEN RAISE EXCEPTION 'revocation';END IF;END$$;
+RESET ROLE;
+UPDATE mc_private.explicit_project_scope_grants SET grant_document=jsonb_set(jsonb_set(grant_document,'{revoked}','false'),'{expiresAt}','1');
+SET ROLE mc_continuity_executor;
+DO $$BEGIN IF mc_private.explicit_project_scope_allowed('AUTHORIZED_FIXTURE','BASELINE','task',NULL,NULL) THEN RAISE EXCEPTION 'expiry';END IF;END$$;
+RESET ROLE;
+UPDATE mc_private.explicit_project_scope_grants SET grant_document=jsonb_set(grant_document,'{expiresAt}','9999999999999');
+SET mc_test.owner_active='false';
+SET ROLE mc_continuity_executor;
+DO $$BEGIN IF mc_private.explicit_project_scope_allowed('AUTHORIZED_FIXTURE','BASELINE','task',NULL,NULL) THEN RAISE EXCEPTION 'owner loss';END IF;END$$;
+RESET ROLE;
+SET mc_test.owner_active='true';

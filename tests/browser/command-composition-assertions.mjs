@@ -6,11 +6,11 @@ export async function assertCommandComposition(page,width){
  });
  assert.equal(receipt.overflow,false);
  if(width>768){assert(receipt.events.width>receipt.right.width*1.5);assert(receipt.events.x>receipt.left.x);assert(Math.abs(receipt.events.x-receipt.files.x)<2);assert(receipt.files.y>receipt.events.y);assert(receipt.right.x>receipt.events.x);assert(receipt.taskFont>=16);}
- else assert(receipt.taskFont>=16);
+ else{assert(receipt.taskFont>=16);const tabs=page.locator('.command-module-tabs');assert(await tabs.isVisible());for(const name of ['entries','events','context'])assert((await tabs.locator('[data-workspace-panel='+name+']').boundingBox()).height>=44);await tabs.locator('[data-workspace-panel=entries]').focus();await page.keyboard.press('ArrowRight');assert.equal(await page.evaluate(()=>document.activeElement.dataset.workspacePanel),'events');await page.keyboard.press('End');assert.equal(await page.evaluate(()=>document.activeElement.dataset.workspacePanel),'context');await page.keyboard.press('Home');assert.equal(await page.evaluate(()=>document.activeElement.dataset.workspacePanel),'entries');}
  return receipt;
 }
 
 export async function assertToolbarBoundary(page){
  const receipt=await page.evaluate(()=>{const box=n=>{const r=n.getBoundingClientRect();return {left:r.left,right:r.right,top:r.top,bottom:r.bottom,height:r.height};},head=document.querySelector('.command-workspace-head');return {viewport:innerWidth,head:box(head),focus:box(document.querySelector('.command-focus')),owner:box(document.querySelector('.command-owner-access')),children:[...head.children].filter(n=>n.getBoundingClientRect().height>0).map(box)};});
- assert(receipt.head.right<=receipt.owner.left+1,JSON.stringify(receipt));assert(receipt.head.bottom<=receipt.focus.top+1,JSON.stringify(receipt));for(const child of receipt.children){assert(child.left>=receipt.head.left-1&&child.right<=receipt.head.right+1,JSON.stringify(receipt));assert(child.top>=receipt.head.top-1&&child.bottom<=receipt.head.bottom+1&&child.bottom<=receipt.focus.top+1,JSON.stringify(receipt));}return receipt;
+ if(receipt.viewport>768)assert(receipt.head.right<=receipt.owner.left+1,JSON.stringify(receipt));else{assert(receipt.head.bottom<=receipt.owner.top+1,JSON.stringify(receipt));assert(receipt.owner.bottom<=receipt.focus.top+1,JSON.stringify(receipt));}assert(receipt.head.bottom<=receipt.focus.top+1,JSON.stringify(receipt));for(const child of receipt.children){assert(child.left>=receipt.head.left-1&&child.right<=receipt.head.right+1,JSON.stringify(receipt));assert(child.top>=receipt.head.top-1&&child.bottom<=receipt.head.bottom+1&&child.bottom<=receipt.focus.top+1,JSON.stringify(receipt));}return receipt;
 }
