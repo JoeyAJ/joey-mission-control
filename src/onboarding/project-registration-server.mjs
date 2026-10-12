@@ -3,6 +3,8 @@ import {REGISTRATION_MAX_BYTES, REGISTRATION_MAX_AGE_MS, REGISTRATION_FILES, reg
 
 const result = (status, body) => ({status, body, headers:{'Cache-Control':'private, no-store', Vary:'Authorization', Pragma:'no-cache'}});
 const publicErrors = new Set(['OWNER_AUTHORIZATION_DENIED', ...['BLOB_MISMATCH','BODY_TOO_LARGE','BOOTSTRAP_MISMATCH','DRAFT_CONFLICT','FILE_MISMATCH','GIT_ENTRY_INVALID','HANDOFF_MISMATCH','HEAD_CHANGED','INDEX_FORMAT_UNSUPPORTED','INDEX_INVALID','INDEX_REVISION_CONFLICT','JSON_REQUIRED','NOT_ACTIVATED','OBSERVATION_EXPIRED','PORT_NOT_CONFIGURED','PRIVATE_IDENTITY_MISMATCH','PRIVATE_READ_UNAVAILABLE','RECEIPT_NOT_SERVER_ISSUED','REGISTRY_INVALID','REGISTRY_REVISION_CONFLICT','REPLAY_CONFLICT','REPORT_REF_CONFLICT','REQUEST_INVALID','RESOURCE_MISMATCH','RESOURCE_READER_NOT_CONFIGURED','SCOPE_DENIED','SOURCE_PROFILE_MISMATCH','TARGET_CONFLICT'].map(c => 'REGISTRATION_' + c)]);
+for(const code of ['CATALOG_HEAD_CONFLICT','CATALOG_INVALID','CATALOG_CAPACITY','CATALOG_UNAVAILABLE','READBACK_MISMATCH'])publicErrors.add('REGISTRATION_'+code);
+export function registrationFailureResponse(e) { const known=publicErrors.has(e?.code),status=known&&[400,401,403,409,413,415,503].includes(e.status)?e.status:e instanceof SyntaxError?400:503;return result(status,{error:known?e.code:status===400?'REGISTRATION_REQUEST_INVALID':'REGISTRATION_PRIVATE_READ_UNAVAILABLE'}); }
 async function body(req) {
   if (!/^application\/json(?:;\s*charset=utf-8)?$/i.test(req.headers?.['content-type'] || '')) throw registrationError('REGISTRATION_JSON_REQUIRED', 415);
   const length = req.headers?.['content-length'];
@@ -57,7 +59,7 @@ export function createProjectRegistrationServer({policy = null, ownerSubject, al
       await owner();
       request = registrationRequest(await body(req));
       registrationPolicy(configuredPolicy, request, {ownerSubject, now:now()});
-      if (!draftPort || repositoryReader?.configured !== true || writer?.qualification !== 'LOCAL_REGISTRY_CANDIDATE_ONLY') throw registrationError('REGISTRATION_PORT_NOT_CONFIGURED', 503);
+      if (!draftPort || repositoryReader?.configured !== true || !['LOCAL_REGISTRY_CANDIDATE_ONLY','ATOMIC_GIT_REGISTRY_WRITER'].includes(writer?.qualification)) throw registrationError('REGISTRATION_PORT_NOT_CONFIGURED', 503);
       const startedAt = now(), draft = await savedDraft(); await owner();
       const query = {repositoryId:request.repositoryId, ref:request.ref, signal:abort.signal};
       const repository = await repositoryReader.inspectIdentity(query);
@@ -93,9 +95,7 @@ export function createProjectRegistrationServer({policy = null, ownerSubject, al
       const expiresAt = Math.min(receipt.expiresAt, finalActor.expiresAt);
       return result(200, {schemaVersion:1, ...registration, currentVerification:{qualification:'INDEPENDENT_PRIVATE_REPOSITORY_READ', baselineSha:receipt.baselineSha, observedAt:receipt.observedAt, expiresAt}, expiresAt, developmentReady:false, executionAuthorized:false, verifiedDelivery:false});
     } catch (e) {
-      const known = publicErrors.has(e?.code);
-      const status = known && [400,401,403,409,413,415,503].includes(e.status) ? e.status : e instanceof SyntaxError ? 400 : 503;
-      return result(status, {error:known ? e.code : status === 400 ? 'REGISTRATION_REQUEST_INVALID' : 'REGISTRATION_PRIVATE_READ_UNAVAILABLE'});
+      return registrationFailureResponse(e);
     } finally { clearTimeout(timer); signal?.removeEventListener('abort', cancel); }
   }});
 }

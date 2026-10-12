@@ -29,6 +29,10 @@ export function renderProjectRegistryRegistration(text, receipt, {now = Date.now
   return text.replace(/\s*$/, '\n') + block;
 }
 
+export function registrationMemoryPaths(projectId) {
+  if (!/^[A-Z][A-Z0-9_]{2,63}$/.test(projectId)) throw registrationError('REGISTRATION_REQUEST_INVALID');
+  return ['PROJECT_MEMORY', 'CURRENT_STATE', 'NEXT_ACTIONS', 'ARCHITECTURE', 'DECISIONS'].map(name => 'PROJECTS/' + projectId + '/' + name + '.md');
+}
 function canonicalMemory(receipt) {
   const directory = 'PROJECTS/' + receipt.projectId;
   const source = 'Repository: ' + receipt.repositoryId + '\nBranch: ' + receipt.ref + '\nVerified baseline: ' + receipt.baselineSha + '\nEntry: HANDOFF.md\nEntry SHA256: ' + receipt.files['HANDOFF.md'].sha256 + '\nObservedAt: ' + new Date(receipt.observedAt).toISOString() + '\nQualification: INDEPENDENT_PRIVATE_REPOSITORY_IMPORT\n';
