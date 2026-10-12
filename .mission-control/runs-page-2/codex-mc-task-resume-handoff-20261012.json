@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "mc.repository-run.v2",
+  "taskKind": "FEATURE",
+  "projectId": "MISSION_CONTROL",
+  "track": "BASELINE",
+  "runId": "codex-mc-task-resume-handoff-20261012",
+  "predecessorRunId": "codex-mc-owner-email-magic-link-20261012",
+  "taskId": "mc-task-resume-handoff-20261012",
+  "featureTitle": "Explicit task handoff resumption with original baseline and guarded CAS append",
+  "agentName": "Codex",
+  "provider": null,
+  "model": null,
+  "repositoryId": "JoeyAJ/joey-mission-control",
+  "reportRef": "mc/progress",
+  "workRef": "codex/mc-command-center-checkpoint-20261006",
+  "baseline": {
+    "ref": "codex/mc-command-center-checkpoint-20261006",
+    "commitSha": "91a517efd259d4d9d933d03c9f0f439def07d605",
+    "handoffPath": "HANDOFF.md",
+    "handoffDigest": "445c51063107d09b5b1a69418873821c64b0e2d89bba08f6ff92c4c8b8e4b366",
+    "contextPaths": [
+      "README.md",
+      "docs/PRODUCT_CHARTER.md",
+      "docs/MC_PHASE_PLAN.md",
+      "docs/STAGE_HANDOFF_TEMPLATE.md"
+    ]
+  },
+  "events": [
+    {
+      "id": "task-resume-start-1",
+      "sequence": 1,
+      "eventAt": "2026-10-12T03:26:44.522Z",
+      "kind": "started",
+      "summary": "Parent authorized independent code-only functional work. Task handoff always emits new-run template; implement explicit same-Agent/authorized continuation candidates retaining original header/baseline and exact CAS. No actual dispatch/save-only task execution, resources or live merger/deployer; Auth fixes retained. Only open run38 is unrelated email acceptance, so this distinct task requires slot39 within unchanged40 cap.",
+      "result": null,
+      "delivery": null
+    }
+  ]
+}
