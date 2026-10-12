@@ -1,3 +1,4 @@
+import {runBootstrapDeliveryQA} from './bootstrap-delivery-assertions.mjs';
 import {execFileSync} from 'node:child_process';
 import {runTaskReviewFlow} from './task-review.fixture.mjs';
 import {createDeploymentTaskReviewServer} from '../../src/tasks/task-review-server.mjs';
@@ -34,7 +35,7 @@ import {createTaskStorageServer} from '../../src/tasks/task-storage-server.mjs';
 import {sameTask,reviseDevelopmentTask} from '../../src/tasks/development-task.mjs';
 import {taskStorageActivation} from '../../src/tasks/task-storage-config.mjs';
 import {validateProjectBootstrapPacket,reviseProjectDraft} from '../../src/onboarding/project-draft.mjs';
-const onboardingQA=process.env.MC_NEW_PROJECT_QA==='1';
+const onboardingQA=process.env.MC_NEW_PROJECT_QA==='1';const bootstrapQA=process.env.MC_BOOTSTRAP_DELIVERY_QA==='1';
 const cloudQA=process.env.MC_CLOUD_DRAFT_QA==='1';
 const taskQA=process.env.MC_EXISTING_TASK_QA==='1';
 const taskEntryQA=process.env.MC_TASK_ENTRY_QA==='1';
@@ -143,7 +144,7 @@ async function newProjectQA(page,width,context,errors){
  const download=async k=>{const p=page.waitForEvent('download');await action(k).click();const d=await p,file=screens+'/'+width+'-'+d.suggestedFilename();await d.saveAs(file);return {file,value:JSON.parse(await fs.readFile(file,'utf8'))};};
  const saved=await download('download'),packet=await download('packet');assert.equal(saved.value.project.idea,idea);assert.equal(validateProjectBootstrapPacket(packet.value).draft.project.idea,idea);
  await action('copy').click();await root.locator('.new-project-notice').filter({hasText:'自動複製未完成'}).waitFor();await action('manual').click();assert(await root.locator('textarea[readonly]').evaluate(n=>n.selectionStart===0&&n.selectionEnd===n.value.length));
- await page.evaluate(()=>window.syntheticRequireGesture=false);await action('copy').click();await root.locator('.new-project-notice').filter({hasText:'已複製建立計畫'}).waitFor();const copied=await page.evaluate(()=>syntheticCopies.at(-1));assert(copied.includes(JSON.stringify(packet.value.files['PRD.md'])));assert(copied.includes('mc/progress'));assert(copied.includes('OWNER_PREPARED_NOT_PROVISIONED'));
+ await page.evaluate(()=>window.syntheticRequireGesture=false);await action('copy').click();await root.locator('.new-project-notice').filter({hasText:'已複製完整接手內容'}).waitFor();const copied=await page.evaluate(()=>syntheticCopies.at(-1));assert(copied.includes(JSON.stringify(packet.value.files['PRD.md'])));assert(copied.includes('mc/progress'));assert(copied.includes('OWNER_PREPARED_NOT_PROVISIONED'));
  for(const [locale,label]of [['en','New project'],['ko','새 프로젝트'],['zh-TW','新增專案']]){await page.locator('#locale-select').selectOption(locale,{force:true});assert.equal(await root.locator('[data-new-project-open]').textContent(),label);assert.equal(await field('idea').inputValue(),idea);}
  await field('name').fill('Synthetic edited');assert(await action('copy').isDisabled());assert(await action('download').isDisabled());await save();
  await action('new').click();await ready();await field('name').fill('Synthetic second');await field('idea').fill('Second PRD');await save();await count(2);await root.locator('[data-new-project-edit]').first().click();await ready();assert.equal(await field('idea').inputValue(),idea);
@@ -162,7 +163,7 @@ async function cloudProjectQA(page,width,context,errors){
  const root=p=>p.locator('[data-new-project=true]'),field=(p,k)=>root(p).locator('[data-new-project-field='+k+']'),action=(p,k)=>root(p).locator('[data-new-project-action='+k+']');
  const ready=p=>p.waitForFunction(()=>{const n=document.querySelector('[data-new-project=true]');return n?.dataset.newProjectAuth==='open'&&!n.querySelector('.new-project-form button[type=submit]')?.disabled;});
  const open=async p=>{await root(p).locator('[data-new-project-open]').click();await ready(p);};
- const local=async(p,idea)=>{await field(p,'name').fill('Synthetic cloud project');await field(p,'idea').fill(idea);await root(p).locator('.owner-auth-body>form button[type=submit]').click();await ready(p);};
+ const local=async(p,idea)=>{await field(p,'name').fill('Synthetic cloud project');await field(p,'idea').fill(idea);await root(p).locator('.new-project-form button[type=submit]').click();await ready(p);};
  const cloud=async p=>{await action(p,'cloudSave').click();await ready(p);};
  const marker='SYNTHETIC_CLOUD_PRIVATE_'+width;await open(page);assert(await action(page,'cloudSave').isVisible());await root(page).locator('[data-new-project-options] summary').click();await field(page,'projectId').fill('PREFLIGHT_CLOUD_'+width);await field(page,'acceptance').fill('Synthetic real feature acceptance');await local(page,marker);const before=cloudWrites;await cloud(page);assert.equal(cloudWrites,before+1);assert((await root(page).locator('[data-new-project-readiness=cloudSave]').textContent()).includes('已確認'));
  await page.reload();await loadedAfterReload(page);await open(page);assert.equal(await field(page,'idea').inputValue(),marker);assert.equal(await root(page).getAttribute('data-new-project-drafts'),'1');
@@ -276,6 +277,7 @@ try{for(const width of (taskEntryQA?[320,390,1440]:[375,390,430,1440])){
  if(cloudTaskQA){await cloudDevelopmentTaskQA(page,width,context,errors);continue;}
  if(capacityQA){await reportCapacityQA(page,width,context,errors);continue;}
  if(taskQA){await existingTaskQA(page,width,context,errors);continue;}
+ if(bootstrapQA){await runBootstrapDeliveryQA({page,width,context,state,cases,errors,screens,cloud:cloudQA});continue;}
  if(cloudQA){await cloudProjectQA(page,width,context,errors);continue;}
  if(onboardingQA){await newProjectQA(page,width,context,errors);continue;}
  const copyFresh=async(project,sha=A,track='BASELINE')=>{const before=reads,reportBefore=reportReads,n=await page.evaluate(()=>syntheticCopies.length);await focusReturn();await page.locator('[data-joey-primary]').click();await page.waitForFunction(n=>syntheticCopies.length>n,n);const text=await page.evaluate(()=>syntheticCopies.at(-1));assert(reads>before);assert(reportReads>reportBefore);assert(text.includes(project));assert(text.includes(sha));assert(text.includes('專案入口'));assert(text.includes('mc-reporter.mjs'));assert(text.includes('mc/progress'));assert(text.includes('PREPARED_NOT_PUBLISHED'));assert(!text.includes(KEY));assert(text.includes('最近開發者: 未記錄'));assert((await page.locator('.joey-simple-hint').innerText()).includes('已複製'));if(track==='UNIVERSITY_CANDIDATE')assert(text.includes('JoeyAcceptancePending'));return text;};
