@@ -34,7 +34,8 @@ export function createRegistrationGitPort({credential,activation=projectRegistra
         return new TextDecoder('utf-8',{fatal:true}).decode(bytes);
       };
       const files={};for(const path of roots)files[path]=await read(path);
-      const ledger=parseRegistrationLedger(files[LEDGER_PATH],ownerSubject);for(const e of ledger.entries)for(const path of registrationMemoryPaths(e.receipt.projectId))files[path]=await read(path);
+      const ledger=parseRegistrationLedger(files[LEDGER_PATH],ownerSubject), memoryPaths=ledger.entries.flatMap(e=>registrationMemoryPaths(e.receipt.projectId));
+      for(let i=0;i<memoryPaths.length;i+=4)await Promise.all(memoryPaths.slice(i,i+4).map(async path=>{files[path]=await read(path);}));
       await identity(signal);if(await head(signal)!==headSha)failure('REGISTRATION_CATALOG_HEAD_CONFLICT',409);
       return validateRegistrationCatalog({headSha,files},ownerSubject);
     },
