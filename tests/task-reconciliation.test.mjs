@@ -25,7 +25,7 @@ function fixture(project='WOOSONG_BUDDY',track='BASELINE',{reportBinding,request
   if(p.endsWith('/git/commits/'+B))return json({sha:B,message:'SECRET_OUTPUT_NOT_RETURNED',author:{email:'not-returned'}});
   const key=p.endsWith('/pulls')?'pullRequests':p.endsWith('/check-runs')?'checks':p.endsWith('/status')?'statuses':'actions';assert.equal(u.searchParams.get('per_page'),String({pullRequests:21,checks:51,statuses:51,actions:21}[key]));assert.equal(u.searchParams.get('page'),'1');if(state.delayed)await state.delayed;if(state.denial[key])return json({message:'SECRET_ERROR_NOT_RETURNED'},state.denial[key]);
   const rows=state.empty?[]:key==='pullRequests'?[{number:7,state:'open',draft:false,merged_at:null,body:'SECRET_OUTPUT_NOT_RETURNED',head:{sha:state.wrong?A:B,ref:'feature/synthetic',repo:{full_name:c.repositoryId}},base:{ref:track==='UNIVERSITY_CANDIDATE'&&state.wrong?'main':c.entry.ref,repo:{full_name:c.repositoryId}}}]:key==='checks'?[{id:8,name:state.labels?.checks||'unit',head_sha:state.wrong?A:B,status:'completed',conclusion:'success',output:{text:'SECRET_OUTPUT_NOT_RETURNED'},details_url:'https://attacker.invalid/private'}]:key==='statuses'?[{context:state.labels?.statuses||'Vercel',state:'success',target_url:'https://attacker.invalid/private',description:'SECRET_OUTPUT_NOT_RETURNED'}]:[{id:9,name:state.labels?.actions||'CI',head_sha:state.wrong?A:B,status:'completed',conclusion:'success',repository:{full_name:c.repositoryId},logs_url:'https://attacker.invalid/private'}];
-  if(key==='pullRequests')return json(rows,200,key);return json({sha:state.wrong?A:B,total_count:rows.length+(state.overflow[key]?1:0),[key==='checks'?'check_runs':key==='statuses'?'statuses':'workflow_runs']:rows},200,key);
+  if(key==='pullRequests'){for(const row of rows)Object.assign(row,state.prPatch||{});return json(rows,200,key);}return json({sha:state.wrong?A:B,total_count:rows.length+(state.overflow[key]?1:0),[key==='checks'?'check_runs':key==='statuses'?'statuses':'workflow_runs']:rows},200,key);
  };
  const readers={repositoryReader:createGitHubRepositoryRunReader({credential:KEY,fetchImpl:fetch,configuration:c,now:()=>time,cache:new Map()}),metadataReader:createGitHubTaskReconciliationReader({credential:KEY,fetchImpl:fetch,configuration:c})};
  const req={method:'POST',headers:{authorization:'Bearer '+KEY,origin,'content-type':'application/json'},body:request};const server=createTaskReconciliationServer({configuration:c,...readers,verifyOwner:async()=>state.actor,ownerSubject:OWNER,allowedOrigin:origin,now:()=>time});return {c,state,report,blob,request,req,server,fetch,readers};
@@ -111,4 +111,19 @@ test('cloud-backed CI never downgrades to a session match after deactivation, ou
   await assert.rejects(pending,/INVALIDATED|OUTAGE/);assert.equal(requests,phase==='before'?0:1);const view=c.snapshot();assert.equal(view.reconciliation,null);assert.equal(view.taskReports.observation,null);assert.notEqual(view.report.agent,'AGENT_REPORTED');assert.equal(view.cloud.selectedCloudBacked,true);assert.equal(view.cloud.selectedConfirmed,false);assert.deepEqual(view.tasks[0],task);assert.equal(view.prepared,null);
   changed=false;await c.cloudRefresh();if(failure==='MISSING_SELECTED')await c.cloudReload();assert.equal(c.snapshot().cloud.selectedConfirmed,true);assert.equal(c.snapshot().reconciliation,null);c.dispose();
  }
+});
+
+test('malformed or contradictory provider merge metadata never becomes an observed merge',async()=>{
+ for(const patch of [{merged_at:''},{merged_at:'not-a-date'},{merged_at:'2026-02-30T12:00:00Z'},{merged_at:0},{merged_at:true},{merged_at:{}},{merged_at:undefined},{merged_at:new Date(time-1000).toISOString(),state:'open'},{merged_at:new Date(time-1000).toISOString(),state:'closed',draft:true}]){
+  const f=fixture();f.state.prPatch=patch;const reply=await f.server.handle(f.req);assert.equal(reply.status,200);assert.equal(reply.body.channels.pullRequests.state,'CONFLICT',JSON.stringify(patch));assert.deepEqual(reply.body.channels.pullRequests.items,[]);assert.equal(reply.body.executionAuthorized,false);assert(f.state.calls.every(call=>call.method==='GET'));
+ }
+});
+test('valid closed merged and closed unmerged PR observations remain distinct',async()=>{
+ for(const mergedAt of [null,new Date(time-1000).toISOString()]){
+  const f=fixture();f.state.prPatch={state:'closed',merged_at:mergedAt};const reply=await f.server.handle(f.req);assert.equal(reply.status,200);assert.equal(reply.body.channels.pullRequests.state,'OBSERVED');assert.equal(reply.body.channels.pullRequests.items[0].merged,mergedAt!==null);assert.equal(reply.body.productAccepted,false);assert(f.state.calls.every(call=>call.method==='GET'));
+ }
+});
+test('client contract refuses contradictory merged open or draft PR claims',async()=>{
+ const f=fixture(),reply=(await f.server.handle(f.req)).body;
+ for(const patch of [{merged:true,state:'open'},{merged:true,state:'closed',draft:true}]){const forged=structuredClone(reply);Object.assign(forged.channels.pullRequests.items[0],patch);assert.throws(()=>validateReconciliationReply(forged,f.request,time),/RECONCILIATION_INVALID/);}
 });

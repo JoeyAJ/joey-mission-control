@@ -5,6 +5,7 @@ import {createRequire} from 'node:module';
 import {execFileSync} from 'node:child_process';
 import assert from 'node:assert/strict';
 import {productionResponse} from '../../api/index.mjs';
+import {runJoeyModuleNavigationQA} from './joey-module-navigation-assertions.mjs';
 const require=createRequire(import.meta.url),{chromium}=require(process.env.MC_PLAYWRIGHT_MODULE||(process.env.CODEX_PRIMARY_RUNTIME_NODE_MODULES+'/playwright'));
 const before=process.env.MC_SITE_NAVIGATION_BEFORE==='1',screens=process.env.MC_BROWSER_SCREEN_DIR||'/tmp/mc-site-navigation';let origin,unverified=false,privateRequests=0,writes=0;
 const server=http.createServer(async(req,res)=>{try{
@@ -27,7 +28,7 @@ try{for(const width of [1440,390,320])for(const locale of ['zh-TW','en','ko']){
     await site.focus();await page.keyboard.press('Tab');await page.keyboard.press('Shift+Tab');assert(await site.evaluate(n=>n===document.activeElement));const popup=page.waitForEvent('popup');await site.click();await(await popup).close();
    }else{assert.equal(await site.getAttribute('href'),null);assert(await site.isDisabled());}
    const route=page.url();await list.click();await page.waitForFunction(()=>location.hash==='#dashboard');await page.locator('#project-grid > article').first().waitFor({state:'visible'});await page.goBack();await page.waitForFunction(hash=>location.hash===hash,new URL(route).hash);assert.equal(await page.locator('[data-joey-public-site]').getAttribute('href'),url);}
-  await page.screenshot({path:screens+'/'+width+'-'+locale+'-'+project+'-'+track+'-'+(before?'before':'after')+'.png',fullPage:true});assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
+  await page.screenshot({path:screens+'/'+width+'-'+locale+'-'+project+'-'+track+'-'+(before?'before':'after')+'.png',fullPage:true});assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));if(process.env.MC_MODULE_NAVIGATION_QA&&project==='NEXAEON')await runJoeyModuleNavigationQA({page,width,locale,screens});
  }
  if(!before){unverified=true;await page.goto(origin+'/#joey?project=NEXAEON');await page.reload();await page.locator('[data-joey-public-site=unavailable]').waitFor();assert.equal(await page.locator('[data-joey-public-site]').getAttribute('href'),null);assert(await page.locator('[data-joey-project-list]').isVisible());unverified=false;}
  assert.deepEqual(errors,[]);cases.push({width,locale,pass:true,scopes:scopes.length,beforeCaptureOnly:before,mobileReachable:!before,newTabIsolated:!before,projectListAndBack:!before,unverifiedUnavailable:!before});await context.close();
