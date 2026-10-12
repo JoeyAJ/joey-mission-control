@@ -1,0 +1,1 @@
+975 tests PASS, 0 failures/cancelled/skipped. Fresh pinned SDK bundle build, module/schema validation and static safety PASS. PORTABILITY_GUARD forbiddenAttempts=0. Full local log /workspace/mc-recovery/ui-integration/portable.log.

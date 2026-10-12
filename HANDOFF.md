@@ -1,19 +1,19 @@
-# Current explicit task handoff resumption — 2026-10-12
+# Current reported workspace UI integration — 2026-10-12
 
 Project: MISSION_CONTROL
-Timestamp: 2026-10-12T03:46:20.664Z
-Task: Original-writer task run resumption without duplicate registration
+Timestamp: 2026-10-12T04:20:00.000Z
+Task: Reviewed session rail and visible Development Workspace entry
 Status: LOCAL_VERIFIED_PENDING_PUBLICATION
 Last Developer: Codex
 Executed by: Codex
 Actual Model: UNKNOWN
-Baseline: 91a517efd259d4d9d933d03c9f0f439def07d605
+Baseline: 94816da3c293c05c4ac0a2134e430183e135e212
 
-Private task copy lists matching nonterminal candidates with original header/baseline/workRef/CAS. Original writer or explicitly authorized continuation must verify ownership and immutable source; name alone is insufficient. UNCONFIRMED template prevents direct append. Terminal/full/unbound/mismatched/cross-scope rows excluded; new Agent/predecessor retained. No dispatch or repeated private request per candidate.
+Integrated reviewed UI source bafdd912 with current task resume and Auth generation/logout fixes. Simple Joey Development Workspace tile appears above project picker; reports group by project/Agent with dated latest event and expandable history. MC branch label corrected; existing timer expires five-minute Joey review cue, including terminal failure.
 
-Focused31/browser4 widths × Buddy/candidate PASS, synthetic only; isolated Git resumes one run and rejects stale CAS. Overview password-pending selector corrected after email panel insertion. Full974/build/validate/safety PASS; forbidden attempts0. Save-only task untouched; Auth generation/TOTP/Owner/private-source guards retained, finalization live OFF, review executionAuthorized:false.
+Combined browser rail6/candidate6/SimpleJoey4 and deadline/refusal/disposal6 PASS; no external writes. Full portable/build verification recorded in docs/MC_UI_SESSION_RAIL_INTEGRATION_20261012.md and QA receipts. Run40 is this actual integration, unchanged40 cap; other reports/history retained. Run38 real email acceptance remains pending.
 
-Run38 email acceptance cannot be repurposed; distinct increment uses39/40 unchanged cap. Live project creation/source/report registration and dispatch/finalization still need exact grants/capabilities/CAS. No resources/credentials/settings/Production/automatic email. Evidence: docs/MC_TASK_RESUME_HANDOFF_20261012.md. Hierarchy is visible on #workspace; full reference redesign/editor/terminal feeds incomplete. Parent real Email/TOTP acceptance independent and pending.
+Save-only task untouched, finalization live OFF, review executionAuthorized:false; private Owner/AAL2/TOTP/source/CAS and fixed Preview-only scope retained. Production unchanged. Full reference redesign and live editor/terminal feeds incomplete. Exact project creation/finalization permissions, provider atomicity and durable CAS dependencies documented; capacity60 proposal is not implemented.
 
 # Dated prior stage history
 

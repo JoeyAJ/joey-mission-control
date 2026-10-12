@@ -1,0 +1,42 @@
+{
+  "pass": true,
+  "cases": [
+    {
+      "reducedMotion": "no-preference",
+      "mode": "deadline",
+      "pass": true,
+      "noPollRequired": true
+    },
+    {
+      "reducedMotion": "no-preference",
+      "mode": "refusal",
+      "pass": true,
+      "noPollRequired": true
+    },
+    {
+      "reducedMotion": "no-preference",
+      "mode": "dispose",
+      "pass": true,
+      "noPollRequired": true
+    },
+    {
+      "reducedMotion": "reduce",
+      "mode": "deadline",
+      "pass": true,
+      "noPollRequired": true
+    },
+    {
+      "reducedMotion": "reduce",
+      "mode": "refusal",
+      "pass": true,
+      "noPollRequired": true
+    },
+    {
+      "reducedMotion": "reduce",
+      "mode": "dispose",
+      "pass": true,
+      "noPollRequired": true
+    }
+  ],
+  "externalRequests": 0
+}
