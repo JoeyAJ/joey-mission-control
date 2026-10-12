@@ -12,6 +12,7 @@ export async function runWorkbenchFocusQA({page,width,locale,state,ready,refresh
   assert.equal(await brief().getAttribute('data-selected-task-run'),'synthetic-live-fixture');
   assert.equal(await page.locator('[data-selected-task-summary=confirmed]').count(),1);
   assert.equal(await page.locator('[data-run-workbench=events] [data-selected-task-summary]').count(),0);
+  if(process.env.MC_WORKSPACE_RAIL_QA){assert.equal(await page.locator('.run-agent-group').count(),3);assert((await page.locator('.run-agent-group[data-reported-agent="Synthetic Codex"]').innerText()).includes('Synthetic configuration'));assert((await page.locator('.run-latest-preview').innerText()).includes('Synthetic fixture declares development started'));assert.equal(await page.locator('.command-project-source-history').evaluate(n=>n.open),false);}
   if(candidate){assert((await brief().locator('.run-focus-scope').innerText()).includes('University'));assert.equal(await brief().locator('[data-delivery-evidence]').getAttribute('data-joey-acceptance'),'PENDING');}
   assert((await brief().locator('.run-focus-project').innerText()).includes(projectId==='JOEY_ASSET_SYSTEM'?'Joey':'Mission Control'));
   assert((await brief().locator('.selected-task-agent').innerText()).includes('Synthetic Codex'));
@@ -31,7 +32,7 @@ export async function runWorkbenchFocusQA({page,width,locale,state,ready,refresh
   await choose('synthetic-second-run');assert.equal(await brief().getAttribute('data-selected-task-run'),'synthetic-second-run');assert((await brief().locator('.selected-task-agent').innerText()).includes('Synthetic Claude'));assert(!(await brief().locator('.selected-task-date').isVisible()));await choose('synthetic-live-fixture');
  }
  state.reportEvents=[{kind:'blocked',at:Date.now(),summary:'Synthetic blocker: Owner decision required'}];await refresh();await ready();await settle();
- if(!before){assert.equal(await brief().getAttribute('data-current-state'),'blocked');assert(await brief().locator('.selected-task-blocker').isVisible());assert((await brief().innerText()).includes('Synthetic blocker: Owner decision required'));assert(!(await brief().locator('.selected-task-date').isVisible()));}
+ if(!before){assert.equal(await brief().getAttribute('data-current-state'),'blocked');assert(await brief().locator('.selected-task-blocker').isVisible());assert((await brief().innerText()).includes('Synthetic blocker: Owner decision required'));assert(!(await brief().locator('.selected-task-date').isVisible()));if(process.env.MC_WORKSPACE_RAIL_QA){await panel('entries');assert(await page.locator('[data-run-attention=reported-blocker]').isVisible());await page.locator('[data-run-attention=reported-blocker]').focus();await page.keyboard.press('Enter');assert.equal(await detail().getAttribute('data-selected-run'),'synthetic-live-fixture');await panel('context');}}
  await capture('blocked');await choose('synthetic-stale-task');
  if(!before){assert.equal(await brief().getAttribute('data-current-state'),'unconfirmed');assert.equal(await focus().locator('[data-workbench-motion]').count(),0);assert(await brief().isVisible());}
  await capture('dated-task');

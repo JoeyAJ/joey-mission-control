@@ -1,0 +1,3 @@
+// Attention is derived only from current validated declarations, never an approval claim.
+export function reportedAttention(runs,now){return runs.filter(({presentation:p})=>p.freshness==='FRESH'&&['blocked','failed'].includes(p.currentState)&&now-Date.parse(p.eventAt)>=0&&now-Date.parse(p.eventAt)<300000);}
+export const railWords=locale=>locale==='ko'?{review:'Joey 확인',reason:'차단 / 실패 보고',latest:'최근 작업 보고',source:'프로젝트 출처 / 기록'}:locale==='en'?{review:'Joey review',reason:'Reported blocked / failed',latest:'Latest task report',source:'Project source / history'}:{review:'Joey 留意',reason:'回報受阻／失敗',latest:'任務最新回報',source:'專案來源／歷史'};
