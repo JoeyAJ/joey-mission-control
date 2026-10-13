@@ -31,6 +31,11 @@ try{
  const saved=await page.evaluate(()=>JSON.stringify(qa.task));
  await page.locator('[data-development-task-action=new]').click();
  await page.waitForFunction(()=>qa.c.snapshot().selected===null&&!qa.c.snapshot().busy);
+ assert.equal(await page.locator('[data-development-task-action=cloudRefresh]').isDisabled(),true);
+ const blankReads=await page.evaluate(()=>qa.state().reads);
+ await page.locator('[data-development-task-action=cloudRefresh]').evaluate(button=>button.dispatchEvent(new Event('click',{bubbles:true})));
+ assert.equal(await page.evaluate(()=>qa.state().reads),blankReads);
+ assert.equal(await page.evaluate(()=>qa.c.snapshot().selected),null);
  await page.locator('[data-development-task-field=feature]').fill('Synthetic unsaved second task');
  const refresh=page.locator('[data-development-task-action=cloudRefresh]');
  if(await refresh.isEnabled()){
