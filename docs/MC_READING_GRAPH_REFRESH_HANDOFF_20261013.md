@@ -7,6 +7,14 @@ Canonical baseline: `8a045905b31386e4686148c75149ba4d3dcdc266` on `codex/mc-comm
 Candidate branch: `codex/mc-reading-graph-refresh-20261013`. Exact local candidate SHA is supplied in the completion response; this document is part of that commit.
 Acceptance: locally tested implementation; publication and Joey acceptance pending.
 
+## Independent blocking review and bounded correction
+
+Original candidate `9ec1564d9981926d222c9c0f46fafe50f7f5171b` was held, not published. Independent review identified stale graph retention on connected-but-unconfirmed/empty projections and simultaneous reading/unavailable. The replacement centrally withdraws graph DOM, renderer, signature and transient state whenever the patched workbench projection is not confirmed or a terminal error occurs; unavailable excludes loading retention. No auth/report contract, source reader, backend/API or permission change is included.
+
+New `tests/browser/graph-lifecycle-qa.mjs` exercises the production component in local Chromium with a contract-valid synthetic report and controlled read-only subscriptions: connected PARTIAL, MISSING source, NO_REPORTS, repository mismatch, reading plus unavailable, recovery selection/zoom and signout. Thirty transition/recovery cases pass across two widths and three locales, external requests and writes zero. The identical harness reproduces failure on exact original 9ec1564. Full1111, affected app reading6/network6 and rebuilt bundle pass; independent read-only correction review is GO with those checks satisfied. Original bundle/patch remain retained; replacement artifacts and publication receipt are recorded separately in `evidence/mc-graph-corrected-20261013/`.
+
+Joey's 14:41 UTC approval covers the same bounded release, including this necessary correction, to the existing Preview branch/alias only. It does not authorize Production, DB, permissions or feature expansion. Exact replacement SHA and subsequent delivery evidence are supplied in the completion/publication receipt; no success is inferred before remote and Vercel verification.
+
 ## Implemented behavior
 
 - Work view, report timeline and graph now have collapse/expand, enlarge/restore and height resize controls. Resize supports pointer dragging and a keyboard separator (Up/Down/Home/End). Escape restores an enlarged pane; its keyboard Tab traversal stays in that pane. Geometry is held in document/project/track-scoped memory, without private content in URLs or browser storage. Intentional navigation remounts retain pane preferences; data refresh preserves pane DOM, scroll, text selection and focus.
@@ -45,6 +53,6 @@ Local inspectable artifacts (ignored by Git): `evidence/mc-reading-ui-20261013/`
 ## Publication instructions — separate Owner approval
 
 1. Inspect the exact candidate SHA from the completion response and this handoff; verify its single parent is `8a045905b31386e4686148c75149ba4d3dcdc266`. Confirm the canonical branch has not advanced before integration.
-2. Obtain explicit Owner approval for the specific next publication action. If approved, publish the candidate feature branch for review, or integrate this reviewed local commit into the canonical branch using the owner's chosen process. Do not silently rewrite a newer canonical baseline.
+2. Owner approval for this same bounded Preview release was relayed at 14:41 UTC. With independent GO and checks passed, update only `codex/mc-command-center-checkpoint-20261006` by ordinary fast-forward push after confirming its current head is `8a045905b31386e4686148c75149ba4d3dcdc266`. No force push or broad merge. Stop on concurrency or a new blocker.
 3. Deploy/verify only the separately approved Preview target at the reviewed exact SHA, preserving existing source scopes/runtime/security settings. Recheck private Owner reads, real desktop/mobile interaction and the approved logo marker there. Preview READY is not Joey acceptance.
 4. Keep Production unchanged unless separately and explicitly authorized. No automatic intake/approval runtime, database installation or permission grant follows from this UI candidate.

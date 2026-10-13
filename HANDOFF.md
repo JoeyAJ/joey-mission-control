@@ -1,7 +1,7 @@
 # Reading panes, graph and stable refresh — 2026-10-13
 
 Project: MISSION_CONTROL
-Timestamp: 2026-10-13T14:34:27.000Z
+Timestamp: 2026-10-13T14:52:46.000Z
 Task: Implement authorized reading panes, source-backed graph and stable refresh
 Status: LOCAL_VERIFIED_PENDING_PUBLICATION
 Last Developer: Codex
@@ -16,13 +16,15 @@ The exact underlying model identifier was not supplied by the API environment.
 
 Joey explicitly authorized all three UI changes at 13:32 UTC. The local candidate implements resizable/collapsible/enlarged reading panes, source-backed project/Agent/task/outcome graph selection and stable refresh with the existing NexAeon fisheye border marker. Report reading DOM, native selection, focus, scroll and pane preferences persist across data refresh. Existing source/data/security boundaries remain intact.
 
+The original local candidate `9ec1564d9981926d222c9c0f46fafe50f7f5171b` was held by independent review for retained graph content after a connected-but-unconfirmed/empty response. The bounded correction now withdraws DOM, renderer, signature and state together, excludes unavailable reads from loading retention, and verifies recovery with 30 Chromium transition cases. Auth/report contracts and backend behavior remain unchanged.
+
 ## Verification
 
-[Implementation, tests, visual evidence, limitations and separate publication instructions](docs/MC_READING_GRAPH_REFRESH_HANDOFF_20261013.md). Full portable suite: 1111 PASS; local Chromium reading/network/file QA: 18 PASS across desktop/mobile and three locales; build/check PASS. Mac canonical `validate` is unavailable; an obsolete Joey-only browser entry fails identically on canonical baseline. Real Owner/device/served Preview and Joey acceptance remain pending.
+[Implementation, tests, visual evidence, limitations and separate publication instructions](docs/MC_READING_GRAPH_REFRESH_HANDOFF_20261013.md). Full portable suite: 1111 PASS; local Chromium reading/network/file QA: 18 PASS plus 30 lifecycle/recovery cases across desktop/mobile and three locales; build/check PASS. Mac canonical `validate` is unavailable; an obsolete Joey-only browser entry fails identically on canonical baseline. Real Owner/device/served Preview and Joey acceptance remain pending.
 
 ## Next Action
 
-Only local implementation, tests, documentation and commit were authorized here. Nothing was pushed, merged or deployed; Production/Preview, database, grants, credentials, automatic intake/approval runtime, pet diary and AI Interactive Experience Engine remain unchanged. The prior attributed handoff is retained verbatim below.
+Joey approved this bounded release to the existing MC Preview at 14:41 UTC, including the necessary correctness correction. Review and tests passed; safely publish only if canonical HEAD is still the verified `8a045905…`, then verify exact remote SHA, READY and fixed alias. At this document checkpoint nothing has been pushed, merged or deployed; Production/Preview, database, grants, credentials, automatic intake/approval runtime, pet diary and AI Interactive Experience Engine remain unchanged. The prior attributed handoff is retained verbatim below.
 
 ---
 

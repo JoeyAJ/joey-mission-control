@@ -50,6 +50,7 @@ export function mountRunWorkbench({owner,doc=document,projectId,projectName=proj
  copy.addEventListener('click',async()=>{if(busy||disposed)return;const requestGeneration=dialogGeneration;busy=true;purgePacket();copy.disabled=true;status.textContent=handoffWords[4];const current=value=>!disposed&&requestGeneration===dialogGeneration&&dialog.open&&owner.dataset.ownerAuth==='verified'&&value?.projectId===projectId&&(value.track||'BASELINE')===track&&owner.repositoryRunsController?.continuationCurrent(value.repositoryReports);try{const value=await owner.sourceController?.copyContinuation({format:formatTakeoverInstruction,displayPacket:false,verify:current});if(!value||!current(value))return;prepared=value;if(owner.sourceController.root.dataset.copyOutcome==='copied')status.textContent=handoffWords[6];else{instruction.value=formatTakeoverInstruction(value);instruction.hidden=false;status.textContent=handoffWords[7];instruction.focus();instruction.select();}}catch{status.textContent=handoffWords[5];}finally{busy=false;if(!disposed){copy.disabled=false;if(!prepared)status.textContent=handoffWords[5];}}});
  const button=(text,key,kind,action)=>{const b=el('button',text,'run-workbench-item');b.type='button';b.dataset.runSelection=key;b.dataset.runControl=kind;b.setAttribute('aria-pressed',String(key===selected));b.addEventListener('click',action||(()=>{activity.selectEvent(key,latestEvents);paneMotion.request(workbenchSelectionKey(activity.snapshot(latestEvents)));paint();onSelect();}));return b;};
  const clear=()=>{memory.scopes.clear();for(const f of memory.activities.values())f.reset();memory.activities.clear();activity.reset();memory.transitions.clear();for(const d of memory.disclosures.values())d.clear();memory.disclosures.clear();disclosures.clear();for(const m of memory.paneMotion.values()){m.reset();m.disconnect();}memory.paneMotion.clear();paneMotion.reset();};
+ const withdrawGraph=()=>{networkStop();networkStop=()=>{};graphSignature=null;networkState=null;liveHosts.graph.replaceChildren();delete liveHosts.graph.dataset.network;targets.graph.dataset.privateRunGraph='false';};
  function renderPaint(scrollLatest=false){if(disposed)return;clearTimeout(timer);
   for(const [key,n] of Object.entries(hosts))if(key!=='graph')n.replaceChildren();
   if(hosts.focus){hosts.focus.dataset.workbenchState='unconfirmed';hosts.focus.append(renderWorkbenchFocusPlaceholder({doc,locale,projectName,projectId}));}
@@ -125,7 +126,7 @@ export function mountRunWorkbench({owner,doc=document,projectId,projectName=proj
  function paint(scrollLatest=false){
   if(disposed)return;
   const statuses=[sourceView?.status,reportView?.status],auth=owner.dataset.ownerAuth;
-  const loading=auth==='verified'&&statuses.includes('reading')&&!statuses.some(s=>['denied','conflict','closed','unconfigured'].includes(s));
+  const loading=auth==='verified'&&statuses.includes('reading')&&!statuses.some(s=>['denied','conflict','closed','unavailable','unconfigured'].includes(s));
   for(const update of Object.values(updates))update.set(loading);refreshNote.hidden=!loading;
   // Keep the reading surface during a request, qualified as last confirmed. Never
   // retain through auth loss, scope conflict or denial; handoff is still fresh-gated.
@@ -139,7 +140,7 @@ export function mountRunWorkbench({owner,doc=document,projectId,projectName=proj
   try{renderPaint(scrollLatest);}finally{
    for(const [key,n]of Object.entries(liveHosts)){if(key==='graph')continue;const fresh=hosts[key];for(const a of [...n.attributes])if(a.name.startsWith('data-')&&!['data-run-workbench'].includes(a.name)&&!fresh.hasAttribute(a.name))n.removeAttribute(a.name);for(const a of [...fresh.attributes])if(a.name.startsWith('data-'))n.setAttribute(a.name,a.value);patchReadingChildren(n,fresh);delete n.dataset.readingFreshness;}
    hosts=liveHosts;
-   if(auth!=='verified'||statuses.some(s=>['denied','conflict','closed','unconfigured','unavailable'].includes(s))){networkStop();graphSignature=null;liveHosts.graph.replaceChildren();delete liveHosts.graph.dataset.network;}
+   if(auth!=='verified'||liveHosts.events.dataset.workbenchState!=='confirmed'||statuses.some(s=>['denied','conflict','closed','unconfigured','unavailable'].includes(s)))withdrawGraph();
    disclosures.restore(disclosureRoot);
    for(const {n,top,left}of positions)if(n.parentElement){n.parentElement.scrollTop=top;n.parentElement.scrollLeft=left;}
    if(graphFocus){const control=[...liveHosts.graph.querySelectorAll('button,[data-network-viewport]')].find(n=>graphFocus.node?n.dataset.networkNode===graphFocus.node:graphFocus.zoom?n.dataset.networkZoomControl===graphFocus.zoom:n.dataset.networkViewport===graphFocus.viewport);control?.focus({preventScroll:true});}
