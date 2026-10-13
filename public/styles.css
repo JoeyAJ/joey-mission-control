@@ -1024,3 +1024,21 @@ body[data-joey-simple=true] .joey-takeover[data-hierarchy=compact] .joey-workben
 #workspace .command-module-number{font:10px ui-monospace,SFMono-Regular,monospace;color:var(--mc-periwinkle,#818cf8)}#workspace .command-module-tabs button[aria-selected=true]{border-color:var(--mc-cyan,#24d3ef);background:linear-gradient(115deg,#24d3ef12,#818cf80d),var(--mc-charcoal,#1a1a19);box-shadow:inset 0 -2px #24d3ef55}#workspace .command-module-tabs button:focus-visible{outline:2px solid var(--mc-cyan,#24d3ef);outline-offset:2px}
 @media(max-width:768px){.joey-create-area{padding:14px}.joey-create-area>p{line-height:1.5}.joey-create-grid{gap:8px}.joey-create-grid>[data-new-project]>[data-new-project-open],.joey-create-grid>[data-development-task]>[data-development-task-open]{padding:9px 8px;font-size:12px;min-height:48px}.joey-module-nav{gap:7px}.joey-module-button{gap:7px;padding:10px 8px;min-height:46px;justify-content:center}.joey-module-label{font-size:12px}.joey-module-number{font-size:9px}.joey-takeover .joey-command-activity{border-radius:16px}.joey-command-activity,.joey-task-details,.joey-project-records{scroll-margin-top:12px}#workspace .command-module-tabs{display:flex;padding:6px;gap:6px}#workspace .command-module-tabs button{min-height:44px;max-width:none;padding:7px 4px;font-size:11px;gap:5px}}
 @media(prefers-reduced-motion:reduce){.joey-module-button{transition:none;transform:none}.joey-command-activity,.joey-task-details,.joey-project-records{scroll-behavior:auto}}
+
+/* Daily navigation reuses the existing palette and controls; engineering tools stay available. */
+body.joey-cockpit-mode{display:block}
+body.joey-cockpit-mode>nav.daily-navigation,body[data-joey-simple=true]>nav.daily-navigation{display:flex!important;position:relative;inset:auto;width:auto;max-width:1100px;margin:0 auto;padding:8px 24px;gap:12px;align-items:flex-start;overflow:visible;z-index:10}
+body.joey-cockpit-mode main{margin:0 auto;max-width:1500px}
+.top-command-nav{display:none!important}
+#advanced-navigation{margin-left:auto;min-width:0}#advanced-navigation>summary{min-height:44px;padding:12px;cursor:pointer;box-sizing:border-box}
+.advanced-navigation-links{display:flex;flex-wrap:wrap;gap:8px;max-width:650px}.advanced-navigation-links button{min-height:44px}
+.joey-takeover[data-hierarchy=daily]{display:flex;flex-direction:column;align-items:stretch;gap:20px}
+.joey-takeover[data-hierarchy=daily] .joey-module-nav{order:0;position:static;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));width:100%;max-width:none;box-sizing:border-box;gap:8px}
+.joey-takeover[data-hierarchy=daily] .joey-module-button{flex:1;min-width:0;min-height:48px}
+.joey-takeover[data-hierarchy=daily] :is(.joey-daily-projects,.joey-command-activity,.joey-daily-decisions){width:100%;box-sizing:border-box;min-width:0;padding:20px;border:1px solid var(--mc-outline);border-radius:14px;background:var(--mc-charcoal)}
+.joey-takeover[data-hierarchy=daily] :is(.joey-project-picker,.joey-sites-row){display:block;min-width:0;margin:12px 0;padding:0;border:0}
+.joey-takeover[data-hierarchy=daily] .joey-command-activity{min-height:0}
+.joey-daily-decisions .joey-live-overview{margin:12px 0}.joey-daily-decisions button{min-height:44px}
+.joey-daily-advanced{padding:16px;border:1px solid var(--mc-outline);border-radius:14px;min-width:0}.joey-daily-advanced>summary{min-height:44px;cursor:pointer}
+.joey-daily-advanced[open]>*:not(summary){margin-top:16px}.joey-daily-advanced .joey-workbench-entry{min-height:0}
+@media(max-width:768px){body.joey-cockpit-mode>nav.daily-navigation,body[data-joey-simple=true]>nav.daily-navigation{padding:8px 18px}.daily-navigation{flex-wrap:wrap}#advanced-navigation[open]{width:100%} .advanced-navigation-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.joey-takeover[data-hierarchy=daily] .joey-module-button{font-size:13px;padding:10px 6px}.joey-takeover[data-hierarchy=daily] .joey-module-number{display:none}.joey-daily-decisions .joey-live-overview{grid-template-columns:1fr}.joey-takeover[data-hierarchy=daily] :is(.joey-daily-projects,.joey-command-activity,.joey-daily-decisions){padding:16px}}
