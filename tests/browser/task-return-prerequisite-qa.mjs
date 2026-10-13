@@ -1,0 +1,52 @@
+// Real task controller/view and Chromium; synthetic Owner/cloud only.
+import {build} from 'esbuild';
+import {createRequire} from 'node:module';
+import http from 'node:http';
+import assert from 'node:assert/strict';
+const require=createRequire(import.meta.url);
+const {chromium}=require(process.env.MC_PLAYWRIGHT_MODULE||(process.env.CODEX_PRIMARY_RUNTIME_NODE_MODULES+'/playwright'));
+const viewModule=process.env.MC_TASK_VIEW_OVERRIDE||'./src/tasks/development-task-view.mjs';
+const bundle=await build({stdin:{resolveDir:process.cwd(),contents:`
+import {mountDevelopmentTask} from ${JSON.stringify(viewModule)};
+import {createDevelopmentTasks} from './src/tasks/development-task-controller.mjs';
+import {createDevelopmentTask} from './src/tasks/development-task.mjs';
+let auth='verified',active=true,rows=[],reads=0,writes=0;
+const task=createDevelopmentTask({projectId:'MISSION_CONTROL',track:'BASELINE'},{feature:'Synthetic return-to-task regression',acceptance:'Recover same identity',constraints:'No actual execution'},{taskId:'task_'+'f'.repeat(24)});
+rows=[task];
+const c=createDevelopmentTasks({projectId:'MISSION_CONTROL',ownerSubject:'synthetic-owner',inspectIdentity:async()=>({subject:'synthetic-owner',status:'authenticated',role:'OWNER',aal:'aal2',verified:true,sessionActive:active,memberActive:active,projects:['NEXAEON'],expiresAt:Date.now()+60000}),source:{snapshot:()=>({status:'unconfigured'}),prepareContinuation:async()=>null,copyContinuation:async()=>null},reports:{snapshot:()=>({status:'unconfirmed'})},client:{list:async()=>{reads++;return {persistence:'OWNER_RPC_AVAILABLE',tasks:structuredClone(rows)}},save:async()=>{writes++;throw Error('UNEXPECTED_WRITE')}}});
+const view=mountDevelopmentTask({controller:c,getAuthState:()=>auth,requireSignIn:()=>auth==='verified'});document.body.append(view.root);
+globalThis.qa={view,c,task,state:()=>({reads,writes}),setAuth:value=>auth=value,setActive:value=>active=value,empty:()=>rows=[]};
+`},bundle:true,format:'iife',write:false,platform:'browser'});
+const server=http.createServer((req,res)=>{res.setHeader('Content-Type',req.url==='/bundle.js'?'text/javascript':'text/html');res.end(req.url==='/bundle.js'?bundle.outputFiles[0].text:'<!doctype html><body><script src="/bundle.js"></script></body>');});
+await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
+const origin='http://127.0.0.1:'+server.address().port;
+const browser=await chromium.launch({headless:true,executablePath:process.env.MC_CHROMIUM_EXECUTABLE||'/usr/bin/chromium'});let externalRequests=0;
+try{
+ const page=await browser.newPage();page.on('pageerror',e=>console.error(e.message));
+ await page.route('**/*',route=>{if(!route.request().url().startsWith(origin)){externalRequests++;return route.abort();}return route.continue();});
+ await page.goto(origin);
+ await page.locator('[data-development-task-open]').click();
+ await page.waitForFunction(()=>qa.c.snapshot().cloud.selectedConfirmed&&qa.c.snapshot().status==='open'&&!qa.c.snapshot().busy,null,{timeout:3000});
+ const id=await page.evaluate(()=>qa.c.snapshot().selected);
+ await page.evaluate(()=>{qa.setAuth('checking');qa.view.clear();});
+ assert.equal(await page.locator('[data-development-task-field=feature]').inputValue(),'');
+ assert.equal(await page.evaluate(()=>qa.c.snapshot().tasks.length),0);
+ await page.evaluate(()=>{qa.setAuth('verified');qa.view.authChanged();});
+ await page.waitForFunction(()=>qa.c.snapshot().cloud.selectedConfirmed&&qa.c.snapshot().status==='open'&&!qa.c.snapshot().busy,null,{timeout:3000});
+ assert.equal(await page.evaluate(()=>qa.c.snapshot().selected),id);
+ assert.equal(await page.locator('[data-development-task-field=feature]').inputValue(),'Synthetic return-to-task regression');
+ await page.locator('[data-development-task-action=copy]').click();
+ await page.waitForFunction(()=>document.body.textContent.includes('這次沒有複製完整指令'));
+ assert.equal(await page.evaluate(()=>qa.c.snapshot().prepared),null);
+ await page.evaluate(()=>{qa.setActive(false);qa.view.clear();qa.view.authChanged();});
+ await page.waitForFunction(()=>qa.c.snapshot().status==='denied'&&!qa.c.snapshot().busy);
+ assert.equal(await page.evaluate(()=>qa.c.snapshot().tasks.length),0);
+ await page.evaluate(()=>{qa.setActive(true);qa.empty();qa.view.clear();qa.view.authChanged();});
+ await page.waitForFunction(()=>qa.c.snapshot().status==='open'&&!qa.c.snapshot().busy);
+ assert.equal(await page.locator('[data-development-task-action=cloudRefresh]').isEnabled(),true);
+ await page.locator('[data-development-task-action=cloudRefresh]').click();
+ await page.waitForFunction(()=>!qa.c.snapshot().busy);
+ assert.equal(await page.evaluate(()=>qa.state().writes),0);
+ assert.equal(externalRequests,0);
+ console.log(JSON.stringify({qualification:'LOCAL_REAL_CONTROLLER_VIEW_SYNTHETIC_OWNER_CLOUD',sameIdentityRestored:true,hiddenPrivateStateCleared:true,revokedOwnerNotRestored:true,copyFailureVisible:true,emptyListRefreshAvailable:true,externalRequests,writes:0}));
+}finally{await browser.close();await new Promise(resolve=>server.close(resolve));}
