@@ -28,6 +28,27 @@ try{
  await page.locator('[data-development-task-open]').click();
  await page.waitForFunction(()=>qa.c.snapshot().cloud.selectedConfirmed&&qa.c.snapshot().status==='open'&&!qa.c.snapshot().busy,null,{timeout:3000});
  const id=await page.evaluate(()=>qa.c.snapshot().selected);
+ const saved=await page.evaluate(()=>JSON.stringify(qa.task));
+ await page.locator('[data-development-task-action=new]').click();
+ await page.waitForFunction(()=>qa.c.snapshot().selected===null&&!qa.c.snapshot().busy);
+ await page.locator('[data-development-task-field=feature]').fill('Synthetic unsaved second task');
+ const refresh=page.locator('[data-development-task-action=cloudRefresh]');
+ if(await refresh.isEnabled()){
+  await refresh.click();await page.waitForFunction(()=>!qa.c.snapshot().busy);
+  await page.locator('[data-development-task=true] form button').click();await page.waitForFunction(()=>!qa.c.snapshot().busy);
+  console.log(JSON.stringify({beforeFixRetargetedOriginal:await page.evaluate(id=>qa.c.snapshot().selected===id,id),beforeFixChangedExistingLocalRequest:await page.evaluate(saved=>JSON.stringify(qa.c.snapshot().tasks.find(t=>t.taskId===qa.task.taskId))!==saved,saved),realCloudWrites:0}));
+ }
+ assert.equal(await refresh.isDisabled(),true);
+ const reads=await page.evaluate(()=>qa.state().reads);
+ await refresh.evaluate(button=>button.dispatchEvent(new Event('click',{bubbles:true})));
+ assert.equal(await page.evaluate(()=>qa.state().reads),reads);
+ assert.equal(await page.evaluate(()=>qa.c.snapshot().selected),null);
+ assert.equal(await page.locator('[data-development-task-field=feature]').inputValue(),'Synthetic unsaved second task');
+ await page.locator('[data-development-task=true] form button').click();
+ await page.waitForFunction(()=>!qa.c.snapshot().busy);
+ assert.notEqual(await page.evaluate(()=>qa.c.snapshot().selected),id);
+ assert.equal(await page.evaluate(saved=>JSON.stringify(qa.c.snapshot().tasks.find(t=>t.taskId===qa.task.taskId))===saved,saved),true);
+ assert.equal(await page.evaluate(()=>JSON.stringify(qa.task)),saved);
  await page.evaluate(()=>{qa.setAuth('checking');qa.view.clear();});
  assert.equal(await page.locator('[data-development-task-field=feature]').inputValue(),'');
  assert.equal(await page.evaluate(()=>qa.c.snapshot().tasks.length),0);
@@ -48,5 +69,5 @@ try{
  await page.waitForFunction(()=>!qa.c.snapshot().busy);
  assert.equal(await page.evaluate(()=>qa.state().writes),0);
  assert.equal(externalRequests,0);
- console.log(JSON.stringify({qualification:'LOCAL_REAL_CONTROLLER_VIEW_SYNTHETIC_OWNER_CLOUD',sameIdentityRestored:true,hiddenPrivateStateCleared:true,revokedOwnerNotRestored:true,copyFailureVisible:true,emptyListRefreshAvailable:true,externalRequests,writes:0}));
+ console.log(JSON.stringify({qualification:'LOCAL_REAL_CONTROLLER_VIEW_SYNTHETIC_OWNER_CLOUD',sameIdentityRestored:true,hiddenPrivateStateCleared:true,revokedOwnerNotRestored:true,copyFailureVisible:true,emptyListRefreshAvailable:true,unsavedNewTaskCannotRetargetExisting:true,externalRequests,writes:0}));
 }finally{await browser.close();await new Promise(resolve=>server.close(resolve));}

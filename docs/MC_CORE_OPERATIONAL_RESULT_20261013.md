@@ -27,3 +27,9 @@ No canonical ref change, Preview/Production deployment, merge, task insertion, n
 ## Frozen nonblocking backlog
 
 UI polish/animation/refactors; auto-provisioning and automatic dispatch/merge/deploy; dynamic project runtime/grants; new AI Interactive Experience Engine until its MD is supplied. These do not extend this review slice.
+
+## P0 independent review correction
+
+The earlier empty-list refresh change allowed a dirty, unselected Another task form to refresh. The controller could auto-select an existing cloud task while the form retained new input; keeping the draft then revised that existing request. A Chromium counterexample reproduced both retargeting and local request replacement, with zero real cloud writes. Refresh is now disabled and refused in the event handler whenever the form is dirty. The new draft, original cloud record and its local request are preserved; after keeping the draft, it has a distinct ID. Blank empty-list refresh and authorized return recovery still pass.
+
+61 focused regressions, the extended Chromium counterexample/regression, build and whitespace checks pass. The original completed run is immutable: this correction uses task-bound successor mc-core-task6476-v3-refresh-p0-20261013, with the original run as predecessor, same real task/revision/digest and a new code SHA. Do not use the old result as approval of the repaired head. No CI PASS is claimed.

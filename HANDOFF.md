@@ -16,7 +16,7 @@ Work ref: codex/mc-core-operational-task-6476-v3-20261013
 
 Joey's current saved revision3 exactly matches the authenticated Core Operational request. Fresh DB metadata and immutable Git source were checked before this actual Codex execution. Earlier task contents are not recoverable and were not executed. The original cloud task was preserved; no duplicate task or administrative task write was made.
 
-Returning to an already-open task panel now rechecks Owner authorization and reads back the same cloud task after background privacy clearing. Failed copy explicitly says no complete handoff was copied. Cloud-connected preparation refuses unsaved requirements. Empty-list refresh remains available. Task/review digests and Owner/AAL2/live-session checks are retained.
+Returning to an already-open task panel now rechecks Owner authorization and reads back the same cloud task after background privacy clearing. Failed copy explicitly says no complete handoff was copied. Cloud-connected preparation refuses unsaved requirements. Empty-list refresh remains available. Refresh is refused while form edits are unsaved, including an unselected Another task draft; it cannot silently bind new input to an existing task. Task/review digests and Owner/AAL2/live-session checks are retained.
 
 Unmerged Preview references can be exported against a fresh matching approved task/code/review without inventing merge evidence. These are operator-supplied references, current-session export only, not cloud-journal saved or independently verified. The installed merge-bound journal contract is unchanged. This creates no action grant, provider call, merge, deployment or acceptance.
 
@@ -30,7 +30,7 @@ Production remains at8b4945b16a0b23f2e72033aa976fa34f94eabec0. CONNECT403 blocke
 
 ## Verification
 
-Actual focused tests, browser regression, build, published task-bound report and draft PR are recorded in docs/MC_CORE_OPERATIONAL_RESULT_20261013.md and the immutable mc/progress report for run mc-core-task6476-v3-20261013. Local browser tests use synthetic Auth/cloud; they are separate from this real saved task and actual Git report/PR publication.
+Actual focused tests, browser regression, build, published task-bound report and draft PR are recorded in docs/MC_CORE_OPERATIONAL_RESULT_20261013.md and the immutable mc/progress report for successor run mc-core-task6476-v3-refresh-p0-20261013 (predecessor mc-core-task6476-v3-20261013). Local browser tests use synthetic Auth/cloud; they are separate from this real saved task and actual Git report/PR publication.
 
 ## Next Action
 
