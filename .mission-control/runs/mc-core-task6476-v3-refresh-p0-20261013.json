@@ -39,6 +39,88 @@
       "summary": "Actual Codex P0 correction of independently reproduced dirty new-task refresh retargeting; exact saved revision3/digest remains unchanged. Preserve predecessor terminal report.",
       "result": null,
       "delivery": null
+    },
+    {
+      "id": "mc-core-p0-result-20261013",
+      "sequence": 2,
+      "eventAt": "2026-10-13T03:26:22.436Z",
+      "kind": "completed",
+      "summary": "P0 dirty new-task refresh fixed in PR #1. Browser counterexample reproduced original retarget/overwrite; repaired guard preserves draft and existing request. 61 regressions and build pass.",
+      "result": {
+        "codeSha": "00faa58d2a284bf6ce8a82fec5db4c301195c03a",
+        "tests": [
+          {
+            "name": "61 focused task/requirements/review/closure regressions",
+            "outcome": "PASS"
+          },
+          {
+            "name": "Chromium P0 counterexample/regression: dirty refresh blocked; distinct new task ID; original preserved",
+            "outcome": "PASS"
+          },
+          {
+            "name": "Build and diff whitespace on exact repaired published tree",
+            "outcome": "PASS"
+          }
+        ],
+        "nextSteps": "Review updated draft PR https://github.com/JoeyAJ/joey-mission-control/pull/1 and successor run mc-core-task6476-v3-refresh-p0-20261013. Parent reviewer focused rereview first; Joey refreshes MC PR/CI and records this new exact code/report-bound decision. Original terminal report remains historical, not approval of new head. GitHub has zero CI checks/statuses, no CI PASS claimed. Stop before merge/deploy.",
+        "handoff": {
+          "path": "HANDOFF.md",
+          "commitSha": "00faa58d2a284bf6ce8a82fec5db4c301195c03a"
+        }
+      },
+      "delivery": {
+        "qualification": "AGENT_REPORTED",
+        "scope": {
+          "projectId": "MISSION_CONTROL",
+          "track": "BASELINE",
+          "repositoryId": "JoeyAJ/joey-mission-control",
+          "runId": "mc-core-task6476-v3-refresh-p0-20261013",
+          "taskId": "task_6476f43c9e1e5082f5c3c638",
+          "workRef": "codex/mc-core-operational-task-6476-v3-20261013",
+          "codeSha": "00faa58d2a284bf6ce8a82fec5db4c301195c03a"
+        },
+        "deployment": {
+          "status": "PENDING",
+          "target": {
+            "provider": "vercel",
+            "project": "joey-mission-control",
+            "environment": "preview"
+          },
+          "id": null,
+          "deployedSha": null,
+          "url": null,
+          "observedAt": "2026-10-13T03:26:22.436Z",
+          "evidence": "P0 repaired head in private draft PR #1 awaits focused rereview and Joey exact MC decision. No merge/deployment performed.",
+          "notRequired": null
+        },
+        "verification": {
+          "status": "NOT_RECORDED",
+          "method": null,
+          "checkedAt": null,
+          "deploymentId": null,
+          "checkedSha": null,
+          "url": null,
+          "evidence": null,
+          "notRequired": null
+        },
+        "handoff": {
+          "status": "CURRENT",
+          "path": "HANDOFF.md",
+          "commitSha": "00faa58d2a284bf6ce8a82fec5db4c301195c03a",
+          "checkedAt": "2026-10-13T03:26:22.436Z",
+          "evidence": "Task-bound current Handoff in exact tested repaired tree; P0 and successor run recorded, actual release/Owner acceptance pending."
+        },
+        "data": {
+          "status": "NOT_REQUIRED",
+          "version": null,
+          "checkedAt": "2026-10-13T03:26:22.436Z",
+          "evidence": null,
+          "notRequired": {
+            "policy": "MC_NO_DATA_CHANGE",
+            "reason": "This focused repair performs no real task overwrite, database, SQL, grants or credential changes."
+          }
+        }
+      }
     }
   ]
 }
