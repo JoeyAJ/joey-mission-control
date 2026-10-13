@@ -1,0 +1,24 @@
+// Geometry only, scoped to a document/project/track; no private content in storage.
+const memories=new WeakMap();
+export function mountReadingPanes({root,layout,locale='zh-TW',scope}){
+ const doc=root.ownerDocument,cache=memories.get(doc)||new Map();memories.set(doc,cache);
+ const state=cache.get(scope)||{sizes:{},collapsed:{},focus:null};cache.set(scope,state);
+ const labels=locale==='en'?['Work view','Report timeline','Graph','Collapse','Expand','Enlarge','Restore','Resize']:locale==='ko'?['작업 보기','보고 타임라인','관계 그래프','접기','펼치기','확대','복원','크기 조절']:['工作視圖','回報 Timeline','關聯圖','收合','展開','放大閱讀','還原','調整尺寸'];
+ const panes=[root.querySelector('.command-focus'),root.querySelector('.command-events'),root.querySelector('.command-graph')],cleanups=[];let drag=null;
+ const apply=()=>{root.dataset.readingFocus=state.focus||'';for(const [i,p] of panes.entries()){if(!p)continue;p.dataset.readingPane=String(i);p.dataset.collapsed=String(!!state.collapsed[i]);const size=state.sizes[i];if(size){p.style.setProperty('--reading-height',size+'px');p.querySelector('[data-pane-resize]')?.setAttribute('aria-valuenow',String(size));}p.querySelector('[data-pane-collapse]').textContent=labels[state.collapsed[i]?4:3];p.querySelector('[data-pane-collapse]').setAttribute('aria-expanded',String(!state.collapsed[i]));p.querySelector('[data-pane-enlarge]').textContent=labels[state.focus===String(i)?6:5];p.querySelector('[data-pane-enlarge]').setAttribute('aria-pressed',String(state.focus===String(i)));}if(state.sizes[1])layout.style.setProperty('--timeline-height',state.sizes[1]+'px');};
+ for(const [i,p] of panes.entries()){if(!p)continue;
+  const bar=doc.createElement('div');bar.className='reading-pane-controls';const title=doc.createElement('span');title.textContent=labels[i];bar.append(title);
+  const control=(key,action)=>{const b=doc.createElement('button');b.type='button';b.dataset[key]=String(i);b.addEventListener('click',action);bar.append(b);return b;};
+  control('paneCollapse',()=>{state.collapsed[i]=!state.collapsed[i];if(state.collapsed[i]&&state.focus===String(i))state.focus=null;apply();});
+  control('paneEnlarge',()=>{state.focus=state.focus===String(i)?null:String(i);state.collapsed[i]=false;apply();});p.prepend(bar);
+  const handle=doc.createElement('div');handle.className='reading-pane-resize';handle.tabIndex=0;handle.setAttribute('role','separator');handle.setAttribute('aria-orientation','horizontal');handle.setAttribute('aria-label',labels[i]+' · '+labels[7]);handle.setAttribute('aria-valuemin','120');handle.setAttribute('aria-valuemax','700');handle.dataset.paneResize=String(i);p.append(handle);
+  const resize=value=>{const mobile=doc.defaultView.matchMedia('(max-width:768px)').matches,available=i===0?p.getBoundingClientRect().height+layout.getBoundingClientRect().height-180:i===1?layout.getBoundingClientRect().height-(mobile?0:120):p.parentElement.getBoundingClientRect().height-44,max=Math.max(120,Math.min(700,Math.floor(available)));handle.setAttribute('aria-valuemax',String(max));state.sizes[i]=Math.round(Math.max(120,Math.min(max,value)));handle.setAttribute('aria-valuenow',String(state.sizes[i]));apply();};
+  handle.addEventListener('focus',()=>handle.setAttribute('aria-valuenow',String(state.sizes[i]||Math.round(p.getBoundingClientRect().height))));
+  handle.addEventListener('keydown',e=>{if(['ArrowUp','ArrowDown','Home','End'].includes(e.key)){e.preventDefault();resize(e.key==='Home'?120:e.key==='End'?700:(state.sizes[i]||p.getBoundingClientRect().height)+(e.key==='ArrowUp'?-24:24));}});
+  handle.addEventListener('pointerdown',e=>{if(e.button!==0)return;e.preventDefault();drag={id:e.pointerId,y:e.clientY,size:p.getBoundingClientRect().height};handle.setPointerCapture(e.pointerId);});
+  handle.addEventListener('pointermove',e=>{if(drag?.id===e.pointerId)resize(drag.size+e.clientY-drag.y);});
+  const end=e=>{if(drag?.id===e.pointerId){drag=null;if(handle.hasPointerCapture(e.pointerId))handle.releasePointerCapture(e.pointerId);}};handle.addEventListener('pointerup',end);handle.addEventListener('pointercancel',end);cleanups.push(()=>{if(drag&&handle.hasPointerCapture(drag.id))handle.releasePointerCapture(drag.id);});
+ }
+ const escape=e=>{if(e.key==='Escape'&&state.focus){state.focus=null;apply();}else if(e.key==='Tab'&&state.focus){const p=panes[Number(state.focus)],items=[...p.querySelectorAll('button,summary,select,[tabindex="0"]')].filter(n=>!n.disabled&&n.getClientRects().length),first=items[0],last=items.at(-1);if(e.shiftKey&&doc.activeElement===first||!e.shiftKey&&doc.activeElement===last){e.preventDefault();(e.shiftKey?last:first)?.focus({preventScroll:true});}}};root.addEventListener('keydown',escape);apply();
+ return{dispose(){cleanups.forEach(f=>f());drag=null;root.removeEventListener('keydown',escape);}};
+}

@@ -574,7 +574,7 @@ body[data-joey-simple=true] .utility-menu>summary{min-height:44px;box-sizing:bor
 @media(max-width:768px){.run-file-navigation select{min-height:44px;font-size:13px}.run-file-navigation label{font-size:13px}.run-file-navigation .run-workbench-item{margin:7px 0}}
 .run-workbench-handoff{width:min(640px,calc(100vw - 40px));max-height:80vh;overflow:auto;box-sizing:border-box;background:#15180f;color:#d5d5ba;border:1px solid #928c5b;border-radius:8px;padding:20px}.run-workbench-handoff::backdrop{background:#000a}.run-workbench-handoff button{min-height:44px;margin:5px;padding:8px 14px}.run-workbench-handoff textarea{width:100%;box-sizing:border-box;min-height:220px;color:inherit;background:#090d08;white-space:pre-wrap}
 #workspace .run-workbench-graph .run-workbench-item{position:relative;left:auto;top:auto;transform:none;text-align:left;max-width:none}
-#workspace .command-graph[data-private-run-graph=true]>:not([data-run-workbench]),#workspace .command-inspector[data-private-run-details=true]>:not([data-run-workbench]){display:none}
+#workspace .command-graph[data-private-run-graph=true]>:not([data-run-workbench],.reading-pane-controls,.reading-pane-resize,.region-update-marker),#workspace .command-inspector[data-private-run-details=true]>:not([data-run-workbench]){display:none}
 
 .joey-activity-events p{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .selected-task-brief{min-width:0;padding:10px 0;color:inherit;overflow-wrap:anywhere}.selected-task-brief>small{color:#aab899;letter-spacing:.04em}.selected-task-agent{font-weight:700;color:#e3ddac;margin:6px 0}.selected-task-title{font-size:18px;line-height:1.4;margin:6px 0;white-space:normal;overflow-wrap:anywhere}.selected-task-date{font-size:12px;line-height:1.5;color:#aab899;margin:6px 0}.selected-task-date time{display:block}.selected-task-delivery{border-top:1px solid #475339;border-bottom:1px solid #475339;padding:10px 0;margin:10px 0}.selected-task-delivery strong,.selected-task-delivery small{display:block}.selected-task-delivery small{font-size:11px;line-height:1.5;color:#aab899;margin-top:4px}.selected-task-delivery dl{display:grid;grid-template-columns:auto 1fr;gap:5px 14px;font-size:13px;margin:8px 0 0}.selected-task-delivery dt{color:#aab899}.selected-task-delivery dd{margin:0;min-width:0}.selected-task-latest,.selected-task-next{font-size:13px;line-height:1.5;margin:8px 0;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}.selected-task-brief h5{font-size:13px;margin:12px 0 4px}.selected-task-brief[data-current-state=blocked],.selected-task-brief[data-current-state=failed]{border-left:3px solid #d9ac67;padding-left:10px}.project-handoff-scope{min-width:0;border-top:1px solid #67734f;padding-top:10px;margin:8px 0 12px}.project-handoff-scope h4{font-size:15px;margin:4px 0}.project-handoff-scope>p,.project-handoff-scope>small{font-size:12px;line-height:1.5;color:#aab899;margin:6px 0}.project-handoff-scope .joey-simple-primary{width:100%;margin:8px 0}.project-handoff-scope .joey-simple-hint{font-size:12px}.joey-mobile-activity .selected-task-title{display:block;-webkit-line-clamp:unset}.joey-selected-task:empty{display:none}
@@ -1026,8 +1026,8 @@ body[data-joey-simple=true] .joey-takeover[data-hierarchy=compact] .joey-workben
 @media(prefers-reduced-motion:reduce){.joey-module-button{transition:none;transform:none}.joey-command-activity,.joey-task-details,.joey-project-records{scroll-behavior:auto}}
 
 /* Daily navigation reuses the existing palette and controls; engineering tools stay available. */
-body.joey-cockpit-mode{display:block}
-body.joey-cockpit-mode>nav.daily-navigation,body[data-joey-simple=true]>nav.daily-navigation{display:flex!important;position:relative;inset:auto;width:auto;max-width:1100px;margin:0 auto;padding:8px 24px;gap:12px;align-items:flex-start;overflow:visible;z-index:10}
+body.joey-cockpit-mode:not([data-active-module=workspace]){display:block}
+body.joey-cockpit-mode:not([data-active-module=workspace])>nav.daily-navigation,body[data-joey-simple=true]>nav.daily-navigation{display:flex!important;position:relative;inset:auto;width:auto;max-width:1100px;margin:0 auto;padding:8px 24px;gap:12px;align-items:flex-start;overflow:visible;z-index:10}
 body.joey-cockpit-mode main{margin:0 auto;max-width:1500px}
 .top-command-nav{display:none!important}
 #advanced-navigation{margin-left:auto;min-width:0}#advanced-navigation>summary{min-height:44px;padding:12px;cursor:pointer;box-sizing:border-box}
@@ -1041,4 +1041,57 @@ body.joey-cockpit-mode main{margin:0 auto;max-width:1500px}
 .joey-daily-decisions .joey-live-overview{margin:12px 0}.joey-daily-decisions button{min-height:44px}
 .joey-daily-advanced{padding:16px;border:1px solid var(--mc-outline);border-radius:14px;min-width:0}.joey-daily-advanced>summary{min-height:44px;cursor:pointer}
 .joey-daily-advanced[open]>*:not(summary){margin-top:16px}.joey-daily-advanced .joey-workbench-entry{min-height:0}
-@media(max-width:768px){body.joey-cockpit-mode>nav.daily-navigation,body[data-joey-simple=true]>nav.daily-navigation{padding:8px 18px}.daily-navigation{flex-wrap:wrap}#advanced-navigation[open]{width:100%} .advanced-navigation-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.joey-takeover[data-hierarchy=daily] .joey-module-button{font-size:13px;padding:10px 6px}.joey-takeover[data-hierarchy=daily] .joey-module-number{display:none}.joey-daily-decisions .joey-live-overview{grid-template-columns:1fr}.joey-takeover[data-hierarchy=daily] :is(.joey-daily-projects,.joey-command-activity,.joey-daily-decisions){padding:16px}}
+@media(max-width:768px){body.joey-cockpit-mode:not([data-active-module=workspace])>nav.daily-navigation,body[data-joey-simple=true]>nav.daily-navigation{padding:8px 18px}.daily-navigation{flex-wrap:wrap}#advanced-navigation[open]{width:100%} .advanced-navigation-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.joey-takeover[data-hierarchy=daily] .joey-module-button{font-size:13px;padding:10px 6px}.joey-takeover[data-hierarchy=daily] .joey-module-number{display:none}.joey-daily-decisions .joey-live-overview{grid-template-columns:1fr}.joey-takeover[data-hierarchy=daily] :is(.joey-daily-projects,.joey-command-activity,.joey-daily-decisions){padding:16px}}
+
+/* Reading geometry is user controlled and independent of report payload size. */
+#workspace .command-layout{transition:none}
+#workspace [data-reading-pane]{position:relative;min-width:0;overscroll-behavior:contain;overflow-anchor:none}
+#workspace .reading-pane-controls{display:flex;align-items:center;gap:6px;padding:6px 8px;background:var(--mc-charcoal);position:sticky;top:0;z-index:2;min-height:38px}
+#workspace .reading-pane-controls>span{flex:1;font-size:11px;color:var(--mc-muted)}
+#workspace .reading-pane-controls button{position:static;transform:none;min-height:32px;padding:4px 8px;width:auto;font-size:11px;border:1px solid var(--mc-outline);border-radius:7px;background:var(--mc-charcoal);color:var(--mc-text)}
+#workspace .reading-pane-resize{height:12px;min-height:12px;cursor:ns-resize;touch-action:none;position:sticky;bottom:0;background:var(--mc-charcoal);z-index:2;display:flex;align-items:center;justify-content:center}
+#workspace .reading-pane-resize::after{content:'';width:46px;height:3px;border-radius:3px;background:var(--mc-outline)}
+#workspace [data-reading-pane][data-collapsed=true]>*:not(.reading-pane-controls,.region-update-marker){display:none!important}
+#workspace [data-reading-pane][data-collapsed=true]{min-height:44px!important;max-height:44px!important;height:44px!important;overflow:hidden!important;flex:0 0 44px!important}
+#workspace .command-focus[style*="--reading-height"]{height:var(--reading-height);overflow:auto}
+#workspace .command-graph[style*="--reading-height"]{flex:0 0 var(--reading-height)!important;height:var(--reading-height);min-height:120px!important;overflow:auto!important}
+@media(min-width:769px){#workspace .command-layout[style*="--timeline-height"]{grid-template-rows:minmax(44px,var(--timeline-height)) minmax(120px,1fr)}#workspace .command-layout:has(.command-events[data-collapsed=true]){grid-template-rows:44px minmax(120px,1fr)}}
+#workspace .command-workspace[data-reading-focus="0"] .command-focus,#workspace .command-workspace[data-reading-focus="1"] .command-events,#workspace .command-workspace[data-reading-focus="2"] .command-graph{position:fixed!important;inset:clamp(12px,4vw,60px);width:auto!important;height:auto!important;max-height:none!important;display:block!important;overflow:auto!important;z-index:25;background:var(--mc-charcoal);border:1px solid var(--mc-outline);border-radius:18px;padding:12px;box-shadow:0 0 0 100vmax #0009}
+#workspace .command-workspace[data-reading-focus="2"] .run-network-viewport{height:calc(100dvh - 250px);min-height:220px}
+#workspace .run-network-node[data-network-subdued=true]{opacity:.3}
+#workspace .run-network-edges line{opacity:.2}
+#workspace .run-network-edges line[data-adjacent=true]{opacity:1;stroke:var(--mc-cyan);stroke-width:2}
+#workspace .run-network-node[data-network-selected=true] .run-network-dot{background:var(--mc-cyan);border-radius:0;clip-path:polygon(50% 0,62% 37%,100% 50%,62% 63%,50% 100%,38% 63%,0 50%,38% 37%);filter:drop-shadow(0 0 5px #24d3ef80);box-shadow:0 0 10px #24d3ef70;animation:reading-star 3s ease-in-out infinite}
+#workspace [data-network-node-kind=project] .run-network-dot{background:var(--mc-text)}
+#workspace [data-network-node-kind=agent] .run-network-dot{background:var(--mc-periwinkle)}
+#workspace [data-network-node-kind=outcome] .run-network-dot{background:#78d5a3}
+#workspace .run-network-selection{font-size:11px;overflow-wrap:anywhere;color:var(--mc-muted);min-height:32px}
+@keyframes reading-star{50%{transform:scale(1.12) rotate(45deg);box-shadow:0 0 15px #24d3ef80}}
+[data-region-updating]{position:relative}
+.region-update-marker{display:none;position:absolute;width:54px;height:5px;border-radius:8px;background:linear-gradient(90deg,transparent,#b8adffb0,#24d3efb0,transparent);box-shadow:0 0 8px #91caff60;backdrop-filter:blur(5px);pointer-events:none;z-index:4;offset-path:rect(3px calc(100% - 3px) calc(100% - 3px) 3px round 12px);offset-rotate:auto}
+[data-region-updating=true]>.region-update-marker{display:block;animation:region-border-travel 3.8s linear infinite}
+.region-update-marker .brand-eye{position:absolute;width:18px;height:18px;right:0;top:50%;transform:translateY(-50%);border-radius:50%;background:var(--mc-charcoal)}
+.region-update-marker .brand-eye img{width:100%;height:100%;object-fit:contain}
+@keyframes region-border-travel{from{offset-distance:0%}to{offset-distance:100%}}
+@media(max-width:768px){#workspace .reading-pane-controls button{min-height:44px}#workspace .reading-pane-resize{min-height:24px}#workspace .command-events[style*="--reading-height"]{height:var(--reading-height);overflow:auto}}
+@media(prefers-reduced-motion:reduce){[data-region-updating=true]>.region-update-marker{animation:none;offset-distance:12%}#workspace .run-network-node[data-network-selected=true] .run-network-dot{animation:none}}
+#workspace .reading-pane-controls button::before,#workspace .reading-pane-controls button::after{display:none!important}
+body[data-active-module=workspace] main{min-width:0;box-sizing:border-box}
+#workspace,#workspace-content{min-width:0}
+#workspace .command-workspace{width:100%;box-sizing:border-box}
+#workspace .reading-pane-controls>span{min-width:0;overflow-wrap:anywhere}
+#workspace .reading-pane-controls button{flex:0 0 auto;max-width:none;width:auto}
+body[data-active-module=workspace] main{width:100%}
+#workspace .region-update-marker .brand-eye{width:18px;height:10px;border-radius:0}
+#workspace .region-update-marker .brand-eye img{width:196.923%;height:auto;left:-44.615%;top:-50.685%;object-fit:initial}
+.region-update-marker{offset-path:rect(6px calc(100% - 6px) calc(100% - 6px) 6px round 12px)}
+#workspace .reading-refresh-note{position:absolute;bottom:7px;right:8px;max-width:calc(100% - 16px);padding:3px 6px;font-size:10px;background:var(--mc-charcoal);color:var(--mc-muted);pointer-events:none;z-index:3}
+#workspace .reading-refresh-note[hidden]{display:none}
+#workspace .command-context:has([data-network=source-backed]) .command-graph[data-reading-pane="2"]{min-height:350px;max-height:none;flex:0 0 350px;overflow:auto}
+#workspace .command-context[data-inspector-tab=graph] .run-network-viewport{flex:0 0 auto;height:180px;min-height:180px}
+#workspace .command-workspace[data-reading-focus="2"] .run-network-viewport{height:calc(100dvh - 250px)}
+#workspace .command-focus{height:var(--reading-height,240px);min-height:0;overflow:auto}
+@media(max-width:768px){#workspace .command-focus{height:var(--reading-height,300px);flex:0 0 var(--reading-height,300px)}}
+#workspace .command-workspace[data-reading-focus]:not([data-reading-focus=""]){z-index:1000}
+#workspace .command-source-bar{height:28px;min-height:28px;flex-wrap:nowrap}
+#workspace .command-source-bar .command-read-failure{margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:10px;color:var(--mc-muted)}
