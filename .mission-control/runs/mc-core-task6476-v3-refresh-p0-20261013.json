@@ -1,0 +1,44 @@
+{
+  "schemaVersion": "mc.repository-run.v2",
+  "taskRequirements": {
+    "schemaVersion": "mc.task-requirements.v1",
+    "revision": 3,
+    "requestDigest": "474569c5288ac5388b0c8c9185838da379a5140b8bb6b656dfa04b54b3dfd7e2"
+  },
+  "taskKind": "BUGFIX",
+  "projectId": "MISSION_CONTROL",
+  "track": "BASELINE",
+  "runId": "mc-core-task6476-v3-refresh-p0-20261013",
+  "predecessorRunId": "mc-core-task6476-v3-20261013",
+  "taskId": "task_6476f43c9e1e5082f5c3c638",
+  "featureTitle": "MC Core Operational — P0 dirty new-task refresh repair",
+  "agentName": "Codex cloud MC Core Operational executor",
+  "provider": "openai",
+  "model": null,
+  "repositoryId": "JoeyAJ/joey-mission-control",
+  "reportRef": "mc/progress",
+  "workRef": "codex/mc-core-operational-task-6476-v3-20261013",
+  "baseline": {
+    "ref": "codex/mc-command-center-checkpoint-20261006",
+    "commitSha": "6bcd0576868e80b7c0c3d866dc9fd2845c3cabc7",
+    "handoffPath": "HANDOFF.md",
+    "handoffDigest": "bd8687c96198af8fc659b00e4daee47e27b467eeca0424849c00d1567611e111",
+    "contextPaths": [
+      "README.md",
+      "docs/PRODUCT_CHARTER.md",
+      "docs/MC_PHASE_PLAN.md",
+      "docs/STAGE_HANDOFF_TEMPLATE.md"
+    ]
+  },
+  "events": [
+    {
+      "id": "mc-core-p0-start-20261013",
+      "sequence": 1,
+      "eventAt": "2026-10-13T03:23:07.731Z",
+      "kind": "started",
+      "summary": "Actual Codex P0 correction of independently reproduced dirty new-task refresh retargeting; exact saved revision3/digest remains unchanged. Preserve predecessor terminal report.",
+      "result": null,
+      "delivery": null
+    }
+  ]
+}
