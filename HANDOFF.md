@@ -1,31 +1,27 @@
-# Dynamic-project integration repair — guarded private review
+# Reviewed runtime-OFF integration — 2026-10-12
 
 Project: MISSION_CONTROL
-Timestamp: 2026-10-12T23:30:37.000Z
-Task: Complete runtime scope routes, real router and revision-bound review/handoff; repair independent HOLD
+Timestamp: 2026-10-12T23:50:20.000Z
+Task: Integrate reviewed dynamic-project code while preserving inactive runtime and live schema
 Status: LOCAL_VERIFIED_PENDING_PUBLICATION
 Last Developer: Codex
 Executed by: Codex
 Actual Model: UNKNOWN
 Baseline: e1a5c88bac4c28b73034d5f1aa6e82ed4af57540
-Prior reviewed/HOLD source: 0e60883249dc1fa76014be79ca82e7b1789051a6
+Reviewed source: ef3b26bfcbbe1a3e9a57316b95d17c85ac36ed4b
 
 ## Summary
 
-One real app/router synthetic workflow now selects an explicitly authorized new project, saves its task through scoped RPC, reads completed reports and PR/tests, records request changes for rev1, saves rev2, records approval for that exact tuple, and prepares final handoff with the current Owner review. The fixture includes one fixed and two authorized dynamic projects. Registration-only stays disabled; revocation purges private selection. No actual Agent, task/repository creation or live deployment ran.
+Parent independent review GO permits code integration with dynamic runtime OFF. Real-router/private catalog fencing, three-project list isolation, same-scope form, revision-bound review and current-review final handoff are integrated. Canonical vercel.json is retained byte-exact; the reviewed guard and its commit ancestry are excluded. Publication uses one new commit parented only by canonical e1a5c88. No live grant, credential, migration or real task execution is included.
 
 ## Verification
 
-The four independent HOLD groups are repaired and tested: real router/current scope; generation-fenced catalog and retained same-scope form; scope-safe global task list with physical capacity/CAS; structural immutable SQL CHECK plus grant-enforced read/write boundaries using fresh clock after locks. Apply/rollback uses a non-superuser postgres fixture with ADMIN membership, SET/INHERIT false at rest, the recorded temporary ownership protocol, and exact ACL/volatility restoration. Native auth helpers remain synthetic. [Evidence, schema contracts and activation steps](docs/MC_DYNAMIC_PROJECT_RUNTIME_REPAIR_20261012.md).
+156 focused tests and build pass on this integration. Prior repaired candidate passed real app/router synthetic lifecycle and four maintained existing UI cases. [Release scope and live preflight](docs/MC_RUNTIME_OFF_INTEGRATION_RELEASE_20261012.md); [reviewed runtime repair evidence](docs/MC_DYNAMIC_PROJECT_RUNTIME_REPAIR_20261012.md). Actual served-page/Owner/Agent acceptance remains unverified.
 
 ## Next Action
 
-Independent review of this coherent source/SQL candidate. Runtime activation remains OFF; SQL and grants are NOT APPLIED. Verify exact installed schema/membership preconditions before any explicit SQL approval. Morning secure registry binding is separately pending. Then one reviewed canonical Preview release and actual Owner/Agent acceptance. Autonomous dispatch/provision/merge/deploy and Production remain unchanged.
-
-## Integration boundary
-
-vercel.json deploymentEnabled:false is review-branch-only. Eventual canonical integration must retain its original vercel.json (read its exact blob from canonical e1a5c88) and exclude review guard ancestry from canonical commits. Do not blindly merge this guarded review commit. The current canonical e1a5c88 tree is the source of truth.
+Read-only live schema source/ownership/ACL/RLS fingerprint matches the recorded baseline. SQL installation is still HOLD: both membership rows are not fully enforced by the proposed guards, and PostgreSQL17 live role attributes differ from the PostgreSQL16 fixture. Parent owns the specific installation approval after resolving these items. Registry secure writer binding and named-project grants are separately pending. Dynamic runtime, automatic dispatch/merge/deploy remain OFF; Production and eleven reports/history are unchanged.
 
 ## History
 
-[Prior private handoff](docs/history/HANDOFF_20261012_0e608832.md) and linked e1a5c88/older archives remain byte-exact. The earlier component-only fixture is not real-router evidence and is superseded by this repair.
+[Prior private review handoff](docs/history/HANDOFF_20261012_ef3b26bf.md) and linked earlier handoffs remain byte-exact. New release metadata/actual acceptance are recorded separately; this attributed checkpoint is not a runtime or product-completion assertion.

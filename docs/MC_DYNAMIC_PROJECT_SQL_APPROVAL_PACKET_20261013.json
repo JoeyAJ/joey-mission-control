@@ -1,0 +1,90 @@
+{
+  "projectRef": "scmvedfqwlhkyvljymjj",
+  "baselineCanonical": "72a7211e98c4d7ab7114cbb74ed2506ddfaf5d13",
+  "state": "READY_FOR_INDEPENDENT_REVIEW_AND_EXACT_APPROVAL_NOT_APPROVED_NOT_APPLIED",
+  "fingerprintObservedAt": "2026-10-13T00:07:22.795802+00:00",
+  "serverVersion": "17.11",
+  "serverVersionNum": 170011,
+  "applyOrder": [
+    "docs/contracts/sql/dynamic-project-scopes.pending.sql",
+    "docs/contracts/sql/dynamic-project-runtime-authorization.pending.sql"
+  ],
+  "rollbackOrder": [
+    "docs/contracts/sql/dynamic-project-runtime-authorization.rollback.sql",
+    "docs/contracts/sql/dynamic-project-scopes.rollback.sql"
+  ],
+  "files": [
+    {
+      "path": "docs/contracts/sql/dynamic-project-scopes.pending.sql",
+      "bytes": 43478,
+      "sha256": "9fb0b3c5ad3c3f875f986a4086f59a9793d4674201750693de6d1105c7826703"
+    },
+    {
+      "path": "docs/contracts/sql/dynamic-project-runtime-authorization.pending.sql",
+      "bytes": 7462,
+      "sha256": "b837f78b1a1ce3b277e45bbd6bc28a71383d22af2bbc4b4b70e1ae1ad17fede1"
+    },
+    {
+      "path": "docs/contracts/sql/dynamic-project-runtime-authorization.rollback.sql",
+      "bytes": 3881,
+      "sha256": "56172e04e3f12720ffa7888868c2f88305c574716f3b2c6a1df925f4f54323f8"
+    },
+    {
+      "path": "docs/contracts/sql/dynamic-project-scopes.rollback.sql",
+      "bytes": 5252,
+      "sha256": "7f071c0681f7d504d44ed532986685cb397eeec98d0dab3de5d00fac85d7b33d"
+    }
+  ],
+  "liveMutation": false,
+  "runtimeActivation": false,
+  "projectGrantRowsInserted": 0,
+  "metadataSource": "docs/qa/DYNAMIC_PROJECT_SQL_LIVE_PREFLIGHT_20261013.json",
+  "focusedEvidence": {
+    "fixtureImage": "postgres:17.11-alpine",
+    "imageDigest": "sha256:b0f9560a2de083e2cc7382e75f808c7381a32852a7ec49117deedb300e552b24",
+    "sameLiveRoleAttributes": true,
+    "sameTwoMembershipRows": true,
+    "applyRollbackNonSuperuserPostgres": true,
+    "fourMembershipDriftsRefusedBeforeDdl": true,
+    "nativeListsRevocationStructuralCheckGlobalCapacityCasLockWaitExpiryHistoryProtection": "PASS",
+    "authHelpers": "SYNTHETIC_STAND_INS_NOT_ACTUAL_OWNER_ACCEPTANCE"
+  },
+  "scope": {
+    "newPrivateTables": [
+      "mc_private.project_scope_validator_backup",
+      "mc_private.project_scope_policy_backup",
+      "mc_private.explicit_project_scope_grants"
+    ],
+    "newPrivateHelper": "mc_private.explicit_project_scope_allowed(text,text,text,text,text)",
+    "replaceFunctions": [
+      "mc_private.validate_development_task(jsonb)",
+      "mc_private.validate_task_review(jsonb)",
+      "public.mc_owner_development_task_list()",
+      "public.mc_owner_development_task_save(jsonb,bigint)",
+      "public.mc_owner_task_review_list(text,bigint,integer)",
+      "public.mc_owner_task_review_append(jsonb,uuid,bigint)"
+    ],
+    "alterPolicyChecks": [
+      "mc_private.development_tasks.owner_tasks",
+      "mc_private.task_review_decisions.owner_task_review_append"
+    ],
+    "newReadonlyAuthenticatedRpcs": [
+      "public.mc_owner_project_connection_authorize(text)",
+      "public.mc_owner_project_connection_catalog()"
+    ],
+    "temporaryRights": "existing executor SET/CREATE only, restored with both grantor rows and schema rights unchanged",
+    "excluded": [
+      "credential issuance/read/transmission",
+      "real project grant rows",
+      "runtime activation",
+      "Agent/task execution",
+      "real repository creation",
+      "production deployment"
+    ]
+  },
+  "stopConditions": [
+    "server patch/roles/membership/schema/source/ACL drift",
+    "Owner verification context unavailable for nonempty-table rollback history check",
+    "dynamic history requires separately approved recovery plan"
+  ]
+}

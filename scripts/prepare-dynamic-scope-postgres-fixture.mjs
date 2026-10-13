@@ -4,7 +4,7 @@
 import fs from 'node:fs';
 const root='docs/contracts/sql/',definition=(file,name)=>fs.readFileSync(root+file,'utf8').match(new RegExp('CREATE FUNCTION '+name.replaceAll('.','\\.')+'\\([\\s\\S]*?END \\$body\\$;'))[0];
 let sql=`CREATE ROLE anon;CREATE ROLE authenticated;CREATE ROLE service_role;CREATE ROLE mc_continuity_executor NOLOGIN NOINHERIT NOSUPERUSER NOBYPASSRLS;
-CREATE ROLE postgres LOGIN NOSUPERUSER NOCREATEDB NOCREATEROLE NOINHERIT NOBYPASSRLS;
+CREATE ROLE postgres LOGIN NOSUPERUSER CREATEDB CREATEROLE INHERIT BYPASSRLS;
 GRANT mc_continuity_executor TO postgres WITH ADMIN TRUE,INHERIT FALSE,SET FALSE;
 CREATE DATABASE mc_scope OWNER postgres;\n`;
 fs.writeFileSync('/tmp/mc-scope-pg-roles.sql',sql);

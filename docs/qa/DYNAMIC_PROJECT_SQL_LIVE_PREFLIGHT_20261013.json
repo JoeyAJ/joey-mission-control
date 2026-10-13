@@ -1,0 +1,68 @@
+{
+  "projectRef": "scmvedfqwlhkyvljymjj",
+  "readOnly": true,
+  "noMutation": true,
+  "fingerprint": {
+    "roles": [
+      {
+        "name": "mc_continuity_executor",
+        "login": false,
+        "super": false,
+        "inherit": false,
+        "create_db": false,
+        "bypass_rls": false,
+        "create_role": false
+      },
+      {
+        "name": "postgres",
+        "login": true,
+        "super": false,
+        "inherit": true,
+        "create_db": true,
+        "bypass_rls": true,
+        "create_role": true
+      },
+      {
+        "name": "supabase_admin",
+        "login": true,
+        "super": true,
+        "inherit": true,
+        "create_db": true,
+        "bypass_rls": true,
+        "create_role": true
+      }
+    ],
+    "create": {
+      "public": false,
+      "private": false
+    },
+    "effective": {
+      "set": false,
+      "admin": true,
+      "inherit": false
+    },
+    "memberships": [
+      {
+        "set": false,
+        "role": "mc_continuity_executor",
+        "admin": false,
+        "member": "postgres",
+        "grantor": "postgres",
+        "inherit": false
+      },
+      {
+        "set": false,
+        "role": "mc_continuity_executor",
+        "admin": true,
+        "member": "postgres",
+        "grantor": "supabase_admin",
+        "inherit": false
+      }
+    ],
+    "observed_at": "2026-10-13T00:07:22.795802+00:00",
+    "current_user": "postgres",
+    "session_user": "postgres",
+    "server_version": "17.11",
+    "server_version_num": "170011"
+  }
+}

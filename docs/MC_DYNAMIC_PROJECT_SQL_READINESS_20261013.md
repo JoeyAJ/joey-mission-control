@@ -1,0 +1,19 @@
+# Exact SQL installation approval packet — readiness repair
+
+Baseline canonical: 72a7211e98c4d7ab7114cbb74ed2506ddfaf5d13
+Local branch: codex/mc-sql-readiness-local-20261013
+State: READY FOR INDEPENDENT REVIEW AND SPECIFIC APPROVAL; NOT APPROVED OR APPLIED
+
+The remaining two readiness gaps are resolved in this proposed package. Read-only live inspection at 2026-10-13T00:07:22Z confirms PostgreSQL17.11 (170011), non-superuser postgres with LOGIN/INHERIT/CREATEDB/CREATEROLE/BYPASSRLS true, the restricted executor with all six corresponding privileges false, and exactly two executor memberships to postgres: grantor postgres ADMIN false and grantor supabase_admin ADMIN true, both SET/INHERIT false. Effective executor SET/inheritance and schema CREATE remain false. Prior installed schema/source/ACL/RLS fingerprint matched; no drift or live mutation was observed. Version 17.11 supersedes the earlier mistaken “17.0.11” label.
+
+All four proposed apply/rollback contracts now check the entire ordered membership set, effective access, exact observed role attributes and exact PG patch before work and again after restoring temporary SET/CREATE. Missing, changed or extra rows fail closed before DDL. This changes only readiness guards; the reviewed business SQL/action inventory is unchanged. The earlier four hashes are superseded and must not be used for approval of this repair.
+
+The isolated fixture uses exact postgres:17.11-alpine digest sha256:b0f9560a2de083e2cc7382e75f808c7381a32852a7ec49117deedb300e552b24 and the same grantor/role profiles. Actual apply and rollback run as non-superuser postgres. Both membership rows survive exactly. Missing-row, SET drift, INHERIT drift and extra-member probes are refused with no backup/grant objects created. Native multi-project lists, revoked reads, immutable structural CHECK, physical global capacity, CAS, expiry across the existing Owner lock, dynamic-history refusal and exact rollback pass. It is network-isolated, no ports/host mounts, 256MiB/one CPU, deleted afterward. Authentication helpers are synthetic; this is not actual Owner HTTP or installed-schema execution.
+
+[Machine-readable exact packet](MC_DYNAMIC_PROJECT_SQL_APPROVAL_PACKET_20261013.json) gives each path, bytes, SHA256, apply/rollback order and exact scope. [Read-only live role fingerprint](qa/DYNAMIC_PROJECT_SQL_LIVE_PREFLIGHT_20261013.json) contains metadata only, no user/secret rows. Reproduce focused evidence: `node scripts/qa-dynamic-project-scopes-postgres.mjs` with the already available image/daemon; no pull is performed by the script.
+
+The proposed live action targets ONLY Supabase scmvedfqwlhkyvljymjj: three private tables, one private scope predicate, two structural validator plus four Owner RPC replacements, two policy WITH CHECK changes and two authenticated read-only native ports. Temporary executor SET/CREATE restores to the exact two-row fingerprint; zero real project grants are inserted. No new role/public table writer, credentials, runtime activation, real repository/task/Agent work or deployment is authorized by this packet.
+
+Apply order: scopes pending, then runtime authorization pending. Rollback reverses runtime ports first, then scopes; exact original definitions/ACL/volatility/policy checks are retained. Rollback preserves RLS/history, requires existing verified Owner context when inspecting a nonempty table, and refuses dynamic history without an explicit recovery plan. Never bypass this condition or delete real rows to make rollback pass.
+
+Before any approved installation, rerun the metadata-only preflight and stop on drift, including managed patch upgrades. Parent requests the specific approval against the NEW hashes; engineering must not treat source review GO or saved GitHub/Vercel token as SQL permission. Dynamic runtime, registration gates and automatic execution remain OFF. Canonical/Preview/Production are unchanged by this readiness candidate.
