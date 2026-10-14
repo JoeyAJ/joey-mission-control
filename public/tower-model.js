@@ -1,8 +1,8 @@
 // Control Tower model: reduces project records, Agent self-reports and local handoff
 // intents to one plain status per project. It never infers that an Agent started from
 // a copy click: a handoff stays "awaiting" until that Agent's own report arrives.
-export const TOWER_STATES=['blocked','stale','decide','awaiting','running','paused','idea','done','idle'];
-export const ATTENTION_STATES=new Set(['blocked','stale','decide']);
+export const TOWER_STATES=['blocked','stale','review','decide','awaiting','running','paused','idea','done','idle'];
+export const ATTENTION_STATES=new Set(['blocked','stale','review','decide']);
 export const AGENTS=[
  {id:'codex',name:'Codex',match:/codex/i},
  {id:'claude',name:'Claude Code',match:/claude/i},
@@ -23,12 +23,12 @@ function lifecycleOf(project){
  if(['COMPLETED','ARCHIVED'].includes(raw))return 'done';
  return 'active';
 }
-export function projectCard(project,{runs=null,handoff=null,now=Date.now()}={}){
+export function projectCard(project,{runs=null,handoff=null,review=null,now=Date.now()}={}){
  const tasks=runs?.tasks||[],latest=tasks[0]||null,active=runs?.active||[],lifecycle=lifecycleOf(project);
  const current=active[0]||null;
  const blocked=(runs?.blockers||[])[0]||null,stale=tasks.find(t=>t.currentState==='unconfirmed'&&['running','blocked'].includes(t.reportedState))||null;
  const history=tasks.map(t=>({agent:t.agentName,agentKey:agentKey(t.agentName),feature:t.featureTitle,state:t.currentState,at:t.eventAt}));
- const base={id:project.id,name:project.name,kind:project.kind||'project',decision:project.decision||null,summary:project.summary||null,version:versionOf(current?.featureTitle)||versionOf(latest?.featureTitle)||known(project.version),lifecycle,history,
+ const base={id:project.id,name:project.name,kind:project.kind||'project',decision:project.decision||null,summary:project.summary||null,siteUrl:project.siteUrl||null,version:versionOf(current?.featureTitle)||versionOf(latest?.featureTitle)||known(project.version),lifecycle,history,
   lastAgent:latest?.agentName||known(project.lastAgent)||null,
   updatedAt:latest?.eventAt||project.updatedAt||null,
   next:known(project.next)};
@@ -39,18 +39,20 @@ export function projectCard(project,{runs=null,handoff=null,now=Date.now()}={}){
  if(blocked)return card('blocked',{agent:blocked.agentName,feature:blocked.featureTitle,summary:blocked.summary,at:blocked.eventAt});
  if(stale&&!current)return card('stale',{agent:stale.agentName,feature:stale.featureTitle,summary:stale.summary,at:stale.eventAt});
  if(pending)return card('awaiting',{agent:pending.agentName,feature:pending.goal,summary:null,at:pending.at,previousAgent:current?.agentName||base.lastAgent});
+ // A finished run waits for Joey's review until Joey records a decision for that run.
+ if(!current&&latest?.currentState==='completed'&&lifecycle==='active'&&review?.runId!==latest.runId)return card('review',{agent:latest.agentName,feature:latest.featureTitle,summary:latest.summary,at:latest.eventAt,runId:latest.runId,result:latest.result||null});
  if(current)return card('running',{agent:current.agentName,feature:current.featureTitle,summary:current.summary,at:current.eventAt});
  if(lifecycle==='idea')return card('decide',{agent:null,feature:null,summary:project.summary||null,at:base.updatedAt});
  if(lifecycle==='paused')return card('paused',{agent:null,feature:latest?.featureTitle||null,summary:latest?.summary||null,at:base.updatedAt});
  if(lifecycle==='done')return card('done',{agent:null,feature:latest?.featureTitle||null,summary:latest?.summary||null,at:base.updatedAt});
  return card('idle',{agent:null,feature:latest?.featureTitle||null,summary:latest?.summary||null,at:base.updatedAt});
 }
-export function towerModel({projects=[],runsByProject={},handoffs={},now=Date.now()}={}){
+export function towerModel({projects=[],runsByProject={},handoffs={},reviews={},now=Date.now()}={}){
  const order=new Map(TOWER_STATES.map((s,i)=>[s,i]));
  // Shelved ideas leave the board but stay listed so they can be restored.
  const shelved=projects.filter(p=>p.decision==='shelved').map(p=>projectCard(p,{now}));
  projects=projects.filter(p=>p.decision!=='shelved');
- const cards=projects.map(p=>projectCard(p,{runs:runsByProject[p.id]||null,handoff:handoffs[p.id]||null,now}));
+ const cards=projects.map(p=>projectCard(p,{runs:runsByProject[p.id]||null,handoff:handoffs[p.id]||null,review:reviews[p.id]||null,now}));
  const sorted=[...cards].sort((a,b)=>order.get(a.state)-order.get(b.state)||String(a.name).localeCompare(String(b.name)));
  const counts=Object.fromEntries(TOWER_STATES.map(s=>[s,0]));for(const c of cards)counts[c.state]++;
  return {shelved,cards:sorted,attention:sorted.filter(c=>ATTENTION_STATES.has(c.state)),flying:sorted.filter(c=>!ATTENTION_STATES.has(c.state)),counts,total:cards.length};

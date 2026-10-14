@@ -95,3 +95,20 @@ test('idea handoff text carries the idea and stops before deployment or paid ser
  const text=ideaInstruction({name:'Dorm match',idea:'Match new students with roommates'});
  assert.match(text,/Dorm match/);assert.match(text,/Match new students/);assert.match(text,/HANDOFF\.md/);assert.match(text,/不要自行部署/);
 });
+
+test('a finished run asks for review until Joey decides on that exact run',()=>{
+ const done=runs([task('Hermes','completed',30,{runId:'r1',result:{tests:[{name:'t',outcome:'PASS'}],nextSteps:'n'}})]);
+ const c=projectCard(project('A'),{runs:done,now});
+ assert.equal(c.state,'review');assert.equal(c.runId,'r1');assert.equal(c.result.tests.length,1);
+ assert.equal(projectCard(project('A'),{runs:done,review:{runId:'r1',decision:'accepted'},now}).state,'idle');
+ assert.equal(projectCard(project('A'),{runs:runs([task('Hermes','completed',5,{runId:'r2'})]),review:{runId:'r1',decision:'accepted'},now}).state,'review');
+ assert.equal(projectCard(project('A','Paused'),{runs:done,now}).state,'paused');
+ const m=towerModel({projects:[project('A')],runsByProject:{A:done},now});assert.deepEqual(m.attention.map(x=>x.state),['review']);
+});
+
+test('review decisions are stored per project and survive bad data',async()=>{
+ const {readReviews,writeReview}=await import('../public/control-tower.js');
+ const data={};const storage={getItem:k=>data[k]??null,setItem:(k,v)=>{data[k]=v;}};
+ writeReview('A',{runId:'r1',decision:'accepted'},storage);assert.equal(readReviews(storage).A.runId,'r1');
+ data['mc.tower.reviews.v1']='nope';assert.deepEqual(readReviews(storage),{});
+});
