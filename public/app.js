@@ -59,7 +59,7 @@ function evidenceRegion(project){
 function managementFields(project){const dl=document.createElement('dl');dl.className='management';for(const [label,key] of dashboardFields){const dd=text('dd',claimText(key,project[key],project));dd.dataset.field=key;dl.append(text('dt',t(label)),dd);}return dl;}
 
 function claimCell(tag,claim,key){const cell=document.createElement(tag);cell.append(text('span',claimText(key,claim),'selectable'),text('small',provenance(claim),'provenance selectable'));return cell;}
-function show(id){if(id!=='joey'||!isTowerRoute())document.body.classList.remove('tower-mode');if(id!=='workspace'){workspaceRunSelection?.cancel();workspaceRunSelection=null;}if(id!=='workspace'&&$('#workspace').classList.contains('active')){rememberCommandWorkspace($('#workspace-content'));$('#workspace-content').querySelector('#command-workspace')?.disposeWorkbench?.();}if(id!=='joey'&&simpleJoeyView){simpleJoeyView.dispose();simpleJoeyView=null;}document.body.dataset.joeySimple=String(id==='joey'&&isSimpleJoeyRoute());if(!['workspace','joey','dashboard','inbox','workspaces','handoffs','project'].includes(id))id='joey';document.body.classList.add('joey-cockpit-mode');document.body.dataset.activeModule=id;const advancedNav=$('#advanced-navigation');if(advancedNav)advancedNav.open=id!=='joey'||!isSimpleJoeyRoute();all('[data-view]').forEach(button=>button.setAttribute('aria-current',button.dataset.view===id?'page':'false'));all('.view').forEach(view=>view.classList.toggle('active',view.id===id));if(!((id==='joey'&&location.hash.startsWith('#joey?'))||(id==='workspace'&&location.hash.startsWith('#workspace?'))||(id==='project'&&location.hash.startsWith('#project?'))))history.replaceState(null,'',`#${id}`);renderRelease();}
+function show(id){if(id!=='workspace')id='joey';if(id!=='joey'||!isTowerRoute())document.body.classList.remove('tower-mode');if(id!=='workspace'){workspaceRunSelection?.cancel();workspaceRunSelection=null;}if(id!=='workspace'&&$('#workspace').classList.contains('active')){rememberCommandWorkspace($('#workspace-content'));$('#workspace-content').querySelector('#command-workspace')?.disposeWorkbench?.();}if(id!=='joey'&&simpleJoeyView){simpleJoeyView.dispose();simpleJoeyView=null;}document.body.dataset.joeySimple=String(id==='joey'&&isSimpleJoeyRoute());if(!['workspace','joey','dashboard','inbox','workspaces','handoffs','project'].includes(id))id='joey';document.body.classList.add('joey-cockpit-mode');document.body.dataset.activeModule=id;const advancedNav=$('#advanced-navigation');if(advancedNav)advancedNav.open=id!=='joey'||!isSimpleJoeyRoute();all('[data-view]').forEach(button=>button.setAttribute('aria-current',button.dataset.view===id?'page':'false'));all('.view').forEach(view=>view.classList.toggle('active',view.id===id));if(!((id==='joey'&&location.hash.startsWith('#joey?'))||(id==='workspace'&&location.hash.startsWith('#workspace?'))||(id==='project'&&location.hash.startsWith('#project?'))))history.replaceState(null,'',`#${id}`);renderRelease();}
 // Notices are kept as (key, params) or raw server text so a language switch can re-render them.
 function notify(key,params={}){lastNotice={key,params};renderNotice();}
 function notifyError(error){lastNotice={raw:error.message};renderNotice();}
@@ -130,7 +130,7 @@ function renderDetailPanels(project){
 }
 function requiresPrivateProjectSource(project){return taskWorkflowConfig.projectSourceSyncEnabled===true&&['NEXAEON','WOOSONG_BUDDY','NAMYOUNG_WEB3D','JOEY_ASSET_SYSTEM'].includes(project?.id);}
 function hasPrivateProjectSourceEntry(){return ownerAuthSetupStatus().ownerIdentityEntryAvailable===true;}
-function detail(project,{restore=false}={}){if(requiresPrivateProjectSource(project)&&hasPrivateProjectSourceEntry()){lastContinue=null;$('#continue-result').replaceChildren();selectedProject=null;navigateWorkspace({project:project.id,panel:'events',track:readSourceTrack(location.hash,project.id)},{push:!restore});return;}if(!restore&&location.hash!==`#project?project=${encodeURIComponent(project.id)}`)history.pushState(null,'',`#project?project=${encodeURIComponent(project.id)}`);selectedProject=project;lastContinue=null;show('project');renderDetailPanels(project);showProjectTab('overview');$('#continue-button').disabled=requiresPrivateProjectSource(project);renderContinue();}
+function detail(project,{restore=false}={}){if(project?.id){location.hash='#joey?'+new URLSearchParams({detail:project.id});return;}if(requiresPrivateProjectSource(project)&&hasPrivateProjectSourceEntry()){lastContinue=null;$('#continue-result').replaceChildren();selectedProject=null;navigateWorkspace({project:project.id,panel:'events',track:readSourceTrack(location.hash,project.id)},{push:!restore});return;}if(!restore&&location.hash!==`#project?project=${encodeURIComponent(project.id)}`)history.pushState(null,'',`#project?project=${encodeURIComponent(project.id)}`);selectedProject=project;lastContinue=null;show('project');renderDetailPanels(project);showProjectTab('overview');$('#continue-button').disabled=requiresPrivateProjectSource(project);renderContinue();}
 
 function renderContinue(){
   const box=$('#continue-result');
@@ -248,7 +248,8 @@ function renderWorkspace(){if(!state||!$('#workspace').classList.contains('activ
 
 
 // Control Tower is the default daily entry; the previous overview stays at #joey?view=classic.
-function isTowerRoute(){const [route,query]=location.hash.split('?'),q=new URLSearchParams(query||'');return (!route||route==='#joey')&&!q.has('mode')&&!q.has('project')&&!q.has('daily')&&q.get('view')!=='classic';}
+// The overview replaces the retired pages (classic Joey View, console, inbox, workspaces, evidence, project); only the technical workspace keeps its own route.
+function isTowerRoute(){return location.hash.split('?')[0]!=='#workspace';}
 let towerFilter='all',towerRuns={},towerDemoStorage=null;
 function memoryStorage(seed){const data={'mc.tower.handoffs.v1':JSON.stringify(seed)};return{getItem:k=>data[k]??null,setItem:(k,v)=>{data[k]=String(v);}};}
 let towerIdeas=[],towerOwnerReady=false,towerDemoIdeas=[];
@@ -271,7 +272,7 @@ async function towerIdea(text){if(!towerOwnerReady){saveLocalIdea(text);return;}
 function renderTower(){
  const demo=new URLSearchParams(location.hash.split('?')[1]||'').get('demo')==='1',locale=getLocale();
  if(simpleJoeyView){simpleJoeyView.dispose();simpleJoeyView=null;}
- document.body.classList.add('tower-mode');
+ document.body.classList.add('tower-mode');$('#cockpit-sidebar')?.remove();$('#cockpit-command-readouts')?.remove();
  if(demo&&!towerDemoStorage)towerDemoStorage=memoryStorage(demoHandoffs(Date.now()));
  const data=demo?(d=>({...d,projects:[...d.projects,...towerDemoIdeas.map(i=>({...i,status:ideaDecisions()[i.id]==='go'?'Active':'Idea',decision:ideaDecisions()[i.id]||null}))]}))(demoTower()):{projects:towerProjects(),runsByProject:towerRuns};
  const account=demo?null:towerAccount(locale);
@@ -279,8 +280,8 @@ function renderTower(){
   onFilter:f=>{towerFilter=f;renderTower();},onChange:renderTower,onLocale:applyLocale,
   onDecision:(id,choice)=>{if(demo&&!id.startsWith('local_')){notify('human.saved');return;}if(id.startsWith('draft_')||id.startsWith('local_')){if(choice==='remove')removeIdea(id);else decideIdeaCard(id,{continue:'go',shelve:'shelved',restore:null}[choice]);renderTower();return;}if(!releaseInfo?.readOnly)decideIdea(id,choice);},
   onIdea:demo?async text=>{towerDemoIdeas=[{id:'local_demo'+towerDemoIdeas.length,name:text.slice(0,40),status:'Idea',summary:text,updatedAt:new Date().toISOString(),kind:'draft'},...towerDemoIdeas];}:towerIdea,onIdeaEdit:demo?null:editIdea,signedInForIdeas:demo||towerOwnerReady,
-  onDetails:id=>{if(!demo)navigateContext({project:id,module:'overview',mode:'advanced'});},
-  onAdvanced:()=>{location.hash='#joey?view=classic';},detailId:new URLSearchParams(location.hash.split('?')[1]||'').get('detail'),onOpenDetail:id=>{location.hash='#joey?'+new URLSearchParams({...(demo?{demo:'1'}:{}),detail:id});setTimeout(()=>scrollTo({top:0}),0);},onBack:()=>{location.hash=demo?'#joey?demo=1':'#joey';setTimeout(()=>scrollTo({top:0}),0);},
+  onDetails:id=>{if(!demo)openWorkspace(id);},
+  onAdvanced:()=>openWorkspace(),detailId:new URLSearchParams(location.hash.split('?')[1]||'').get('detail'),onOpenDetail:id=>{location.hash='#joey?'+new URLSearchParams({...(demo?{demo:'1'}:{}),detail:id});setTimeout(()=>scrollTo({top:0}),0);},onBack:()=>{location.hash=demo?'#joey?demo=1':'#joey';setTimeout(()=>scrollTo({top:0}),0);},
   mountHandoff:demo?null:mountTowerHandoff,
   prepareInstruction:demo?async()=>'（示範）這裡會放入該項目最新、已核對的完整交接內容。':null});
  $('#joey-content').replaceChildren(tower);
