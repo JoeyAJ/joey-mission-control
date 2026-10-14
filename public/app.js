@@ -280,7 +280,7 @@ function renderTower(){
   onDecision:(id,choice)=>{if(demo&&!id.startsWith('local_')){notify('human.saved');return;}if(id.startsWith('draft_')||id.startsWith('local_')){if(choice==='remove')removeIdea(id);else decideIdeaCard(id,{continue:'go',shelve:'shelved',restore:null}[choice]);renderTower();return;}if(!releaseInfo?.readOnly)decideIdea(id,choice);},
   onIdea:demo?async text=>{towerDemoIdeas=[{id:'local_demo'+towerDemoIdeas.length,name:text.slice(0,40),status:'Idea',summary:text,updatedAt:new Date().toISOString(),kind:'draft'},...towerDemoIdeas];}:towerIdea,onIdeaEdit:demo?null:editIdea,signedInForIdeas:demo||towerOwnerReady,
   onDetails:id=>{if(!demo)navigateContext({project:id,module:'overview',mode:'advanced'});},
-  onAdvanced:()=>{location.hash='#joey?view=classic';},
+  onAdvanced:()=>{location.hash='#joey?view=classic';},detailId:new URLSearchParams(location.hash.split('?')[1]||'').get('detail'),onOpenDetail:id=>{location.hash='#joey?'+new URLSearchParams({...(demo?{demo:'1'}:{}),detail:id});setTimeout(()=>scrollTo({top:0}),0);},onBack:()=>{location.hash=demo?'#joey?demo=1':'#joey';setTimeout(()=>scrollTo({top:0}),0);},
   mountHandoff:demo?null:mountTowerHandoff,
   prepareInstruction:demo?async()=>'（示範）這裡會放入該項目最新、已核對的完整交接內容。':null});
  $('#joey-content').replaceChildren(tower);

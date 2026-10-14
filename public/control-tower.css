@@ -130,6 +130,22 @@ body.tower-mode #joey.view{display:block}
 .tower-quiet{min-height:36px;padding:0 12px;font-size:13px;color:var(--nx-muted);background:transparent}
 .tower-goal input{font:inherit;font-size:15px;color:var(--nx-text);background:#05040f99;border:1px solid var(--nx-line);border-radius:12px;padding:12px}
 .tower-goal input:focus{border-color:var(--nx-orchid);outline:none}
+/* Project detail */
+.tower-name-link{all:unset;cursor:pointer;border-radius:6px}
+.tower-name-link:hover{text-decoration:underline;text-decoration-color:var(--nx-orchid);text-underline-offset:6px}
+.tower-name-link:focus-visible{outline:2px solid var(--nx-orchid);outline-offset:3px}
+.tower-back{align-self:flex-start;min-height:44px}
+.tower-detail{display:grid;grid-template-columns:minmax(0,420px) minmax(0,1fr);gap:20px;align-items:start}
+.tower-detail-hero{grid-row:span 4;position:sticky;top:24px}
+.tower-detail-block{display:flex;flex-direction:column;gap:10px;padding:18px 20px;border-radius:var(--nx-radius);border:1px solid var(--nx-line-soft);background:#ffffff05}
+.tower-detail-block .tower-timeline{margin-top:4px}
+.tower-detail-label{margin:6px 0 0;font-size:12px;color:var(--nx-dim);font-weight:600;letter-spacing:.06em}
+.tower-detail-tech{border:1px dashed var(--nx-line);border-radius:var(--nx-radius);padding:14px 18px}
+.tower-detail-tech summary::before,.tower-shelved summary::before{content:'›';display:inline-block;margin-right:8px;transition:transform .2s}
+.tower-detail-tech[open] summary::before,.tower-shelved[open] summary::before{transform:rotate(90deg)}
+.tower-detail-tech summary{list-style:none;cursor:pointer;color:var(--nx-muted);font:600 13px/1.4 var(--nx-mono);letter-spacing:.12em;min-height:32px;display:flex;align-items:center}
+.tower-detail-tech[open]{display:flex;flex-direction:column;gap:10px}
+@media (max-width:860px){.tower-detail{grid-template-columns:1fr}.tower-detail-hero{position:static;grid-row:auto}}
 /* Review */
 .tower-card[data-state=review]{--edge:#5eead466;background:linear-gradient(160deg,#0f2a32cc,#0b0920e6)}
 [data-state=review] .tower-status{color:var(--nx-mint)}[data-state=review] .tower-status-icon{border-color:#5eead466;color:var(--nx-mint)}[data-state=review] .tower-hint{border-left-color:var(--nx-mint)}

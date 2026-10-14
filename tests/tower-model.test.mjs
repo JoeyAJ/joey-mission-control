@@ -129,3 +129,10 @@ test('editing an idea draft bumps the revision and keeps its identity',async()=>
  assert.equal(e.draftId,d.draftId);assert.equal(e.revision,2);assert.equal(e.project.name,'宿舍配對');assert.equal(e.project.projectId,d.project.projectId);assert.equal(e.createdAt,d.createdAt);
  assert.throws(()=>editedIdeaDraft(d,{name:' ',idea:'x'}),/DRAFT_REQUIRED/);
 });
+
+test('review history keeps the newest decisions first for the detail page',async()=>{
+ const {readReviews,writeReview}=await import('../public/control-tower.js');
+ const data={};const storage={getItem:k=>data[k]??null,setItem:(k,v)=>{data[k]=v;}};
+ writeReview('A',{runId:'r1',decision:'changes',note:'fix',at:at(10)},storage);writeReview('A',{runId:'r1',decision:'accepted',at:at(1)},storage);
+ const r=readReviews(storage).A;assert.equal(r.decision,'accepted');assert.deepEqual(r.log.map(x=>x.decision),['accepted','changes']);assert.equal(r.log[1].note,'fix');
+});
