@@ -1,3 +1,4 @@
+import {joeyRunSummary as joeyRunSummaryFor} from '../reporting/joey-run-summary.mjs';
 import {createProjectConnectionClient} from '../projects/project-connection-client.mjs';
 import {mountAuthorizedProjectEntry} from '../projects/authorized-project-browser-entry.mjs';
 import {createTaskClosure} from '../tasks/task-closure-controller.mjs';
@@ -171,3 +172,12 @@ export {renderSelectedTaskSummary,projectHandoffWords} from '../reporting/select
 
 // Shared picker transport uses the existing authenticated session, never a new key.
 export function createOwnerProjectConnectionClient(){return createProjectConnectionClient({getAccessToken:async()=>{if(!activeClient||!activePort)throw Error('OWNER_REQUIRED');const actor=await activePort.inspectSession('NEXAEON');if(actor?.status!=='authenticated'||actor.role!=='OWNER'||actor.aal!=='aal2'||actor.verified!==true||actor.memberActive!==true||actor.sessionActive!==true||actor.subject!==ownerAuthConfig.ownerSubject||actor.expiresAt<=Date.now())throw Error('OWNER_REQUIRED');const r=await activeClient.auth.getSession();if(r.error)throw Error('OWNER_SESSION_UNAVAILABLE');return r.data?.session?.access_token;}});}
+// Control Tower: read each project's Agent self-reports with the same verified Owner
+// session. Unreadable projects are left out, so their cards show no live state.
+async function verifiedOwnerToken(){if(!activeClient||!activePort)throw Error('OWNER_REQUIRED');const actor=await activePort.inspectSession('NEXAEON');if(actor?.status!=='authenticated'||actor.role!=='OWNER'||actor.aal!=='aal2'||actor.verified!==true||actor.memberActive!==true||actor.sessionActive!==true||actor.subject!==ownerAuthConfig.ownerSubject||actor.expiresAt<=Date.now())throw Error('OWNER_REQUIRED');const r=await activeClient.auth.getSession();if(r.error)throw Error('OWNER_SESSION_UNAVAILABLE');return r.data?.session?.access_token;}
+export async function readOwnerTowerRuns(projectIds,{now=Date.now}={}){
+ const token=await verifiedOwnerToken().catch(()=>null);if(!token)return null;
+ const client=createRepositoryRunClient({getAccessToken:async()=>token}),out={};
+ await Promise.all(projectIds.map(async projectId=>{try{const reply=await client.read({projectId,track:'BASELINE'});const view={status:'connected',observation:reply?.observation};out[projectId]=joeyRunSummaryFor({view,projectId,track:'BASELINE',sourceConfirmed:true,now:now()});}catch{}}));
+ return out;
+}

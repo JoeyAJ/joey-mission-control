@@ -1,3 +1,39 @@
+# Control Tower daily overview — 2026-10-14
+
+Project: MISSION_CONTROL
+Timestamp: 2026-10-14
+Task: Replace the daily Joey overview with a Control Tower (PM-style flight board) and Agent handoff sheet
+Status: PREVIEW_PENDING_JOEY_REVIEW
+Executed by: Claude Code
+Actual Model: claude-opus-5-5
+Parent: `02060ac353c57f7ecc4614bb94d4f2246a53d16d` (`codex/mc-command-center-checkpoint-20261006`).
+Feature branch: `claude/mc-control-tower`.
+
+## Summary
+
+Joey approved (2026-10-14) a simpler daily entry: every project as one card showing status, version, responsible Agent and one line of progress, plus one-tap handoff to Codex / Claude Code / Hermes.
+
+- `#joey` now renders the Control Tower (`public/control-tower.js`, `public/tower-model.js`, `public/control-tower.css`). The previous overview stays at `#joey?view=classic`; advanced views are unchanged.
+- States: blocked, may have stopped (heartbeat expired, never shown as running), your call (Idea), awaiting pickup, in development, paused, done, standing by. Attention states are grouped on top.
+- Awaiting pickup: copying a handoff records a per-browser intent (localStorage, 72 h). The card switches to the new Agent only after that Agent's own report is newer than the copy time. No server write, SQL or new permission.
+- The handoff sheet mounts the existing verified takeover flow (Owner sign-in, fresh source read, copy, manual fallback) and prefixes the receiving Agent name and stage goal (`decorateInstruction`, `onCopied` options on `mountJoeyTakeover`).
+- Live reports: `readOwnerTowerRuns` (Owner bundle) reads each project's repository runs with the verified Owner session about every 30 s while the tower is visible.
+- NexAeon visual system: indigo/orchid palette, flowing light border on cards in development, mobile single column and bottom-sheet handoff, reduced-motion fallback. Fonts use the system stack because the CSP blocks external fonts.
+- Demo layout: `#joey?demo=1` (clearly labelled, never mixed with real data).
+
+## Verification
+
+- New `tests/tower-model.test.mjs` (9 tests) and the updated allowlist test pass.
+- Full suite in a portable copy: 1106/1120 pass; the 14 failures are identical on the unmodified parent (environment-bound journal/PTY/file-mode tests).
+- `npm run build` passes. Desktop (1440 px) and mobile (375 px) checked locally with demo data; real Owner sign-in, live reports and real clipboard copy need Joey's check on the Preview.
+
+## Next
+
+- Joey reviews the Preview; then iterate on visuals/content.
+- Deferred by agreement: quick "+ new idea" capture (next version).
+
+---
+
 # Reading panes, graph and stable refresh — 2026-10-13
 
 Project: MISSION_CONTROL
