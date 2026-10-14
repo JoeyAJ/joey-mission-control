@@ -16,9 +16,10 @@ body.tower-mode #joey.view{display:block}
 /* Header */
 .tower-head{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
 .tower-brand{display:flex;align-items:center;gap:18px;min-width:0}
-.tower-mark{width:64px;height:64px;object-fit:contain;filter:drop-shadow(0 0 18px #a855f788)}
+.tower-mark{height:92px;width:auto;object-fit:contain;filter:drop-shadow(0 0 22px #7c3aed55)}
+.tower-divider{align-self:stretch;width:1px;margin:6px 4px;background:linear-gradient(transparent,var(--nx-line),transparent)}
 .tower-eyebrow{font:600 11px/1 var(--nx-mono);letter-spacing:.24em;color:var(--nx-orchid);margin:0 0 8px}
-.tower-title{font:600 clamp(30px,4vw,44px)/1 var(--nx-display);letter-spacing:.02em;margin:0;background:linear-gradient(100deg,#fff 10%,var(--nx-orchid) 60%,var(--nx-blue));-webkit-background-clip:text;background-clip:text;color:transparent}
+.tower-title{font:600 clamp(22px,2.6vw,30px)/1.1 var(--nx-display);letter-spacing:.14em;text-transform:uppercase;margin:0;background:linear-gradient(100deg,#fff 15%,var(--nx-orchid) 70%,var(--nx-blue));-webkit-background-clip:text;background-clip:text;color:transparent}
 .tower-intro{color:var(--nx-muted);margin:8px 0 0;font-size:15px}
 .tower-tools{display:flex;gap:10px;align-items:center}
 .tower-locale{font:inherit;font-size:13px;min-height:44px;padding:0 14px;border-radius:999px;border:1px solid var(--nx-line);background:var(--nx-panel);color:var(--nx-text)}
@@ -145,10 +146,11 @@ body.tower-mode #joey.view{display:block}
 /* Phones: single column, thumb-sized controls, bottom sheet. */
 @media (max-width:640px){
  .tower{padding:20px 16px 48px;gap:22px}
- .tower-mark{width:48px;height:48px}
+ .tower-mark{height:58px}
+ .tower-divider{display:none}
  .tower-head{flex-wrap:nowrap;align-items:flex-start}
  .tower-brand{gap:12px}
- .tower-title{font-size:30px}
+ .tower-title{font-size:16px;letter-spacing:.12em}
  .tower .tower-intro,.tower-head .tower-ghost{display:none}
  .tower-locale{min-height:36px;padding:0 10px;font-size:12px}
  .tower-radar{flex-wrap:nowrap;overflow-x:auto;margin:0 -16px;padding:0 16px 4px;scrollbar-width:none}

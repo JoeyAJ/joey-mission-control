@@ -3,7 +3,7 @@
 // Technical evidence stays behind the existing advanced views.
 import {towerModel,AGENTS,agentKey} from './tower-model.js';
 const words={
- 'zh-TW':{newIdea:'記下新點子',ideaTitle:'記下新點子',ideaIntro:'用一句話寫下想做的東西。它會成為一張「等你決定」的點子卡，只有你登入後看得到。',ideaPlaceholder:'例如：做一個幫新生找宿舍室友的小工具',ideaSave:'存成點子',ideaSaving:'正在儲存…',ideaSaved:'已存好，點子卡已經放進「等你決定」。',ideaFailed:'沒能儲存：{reason}',ideaSignin:'請先登入，才能把點子存到你的私人空間。',ideaFull:'私人點子最多 12 個，請先把舊的點子正式立項或整理掉。',draft:'點子草稿',eyebrow:'NEXAEON · MISSION CONTROL',title:'塔台',intro:'所有項目的位置、負責的 Agent，以及需要你處理的事。',
+ 'zh-TW':{newIdea:'記下新點子',ideaTitle:'記下新點子',ideaIntro:'用一句話寫下想做的東西。它會成為一張「等你決定」的點子卡，只有你登入後看得到。',ideaPlaceholder:'例如：做一個幫新生找宿舍室友的小工具',ideaSave:'存成點子',ideaSaving:'正在儲存…',ideaSaved:'已存好，點子卡已經放進「等你決定」。',ideaFailed:'沒能儲存：{reason}',ideaSignin:'目前沒有登入：點子會先存在這台裝置上（換裝置看不到）。登入後存的點子會進你的私人空間。',ideaFull:'私人點子最多 12 個，請先把舊的點子正式立項或整理掉。',draft:'點子草稿',eyebrow:'NEXAEON · MISSION CONTROL',title:'塔台',intro:'所有項目的位置、負責的 Agent，以及需要你處理的事。',
   all:'全部',attention:'需要你處理',flying:'項目航線',empty:'這一類目前沒有項目。',
   blocked:'卡住了',stale:'可能已停止',decide:'等你決定',awaiting:'等待接手',running:'開發中',paused:'暫停',idea:'點子',done:'完成',idle:'待命',
   version:'版本',noVersion:'版本未記錄',agent:'負責',lastAgent:'最後由',noAgent:'尚無 Agent',updated:'更新',noUpdate:'未記錄',
@@ -13,7 +13,7 @@ const words={
   copy:'複製交接指令',copying:'正在準備最新的交接指令…',copied:'已複製。貼給 {agent}，它開工回報後卡片就會更新。',copyFailed:'這次沒能準備好指令：{reason}',manual:'瀏覽器未自動複製，請全選下方文字後手動複製。',cancelHandoff:'取消等待',close:'關閉',
   noHistory:'還沒有交接紀錄。',now:'剛剛',minutes:'{n} 分鐘前',hours:'{n} 小時前',days:'{n} 天前',current:'進行中',demo:'示範資料 · 用來檢視版面，不是真實進度',
   signin:'登入後才能讀取各項目的即時回報。',advanced:'進階工作台',lang:'語言'},
- en:{newIdea:'Capture a new idea',ideaTitle:'Capture a new idea',ideaIntro:'Write what you want to build in one sentence. It becomes a “Your call” idea card, visible only to you when signed in.',ideaPlaceholder:'e.g. A small tool that matches new students with dorm roommates',ideaSave:'Save as idea',ideaSaving:'Saving…',ideaSaved:'Saved. The idea card is now under “Your call”.',ideaFailed:'Could not save: {reason}',ideaSignin:'Sign in first to save ideas to your private space.',ideaFull:'You can keep up to 12 private ideas. Formalize or tidy older ones first.',draft:'Idea draft',eyebrow:'NEXAEON · MISSION CONTROL',title:'Control Tower',intro:'Where every project is, which Agent is on it, and what needs you.',
+ en:{newIdea:'Capture a new idea',ideaTitle:'Capture a new idea',ideaIntro:'Write what you want to build in one sentence. It becomes a “Your call” idea card, visible only to you when signed in.',ideaPlaceholder:'e.g. A small tool that matches new students with dorm roommates',ideaSave:'Save as idea',ideaSaving:'Saving…',ideaSaved:'Saved. The idea card is now under “Your call”.',ideaFailed:'Could not save: {reason}',ideaSignin:'Not signed in: the idea is saved on this device only (other devices will not see it). Ideas saved while signed in go to your private space.',ideaFull:'You can keep up to 12 private ideas. Formalize or tidy older ones first.',draft:'Idea draft',eyebrow:'NEXAEON · MISSION CONTROL',title:'Control Tower',intro:'Where every project is, which Agent is on it, and what needs you.',
   all:'All',attention:'Needs you',flying:'Flight board',empty:'Nothing in this group right now.',
   blocked:'Blocked',stale:'May have stopped',decide:'Your call',awaiting:'Awaiting pickup',running:'In development',paused:'Paused',idea:'Idea',done:'Done',idle:'Standing by',
   version:'Version',noVersion:'Version not recorded',agent:'On it',lastAgent:'Last by',noAgent:'No Agent yet',updated:'Updated',noUpdate:'Not recorded',
@@ -23,7 +23,7 @@ const words={
   copy:'Copy handoff instruction',copying:'Preparing the latest handoff instruction…',copied:'Copied. Paste it into {agent}; the card updates once it reports.',copyFailed:'Could not prepare the instruction: {reason}',manual:'The browser did not copy automatically. Select the text below and copy it.',cancelHandoff:'Stop waiting',close:'Close',
   noHistory:'No handoffs yet.',now:'just now',minutes:'{n} min ago',hours:'{n} h ago',days:'{n} d ago',current:'in progress',demo:'Demo data · for layout review, not real progress',
   signin:'Sign in to read each project’s live reports.',advanced:'Advanced workspace',lang:'Language'},
- ko:{newIdea:'새 아이디어 기록',ideaTitle:'새 아이디어 기록',ideaIntro:'만들고 싶은 것을 한 문장으로 적으세요. 로그인한 본인만 볼 수 있는 ‘결정 대기’ 아이디어 카드가 됩니다.',ideaPlaceholder:'예: 신입생 기숙사 룸메이트를 찾아 주는 작은 도구',ideaSave:'아이디어로 저장',ideaSaving:'저장 중…',ideaSaved:'저장했습니다. 아이디어 카드가 ‘결정 대기’에 추가되었습니다.',ideaFailed:'저장하지 못했습니다: {reason}',ideaSignin:'아이디어를 비공개 공간에 저장하려면 먼저 로그인하세요.',ideaFull:'비공개 아이디어는 최대 12개입니다. 오래된 아이디어를 먼저 정식 등록하거나 정리하세요.',draft:'아이디어 초안',eyebrow:'NEXAEON · MISSION CONTROL',title:'관제탑',intro:'모든 프로젝트의 위치, 담당 Agent, 그리고 당신이 처리할 일.',
+ ko:{newIdea:'새 아이디어 기록',ideaTitle:'새 아이디어 기록',ideaIntro:'만들고 싶은 것을 한 문장으로 적으세요. 로그인한 본인만 볼 수 있는 ‘결정 대기’ 아이디어 카드가 됩니다.',ideaPlaceholder:'예: 신입생 기숙사 룸메이트를 찾아 주는 작은 도구',ideaSave:'아이디어로 저장',ideaSaving:'저장 중…',ideaSaved:'저장했습니다. 아이디어 카드가 ‘결정 대기’에 추가되었습니다.',ideaFailed:'저장하지 못했습니다: {reason}',ideaSignin:'로그인하지 않았습니다. 아이디어는 이 기기에만 저장됩니다 (다른 기기에서는 보이지 않음). 로그인 중에 저장한 아이디어는 비공개 공간에 저장됩니다.',ideaFull:'비공개 아이디어는 최대 12개입니다. 오래된 아이디어를 먼저 정식 등록하거나 정리하세요.',draft:'아이디어 초안',eyebrow:'NEXAEON · MISSION CONTROL',title:'관제탑',intro:'모든 프로젝트의 위치, 담당 Agent, 그리고 당신이 처리할 일.',
   all:'전체',attention:'처리 필요',flying:'프로젝트 항로',empty:'이 분류에는 현재 프로젝트가 없습니다.',
   blocked:'막힘',stale:'중단 가능성',decide:'결정 대기',awaiting:'인계 대기',running:'개발 중',paused:'일시 중지',idea:'아이디어',done:'완료',idle:'대기',
   version:'버전',noVersion:'버전 기록 없음',agent:'담당',lastAgent:'마지막 담당',noAgent:'Agent 없음',updated:'갱신',noUpdate:'기록 없음',
@@ -53,8 +53,8 @@ export function renderControlTower({doc=document,locale='zh-TW',projects=[],runs
  const model=towerModel({projects,runsByProject,handoffs:readHandoffs(storage),now});
  const root=el('section','tower');root.dataset.tower='true';
  // Header
- const head=el('div','tower-head'),brand=el('div','tower-brand'),mark=el('img','tower-mark');mark.src='/brand-eye-source.png';mark.alt='';brand.append(mark);
- const titles=el('div','tower-titles');titles.append(el('p','tower-eyebrow',w.eyebrow),el('h2','tower-title',w.title),el('p','tower-intro',w.intro));brand.append(titles);head.append(brand);
+ const head=el('div','tower-head'),brand=el('div','tower-brand'),mark=el('img','tower-mark');mark.src='/nexaeon-logo.png';mark.alt='NexAeon';mark.width=480;mark.height=371;brand.append(mark,el('span','tower-divider'));
+ const titles=el('div','tower-titles');titles.append(el('h2','tower-title','Mission Control'),el('p','tower-intro',w.intro));brand.append(titles);head.append(brand);
  const advanced=el('button','tower-ghost',w.advanced);advanced.type='button';advanced.addEventListener('click',onAdvanced);const tools=el('div','tower-tools');
  if(onLocale){const lang=el('select','tower-locale');lang.setAttribute('aria-label',w.lang);for(const [value,label] of [['zh-TW','繁體中文'],['ko','한국어'],['en','English']]){const o=el('option','',label);o.value=value;o.lang=value;o.selected=value===locale;lang.append(o);}lang.addEventListener('change',()=>onLocale(lang.value));tools.append(lang);}
  if(account){const wrap=el('div','tower-account');wrap.append(account);tools.append(wrap);}
@@ -115,8 +115,8 @@ export function renderControlTower({doc=document,locale='zh-TW',projects=[],runs
   dialog.replaceChildren();let saved=false;dialog.onclose=()=>{if(saved)onChange();};const form=el('form','tower-sheet-body');form.method='dialog';
   const label=el('label','tower-goal'),input=el('textarea');input.rows=3;input.maxLength=2000;input.placeholder=w.ideaPlaceholder;label.append(el('span','',w.ideaIntro),input);
   const status=el('p','tower-sheet-status');status.setAttribute('role','status');if(!signedInForIdeas)status.textContent=w.ideaSignin;
-  const save=el('button','tower-button tower-primary',w.ideaSave);save.type='button';save.disabled=!signedInForIdeas;const close=el('button','tower-button',w.close);close.type='submit';
-  save.addEventListener('click',async()=>{if(!input.value.trim()){input.focus();return;}save.disabled=true;status.textContent=w.ideaSaving;try{await onIdea(input.value.trim());saved=true;status.textContent=w.ideaSaved;input.value='';}catch(e){status.textContent=e?.message==='IDEA_LIMIT'?w.ideaFull:fill(w.ideaFailed,{reason:e?.message||String(e)});}finally{save.disabled=!signedInForIdeas;}});
+  const save=el('button','tower-button tower-primary',w.ideaSave);save.type='button';const close=el('button','tower-button',w.close);close.type='submit';
+  save.addEventListener('click',async()=>{if(!input.value.trim()){input.focus();return;}save.disabled=true;status.textContent=w.ideaSaving;try{await onIdea(input.value.trim());saved=true;status.textContent=w.ideaSaved;input.value='';}catch(e){status.textContent=e?.message==='IDEA_LIMIT'?w.ideaFull:fill(w.ideaFailed,{reason:e?.message||String(e)});}finally{save.disabled=false;}});
   const row=el('div','tower-sheet-actions');row.append(close,save);form.append(el('h3','tower-sheet-title',w.ideaTitle),label,status,row);dialog.append(form);
   if(dialog.showModal)dialog.showModal();else dialog.setAttribute('open','');input.focus();
  }

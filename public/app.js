@@ -256,9 +256,13 @@ const SHELVED_IDEAS='mc.tower.shelvedIdeas.v1';
 function shelvedIdeas(){try{return new Set(JSON.parse(localStorage.getItem(SHELVED_IDEAS)||'[]'));}catch{return new Set();}}
 function shelveIdea(id){try{localStorage.setItem(SHELVED_IDEAS,JSON.stringify([...shelvedIdeas(),id]));}catch{}}
 // Private idea drafts appear as "your call" cards next to registered projects.
-const ideaCards=drafts=>{const hidden=shelvedIdeas();return drafts.filter(d=>!hidden.has(d.draftId)).map(d=>({id:d.draftId,name:d.project.name,status:'Idea',summary:d.project.idea,updatedAt:d.updatedAt,kind:'draft'}));};
+const LOCAL_IDEAS='mc.tower.localIdeas.v1';
+// Without Owner sign-in (e.g. the public read-only site) ideas stay in this browser only.
+function localIdeas(){try{const v=JSON.parse(localStorage.getItem(LOCAL_IDEAS)||'[]');return Array.isArray(v)?v.filter(i=>i&&typeof i.id==='string'&&typeof i.idea==='string'):[];}catch{return [];}}
+function saveLocalIdea(text){const at=new Date().toISOString(),idea={id:'local_'+Date.now().toString(36),name:text.split(/\r?\n/)[0].replace(/\s+/g,' ').slice(0,40).trim(),idea:text,at};try{localStorage.setItem(LOCAL_IDEAS,JSON.stringify([idea,...localIdeas()].slice(0,50)));}catch{throw Error('LOCAL_STORAGE_UNAVAILABLE');}return idea;}
+const ideaCards=drafts=>{const hidden=shelvedIdeas();return [...drafts.filter(d=>!hidden.has(d.draftId)).map(d=>({id:d.draftId,name:d.project.name,status:'Idea',summary:d.project.idea,updatedAt:d.updatedAt,kind:'draft'})),...localIdeas().filter(i=>!hidden.has(i.id)).map(i=>({id:i.id,name:i.name,status:'Idea',summary:i.idea,updatedAt:i.at,kind:'draft'}))];};
 function towerProjects(){return [...(state?.projects||[]).map(p=>({id:p.id,name:p.name?.value||p.id,status:p.status?.value,version:p.version?.value,lastAgent:p.lastAI?.value,updatedAt:p.lastUpdated?.value,next:p.nextAction?.value})),...ideaCards(towerIdeas)];}
-async function towerIdea(text){if(towerIdeas.length>=12)throw Error('IDEA_LIMIT');const draft=await saveOwnerIdea(text);towerIdeas=[draft,...towerIdeas.filter(d=>d.draftId!==draft.draftId)];}
+async function towerIdea(text){if(!towerOwnerReady){saveLocalIdea(text);return;}if(towerIdeas.length>=12)throw Error('IDEA_LIMIT');const draft=await saveOwnerIdea(text);towerIdeas=[draft,...towerIdeas.filter(d=>d.draftId!==draft.draftId)];}
 function openIdeaOnboarding(){location.hash='#joey?view=classic';const reveal=(tries=20)=>{const area=document.querySelector('.joey-create-area');if(area&&!area.hidden){area.scrollIntoView({block:'start'});return;}if(tries)setTimeout(()=>reveal(tries-1),300);};reveal();}
 function renderTower(){
  const demo=new URLSearchParams(location.hash.split('?')[1]||'').get('demo')==='1',locale=getLocale();
@@ -269,8 +273,8 @@ function renderTower(){
  const account=demo||releaseInfo?.readOnly?null:towerAccount(locale);
  const tower=renderControlTower({locale,...data,demo,signedIn:demo||towerOwnerReady,filter:towerFilter,storage:demo?towerDemoStorage:globalThis.localStorage,account,
   onFilter:f=>{towerFilter=f;renderTower();},onChange:renderTower,onLocale:applyLocale,
-  onDecision:(id,choice)=>{if(demo){notify('human.saved');return;}if(id.startsWith('draft_')){if(choice==='continue')openIdeaOnboarding();else{shelveIdea(id);renderTower();}return;}if(!releaseInfo?.readOnly)decideIdea(id,choice);},
-  onIdea:demo?async text=>{towerDemoIdeas=[{id:'DEMO_IDEA_'+towerDemoIdeas.length,name:text.slice(0,40),status:'Idea',summary:text,updatedAt:new Date().toISOString(),kind:'draft'},...towerDemoIdeas];}:releaseInfo?.readOnly?null:towerIdea,signedInForIdeas:demo||towerOwnerReady,
+  onDecision:(id,choice)=>{if(demo){notify('human.saved');return;}if(id.startsWith('draft_')||id.startsWith('local_')){if(choice==='continue')openIdeaOnboarding();else{shelveIdea(id);renderTower();}return;}if(!releaseInfo?.readOnly)decideIdea(id,choice);},
+  onIdea:demo?async text=>{towerDemoIdeas=[{id:'DEMO_IDEA_'+towerDemoIdeas.length,name:text.slice(0,40),status:'Idea',summary:text,updatedAt:new Date().toISOString(),kind:'draft'},...towerDemoIdeas];}:towerIdea,signedInForIdeas:demo||towerOwnerReady,
   onDetails:id=>{if(!demo)navigateContext({project:id,module:'overview',mode:'advanced'});},
   onAdvanced:()=>{location.hash='#joey?view=classic';},
   mountHandoff:demo?null:mountTowerHandoff,
