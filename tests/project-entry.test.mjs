@@ -43,7 +43,7 @@ test('private metadata and repository pins are absent from the public client bun
 test('actual stage handler requires server-side Owner authentication and private snapshot is outside static output',async()=>{
  const invoke=async(host,headers={})=>{let status,body,responseHeaders;await handler({method:'GET',url:'/api/index?route=private/project-entry&project=NEXAEON',headers:{host,...headers}},{writeHead(s,h){status=s;responseHeaders=h;},end(text){body=JSON.parse(text);}});return{status,body,responseHeaders};};
  const r=await invoke(new URL(ownerAuthConfig.stageOrigin).host);assert.equal(r.status,401);assert.equal(r.body.error,'OWNER_AUTHENTICATION_REQUIRED');assert(!r.body.entry);assert.equal(r.responseHeaders['Cache-Control'],'private, no-store');
- assert.equal((await invoke('joey-mission-control-one.vercel.app')).status,404);
+ assert.equal((await invoke('joey-mission-control-git-codex-mc-comma-fceec2-joeyajs-projects.vercel.app')).status,404);
  const config=JSON.parse(await readFile(new URL('../vercel.json',import.meta.url),'utf8'));assert.equal(config.outputDirectory,'public');assert(!config.rewrites.some(r=>r.destination.includes('src/')));
  const built=await build({entryPoints:['public/app.js'],bundle:true,format:'esm',write:false,metafile:true});assert(!Object.keys(built.metafile.inputs).some(p=>/project-entry-(snapshots|server)/.test(p)));for(const e of projectEntrySnapshots)assert(!built.outputFiles[0].text.includes(e.nextSteps));
 });

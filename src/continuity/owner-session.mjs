@@ -1,6 +1,6 @@
 // Offline owner-session coordinator ONLY. No live adapter, credentials or ambient IO.
 import {continuityDigest} from '../../docs/contracts/private-continuity.mjs';
-const stage='https://joey-mission-control-git-codex-mc-comma-fceec2-joeyajs-projects.vercel.app';
+const stage='https://joey-mission-control-one.vercel.app';
 const projects=new Set(['NEXAEON','WOOSONG_BUDDY','NAMYOUNG_WEB3D','JOEY_ASSET_SYSTEM']);
 export function ownerReturnDestination(input=stage+'/#workspace'){
  const u=new URL(input,stage);if(u.origin!==stage||u.username||u.password||u.pathname!=='/'||u.search)throw Error('RETURN_FORBIDDEN');

@@ -270,7 +270,7 @@ function renderTower(){
  document.body.classList.add('tower-mode');
  if(demo&&!towerDemoStorage)towerDemoStorage=memoryStorage(demoHandoffs(Date.now()));
  const data=demo?(d=>({...d,projects:[...d.projects,...towerDemoIdeas]}))(demoTower()):{projects:towerProjects(),runsByProject:towerRuns};
- const account=demo||releaseInfo?.readOnly?null:towerAccount(locale);
+ const account=demo?null:towerAccount(locale);
  const tower=renderControlTower({locale,...data,demo,signedIn:demo||towerOwnerReady,filter:towerFilter,storage:demo?towerDemoStorage:globalThis.localStorage,account,
   onFilter:f=>{towerFilter=f;renderTower();},onChange:renderTower,onLocale:applyLocale,
   onDecision:(id,choice)=>{if(demo){notify('human.saved');return;}if(id.startsWith('draft_')||id.startsWith('local_')){if(choice==='continue')openIdeaOnboarding();else{shelveIdea(id);renderTower();}return;}if(!releaseInfo?.readOnly)decideIdea(id,choice);},
