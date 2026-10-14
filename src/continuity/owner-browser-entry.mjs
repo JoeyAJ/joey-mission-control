@@ -6,7 +6,7 @@ import {createOwnerJournalSdkPort} from '../tasks/task-closure-journal.mjs';
 import {withOwnerSessionCustody} from './owner-session-custody.mjs';
 import {createTaskReconciliationClient} from '../tasks/task-reconciliation-client.mjs';
 import {createProjectDraftStorageClient} from '../onboarding/project-draft-storage-client.mjs';
-import {quickIdeaDraft} from '../onboarding/quick-idea.mjs';
+import {quickIdeaDraft,editedIdeaDraft} from '../onboarding/quick-idea.mjs';
 import {mountRunWorkbench} from '../reporting/workbench-view.mjs';
 import {createRunEntrySelection} from '../reporting/run-entry-selection.mjs';
 import {mountRepositoryTakeover} from '../reporting/repository-takeover-view.mjs';
@@ -187,3 +187,4 @@ export async function readOwnerTowerRuns(projectIds,{now=Date.now}={}){
 const towerDrafts=()=>createProjectDraftStorageClient({getAccessToken:verifiedOwnerToken});
 export async function listOwnerIdeaDrafts(){try{return (await towerDrafts().list()).drafts;}catch{return null;}}
 export async function saveOwnerIdea(text){return (await towerDrafts().save({draft:quickIdeaDraft(text),expectedRevision:0})).draft;}
+export async function updateOwnerIdea(draft,fields){return (await towerDrafts().save({draft:editedIdeaDraft(draft,fields),expectedRevision:draft.revision})).draft;}

@@ -126,6 +126,10 @@ body.tower-mode #joey.view{display:block}
 .tower .tower-fab{min-height:60px;font:300 34px/1 var(--nx-display)}
 .tower-fab:hover{transform:scale(1.06) rotate(90deg);box-shadow:0 14px 40px #a855f788}
 .tower-card[data-kind=draft] .tower-version{border-style:dashed;color:var(--nx-amber)}
+/* Quiet secondary actions and text inputs in sheets */
+.tower-quiet{min-height:36px;padding:0 12px;font-size:13px;color:var(--nx-muted);background:transparent}
+.tower-goal input{font:inherit;font-size:15px;color:var(--nx-text);background:#05040f99;border:1px solid var(--nx-line);border-radius:12px;padding:12px}
+.tower-goal input:focus{border-color:var(--nx-orchid);outline:none}
 /* Review */
 .tower-card[data-state=review]{--edge:#5eead466;background:linear-gradient(160deg,#0f2a32cc,#0b0920e6)}
 [data-state=review] .tower-status{color:var(--nx-mint)}[data-state=review] .tower-status-icon{border-color:#5eead466;color:var(--nx-mint)}[data-state=review] .tower-hint{border-left-color:var(--nx-mint)}

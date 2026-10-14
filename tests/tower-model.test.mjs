@@ -112,3 +112,20 @@ test('review decisions are stored per project and survive bad data',async()=>{
  writeReview('A',{runId:'r1',decision:'accepted'},storage);assert.equal(readReviews(storage).A.runId,'r1');
  data['mc.tower.reviews.v1']='nope';assert.deepEqual(readReviews(storage),{});
 });
+
+test('a reviewed run stays revisitable after approval or a change request',()=>{
+ const done=runs([task('Hermes','completed',30,{runId:'r1'})]);
+ const ok=projectCard(project('A'),{runs:done,review:{runId:'r1',decision:'accepted'},now});
+ assert.equal(ok.state,'idle');assert.equal(ok.reviewed.decision,'accepted');assert.equal(ok.reviewed.agent,'Hermes');
+ const changes=projectCard(project('A'),{runs:done,review:{runId:'r1',decision:'changes'},handoff:{agent:'hermes',at:at(5)},now});
+ assert.equal(changes.state,'awaiting');assert.equal(changes.reviewed.runId,'r1');
+ assert.equal(projectCard(project('A'),{runs:done,now}).reviewed,null);
+});
+
+test('editing an idea draft bumps the revision and keeps its identity',async()=>{
+ const {quickIdeaDraft,editedIdeaDraft}=await import('../src/onboarding/quick-idea.mjs');
+ const d=quickIdeaDraft('測試',{now:new Date(now),random:{getRandomValues:a=>a.fill(1)}});
+ const e=editedIdeaDraft(d,{name:'宿舍配對',idea:'幫新生找室友'},{now:new Date(now+60000)});
+ assert.equal(e.draftId,d.draftId);assert.equal(e.revision,2);assert.equal(e.project.name,'宿舍配對');assert.equal(e.project.projectId,d.project.projectId);assert.equal(e.createdAt,d.createdAt);
+ assert.throws(()=>editedIdeaDraft(d,{name:' ',idea:'x'}),/DRAFT_REQUIRED/);
+});

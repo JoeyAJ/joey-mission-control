@@ -1,4 +1,4 @@
-import {createOwnerProjectConnectionClient,mountOwnerBrowserEntry,readOwnerTowerRuns,listOwnerIdeaDrafts,saveOwnerIdea} from './owner-auth-client.js';
+import {createOwnerProjectConnectionClient,mountOwnerBrowserEntry,readOwnerTowerRuns,listOwnerIdeaDrafts,saveOwnerIdea,updateOwnerIdea} from './owner-auth-client.js';
 import {mountJoeyTakeover} from './joey-takeover.js';
 import {ownerAuthSetupStatus} from './owner-auth-config.js';
 import {taskWorkflowConfig} from './task-workflow-config.js';
@@ -261,8 +261,11 @@ const LOCAL_IDEAS='mc.tower.localIdeas.v1';
 // Without Owner sign-in (e.g. the public read-only site) ideas stay in this browser only.
 function localIdeas(){try{const v=JSON.parse(localStorage.getItem(LOCAL_IDEAS)||'[]');return Array.isArray(v)?v.filter(i=>i&&typeof i.id==='string'&&typeof i.idea==='string'):[];}catch{return [];}}
 function saveLocalIdea(text){const at=new Date().toISOString(),idea={id:'local_'+Date.now().toString(36),name:text.split(/\r?\n/)[0].replace(/\s+/g,' ').slice(0,40).trim(),idea:text,at};try{localStorage.setItem(LOCAL_IDEAS,JSON.stringify([idea,...localIdeas()].slice(0,50)));}catch{throw Error('LOCAL_STORAGE_UNAVAILABLE');}return idea;}
-const ideaCards=drafts=>{const decided=ideaDecisions(),card=(id,name,idea,at)=>({id,name,status:decided[id]==='go'?'Active':'Idea',summary:idea,updatedAt:at,kind:'draft',decision:decided[id]||null});return [...drafts.map(d=>card(d.draftId,d.project.name,d.project.idea,d.updatedAt)),...localIdeas().map(i=>card(i.id,i.name,i.idea,i.at))];};
+const ideaCards=drafts=>{const decided=ideaDecisions(),card=(id,name,idea,at)=>({id,name,status:decided[id]==='go'?'Active':'Idea',summary:idea,updatedAt:at,kind:'draft',decision:decided[id]||null});return [...drafts.map(d=>card(d.draftId,d.project.name,d.project.idea,d.updatedAt)),...localIdeas().map(i=>card(i.id,i.name,i.idea,i.at))].filter(c=>c.decision!=='removed');};
 function towerProjects(){return [...(state?.projects||[]).map(p=>({id:p.id,name:p.name?.value||p.id,status:p.status?.value,version:p.version?.value,lastAgent:p.lastAI?.value,updatedAt:p.lastUpdated?.value,next:p.nextAction?.value,siteUrl:(p.projectUrls?.entries||[]).find(e=>/^https:\/\//.test(e.url||'')&&/^active/.test(e.status||''))?.url||null})),...ideaCards(towerIdeas)];}
+// Cloud drafts cannot be deleted through the draft API, so removal hides them; local ideas are deleted.
+function removeIdea(id){if(id.startsWith('local_')){try{localStorage.setItem(LOCAL_IDEAS,JSON.stringify(localIdeas().filter(i=>i.id!==id)));}catch{}decideIdeaCard(id,null);}else decideIdeaCard(id,'removed');}
+async function editIdea(id,{name,idea}){if(id.startsWith('local_')){const list=localIdeas().map(i=>i.id===id?{...i,name,idea,at:new Date().toISOString()}:i);try{localStorage.setItem(LOCAL_IDEAS,JSON.stringify(list));}catch{throw Error('LOCAL_STORAGE_UNAVAILABLE');}return;}const draft=towerIdeas.find(d=>d.draftId===id);if(!draft)throw Error('DRAFT_NOT_FOUND');const saved=await updateOwnerIdea(draft,{name,idea});towerIdeas=towerIdeas.map(d=>d.draftId===id?saved:d);}
 async function towerIdea(text){if(!towerOwnerReady){saveLocalIdea(text);return;}if(towerIdeas.length>=12)throw Error('IDEA_LIMIT');const draft=await saveOwnerIdea(text);towerIdeas=[draft,...towerIdeas.filter(d=>d.draftId!==draft.draftId)];}
 
 function renderTower(){
@@ -274,8 +277,8 @@ function renderTower(){
  const account=demo?null:towerAccount(locale);
  const tower=renderControlTower({locale,...data,demo,signedIn:demo||towerOwnerReady,filter:towerFilter,storage:demo?towerDemoStorage:globalThis.localStorage,account,
   onFilter:f=>{towerFilter=f;renderTower();},onChange:renderTower,onLocale:applyLocale,
-  onDecision:(id,choice)=>{if(demo&&!id.startsWith('local_')){notify('human.saved');return;}if(id.startsWith('draft_')||id.startsWith('local_')){decideIdeaCard(id,{continue:'go',shelve:'shelved',restore:null}[choice]);renderTower();return;}if(!releaseInfo?.readOnly)decideIdea(id,choice);},
-  onIdea:demo?async text=>{towerDemoIdeas=[{id:'local_demo'+towerDemoIdeas.length,name:text.slice(0,40),status:'Idea',summary:text,updatedAt:new Date().toISOString(),kind:'draft'},...towerDemoIdeas];}:towerIdea,signedInForIdeas:demo||towerOwnerReady,
+  onDecision:(id,choice)=>{if(demo&&!id.startsWith('local_')){notify('human.saved');return;}if(id.startsWith('draft_')||id.startsWith('local_')){if(choice==='remove')removeIdea(id);else decideIdeaCard(id,{continue:'go',shelve:'shelved',restore:null}[choice]);renderTower();return;}if(!releaseInfo?.readOnly)decideIdea(id,choice);},
+  onIdea:demo?async text=>{towerDemoIdeas=[{id:'local_demo'+towerDemoIdeas.length,name:text.slice(0,40),status:'Idea',summary:text,updatedAt:new Date().toISOString(),kind:'draft'},...towerDemoIdeas];}:towerIdea,onIdeaEdit:demo?null:editIdea,signedInForIdeas:demo||towerOwnerReady,
   onDetails:id=>{if(!demo)navigateContext({project:id,module:'overview',mode:'advanced'});},
   onAdvanced:()=>{location.hash='#joey?view=classic';},
   mountHandoff:demo?null:mountTowerHandoff,

@@ -28,7 +28,10 @@ export function projectCard(project,{runs=null,handoff=null,review=null,now=Date
  const current=active[0]||null;
  const blocked=(runs?.blockers||[])[0]||null,stale=tasks.find(t=>t.currentState==='unconfirmed'&&['running','blocked'].includes(t.reportedState))||null;
  const history=tasks.map(t=>({agent:t.agentName,agentKey:agentKey(t.agentName),feature:t.featureTitle,state:t.currentState,at:t.eventAt}));
- const base={id:project.id,name:project.name,kind:project.kind||'project',decision:project.decision||null,summary:project.summary||null,siteUrl:project.siteUrl||null,version:versionOf(current?.featureTitle)||versionOf(latest?.featureTitle)||known(project.version),lifecycle,history,
+ const completed=!current&&latest?.currentState==='completed'?latest:null;
+ // Last finished run Joey already reviewed; the card lets Joey revisit that decision.
+ const reviewed=completed&&review&&completed.runId&&review.runId===completed.runId?{runId:completed.runId,decision:review.decision,agent:completed.agentName,feature:completed.featureTitle,summary:completed.summary,result:completed.result||null}:null;
+ const base={id:project.id,name:project.name,kind:project.kind||'project',decision:project.decision||null,summary:project.summary||null,siteUrl:project.siteUrl||null,reviewed,version:versionOf(current?.featureTitle)||versionOf(latest?.featureTitle)||known(project.version),lifecycle,history,
   lastAgent:latest?.agentName||known(project.lastAgent)||null,
   updatedAt:latest?.eventAt||project.updatedAt||null,
   next:known(project.next)};
