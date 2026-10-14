@@ -148,7 +148,10 @@ body.tower-mode #joey.view{display:block}
  .tower{padding:20px 16px 48px;gap:22px}
  .tower-mark{height:58px}
  .tower-divider{display:none}
- .tower-head{flex-wrap:nowrap;align-items:flex-start}
+ .tower-head{flex-wrap:wrap;align-items:center;gap:14px}
+ .tower-tools{width:100%;flex-wrap:nowrap}
+ .tower-account{flex:1;min-width:0;max-width:none}
+ .tower-locale{flex:none}
  .tower-brand{gap:12px}
  .tower-title{font-size:16px;letter-spacing:.12em}
  .tower .tower-intro,.tower-head .tower-ghost{display:none}
