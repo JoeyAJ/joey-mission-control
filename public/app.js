@@ -239,7 +239,7 @@ function renderPendingProposals(){
 function readSourceTrack(hash,project){return project==='JOEY_ASSET_SYSTEM'&&new URLSearchParams(hash.split('?')[1]||'').get('track')==='UNIVERSITY_CANDIDATE'?'UNIVERSITY_CANDIDATE':'BASELINE';}
 function navigateWorkspace(context,{push=true}={}){const intent=workspaceRunSelection?.snapshot();if(intent&&(intent.projectId!==(context.project||selectedHumanProject)||intent.track!==(context.track??readSourceTrack(location.hash,context.project||selectedHumanProject)))){workspaceRunSelection.cancel();workspaceRunSelection=null;}viewContext={project:context.project||selectedHumanProject,module:'console',item:context.item||null};selectedHumanProject=viewContext.project;history[push?'pushState':'replaceState'](null,'',workspaceHash({...viewContext,track:context.track??readSourceTrack(location.hash,viewContext.project),filterKind:context.filterKind??readWorkspaceFilter(location.hash),panel:context.panel||readWorkspacePanel(location.hash),inspectorTab:context.inspectorTab||((context.item||'').startsWith('stage-')?'changes':'context')}));show('workspace');renderHuman();}
 function openWorkspace(project=selectedHumanProject,{track=readSourceTrack(location.hash,project),runSelection=null}={}){workspaceRunSelection?.cancel();workspaceRunSelection=runSelection;navigateWorkspace(runSelection?.snapshot()?{project,track,panel:'events'}:lastWorkspaceRoute?.project===project&&(lastWorkspaceRoute.track||'BASELINE')===track?lastWorkspaceRoute:{project,track,panel:'events'});}
-function navigateView(id){if(id==='workspace'){openWorkspace();return;}if(id==='project'&&selectedProject){detail(selectedProject);return;}if(id==='joey'){navigateSimpleJoey(selectedHumanProject,readSourceTrack(location.hash,selectedHumanProject));return;}if(location.hash!=='#'+id)history.pushState(null,'','#'+id);show(id);}
+function navigateView(id){if(id==='workspace'){openWorkspace();return;}if(id==='project'&&selectedProject){detail(selectedProject);return;}if(id==='joey'){location.hash='#joey';return;}if(location.hash!=='#'+id)history.pushState(null,'','#'+id);show(id);}
 function restoreRoute(){viewContext=readContext(location.hash,privateRouteOptions);selectedHumanProject=viewContext.project;const id=location.hash.slice(1).split('?')[0]||'joey';show(id);if(id==='project'&&state){const p=state.projects.find(p=>p.id===new URLSearchParams(location.hash.split('?')[1]||'').get('project'));if(p)detail(p,{restore:true});}if(id==='workspace')renderWorkspace();else if(id==='joey')renderHuman();}
 window.addEventListener('popstate',restoreRoute);
 window.addEventListener('hashchange',restoreRoute);
@@ -252,29 +252,30 @@ function isTowerRoute(){const [route,query]=location.hash.split('?'),q=new URLSe
 let towerFilter='all',towerRuns={},towerDemoStorage=null;
 function memoryStorage(seed){const data={'mc.tower.handoffs.v1':JSON.stringify(seed)};return{getItem:k=>data[k]??null,setItem:(k,v)=>{data[k]=String(v);}};}
 let towerIdeas=[],towerOwnerReady=false,towerDemoIdeas=[];
-const SHELVED_IDEAS='mc.tower.shelvedIdeas.v1';
-function shelvedIdeas(){try{return new Set(JSON.parse(localStorage.getItem(SHELVED_IDEAS)||'[]'));}catch{return new Set();}}
-function shelveIdea(id){try{localStorage.setItem(SHELVED_IDEAS,JSON.stringify([...shelvedIdeas(),id]));}catch{}}
+// Joey's decision on an idea card ('go' or 'shelved'), kept in this browser.
+const IDEA_DECISIONS='mc.tower.ideaDecisions.v1';
+function ideaDecisions(){try{const v=JSON.parse(localStorage.getItem(IDEA_DECISIONS)||'{}');return v&&typeof v==='object'?v:{};}catch{return {};}}
+function decideIdeaCard(id,decision){try{const all=ideaDecisions();if(decision)all[id]=decision;else delete all[id];localStorage.setItem(IDEA_DECISIONS,JSON.stringify(all));}catch{}}
 // Private idea drafts appear as "your call" cards next to registered projects.
 const LOCAL_IDEAS='mc.tower.localIdeas.v1';
 // Without Owner sign-in (e.g. the public read-only site) ideas stay in this browser only.
 function localIdeas(){try{const v=JSON.parse(localStorage.getItem(LOCAL_IDEAS)||'[]');return Array.isArray(v)?v.filter(i=>i&&typeof i.id==='string'&&typeof i.idea==='string'):[];}catch{return [];}}
 function saveLocalIdea(text){const at=new Date().toISOString(),idea={id:'local_'+Date.now().toString(36),name:text.split(/\r?\n/)[0].replace(/\s+/g,' ').slice(0,40).trim(),idea:text,at};try{localStorage.setItem(LOCAL_IDEAS,JSON.stringify([idea,...localIdeas()].slice(0,50)));}catch{throw Error('LOCAL_STORAGE_UNAVAILABLE');}return idea;}
-const ideaCards=drafts=>{const hidden=shelvedIdeas();return [...drafts.filter(d=>!hidden.has(d.draftId)).map(d=>({id:d.draftId,name:d.project.name,status:'Idea',summary:d.project.idea,updatedAt:d.updatedAt,kind:'draft'})),...localIdeas().filter(i=>!hidden.has(i.id)).map(i=>({id:i.id,name:i.name,status:'Idea',summary:i.idea,updatedAt:i.at,kind:'draft'}))];};
+const ideaCards=drafts=>{const decided=ideaDecisions(),card=(id,name,idea,at)=>({id,name,status:decided[id]==='go'?'Active':'Idea',summary:idea,updatedAt:at,kind:'draft',decision:decided[id]||null});return [...drafts.map(d=>card(d.draftId,d.project.name,d.project.idea,d.updatedAt)),...localIdeas().map(i=>card(i.id,i.name,i.idea,i.at))];};
 function towerProjects(){return [...(state?.projects||[]).map(p=>({id:p.id,name:p.name?.value||p.id,status:p.status?.value,version:p.version?.value,lastAgent:p.lastAI?.value,updatedAt:p.lastUpdated?.value,next:p.nextAction?.value})),...ideaCards(towerIdeas)];}
 async function towerIdea(text){if(!towerOwnerReady){saveLocalIdea(text);return;}if(towerIdeas.length>=12)throw Error('IDEA_LIMIT');const draft=await saveOwnerIdea(text);towerIdeas=[draft,...towerIdeas.filter(d=>d.draftId!==draft.draftId)];}
-function openIdeaOnboarding(){location.hash='#joey?view=classic';const reveal=(tries=20)=>{const area=document.querySelector('.joey-create-area');if(area&&!area.hidden){area.scrollIntoView({block:'start'});return;}if(tries)setTimeout(()=>reveal(tries-1),300);};reveal();}
+
 function renderTower(){
  const demo=new URLSearchParams(location.hash.split('?')[1]||'').get('demo')==='1',locale=getLocale();
  if(simpleJoeyView){simpleJoeyView.dispose();simpleJoeyView=null;}
  document.body.classList.add('tower-mode');
  if(demo&&!towerDemoStorage)towerDemoStorage=memoryStorage(demoHandoffs(Date.now()));
- const data=demo?(d=>({...d,projects:[...d.projects,...towerDemoIdeas]}))(demoTower()):{projects:towerProjects(),runsByProject:towerRuns};
+ const data=demo?(d=>({...d,projects:[...d.projects,...towerDemoIdeas.map(i=>({...i,status:ideaDecisions()[i.id]==='go'?'Active':'Idea',decision:ideaDecisions()[i.id]||null}))]}))(demoTower()):{projects:towerProjects(),runsByProject:towerRuns};
  const account=demo?null:towerAccount(locale);
  const tower=renderControlTower({locale,...data,demo,signedIn:demo||towerOwnerReady,filter:towerFilter,storage:demo?towerDemoStorage:globalThis.localStorage,account,
   onFilter:f=>{towerFilter=f;renderTower();},onChange:renderTower,onLocale:applyLocale,
-  onDecision:(id,choice)=>{if(demo){notify('human.saved');return;}if(id.startsWith('draft_')||id.startsWith('local_')){if(choice==='continue')openIdeaOnboarding();else{shelveIdea(id);renderTower();}return;}if(!releaseInfo?.readOnly)decideIdea(id,choice);},
-  onIdea:demo?async text=>{towerDemoIdeas=[{id:'DEMO_IDEA_'+towerDemoIdeas.length,name:text.slice(0,40),status:'Idea',summary:text,updatedAt:new Date().toISOString(),kind:'draft'},...towerDemoIdeas];}:towerIdea,signedInForIdeas:demo||towerOwnerReady,
+  onDecision:(id,choice)=>{if(demo&&!id.startsWith('local_')){notify('human.saved');return;}if(id.startsWith('draft_')||id.startsWith('local_')){decideIdeaCard(id,{continue:'go',shelve:'shelved',restore:null}[choice]);renderTower();return;}if(!releaseInfo?.readOnly)decideIdea(id,choice);},
+  onIdea:demo?async text=>{towerDemoIdeas=[{id:'local_demo'+towerDemoIdeas.length,name:text.slice(0,40),status:'Idea',summary:text,updatedAt:new Date().toISOString(),kind:'draft'},...towerDemoIdeas];}:towerIdea,signedInForIdeas:demo||towerOwnerReady,
   onDetails:id=>{if(!demo)navigateContext({project:id,module:'overview',mode:'advanced'});},
   onAdvanced:()=>{location.hash='#joey?view=classic';},
   mountHandoff:demo?null:mountTowerHandoff,

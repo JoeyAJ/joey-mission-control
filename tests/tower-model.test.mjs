@@ -84,3 +84,14 @@ test('idea drafts become "your call" cards marked as drafts',()=>{
  const m=towerModel({projects:[{id:'draft_1',name:'Idea',status:'Idea',summary:'One line',kind:'draft'}],now});
  assert.equal(m.cards[0].state,'decide');assert.equal(m.cards[0].kind,'draft');assert.equal(m.cards[0].summary,'One line');
 });
+
+test('shelved ideas leave the board but stay restorable; go-ahead ideas stand by for handoff',()=>{
+ const m=towerModel({projects:[{id:'local_a',name:'A',status:'Idea',kind:'draft',decision:'shelved'},{id:'local_b',name:'B',status:'Active',kind:'draft',decision:'go'}],now});
+ assert.deepEqual(m.shelved.map(c=>c.id),['local_a']);assert.deepEqual(m.cards.map(c=>[c.id,c.state,c.decision]),[['local_b','idle','go']]);assert.equal(m.total,1);
+});
+
+test('idea handoff text carries the idea and stops before deployment or paid services',async()=>{
+ const {ideaInstruction}=await import('../public/control-tower.js');
+ const text=ideaInstruction({name:'Dorm match',idea:'Match new students with roommates'});
+ assert.match(text,/Dorm match/);assert.match(text,/Match new students/);assert.match(text,/HANDOFF\.md/);assert.match(text,/不要自行部署/);
+});

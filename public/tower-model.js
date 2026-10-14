@@ -28,7 +28,7 @@ export function projectCard(project,{runs=null,handoff=null,now=Date.now()}={}){
  const current=active[0]||null;
  const blocked=(runs?.blockers||[])[0]||null,stale=tasks.find(t=>t.currentState==='unconfirmed'&&['running','blocked'].includes(t.reportedState))||null;
  const history=tasks.map(t=>({agent:t.agentName,agentKey:agentKey(t.agentName),feature:t.featureTitle,state:t.currentState,at:t.eventAt}));
- const base={id:project.id,name:project.name,kind:project.kind||'project',version:versionOf(current?.featureTitle)||versionOf(latest?.featureTitle)||known(project.version),lifecycle,history,
+ const base={id:project.id,name:project.name,kind:project.kind||'project',decision:project.decision||null,summary:project.summary||null,version:versionOf(current?.featureTitle)||versionOf(latest?.featureTitle)||known(project.version),lifecycle,history,
   lastAgent:latest?.agentName||known(project.lastAgent)||null,
   updatedAt:latest?.eventAt||project.updatedAt||null,
   next:known(project.next)};
@@ -47,8 +47,11 @@ export function projectCard(project,{runs=null,handoff=null,now=Date.now()}={}){
 }
 export function towerModel({projects=[],runsByProject={},handoffs={},now=Date.now()}={}){
  const order=new Map(TOWER_STATES.map((s,i)=>[s,i]));
+ // Shelved ideas leave the board but stay listed so they can be restored.
+ const shelved=projects.filter(p=>p.decision==='shelved').map(p=>projectCard(p,{now}));
+ projects=projects.filter(p=>p.decision!=='shelved');
  const cards=projects.map(p=>projectCard(p,{runs:runsByProject[p.id]||null,handoff:handoffs[p.id]||null,now}));
  const sorted=[...cards].sort((a,b)=>order.get(a.state)-order.get(b.state)||String(a.name).localeCompare(String(b.name)));
  const counts=Object.fromEntries(TOWER_STATES.map(s=>[s,0]));for(const c of cards)counts[c.state]++;
- return {cards:sorted,attention:sorted.filter(c=>ATTENTION_STATES.has(c.state)),flying:sorted.filter(c=>!ATTENTION_STATES.has(c.state)),counts,total:cards.length};
+ return {shelved,cards:sorted,attention:sorted.filter(c=>ATTENTION_STATES.has(c.state)),flying:sorted.filter(c=>!ATTENTION_STATES.has(c.state)),counts,total:cards.length};
 }

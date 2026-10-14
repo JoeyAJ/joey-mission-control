@@ -3,7 +3,7 @@
 // Technical evidence stays behind the existing advanced views.
 import {towerModel,AGENTS,agentKey} from './tower-model.js';
 const words={
- 'zh-TW':{newIdea:'記下新點子',ideaTitle:'記下新點子',ideaIntro:'用一句話寫下想做的東西。它會成為一張「等你決定」的點子卡，只有你登入後看得到。',ideaPlaceholder:'例如：做一個幫新生找宿舍室友的小工具',ideaSave:'存成點子',ideaSaving:'正在儲存…',ideaSaved:'已存好，點子卡已經放進「等你決定」。',ideaFailed:'沒能儲存：{reason}',ideaSignin:'目前沒有登入：點子會先存在這台裝置上（換裝置看不到）。登入後存的點子會進你的私人空間。',ideaFull:'私人點子最多 12 個，請先把舊的點子正式立項或整理掉。',draft:'點子草稿',eyebrow:'NEXAEON · MISSION CONTROL',title:'塔台',intro:'所有項目的位置、負責的 Agent，以及需要你處理的事。',
+ 'zh-TW':{ideaGoHint:'已決定進行。按「交接」把這個點子交給一位 Agent，開始建立專案。',restore:'恢復',shelvedTitle:'先放著的點子',shelvedHint:'這些點子暫時不顯示在航線上，隨時可以恢復。',ideaSheetIntro:'選擇一位 Agent，複製指令貼給它。它會依這個點子建立新專案、需求文件和交接入口。',newIdea:'記下新點子',ideaTitle:'記下新點子',ideaIntro:'用一句話寫下想做的東西。它會成為一張「等你決定」的點子卡，只有你登入後看得到。',ideaPlaceholder:'例如：做一個幫新生找宿舍室友的小工具',ideaSave:'存成點子',ideaSaving:'正在儲存…',ideaSaved:'已存好，點子卡已經放進「等你決定」。',ideaFailed:'沒能儲存：{reason}',ideaSignin:'目前沒有登入：點子會先存在這台裝置上（換裝置看不到）。登入後存的點子會進你的私人空間。',ideaFull:'私人點子最多 12 個，請先把舊的點子正式立項或整理掉。',draft:'點子草稿',eyebrow:'NEXAEON · MISSION CONTROL',title:'塔台',intro:'所有項目的位置、負責的 Agent，以及需要你處理的事。',
   all:'全部',attention:'需要你處理',flying:'項目航線',empty:'這一類目前沒有項目。',
   blocked:'卡住了',stale:'可能已停止',decide:'等你決定',awaiting:'等待接手',running:'開發中',paused:'暫停',idea:'點子',done:'完成',idle:'待命',
   version:'版本',noVersion:'版本未記錄',agent:'負責',lastAgent:'最後由',noAgent:'尚無 Agent',updated:'更新',noUpdate:'未記錄',
@@ -13,7 +13,7 @@ const words={
   copy:'複製交接指令',copying:'正在準備最新的交接指令…',copied:'已複製。貼給 {agent}，它開工回報後卡片就會更新。',copyFailed:'這次沒能準備好指令：{reason}',manual:'瀏覽器未自動複製，請全選下方文字後手動複製。',cancelHandoff:'取消等待',close:'關閉',
   noHistory:'還沒有交接紀錄。',now:'剛剛',minutes:'{n} 分鐘前',hours:'{n} 小時前',days:'{n} 天前',current:'進行中',demo:'示範資料 · 用來檢視版面，不是真實進度',
   signin:'登入後才能讀取各項目的即時回報。',advanced:'進階工作台',lang:'語言'},
- en:{newIdea:'Capture a new idea',ideaTitle:'Capture a new idea',ideaIntro:'Write what you want to build in one sentence. It becomes a “Your call” idea card, visible only to you when signed in.',ideaPlaceholder:'e.g. A small tool that matches new students with dorm roommates',ideaSave:'Save as idea',ideaSaving:'Saving…',ideaSaved:'Saved. The idea card is now under “Your call”.',ideaFailed:'Could not save: {reason}',ideaSignin:'Not signed in: the idea is saved on this device only (other devices will not see it). Ideas saved while signed in go to your private space.',ideaFull:'You can keep up to 12 private ideas. Formalize or tidy older ones first.',draft:'Idea draft',eyebrow:'NEXAEON · MISSION CONTROL',title:'Control Tower',intro:'Where every project is, which Agent is on it, and what needs you.',
+ en:{ideaGoHint:'You chose to go ahead. Tap “Hand off” to give this idea to an Agent and start the project.',restore:'Restore',shelvedTitle:'Shelved ideas',shelvedHint:'These ideas are hidden from the board. Restore one any time.',ideaSheetIntro:'Pick an Agent and paste the instruction to it. It will set up a new project, requirements and a handoff entry from this idea.',newIdea:'Capture a new idea',ideaTitle:'Capture a new idea',ideaIntro:'Write what you want to build in one sentence. It becomes a “Your call” idea card, visible only to you when signed in.',ideaPlaceholder:'e.g. A small tool that matches new students with dorm roommates',ideaSave:'Save as idea',ideaSaving:'Saving…',ideaSaved:'Saved. The idea card is now under “Your call”.',ideaFailed:'Could not save: {reason}',ideaSignin:'Not signed in: the idea is saved on this device only (other devices will not see it). Ideas saved while signed in go to your private space.',ideaFull:'You can keep up to 12 private ideas. Formalize or tidy older ones first.',draft:'Idea draft',eyebrow:'NEXAEON · MISSION CONTROL',title:'Control Tower',intro:'Where every project is, which Agent is on it, and what needs you.',
   all:'All',attention:'Needs you',flying:'Flight board',empty:'Nothing in this group right now.',
   blocked:'Blocked',stale:'May have stopped',decide:'Your call',awaiting:'Awaiting pickup',running:'In development',paused:'Paused',idea:'Idea',done:'Done',idle:'Standing by',
   version:'Version',noVersion:'Version not recorded',agent:'On it',lastAgent:'Last by',noAgent:'No Agent yet',updated:'Updated',noUpdate:'Not recorded',
@@ -23,7 +23,7 @@ const words={
   copy:'Copy handoff instruction',copying:'Preparing the latest handoff instruction…',copied:'Copied. Paste it into {agent}; the card updates once it reports.',copyFailed:'Could not prepare the instruction: {reason}',manual:'The browser did not copy automatically. Select the text below and copy it.',cancelHandoff:'Stop waiting',close:'Close',
   noHistory:'No handoffs yet.',now:'just now',minutes:'{n} min ago',hours:'{n} h ago',days:'{n} d ago',current:'in progress',demo:'Demo data · for layout review, not real progress',
   signin:'Sign in to read each project’s live reports.',advanced:'Advanced workspace',lang:'Language'},
- ko:{newIdea:'새 아이디어 기록',ideaTitle:'새 아이디어 기록',ideaIntro:'만들고 싶은 것을 한 문장으로 적으세요. 로그인한 본인만 볼 수 있는 ‘결정 대기’ 아이디어 카드가 됩니다.',ideaPlaceholder:'예: 신입생 기숙사 룸메이트를 찾아 주는 작은 도구',ideaSave:'아이디어로 저장',ideaSaving:'저장 중…',ideaSaved:'저장했습니다. 아이디어 카드가 ‘결정 대기’에 추가되었습니다.',ideaFailed:'저장하지 못했습니다: {reason}',ideaSignin:'로그인하지 않았습니다. 아이디어는 이 기기에만 저장됩니다 (다른 기기에서는 보이지 않음). 로그인 중에 저장한 아이디어는 비공개 공간에 저장됩니다.',ideaFull:'비공개 아이디어는 최대 12개입니다. 오래된 아이디어를 먼저 정식 등록하거나 정리하세요.',draft:'아이디어 초안',eyebrow:'NEXAEON · MISSION CONTROL',title:'관제탑',intro:'모든 프로젝트의 위치, 담당 Agent, 그리고 당신이 처리할 일.',
+ ko:{ideaGoHint:'진행하기로 결정했습니다. ‘인계’를 눌러 이 아이디어를 Agent에게 맡기고 프로젝트를 시작하세요.',restore:'복원',shelvedTitle:'보류한 아이디어',shelvedHint:'이 아이디어는 항로에서 숨겨져 있습니다. 언제든 복원할 수 있습니다.',ideaSheetIntro:'Agent를 선택하고 지시를 붙여 넣으세요. 이 아이디어로 새 프로젝트, 요구사항 문서와 인계 입구를 만듭니다.',newIdea:'새 아이디어 기록',ideaTitle:'새 아이디어 기록',ideaIntro:'만들고 싶은 것을 한 문장으로 적으세요. 로그인한 본인만 볼 수 있는 ‘결정 대기’ 아이디어 카드가 됩니다.',ideaPlaceholder:'예: 신입생 기숙사 룸메이트를 찾아 주는 작은 도구',ideaSave:'아이디어로 저장',ideaSaving:'저장 중…',ideaSaved:'저장했습니다. 아이디어 카드가 ‘결정 대기’에 추가되었습니다.',ideaFailed:'저장하지 못했습니다: {reason}',ideaSignin:'로그인하지 않았습니다. 아이디어는 이 기기에만 저장됩니다 (다른 기기에서는 보이지 않음). 로그인 중에 저장한 아이디어는 비공개 공간에 저장됩니다.',ideaFull:'비공개 아이디어는 최대 12개입니다. 오래된 아이디어를 먼저 정식 등록하거나 정리하세요.',draft:'아이디어 초안',eyebrow:'NEXAEON · MISSION CONTROL',title:'관제탑',intro:'모든 프로젝트의 위치, 담당 Agent, 그리고 당신이 처리할 일.',
   all:'전체',attention:'처리 필요',flying:'프로젝트 항로',empty:'이 분류에는 현재 프로젝트가 없습니다.',
   blocked:'막힘',stale:'중단 가능성',decide:'결정 대기',awaiting:'인계 대기',running:'개발 중',paused:'일시 중지',idea:'아이디어',done:'완료',idle:'대기',
   version:'버전',noVersion:'버전 기록 없음',agent:'담당',lastAgent:'마지막 담당',noAgent:'Agent 없음',updated:'갱신',noUpdate:'기록 없음',
@@ -48,6 +48,12 @@ export function handoffInstruction({project,agent,goal,instruction}){
  return header+'\n'+instruction;
 }
 
+// New-project handoff built from an idea card; no private repository is involved yet.
+export function ideaInstruction({name,idea}){
+ return ['請依下面的點子建立一個新專案，並成為它的第一位開發 Agent。','專案名稱 Name: '+name,'點子 Idea:',idea,'',
+  '請做：1) 用一頁 PRD.md 整理目標、使用者、成功標準與第一版範圍；2) 建立私人 GitHub repo 與 README.md；3) 建立 HANDOFF.md，寫明目前狀態、下一步、執行 Agent 與時間；4) 先回報規劃給 Joey 確認，再開始實作。',
+  '不要自行部署、建立付費服務或寫入其他專案；需要帳號、金鑰或付費時先停下來詢問 Joey。'].join('\n');
+}
 export function renderControlTower({doc=document,locale='zh-TW',projects=[],runsByProject={},now=Date.now(),demo=false,signedIn=true,filter='all',onFilter=()=>{},onDecision=null,onDetails=()=>{},onAdvanced=()=>{},onLocale=null,account=null,onIdea=null,signedInForIdeas=false,mountHandoff=null,prepareInstruction=null,storage=globalThis.localStorage,onChange=()=>{}}={}){
  const w=towerWords(locale),el=(tag,cls,text)=>{const n=doc.createElement(tag);if(cls)n.className=cls;if(text!==undefined)n.textContent=text;return n;};
  const model=towerModel({projects,runsByProject,handoffs:readHandoffs(storage),now});
@@ -71,7 +77,7 @@ export function renderControlTower({doc=document,locale='zh-TW',projects=[],runs
   const top=el('div','tower-card-top'),status=el('span','tower-status');status.append(el('i','tower-status-icon',STATE_ICON[c.state]),el('span','',w[c.state]));top.append(status,el('span','tower-version',c.kind==='draft'?w.draft:c.version?'v'+c.version.replace(/^v/i,''):w.noVersion));a.append(top);
   a.append(el('h4','tower-name',c.name));if(c.kind==='draft')a.dataset.kind='draft';
   const pilot=el('div','tower-pilot');const name=c.agent||c.lastAgent;pilot.append(avatar(name),el('span','tower-pilot-role',c.agent?w.agent:c.lastAgent?w.lastAgent:''),el('strong','tower-pilot-name',name||w.noAgent));a.append(pilot);
-  const hint={blocked:w.blockedHint,stale:w.staleHint,decide:w.decideHint,awaiting:fill(w.awaitingHint,{agent:c.agent})}[c.state];
+  const hint=c.kind==='draft'&&c.decision==='go'&&c.state==='idle'?w.ideaGoHint:{blocked:w.blockedHint,stale:w.staleHint,decide:w.decideHint,awaiting:fill(w.awaitingHint,{agent:c.agent})}[c.state];
   const line=c.summary||c.feature;if(line)a.append(el('p','tower-line',line));if(hint)a.append(el('p','tower-hint',hint));
   a.append(el('p','tower-time',w.updated+' · '+relativeTime(c.at||c.updatedAt,w,now)));
   const actions=el('div','tower-actions');
@@ -87,16 +93,18 @@ export function renderControlTower({doc=document,locale='zh-TW',projects=[],runs
  function hue(name){return {codex:'200',claude:'24',hermes:'280',other:'250'}[agentKey(name)]||'262';}
  // Handoff sheet: dialog on desktop, bottom sheet on phones (CSS).
  const dialog=el('dialog','tower-sheet');root.append(dialog);
+ // Close and refresh once; the dialog 'close' event is not reliable in every browser.
+ let afterClose=null;const finish=()=>{const run=afterClose;afterClose=null;if(dialog.open)dialog.close();run?.();};dialog.addEventListener('close',()=>finish());dialog.addEventListener('cancel',event=>{event.preventDefault();finish();});
  function openSheet(c){
-  dialog.replaceChildren();let changed=false;dialog.onclose=()=>{if(changed)onChange();};const form=el('form','tower-sheet-body');form.method='dialog';
+  dialog.replaceChildren();let changed=false,disposeHandoff=null;afterClose=()=>{disposeHandoff?.();if(changed)onChange();};const form=el('form','tower-sheet-body');form.method='dialog';
   form.append(el('h3','tower-sheet-title',fill(w.sheetTitle,{project:c.name})),el('p','tower-sheet-intro',w.sheetIntro));
   const pick=el('fieldset','tower-agents');pick.append(el('legend','',w.pickAgent));let chosen=AGENTS.find(a=>a.id!==agentKey(c.agent||c.lastAgent))?.id||AGENTS[0].id;
   for(const a of AGENTS){const label=el('label','tower-agent-option'),input=el('input');input.type='radio';input.name='agent';input.value=a.id;input.checked=a.id===chosen;input.addEventListener('change',()=>{chosen=a.id;});label.style.setProperty('--agent-hue',hue(a.name));label.append(input,avatar(a.name),el('span','',a.name));pick.append(label);}
   const goalLabel=el('label','tower-goal'),goal=el('textarea');goal.rows=2;goal.placeholder=w.goalPlaceholder;goal.maxLength=300;goalLabel.append(el('span','',w.goal),goal);
   const status=el('p','tower-sheet-status');status.setAttribute('role','status');const fallback=el('textarea','tower-fallback');fallback.readOnly=true;fallback.hidden=true;
-  const copy=el('button','tower-button tower-primary',w.copy);copy.type='button';const close=el('button','tower-button',w.close);close.type='submit';
+  const copy=el('button','tower-button tower-primary',w.copy);copy.type='button';const close=el('button','tower-button',w.close);close.type='button';close.addEventListener('click',finish);
   copy.addEventListener('click',async()=>{const agent=AGENTS.find(a=>a.id===chosen).name;copy.disabled=true;status.textContent=w.copying;fallback.hidden=true;
-   try{const base=prepareInstruction?await prepareInstruction(c.id):'';const text=handoffInstruction({project:c.name,agent,goal:goal.value.trim(),instruction:base});
+   try{const base=c.kind==='draft'?ideaInstruction({name:c.name,idea:c.summary||c.name}):prepareInstruction?await prepareInstruction(c.id):'';const text=handoffInstruction({project:c.name,agent,goal:goal.value.trim(),instruction:base});
     writeHandoff(c.id,{agent:chosen,goal:goal.value.trim(),at:new Date().toISOString()},storage);
     try{await globalThis.navigator.clipboard.writeText(text);status.textContent=fill(w.copied,{agent});}catch{fallback.value=text;fallback.hidden=false;fallback.select();status.textContent=w.manual;}
     changed=true;
@@ -104,18 +112,19 @@ export function renderControlTower({doc=document,locale='zh-TW',projects=[],runs
    finally{copy.disabled=false;}});
   const row=el('div','tower-sheet-actions');
   // Real projects reuse the verified takeover flow (sign-in, fresh source read, copy, fallback).
-  if(mountHandoff){const host=el('div','tower-handoff-host');const agentLabel=()=>AGENTS.find(a=>a.id===chosen).name;
+  if(c.kind==='draft'){form.querySelector('.tower-sheet-intro').textContent=w.ideaSheetIntro;row.append(close,copy);form.append(pick,goalLabel,status,fallback,row);}
+  else if(mountHandoff){const host=el('div','tower-handoff-host');const agentLabel=()=>AGENTS.find(a=>a.id===chosen).name;
    const dispose=mountHandoff(host,{projectId:c.id,decorate:text=>handoffInstruction({project:c.name,agent:agentLabel(),goal:goal.value.trim(),instruction:text}),onCopied:outcome=>{if(outcome!=='copied'&&outcome!=='manual')return;writeHandoff(c.id,{agent:chosen,goal:goal.value.trim(),at:new Date().toISOString()},storage);changed=true;status.textContent=fill(w.copied,{agent:agentLabel()});}});
-   dialog.addEventListener('close',()=>dispose?.(),{once:true});row.append(close);form.append(pick,goalLabel,host,status,row);}
-  else{row.append(close,copy);form.append(pick,goalLabel,status,fallback,row);}
+   disposeHandoff=dispose;row.append(close);form.append(pick,goalLabel,host,status,row);}
+  else if(!c.kind||c.kind!=='draft'){row.append(close,copy);form.append(pick,goalLabel,status,fallback,row);}
   dialog.append(form);
   if(dialog.showModal)dialog.showModal();else dialog.setAttribute('open','');
  }
  function openIdea(){
-  dialog.replaceChildren();let saved=false;dialog.onclose=()=>{if(saved)onChange();};const form=el('form','tower-sheet-body');form.method='dialog';
+  dialog.replaceChildren();let saved=false;afterClose=()=>{if(saved)onChange();};const form=el('form','tower-sheet-body');form.method='dialog';
   const label=el('label','tower-goal'),input=el('textarea');input.rows=3;input.maxLength=2000;input.placeholder=w.ideaPlaceholder;label.append(el('span','',w.ideaIntro),input);
   const status=el('p','tower-sheet-status');status.setAttribute('role','status');if(!signedInForIdeas)status.textContent=w.ideaSignin;
-  const save=el('button','tower-button tower-primary',w.ideaSave);save.type='button';const close=el('button','tower-button',w.close);close.type='submit';
+  const save=el('button','tower-button tower-primary',w.ideaSave);save.type='button';const close=el('button','tower-button',w.close);close.type='button';close.addEventListener('click',finish);
   save.addEventListener('click',async()=>{if(!input.value.trim()){input.focus();return;}save.disabled=true;status.textContent=w.ideaSaving;try{await onIdea(input.value.trim());saved=true;status.textContent=w.ideaSaved;input.value='';}catch(e){status.textContent=e?.message==='IDEA_LIMIT'?w.ideaFull:fill(w.ideaFailed,{reason:e?.message||String(e)});}finally{save.disabled=false;}});
   const row=el('div','tower-sheet-actions');row.append(close,save);form.append(el('h3','tower-sheet-title',w.ideaTitle),label,status,row);dialog.append(form);
   if(dialog.showModal)dialog.showModal();else dialog.setAttribute('open','');input.focus();
@@ -124,6 +133,7 @@ export function renderControlTower({doc=document,locale='zh-TW',projects=[],runs
  const attention=model.attention.filter(visible),flying=model.flying.filter(visible);
  if(attention.length)root.append(section(w.attention,attention,'tower-attention'));
  root.append(section(w.flying,flying,'tower-flying'));
+ if(model.shelved.length&&onDecision){const box=el('details','tower-shelved');box.append(el('summary','',w.shelvedTitle+' · '+model.shelved.length),el('p','tower-empty',w.shelvedHint));const list=el('ul','tower-shelved-list');for(const c of model.shelved){const li=el('li'),b=el('button','tower-button',w.restore);b.type='button';b.addEventListener('click',()=>onDecision(c.id,'restore'));li.append(el('strong','',c.name),el('span','',c.summary||''),b);list.append(li);}box.append(list);root.append(box);}
  root.towerModel=model;
  return root;
 }
