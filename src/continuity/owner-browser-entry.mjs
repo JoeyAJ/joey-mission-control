@@ -188,3 +188,7 @@ const towerDrafts=()=>createProjectDraftStorageClient({getAccessToken:verifiedOw
 export async function listOwnerIdeaDrafts(){try{return (await towerDrafts().list()).drafts;}catch{return null;}}
 export async function saveOwnerIdea(text){return (await towerDrafts().save({draft:quickIdeaDraft(text),expectedRevision:0})).draft;}
 export async function updateOwnerIdea(draft,fields){return (await towerDrafts().save({draft:editedIdeaDraft(draft,fields),expectedRevision:draft.revision})).draft;}
+// Control Tower owner state synced across devices (handoff intents, reviews, idea decisions).
+// The RPCs re-check Owner/AAL2/live session server-side; the browser only adds an early check.
+export async function readOwnerTowerState(){const token=await verifiedOwnerToken().catch(()=>null);if(!token)return null;const {data,error}=await activeClient.rpc('mc_owner_tower_state_get');if(error||data?.qualification!=='OWNER_TOWER_STATE'||typeof data.state!=='object')throw Error('TOWER_STATE_READ_FAILED');return data.state;}
+export async function patchOwnerTowerState(stateKey,entryId,entry){await verifiedOwnerToken();const {data,error}=await activeClient.rpc('mc_owner_tower_state_patch',{state_key:stateKey,entry_id:entryId,entry:entry??null});if(error||data?.qualification!=='OWNER_TOWER_STATE_SAVED')throw Error('TOWER_STATE_SAVE_FAILED');return data.value;}
