@@ -44,7 +44,7 @@ export function relativeTime(at,w,now=Date.now()){const t=Date.parse(at);if(!Num
 
 // Handoff text: a short plain header for the receiving Agent, then the verified packet.
 export function handoffInstruction({project,agent,goal,instruction}){
- const header=['# 交接 / Handoff → '+agent,'專案 Project: '+project,'接手 Agent: '+agent+'（registration 的 agentName 請填 "'+agent+'"）',goal?'本階段目標 Goal: '+goal+'（registration 的 featureTitle 請用這個目標）':'本階段目標 Goal: 依專案入口文件的「下一步」',''].join('\n');
+ const header=['# 交接 / Handoff → '+agent,'專案 Project: '+project,'接手 Agent: '+agent+'（registration 的 agentName 請填 "'+agent+'"）',goal?'本階段目標 Goal: '+goal:'本階段目標 Goal: 依專案入口文件的「下一步」','版本 Version: registration 的 featureTitle 請以這一階段的版本號開頭，格式「v0.4 · 目標」（例如 "v0.4 · '+(goal||'完成下一步')+'"），讓 Mission Control 顯示版本。',''].join('\n');
  return header+'\n'+instruction;
 }
 

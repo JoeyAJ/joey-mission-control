@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {towerModel,projectCard,agentKey,HANDOFF_TTL_MS} from '../public/tower-model.js';
+import {towerModel,projectCard,agentKey,versionOf,HANDOFF_TTL_MS} from '../public/tower-model.js';
 import {handoffInstruction,readHandoffs,writeHandoff,relativeTime,towerWords} from '../public/control-tower.js';
 
 const now=Date.parse('2026-10-14T12:00:00Z');
@@ -49,7 +49,7 @@ test('unknown versions and agents stay unknown',()=>{
 
 test('handoff text names the receiving Agent and goal before the verified instruction',()=>{
  const text=handoffInstruction({project:'NexAeon',agent:'Hermes',goal:'Add watch layout',instruction:'VERIFIED'});
- assert.match(text,/Handoff → Hermes/);assert.match(text,/agentName 請填 "Hermes"/);assert.match(text,/Add watch layout/);assert.ok(text.endsWith('VERIFIED'));
+ assert.match(text,/Handoff → Hermes/);assert.match(text,/agentName 請填 "Hermes"/);assert.match(text,/Add watch layout/);assert.match(text,/v0\.4 · /);assert.ok(text.endsWith('VERIFIED'));
 });
 
 test('handoff storage survives bad data and removal',()=>{
@@ -63,4 +63,9 @@ test('handoff storage survives bad data and removal',()=>{
 test('all three locales carry every tower label',()=>{
  const keys=Object.keys(towerWords('zh-TW'));for(const l of ['en','ko'])assert.deepEqual(Object.keys(towerWords(l)).sort(),[...keys].sort());
  assert.equal(relativeTime(at(3),towerWords('en'),now),'3 min ago');assert.equal(relativeTime(null,towerWords('ko'),now),'기록 없음');
+});
+
+test('stage version is read from the reported feature title',()=>{
+ assert.equal(versionOf('v0.4 · Mobile sheet'),'0.4');assert.equal(versionOf('V1.2.3-beta Fix'),'1.2.3-beta');assert.equal(versionOf('Mobile sheet'),null);
+ assert.equal(projectCard({id:'A',name:'A',status:'Active',version:'Unknown'},{runs:runs([task('Codex','running',1,{featureTitle:'v0.5 · Tower'})]),now}).version,'0.5');
 });

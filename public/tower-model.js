@@ -13,6 +13,8 @@ export const HANDOFF_TTL_MS=72*3600*1000;
 export function agentKey(name){if(!name)return null;return AGENTS.find(a=>a.match.test(name))?.id||'other';}
 export function agentName(key,fallback){return AGENTS.find(a=>a.id===key)?.name||fallback||key;}
 const known=v=>typeof v==='string'&&v.trim()&&!/^unknown$/i.test(v.trim())?v.trim():null;
+// Agents are asked to start featureTitle with the stage version ("v0.4 · goal").
+export const versionOf=title=>/^\s*v(\d+(?:\.\d+){0,3}[A-Za-z0-9.-]*)\b/i.exec(title||'')?.[1]||null;
 const time=v=>{const t=Date.parse(v);return Number.isFinite(t)?t:null;};
 function lifecycleOf(project){
  const raw=String(project.lifecycle||project.status||'').toUpperCase();
@@ -23,9 +25,10 @@ function lifecycleOf(project){
 }
 export function projectCard(project,{runs=null,handoff=null,now=Date.now()}={}){
  const tasks=runs?.tasks||[],latest=tasks[0]||null,active=runs?.active||[],lifecycle=lifecycleOf(project);
- const current=active[0]||null,blocked=(runs?.blockers||[])[0]||null,stale=tasks.find(t=>t.currentState==='unconfirmed'&&['running','blocked'].includes(t.reportedState))||null;
+ const current=active[0]||null;
+ const blocked=(runs?.blockers||[])[0]||null,stale=tasks.find(t=>t.currentState==='unconfirmed'&&['running','blocked'].includes(t.reportedState))||null;
  const history=tasks.map(t=>({agent:t.agentName,agentKey:agentKey(t.agentName),feature:t.featureTitle,state:t.currentState,at:t.eventAt}));
- const base={id:project.id,name:project.name,version:known(project.version),lifecycle,history,
+ const base={id:project.id,name:project.name,version:versionOf(current?.featureTitle)||versionOf(latest?.featureTitle)||known(project.version),lifecycle,history,
   lastAgent:latest?.agentName||known(project.lastAgent)||null,
   updatedAt:latest?.eventAt||project.updatedAt||null,
   next:known(project.next)};
