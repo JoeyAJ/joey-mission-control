@@ -6,6 +6,7 @@ import {createOwnerJournalSdkPort} from '../tasks/task-closure-journal.mjs';
 import {withOwnerSessionCustody} from './owner-session-custody.mjs';
 import {createTaskReconciliationClient} from '../tasks/task-reconciliation-client.mjs';
 import {createProjectDraftStorageClient} from '../onboarding/project-draft-storage-client.mjs';
+import {quickIdeaDraft} from '../onboarding/quick-idea.mjs';
 import {mountRunWorkbench} from '../reporting/workbench-view.mjs';
 import {createRunEntrySelection} from '../reporting/run-entry-selection.mjs';
 import {mountRepositoryTakeover} from '../reporting/repository-takeover-view.mjs';
@@ -181,3 +182,8 @@ export async function readOwnerTowerRuns(projectIds,{now=Date.now}={}){
  await Promise.all(projectIds.map(async projectId=>{try{const reply=await client.read({projectId,track:'BASELINE'});const view={status:'connected',observation:reply?.observation};out[projectId]=joeyRunSummaryFor({view,projectId,track:'BASELINE',sourceConfirmed:true,now:now()});}catch{}}));
  return out;
 }
+// Control Tower quick idea capture: one sentence becomes a private Owner cloud draft
+// (existing draft storage, max 12). Formal registration still uses the onboarding flow.
+const towerDrafts=()=>createProjectDraftStorageClient({getAccessToken:verifiedOwnerToken});
+export async function listOwnerIdeaDrafts(){try{return (await towerDrafts().list()).drafts;}catch{return null;}}
+export async function saveOwnerIdea(text){return (await towerDrafts().save({draft:quickIdeaDraft(text),expectedRevision:0})).draft;}

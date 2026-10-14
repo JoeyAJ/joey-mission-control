@@ -1,9 +1,10 @@
 # Control Tower daily overview — 2026-10-14
 
 Project: MISSION_CONTROL
-Timestamp: 2026-10-14
+Timestamp: 2026-10-14T06:05:36.000Z
 Task: Replace the daily Joey overview with a Control Tower (PM-style flight board) and Agent handoff sheet
-Status: PREVIEW_PENDING_JOEY_REVIEW
+Status: LOCAL_VERIFIED_PARENT_READ_PREVIEW_PUBLISHED
+Last Developer: Claude Code
 Executed by: Claude Code
 Actual Model: claude-opus-5-5
 Parent: `02060ac353c57f7ecc4614bb94d4f2246a53d16d` (`codex/mc-command-center-checkpoint-20261006`).
@@ -20,6 +21,8 @@ Joey approved (2026-10-14) a simpler daily entry: every project as one card show
 - Live reports: `readOwnerTowerRuns` (Owner bundle) reads each project's repository runs with the verified Owner session about every 30 s while the tower is visible.
 - NexAeon visual system: indigo/orchid palette, flowing light border on cards in development, mobile single column and bottom-sheet handoff, reduced-motion fallback. Fonts use the system stack because the CSP blocks external fonts.
 - Demo layout: `#joey?demo=1` (clearly labelled, never mixed with real data).
+- Stage version: handoff text asks the receiving Agent to start `featureTitle` with the version (`v0.4 · goal`); cards read the version from there.
+- Quick idea capture (2026-10-14): the "+" button saves one sentence as a private Owner cloud draft through the existing draft storage (`src/onboarding/quick-idea.mjs`, max 12). Drafts show as "your call" cards; "go ahead" opens the existing onboarding flow in the classic view, "shelve" hides the card in this browser only (the draft is kept).
 
 ## Verification
 
@@ -30,7 +33,7 @@ Joey approved (2026-10-14) a simpler daily entry: every project as one card show
 ## Next
 
 - Joey reviews the Preview; then iterate on visuals/content.
-- Deferred by agreement: quick "+ new idea" capture (next version).
+- Joey checks real sign-in, live reports, clipboard copy and idea saving on the fixed Preview.
 
 ---
 

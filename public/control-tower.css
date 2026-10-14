@@ -120,6 +120,11 @@ body.tower-mode #joey.view{display:block}
 .tower-sheet-status{margin:0;min-height:20px;font-size:14px;color:var(--nx-orchid)}
 .tower-sheet-actions{display:flex;justify-content:flex-end;gap:10px}
 
+/* Quick idea capture */
+.tower-fab{position:fixed;right:max(24px,env(safe-area-inset-right));bottom:max(24px,env(safe-area-inset-bottom));z-index:20;width:60px;height:60px;border-radius:50%;border:0;display:grid;place-items:center;font:300 34px/1 var(--nx-display);color:#fff;text-align:center;padding:0;background:linear-gradient(135deg,var(--nx-blue),var(--nx-glow));box-shadow:0 10px 30px #7c3aed66,0 0 0 1px #ffffff22;transition:transform .2s,box-shadow .2s}
+.tower .tower-fab{min-height:60px;font:300 34px/1 var(--nx-display)}
+.tower-fab:hover{transform:scale(1.06) rotate(90deg);box-shadow:0 14px 40px #a855f788}
+.tower-card[data-kind=draft] .tower-version{border-style:dashed;color:var(--nx-amber)}
 /* Verified takeover flow inside the sheet: only sign-in and the copy action remain. */
 .tower-handoff-host{display:flex;flex-direction:column;gap:12px}
 .tower-takeover{display:flex;flex-direction:column;gap:12px}

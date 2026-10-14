@@ -69,3 +69,18 @@ test('stage version is read from the reported feature title',()=>{
  assert.equal(versionOf('v0.4 · Mobile sheet'),'0.4');assert.equal(versionOf('V1.2.3-beta Fix'),'1.2.3-beta');assert.equal(versionOf('Mobile sheet'),null);
  assert.equal(projectCard({id:'A',name:'A',status:'Active',version:'Unknown'},{runs:runs([task('Codex','running',1,{featureTitle:'v0.5 · Tower'})]),now}).version,'0.5');
 });
+
+test('a one-sentence idea becomes a valid private draft with neutral defaults',async()=>{
+ const {quickIdeaDraft}=await import('../src/onboarding/quick-idea.mjs');
+ const random={getRandomValues:a=>a.fill(171)};
+ const d=quickIdeaDraft('  幫新生配對宿舍室友的小工具\n第二行細節  ',{now:new Date(now),random});
+ assert.equal(d.draftId,'draft_abababababababab');assert.equal(d.project.projectId,'IDEA_ABABABABABABABAB');assert.equal(d.project.name,'幫新生配對宿舍室友的小工具');
+ assert.equal(d.project.idea,'幫新生配對宿舍室友的小工具\n第二行細節');assert.equal(d.revision,1);assert.equal(d.project.environment,'CODE_ONLY');
+ assert.throws(()=>quickIdeaDraft('   ',{random}),/DRAFT_REQUIRED/);
+ assert.throws(()=>quickIdeaDraft('token ghp_'+'a'.repeat(30),{random}),/DRAFT_TEXT_INVALID/);
+});
+
+test('idea drafts become "your call" cards marked as drafts',()=>{
+ const m=towerModel({projects:[{id:'draft_1',name:'Idea',status:'Idea',summary:'One line',kind:'draft'}],now});
+ assert.equal(m.cards[0].state,'decide');assert.equal(m.cards[0].kind,'draft');assert.equal(m.cards[0].summary,'One line');
+});

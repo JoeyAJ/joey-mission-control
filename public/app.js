@@ -1,4 +1,4 @@
-import {createOwnerProjectConnectionClient,mountOwnerBrowserEntry,readOwnerTowerRuns} from './owner-auth-client.js';
+import {createOwnerProjectConnectionClient,mountOwnerBrowserEntry,readOwnerTowerRuns,listOwnerIdeaDrafts,saveOwnerIdea} from './owner-auth-client.js';
 import {mountJoeyTakeover} from './joey-takeover.js';
 import {ownerAuthSetupStatus} from './owner-auth-config.js';
 import {taskWorkflowConfig} from './task-workflow-config.js';
@@ -251,17 +251,26 @@ function renderWorkspace(){if(!state||!$('#workspace').classList.contains('activ
 function isTowerRoute(){const [route,query]=location.hash.split('?'),q=new URLSearchParams(query||'');return (!route||route==='#joey')&&!q.has('mode')&&!q.has('project')&&!q.has('daily')&&q.get('view')!=='classic';}
 let towerFilter='all',towerRuns={},towerDemoStorage=null;
 function memoryStorage(seed){const data={'mc.tower.handoffs.v1':JSON.stringify(seed)};return{getItem:k=>data[k]??null,setItem:(k,v)=>{data[k]=String(v);}};}
-function towerProjects(){return (state?.projects||[]).map(p=>({id:p.id,name:p.name?.value||p.id,status:p.status?.value,version:p.version?.value,lastAgent:p.lastAI?.value,updatedAt:p.lastUpdated?.value,next:p.nextAction?.value}));}
+let towerIdeas=[],towerOwnerReady=false,towerDemoIdeas=[];
+const SHELVED_IDEAS='mc.tower.shelvedIdeas.v1';
+function shelvedIdeas(){try{return new Set(JSON.parse(localStorage.getItem(SHELVED_IDEAS)||'[]'));}catch{return new Set();}}
+function shelveIdea(id){try{localStorage.setItem(SHELVED_IDEAS,JSON.stringify([...shelvedIdeas(),id]));}catch{}}
+// Private idea drafts appear as "your call" cards next to registered projects.
+const ideaCards=drafts=>{const hidden=shelvedIdeas();return drafts.filter(d=>!hidden.has(d.draftId)).map(d=>({id:d.draftId,name:d.project.name,status:'Idea',summary:d.project.idea,updatedAt:d.updatedAt,kind:'draft'}));};
+function towerProjects(){return [...(state?.projects||[]).map(p=>({id:p.id,name:p.name?.value||p.id,status:p.status?.value,version:p.version?.value,lastAgent:p.lastAI?.value,updatedAt:p.lastUpdated?.value,next:p.nextAction?.value})),...ideaCards(towerIdeas)];}
+async function towerIdea(text){if(towerIdeas.length>=12)throw Error('IDEA_LIMIT');const draft=await saveOwnerIdea(text);towerIdeas=[draft,...towerIdeas.filter(d=>d.draftId!==draft.draftId)];}
+function openIdeaOnboarding(){location.hash='#joey?view=classic';const reveal=(tries=20)=>{const area=document.querySelector('.joey-create-area');if(area&&!area.hidden){area.scrollIntoView({block:'start'});return;}if(tries)setTimeout(()=>reveal(tries-1),300);};reveal();}
 function renderTower(){
  const demo=new URLSearchParams(location.hash.split('?')[1]||'').get('demo')==='1',locale=getLocale();
  if(simpleJoeyView){simpleJoeyView.dispose();simpleJoeyView=null;}
  document.body.classList.add('tower-mode');
  if(demo&&!towerDemoStorage)towerDemoStorage=memoryStorage(demoHandoffs(Date.now()));
- const data=demo?demoTower():{projects:towerProjects(),runsByProject:towerRuns};
+ const data=demo?(d=>({...d,projects:[...d.projects,...towerDemoIdeas]}))(demoTower()):{projects:towerProjects(),runsByProject:towerRuns};
  const account=demo||releaseInfo?.readOnly?null:towerAccount(locale);
- const tower=renderControlTower({locale,...data,demo,signedIn:demo||Object.keys(towerRuns).length>0,filter:towerFilter,storage:demo?towerDemoStorage:globalThis.localStorage,account,
+ const tower=renderControlTower({locale,...data,demo,signedIn:demo||towerOwnerReady,filter:towerFilter,storage:demo?towerDemoStorage:globalThis.localStorage,account,
   onFilter:f=>{towerFilter=f;renderTower();},onChange:renderTower,onLocale:applyLocale,
-  onDecision:releaseInfo?.readOnly&&!demo?null:(id,choice)=>demo?notify('human.saved'):decideIdea(id,choice),
+  onDecision:(id,choice)=>{if(demo){notify('human.saved');return;}if(id.startsWith('draft_')){if(choice==='continue')openIdeaOnboarding();else{shelveIdea(id);renderTower();}return;}if(!releaseInfo?.readOnly)decideIdea(id,choice);},
+  onIdea:demo?async text=>{towerDemoIdeas=[{id:'DEMO_IDEA_'+towerDemoIdeas.length,name:text.slice(0,40),status:'Idea',summary:text,updatedAt:new Date().toISOString(),kind:'draft'},...towerDemoIdeas];}:releaseInfo?.readOnly?null:towerIdea,signedInForIdeas:demo||towerOwnerReady,
   onDetails:id=>{if(!demo)navigateContext({project:id,module:'overview',mode:'advanced'});},
   onAdvanced:()=>{location.hash='#joey?view=classic';},
   mountHandoff:demo?null:mountTowerHandoff,
@@ -275,7 +284,7 @@ const towerSeen=new Map();let towerTimer=null;
 function towerAccount(locale){try{return mountOwnerBrowserEntry({doc:document,locale,projectId:'NEXAEON'});}catch{return null;}}
 function mountTowerHandoff(host,{projectId,decorate,onCopied}){const view=mountJoeyTakeover({locale:getLocale(),projectConnectionClient:authorizedProjectClient,project:projectId,track:'BASELINE',publicProjects:state.projects,publicCases:publicCaseSnapshot,decorateInstruction:decorate,onCopied});view.root.classList.add('tower-takeover');const scope=view.root.querySelector('.project-handoff-scope');if(scope)view.root.prepend(scope);host.append(view.root);return()=>view.dispose();}
 // Reads Agent reports about every 30 s while the tower is visible; never while a sheet is open.
-function scheduleTowerRefresh(demo){clearTimeout(towerTimer);if(demo)return;towerTimer=setTimeout(async()=>{if(!isTowerRoute()||document.hidden||document.querySelector('.tower-sheet[open]')){scheduleTowerRefresh(false);return;}const ids=(state?.projects||[]).map(p=>p.id);const runs=await readOwnerTowerRuns(ids).catch(()=>null);if(runs&&JSON.stringify(runs)!==JSON.stringify(towerRuns)){towerRuns=runs;renderTower();}else scheduleTowerRefresh(false);},Object.keys(towerRuns).length?30000:5000);}
+function scheduleTowerRefresh(demo){clearTimeout(towerTimer);if(demo)return;towerTimer=setTimeout(async()=>{if(!isTowerRoute()||document.hidden||document.querySelector('.tower-sheet[open]')){scheduleTowerRefresh(false);return;}const ids=(state?.projects||[]).map(p=>p.id);const [runs,ideas]=await Promise.all([readOwnerTowerRuns(ids).catch(()=>null),listOwnerIdeaDrafts().catch(()=>null)]);const ready=!!(runs||ideas),changed=ready!==towerOwnerReady||runs&&JSON.stringify(runs)!==JSON.stringify(towerRuns)||ideas&&JSON.stringify(ideas)!==JSON.stringify(towerIdeas);towerOwnerReady=ready;if(runs)towerRuns=runs;if(ideas)towerIdeas=ideas;if(changed)renderTower();else scheduleTowerRefresh(false);},towerOwnerReady?30000:5000);}
 
 async function decideIdea(id,choice){const m=[...manifests.values()].map(m=>presentCanonicalProject(m,getLocale())).find(m=>m.project_id===id);if(!m)return;const lifecycle=choice==='continue'?'IN_PROGRESS':'PAUSED';try{if(m.canonicalState){await mutateProjectState(m,{type:'SET_LIFECYCLE',lifecycle:lifecycle==='IN_PROGRESS'?'DEVELOPING':lifecycle,completionConfirmed:false});return;}await api(`/api/projects/${encodeURIComponent(id)}/owner-decisions`,{method:'POST',body:JSON.stringify({actor:'joey',confirmation:id,explicitDecision:'JOEY_APPROVES',expectedRevision:m.product.revision,lifecycle})});await reload();notify('human.saved');}catch(e){notifyError(e);}}
 function isSimpleJoeyRoute(){const route=location.hash.split('?')[0];return (!route||route==='#joey')&&viewContext.module==='overview'&&new URLSearchParams(location.hash.split('?')[1]||'').get('mode')!=='advanced';}
