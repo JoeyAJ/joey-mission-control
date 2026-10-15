@@ -80,3 +80,24 @@ test('registered projects show their catalog website and catalog facts instead o
   assert.deepEqual(find(detail,n=>n.tag==='a'&&n.className==='tower-link').map(a=>a.href),['https://github.com/JoeyAJ/ai-interactive-experience-engine',engine.siteUrl]);
  }
 });
+
+test('registered projects show the catalog work log like live reports, with real times',async()=>{
+ const {catalogWorkLog}=await import('../src/onboarding/project-registration-catalog.mjs');
+ const {projectCard}=await import('../public/tower-model.js');
+ const {relativeTime}=await import('../public/control-tower.js');
+ const md='# X\n\n## Work log\n\n- 2026-10-15T15:22:29+09:00 | Claude Code | completed | v0.5 interaction core\n- 2026-10-15T12:54:56+09:00 | Codex | completed | onboarding\n- 2026-10-15T16:00:00+09:00 | Claude Code | in_progress | newer, listed out of order\n- not a log line\n- 2026-13-40T00:00:00Z | X | completed | bad date\n- 2026-10-15T10:00:00Z | X | finished | bad state\n';
+ const log=catalogWorkLog(md);
+ assert.deepEqual(log.map(e=>[e.at,e.agent,e.state]),[['2026-10-15T07:00:00.000Z','Claude Code','running'],['2026-10-15T06:22:29.000Z','Claude Code','completed'],['2026-10-15T03:54:56.000Z','Codex','completed']]);
+ assert.deepEqual(catalogWorkLog('# none'),[]);
+ const now=Date.parse('2026-10-15T08:00:00Z'),project={id:'E',name:'E',kind:'registered',status:'Active',version:'v0.5',lastAgent:'Claude Code',asOf:'2026-10-15',updatedAt:'2026-10-15',workLog:log};
+ const c=projectCard(project,{now});
+ assert.equal(c.history.length,3);assert.equal(c.history[0].feature,'newer, listed out of order');assert.equal(c.updatedAt,'2026-10-15T07:00:00.000Z');
+ assert.equal(relativeTime(c.at,towerWords('en'),now),relativeTime('2026-10-15T07:00:00Z',towerWords('en'),now));assert.match(relativeTime(c.at,towerWords('en'),now),/1/);
+ assert.ok(!/小時|hours/.test(relativeTime('2026-10-15',towerWords('zh-TW'),now)));assert.equal(relativeTime('2026-10-15',towerWords('en'),now),'2026-10-15');
+ // A log entry by the receiving Agent after the copy settles the handoff even if as_of is older.
+ const handoff={agent:'codex',goal:'next',at:'2026-10-15T05:00:00Z'};
+ assert.equal(projectCard({...project,lastAgent:'Claude Code',workLog:[{at:'2026-10-15T07:30:00Z',agent:'Codex',state:'running',summary:'took over'}]},{handoff,now}).pending,null);
+ assert.equal(projectCard(project,{handoff,now}).state,'awaiting');
+ // Projects with live reports keep using them.
+ assert.equal(projectCard({...project,kind:'project'},{now}).history.length,0);
+});

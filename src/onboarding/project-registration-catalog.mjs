@@ -43,8 +43,23 @@ export function catalogSiteUrl(stateText) {
   if (typeof raw!=='string') return null;
   try { const u=new URL(raw.trim()); return u.protocol==='https:'&&!u.username&&!u.password?u.href:null; } catch { return null; }
 }
+// Work log written by the developing Agent in CURRENT_STATE.md "## Work log", newest first:
+// "- 2026-10-15T15:22:29+09:00 | Claude Code | completed | what was done". Malformed lines are skipped.
+export const WORK_LOG_LIMIT = 20;
+const WORK_LOG_STATES = {completed:'completed', in_progress:'running', blocked:'blocked'};
+export function catalogWorkLog(stateText) {
+  const section=parseMarkdown(stateText).sections?.['Work log'];
+  if (typeof section!=='string') return [];
+  const entries=[];
+  for (const line of section.split('\n')) {
+    const m=/^-\s*(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(?::\d{2})?(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2}))\s*\|\s*([^|]{1,40}?)\s*\|\s*(completed|in_progress|blocked)\s*\|\s*(.{1,200})$/.exec(line.trim());
+    if (!m || !Number.isFinite(Date.parse(m[1])) || /[\u0000-\u001f]/.test(m[2]+m[4])) continue;
+    entries.push({at:new Date(Date.parse(m[1])).toISOString(), agent:m[2].trim(), state:WORK_LOG_STATES[m[3]], summary:m[4].trim()});
+  }
+  return entries.sort((a,b)=>Date.parse(b.at)-Date.parse(a.at)).slice(0,WORK_LOG_LIMIT);
+}
 export function projectRegistrationCatalogView(snapshot, {ownerSubject, now=Date.now()}={}) {
   const s=validateRegistrationCatalog(snapshot,ownerSubject), source=(path,section='')=>({...sourceRef('git://'+registrationCatalogTarget.repositoryId+'@'+s.headSha+'/'+path,s.files[path],section),verificationStatus:'verified_private_catalog_bytes',readAt:new Date(now).toISOString()});
-  const projects=s.ledger.entries.map(({receipt:r})=>{const b=s.blocks.find(b=>b.data.project_id===r.projectId),statePath='PROJECTS/'+r.projectId+'/CURRENT_STATE.md',nextPath='PROJECTS/'+r.projectId+'/NEXT_ACTIONS.md';const project=buildProjectProjection({id:r.projectId,name:b.name,entityType:'project',indexSource:source(INDEX_PATH),memoryPath:registrationMemoryPaths(r.projectId)[0],relevantDocs:registrationMemoryPaths(r.projectId),state:{...parseMarkdown(s.files[statePath]),source:source(statePath)},next:{...parseMarkdown(s.files[nextPath]),source:source(nextPath)},registry:{localMaster:null,github:r.repositoryId,branch:r.ref,storedHead:r.baselineSha,production:null,productionHead:null,source:source(REGISTRY_PATH)},git:{error:'No current local workspace or source-branch observation; private registration is a stored baseline.'}});return {projectId:r.projectId,name:b.name,repositoryId:r.repositoryId,repositoryNumericId:r.repositoryNumericId,ref:r.ref,baselineSha:r.baselineSha,requestId:r.requestId,requestDigest:r.requestDigest,registeredAt:r.observedAt,qualification:'HISTORICAL_PRIVATE_REGISTRATION_RECEIPT',siteUrl:catalogSiteUrl(s.files[statePath]),sourceReadScope:r.sourceReadScope,reportWriteScope:r.reportWriteScope,developmentReady:false,executionAuthorized:false,verifiedDelivery:false,joeyAcceptance:'PENDING',project};});
+  const projects=s.ledger.entries.map(({receipt:r})=>{const b=s.blocks.find(b=>b.data.project_id===r.projectId),statePath='PROJECTS/'+r.projectId+'/CURRENT_STATE.md',nextPath='PROJECTS/'+r.projectId+'/NEXT_ACTIONS.md';const project=buildProjectProjection({id:r.projectId,name:b.name,entityType:'project',indexSource:source(INDEX_PATH),memoryPath:registrationMemoryPaths(r.projectId)[0],relevantDocs:registrationMemoryPaths(r.projectId),state:{...parseMarkdown(s.files[statePath]),source:source(statePath)},next:{...parseMarkdown(s.files[nextPath]),source:source(nextPath)},registry:{localMaster:null,github:r.repositoryId,branch:r.ref,storedHead:r.baselineSha,production:null,productionHead:null,source:source(REGISTRY_PATH)},git:{error:'No current local workspace or source-branch observation; private registration is a stored baseline.'}});return {projectId:r.projectId,name:b.name,repositoryId:r.repositoryId,repositoryNumericId:r.repositoryNumericId,ref:r.ref,baselineSha:r.baselineSha,requestId:r.requestId,requestDigest:r.requestDigest,registeredAt:r.observedAt,qualification:'HISTORICAL_PRIVATE_REGISTRATION_RECEIPT',siteUrl:catalogSiteUrl(s.files[statePath]),workLog:catalogWorkLog(s.files[statePath]),sourceReadScope:r.sourceReadScope,reportWriteScope:r.reportWriteScope,developmentReady:false,executionAuthorized:false,verifiedDelivery:false,joeyAcceptance:'PENDING',project};});
   return {schemaVersion:1,qualification:'OWNER_PRIVATE_GIT_CATALOG',catalogCommitSha:s.headSha,canonicalMemoryQualification:'NEW_PROJECT_PRIVATE_CATALOG_EXISTING_MAC_SNAPSHOT_UNCHANGED',projects};
 }
