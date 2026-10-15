@@ -209,6 +209,7 @@ body.tower-mode .owner-vm-link-launch{left:16px;right:auto;bottom:16px;border-ra
  .tower-sheet{margin:auto 0 0;max-width:100vw;width:100vw}
  .tower-sheet-body{border-radius:22px 22px 0 0;padding:22px 16px calc(22px + env(safe-area-inset-bottom));animation:tower-sheet-up .28s ease-out}
  .tower-sheet-actions .tower-button{flex:1}
+ body.tower-mode .owner-vm-link-launch{left:12px;bottom:calc(12px + env(safe-area-inset-bottom));min-height:28px;padding:4px 10px;font-size:11px;max-width:calc(100vw - 110px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;opacity:.75}
 }
 @keyframes tower-sheet-up{from{transform:translateY(40px);opacity:0}}
 @media (prefers-reduced-motion:reduce){
