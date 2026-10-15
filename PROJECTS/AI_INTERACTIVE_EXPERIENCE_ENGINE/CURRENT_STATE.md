@@ -5,7 +5,7 @@ Status: Pending Development
 
 ## Current Stage
 
-Pending Development. Planning and source preservation only; product implementation NOT_STARTED; no development Mission.
+Pending Development. Planning and source preservation only. Product development is not authorized; no development Mission.
 
 ## Blockers
 
