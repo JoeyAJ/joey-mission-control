@@ -30,19 +30,22 @@ export function projectCard(project,{runs=null,handoff=null,review=null,now=Date
  const tasks=runs?.tasks||[],latest=tasks[0]||null,active=runs?.active||[],lifecycle=lifecycleOf(project);
  const current=active[0]||null;
  const blocked=(runs?.blockers||[])[0]||null,stale=tasks.find(t=>t.currentState==='unconfirmed'&&['running','blocked'].includes(t.reportedState))||null;
- const history=tasks.map(t=>({agent:t.agentName,agentKey:agentKey(t.agentName),feature:t.featureTitle,state:t.currentState,at:t.eventAt}));
+ // Registered projects without live reports use the work log from their catalog record.
+ const log=!tasks.length&&project.kind==='registered'&&Array.isArray(project.workLog)?project.workLog.filter(e=>e&&time(e.at)!==null&&known(e.agent)):[];
+ const history=tasks.length?tasks.map(t=>({agent:t.agentName,agentKey:agentKey(t.agentName),feature:t.featureTitle,state:t.currentState,at:t.eventAt})):log.map(e=>({agent:e.agent,agentKey:agentKey(e.agent),feature:e.summary,state:e.state,at:e.at}));
+ const logged=log[0]||null;
  const completed=!current&&latest?.currentState==='completed'?latest:null;
  // Last finished run Joey already reviewed; the card lets Joey revisit that decision.
  const reviewed=completed&&review&&completed.runId&&review.runId===completed.runId?{runId:completed.runId,decision:review.decision,agent:completed.agentName,feature:completed.featureTitle,summary:completed.summary,result:completed.result||null}:null;
  const base={id:project.id,name:project.name,kind:project.kind||'project',decision:project.decision||null,summary:project.summary||null,siteUrl:project.siteUrl||null,repositoryId:project.repositoryId||null,ref:project.ref||null,asOf:project.asOf||null,reviewed,version:versionOf(current?.featureTitle)||versionOf(latest?.featureTitle)||known(project.version),lifecycle,history,
-  lastAgent:latest?.agentName||known(project.lastAgent)||null,
-  updatedAt:latest?.eventAt||project.updatedAt||null,
+  lastAgent:latest?.agentName||known(project.lastAgent)||logged?.agent||null,
+  updatedAt:latest?.eventAt||logged?.at||project.updatedAt||null,
   next:known(project.next)};
  // A handoff is settled once the receiving Agent reports after the copy time.
  let pending=null;const handoffAt=time(handoff?.at);
  // Registered projects have no live reports yet: their catalog record settles the handoff once
  // it names the receiving Agent with an as_of at or after the copy time.
- const catalogAnswered=()=>project.kind==='registered'&&agentKey(known(project.lastAgent))===handoff.agent&&catalogTime(project.asOf)>=handoffAt;
+ const catalogAnswered=()=>project.kind==='registered'&&(agentKey(known(project.lastAgent))===handoff.agent&&catalogTime(project.asOf)>=handoffAt||log.some(e=>agentKey(e.agent)===handoff.agent&&time(e.at)>=handoffAt));
  if(handoff&&handoffAt&&now-handoffAt<HANDOFF_TTL_MS){const answered=tasks.some(t=>agentKey(t.agentName)===handoff.agent&&time(t.eventAt)>=handoffAt)||catalogAnswered();if(!answered)pending={agent:handoff.agent,agentName:agentName(handoff.agent),goal:handoff.goal||'',at:handoff.at};}
  const card=(state,extra={})=>({...base,state,pending,...extra});
  if(blocked)return card('blocked',{agent:blocked.agentName,feature:blocked.featureTitle,summary:blocked.summary,at:blocked.eventAt});
@@ -56,7 +59,7 @@ export function projectCard(project,{runs=null,handoff=null,review=null,now=Date
  if(lifecycle==='done')return card('done',{agent:null,feature:latest?.featureTitle||null,summary:latest?.summary||null,at:base.updatedAt});
  // Joey approved the latest finished run; it stays approved until a newer run reports.
  if(reviewed?.decision==='accepted')return card('approved',{agent:null,feature:latest?.featureTitle||null,summary:latest?.summary||null,at:review.at||latest.eventAt});
- return card('idle',{agent:null,feature:latest?.featureTitle||null,summary:latest?.summary||null,at:base.updatedAt});
+ return card('idle',{agent:null,feature:latest?.featureTitle||logged?.summary||null,summary:latest?.summary||null,at:base.updatedAt});
 }
 export function towerModel({projects=[],runsByProject={},handoffs={},reviews={},now=Date.now()}={}){
  const order=new Map(TOWER_STATES.map((s,i)=>[s,i]));
