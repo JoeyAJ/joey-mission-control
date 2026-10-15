@@ -16,6 +16,9 @@ const known=v=>typeof v==='string'&&v.trim()&&!/^unknown$/i.test(v.trim())?v.tri
 // Agents are asked to start featureTitle with the stage version ("v0.4 · goal").
 export const versionOf=title=>/^\s*v(\d+(?:\.\d+){0,3}[A-Za-z0-9.-]*)\b/i.exec(title||'')?.[1]||null;
 const time=v=>{const t=Date.parse(v);return Number.isFinite(t)?t:null;};
+// Catalog records (mc/registry CURRENT_STATE.md) carry a date-only as_of; it covers that whole day.
+const DAY_MS=24*3600*1000;
+export function catalogTime(v){const t=time(v);if(t===null)return null;return /^\d{4}-\d{2}-\d{2}$/.test(String(v).trim())?t+DAY_MS-1:t;}
 function lifecycleOf(project){
  const raw=String(project.lifecycle||project.status||'').toUpperCase();
  if(['IDEA','PLANNED','PLANNING'].includes(raw))return 'idea';
@@ -37,7 +40,10 @@ export function projectCard(project,{runs=null,handoff=null,review=null,now=Date
   next:known(project.next)};
  // A handoff is settled once the receiving Agent reports after the copy time.
  let pending=null;const handoffAt=time(handoff?.at);
- if(handoff&&handoffAt&&now-handoffAt<HANDOFF_TTL_MS){const answered=tasks.some(t=>agentKey(t.agentName)===handoff.agent&&time(t.eventAt)>=handoffAt);if(!answered)pending={agent:handoff.agent,agentName:agentName(handoff.agent),goal:handoff.goal||'',at:handoff.at};}
+ // Registered projects have no live reports yet: their catalog record settles the handoff once
+ // it names the receiving Agent with an as_of at or after the copy time.
+ const catalogAnswered=()=>project.kind==='registered'&&agentKey(known(project.lastAgent))===handoff.agent&&catalogTime(project.asOf)>=handoffAt;
+ if(handoff&&handoffAt&&now-handoffAt<HANDOFF_TTL_MS){const answered=tasks.some(t=>agentKey(t.agentName)===handoff.agent&&time(t.eventAt)>=handoffAt)||catalogAnswered();if(!answered)pending={agent:handoff.agent,agentName:agentName(handoff.agent),goal:handoff.goal||'',at:handoff.at};}
  const card=(state,extra={})=>({...base,state,pending,...extra});
  if(blocked)return card('blocked',{agent:blocked.agentName,feature:blocked.featureTitle,summary:blocked.summary,at:blocked.eventAt});
  if(stale&&!current)return card('stale',{agent:stale.agentName,feature:stale.featureTitle,summary:stale.summary,at:stale.eventAt});

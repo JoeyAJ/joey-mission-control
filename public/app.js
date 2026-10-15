@@ -1,5 +1,6 @@
 import {createOwnerProjectConnectionClient,mountOwnerBrowserEntry,readOwnerTowerRuns,listOwnerIdeaDrafts,saveOwnerIdea,updateOwnerIdea,readOwnerTowerState,patchOwnerTowerState,readOwnerRegisteredProjects} from './owner-auth-client.js';
 import {createTowerStore} from './tower-sync.js';
+import {createTowerRefresh} from './tower-refresh.js';
 import {mountJoeyTakeover} from './joey-takeover.js';
 import {ownerAuthSetupStatus,ownerAuthConfig} from './owner-auth-config.js';
 import {taskWorkflowConfig} from './task-workflow-config.js';
@@ -253,7 +254,7 @@ function renderWorkspace(){if(!state||!$('#workspace').classList.contains('activ
 function isTowerRoute(){return location.hash.split('?')[0]!=='#workspace';}
 let towerFilter='all',towerRuns={},towerDemoStorage=null;
 function memoryStorage(seed){const data={'mc.tower.handoffs.v1':JSON.stringify(seed)};return{getItem:k=>data[k]??null,setItem:(k,v)=>{data[k]=String(v);}};}
-let towerIdeas=[],towerOwnerReady=false,towerDemoIdeas=[],towerRegistered=[],towerRegisteredChanged=false;
+let towerIdeas=[],towerOwnerReady=false,towerDemoIdeas=[],towerRegistered=[];
 // Handoff intents, reviews and idea decisions: local first, synced to the Owner cloud while signed in.
 const towerStore=createTowerStore({push:patchOwnerTowerState,isOnline:()=>towerOwnerReady});
 // Joey's decision on an idea card ('go' or 'shelved'), kept in this browser.
@@ -268,7 +269,8 @@ function saveLocalIdea(text){const at=new Date().toISOString(),idea={id:'local_'
 const ideaCards=drafts=>{const decided=ideaDecisions(),card=(id,name,idea,at)=>({id,name,status:decided[id]==='go'?'Active':'Idea',summary:idea,updatedAt:at,kind:'draft',decision:decided[id]||null});return [...drafts.map(d=>card(d.draftId,d.project.name,d.project.idea,d.updatedAt)),...localIdeas().map(i=>card(i.id,i.name,i.idea,i.at))].filter(c=>c.decision!=='removed');};
 function towerProjects(){return [...(state?.projects||[]).map(p=>({id:p.id,name:p.name?.value||p.id,status:p.status?.value,version:p.version?.value,lastAgent:p.lastAI?.value,updatedAt:p.lastUpdated?.value,next:p.nextAction?.value,siteUrl:(p.projectUrls?.entries||[]).find(e=>/^https:\/\//.test(e.url||'')&&/^active/.test(e.status||''))?.url||null})),...registeredCards(),...ideaCards(towerIdeas)];}
 // Projects registered in the private MC catalog that are not already on the published list.
-function registeredCards(){const known=new Set((state?.projects||[]).map(p=>p.id)),decided=ideaDecisions();return towerRegistered.filter(r=>!known.has(r.projectId)).map(r=>{const status=String(r.project?.status?.value||'');return {id:r.projectId,name:r.name,kind:'registered',decision:decided[r.projectId]||null,repositoryId:r.repositoryId,ref:r.ref,status:/pending|idea|planned|paused/i.test(status)||!status?'Idea':status,version:r.project?.version?.value,updatedAt:r.registeredAt||r.project?.lastUpdated?.value,next:r.project?.nextAction?.value};});}
+// Version, Agent and date come from the catalog record (CURRENT_STATE.md yaml: version, current_agent, as_of).
+function registeredCards(){const known=new Set((state?.projects||[]).map(p=>p.id)),decided=ideaDecisions();return towerRegistered.filter(r=>!known.has(r.projectId)).map(r=>{const status=String(r.project?.status?.value||'');return {id:r.projectId,name:r.name,kind:'registered',decision:decided[r.projectId]||null,repositoryId:r.repositoryId,ref:r.ref,status:/pending|idea|planned|paused/i.test(status)||!status?'Idea':status,version:r.project?.version?.value,lastAgent:r.project?.lastAI?.value,asOf:r.project?.lastUpdated?.value||null,updatedAt:r.project?.lastUpdated?.value||r.registeredAt,next:r.project?.nextAction?.value};});}
 // Cloud drafts cannot be deleted through the draft API, so removal hides them; local ideas are deleted.
 function removeIdea(id){if(id.startsWith('local_')){try{localStorage.setItem(LOCAL_IDEAS,JSON.stringify(localIdeas().filter(i=>i.id!==id)));}catch{}decideIdeaCard(id,null);}else decideIdeaCard(id,'removed');}
 async function editIdea(id,{name,idea}){if(id.startsWith('local_')){const list=localIdeas().map(i=>i.id===id?{...i,name,idea,at:new Date().toISOString()}:i);try{localStorage.setItem(LOCAL_IDEAS,JSON.stringify(list));}catch{throw Error('LOCAL_STORAGE_UNAVAILABLE');}return;}const draft=towerIdeas.find(d=>d.draftId===id);if(!draft)throw Error('DRAFT_NOT_FOUND');const saved=await updateOwnerIdea(draft,{name,idea});towerIdeas=towerIdeas.map(d=>d.draftId===id?saved:d);}
@@ -281,7 +283,8 @@ function renderTower(){
  if(demo&&!towerDemoStorage)towerDemoStorage=memoryStorage(demoHandoffs(Date.now()));
  const data=demo?(d=>({...d,projects:[...d.projects.map(p=>p.kind==='registered'?{...p,decision:ideaDecisions()[p.id]||null}:p),...towerDemoIdeas.map(i=>({...i,status:ideaDecisions()[i.id]==='go'?'Active':'Idea',decision:ideaDecisions()[i.id]||null}))]}))(demoTower()):{projects:towerProjects(),runsByProject:towerRuns};
  const account=demo?null:towerAccount(locale),ownerSiteUrl=location.origin!==ownerAuthConfig.stageOrigin&&/^https:/.test(location.origin)?ownerAuthConfig.stageOrigin+'/#joey':null;
- const tower=renderControlTower({locale,...data,demo,ownerSiteUrl,signedIn:demo||towerOwnerReady,filter:towerFilter,storage:demo?towerDemoStorage:towerStore.storage,account,
+ const loading=demo?null:towerRefresh.phase;
+ const tower=renderControlTower({locale,...data,demo,ownerSiteUrl,signedIn:demo||towerOwnerReady,loading:loading==='loading',loadingSlow:loading==='slow',filter:towerFilter,storage:demo?towerDemoStorage:towerStore.storage,account,
   onFilter:f=>{towerFilter=f;renderTower();},onChange:renderTower,onLocale:applyLocale,
   onDecision:(id,choice)=>{if(demo&&id==='DEMO_R'){decideIdeaCard(id,{reject:'rejected',remove:'removed',restore:null}[choice]??null);renderTower();return;}if(demo&&!id.startsWith('local_')){notify('human.saved');return;}if(towerRegistered.some(r=>r.projectId===id)){decideIdeaCard(id,{reject:'rejected',remove:'removed',restore:null}[choice]??null);renderTower();return;}if(id.startsWith('draft_')||id.startsWith('local_')){if(choice==='remove')removeIdea(id);else decideIdeaCard(id,{continue:'go',shelve:'shelved',restore:null}[choice]);renderTower();return;}if(!releaseInfo?.readOnly)decideIdea(id,choice);},
   onIdea:demo?async text=>{towerDemoIdeas=[{id:'local_demo'+towerDemoIdeas.length,name:text.slice(0,40),status:'Idea',summary:text,updatedAt:new Date().toISOString(),kind:'draft'},...towerDemoIdeas];}:towerIdea,onIdeaEdit:demo?null:editIdea,signedInForIdeas:demo||towerOwnerReady,
@@ -290,15 +293,19 @@ function renderTower(){
   mountHandoff:demo?null:mountTowerHandoff,
   prepareInstruction:demo?async()=>'（示範）這裡會放入該項目最新、已核對的完整交接內容。':null});
  $('#joey-content').replaceChildren(tower);
- for(const c of tower.towerModel.cards){const key=c.at||'';if(towerSeen.has(c.id)&&towerSeen.get(c.id)!==key)tower.querySelector(`[data-project="${CSS.escape(c.id)}"]`)?.classList.add('tower-pulse');towerSeen.set(c.id,key);}
+ if(!loading||loading==='ready')for(const c of tower.towerModel.cards){const key=c.at||'';if(towerSeen.has(c.id)&&towerSeen.get(c.id)!==key)tower.querySelector(`[data-project="${CSS.escape(c.id)}"]`)?.classList.add('tower-pulse');towerSeen.set(c.id,key);}
  scheduleTowerRefresh(demo);
 }
-const towerSeen=new Map();let towerTimer=null;
+const towerSeen=new Map();
 // The Owner sign-in entry is shared; it moves into the handoff sheet while that is open.
 function towerAccount(locale){try{return mountOwnerBrowserEntry({doc:document,locale,projectId:'NEXAEON'});}catch{return null;}}
 function mountTowerHandoff(host,{projectId,decorate,onCopied}){const view=mountJoeyTakeover({locale:getLocale(),projectConnectionClient:authorizedProjectClient,project:projectId,track:'BASELINE',publicProjects:state.projects,publicCases:publicCaseSnapshot,decorateInstruction:decorate,onCopied});view.root.classList.add('tower-takeover');const scope=view.root.querySelector('.project-handoff-scope');if(scope)view.root.prepend(scope);host.append(view.root);return()=>view.dispose();}
 // Reads Agent reports about every 30 s while the tower is visible; never while a sheet is open.
-function scheduleTowerRefresh(demo){clearTimeout(towerTimer);if(demo)return;towerTimer=setTimeout(async()=>{if(!isTowerRoute()||document.hidden||document.querySelector('.tower-sheet[open]')){scheduleTowerRefresh(false);return;}const ids=(state?.projects||[]).map(p=>p.id);const [runs,ideas,registered]=await Promise.all([readOwnerTowerRuns(ids).catch(()=>null),listOwnerIdeaDrafts().catch(()=>null),readOwnerRegisteredProjects().catch(()=>null)]);if(registered&&JSON.stringify(registered.map(r=>[r.projectId,r.name,r.project?.status?.value]))!==JSON.stringify(towerRegistered.map(r=>[r.projectId,r.name,r.project?.status?.value]))){towerRegistered=registered;towerRegisteredChanged=true;}const ready=!!(runs||ideas),wasReady=towerOwnerReady;towerOwnerReady=ready;const synced=ready?await towerStore.sync(readOwnerTowerState).catch(()=>false):false;const changed=towerRegisteredChanged||synced||ready!==wasReady||runs&&JSON.stringify(runs)!==JSON.stringify(towerRuns)||ideas&&JSON.stringify(ideas)!==JSON.stringify(towerIdeas);towerOwnerReady=ready;if(runs)towerRuns=runs;if(ideas)towerIdeas=ideas;towerRegisteredChanged=false;if(changed)renderTower();else scheduleTowerRefresh(false);},towerOwnerReady?30000:5000);}
+// The first read starts immediately and the board shows a loading state until it settles.
+const registeredKey=list=>JSON.stringify((list||[]).map(r=>[r.projectId,r.name,r.project?.status?.value,r.project?.version?.value,r.project?.lastAI?.value,r.project?.lastUpdated?.value]));
+async function readTower(){const ids=(state?.projects||[]).map(p=>p.id);const [runs,ideas,registered]=await Promise.all([readOwnerTowerRuns(ids).catch(()=>null),listOwnerIdeaDrafts().catch(()=>null),readOwnerRegisteredProjects().catch(()=>null)]);let registeredChanged=false;if(registered&&registeredKey(registered)!==registeredKey(towerRegistered)){towerRegistered=registered;registeredChanged=true;}const ready=!!(runs||ideas),wasReady=towerOwnerReady;towerOwnerReady=ready;const synced=ready?await towerStore.sync(readOwnerTowerState).catch(()=>false):false;const changed=registeredChanged||synced||ready!==wasReady||runs&&JSON.stringify(runs)!==JSON.stringify(towerRuns)||ideas&&JSON.stringify(ideas)!==JSON.stringify(towerIdeas);if(runs)towerRuns=runs;if(ideas)towerIdeas=ideas;return {ready,changed:!!changed};}
+const towerRefresh=createTowerRefresh({read:readTower,render:()=>renderTower(),canRefresh:()=>isTowerRoute()&&!document.hidden&&!document.querySelector('.tower-sheet[open]')});
+function scheduleTowerRefresh(demo){if(demo)return;towerRefresh.schedule();}
 
 async function decideIdea(id,choice){const m=[...manifests.values()].map(m=>presentCanonicalProject(m,getLocale())).find(m=>m.project_id===id);if(!m)return;const lifecycle=choice==='continue'?'IN_PROGRESS':'PAUSED';try{if(m.canonicalState){await mutateProjectState(m,{type:'SET_LIFECYCLE',lifecycle:lifecycle==='IN_PROGRESS'?'DEVELOPING':lifecycle,completionConfirmed:false});return;}await api(`/api/projects/${encodeURIComponent(id)}/owner-decisions`,{method:'POST',body:JSON.stringify({actor:'joey',confirmation:id,explicitDecision:'JOEY_APPROVES',expectedRevision:m.product.revision,lifecycle})});await reload();notify('human.saved');}catch(e){notifyError(e);}}
 function isSimpleJoeyRoute(){const route=location.hash.split('?')[0];return (!route||route==='#joey')&&viewContext.module==='overview'&&new URLSearchParams(location.hash.split('?')[1]||'').get('mode')!=='advanced';}

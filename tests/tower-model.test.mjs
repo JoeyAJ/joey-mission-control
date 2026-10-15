@@ -164,3 +164,30 @@ test('handoffs for projects without an MC report connection skip reporter notes'
  const plain=handoffInstruction({project:'P',agent:'Codex',goal:'',instruction:'X',reporter:false});
  assert.doesNotMatch(plain,/agentName|featureTitle/);assert.match(handoffInstruction({project:'P',agent:'Codex',goal:'',instruction:'X'}),/featureTitle/);
 });
+
+// Registered (catalog) projects: progress comes from PROJECTS/<ID>/CURRENT_STATE.md (version, current_agent, as_of).
+const engine=(extra={})=>({id:'AI_INTERACTIVE_EXPERIENCE_ENGINE',name:'AI Interactive Experience Engine',kind:'registered',status:'Active',version:'v0.5',lastAgent:'Claude Code',asOf:'2026-10-15',updatedAt:'2026-10-15',...extra});
+test('a registered project in development shows its catalog version and Agent',()=>{
+ const c=projectCard(engine(),{now:Date.parse('2026-10-15T09:00:00Z')});
+ assert.equal(c.state,'idle');assert.equal(c.version,'v0.5');assert.equal(c.lastAgent,'Claude Code');assert.equal(c.updatedAt,'2026-10-15');assert.equal(c.lifecycle,'active');
+ // Still-pending registrations keep the "your call" state with Start development.
+ assert.equal(projectCard(engine({status:'Idea',version:null,lastAgent:null}),{now}).state,'decide');
+});
+test('a catalog record naming the receiving Agent on or after the copy settles a registered handoff',()=>{
+ const now=Date.parse('2026-10-15T09:00:00Z'),handoff={agent:'claude',goal:'v0.5',at:'2026-10-14T23:30:00Z'};
+ const picked=projectCard(engine(),{handoff,now});
+ assert.equal(picked.pending,null);assert.notEqual(picked.state,'awaiting');assert.equal(picked.version,'v0.5');assert.equal(picked.lastAgent,'Claude Code');
+ // A date-only as_of covers the whole day, so a same-day copy is answered too.
+ assert.equal(projectCard(engine(),{handoff:{...handoff,at:'2026-10-15T08:00:00Z'},now}).pending,null);
+ // Another Agent named, or a record older than the copy, keeps waiting.
+ assert.equal(projectCard(engine(),{handoff:{...handoff,agent:'codex'},now}).state,'awaiting');
+ assert.equal(projectCard(engine({asOf:'2026-10-13'}),{handoff,now}).state,'awaiting');
+ // Catalog records only settle registered projects; published projects still need a live report.
+ assert.equal(projectCard({...engine(),kind:'project'},{handoff,now}).state,'awaiting');
+});
+test('registered handoff text matches the stage and asks the Agent to keep the catalog record current',async()=>{
+ const {registeredInstruction}=await import('../public/control-tower.js');
+ const dev=registeredInstruction({name:'E',repositoryId:'JoeyAJ/e',projectId:'E_ID',version:'v0.5',lastAgent:'Claude Code',inDevelopment:true});
+ assert.match(dev,/開發中，最新版本 v0\.5，上一位 Agent：Claude Code/);assert.doesNotMatch(dev,/Pending Development/);assert.match(dev,/PROJECTS\/E_ID\/CURRENT_STATE\.md/);assert.match(dev,/Sync progress/);
+ assert.match(registeredInstruction({name:'E',repositoryId:'JoeyAJ/e'}),/Pending Development/);
+});

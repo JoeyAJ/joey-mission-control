@@ -12,6 +12,16 @@ You are NOT changing or deploying MC itself. You only add data to the `mc/regist
 3. Set `Status: Pending Development` in `CURRENT_STATE.md`. Do not start product development, change other projects, MC application code, deployments, environment variables or credentials.
 4. Report to Joey: project ID, repository and the overview link. The project appears under "Your call" (等你決定) with Start development / Reject; Joey decides when and to which Agent it is handed off. Do not propose publishing MC changes for this.
 
+### Sync progress (registered projects)
+
+Registered projects have no live report connection, so MC shows their version, Agent and date from the catalog record. The developing Agent updates it when it takes over (MC then marks the handoff as picked up) and after every version Joey accepts. Data only; never MC code, `main` or deployments.
+
+1. On the `mc/registry` branch edit `PROJECTS/<PROJECT_ID>/CURRENT_STATE.md`: the yaml fence `version`, `current_agent` (your name, e.g. `Claude Code`), `agent_model`, `as_of` (today, `YYYY-MM-DD`), and `## Current Stage`. To show Active, describe the stage as accepted/building and avoid the words test, production, deployed, maintenance, complete(d), idea, paused, blocked there; they change the derived status. `## Recommended Next Step` in `NEXT_ACTIONS.md` is the card's next step.
+2. Refresh that project's `entries[].memoryHashes` in `.mission-control/registration-ledger.json` (SHA-256 of each changed file's bytes). Do not edit the ledger `receipt`, `PROJECT_REGISTRY_V1.0.md` or `MEMORY_INDEX.md`.
+3. Validate with `validateRegistrationCatalog` from the latest `main` before pushing; an invalid catalog hides every registered project. Fast-forward push only, never force.
+
+A worked example is `docs/MC_SYNC.md` in `JoeyAJ/ai-interactive-experience-engine`.
+
 ## B. Develop Mission Control itself (only when Joey asks for MC changes)
 
 Read [HANDOFF](HANDOFF.md) first, then [PRODUCT_CHARTER](docs/PRODUCT_CHARTER.md). `main` is the current version and Vercel's production branch: a push to `main` deploys https://joey-mission-control-one.vercel.app. Work on a feature branch from the latest `main` and merge only with Joey's approval. Never push or deploy an older base over it. Keep three locales (zh-TW/ko/en) in sync, keep the CSP, and run tests from a copy outside `~/Documents/Codex/Projects` (portability guard).
