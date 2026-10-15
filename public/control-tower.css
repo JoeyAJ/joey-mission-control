@@ -27,6 +27,11 @@ body.tower-mode #joey.view{display:block}
 .tower-ghost:hover{border-color:var(--nx-orchid);color:var(--nx-text)}
 .tower-banner-warn{display:flex;flex-wrap:wrap;align-items:center;gap:12px;border-style:solid;border-color:#fbbf2466;color:var(--nx-text);background:#2a1a0f99}
 .tower-banner{margin:0;padding:10px 16px;border:1px dashed var(--nx-line);border-radius:12px;color:var(--nx-muted);font-size:13px;background:#ffffff05}
+.tower-loading{display:grid;justify-items:center;gap:10px;margin:8px 0;padding:56px 20px;border:1px solid var(--nx-line);border-radius:18px;text-align:center;background:#ffffff05}
+.tower-loading-title{font-size:18px;color:var(--nx-text)}
+.tower-loading-hint{margin:0;max-width:46ch;color:var(--nx-muted);font-size:14px;line-height:1.6}
+.tower-loading-spinner{width:28px;height:28px;border-radius:50%;border:3px solid var(--nx-line);border-top-color:var(--nx-orchid);animation:tower-spin 0.9s linear infinite}
+@keyframes tower-spin{to{transform:rotate(360deg)}}
 
 /* Radar chips */
 .tower-radar{display:flex;gap:10px;flex-wrap:wrap}
@@ -213,6 +218,6 @@ body.tower-mode .owner-vm-link-launch{left:16px;right:auto;bottom:16px;border-ra
 }
 @keyframes tower-sheet-up{from{transform:translateY(40px);opacity:0}}
 @media (prefers-reduced-motion:reduce){
- .tower-card,.tower-card::before,.tower-card::after,.tower-attention .tower-section-title::before,.tower-sheet-body{animation:none!important}
+ .tower-card,.tower-card::before,.tower-card::after,.tower-attention .tower-section-title::before,.tower-sheet-body,.tower-loading-spinner{animation:none!important}
  .tower-card[data-state=running]::before{background:linear-gradient(120deg,var(--nx-blue),var(--nx-orchid))}
 }
