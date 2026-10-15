@@ -1,5 +1,103 @@
 {
   "schemaVersion": "mc.registration-ledger.v1",
-  "reservedRepositoryIds": [1404959099, 1250989709, 1183908659, 1402869585, 1403778863],
-  "entries": []
+  "reservedRepositoryIds": [
+    1404959099,
+    1250989709,
+    1183908659,
+    1402869585,
+    1403778863
+  ],
+  "entries": [
+    {
+      "receipt": {
+        "schemaVersion": "mc.project-registration.v1",
+        "qualification": "INDEPENDENT_PRIVATE_REPOSITORY_IMPORT",
+        "mode": "IMPORT_EXISTING_PRIVATE_REPOSITORY",
+        "requestId": "owner_aiiee_onboarding_20261015",
+        "requestDigest": "0314bc07581112280a8d7ebfadb0946d9b770833f631c704f4be73ad8a2a4349",
+        "ownerSubject": "6f0ca2ae-83e0-4684-af12-0b37d08182db",
+        "approvalRef": "Sentinel_18f336a6d41c81919379e9483fb7cca8",
+        "draftId": "draft_e15800f2e554819185d555720d3162b0",
+        "draftRevision": 1,
+        "projectId": "AI_INTERACTIVE_EXPERIENCE_ENGINE",
+        "name": "AI Interactive Experience Engine",
+        "repositoryId": "JoeyAJ/ai-interactive-experience-engine",
+        "repositoryNumericId": 1420141057,
+        "ref": "main",
+        "baselineSha": "a615f0d38fdba82b6d848a92d8a76bc6fc2cbe95",
+        "files": {
+          "HANDOFF.md": {
+            "sha256": "3e337e5595d7db8f12a853ac7e81bc0d16520f3f96890ed610299833aec9c3d3",
+            "blobId": "ba47101c0f1dc106ec1f0746544e095429f02240",
+            "gitMode": "100644"
+          },
+          "PRD.md": {
+            "sha256": "e75957e68f8b7477188c7274b8229771e5020d0f94cebbffc364d812165d7afc",
+            "blobId": "dcfde4d5f4d62ba7b09ec3cdbd7dced62254bba7",
+            "gitMode": "100644"
+          },
+          "README.md": {
+            "sha256": "a4f7219e297565e982d0de77e56b8ca5620d1ae2265775864e9e730dd548d307",
+            "blobId": "b676fa823a0622e71e80b3e83cff974826459e21",
+            "gitMode": "100644"
+          },
+          "docs/PRODUCT_CHARTER.md": {
+            "sha256": "44862b12c3b366a4b8f5eb933a9faad8934ad382708f88c9fdb088c33d354415",
+            "blobId": "0423bd9a5828f59a8f4156bf0eec5121ec9c84cb",
+            "gitMode": "100644"
+          },
+          "docs/PHASE_PLAN.md": {
+            "sha256": "ff27a9740c5b959262e916a9166a4b2c3ad8de667e1d7b2f48b075a41ebeeab1",
+            "blobId": "1ead6d5f2610d6e53995f23b2bc0f65556ae36d8",
+            "gitMode": "100644"
+          },
+          ".mission-control/bootstrap.json": {
+            "sha256": "51ef4642a60d6380788f9f3fef2f4f29ed3cea62da6ae61b6d832345c130f55f",
+            "blobId": "58f7b6bad7b8e18fa4842cb3b21469d9748d44ea",
+            "gitMode": "100644"
+          },
+          ".mission-control/source-profile.json": {
+            "sha256": "8391a5d08b289e219c6eac1431815980c2371a494820b287d74fb3d21a3247ee",
+            "blobId": "6d6b04c2cf38758bc228427e00bd86ccb9ce4e1e",
+            "gitMode": "100644"
+          }
+        },
+        "sourceProfile": {
+          "projectId": "AI_INTERACTIVE_EXPERIENCE_ENGINE",
+          "track": "BASELINE",
+          "repositoryId": "JoeyAJ/ai-interactive-experience-engine",
+          "ref": "main",
+          "path": "HANDOFF.md",
+          "contextPaths": [
+            "PRD.md",
+            "README.md",
+            "docs/PRODUCT_CHARTER.md",
+            "docs/PHASE_PLAN.md"
+          ]
+        },
+        "resources": {
+          "backend": null,
+          "deployment": null
+        },
+        "observedAt": 1792036643354,
+        "expiresAt": 1792036666925,
+        "environmentStatus": "NOT_REQUIRED",
+        "deploymentStatus": "NOT_REQUIRED",
+        "sourceReadScope": "PENDING_EXPLICIT_ACTIVATION",
+        "reportWriteScope": "PENDING_EXPLICIT_ACTIVATION",
+        "developmentReady": false,
+        "executionAuthorized": false,
+        "verifiedDelivery": false,
+        "joeyAcceptance": "PENDING"
+      },
+      "baseCatalogHeadSha": "8ecae766a50bc9793f1dcb6bb64349e815e81676",
+      "memoryHashes": {
+        "PROJECTS/AI_INTERACTIVE_EXPERIENCE_ENGINE/PROJECT_MEMORY.md": "3da4b896720fd5fb8ceb806a82918ad2d28687bb8d3c73c5b361ca50b3720454",
+        "PROJECTS/AI_INTERACTIVE_EXPERIENCE_ENGINE/CURRENT_STATE.md": "e9f948f9e419afdfff90ca2563d32e0c109b771d58a66d2fa74842e9c45529ea",
+        "PROJECTS/AI_INTERACTIVE_EXPERIENCE_ENGINE/NEXT_ACTIONS.md": "4236cd2ef81902a085b68e12ec865a16ce63c88dd20636bc2548bfaa12db247a",
+        "PROJECTS/AI_INTERACTIVE_EXPERIENCE_ENGINE/ARCHITECTURE.md": "f1f2f4d93f62923a84448b440341614c92c5ce10427d4023313eb3e46cea255e",
+        "PROJECTS/AI_INTERACTIVE_EXPERIENCE_ENGINE/DECISIONS.md": "ca3eda1e4b6f56e9478c472a22b9741ef2b826ebef35e37da690ca0f01ca4528"
+      }
+    }
+  ]
 }
