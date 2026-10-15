@@ -219,3 +219,12 @@ test('review sheet offers hand off, keep pushing or pause; pause is logged witho
  assert.equal(c.state,'paused');assert.equal(c.reviewed.decision,'deferred');
  for(const l of ['zh-TW','ko','en']){const w=towerWords(l);for(const k of ['push','pushHint','statusLabel','groupRunning','groupPush','groupPaused','groupDone','approveHandoff','approvePush','pauseProject','decDeferred'])assert.ok(w[k],l+':'+k);}
 });
+
+test('a registered project with an approved live source shows its Agent reports instead of the catalog log',()=>{
+ const base={id:'AI_X',name:'AI X',status:'Active',kind:'registered',repositoryId:'JoeyAJ/ai-x',ref:'main',workLog:[{at:at(300),agent:'Codex',state:'completed',summary:'catalog entry'}]};
+ const live=projectCard({...base,live:true},{runs:runs([task('Claude Code','running',5)]),now});
+ assert.equal(live.live,true);assert.equal(live.state,'running');assert.equal(live.agent,'Claude Code');assert.equal(live.history[0].agent,'Claude Code');
+ const off=projectCard(base,{now});
+ assert.equal(off.live,false);assert.equal(off.history[0].feature,'catalog entry');
+ assert.equal(projectCard({id:'NEXAEON',name:'N',status:'Active',live:true},{now}).live,false);
+});
