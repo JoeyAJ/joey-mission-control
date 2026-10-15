@@ -43,7 +43,7 @@ test('lifecycle decides cards without reports; attention groups come first',()=>
 
 test('unknown versions and agents stay unknown',()=>{
  const c=projectCard({id:'X',name:'X',status:'Active',version:'Unknown',lastAgent:'Unknown'},{now});
- assert.equal(c.version,null);assert.equal(c.lastAgent,null);assert.equal(c.state,'idle');
+ assert.equal(c.version,null);assert.equal(c.lastAgent,null);assert.equal(c.state,'push');
  assert.equal(agentKey('claude-code'),'claude');assert.equal(agentKey('GPT Codex'),'codex');assert.equal(agentKey('Gemini'),'other');assert.equal(agentKey(null),null);
 });
 
@@ -87,7 +87,7 @@ test('idea drafts become "your call" cards marked as drafts',()=>{
 
 test('shelved ideas leave the board but stay restorable; go-ahead ideas stand by for handoff',()=>{
  const m=towerModel({projects:[{id:'local_a',name:'A',status:'Idea',kind:'draft',decision:'shelved'},{id:'local_b',name:'B',status:'Active',kind:'draft',decision:'go'}],now});
- assert.deepEqual(m.shelved.map(c=>c.id),['local_a']);assert.deepEqual(m.cards.map(c=>[c.id,c.state,c.decision]),[['local_b','idle','go']]);assert.equal(m.total,1);
+ assert.deepEqual(m.shelved.map(c=>c.id),['local_a']);assert.deepEqual(m.cards.map(c=>[c.id,c.state,c.decision]),[['local_b','push','go']]);assert.equal(m.total,1);
 });
 
 test('idea handoff text carries the idea and stops before deployment or paid services',async()=>{
@@ -100,7 +100,7 @@ test('a finished run asks for review until Joey decides on that exact run',()=>{
  const done=runs([task('Hermes','completed',30,{runId:'r1',result:{tests:[{name:'t',outcome:'PASS'}],nextSteps:'n'}})]);
  const c=projectCard(project('A'),{runs:done,now});
  assert.equal(c.state,'review');assert.equal(c.runId,'r1');assert.equal(c.result.tests.length,1);
- assert.equal(projectCard(project('A'),{runs:done,review:{runId:'r1',decision:'accepted'},now}).state,'approved');
+ assert.equal(projectCard(project('A'),{runs:done,review:{runId:'r1',decision:'accepted'},now}).state,'push');
  assert.equal(projectCard(project('A'),{runs:runs([task('Hermes','completed',5,{runId:'r2'})]),review:{runId:'r1',decision:'accepted'},now}).state,'review');
  assert.equal(projectCard(project('A','Paused'),{runs:done,now}).state,'paused');
  const m=towerModel({projects:[project('A')],runsByProject:{A:done},now});assert.deepEqual(m.attention.map(x=>x.state),['review']);
@@ -116,7 +116,7 @@ test('review decisions are stored per project and survive bad data',async()=>{
 test('a reviewed run stays revisitable after approval or a change request',()=>{
  const done=runs([task('Hermes','completed',30,{runId:'r1'})]);
  const ok=projectCard(project('A'),{runs:done,review:{runId:'r1',decision:'accepted'},now});
- assert.equal(ok.state,'approved');assert.equal(ok.reviewed.decision,'accepted');assert.equal(ok.reviewed.agent,'Hermes');
+ assert.equal(ok.state,'push');assert.equal(ok.reviewed.decision,'accepted');assert.equal(ok.reviewed.agent,'Hermes');
  const changes=projectCard(project('A'),{runs:done,review:{runId:'r1',decision:'changes'},handoff:{agent:'hermes',at:at(5)},now});
  assert.equal(changes.state,'awaiting');assert.equal(changes.reviewed.runId,'r1');
  assert.equal(projectCard(project('A'),{runs:done,now}).reviewed,null);
@@ -169,7 +169,7 @@ test('handoffs for projects without an MC report connection skip reporter notes'
 const engine=(extra={})=>({id:'AI_INTERACTIVE_EXPERIENCE_ENGINE',name:'AI Interactive Experience Engine',kind:'registered',status:'Active',version:'v0.5',lastAgent:'Claude Code',asOf:'2026-10-15',updatedAt:'2026-10-15',...extra});
 test('a registered project in development shows its catalog version and Agent',()=>{
  const c=projectCard(engine(),{now:Date.parse('2026-10-15T09:00:00Z')});
- assert.equal(c.state,'idle');assert.equal(c.version,'v0.5');assert.equal(c.lastAgent,'Claude Code');assert.equal(c.updatedAt,'2026-10-15');assert.equal(c.lifecycle,'active');
+ assert.equal(c.state,'push');assert.equal(c.version,'v0.5');assert.equal(c.lastAgent,'Claude Code');assert.equal(c.updatedAt,'2026-10-15');assert.equal(c.lifecycle,'active');
  // Still-pending registrations keep the "your call" state with Start development.
  assert.equal(projectCard(engine({status:'Idea',version:null,lastAgent:null}),{now}).state,'decide');
 });
@@ -190,4 +190,32 @@ test('registered handoff text matches the stage and asks the Agent to keep the c
  const dev=registeredInstruction({name:'E',repositoryId:'JoeyAJ/e',projectId:'E_ID',version:'v0.5',lastAgent:'Claude Code',inDevelopment:true});
  assert.match(dev,/開發中，最新版本 v0\.5，上一位 Agent：Claude Code/);assert.doesNotMatch(dev,/Pending Development/);assert.match(dev,/PROJECTS\/E_ID\/CURRENT_STATE\.md/);assert.match(dev,/Sync progress/);
  assert.match(registeredInstruction({name:'E',repositoryId:'JoeyAJ/e'}),/Pending Development/);
+});
+
+// Joey's own statuses: Agent working = in development; keep pushing / paused / done are Joey's choice.
+test('Joey decides keep pushing, paused or done; Agents only decide "in development"',()=>{
+ const p=(extra={})=>({...project('A'),...extra});
+ assert.equal(projectCard(p(),{now}).state,'push');// no Agent, not paused: stays on Joey's list
+ assert.equal(projectCard(p({status:'Paused'}),{now}).state,'paused');
+ assert.equal(projectCard(p({status:'Paused',joeyStatus:'push'}),{now}).state,'push');// e.g. Joey Asset System
+ assert.equal(projectCard(p({joeyStatus:'done'}),{now}).state,'done');
+ assert.equal(projectCard(p({joeyStatus:'bogus'}),{now}).state,'push');
+ // A working Agent always shows as in development, whatever the label.
+ assert.equal(projectCard(p({joeyStatus:'paused'}),{runs:runs([task('Codex','running',1)]),now}).state,'running');
+ // Pausing a project that waits for review takes it out of "needs you" (e.g. Woosong Buddy).
+ const done=runs([task('Hermes','completed',5,{runId:'r1'})]);
+ assert.equal(projectCard(p(),{runs:done,now}).state,'review');
+ assert.equal(projectCard(p({joeyStatus:'paused'}),{runs:done,now}).state,'paused');
+ assert.equal(projectCard(p({joeyStatus:'paused'}),{runs:runs([task('Hermes','blocked',5)]),now}).state,'paused');
+ const m=towerModel({projects:[p({id:'R'}),{...p({id:'K'}),joeyStatus:'push'},{...p({id:'P'}),joeyStatus:'paused'},{...p({id:'D'}),joeyStatus:'done'}],runsByProject:{R:runs([task('Codex','running',1)])},now});
+ assert.deepEqual(m.groups.map(g=>[g.key,g.cards.map(c=>c.id)]),[['running',['R']],['push',['K']],['paused',['P']],['done',['D']]]);
+});
+test('review sheet offers hand off, keep pushing or pause; pause is logged without approving',async()=>{
+ const {readReviews,writeReview}=await import('../public/control-tower.js');
+ const data={};const st={getItem:k=>data[k]??null,setItem:(k,v)=>{data[k]=v;}};
+ writeReview('W',{runId:'r1',decision:'deferred',at:'2026-10-15T08:00:00Z'},st);
+ assert.equal(readReviews(st).W.decision,'deferred');
+ const c=projectCard({...project('W'),joeyStatus:'paused'},{runs:runs([task('Hermes','completed',5,{runId:'r1'})]),review:readReviews(st).W,now});
+ assert.equal(c.state,'paused');assert.equal(c.reviewed.decision,'deferred');
+ for(const l of ['zh-TW','ko','en']){const w=towerWords(l);for(const k of ['push','pushHint','statusLabel','groupRunning','groupPush','groupPaused','groupDone','approveHandoff','approvePush','pauseProject','decDeferred'])assert.ok(w[k],l+':'+k);}
 });

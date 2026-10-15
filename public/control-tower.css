@@ -225,3 +225,8 @@ body.tower-mode .owner-vm-link-launch{left:16px;right:auto;bottom:16px;border-ra
 .tower-facts{display:grid;grid-template-columns:max-content 1fr;gap:8px 16px;margin:12px 0 0;font-size:14px}
 .tower-facts dt{color:var(--nx-muted)}
 .tower-facts dd{margin:0;color:var(--nx-text);overflow-wrap:anywhere}
+.tower-section-hint{margin:6px 0 0;color:var(--nx-muted);font-size:13px}
+.tower-status-pick{display:inline-flex;align-items:center;gap:8px;margin-left:auto;color:var(--nx-muted);font-size:12px}
+.tower-status-pick .tower-locale{min-height:36px;padding:0 10px;font-size:13px}
+.tower-group-running .tower-section-title{color:var(--nx-blue)}
+.tower-group-push .tower-section-title{color:var(--nx-orchid)}
