@@ -11,7 +11,8 @@ export function demoTower(now=Date.now()){
   {id:'DEMO_E',name:'Joey Asset System',status:'Active',version:'0.15'},
   {id:'DEMO_F',name:'Mission Control',status:'Active',version:'0.3'},
   {id:'DEMO_G',name:'韓語學習卡',status:'Active',version:'0.2'},
-  {id:'DEMO_H',name:'招生數據週報',status:'Active',version:'1.1',siteUrl:'https://example.com/'}
+  {id:'DEMO_H',name:'招生數據週報',status:'Active',version:'1.1',siteUrl:'https://example.com/'},
+  {id:'DEMO_R',name:'AI Interactive Experience Engine',status:'Idea',kind:'registered',repositoryId:'JoeyAJ/ai-interactive-experience-engine',ref:'main'}
  ];
  const runsByProject={
   DEMO_A:summary([run(now,{agent:'Codex',feature:'多語知識入口 v0.6',state:'running',min:2,summary:'正在重做首頁的三語切換與導覽列'}),run(now,{agent:'Claude Code',feature:'AI 助手接入',state:'completed',min:60*30})]),

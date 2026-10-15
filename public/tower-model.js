@@ -56,9 +56,11 @@ export function towerModel({projects=[],runsByProject={},handoffs={},reviews={},
  const order=new Map(TOWER_STATES.map((s,i)=>[s,i]));
  // Shelved ideas leave the board but stay listed so they can be restored.
  const shelved=projects.filter(p=>p.decision==='shelved').map(p=>projectCard(p,{now}));
- projects=projects.filter(p=>p.decision!=='shelved');
+ // Registered projects Joey rejected or removed: hidden from the board, restorable.
+ const dismissed=projects.filter(p=>p.kind==='registered'&&['rejected','removed'].includes(p.decision)).map(p=>projectCard(p,{now}));
+ projects=projects.filter(p=>p.decision!=='shelved'&&!(p.kind==='registered'&&['rejected','removed'].includes(p.decision)));
  const cards=projects.map(p=>projectCard(p,{runs:runsByProject[p.id]||null,handoff:handoffs[p.id]||null,review:reviews[p.id]||null,now}));
  const sorted=[...cards].sort((a,b)=>order.get(a.state)-order.get(b.state)||String(a.name).localeCompare(String(b.name)));
  const counts=Object.fromEntries(TOWER_STATES.map(s=>[s,0]));for(const c of cards)counts[c.state]++;
- return {shelved,cards:sorted,attention:sorted.filter(c=>ATTENTION_STATES.has(c.state)),flying:sorted.filter(c=>!ATTENTION_STATES.has(c.state)),counts,total:cards.length};
+ return {shelved,dismissed,cards:sorted,attention:sorted.filter(c=>ATTENTION_STATES.has(c.state)),flying:sorted.filter(c=>!ATTENTION_STATES.has(c.state)),counts,total:cards.length};
 }

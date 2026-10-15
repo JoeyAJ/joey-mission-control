@@ -154,3 +154,13 @@ test('catalog reads can use the read-only credential while writes still require 
  const both=createRegistrationGitPort({credential:'w'.repeat(24),readCredential:'r'.repeat(24),ownerSubject:'x',fetchImpl});
  assert.equal(both.configured,true);calls.length=0;await assert.rejects(both.readSnapshot({}));assert.equal(calls[0][2],'Bearer '+'w'.repeat(24));
 });
+
+test('rejected or removed registered projects leave the board but stay restorable',()=>{
+ const m=towerModel({projects:[{id:'R1',name:'R1',status:'Idea',kind:'registered',decision:'rejected'},{id:'R2',name:'R2',status:'Idea',kind:'registered',decision:'removed'},{id:'R3',name:'R3',status:'Idea',kind:'registered'}],now});
+ assert.deepEqual(m.dismissed.map(c=>[c.id,c.decision]),[['R1','rejected'],['R2','removed']]);assert.deepEqual(m.cards.map(c=>c.id),['R3']);
+});
+
+test('handoffs for projects without an MC report connection skip reporter notes',()=>{
+ const plain=handoffInstruction({project:'P',agent:'Codex',goal:'',instruction:'X',reporter:false});
+ assert.doesNotMatch(plain,/agentName|featureTitle/);assert.match(handoffInstruction({project:'P',agent:'Codex',goal:'',instruction:'X'}),/featureTitle/);
+});
