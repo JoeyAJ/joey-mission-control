@@ -292,7 +292,7 @@ function renderTower(){
   onStatus:(id,status,{silent=false}={})=>{decideIdeaCard(id,status);if(!silent)renderTower();},
   onDecision:(id,choice)=>{if(demo&&id==='DEMO_R'){decideIdeaCard(id,{reject:'rejected',remove:'removed',restore:null}[choice]??null);renderTower();return;}if(demo&&!id.startsWith('local_')){notify('human.saved');return;}if(towerRegistered.some(r=>r.projectId===id)){decideIdeaCard(id,{reject:'rejected',remove:'removed',restore:null}[choice]??null);renderTower();return;}if(id.startsWith('draft_')||id.startsWith('local_')){if(choice==='remove')removeIdea(id);else decideIdeaCard(id,{continue:'go',shelve:'shelved',restore:null}[choice]);renderTower();return;}if(!releaseInfo?.readOnly)decideIdea(id,choice);},
   onIdea:demo?async text=>{towerDemoIdeas=[{id:'local_demo'+towerDemoIdeas.length,name:text.slice(0,40),status:'Idea',summary:text,updatedAt:new Date().toISOString(),kind:'draft'},...towerDemoIdeas];}:towerIdea,onIdeaEdit:demo?null:editIdea,signedInForIdeas:demo||towerOwnerReady,
-  onDetails:id=>{if(!demo)openWorkspace(id);},
+  onDetails:id=>{if(!demo)void ensureAuthorizedProject(id).then(()=>openWorkspace(id));},
   onAdvanced:()=>openWorkspace(),detailId:new URLSearchParams(location.hash.split('?')[1]||'').get('detail'),onOpenDetail:id=>{location.hash='#joey?'+new URLSearchParams({...(demo?{demo:'1'}:{}),detail:id});setTimeout(()=>scrollTo({top:0}),0);},onBack:()=>{location.hash=demo?'#joey?demo=1':'#joey';setTimeout(()=>scrollTo({top:0}),0);},
   mountHandoff:demo?null:mountTowerHandoff,
   prepareInstruction:demo?async()=>'（示範）這裡會放入該項目最新、已核對的完整交接內容。':null});
@@ -303,7 +303,10 @@ function renderTower(){
 const towerSeen=new Map();
 // The Owner sign-in entry is shared; it moves into the handoff sheet while that is open.
 function towerAccount(locale){try{return mountOwnerBrowserEntry({doc:document,locale,projectId:'NEXAEON'});}catch{return null;}}
-function mountTowerHandoff(host,{projectId,decorate,onCopied}){const view=mountJoeyTakeover({locale:getLocale(),projectConnectionClient:authorizedProjectClient,project:projectId,track:'BASELINE',publicProjects:state.projects,publicCases:publicCaseSnapshot,decorateInstruction:decorate,onCopied});view.root.classList.add('tower-takeover');const scope=view.root.querySelector('.project-handoff-scope');if(scope)view.root.prepend(scope);host.append(view.root);return()=>view.dispose();}
+// Registered projects with an approved live source are only known to the takeover after the
+// authorized connection list is fetched; load it first so the sheet mounts the live entry.
+function ensureAuthorizedProject(projectId){if((state?.projects||[]).some(p=>p.id===projectId)||authorizedProjectClient.snapshot().some(p=>p.projectId===projectId&&p.selectable))return Promise.resolve();return authorizedProjectClient.refresh().then(()=>{},()=>{});}
+function mountTowerHandoff(host,{projectId,decorate,onCopied}){let view=null,disposed=false;const mount=()=>{if(disposed)return;view=mountJoeyTakeover({locale:getLocale(),projectConnectionClient:authorizedProjectClient,project:projectId,track:'BASELINE',publicProjects:state.projects,publicCases:publicCaseSnapshot,decorateInstruction:decorate,onCopied});view.root.classList.add('tower-takeover');const scope=view.root.querySelector('.project-handoff-scope');if(scope)view.root.prepend(scope);host.append(view.root);};void ensureAuthorizedProject(projectId).then(mount);return()=>{disposed=true;view?.dispose();};}
 // Reads Agent reports about every 30 s while the tower is visible; never while a sheet is open.
 // The first read starts immediately and the board shows a loading state until it settles.
 const registeredKey=list=>JSON.stringify((list||[]).map(r=>[r.projectId,r.name,r.project?.status?.value,r.project?.version?.value,r.project?.lastAI?.value,r.project?.lastUpdated?.value]));
