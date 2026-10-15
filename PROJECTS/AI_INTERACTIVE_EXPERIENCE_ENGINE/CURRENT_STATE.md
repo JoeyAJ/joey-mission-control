@@ -15,6 +15,14 @@ public_url: https://ai-interactive-experience-engine.vercel.app
 
 v0.5 interaction core accepted by Joey on 2026-10-15 and live on the public site. Build continues on the shared Runtime: drill-down exploration, challenges with stars and save/share links work for three cases (smart-home energy, business decisions, culinary menu pricing).
 
+## Work log
+
+- 2026-10-15T15:33:30+09:00 | Claude Code | completed | 專案文件加入 MC 同步規則與 Claude API 開放時程決定
+- 2026-10-15T15:22:29+09:00 | Claude Code | completed | v0.5 互動核心：探索、挑戰與星等、存檔分享＋料理菜單定價案例（Joey 已驗收）
+- 2026-10-15T15:06:20+09:00 | Claude Code | completed | 記錄 Joey 確認的產品核心與路線圖
+- 2026-10-15T14:54:26+09:00 | Claude Code | completed | v0.4 Runtime 骨架＋兩個預設案例（Joey 已驗收）
+- 2026-10-15T12:54:56+09:00 | Codex | completed | 專案正式登記與文件準備（未開發產品）
+
 ## Version history
 
 - v0.4 · Runtime skeleton + two preset cases — accepted 2026-10-15 (PR #1)
