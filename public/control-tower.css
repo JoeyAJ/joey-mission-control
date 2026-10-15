@@ -162,6 +162,8 @@ a.tower-button{display:inline-flex;align-items:center;justify-content:center;min
 .tower-tests li[data-outcome=PASS]::before{content:'✓';color:var(--nx-mint)}.tower-tests li[data-outcome=FAIL]::before{content:'✗';color:var(--nx-rose)}
 .tower-sheet-body{max-height:calc(100dvh - 48px);overflow:auto}
 body.tower-mode .owner-vm-link-launch{left:16px;right:auto;bottom:16px;border-radius:999px;border-color:var(--nx-line);background:var(--nx-panel);color:var(--nx-muted);font-size:12px;backdrop-filter:blur(12px)}
+[data-state=approved] .tower-status{color:var(--nx-mint)}[data-state=approved] .tower-status-icon{border-color:#5eead466;color:var(--nx-mint)}[data-state=approved] .tower-hint{border-left-color:var(--nx-mint)}
+.tower-chip[data-state=approved] .tower-chip-count{color:var(--nx-mint)}
 /* Shelved ideas */
 .tower-shelved{border:1px dashed var(--nx-line);border-radius:var(--nx-radius);padding:14px 18px;background:#ffffff04}
 .tower-shelved summary{cursor:pointer;color:var(--nx-muted);font:600 13px/1.4 var(--nx-mono);letter-spacing:.12em;min-height:32px;display:flex;align-items:center}

@@ -100,7 +100,7 @@ test('a finished run asks for review until Joey decides on that exact run',()=>{
  const done=runs([task('Hermes','completed',30,{runId:'r1',result:{tests:[{name:'t',outcome:'PASS'}],nextSteps:'n'}})]);
  const c=projectCard(project('A'),{runs:done,now});
  assert.equal(c.state,'review');assert.equal(c.runId,'r1');assert.equal(c.result.tests.length,1);
- assert.equal(projectCard(project('A'),{runs:done,review:{runId:'r1',decision:'accepted'},now}).state,'idle');
+ assert.equal(projectCard(project('A'),{runs:done,review:{runId:'r1',decision:'accepted'},now}).state,'approved');
  assert.equal(projectCard(project('A'),{runs:runs([task('Hermes','completed',5,{runId:'r2'})]),review:{runId:'r1',decision:'accepted'},now}).state,'review');
  assert.equal(projectCard(project('A','Paused'),{runs:done,now}).state,'paused');
  const m=towerModel({projects:[project('A')],runsByProject:{A:done},now});assert.deepEqual(m.attention.map(x=>x.state),['review']);
@@ -116,7 +116,7 @@ test('review decisions are stored per project and survive bad data',async()=>{
 test('a reviewed run stays revisitable after approval or a change request',()=>{
  const done=runs([task('Hermes','completed',30,{runId:'r1'})]);
  const ok=projectCard(project('A'),{runs:done,review:{runId:'r1',decision:'accepted'},now});
- assert.equal(ok.state,'idle');assert.equal(ok.reviewed.decision,'accepted');assert.equal(ok.reviewed.agent,'Hermes');
+ assert.equal(ok.state,'approved');assert.equal(ok.reviewed.decision,'accepted');assert.equal(ok.reviewed.agent,'Hermes');
  const changes=projectCard(project('A'),{runs:done,review:{runId:'r1',decision:'changes'},handoff:{agent:'hermes',at:at(5)},now});
  assert.equal(changes.state,'awaiting');assert.equal(changes.reviewed.runId,'r1');
  assert.equal(projectCard(project('A'),{runs:done,now}).reviewed,null);

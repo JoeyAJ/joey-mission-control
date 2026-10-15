@@ -1,7 +1,7 @@
 // Control Tower model: reduces project records, Agent self-reports and local handoff
 // intents to one plain status per project. It never infers that an Agent started from
 // a copy click: a handoff stays "awaiting" until that Agent's own report arrives.
-export const TOWER_STATES=['blocked','stale','review','decide','awaiting','running','paused','idea','done','idle'];
+export const TOWER_STATES=['blocked','stale','review','decide','awaiting','running','approved','paused','idea','done','idle'];
 export const ATTENTION_STATES=new Set(['blocked','stale','review','decide']);
 export const AGENTS=[
  {id:'codex',name:'Codex',match:/codex/i},
@@ -48,6 +48,8 @@ export function projectCard(project,{runs=null,handoff=null,review=null,now=Date
  if(lifecycle==='idea')return card('decide',{agent:null,feature:null,summary:project.summary||null,at:base.updatedAt});
  if(lifecycle==='paused')return card('paused',{agent:null,feature:latest?.featureTitle||null,summary:latest?.summary||null,at:base.updatedAt});
  if(lifecycle==='done')return card('done',{agent:null,feature:latest?.featureTitle||null,summary:latest?.summary||null,at:base.updatedAt});
+ // Joey approved the latest finished run; it stays approved until a newer run reports.
+ if(reviewed?.decision==='accepted')return card('approved',{agent:null,feature:latest?.featureTitle||null,summary:latest?.summary||null,at:review.at||latest.eventAt});
  return card('idle',{agent:null,feature:latest?.featureTitle||null,summary:latest?.summary||null,at:base.updatedAt});
 }
 export function towerModel({projects=[],runsByProject={},handoffs={},reviews={},now=Date.now()}={}){
