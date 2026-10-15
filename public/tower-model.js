@@ -34,7 +34,7 @@ export function projectCard(project,{runs=null,handoff=null,review=null,now=Date
  const completed=!current&&latest?.currentState==='completed'?latest:null;
  // Last finished run Joey already reviewed; the card lets Joey revisit that decision.
  const reviewed=completed&&review&&completed.runId&&review.runId===completed.runId?{runId:completed.runId,decision:review.decision,agent:completed.agentName,feature:completed.featureTitle,summary:completed.summary,result:completed.result||null}:null;
- const base={id:project.id,name:project.name,kind:project.kind||'project',decision:project.decision||null,summary:project.summary||null,siteUrl:project.siteUrl||null,repositoryId:project.repositoryId||null,ref:project.ref||null,reviewed,version:versionOf(current?.featureTitle)||versionOf(latest?.featureTitle)||known(project.version),lifecycle,history,
+ const base={id:project.id,name:project.name,kind:project.kind||'project',decision:project.decision||null,summary:project.summary||null,siteUrl:project.siteUrl||null,repositoryId:project.repositoryId||null,ref:project.ref||null,asOf:project.asOf||null,reviewed,version:versionOf(current?.featureTitle)||versionOf(latest?.featureTitle)||known(project.version),lifecycle,history,
   lastAgent:latest?.agentName||known(project.lastAgent)||null,
   updatedAt:latest?.eventAt||project.updatedAt||null,
   next:known(project.next)};
