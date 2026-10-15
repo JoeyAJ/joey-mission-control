@@ -25,6 +25,7 @@ body.tower-mode #joey.view{display:block}
 .tower-locale{font:inherit;font-size:13px;min-height:44px;padding:0 14px;border-radius:999px;border:1px solid var(--nx-line);background:var(--nx-panel);color:var(--nx-text)}
 .tower-ghost{background:transparent;border:1px solid var(--nx-line);color:var(--nx-muted);border-radius:999px;padding:0 18px;font-size:13px;transition:border-color .2s,color .2s}
 .tower-ghost:hover{border-color:var(--nx-orchid);color:var(--nx-text)}
+.tower-banner-warn{display:flex;flex-wrap:wrap;align-items:center;gap:12px;border-style:solid;border-color:#fbbf2466;color:var(--nx-text);background:#2a1a0f99}
 .tower-banner{margin:0;padding:10px 16px;border:1px dashed var(--nx-line);border-radius:12px;color:var(--nx-muted);font-size:13px;background:#ffffff05}
 
 /* Radar chips */
