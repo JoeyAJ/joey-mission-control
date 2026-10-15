@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {workspaceEvents,safeWorkspaceText,workspaceWords} from '../public/command-workspace.js';
 import {readContext,contextHash} from '../public/proposal-navigation.js';
 import {productionResponse} from '../api/index.mjs';
-import {withRemoteHandoffWorkspace} from '../public/command-workspace.js';
+import {withRemoteHandoffWorkspace,withRegisteredWorkspaces} from '../public/command-workspace.js';
 import {ownerAuthConfig} from '../public/owner-auth-config.js';
 test('the fixed preview exposes an MC navigation entry without fabricating source progress or database scope',()=>{
  const original=[{project_id:'NEXAEON'}],preview=withRemoteHandoffWorkspace(original,{origin:ownerAuthConfig.stageOrigin});assert.equal(original.length,1);assert.equal(preview.length,2);assert.equal(preview[1].project_id,'MISSION_CONTROL');assert.deepEqual(workspaceEvents(preview[1]),[]);assert.equal(preview[1].sourceReadout,undefined);assert.deepEqual(withRemoteHandoffWorkspace(original,{origin:'https://joey-mission-control-git-codex-mc-comma-fceec2-joeyajs-projects.vercel.app'}),original);assert.equal(withRemoteHandoffWorkspace(preview,{origin:ownerAuthConfig.stageOrigin}),preview);
@@ -45,3 +45,13 @@ test('inspector pane URL retains context/changes/graph across history and reject
 test('console session/timeline/changes labels exist in all locales and never claim connected execution',()=>{for(const locale of ['zh-TW','en','ko']){const w=workspaceWords(locale);for(const key of ['sessionsEmpty','workflow','changesTab'])assert.ok(w[key]);assert.notEqual(w.sessionsEmpty,'');}assert.match(workspaceWords('en').sessionsEmpty,/No execution session connected/);});
 
 test('work context does not blend private claim qualifications/times with a public stage',async()=>{const {workspaceWorkSummary}=await import('../public/command-workspace.js');const result=workspaceWorkSummary({sourceReadout:{stage:'Public stage',nextAction:'Public next',sourceDate:'2026-01-03'},privateSource:{stage:'Private stage',claims:{stage:{verificationStatus:'SYNTHETIC_UNVERIFIED',eventTime:'2026-01-01'},nextAction:{value:null,verificationStatus:'SYNTHETIC_UNKNOWN',eventTime:null}}}});assert.equal(result.layer,'private');assert.equal(result.stage,'Private stage');assert.equal(result.stageQualification,'SYNTHETIC_UNVERIFIED');assert.equal(result.stageTime,'2026-01-01');assert.equal(result.next,null);assert.equal(result.nextQualification,'SYNTHETIC_UNKNOWN');assert.equal(result.nextTime,null);});
+
+test('technical workspace lists approved registered projects only while selectable',()=>{
+ const base=[{project_id:'NEXAEON'}];
+ const rows=[{projectId:'AI_INTERACTIVE_EXPERIENCE_ENGINE',name:'AI Interactive Experience Engine',selectable:true},{projectId:'PENDING_PROJECT',name:'Pending',selectable:false},{projectId:'NEXAEON',name:'Duplicate',selectable:true}];
+ const list=withRegisteredWorkspaces(base,rows);
+ assert.equal(base.length,1);
+ assert.deepEqual(list.map(m=>m.project_id),['NEXAEON','AI_INTERACTIVE_EXPERIENCE_ENGINE']);
+ assert.equal(list[1].registeredProject,true);assert.equal(list[1].product.name,'AI Interactive Experience Engine');assert.deepEqual(list[1].activity,[]);
+ assert.deepEqual(withRegisteredWorkspaces(base,[]),base);
+});
