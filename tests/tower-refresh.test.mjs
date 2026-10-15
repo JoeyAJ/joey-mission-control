@@ -61,3 +61,22 @@ test('registered cards show the catalog version instead of "Registered" once dev
  assert.deepEqual(find(root,'tower-version').map(n=>n.textContent).sort(),['v0.5',w.registered].sort());// the pending one still reads "已登記"
  assert.ok(find(root,'tower-pilot-name').some(n=>n.textContent==='Claude Code'));
 });
+
+test('registered projects show their catalog website and catalog facts instead of a workspace they are not in',async()=>{
+ const {catalogSiteUrl}=await import('../src/onboarding/project-registration-catalog.mjs');
+ const yaml=v=>'# X\n\n```yaml\nversion: v0.5\npublic_url: '+v+'\n```\n';
+ assert.equal(catalogSiteUrl(yaml('https://ai-interactive-experience-engine.vercel.app')),'https://ai-interactive-experience-engine.vercel.app/');
+ for(const bad of ['javascript:alert(1)','http://plain.example','https://u:p@x.example','not a url'])assert.equal(catalogSiteUrl(yaml(bad)),null);
+ assert.equal(catalogSiteUrl('# no yaml'),null);
+ const find=(n,pred,out=[])=>{if(pred(n))out.push(n);for(const c of n.children||[])find(c,pred,out);return out;};
+ const engine={id:'E',name:'Engine',kind:'registered',status:'Active',version:'v0.5',lastAgent:'Claude Code',asOf:'2026-10-15',updatedAt:'2026-10-15',repositoryId:'JoeyAJ/ai-interactive-experience-engine',ref:'main',siteUrl:'https://ai-interactive-experience-engine.vercel.app/'};
+ const board=renderControlTower({doc:fakeDoc(),projects:[engine],storage:storage({})});
+ assert.ok(find(board,n=>n.className==='tower-button tower-site'&&n.href===engine.siteUrl).length,'card links to the website');
+ for(const locale of ['zh-TW','ko','en']){
+  const w=towerWords(locale),detail=renderControlTower({doc:fakeDoc(),locale,projects:[engine],detailId:'E',storage:storage({})});
+  const all=text(detail);
+  assert.ok(all.includes(w.techRegistered));assert.ok(all.includes(w.registeredNoRuns));assert.ok(!all.includes(w.openWorkspace),'no button into a workspace that does not list it');
+  assert.ok(all.includes('v0.5 · Claude Code · 2026-10-15'));
+  assert.deepEqual(find(detail,n=>n.tag==='a'&&n.className==='tower-link').map(a=>a.href),['https://github.com/JoeyAJ/ai-interactive-experience-engine',engine.siteUrl]);
+ }
+});
