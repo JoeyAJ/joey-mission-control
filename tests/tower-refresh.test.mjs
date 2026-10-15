@@ -101,3 +101,14 @@ test('registered projects show the catalog work log like live reports, with real
  // Projects with live reports keep using them.
  assert.equal(projectCard({...project,kind:'project'},{now}).history.length,0);
 });
+
+test('every project past the idea stage has a status picker; the overview is grouped by Joey\'s logic',()=>{
+ const find=(n,pred,out=[])=>{if(pred(n))out.push(n);for(const c of n.children||[])find(c,pred,out);return out;};
+ const calls=[];const w=towerWords('zh-TW');
+ const root=renderControlTower({doc:fakeDoc(),projects:[{id:'K',name:'Keep',status:'Active'},{id:'P',name:'Asset',status:'Paused',joeyStatus:'push'},{id:'Z',name:'Zzz',status:'Paused'},{id:'I',name:'Idea',status:'Idea'}],onStatus:(id,s)=>calls.push([id,s]),onDecision:()=>{},storage:storage({})});
+ const titles=find(root,n=>n.className==='tower-section-title').map(n=>n.children[0].textContent);
+ assert.deepEqual(titles,[w.attention,w.groupPush,w.groupPaused]);
+ const picks=find(root,n=>n.tag==='select'&&n.className==='tower-locale'&&/· /.test(n.attrs['aria-label']||''));
+ assert.deepEqual(picks.map(s=>s.attrs['aria-label']).sort(),['狀態 · Asset','狀態 · Keep','狀態 · Zzz']);// no picker on the idea
+ assert.deepEqual(picks.map(s=>s.children.find(o=>o.selected)?.value).sort(),['paused','push','push']);
+});
