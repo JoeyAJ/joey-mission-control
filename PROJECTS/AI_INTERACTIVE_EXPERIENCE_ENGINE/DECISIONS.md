@@ -9,6 +9,7 @@ Status: In Development
 - 2026-10-15 — AI postponed; v0.5 interaction core (no AI) built and accepted, including a culinary menu-pricing case.
 - 2026-10-15 — Claude API is opened only when the engine is formally handed to professors (Claude Opus 5.5, passcode-protected AI features).
 - 2026-10-15 — Rule: every accepted version is synced to Mission Control by the developing Agent.
+- 2026-10-15 — Live progress reports activated (90-day grant, expires 2027-01-13); Agents report to this repository's mc/progress branch. First real run accepted by Joey.
 
 ## Registration source
 
