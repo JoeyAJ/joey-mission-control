@@ -42,7 +42,7 @@ export function projectCard(project,{runs=null,handoff=null,review=null,now=Date
  // Last finished run Joey already reviewed; the card lets Joey revisit that decision.
  const reviewed=completed&&review&&completed.runId&&review.runId===completed.runId?{runId:completed.runId,decision:review.decision,agent:completed.agentName,feature:completed.featureTitle,summary:completed.summary,result:completed.result||null}:null;
  const joeyStatus=JOEY_STATUSES.includes(project.joeyStatus)?project.joeyStatus:null,parked=joeyStatus==='paused'||joeyStatus==='done';
- const base={joeyStatus,id:project.id,name:project.name,kind:project.kind||'project',decision:project.decision||null,summary:project.summary||null,siteUrl:project.siteUrl||null,repositoryId:project.repositoryId||null,ref:project.ref||null,asOf:project.asOf||null,reviewed,version:versionOf(current?.featureTitle)||versionOf(latest?.featureTitle)||known(project.version),lifecycle,history,
+ const base={joeyStatus,id:project.id,name:project.name,kind:project.kind||'project',live:project.kind==='registered'&&project.live===true,decision:project.decision||null,summary:project.summary||null,siteUrl:project.siteUrl||null,repositoryId:project.repositoryId||null,ref:project.ref||null,asOf:project.asOf||null,reviewed,version:versionOf(current?.featureTitle)||versionOf(latest?.featureTitle)||known(project.version),lifecycle,history,
   lastAgent:latest?.agentName||known(project.lastAgent)||logged?.agent||null,
   updatedAt:latest?.eventAt||logged?.at||project.updatedAt||null,
   next:known(project.next)};
