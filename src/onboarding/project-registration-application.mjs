@@ -25,7 +25,7 @@ export function createProjectRegistrationApplication({activation=projectRegistra
   try {
    const before=await checkOwner(token,abort.signal);
    if(action==='capabilities'){const after=await checkOwner(token,abort.signal);return result(200,{schemaVersion:1,qualification:'OWNER_PRIVATE_REGISTRATION_CAPABILITIES',enabled,privateRepositoryCreation:false,destination:registrationCatalogTarget,sourcePaths:[...REGISTRATION_FILES],expiresAt:Math.min(before.expiresAt,after.expiresAt,now()+30000)});}
-   if(!enabled||gitPort?.configured!==true)throw registrationError('REGISTRATION_NOT_ACTIVATED',503);
+   if(!enabled||(action==='catalog'?gitPort?.readConfigured!==true&&gitPort?.configured!==true:gitPort?.configured!==true))throw registrationError('REGISTRATION_NOT_ACTIVATED',503);
    const catalog=validateRegistrationCatalog(await gitPort.readSnapshot({signal:abort.signal}),ownerSubject);await checkOwner(token,abort.signal);
    if(action==='catalog'){const after=await checkOwner(token,abort.signal);return result(200,{...projectRegistrationCatalogView(catalog,{ownerSubject,now:now()}),liveRegistered:gitPort.sourceQualification==='APPROVED_REMOTE_GIT',expiresAt:Math.min(after.expiresAt,now()+30000)});}
    const input=await jsonBody(req);
@@ -54,6 +54,6 @@ export function createDeploymentProjectRegistrationApplication({activation=proje
  const enabled=registrationActivated(activation);
  return createProjectRegistrationApplication({activation,ownerSubject:policy.ownerSubject,allowedOrigin:policy.stageOrigin,verifyOwner:createCurrentOwnerVerifier({fetchImpl,policy,now}),now,
   draftPort:enabled?createProjectDraftRpcPort({fetchImpl,policy}):null,
-  gitPort:enabled?createRegistrationGitPort({credential:environment.MC_GITHUB_REGISTRY_WRITE_TOKEN,activation,ownerSubject:policy.ownerSubject,fetchImpl}):null,
+  gitPort:enabled?createRegistrationGitPort({credential:environment.MC_GITHUB_REGISTRY_WRITE_TOKEN,readCredential:environment.MC_GITHUB_READ_TOKEN,activation,ownerSubject:policy.ownerSubject,fetchImpl}):null,
   repositoryReaderFactory:({repositoryId,ref})=>createProjectRegistrationRepositoryReader({credential:enabled?environment.MC_GITHUB_READ_TOKEN:undefined,fetchImpl,repositoryId,ref})});
 }

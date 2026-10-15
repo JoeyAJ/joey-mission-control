@@ -8,12 +8,15 @@ const sha=v=>typeof v==='string'&&/^[a-f0-9]{40}$/.test(v);
 const roots=[REGISTRY_PATH,INDEX_PATH,LEDGER_PATH];
 const allowed=p=>roots.includes(p)||/^PROJECTS\/[A-Z][A-Z0-9_]{2,63}\/(?:PROJECT_MEMORY|CURRENT_STATE|NEXT_ACTIONS|ARCHITECTURE|DECISIONS)\.md$/.test(p);
 const failure=(code='REGISTRATION_CATALOG_UNAVAILABLE',status=503)=>{throw registrationError(code,status);};
-export function createRegistrationGitPort({credential,activation=projectRegistrationActivation,ownerSubject,fetchImpl=globalThis.fetch,sourceQualification='APPROVED_REMOTE_GIT'}={}) {
-  const configured=registrationActivated(activation)&&typeof credential==='string'&&credential.length>=20&&!/\s/.test(credential);
+export function createRegistrationGitPort({credential,readCredential=null,activation=projectRegistrationActivation,ownerSubject,fetchImpl=globalThis.fetch,sourceQualification='APPROVED_REMOTE_GIT'}={}) {
+  const usable=v=>typeof v==='string'&&v.length>=20&&!/\s/.test(v);
+  const configured=registrationActivated(activation)&&usable(credential);
+  // Catalog reads may use the existing read-only repository credential; writes never do.
+  const readConfigured=registrationActivated(activation)&&(usable(credential)||usable(readCredential));
   const c=registrationCatalogTarget;
   const request=async(path,{signal,method='GET',body,limit=3145728}={})=>{
-    if(!configured)failure('REGISTRATION_NOT_ACTIVATED');
-    const result=await boundedPrivateJsonRequest(fetchImpl,path.startsWith('/graphql')?'https://api.github.com/graphql':'https://api.github.com/repos/'+c.repositoryId+path,{method,headers:{Authorization:'Bearer '+credential,Accept:'application/vnd.github+json','X-GitHub-Api-Version':'2026-03-10',...(body?{'Content-Type':'application/json'}:{})},...(body?{body:JSON.stringify(body)}:{})},signal,limit);
+    const write=method!=='GET'||path.startsWith('/graphql');if(write?!configured:!readConfigured)failure('REGISTRATION_NOT_ACTIVATED');const auth=write||usable(credential)?credential:readCredential;
+    const result=await boundedPrivateJsonRequest(fetchImpl,path.startsWith('/graphql')?'https://api.github.com/graphql':'https://api.github.com/repos/'+c.repositoryId+path,{method,headers:{Authorization:'Bearer '+auth,Accept:'application/vnd.github+json','X-GitHub-Api-Version':'2026-03-10',...(body?{'Content-Type':'application/json'}:{})},...(body?{body:JSON.stringify(body)}:{})},signal,limit);
     if(result.status!==200)failure();return result.data;
   };
   const identity=async signal=>{const r=await request('',{signal,limit:65536});if(Number(r.id)!==c.repositoryNumericId||r.full_name!==c.repositoryId||r.private!==true||r.visibility!=='private'||r.archived!==false||r.disabled!==false)failure('REGISTRATION_PRIVATE_IDENTITY_MISMATCH',409);};
@@ -31,7 +34,7 @@ export function createRegistrationGitPort({credential,activation=projectRegistra
     if((await readTree(parents[0].sha)).some(e=>e.path===projectId))failure('REGISTRATION_TARGET_CONFLICT',409);
   };
   if(!['APPROVED_REMOTE_GIT','LOCAL_GIT_FIXTURE'].includes(sourceQualification))failure('REGISTRATION_PORT_NOT_CONFIGURED');
-  return Object.freeze({qualification:'SCOPED_GIT_REGISTRATION_PORT',sourceQualification,configured,
+  return Object.freeze({qualification:'SCOPED_GIT_REGISTRATION_PORT',sourceQualification,configured,readConfigured,
     async readSnapshot({signal,expectedCommitSha}={}) {
       await identity(signal);const headSha=await head(signal);if(expectedCommitSha&&headSha!==expectedCommitSha)failure('REGISTRATION_CATALOG_HEAD_CONFLICT',409);
       const commit=await request('/git/commits/'+headSha,{signal,limit:65536});if(commit.sha!==headSha||!sha(commit.tree?.sha))failure();const trees=new Map();

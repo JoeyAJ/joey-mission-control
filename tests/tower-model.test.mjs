@@ -136,3 +136,21 @@ test('review history keeps the newest decisions first for the detail page',async
  writeReview('A',{runId:'r1',decision:'changes',note:'fix',at:at(10)},storage);writeReview('A',{runId:'r1',decision:'accepted',at:at(1)},storage);
  const r=readReviews(storage).A;assert.equal(r.decision,'accepted');assert.deepEqual(r.log.map(x=>x.decision),['accepted','changes']);assert.equal(r.log[1].note,'fix');
 });
+
+test('registered projects wait for Joey to start development and get a repository-based handoff',async()=>{
+ const {registeredInstruction}=await import('../public/control-tower.js');
+ const c=projectCard({id:'AI_X',name:'AI X',status:'Idea',kind:'registered',repositoryId:'JoeyAJ/ai-x',ref:'main'},{now});
+ assert.equal(c.state,'decide');assert.equal(c.kind,'registered');assert.equal(c.repositoryId,'JoeyAJ/ai-x');
+ const text=registeredInstruction({name:'AI X',repositoryId:'JoeyAJ/ai-x'});
+ assert.match(text,/JoeyAJ\/ai-x/);assert.match(text,/HANDOFF\.md/);assert.match(text,/Pending Development/);assert.match(text,/不要自行部署/);
+});
+
+test('catalog reads can use the read-only credential while writes still require the registry credential',async()=>{
+ const {createRegistrationGitPort}=await import('../src/onboarding/project-registration-git.mjs');
+ const calls=[];const fetchImpl=async(url,init)=>{calls.push([String(url),init.method||'GET',init.headers.Authorization]);return new Response('{}',{status:404});};
+ const readOnly=createRegistrationGitPort({credential:undefined,readCredential:'r'.repeat(24),ownerSubject:'x',fetchImpl});
+ assert.equal(readOnly.configured,false);assert.equal(readOnly.readConfigured,true);
+ await assert.rejects(readOnly.readSnapshot({}));assert.equal(calls[0][1],'GET');assert.equal(calls[0][2],'Bearer '+'r'.repeat(24));
+ const both=createRegistrationGitPort({credential:'w'.repeat(24),readCredential:'r'.repeat(24),ownerSubject:'x',fetchImpl});
+ assert.equal(both.configured,true);calls.length=0;await assert.rejects(both.readSnapshot({}));assert.equal(calls[0][2],'Bearer '+'w'.repeat(24));
+});

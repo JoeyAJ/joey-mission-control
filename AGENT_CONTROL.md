@@ -1,4 +1,17 @@
-# Mission Control — current Agent entry
+# Mission Control — Agent entry
+
+## Register a new project in MC (for any Agent)
+
+Joey's overview (https://joey-mission-control-one.vercel.app/#joey) lists the published projects plus every project in the private registration catalog. To add a project:
+
+1. Prepare the project's own private repository `JoeyAJ/<repo>` on `main` with `HANDOFF.md`, `PRD.md`, `README.md`, `docs/PRODUCT_CHARTER.md`, `docs/PHASE_PLAN.md` and `.mission-control/bootstrap.json`. Use only access Joey granted you.
+2. Register it on the `mc/registry` branch of `JoeyAJ/joey-mission-control` (data-only branch, deployments disabled), in the existing catalog format: a block in `PROJECT_REGISTRY_V1.0.md`, a row in `MEMORY_INDEX.md` (Production Development Registry and Systems Registry tables), one ledger entry in `.mission-control/registration-ledger.json`, and `PROJECTS/<PROJECT_ID>/{PROJECT_MEMORY,CURRENT_STATE,DECISIONS,NEXT_ACTIONS,ARCHITECTURE}.md`. `AI_INTERACTIVE_EXPERIENCE_ENGINE` is the reference example. The catalog must pass `validateRegistrationCatalog` in `src/onboarding/project-registration-catalog.mjs`; an invalid catalog hides every registered project.
+3. Set `Status: Pending Development` in `CURRENT_STATE.md`. Do not start product development, change other projects, MC application code, deployments or credentials.
+4. Report to Joey: project ID, repository and the overview link. The project appears under "Your call" with **Start development**; Joey decides when and to which Agent it is handed off.
+
+---
+
+# Mission Control — current Agent entry (development of MC itself)
 
 Read [HANDOFF](HANDOFF.md), then [PRODUCT_CHARTER](docs/PRODUCT_CHARTER.md). [Single current acceptance summary](docs/MC_CURRENT_ACCEPTANCE.md) separates implementation, actual Owner/receiving-Agent verification, remaining device checks and Joey final acceptance. Historical checkpoints below do not override these sources or the latest authorized scope.
 
