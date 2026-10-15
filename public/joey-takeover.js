@@ -122,6 +122,9 @@ export function mountJoeyTakeover({doc=document,project='NEXAEON',track='BASELIN
   if(c!==controller){unsubscribe?.();controller=c||null;unsubscribe=c?.subscribe(value=>{view=value;if(value.status!=='connected'||value.observation?.status!=='FOUND')clearResult();paint();});authObserver.disconnect();authObserver.observe(owner,{attributes:true,subtree:true,attributeFilter:['data-owner-auth','data-owner-aal','disabled']});}
   const rc=owner.repositoryRunsController;if(rc!==reportController){reportUnsubscribe?.();reportController=rc||null;reportView=null;reportUnsubscribe=rc?.subscribe(value=>{reportView=value;paint();});}
   if(owner.remoteHandoffSource)technical.append(owner.remoteHandoffSource);if(owner.repositoryRunsSource)runsHost.append(owner.repositoryRunsSource);paint();
+  // An approved registered project's entry mounts already verified, so no sign-in change starts the
+  // connection refresh; start it here or the ~30 s connection list expires and the source shows denied.
+  refreshConnections();
  }
  const unConnections=projectConnectionClient?.subscribe(rows=>{for(const option of [...select.options])if(!Object.hasOwn(names,option.value))option.remove();for(const p of rows){if(Object.hasOwn(names,p.projectId))continue;projectNames[p.projectId]=p.name;const option=el('option');option.value=p.projectId;option.textContent=p.name;option.disabled=!p.selectable;select.append(option);}if(!Object.hasOwn(names,project)&&!rows.some(p=>p.projectId===project&&p.selectable)){owner?.dispose?.();onSelect('NEXAEON','BASELINE');}else select.value=project;});
  update({project,track,locale,dailySection});
