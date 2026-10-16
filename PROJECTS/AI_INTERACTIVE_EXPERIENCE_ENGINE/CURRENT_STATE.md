@@ -17,6 +17,7 @@ v0.5 interaction core accepted by Joey on 2026-10-15 and live on the public site
 
 ## Work log
 
+- 2026-10-16T10:51:19+09:00 | Claude Code | completed | 修好總覽偶爾看不到本專案與技術工作台兩個入口（MC PR #10、#11，Joey 已確認）
 - 2026-10-16T00:44:20+09:00 | Claude Code | completed | MC 技術工作台加入本專案，可看到即時回報（MC PR #9，Joey 已確認）
 - 2026-10-15T19:42:39+09:00 | Claude Code | completed | MC 即時回報開通驗收：開始、進度、完成三筆回報已顯示在卡片與技術工作台（Joey 已確認）
 - 2026-10-15T15:33:30+09:00 | Claude Code | completed | 專案文件加入 MC 同步規則與 Claude API 開放時程決定
