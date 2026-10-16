@@ -55,3 +55,11 @@ test('technical workspace lists approved registered projects only while selectab
  assert.equal(list[1].registeredProject,true);assert.equal(list[1].product.name,'AI Interactive Experience Engine');assert.deepEqual(list[1].activity,[]);
  assert.deepEqual(withRegisteredWorkspaces(base,[]),base);
 });
+
+test('a workspace link keeps an approved registered project once the server lists it',()=>{
+ const approved={isAuthorizedProject:id=>id==='AI_INTERACTIVE_EXPERIENCE_ENGINE'};
+ assert.equal(readContext('#workspace?project=AI_INTERACTIVE_EXPERIENCE_ENGINE&module=console&panel=events',approved).project,'AI_INTERACTIVE_EXPERIENCE_ENGINE');
+ assert.equal(readContext('#workspace?project=AI_INTERACTIVE_EXPERIENCE_ENGINE&module=console',{}).project,'NEXAEON');
+ assert.equal(readContext('#workspace?project=UNKNOWN_PROJECT&module=console',approved).project,'NEXAEON');
+ assert.equal(readContext('#workspace?project=WOOSONG_BUDDY&module=console',approved).project,'WOOSONG_BUDDY');
+});
