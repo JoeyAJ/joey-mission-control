@@ -125,7 +125,7 @@ export function renderControlTower({doc=document,locale='zh-TW',projects=[],runs
   {const t=el('h4','tower-name'),open=el('button','tower-name-link',c.name);open.type='button';open.addEventListener('click',()=>onOpenDetail(c.id));t.append(open);a.append(t);}if(c.kind==='draft')a.dataset.kind='draft';
   const pilot=el('div','tower-pilot');const name=c.agent||c.lastAgent;pilot.append(avatar(name),el('span','tower-pilot-role',c.agent?w.agent:c.lastAgent?w.lastAgent:''),el('strong','tower-pilot-name',name||w.noAgent));a.append(pilot);
   const hint=c.kind==='registered'&&c.state==='decide'?w.registeredHint:c.kind==='draft'&&c.decision==='go'&&c.state==='push'&&!c.joeyStatus?w.ideaGoHint:{push:w.pushHint,review:fill(w.reviewHint,{agent:c.agent}),blocked:w.blockedHint,stale:w.staleHint,decide:w.decideHint,awaiting:fill(w.awaitingHint,{agent:c.agent})}[c.state];
-  const line=c.summary||c.feature;if(line)a.append(el('p','tower-line',line));if(hint)a.append(el('p','tower-hint',hint));
+  const line=c.summary||c.feature;if(line)a.append(el('p','tower-line',line));if(hint&&!guest)a.append(el('p','tower-hint',hint));
   a.append(el('p','tower-time',w.updated+' · '+relativeTime(c.at||c.updatedAt,w,now)));
   const actions=el('div','tower-actions');
   if(guest){}
