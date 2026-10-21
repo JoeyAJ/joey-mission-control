@@ -83,13 +83,14 @@ export function renderControlTower({doc=document,locale='zh-TW',projects=[],runs
  if(onLocale){const lang=el('select','tower-locale');lang.setAttribute('aria-label',w.lang);for(const [value,label] of [['zh-TW','繁體中文'],['ko','한국어'],['en','English']]){const o=el('option','',label);o.value=value;o.lang=value;o.selected=value===locale;lang.append(o);}lang.addEventListener('change',()=>onLocale(lang.value));tools.append(lang);}
  if(account){const wrap=el('div','tower-account');wrap.append(account);tools.append(wrap);}
  if(!guest)tools.append(advanced);head.append(tools);root.dataset.guest=String(guest);root.append(head);
- if(ownerSiteUrl&&!demo){const b=el('p','tower-banner tower-banner-warn',w.wrongOrigin+' '),link=el('a','tower-button tower-primary',w.openOwnerSite);link.href=ownerSiteUrl;b.append(link);root.append(b);}
+ const guestNote=()=>{const b=el('p','tower-banner tower-banner-guest');b.dataset.guestNote='true';b.append(el('strong','','🔒 '),el('span','',w.guestBanner));root.append(b);};
+ if(ownerSiteUrl&&!demo){const b=el('p','tower-banner tower-banner-warn',w.wrongOrigin+' '),link=el('a','tower-button tower-primary',w.openOwnerSite);link.href=ownerSiteUrl;b.append(link);root.append(b);if(guest)guestNote();}
  else if(demo)root.append(el('p','tower-banner',w.demo));else if(loading){
   // First Owner read not settled yet: show only a loading state, never the older local board.
   const box=el('div','tower-loading');box.setAttribute('role','status');box.setAttribute('aria-busy','true');box.append(el('span','tower-loading-spinner'),el('strong','tower-loading-title',w.loading),el('p','tower-loading-hint',w.loadingHint));root.append(box);
   root.towerModel={...model,cards:[],attention:[],flying:[]};return root;}
  else if(loadingSlow)root.append(el('p','tower-banner tower-banner-warn',w.loadingSlow));
- else if(guest){const b=el('p','tower-banner tower-banner-guest');b.dataset.guestNote='true';b.append(el('strong','','🔒 '),el('span','',w.guestBanner));root.append(b);}
+ else if(guest)guestNote();
  else if(!signedIn)root.append(el('p','tower-banner',w.signin));
  // Radar: one chip per state that has projects; clicking filters the board.
  const radar=el('div','tower-radar');radar.setAttribute('role','group');radar.setAttribute('aria-label',w.title);
