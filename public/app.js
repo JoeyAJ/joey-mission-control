@@ -257,6 +257,8 @@ function renderWorkspace(){if(!state||!$('#workspace').classList.contains('activ
 // The overview replaces the retired pages (classic Joey View, console, inbox, workspaces, evidence, project); only the technical workspace keeps its own route.
 function isTowerRoute(){return location.hash.split('?')[0]!=='#workspace';}
 let towerFilter='all',towerRuns={},towerDemoStorage=null;
+// List or board layout of the tower; a local display preference only (not synced, not data).
+const TOWER_VIEW_KEY='mc.tower.view.v1';let towerView=(()=>{try{return localStorage.getItem(TOWER_VIEW_KEY)==='board'?'board':'list';}catch{return 'list';}})();
 function memoryStorage(seed){const data={'mc.tower.handoffs.v1':JSON.stringify(seed)};return{getItem:k=>data[k]??null,setItem:(k,v)=>{data[k]=String(v);}};}
 let towerIdeas=[],towerOwnerReady=false,towerDemoIdeas=[],towerRegistered=[];
 // Handoff intents, reviews and idea decisions: local first, synced to the Owner cloud while signed in.
@@ -292,7 +294,7 @@ function renderTower(){
  const account=demo?null:towerAccount(locale),ownerSiteUrl=location.origin!==ownerAuthConfig.stageOrigin&&/^https:/.test(location.origin)?ownerAuthConfig.stageOrigin+'/#joey':null;
  const loading=demo?null:towerRefresh.phase;
  const tower=renderControlTower({locale,...data,demo,ownerSiteUrl,signedIn:demo||towerOwnerReady,loading:loading==='loading',loadingSlow:loading==='slow',filter:towerFilter,storage:demo?towerDemoStorage:towerStore.storage,account,
-  onFilter:f=>{towerFilter=f;renderTower();},onChange:renderTower,onLocale:applyLocale,
+  onFilter:f=>{towerFilter=f;renderTower();},view:(h=>['board','list'].includes(h)?h:towerView)(new URLSearchParams(location.hash.split('?')[1]||'').get('view')),onView:v=>{if(new URLSearchParams(location.hash.split('?')[1]||'').has('view')){const q=new URLSearchParams(location.hash.split('?')[1]||'');q.delete('view');location.hash='#joey'+(q.toString()?'?'+q:'');}towerView=v==='board'?'board':'list';try{localStorage.setItem(TOWER_VIEW_KEY,towerView);}catch{}renderTower();},onChange:renderTower,onLocale:applyLocale,
   onStatus:(id,status,{silent=false}={})=>{decideIdeaCard(id,status);if(!silent)renderTower();},
   onDecision:(id,choice)=>{if(demo&&id==='DEMO_R'){decideIdeaCard(id,{reject:'rejected',remove:'removed',restore:null}[choice]??null);renderTower();return;}if(demo&&!id.startsWith('local_')){notify('human.saved');return;}if(towerRegistered.some(r=>r.projectId===id)){decideIdeaCard(id,{reject:'rejected',remove:'removed',restore:null}[choice]??null);renderTower();return;}if(id.startsWith('draft_')||id.startsWith('local_')){if(choice==='remove')removeIdea(id);else decideIdeaCard(id,{continue:'go',shelve:'shelved',restore:null}[choice]);renderTower();return;}if(!releaseInfo?.readOnly)decideIdea(id,choice);},
   onIdea:demo?async text=>{towerDemoIdeas=[{id:'local_demo'+towerDemoIdeas.length,name:text.slice(0,40),status:'Idea',summary:text,updatedAt:new Date().toISOString(),kind:'draft'},...towerDemoIdeas];}:towerIdea,onIdeaEdit:demo?null:editIdea,signedInForIdeas:demo||towerOwnerReady,
