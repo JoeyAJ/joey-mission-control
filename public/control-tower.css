@@ -298,3 +298,4 @@ body.tower-mode .owner-vm-link-launch{left:16px;right:auto;bottom:16px;border-ra
  .tower-bcard,.tower-beat-dot,.tower-run-node{animation:none!important;transition:none!important}
  .tower-bcard:hover{transform:none}
 }
+.tower-banner-guest{border-style:solid;border-color:#a78bfa66;color:var(--nx-text);background:#1e1538aa}
