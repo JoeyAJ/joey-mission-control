@@ -7,6 +7,19 @@ export const GROUPS=[['running',['running','awaiting']],['push',['push']],['paus
 // Joey's own status for a project (synced with his other tower records); Agents never set it.
 export const JOEY_STATUSES=['push','paused','done'];
 export const ATTENTION_STATES=new Set(['blocked','stale','review','decide']);
+// Board view (alternative layout of the same cards): four columns derived from TOWER_STATES.
+// Blocked and stale cards stay in "in development" but are flagged "needs you"; a finished
+// run never goes past "awaiting your review" until Joey records a decision himself.
+export const BOARD_COLUMNS=[['pickup',['decide','awaiting','push','paused','idea']],['running',['running','blocked','stale']],['review',['review']],['done',['done']]];
+export const NEEDS_YOU_STATES=new Set(['blocked','stale']);
+export function boardColumn(state){return BOARD_COLUMNS.find(([,states])=>states.includes(state))?.[0]||'pickup';}
+export function boardColumns(cards=[]){return BOARD_COLUMNS.map(([key,states])=>({key,cards:cards.filter(c=>states.includes(c.state)).map(c=>({...c,needsYou:NEEDS_YOU_STATES.has(c.state)}))}));}
+// Heartbeat freshness comes only from the Agent's own report: "fresh" while the run is
+// reported running and not expired, "stale" once it expired, otherwise "none".
+export function heartbeatOf(card){return card?.state==='running'&&card.focusState==='running'?'fresh':card?.state==='stale'||card?.focusState==='unconfirmed'?'stale':'none';}
+// Run timeline and touched files for one run, straight from its reported events.
+export function runTimeline(events=[],runId=null){if(!runId)return [];return events.filter(e=>e&&e.runId===runId&&typeof e.kind==='string').sort((a,b)=>(a.sequence??0)-(b.sequence??0)||String(a.eventAt).localeCompare(String(b.eventAt))).map(e=>({sequence:e.sequence??null,kind:e.kind,eventAt:e.eventAt||null,summary:e.summary||null,activity:e.activity||null}));}
+export function touchedFiles(timeline=[]){const out=new Map();for(const e of timeline){const a=e.activity;if(!a||typeof a.path!=='string'||!a.path.trim()||!['FILE_READ','FILE_CHANGED'].includes(a.action))continue;const prev=out.get(a.path);out.set(a.path,{path:a.path,read:(prev?.read||false)||a.action==='FILE_READ',changed:(prev?.changed||false)||a.action==='FILE_CHANGED',at:a.observedAt||e.eventAt||prev?.at||null});}return [...out.values()];}
 export const AGENTS=[
  {id:'codex',name:'Codex',match:/codex/i},
  {id:'claude',name:'Claude Code',match:/claude/i},
@@ -53,7 +66,9 @@ export function projectCard(project,{runs=null,handoff=null,review=null,now=Date
  // it names the receiving Agent with an as_of at or after the copy time.
  const catalogAnswered=()=>project.kind==='registered'&&(agentKey(known(project.lastAgent))===handoff.agent&&catalogTime(project.asOf)>=handoffAt||log.some(e=>agentKey(e.agent)===handoff.agent&&time(e.at)>=handoffAt));
  if(handoff&&handoffAt&&now-handoffAt<HANDOFF_TTL_MS){const answered=tasks.some(t=>agentKey(t.agentName)===handoff.agent&&time(t.eventAt)>=handoffAt)||catalogAnswered();if(!answered)pending={agent:handoff.agent,agentName:agentName(handoff.agent),goal:handoff.goal||'',at:handoff.at};}
- const card=(state,extra={})=>({...base,state,pending,...extra});
+ // The run the detail timeline follows: current, else stale, else the latest report.
+ const focus=current||stale||latest,timeline=runTimeline(runs?.events||[],focus?.runId||null);
+ const card=(state,extra={})=>({...base,state,pending,focusRunId:focus?.runId||null,focusState:focus?.currentState||null,timeline,files:touchedFiles(timeline),...extra});
  // Joey paused or closed the project: Agent problems and reviews no longer ask for attention.
  if(blocked&&!parked)return card('blocked',{agent:blocked.agentName,feature:blocked.featureTitle,summary:blocked.summary,at:blocked.eventAt});
  if(stale&&!current&&!parked)return card('stale',{agent:stale.agentName,feature:stale.featureTitle,summary:stale.summary,at:stale.eventAt});
