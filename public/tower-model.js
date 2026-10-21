@@ -10,7 +10,8 @@ export const ATTENTION_STATES=new Set(['blocked','stale','review','decide']);
 export const AGENTS=[
  {id:'codex',name:'Codex',match:/codex/i},
  {id:'claude',name:'Claude Code',match:/claude/i},
- {id:'hermes',name:'Hermes',match:/hermes/i}
+ {id:'hermes',name:'Hermes',match:/hermes/i},
+ {id:'cursor',name:'Cursor',match:/cursor/i}
 ];
 // Older handoff intents are dropped so a forgotten paste does not wait forever.
 export const HANDOFF_TTL_MS=72*3600*1000;

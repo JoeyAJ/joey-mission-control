@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {towerModel,projectCard,agentKey,versionOf,HANDOFF_TTL_MS} from '../public/tower-model.js';
+import {towerModel,projectCard,agentKey,agentName,AGENTS,versionOf,HANDOFF_TTL_MS} from '../public/tower-model.js';
 import {handoffInstruction,readHandoffs,writeHandoff,relativeTime,towerWords} from '../public/control-tower.js';
 
 const now=Date.parse('2026-10-14T12:00:00Z');
@@ -227,4 +227,11 @@ test('a registered project with an approved live source shows its Agent reports 
  const off=projectCard(base,{now});
  assert.equal(off.live,false);assert.equal(off.history[0].feature,'catalog entry');
  assert.equal(projectCard({id:'NEXAEON',name:'N',status:'Active',live:true},{now}).live,false);
+});
+
+test('handoff targets list Cursor right after Hermes',()=>{
+ assert.deepEqual(AGENTS.map(a=>a.id),['codex','claude','hermes','cursor']);
+ assert.equal(agentKey('Cursor'),'cursor');assert.equal(agentName('cursor'),'Cursor');
+ const text=handoffInstruction({project:'NexAeon',agent:'Cursor',goal:'Add watch layout',instruction:'VERIFIED'});
+ assert.match(text,/Handoff → Cursor/);assert.match(text,/agentName 請填 "Cursor"/);
 });

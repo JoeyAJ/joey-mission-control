@@ -120,7 +120,7 @@ export function renderControlTower({doc=document,locale='zh-TW',projects=[],runs
   return a;
  }
  function avatar(name){const k=agentKey(name),s=el('span','tower-avatar');s.dataset.agent=k||'none';s.textContent=name?name.trim()[0].toUpperCase():'–';s.setAttribute('aria-hidden','true');return s;}
- function hue(name){return {codex:'200',claude:'24',hermes:'280',other:'250'}[agentKey(name)]||'262';}
+ function hue(name){return {codex:'200',claude:'24',hermes:'280',cursor:'150',other:'250'}[agentKey(name)]||'262';}
  // Handoff sheet: dialog on desktop, bottom sheet on phones (CSS).
  const dialog=el('dialog','tower-sheet');root.append(dialog);
  // Close and refresh once; the dialog 'close' event is not reliable in every browser.
