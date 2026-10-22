@@ -58,3 +58,16 @@ test('every write route rejects unauthenticated requests on the owner origin and
 test('owner-only reads (live runs, registry catalog, drafts, handoff source) refuse unauthenticated guests',async()=>{
  for(const route of ['private/repository-runs','private/project-registrations','private/project-drafts','private/remote-handoff','private/project-entry','private/development-tasks','private/task-review-decisions'])for(const headers of [{},{origin:ownerAuthConfig.stageOrigin}]){const r=await call(route,{method:'GET',headers});if(process.env.SHOW)console.log('GET',route,r.status,String(r.body).slice(0,80));assert.ok(r.status>=400&&r.status<600,route+' -> '+r.status);}
 });
+
+test('guest sees one small Owner sign-in link; the existing login panel is revealed only after clicking it',()=>{
+ const base=fakeDoc(),listeners=[];const doc={...base,createElement(tag){const n=base.createElement(tag);n.addEventListener=(type,fn)=>listeners.push({n,type,fn});return n;}};
+ const account={tag:'details',open:true,children:[],textContent:'開啟 Ubuntu-1 連線面板',dataset:{},matches:s=>s==='details',querySelector:()=>null};
+ for(const [locale,label] of [['zh-TW','擁有者登入'],['en','Owner sign-in'],['ko','소유자 로그인']])assert.equal(towerWords(locale).ownerLogin,label);
+ const root=renderControlTower({doc,...demoTower(now),now,guest:true,signedIn:false,storage:mem(),onView:noop,...owner,account});
+ const links=all(root).filter(n=>n.dataset?.ownerLoginLink==='true');assert.equal(links.length,1);assert.equal(links[0].textContent,'擁有者登入');
+ const wrap=find(root,'tower-account')[0];assert.equal(wrap.hidden,true);assert.ok(wrap.children.includes(account));
+ const click=listeners.find(l=>l.n===links[0]&&l.type==='click');assert.ok(click);click.fn();
+ assert.equal(wrap.hidden,false);assert.equal(account.open,true);
+ const owned=renderControlTower({doc:fakeDoc(),...demoTower(now),now,guest:false,signedIn:true,storage:mem(),onView:noop,...owner,account});
+ assert.equal(all(owned).filter(n=>n.dataset?.ownerLoginLink==='true').length,0);assert.notEqual(find(owned,'tower-account')[0].hidden,true);
+});
