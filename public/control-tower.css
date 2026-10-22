@@ -299,3 +299,6 @@ body.tower-mode .owner-vm-link-launch{left:16px;right:auto;bottom:16px;border-ra
  .tower-bcard:hover{transform:none}
 }
 .tower-banner-guest{border-style:solid;border-color:#a78bfa66;color:var(--nx-text);background:#1e1538aa}
+
+.tower-owner-link{background:none;border:0;padding:6px 4px;min-height:32px;font-size:12px;color:var(--nx-muted);text-decoration:underline;text-underline-offset:3px;cursor:pointer;opacity:.75}
+.tower-owner-link:hover,.tower-owner-link:focus-visible{opacity:1;color:var(--nx-text,#fff)}
