@@ -14,6 +14,7 @@ import {composeContinue} from '../src/continue/continue-composer.mjs';
 import {createDeploymentRemoteHandoffServer} from '../src/continuity/remote-handoff-server.mjs';
 import {createDeploymentProjectEntryServer} from '../src/continuity/project-entry-server.mjs';
 import {ownerAuthConfig} from '../public/owner-auth-config.js';
+import {createPublicTowerRunServer} from '../src/reporting/public-tower-runs.mjs';
 import {applyProjectUrls} from '../src/canonical/project-url-metadata.mjs';
 import {createDeploymentProjectOnboardingServer} from '../src/onboarding/project-onboarding-server.mjs';
 import {createDeploymentProjectRegistrationApplication} from '../src/onboarding/project-registration-application.mjs';
@@ -73,6 +74,7 @@ export default async function handler(req,res){
   else if(route==='private/task-reconciliation'&&req.headers.host===new URL(ownerAuthConfig.stageOrigin).host){result=await createDeploymentTaskReconciliationServer().handle(req);}
   else if(route==='private/development-tasks'&&req.headers.host===new URL(ownerAuthConfig.stageOrigin).host){result=await createDeploymentTaskStorageServer().handle(req);}
   else if(route==='private/task-review-decisions'&&req.headers.host===new URL(ownerAuthConfig.stageOrigin).host){result=await createDeploymentTaskReviewServer().handle(req);}
+  else if(route==='public/tower-runs'){result=await createPublicTowerRunServer().handle(req,{project:url.searchParams.get('project')});}
   else result=productionResponse(req.method,url);
   res.writeHead(result.status,{...securityHeaders,'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store',...result.headers});res.end(JSON.stringify(result.body));}
  catch(error){res.writeHead(error.status||500,{...securityHeaders,'Content-Type':'application/json; charset=utf-8'});res.end(JSON.stringify({error:error.status?error.message:'Production request failed'}));}
