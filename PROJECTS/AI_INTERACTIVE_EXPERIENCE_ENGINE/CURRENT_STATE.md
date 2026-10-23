@@ -17,7 +17,7 @@ v0.5 interaction core accepted by Joey on 2026-10-15 and live on the public site
 
 ## Work log
 
-- 2026-10-23T11:20:00+09:00 | Claude Code | completed | v0.5 顯示與互動更精細：深淺色模式文字都看得清楚、可點物件有三語名稱標籤與按下回饋（PR #39，已上線，待 Joey 驗收）
+- 2026-10-23T11:20:00+09:00 | Claude Code | completed | v0.5 顯示與互動更精細：深淺色模式文字都看得清楚、可點物件有三語名稱標籤與按下回饋（PR #39，已上線，Joey 已驗收）
 - 2026-10-23T10:55:00+09:00 | Claude Code | completed | 修好 MC 讀不到交接檔（HANDOFF.md 瘦身到 64 KB 以下）並補齊 8 筆舊回報的「完成」（PR #38）
 - 2026-10-16T10:51:19+09:00 | Claude Code | completed | 修好總覽偶爾看不到本專案與技術工作台兩個入口（MC PR #10、#11，Joey 已確認）
 - 2026-10-16T00:44:20+09:00 | Claude Code | completed | MC 技術工作台加入本專案，可看到即時回報（MC PR #9，Joey 已確認）
@@ -32,6 +32,7 @@ v0.5 interaction core accepted by Joey on 2026-10-15 and live on the public site
 
 - v0.4 · Runtime skeleton + two preset cases — accepted 2026-10-15 (PR #1)
 - v0.5 · Interaction core: explore, challenges, save & share + culinary menu pricing — accepted 2026-10-15 (PR #2)
+- v0.5 · Refined display and interaction: readable in dark and light mode, clickable name tags and press feedback — accepted 2026-10-23 (PR #39)
 
 ## Product core
 
