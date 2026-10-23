@@ -34,6 +34,32 @@
       "summary": "開始：訪客看到的專案狀態（持續推進/暫停）改為 Joey 自己設定的值，只公開狀態標籤。PR #18。",
       "result": null,
       "delivery": null
+    },
+    {
+      "id": "cursor-mc-guest-status-20261023T0810Z-completed",
+      "sequence": 2,
+      "eventAt": "2026-10-23T08:08:03.000Z",
+      "kind": "completed",
+      "summary": "完成（PR #18 合併 75b1d23，Vercel 部署 3YQLqhZJMeAdrQzX6Z1KWzkeBujo）：訪客狀態標籤改用 Joey 設定，經唯讀 SQL 函式 mc_public_tower_status（只回傳 push/paused/done）與 /api/public/tower-status。線上訪客檢查：Asset 卡片顯示持續推進、v1.1；私有 API 401。",
+      "result": {
+        "codeSha": "75b1d2327c4d1bad84059235605e303dd2b49bb7",
+        "tests": [
+          {
+            "name": "npm test (Node 22) 1180/1180",
+            "outcome": "PASS"
+          },
+          {
+            "name": "Playwright live guest: Asset card 持續推進 v1.1, private 401",
+            "outcome": "PASS"
+          }
+        ],
+        "nextSteps": "無。",
+        "handoff": {
+          "path": "HANDOFF.md",
+          "commitSha": "75b1d2327c4d1bad84059235605e303dd2b49bb7"
+        }
+      },
+      "delivery": null
     }
   ]
 }
