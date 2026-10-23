@@ -13,7 +13,7 @@ export function createProjectLink(entry,doc=document,locale=getLocale()){
 }
 
 // Exact Joey-confirmed metadata mappings. URL confirmation is not build/acceptance proof.
-const confirmedSites={NEXAEON:'https://nexaeon-web.vercel.app/',WOOSONG_BUDDY:'https://woosong-buddy-app.vercel.app/',NAMYOUNG_WEB3D:'https://namyoung-web3d.vercel.app/',JOEY_ASSET_SYSTEM:'https://namyoung-asset-lab.joeyaj.chatgpt.site/'};
+const confirmedSites={NEXAEON:'https://nexaeon-web.vercel.app/',WOOSONG_BUDDY:'https://woosong-buddy-app.vercel.app/',NAMYOUNG_WEB3D:'https://namyoung-web3d.vercel.app/',JOEY_ASSET_SYSTEM:'https://joey-asset-studio.vercel.app/'};
 const universityDemo='https://joey-woosong-admissions-demo.vercel.app/';
 export function selectedProjectSite({projectId,track='BASELINE',projects=[],publicCases=null}={}){
  if(track==='UNIVERSITY_CANDIDATE'){
@@ -24,7 +24,7 @@ export function selectedProjectSite({projectId,track='BASELINE',projects=[],publ
  if(track!=='BASELINE'||!Object.hasOwn(confirmedSites,projectId)||!Array.isArray(projects))return null;
  const records=projects.filter(p=>p?.id===projectId);if(records.length!==1)return null;const project=records[0];if(!Array.isArray(project.projectUrls?.entries)||project.projectUrls.entries.some(e=>!e||typeof e!=='object'))return null;const entry=primaryProjectLink(project);
  if(!entry||entry.url!==confirmedSites[projectId]||project.projectUrls?.source?.verificationStatus!=='joey_confirmed_url'||project.projectUrls.source.authority!=='joey_confirmed_project_metadata')return null;
- const current=projectId==='JOEY_ASSET_SYSTEM';if(entry.type!==(current?'current_application':'canonical_production')||entry.status!==(current?'active_legacy_named':'active')||!current&&project.where?.production?.value!==entry.url)return null;
+ const current=projectId==='JOEY_ASSET_SYSTEM';if(entry.type!==(current?'current_application':'canonical_production')||entry.status!=='active'||!current&&project.where?.production?.value!==entry.url)return null;
  return{url:entry.url,type:entry.type};
 }
 export function createJoeySiteNavigation(input,doc=document,locale=getLocale()){

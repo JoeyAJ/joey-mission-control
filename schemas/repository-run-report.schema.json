@@ -1824,6 +1824,87 @@
                 "const": "JOEY_ASSET_SYSTEM"
               },
               "track": {
+                "const": "BASELINE"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "events": {
+                "items": {
+                  "properties": {
+                    "delivery": {
+                      "properties": {
+                        "deployment": {
+                          "properties": {
+                            "target": {
+                              "anyOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "type": "object",
+                                  "additionalProperties": false,
+                                  "required": [
+                                    "provider",
+                                    "project",
+                                    "environment"
+                                  ],
+                                  "properties": {
+                                    "provider": {
+                                      "const": "vercel"
+                                    },
+                                    "project": {
+                                      "const": "joey-asset-studio"
+                                    },
+                                    "environment": {
+                                      "const": "production"
+                                    }
+                                  }
+                                }
+                              ]
+                            },
+                            "url": {
+                              "anyOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "const": "https://joey-asset-studio.vercel.app/"
+                                }
+                              ]
+                            }
+                          }
+                        },
+                        "verification": {
+                          "properties": {
+                            "url": {
+                              "anyOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "const": "https://joey-asset-studio.vercel.app/"
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "projectId": {
+                "const": "JOEY_ASSET_SYSTEM"
+              },
+              "track": {
                 "const": "UNIVERSITY_CANDIDATE"
               }
             }
@@ -1908,7 +1989,8 @@
                       "MISSION_CONTROL",
                       "NEXAEON",
                       "WOOSONG_BUDDY",
-                      "NAMYOUNG_WEB3D"
+                      "NAMYOUNG_WEB3D",
+                      "JOEY_ASSET_SYSTEM"
                     ]
                   },
                   "track": {
@@ -2999,6 +3081,87 @@
                 "const": "JOEY_ASSET_SYSTEM"
               },
               "track": {
+                "const": "BASELINE"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "events": {
+                "items": {
+                  "properties": {
+                    "delivery": {
+                      "properties": {
+                        "deployment": {
+                          "properties": {
+                            "target": {
+                              "anyOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "type": "object",
+                                  "additionalProperties": false,
+                                  "required": [
+                                    "provider",
+                                    "project",
+                                    "environment"
+                                  ],
+                                  "properties": {
+                                    "provider": {
+                                      "const": "vercel"
+                                    },
+                                    "project": {
+                                      "const": "joey-asset-studio"
+                                    },
+                                    "environment": {
+                                      "const": "production"
+                                    }
+                                  }
+                                }
+                              ]
+                            },
+                            "url": {
+                              "anyOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "const": "https://joey-asset-studio.vercel.app/"
+                                }
+                              ]
+                            }
+                          }
+                        },
+                        "verification": {
+                          "properties": {
+                            "url": {
+                              "anyOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "const": "https://joey-asset-studio.vercel.app/"
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "projectId": {
+                "const": "JOEY_ASSET_SYSTEM"
+              },
+              "track": {
                 "const": "UNIVERSITY_CANDIDATE"
               }
             }
@@ -3083,7 +3246,8 @@
                       "MISSION_CONTROL",
                       "NEXAEON",
                       "WOOSONG_BUDDY",
-                      "NAMYOUNG_WEB3D"
+                      "NAMYOUNG_WEB3D",
+                      "JOEY_ASSET_SYSTEM"
                     ]
                   },
                   "track": {
