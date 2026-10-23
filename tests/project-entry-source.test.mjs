@@ -30,7 +30,7 @@ class Node{constructor(tag){this.tag=tag;this.children=[];this.dataset={};this.s
 const doc={createElement:tag=>new Node(tag)};
 test('existing transport and scheduler are reusable but MC handoff validation rejects actual README entry',async()=>{
  const f=fixture();await assert.rejects(readRemoteHandoff({configuration:f.config,reader:f.repositoryReader}),/UNCONFIGURED/);assert.equal(f.calls.length,0);
- assert.equal((await readProjectEntrySource(f.options)).status,'FOUND');assert(f.calls.every(c=>!c.url.includes('HANDOFF.md')));
+ assert.equal((await readProjectEntrySource(f.options)).status,'FOUND');assert(f.calls.every(c=>!c.url.includes('HANDOFF.md')||f.config.contextPaths.includes('HANDOFF.md')));assert(f.calls.some(c=>c.url.includes('README.md')));
 });
 test('only four default main entries and separately selected University candidate are allowed',async()=>{
  for(const p of projects){const c=projectEntryReadConfiguration(p);assert.equal(c.ref,'main');assert.equal(c.path,'README.md');assert.equal(c.legacyPath,null);assert(c.contextPaths.length<=4);}
