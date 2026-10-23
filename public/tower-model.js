@@ -47,7 +47,9 @@ function lifecycleOf(project){
 export function projectCard(project,{runs=null,handoff=null,review=null,now=Date.now()}={}){
  const tasks=runs?.tasks||[],latest=tasks[0]||null,active=runs?.active||[],lifecycle=lifecycleOf(project);
  const current=active[0]||null;
- const blocked=(runs?.blockers||[])[0]||null,stale=tasks.find(t=>t.currentState==='unconfirmed'&&['running','blocked'].includes(t.reportedState))||null;
+ const blocked=(runs?.blockers||[])[0]||null,doneAt=tasks.findIndex(t=>['completed','failed'].includes(t.currentState)),
+  // A silent run is only "may have stopped" when no newer run has already finished; completed runs never are.
+  stale=tasks.find((t,i)=>(doneAt<0||i<doneAt)&&t.currentState==='unconfirmed'&&['running','blocked'].includes(t.reportedState))||null;
  // Registered projects without live reports use the work log from their catalog record.
  const log=!tasks.length&&project.kind==='registered'&&Array.isArray(project.workLog)?project.workLog.filter(e=>e&&time(e.at)!==null&&known(e.agent)):[];
  const history=tasks.length?tasks.map(t=>({agent:t.agentName,agentKey:agentKey(t.agentName),feature:t.featureTitle,state:t.currentState,at:t.eventAt})):log.map(e=>({agent:e.agent,agentKey:agentKey(e.agent),feature:e.summary,state:e.state,at:e.at}));

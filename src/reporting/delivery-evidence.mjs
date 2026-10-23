@@ -13,7 +13,9 @@ const policies={
  MISSION_CONTROL:{url:'https://joey-mission-control-git-codex-mc-comma-fceec2-joeyajs-projects.vercel.app/',target:{provider:'vercel',project:'joey-mission-control',environment:'preview'},docsPolicy:'MC_DOCUMENTATION_ONLY',dataPolicy:'MC_NO_DATA_CHANGE'},
  NEXAEON:{url:'https://nexaeon-web.vercel.app/',target:{provider:'vercel',project:'nexaeon-web',environment:'production'},docsPolicy:null,dataPolicy:null},
  WOOSONG_BUDDY:{url:'https://woosong-buddy-app.vercel.app/',target:{provider:'vercel',project:'woosong-buddy-app',environment:'production'},docsPolicy:null,dataPolicy:null},
- NAMYOUNG_WEB3D:{url:'https://namyoung-web3d.vercel.app/',target:{provider:'vercel',project:'namyoung-web3d',environment:'production'},docsPolicy:null,dataPolicy:null}
+ NAMYOUNG_WEB3D:{url:'https://namyoung-web3d.vercel.app/',target:{provider:'vercel',project:'namyoung-web3d',environment:'production'},docsPolicy:null,dataPolicy:null},
+ // Joey approved 2026-10-23: Asset BASELINE production target (Joey Asset Studio).
+ JOEY_ASSET_SYSTEM:{url:'https://joey-asset-studio.vercel.app/',target:{provider:'vercel',project:'joey-asset-studio',environment:'production'},docsPolicy:null,dataPolicy:null}
 };
 export function deliveryPolicy(report,{codeSha=null}={}){if(report?.projectId==='JOEY_ASSET_SYSTEM'&&report.track==='UNIVERSITY_CANDIDATE')return{url:'https://joey-woosong-admissions-demo.vercel.app/',target:{provider:'vercel',project:'joey-woosong-admissions-demo',environment:'production'},docsPolicy:null,dataPolicy:report.taskKind==='DELIVERY_FOLLOWUP'&&codeSha===UNIVERSITY_STATIC_RUNTIME_SHA?UNIVERSITY_STATIC_DATA_POLICY:null};return report?.track==='BASELINE'&&Object.hasOwn(policies,report.projectId)?structuredClone(policies[report.projectId]):null;}
 const fail=(code='RUN_REPORT_DELIVERY_INVALID')=>{throw Object.assign(Error(code),{code});};

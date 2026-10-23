@@ -6,7 +6,7 @@ import {loadProjectUrls} from '../src/canonical/project-url-metadata.mjs';
 import {buildProjection} from '../src/projection/projection-service.mjs';
 import {primaryProjectLink,createProjectLink} from '../public/project-links.js';
 import {release} from '../src/release.mjs';
-const expected={NEXAEON:'https://nexaeon-web.vercel.app/',WOOSONG_BUDDY:'https://woosong-buddy-app.vercel.app/',NAMYOUNG_WEB3D:'https://namyoung-web3d.vercel.app/',JOEY_ASSET_SYSTEM:'https://namyoung-asset-lab.joeyaj.chatgpt.site/'};
+const expected={NEXAEON:'https://nexaeon-web.vercel.app/',WOOSONG_BUDDY:'https://woosong-buddy-app.vercel.app/',NAMYOUNG_WEB3D:'https://namyoung-web3d.vercel.app/',JOEY_ASSET_SYSTEM:'https://joey-asset-studio.vercel.app/'};
 test('verified URL metadata survives real project reload with distinct classifications',async()=>{
  const metadata=await loadProjectUrls();assert.equal(metadata.projects.length,4);
  const first=await buildProjection(canonicalRoot);const second=await buildProjection(canonicalRoot);
@@ -18,7 +18,9 @@ test('verified URL metadata survives real project reload with distinct classific
  }
  const asset=first.projects.find(x=>x.id==='JOEY_ASSET_SYSTEM');
  assert.equal(asset.projectUrls.entries.some(x=>x.type==='canonical_production'),false);
- assert.equal(asset.where.production.value,'Unknown');assert.equal(primaryProjectLink(asset).status,'active_legacy_named');
+ assert.equal(asset.where.production.value,'Unknown');assert.equal(primaryProjectLink(asset).status,'active');
+ // 2026-10-23 Joey: the old ChatGPT site is history only and never the open target.
+ assert.equal(asset.projectUrls.entries.find(x=>x.url==='https://namyoung-asset-lab.joeyaj.chatgpt.site/').type,'legacy');
 });
 test('safe links use exact verified URL and new-tab isolation; missing or unsafe URLs have no link',()=>{
  const doc={createElement:()=>({})};

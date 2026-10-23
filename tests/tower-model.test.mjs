@@ -235,3 +235,11 @@ test('handoff targets list Cursor right after Hermes',()=>{
  const text=handoffInstruction({project:'NexAeon',agent:'Cursor',goal:'Add watch layout',instruction:'VERIFIED'});
  assert.match(text,/Handoff → Cursor/);assert.match(text,/agentName 請填 "Cursor"/);
 });
+
+test('an old silent run is not "may have stopped" once a newer run completed, and completed runs never are',()=>{
+ const old={...task('Cursor','unconfirmed',300),reportedState:'blocked',featureTitle:'v0.4 · old'},done={...task('Cursor','completed',5),featureTitle:'v1.1 · new',runId:'r11'};
+ const card=projectCard(project('JOEY_ASSET_SYSTEM'),{runs:runs([done,old]),now});
+ assert.notEqual(card.state,'stale');assert.equal(card.version,'1.1');assert.equal(card.state,'review');
+ const onlyDone=projectCard(project('X'),{runs:runs([done]),now:now+86400000});assert.notEqual(onlyDone.state,'stale');
+ const newerSilent=projectCard(project('Y'),{runs:runs([task('Codex','unconfirmed',2),done]),now});assert.equal(newerSilent.state,'stale');
+});

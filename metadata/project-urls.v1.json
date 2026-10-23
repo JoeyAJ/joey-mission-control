@@ -53,10 +53,19 @@
       "canonicalProductionStatus": "not_established",
       "entries": [
         {
-          "url": "https://namyoung-asset-lab.joeyaj.chatgpt.site/",
+          "url": "https://joey-asset-studio.vercel.app/",
           "type": "current_application",
+          "deploymentType": "Production",
+          "status": "active",
+          "urlVerification": "joey_confirmed",
+          "deploymentVerification": "not_verified",
+          "deployedGitSha": null
+        },
+        {
+          "url": "https://namyoung-asset-lab.joeyaj.chatgpt.site/",
+          "type": "legacy",
           "deploymentType": "ChatGPT Site",
-          "status": "active_legacy_named",
+          "status": "historical",
           "urlVerification": "joey_confirmed",
           "deploymentVerification": "not_verified",
           "deployedGitSha": null

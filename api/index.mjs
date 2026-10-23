@@ -14,6 +14,7 @@ import {composeContinue} from '../src/continue/continue-composer.mjs';
 import {createDeploymentRemoteHandoffServer} from '../src/continuity/remote-handoff-server.mjs';
 import {createDeploymentProjectEntryServer} from '../src/continuity/project-entry-server.mjs';
 import {ownerAuthConfig} from '../public/owner-auth-config.js';
+import {applyProjectUrls} from '../src/canonical/project-url-metadata.mjs';
 import {createDeploymentProjectOnboardingServer} from '../src/onboarding/project-onboarding-server.mjs';
 import {createDeploymentProjectRegistrationApplication} from '../src/onboarding/project-registration-application.mjs';
 import {createDeploymentProjectDraftStorageServer} from '../src/onboarding/project-draft-storage-server.mjs';
@@ -21,6 +22,9 @@ import {createDeploymentTaskStorageServer} from '../src/tasks/task-storage-serve
 import {createDeploymentTaskReviewServer} from '../src/tasks/task-review-server.mjs';
 const stageChanges=JSON.parse(await fs.readFile(new URL('../deployment/stage-changes.safe.json',import.meta.url),'utf8'));
 const snapshot=JSON.parse(await fs.readFile(new URL('../deployment/production-snapshot.json',import.meta.url),'utf8'));
+// Project site links follow the Joey-confirmed URL metadata (metadata/project-urls.v1.json);
+// the accepted snapshot bytes stay unchanged. 2026-10-23: Asset BASELINE moved to joey-asset-studio.
+applyProjectUrls(snapshot,JSON.parse(await fs.readFile(new URL('../metadata/project-urls.v1.json',import.meta.url),'utf8')));
 const projectStates=JSON.parse(await fs.readFile(new URL('../deployment/project-state.v03b.json',import.meta.url),'utf8'));
 const phaseRecords=JSON.parse(await fs.readFile(new URL('../deployment/last-development.v03d.json',import.meta.url),'utf8')).projects;
 const publicCases=assertPublicCases(JSON.parse(await fs.readFile(new URL('../deployment/public-cases.v03e.json',import.meta.url),'utf8')));

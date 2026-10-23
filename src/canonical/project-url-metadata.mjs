@@ -29,3 +29,6 @@ export function resolveProjectUrls(id,registry,metadata){
  });
  return {canonicalProductionStatus:project.canonicalProductionStatus,entries,source:metadata.source||null,issues};
 }
+
+// Overlay Joey-confirmed URL metadata on a published snapshot's project links (snapshot bytes stay unchanged).
+export function applyProjectUrls(snapshot,metadata){for(const p of snapshot.projects){const r=resolveProjectUrls(p.id,{production:p.where?.production?.value},metadata);const entries=r.entries.filter(e=>safeProjectUrl(e.url)&&e.urlVerification==='joey_confirmed');if(entries.length)p.projectUrls={...p.projectUrls,canonicalProductionStatus:r.canonicalProductionStatus,entries};}return snapshot;}
