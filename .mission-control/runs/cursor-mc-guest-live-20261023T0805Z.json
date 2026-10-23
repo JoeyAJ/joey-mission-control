@@ -34,6 +34,36 @@
       "summary": "開始：Joey 核准訪客看板顯示即時專案進度（唯讀，無任何操作），並處理 JAS runs 第 1 頁已滿。PR #17。",
       "result": null,
       "delivery": null
+    },
+    {
+      "id": "cursor-mc-guest-live-20261023T0805Z-completed",
+      "sequence": 2,
+      "eventAt": "2026-10-23T08:02:00.000Z",
+      "kind": "completed",
+      "summary": "完成（PR #17 合併 ae69ff2，Vercel 正式部署 2BJdca3RDQ35LpBLiV42K3A3j6HU）：訪客看板經 /api/public/tower-runs 顯示即時進度（唯讀、伺服器端過濾敏感欄位）；所有操作仍需 Owner（私有 API 對訪客回 401）。JAS 新 run 會寫入 runs-page-2（本機 dry-run 驗證，未發布假 run）。線上訪客檢查：Asset 卡片 v1.1、網址 joey-asset-studio。",
+      "result": {
+        "codeSha": "ae69ff2287b4a8ca69a376bb905ed95e8c46a659",
+        "tests": [
+          {
+            "name": "npm test (Node 22) 1178/1179; 1 known flaky task-review-intent",
+            "outcome": "PASS"
+          },
+          {
+            "name": "Playwright live guest: Asset card v1.1 + site link, private routes 401, public POST 405",
+            "outcome": "PASS"
+          },
+          {
+            "name": "JAS runs-page-2 local bare-remote dry run + server read both pages",
+            "outcome": "PASS"
+          }
+        ],
+        "nextSteps": "Joey 用訪客視窗確認；訪客看到的專案狀態（持續推進/暫停）仍取自公開快照，Owner 設定不公開。",
+        "handoff": {
+          "path": "HANDOFF.md",
+          "commitSha": "ae69ff2287b4a8ca69a376bb905ed95e8c46a659"
+        }
+      },
+      "delivery": null
     }
   ]
 }
