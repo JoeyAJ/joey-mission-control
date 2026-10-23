@@ -1,0 +1,11 @@
+import test from 'node:test';import assert from 'node:assert/strict';
+import {parseRepositoryRun} from '../src/reporting/repository-run-contract.mjs';
+import {repositoryRunConfiguration} from '../src/reporting/repository-run-source.mjs';
+const sha='a'.repeat(40),digest='b'.repeat(64),at='2026-10-23T03:57:37.000Z';
+const run=(contextPaths,handoffPath)=>JSON.stringify({schemaVersion:'mc.repository-run.v1',projectId:'NEXAEON',track:'BASELINE',runId:'r-20261023',predecessorRunId:null,taskId:'t-20261023',featureTitle:'v8 · test',agentName:'Cursor',provider:null,model:null,repositoryId:'JoeyAJ/nexaeon-web',reportRef:'mc/progress',workRef:'main',baseline:{ref:'main',commitSha:sha,handoffPath:'README.md',handoffDigest:digest,contextPaths},events:[{id:'r-20261023-started',sequence:1,eventAt:at,kind:'started',summary:'s',result:null},{id:'r-20261023-completed',sequence:2,eventAt:'2026-10-23T03:58:37.000Z',kind:'completed',summary:'c',result:{codeSha:sha,tests:[{name:'x',outcome:'PASS'}],nextSteps:'n',handoff:{path:handoffPath,commitSha:sha}}}]});
+const scope=()=>repositoryRunConfiguration('NEXAEON').entry,now=Date.parse('2026-10-23T04:00:00Z');
+const current=['docs/development-history/README.md','docs/STAGE_5_2_ACCEPTANCE.md','docs/architecture/ADR-0054-n8n-tool-runtime.md','HANDOFF.md'];
+const prior=['docs/development-history/README.md','docs/STAGE_5_2_ACCEPTANCE.md','docs/architecture/ADR-0054-n8n-tool-runtime.md','docs/STAGE_5_4_B_EXPLORER_N8N_CONFIGURATION.md'];
+test('NEXAEON accepts runs under the current repo source profile (HANDOFF.md)',()=>{assert.equal(parseRepositoryRun(run(current,'HANDOFF.md'),{scope:scope(),now}).runId,'r-20261023');});
+test('NEXAEON keeps accepting runs reported under the prior profile',()=>{assert.equal(parseRepositoryRun(run(prior,'README.md'),{scope:scope(),now}).runId,'r-20261023');});
+test('NEXAEON still rejects any other context list',()=>{assert.throws(()=>parseRepositoryRun(run([...current.slice(0,3),'.env'],'README.md'),{scope:scope(),now}),/SCOPE_INVALID/);assert.throws(()=>parseRepositoryRun(run([...current].reverse(),'README.md'),{scope:scope(),now}),/SCOPE_INVALID/);});

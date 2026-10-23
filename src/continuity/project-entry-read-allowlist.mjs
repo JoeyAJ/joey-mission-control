@@ -2,7 +2,9 @@ import {assertProjectScope} from '../projects/project-scope-authority.mjs';
 // Server-only fixed repository/ref/path scope. Credentials remain in normal runtime.
 const base={legacyPath:null,entryQualification:'DOCUMENTED_BASELINE_ENTRY',executionAuthorized:false};
 const records={
- NEXAEON:{...base,projectId:'NEXAEON',repositoryId:'JoeyAJ/nexaeon-web',ref:'main',path:'README.md',expectedBaseline:'8271e1bbae78eb7fc4fc86c06feaa50d6fa82c39',contextPaths:['docs/development-history/README.md','docs/STAGE_5_2_ACCEPTANCE.md','docs/architecture/ADR-0054-n8n-tool-runtime.md','docs/STAGE_5_4_B_EXPLORER_N8N_CONFIGURATION.md']},
+ NEXAEON:{...base,projectId:'NEXAEON',repositoryId:'JoeyAJ/nexaeon-web',ref:'main',path:'README.md',expectedBaseline:'8271e1bbae78eb7fc4fc86c06feaa50d6fa82c39',contextPaths:['docs/development-history/README.md','docs/STAGE_5_2_ACCEPTANCE.md','docs/architecture/ADR-0054-n8n-tool-runtime.md','HANDOFF.md'],
+  // nexaeon-web 5f1ae79 (2026-10-21) removed STAGE_5_4_B and points its source profile at HANDOFF.md; runs reported under the earlier profile stay valid.
+  priorContextPaths:[['docs/development-history/README.md','docs/STAGE_5_2_ACCEPTANCE.md','docs/architecture/ADR-0054-n8n-tool-runtime.md','docs/STAGE_5_4_B_EXPLORER_N8N_CONFIGURATION.md']]},
  WOOSONG_BUDDY:{...base,projectId:'WOOSONG_BUDDY',repositoryId:'JoeyAJ/woosongbuddy',ref:'main',path:'README.md',expectedBaseline:'e41bd1b7d8a481fdf6402881f382605278d229af',contextPaths:['AGENTS.md','CLAUDE.md','docs/RELEASE_20261006.md','docs/THEME_PUBLIC_TEST_RELEASE_20261006.md']},
  NAMYOUNG_WEB3D:{...base,projectId:'NAMYOUNG_WEB3D',repositoryId:'JoeyAJ/namyoung-web3d',ref:'main',path:'README.md',expectedBaseline:'92c17b8adeec5eaa80d27b8facad532e6ff61d59',contextPaths:['docs/PRODUCTION_REBUILD.md']},
  JOEY_ASSET_SYSTEM:{...base,projectId:'JOEY_ASSET_SYSTEM',repositoryId:'JoeyAJ/joey-asset-system',ref:'main',path:'README.md',expectedBaseline:'eb03e2a9d86abf8b53acfe207fb6737d255ba0d4',contextPaths:['SYSTEM_CHARTER.md','cases/CASE_001_NAMYOUNG/README.md','provenance/CASE_001_NAMYOUNG_RECOVERY.md']}
