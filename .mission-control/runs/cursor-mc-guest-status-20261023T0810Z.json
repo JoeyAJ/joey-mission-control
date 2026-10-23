@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "mc.repository-run.v2",
+  "taskKind": "FEATURE",
+  "projectId": "MISSION_CONTROL",
+  "track": "BASELINE",
+  "runId": "cursor-mc-guest-status-20261023T0810Z",
+  "predecessorRunId": "cursor-mc-guest-live-20261023T0805Z",
+  "taskId": "cursor-mc-guest-status-20261023",
+  "featureTitle": "訪客看板狀態標籤與 Joey 設定一致",
+  "agentName": "Cursor",
+  "provider": null,
+  "model": null,
+  "repositoryId": "JoeyAJ/joey-mission-control",
+  "reportRef": "mc/progress",
+  "workRef": "main",
+  "baseline": {
+    "ref": "codex/mc-command-center-checkpoint-20261006",
+    "commitSha": "06840bafd2cabf2cff81e822b8a63299e32cb366",
+    "handoffPath": "HANDOFF.md",
+    "handoffDigest": "07d2e3a9d3549acc236b75f259f3b58669ef37b12483ffa87df5e601a72d5661",
+    "contextPaths": [
+      "README.md",
+      "docs/PRODUCT_CHARTER.md",
+      "docs/MC_PHASE_PLAN.md",
+      "docs/STAGE_HANDOFF_TEMPLATE.md"
+    ]
+  },
+  "events": [
+    {
+      "id": "cursor-mc-guest-status-20261023T0810Z-started",
+      "sequence": 1,
+      "eventAt": "2026-10-23T08:06:05.000Z",
+      "kind": "started",
+      "summary": "開始：訪客看到的專案狀態（持續推進/暫停）改為 Joey 自己設定的值，只公開狀態標籤。PR #18。",
+      "result": null,
+      "delivery": null
+    }
+  ]
+}
