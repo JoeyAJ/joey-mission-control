@@ -27,3 +27,18 @@ export function createPublicTowerRunServer({environment=process.env,fetchImpl=gl
   }catch{return {status:503,body:{error:'PUBLIC_READ_UNAVAILABLE'},headers};}
  }});
 }
+// Guest Control Tower: only Joey's per-project status label (push/paused/done), read through the
+// read-only SQL function mc_public_tower_status (migration mc_public_tower_status_20261023).
+// Writes stay on the Owner/AAL2 RPC mc_owner_tower_state_patch.
+export const PUBLIC_STATUSES=Object.freeze(['push','paused','done']);
+export function publicStatusMap(value){const out={};if(value&&typeof value==='object'&&!Array.isArray(value))for(const [k,v] of Object.entries(value))if(/^[A-Z][A-Z0-9_]{1,63}$/.test(k)&&PUBLIC_STATUSES.includes(v))out[k]=v;return out;}
+let statusCache=null;
+export function createPublicTowerStatusServer({supabase,fetchImpl=globalThis.fetch,now=Date.now}={}){
+ return Object.freeze({async handle(req){const headers={'Cache-Control':'public, max-age=30'};
+  if(req.method!=='GET')return {status:405,body:{error:'READ_ONLY_ENDPOINT'},headers};
+  if(statusCache&&statusCache.at+30000>now())return {status:200,body:statusCache.body,headers};
+  try{const r=await fetchImpl(supabase.origin+'/rest/v1/rpc/mc_public_tower_status',{method:'POST',headers:{apikey:supabase.publishableKey,'Content-Type':'application/json'},body:'{}'});if(!r.ok)throw Error();
+   const body={schemaVersion:1,qualification:'PUBLIC_OWNER_STATUS_LABELS',statuses:publicStatusMap(await r.json())};statusCache={at:now(),body};return {status:200,body,headers};
+  }catch{return {status:503,body:{error:'PUBLIC_READ_UNAVAILABLE'},headers};}
+ }});
+}

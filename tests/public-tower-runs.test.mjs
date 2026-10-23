@@ -15,3 +15,10 @@ test('guest run endpoint is GET-only, scoped to configured projects, and never n
  assert.equal((await server.handle({method:'GET'},{project:'NOT_A_PROJECT'})).status,404);
  const ok=await server.handle({method:'GET'},{project:'NEXAEON'});assert.equal(ok.status,200);assert.equal(ok.body.runs.qualification,'PUBLIC_READ_ONLY_RUN_SUMMARY');
 });
+import {publicStatusMap,createPublicTowerStatusServer} from '../src/reporting/public-tower-runs.mjs';
+test('guest status exposes only Joey status labels for project ids',async()=>{
+ assert.deepEqual(publicStatusMap({JOEY_ASSET_SYSTEM:'push',X_Y:'paused',draft_1:'removed',NEXAEON:'go',BAD:{a:1}}),{JOEY_ASSET_SYSTEM:'push',X_Y:'paused'});
+ const calls=[];const s=createPublicTowerStatusServer({supabase:{origin:'https://db.example',publishableKey:'sb_publishable_x'},fetchImpl:async(u,o)=>{calls.push([u,o]);return {ok:true,json:async()=>({JOEY_ASSET_SYSTEM:'push',draft_a:'removed'})};}});
+ assert.equal((await s.handle({method:'POST'})).status,405);
+ const r=await s.handle({method:'GET'});assert.equal(r.status,200);assert.deepEqual(r.body.statuses,{JOEY_ASSET_SYSTEM:'push'});assert.match(calls[0][0],/rpc\/mc_public_tower_status$/);
+});
