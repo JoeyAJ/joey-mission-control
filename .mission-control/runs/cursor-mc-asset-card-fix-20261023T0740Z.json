@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "mc.repository-run.v2",
+  "taskKind": "BUGFIX",
+  "projectId": "MISSION_CONTROL",
+  "track": "BASELINE",
+  "runId": "cursor-mc-asset-card-fix-20261023T0740Z",
+  "predecessorRunId": "mc-core-task6476-v3-refresh-final-20261013",
+  "taskId": "cursor-mc-asset-card-fix-20261023",
+  "featureTitle": "Asset 卡片網址改 joey-asset-studio、核准 Asset BASELINE 部署目標、可能已停止誤判修正",
+  "agentName": "Cursor",
+  "provider": null,
+  "model": null,
+  "repositoryId": "JoeyAJ/joey-mission-control",
+  "reportRef": "mc/progress",
+  "workRef": "main",
+  "baseline": {
+    "ref": "codex/mc-command-center-checkpoint-20261006",
+    "commitSha": "06840bafd2cabf2cff81e822b8a63299e32cb366",
+    "handoffPath": "HANDOFF.md",
+    "handoffDigest": "07d2e3a9d3549acc236b75f259f3b58669ef37b12483ffa87df5e601a72d5661",
+    "contextPaths": [
+      "README.md",
+      "docs/PRODUCT_CHARTER.md",
+      "docs/MC_PHASE_PLAN.md",
+      "docs/STAGE_HANDOFF_TEMPLATE.md"
+    ]
+  },
+  "events": [
+    {
+      "id": "cursor-mc-asset-card-fix-20261023T0740Z-started",
+      "sequence": 1,
+      "eventAt": "2026-10-23T07:36:20.000Z",
+      "kind": "started",
+      "summary": "Joey 要求先修 MC 的 Joey Asset System 卡片：打開網站仍是舊 ChatGPT 站、顯示 v0.4／可能已停止。工作已在 PR #16 完成，此 run 為事後登錄（開工時未先報 started）。",
+      "result": null,
+      "delivery": null
+    }
+  ]
+}
