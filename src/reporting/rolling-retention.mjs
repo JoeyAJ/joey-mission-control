@@ -5,7 +5,8 @@ export const ROLLING_LIMIT=11,RETENTION_PATH='.mission-control/progress-retentio
 const sha=/^[a-f0-9]{40}$/,id=/^[A-Za-z0-9][A-Za-z0-9_.-]{0,95}$/;
 const fail=code=>{throw Object.assign(Error(code),{code});};
 const exact=(value,keys)=>{if(!value||typeof value!=='object'||Array.isArray(value)||![Object.prototype,null].includes(Object.getPrototypeOf(value))||Object.values(Object.getOwnPropertyDescriptors(value)).some(d=>!('value'in d))||Object.keys(value).length!==keys.length||keys.some(k=>!Object.hasOwn(value,k)))fail('RETENTION_REFERENCE_INVALID');};
-export const rollingScope=scope=>scope?.projectId==='MISSION_CONTROL'&&(scope.track||'BASELINE')==='BASELINE';
+export const ROLLING_PROJECTS=Object.freeze(['MISSION_CONTROL','JOEY_ASSET_SYSTEM']);
+export const rollingScope=scope=>ROLLING_PROJECTS.includes(scope?.projectId)&&(scope.track||'BASELINE')==='BASELINE';
 export function retentionMarker(scope){if(!rollingScope(scope))fail('RETENTION_SCOPE_DENIED');return {schemaVersion:1,qualification:'RECOVERABLE_ROLLING_PROGRESS',projectId:scope.projectId,track:'BASELINE',repositoryId:scope.repositoryId,currentLimit:ROLLING_LIMIT};}
 export function validateRetentionMarker(value,scope){exact(value,Object.keys(retentionMarker(scope)));if(Object.entries(retentionMarker(scope)).some(([key,expected])=>value[key]!==expected))fail('RETENTION_SCOPE_DENIED');return structuredClone(value);}
 export function recoveryPath(runId){if(!id.test(runId||''))fail('RETENTION_REFERENCE_INVALID');return RECOVERY_DIRECTORY+'/'+runId+'.json';}
@@ -20,8 +21,9 @@ export function validateRecoveryReference(value,scope){
  if(value.taskRequirements!==null){validateTaskRequirements(value.taskRequirements);evidencePath(value.taskId);}if(new TextEncoder().encode(JSON.stringify(value)).length>MAX_REFERENCE_BYTES)fail('RETENTION_REFERENCE_INVALID');return structuredClone(value);
 }
 export function validateRecoveredReport(content,reference,scope){const ref=validateRecoveryReference(reference,scope);if(!ref.profileValid)fail('RETAINED_REPORT_REJECTED_SCOPE');const report=parseRepositoryRun(content,{scope});if(report.runId!==ref.runId||report.taskId!==ref.taskId||!['completed','failed'].includes(report.events.at(-1).kind)||JSON.stringify(report.taskRequirements||null)!==JSON.stringify(ref.taskRequirements))fail('RETENTION_REFERENCE_INVALID');return report;}
-export function planRollingRetention(rows,{protectedRunId=null}={}){
- const active=rows.filter(r=>!['completed','failed'].includes(r.report.events.at(-1).kind)||r.report.runId===protectedRunId);if(active.length>ROLLING_LIMIT)fail('ROLLING_ACTIVE_LIMIT_CONFLICT');
+// Another track sharing the branch is kept current: its references would not match this scope.
+export function planRollingRetention(rows,{protectedRunId=null,scope=null}={}){
+ const active=rows.filter(r=>!['completed','failed'].includes(r.report.events.at(-1).kind)||r.report.runId===protectedRunId||scope&&r.report.track!==(scope.track||'BASELINE'));if(active.length>ROLLING_LIMIT)fail('ROLLING_ACTIVE_LIMIT_CONFLICT');
  const ids=new Set(active.map(r=>r.report.runId));if(ids.size!==active.length)fail('RETENTION_REFERENCE_INVALID');const terminal=rows.filter(r=>!ids.has(r.report.runId)).sort((a,b)=>Date.parse(b.report.events.at(-1).eventAt)-Date.parse(a.report.events.at(-1).eventAt)||a.report.runId.localeCompare(b.report.runId));
  const keep=[...active,...terminal.slice(0,ROLLING_LIMIT-active.length)];return {keep,retire:terminal.slice(ROLLING_LIMIT-active.length)};
 }
