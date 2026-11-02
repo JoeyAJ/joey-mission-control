@@ -32,6 +32,14 @@
       "kind": "started",
       "summary": "Joey acceptance failed: Engine still missing on e66818e. Reopened actual Owner/catalog flow diagnosis. Inspecting production metadata and logs without secret values or access changes; no resolved claim.",
       "result": null
+    },
+    {
+      "id": "engine-owner-evidence-required",
+      "sequence": 2,
+      "eventAt": "2026-11-02T09:00:18.565Z",
+      "kind": "blocked",
+      "summary": "Unresolved actual Engine visibility. Production read-token binding present; writer absent in production is not a read blocker. Catalog targets correct mc/registry with read fallback. Recent runtime console logs empty, not proof of HTTP success. Need current verified Owner/session and catalog HTTP status/error from Joey device; no credentials/access changes.",
+      "result": null
     }
   ]
 }
