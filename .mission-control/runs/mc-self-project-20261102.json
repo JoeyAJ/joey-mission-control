@@ -32,6 +32,14 @@
       "kind": "started",
       "summary": "Fresh-read main 030a83f; implementing existing MC daily entry and documenting verified features and next phase.",
       "result": null
+    },
+    {
+      "id": "self-checkpoint",
+      "sequence": 2,
+      "eventAt": "2026-11-02T06:59:53.422Z",
+      "kind": "progress",
+      "summary": "MC card/main docs implemented; focused tests, build, and 12 desktop/mobile/locale guest/synthetic-Owner browser cases pass. Preparing tested release; real Owner acceptance pending.",
+      "result": null
     }
   ]
 }
