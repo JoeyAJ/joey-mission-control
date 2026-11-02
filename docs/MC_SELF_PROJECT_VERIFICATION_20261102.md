@@ -23,4 +23,10 @@ Official reporter source packet pinned legacy scope `06840bafd2cabf2cff81e822b8a
 
 ## Publication and acceptance
 
-Pending exact feature commit/PR, existing Git deployment route, exact deployed SHA and served behavior verification. No claim of production completion until these are observed. Actual Owner/AAL2 login, clipboard on Joey's phone, cloud synchronization and Joey final product acceptance remain untested in this session. Live runner/finalization remains disabled.
+Implementation commit: [`e31020e43d29b4898d87940af3c0d53635283280`](https://github.com/JoeyAJ/joey-mission-control/commit/e31020e43d29b4898d87940af3c0d53635283280).
+Draft PR: [#21](https://github.com/JoeyAJ/joey-mission-control/pull/21).
+Vercel branch preview: `dpl_5R9pLAtp8zbTUHZ4EU9Ef3pQzdzd`, READY, exact implementation SHA, URL https://joey-mission-control-145xl5p3r-joeyajs-projects.vercel.app . GitHub Vercel status is success. READY metadata is not served behavior or Owner acceptance.
+
+**Release blocked (known denied, not uncertain):** `github_mark_pull_request_ready_for_review` on `JoeyAJ/joey-mission-control` PR #21 was rejected by automatic approval review. Stated reason: “Marking PR #21 ready for review is an external workflow commitment beyond the authorized draft PR; the available instructions explicitly preserve it as draft and do not authorize changing its review state.” Re-read PR confirms `draft:true`, `merged:false`; no merge or production deploy was attempted. Main still `030a83f2cc721f1bd149e5e47efece0cfb7afead`. No alternative publication route was used.
+
+To resume: obtain explicit action-time approval to mark this PR ready and merge it into main for the existing Vercel production route. Do not submit APPROVE on Joey’s behalf. Recheck current PR head/main/checks, merge only the authorized head, then verify exact production SHA + URL + actual behavior; update these receipts and the same atomic run (or a correctly linked successor if appropriate). Production served behavior and real Owner acceptance remain unverified. Actual Owner/AAL2 login, clipboard on Joey's phone, cloud synchronization and Joey final product acceptance remain untested in this session. Live runner/finalization remains disabled.
