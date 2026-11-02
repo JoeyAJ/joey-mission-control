@@ -1,0 +1,118 @@
+{
+  "schemaVersion": "mc.repository-run.v2",
+  "taskKind": "DELIVERY_FOLLOWUP",
+  "projectId": "MISSION_CONTROL",
+  "track": "BASELINE",
+  "runId": "nexaeon-mc-preview-key-closeout-20261102",
+  "predecessorRunId": null,
+  "taskId": "mc-preview-key-rotation-20261102",
+  "featureTitle": "Preview read-only key rotation operational closeout; runtime read unverified",
+  "agentName": "NexAeon",
+  "provider": "OpenAI",
+  "model": null,
+  "repositoryId": "JoeyAJ/joey-mission-control",
+  "reportRef": "mc/progress",
+  "workRef": "codex/mc-command-center-checkpoint-20261006",
+  "baseline": {
+    "ref": "codex/mc-command-center-checkpoint-20261006",
+    "commitSha": "06840bafd2cabf2cff81e822b8a63299e32cb366",
+    "handoffPath": "HANDOFF.md",
+    "handoffDigest": "07d2e3a9d3549acc236b75f259f3b58669ef37b12483ffa87df5e601a72d5661",
+    "contextPaths": [
+      "README.md",
+      "docs/PRODUCT_CHARTER.md",
+      "docs/MC_PHASE_PLAN.md",
+      "docs/STAGE_HANDOFF_TEMPLATE.md"
+    ]
+  },
+  "events": [
+    {
+      "id": "closeout-start",
+      "sequence": 1,
+      "eventAt": "2026-11-02T00:26:21.000Z",
+      "kind": "started",
+      "summary": "Started operational closeout after owner-approved Preview key replacement and same-source deployment; this is not a backdated development start.",
+      "result": null,
+      "delivery": null
+    },
+    {
+      "id": "closeout-result",
+      "sequence": 2,
+      "eventAt": "2026-11-02T00:27:56.038Z",
+      "kind": "completed",
+      "summary": "Preview-only replacement saved, expiry 2026-12-02; same-source deployment READY and health passed. Private reads NOT VERIFIED due intentional host guard. Production environment metadata unchanged; old key retained.",
+      "result": {
+        "codeSha": "06840bafd2cabf2cff81e822b8a63299e32cb366",
+        "tests": [
+          {
+            "name": "Preview-only non-decrypted environment metadata and exact five-repository read scope",
+            "outcome": "PASS"
+          },
+          {
+            "name": "Same-source Preview deployment READY and health response",
+            "outcome": "PASS"
+          },
+          {
+            "name": "Actual private repository read with new Preview key",
+            "outcome": "NOT_RUN"
+          }
+        ],
+        "nextSteps": "No code, alias or Production changes authorized. Private route returned Not found, so credential use remains unverified. Operational handoff /agent_notes/mc-preview-key-rotation-20261102.md records evidence and expiry. Source HANDOFF pointer is existing context, not a newly updated document. Independently observed Production redeploy predates ours; actor not established. User acceptance not inferred.",
+        "handoff": {
+          "path": "HANDOFF.md",
+          "commitSha": "06840bafd2cabf2cff81e822b8a63299e32cb366"
+        }
+      },
+      "delivery": {
+        "qualification": "AGENT_REPORTED",
+        "scope": {
+          "projectId": "MISSION_CONTROL",
+          "track": "BASELINE",
+          "repositoryId": "JoeyAJ/joey-mission-control",
+          "runId": "nexaeon-mc-preview-key-closeout-20261102",
+          "taskId": "mc-preview-key-rotation-20261102",
+          "workRef": "codex/mc-command-center-checkpoint-20261006",
+          "codeSha": "06840bafd2cabf2cff81e822b8a63299e32cb366"
+        },
+        "deployment": {
+          "status": "READY",
+          "target": {
+            "provider": "vercel",
+            "project": "joey-mission-control",
+            "environment": "preview"
+          },
+          "id": "dpl_7hBxJ1GZSr45JRWy7HhEsg4RG1py",
+          "deployedSha": "06840bafd2cabf2cff81e822b8a63299e32cb366",
+          "url": "https://joey-mission-control-git-codex-mc-comma-fceec2-joeyajs-projects.vercel.app/",
+          "observedAt": "2026-11-02T00:22:30.702Z",
+          "evidence": "Vercel READY, Preview target null, exact original source SHA; alias resolves to this deployment.",
+          "notRequired": null
+        },
+        "verification": {
+          "status": "BLOCKED",
+          "method": "BROWSER",
+          "checkedAt": "2026-11-02T00:27:56.038Z",
+          "deploymentId": "dpl_7hBxJ1GZSr45JRWy7HhEsg4RG1py",
+          "checkedSha": null,
+          "url": "https://joey-mission-control-git-codex-mc-comma-fceec2-joeyajs-projects.vercel.app/",
+          "evidence": "Health returned ok:true; actual private repository read returned Not found. Exact source only serves private routes at Production host. Replacement key runtime use NOT VERIFIED.",
+          "notRequired": null
+        },
+        "handoff": {
+          "status": "NOT_RECORDED",
+          "path": null,
+          "commitSha": null,
+          "checkedAt": null,
+          "evidence": null
+        },
+        "data": {
+          "status": "NOT_RECORDED",
+          "version": null,
+          "checkedAt": null,
+          "evidence": null,
+          "notRequired": null
+        }
+      }
+    }
+  ]
+}
