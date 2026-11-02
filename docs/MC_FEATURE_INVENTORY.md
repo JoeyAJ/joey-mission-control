@@ -26,6 +26,10 @@
 | finalization merge→preview、journal／cancel／resume core | `src/tasks/task-finalization-*.mjs`, `task-closure-*.mjs`; finalization tests | **fixture-only**；live factory 明確 `LIVE_EXECUTION_DISABLED`，缺 action grant、verified provider capability、private durable store。非生產自動合併／部署。 |
 | 真正啟動 Agent、隔離分支開發、獨立 reviewer、有界修正、費用控制 | 尚無已接通端到端證據；見 [下一階段](MC_NEXT_PHASE.md) | **待開發／待驗證**。這次不啟用 runner、不新增付費模型／credentials／服務。 |
 
+## Engine 實際 Owner 驗收仍失敗 — 2026-11-02 10:03 UTC
+
+最新截圖確認前端已驗證 Owner，但 catalog 載入失敗，Engine 沒顯示；不得把下列模擬恢復 QA 當作實機通過。新增 Owner-only 固定診斷碼／允許的數字 HTTP status，支援區分授權、Git read、catalog 驗證與 timeout。guest 不顯示細節。等待實際 retry 後的診斷碼與後續可見性驗證，未改憑證／權限。
+
 ## Engine 顯示修正 — 2026-11-02
 
 `public/tower-catalog.js` 與 `app.js` 修正 catalog 成功未單獨建立 Owner-ready、錯誤被靜默吞掉的問題。Owner 看見三語重試提示；guest 只看見不含專案身分的登入說明。空 catalog、未登入、讀取失敗三者分開；10 秒 timeout、晚到內容不回填。失去 Owner 時清除舊私人卡片／草稿。官方 catalog 在 `9cd11d75ba355d640e115c1f455f73584b8d66f9` fresh-read 驗證 PASS。已隨 PR #22 部署：`40188c50206993a9a33916f5ded550dbbe4e86ee`，Vercel production READY。新測試：`tests/tower-catalog.test.mjs`；瀏覽器新增三語失敗→重試→六卡恢復；實際 Owner 登入仍未在本 session 驗收。
