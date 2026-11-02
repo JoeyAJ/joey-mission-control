@@ -1,7 +1,7 @@
 # Mission Control 自身入口與交接 — 2026-11-02
 
 Project: MISSION_CONTROL
-Timestamp: 2026-11-02T08:31:30.904Z
+Timestamp: 2026-11-02T11:05:39.742Z
 Task: MC 自身日常入口、已開發功能盤點與下一階段規劃
 Status: DEPLOYED_OWNER_ACCEPTANCE_PENDING
 Last Developer: Codex
@@ -10,6 +10,16 @@ Actual Model: 未提供可核實的實際模型 ID
 Branch: main
 
 ## Summary
+
+### 最新根因與修正 — 2026-11-02 11:01 UTC Owner 診斷
+
+Joey 實際 Owner 截圖回傳 `REGISTRATION_PRIVATE_IDENTITY_MISMATCH · HTTP 409`。在 GET catalog 路徑，唯一對應 throw 位於 `createRegistrationGitPort` 的 MC **catalog host** identity check；它在 Owner 前置驗證及 GitHub repo metadata HTTP 200 之後、讀 registry 之前。這不是 Google 帳號或 Engine 專案 ID 的比對。
+
+新讀取的 GitHub metadata：`JoeyAJ/joey-mission-control`，ID `1404959099`，visibility **public**，archived=false。舊程式對同一個固定 MC host 強制 private=true／visibility=private，與實際 host 不符，足以產生截圖的 409。之前的 fixture 把 MC host 模擬成 private，因此未涵蓋正式情況。
+
+修正：固定 catalog HOST 使用獨立 `registrationCatalogHostIdentity`（public／private=false／未封存／未停用），並繼續嚴格核對同一 repo numeric ID、full name 與全部 flags；缺欄位、不同 ID／名稱／visibility、archived／disabled 都拒絕。待匯入專案的 private=true／visibility=private 契約保持原樣，Owner/AAL2、token、scope、registry、來源 hash 和讀寫權限不變；沒有更改任何 repository visibility 或把 Engine 公開。
+
+此根因修正的 exact release 與回報見 [官方 run](https://github.com/JoeyAJ/joey-mission-control/blob/mc/progress/.mission-control/runs/mc-engine-host-identity-fix-20261102.json)。部署後需在 Joey 現有已驗證 Owner flow 確認 Engine 真正可見；目前不以 mock 或 READY 宣稱實機驗收通過。只需正常重新整理／重新讀取，不要求重新登入或新的通用診斷截圖。
 
 ### Engine 驗收失敗後的當前狀態 — 2026-11-02 10:03 UTC
 
@@ -56,7 +66,7 @@ PR #22 修正已合併並正式部署：應用程式 SHA `40188c50206993a9a33916
 
 ## Next Action
 
-當前先收集上述 Owner-safe 診斷碼，找出實際失敗層後修正並驗證 Engine 可見；不要把下列預期當成已完成的 Owner 驗收。預期正式網址：未登入看到原四項＋MC；Owner 登入並完成驗證後看到 Engine。私人清單失敗會顯示三語提示與重新讀取，不能當作已刪除；10 秒未回覆會明確失敗，catalog 成功本身足以建立 Owner-ready，其他回報／草稿暫時失敗不會降為 guest。失去 Owner 或 catalog 失敗會清掉舊私人卡片，避免殘留。
+當前已由實際 409 及 GitHub host metadata 定位並修正 catalog host 映射，發布後在既有 Owner flow 確認 Engine 可見；不要把下列預期當成已完成的 Owner 驗收。預期正式網址：未登入看到原四項＋MC；Owner 登入並完成驗證後看到 Engine。私人清單失敗會顯示三語提示與重新讀取，不能當作已刪除；10 秒未回覆會明確失敗，catalog 成功本身足以建立 Owner-ready，其他回報／草稿暫時失敗不會降為 guest。失去 Owner 或 catalog 失敗會清掉舊私人卡片，避免殘留。
 
 先 fetch main，讀 AGENT_CONTROL.md B、此文件、功能盤點、下一階段與官方 run 的 exact release receipt。新任務要用官方 atomic reporter；保留 mc/progress rolling retention。下一階段 runner 仍僅是規劃，勿啟用自動 merge／deploy。
 

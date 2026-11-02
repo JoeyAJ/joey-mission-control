@@ -29,7 +29,7 @@ export async function registrationGitFixture({now=Date.parse('2026-10-12T13:00:0
  const fetchImpl=async(target,options={})=>{
   const u=new URL(target);if(u.origin!=='https://api.github.com')throw Error('NO_EXTERNAL_NETWORK');state.requests.push({method:options.method||'GET',path:u.pathname});let data;
   const repoPrefix='/repos/'+registrationCatalogTarget.repositoryId;
-  if(u.pathname===repoPrefix)data={id:registrationCatalogTarget.repositoryNumericId,full_name:registrationCatalogTarget.repositoryId,private:true,visibility:'private',archived:false,disabled:false};
+  if(u.pathname===repoPrefix)data={id:registrationCatalogTarget.repositoryNumericId,full_name:registrationCatalogTarget.repositoryId,private:false,visibility:'public',archived:false,disabled:false};
   else if(u.pathname===repoPrefix+'/git/ref/heads/mc/registry')data={object:{type:'commit',sha:git(['rev-parse','refs/heads/mc/registry'])}};
   else if(u.pathname.startsWith(repoPrefix+'/git/commits/')){const sha=u.pathname.split('/').at(-1);data={sha,tree:{sha:git(['rev-parse',sha+'^{tree}'])}};}
   else if(u.pathname.startsWith(repoPrefix+'/git/trees/')){const sha=u.pathname.split('/').at(-1),raw=git(['ls-tree','-z',sha]);data={sha,truncated:false,tree:raw?raw.split('\0').filter(Boolean).map(row=>{const [meta,name]=row.split('\t'),[mode,type,sha]=meta.split(' ');return {path:name,mode,type,sha};}):[]};}

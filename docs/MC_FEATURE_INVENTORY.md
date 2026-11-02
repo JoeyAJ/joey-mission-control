@@ -26,6 +26,10 @@
 | finalization merge→preview、journal／cancel／resume core | `src/tasks/task-finalization-*.mjs`, `task-closure-*.mjs`; finalization tests | **fixture-only**；live factory 明確 `LIVE_EXECUTION_DISABLED`，缺 action grant、verified provider capability、private durable store。非生產自動合併／部署。 |
 | 真正啟動 Agent、隔離分支開發、獨立 reviewer、有界修正、費用控制 | 尚無已接通端到端證據；見 [下一階段](MC_NEXT_PHASE.md) | **待開發／待驗證**。這次不啟用 runner、不新增付費模型／credentials／服務。 |
 
+## Engine 409 根因修正 — 2026-11-02 11:01 UTC
+
+實際 Owner 回傳 `REGISTRATION_PRIVATE_IDENTITY_MISMATCH / HTTP409`。catalog adapter 把 MC host 當作 private，但 GitHub metadata 的同 ID／名稱 host 實為 public，導致讀 registry 前失敗。以獨立固定 catalog-host identity 修正映射；嚴格 ID／名稱／visibility／archived／disabled guard、Owner-only 和私人匯入專案契約保留。`tests/catalog-host-identity.test.mjs` 覆蓋正式形狀、欄位偽造／遺失、非 Owner 及私人匯入邊界。沒有更改 repository visibility 或憑證。最終是否在 Joey 已授權 Owner flow 看見 Engine，仍需發布後實際驗證。
+
 ## Engine 實際 Owner 驗收仍失敗 — 2026-11-02 10:03 UTC
 
 最新截圖確認前端已驗證 Owner，但 catalog 載入失敗，Engine 沒顯示；不得把下列模擬恢復 QA 當作實機通過。新增 Owner-only 固定診斷碼／允許的數字 HTTP status，支援區分授權、Git read、catalog 驗證與 timeout。guest 不顯示細節。等待實際 retry 後的診斷碼與後續可見性驗證，未改憑證／權限。
