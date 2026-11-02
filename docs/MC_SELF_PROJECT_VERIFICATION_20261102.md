@@ -50,3 +50,14 @@ Final deployment closure is published in the official atomic successor run [`mc-
 ## Catalog repair production receipt
 
 PR #22 merged to `40188c50206993a9a33916f5ded550dbbe4e86ee`. Vercel deployment `dpl_Btb4c5uUuiCbsYcm8vwfBUTjq4Ac` is READY, target production, exact main SHA, deployment URL https://joey-mission-control-1rxja1dyh-joeyajs-projects.vercel.app ; official acceptance URL remains https://joey-mission-control-one.vercel.app/#joey . `git diff 2bef7f1332cca5dae75d010a57e9882b9d19bc88 origin/main` is empty, confirming the deployed application tree equals the tested candidate. Final browser rerun: 15/15 PASS. Handoff now records DEPLOYED_OWNER_ACCEPTANCE_PENDING; documentation-only closure does not change application code. Actual served HTTP/Owner runtime evidence remains blocked as described above; this is not a claim of live browser acceptance.
+
+
+## Reopened acceptance failure and safe diagnostics — 10:03 UTC
+
+Parent-viewed Joey screenshot shows production `/#joey`: frontend Owner is verified/private-readable, five cards include MC, catalog-unavailable banner remains, Engine absent. This supersedes any assumption that the failure is merely guest browsing. Actual server authorization and deployed credential GitHub reads remain unobserved. Metadata confirms production read-token presence and correct catalog target, not token validity/scope. Recent 15m console log query returned no events, not proof of HTTP success.
+
+New narrow diagnostic increment forwards only fixed catalog error codes and allowed numeric HTTP statuses through the existing failed authenticated catalog response/client/banner. Git upstream failures carry a numeric status only. Unknown exceptions map to CATALOG_READ_UNAVAILABLE; raw messages, token values, repo IDs, request URLs, bodies and arbitrary metadata are omitted. Guest banner discards diagnostic details. Owner/auth/registry validation and read scopes are unchanged. This diagnostic release is not a resolved Engine-visibility claim.
+
+Required next evidence: on the existing verified Owner page, retry and send the banner code in a screenshot. Do not request tokens or tell Joey to relogin without evidence. Final diagnostic source/deployment and exact checks are recorded in official `mc-engine-catalog-diagnostics-20261102` run.
+
+Diagnostic increment validation: 1195/1195 full guarded tests PASS, 15/15 Chromium cases PASS (including three-language Owner error-code/GitHub HTTP display, retry, and guest non-disclosure), build/check/portable validate PASS. End-to-end transport tests cover GitHub 401/403/404/429/503 through actual port→application→client adapters; server Owner rejection performs zero Git reads; unknown messages/metadata are discarded; timeout gets CATALOG_TIMEOUT. Additional current-Handoff checks 22/22 PASS. These are synthetic transport/session tests, not a claim of actual Engine visibility on Joey’s authenticated production page.

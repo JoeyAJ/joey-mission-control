@@ -47,7 +47,7 @@ export function createProjectRegistrationApplication({activation=projectRegistra
    const request=registrationRequest(input.request),d=await draft(request.draftId,request.draftRevision,token,abort.signal);if(request.repositoryId!==d.project.repositoryId||request.ref!==d.project.branch||request.projectId!==d.project.projectId)throw registrationError('REGISTRATION_DRAFT_CONFLICT',409);
    const actor=await checkOwner(token,abort.signal),writer=createAtomicGitRegistryWriter({port:gitPort,ownerSubject,expectedHeadSha:input.expectedCatalogHeadSha,now,signal:abort.signal});
    return await createProjectRegistrationServer({policy:exactPolicy(request,Math.min(actor.expiresAt,now()+30000)),ownerSubject,allowedOrigin,verifyOwner,draftPort,repositoryReader:repositoryReaderFactory({repositoryId:request.repositoryId,ref:request.ref}),writer,now}).handle({method:req.method,headers:req.headers,body:request},{signal:abort.signal});
-  }catch(e){return registrationFailureResponse(e);}finally{clearTimeout(timer);signal?.removeEventListener('abort',cancel);}
+  }catch(e){const reply=registrationFailureResponse(e);if(action==='catalog'&&[401,403,404,429,500,502,503,504].includes(e?.upstreamStatus))reply.body.diagnostic={upstreamStatus:e.upstreamStatus};return reply;}finally{clearTimeout(timer);signal?.removeEventListener('abort',cancel);}
  }});
 }
 export function createDeploymentProjectRegistrationApplication({activation=projectRegistrationActivation,environment=process.env,fetchImpl=globalThis.fetch,policy=ownerAuthConfig,now=Date.now}={}) {

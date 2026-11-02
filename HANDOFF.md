@@ -11,6 +11,14 @@ Branch: main
 
 ## Summary
 
+### Engine 驗收失敗後的當前狀態 — 2026-11-02 10:03 UTC
+
+Joey 截圖顯示正式站右上角「私人工作區登入／已驗證／私人資料可讀取」，同時私人清單載入失敗，五卡含 MC 但沒有 Engine。這不是單純 guest 顯示；前端狀態也不代表 server catalog API 已接受。Engine **仍未解決，不能宣稱驗收通過**。
+
+本次小增量只補安全診斷：Owner 的既有錯誤提示顯示固定 error code、catalog HTTP status，以及 GitHub 失敗的數字 HTTP status。可區分 `OWNER_AUTHORIZATION_DENIED`、`REGISTRATION_CATALOG_UNAVAILABLE`、`REGISTRATION_CATALOG_INVALID`、`CATALOG_TIMEOUT` 等；不顯示 raw exception、URL、repo/Owner IDs、response body 或 token。guest 不顯示診斷碼。未改憑證、授權、registry 或 auth policy，未自行增加讀取權限，也沒有再無證據要求重新登入。
+
+正式 production metadata 已確認 READ token 綁定存在，writer 僅 legacy preview（不是 catalog 讀取阻擋）；token 的有效性／repo 權限未由 metadata 證明。15 分鐘 runtime console logs 無事件，不能當成 API 成功或沒請求的證據。當前需要 Joey 以既有已驗證 Owner 畫面按一次重新讀取，再提供顯示診斷碼的截圖；不需要 developer tools 或 token。診斷增量 exact release／回報見 [官方 run](https://github.com/JoeyAJ/joey-mission-control/blob/mc/progress/.mission-control/runs/mc-engine-catalog-diagnostics-20261102.json)。
+
 2026-11-02 08:21 UTC Joey 已明確同意 PR #21 ready／merge／正式發布；先前拒絕動作重試一次成功，未提交 APPROVE。PR #21 已 merge 為 `641cfc7fb9de51527ceebe6b9135448f7b6fd628`，Vercel 正式部署 `dpl_EhzQuyauq4ZwoHNar4yYzzYCE7U4` READY。另依 Joey 08:22 指示修正 Engine catalog 顯示失敗的靜默處理。最終修正發布 exact SHA／URL 與結束回報見官方 [後續 run](https://github.com/JoeyAJ/joey-mission-control/blob/mc/progress/.mission-control/runs/mc-catalog-release-20261102.json) 及驗證紀錄。
 
 沿用既有 MISSION_CONTROL／BASELINE 身分加入日常清單，不新登記系統、不更動五個專案資料。Owner 詳情的技術區連至 main 程式庫、最新交接、功能盤點與下一階段。讀取 MC 報告沿用原 scope；卡片不憑空填入版本、Agent 或時間。
@@ -48,7 +56,7 @@ PR #22 修正已合併並正式部署：應用程式 SHA `40188c50206993a9a33916
 
 ## Next Action
 
-Joey 驗收正式網址：未登入看到原四項＋MC；Owner 登入並完成驗證後看到 Engine。私人清單失敗會顯示三語提示與重新讀取，不能當作已刪除；10 秒未回覆會明確失敗，catalog 成功本身足以建立 Owner-ready，其他回報／草稿暫時失敗不會降為 guest。失去 Owner 或 catalog 失敗會清掉舊私人卡片，避免殘留。
+當前先收集上述 Owner-safe 診斷碼，找出實際失敗層後修正並驗證 Engine 可見；不要把下列預期當成已完成的 Owner 驗收。預期正式網址：未登入看到原四項＋MC；Owner 登入並完成驗證後看到 Engine。私人清單失敗會顯示三語提示與重新讀取，不能當作已刪除；10 秒未回覆會明確失敗，catalog 成功本身足以建立 Owner-ready，其他回報／草稿暫時失敗不會降為 guest。失去 Owner 或 catalog 失敗會清掉舊私人卡片，避免殘留。
 
 先 fetch main，讀 AGENT_CONTROL.md B、此文件、功能盤點、下一階段與官方 run 的 exact release receipt。新任務要用官方 atomic reporter；保留 mc/progress rolling retention。下一階段 runner 仍僅是規劃，勿啟用自動 merge／deploy。
 

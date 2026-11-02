@@ -17,7 +17,7 @@ export function createRegistrationGitPort({credential,readCredential=null,activa
   const request=async(path,{signal,method='GET',body,limit=3145728}={})=>{
     const write=method!=='GET'||path.startsWith('/graphql');if(write?!configured:!readConfigured)failure('REGISTRATION_NOT_ACTIVATED');const auth=write||usable(credential)?credential:readCredential;
     const result=await boundedPrivateJsonRequest(fetchImpl,path.startsWith('/graphql')?'https://api.github.com/graphql':'https://api.github.com/repos/'+c.repositoryId+path,{method,headers:{Authorization:'Bearer '+auth,Accept:'application/vnd.github+json','X-GitHub-Api-Version':'2026-03-10',...(body?{'Content-Type':'application/json'}:{})},...(body?{body:JSON.stringify(body)}:{})},signal,limit);
-    if(result.status!==200)failure();return result.data;
+    if(result.status!==200){const error=registrationError('REGISTRATION_CATALOG_UNAVAILABLE',503);if([401,403,404,429,500,502,503,504].includes(result.status))error.upstreamStatus=result.status;throw error;}return result.data;
   };
   const identity=async signal=>{const r=await request('',{signal,limit:65536});if(Number(r.id)!==c.repositoryNumericId||r.full_name!==c.repositoryId||r.private!==true||r.visibility!=='private'||r.archived!==false||r.disabled!==false)failure('REGISTRATION_PRIVATE_IDENTITY_MISMATCH',409);};
   const head=async signal=>{const r=await request('/git/ref/heads/'+c.ref,{signal,limit:65536});if(r.object?.type!=='commit'||!sha(r.object.sha))failure();return r.object.sha;};
