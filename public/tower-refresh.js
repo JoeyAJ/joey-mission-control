@@ -22,5 +22,5 @@ export function createTowerRefresh({read,render,canRefresh=()=>true,setTimer=set
   timer=setTimer(tick,phase==='ready'?(ready?SIGNED_IN_MS:SIGNED_OUT_MS):0);
   if(phase==='loading'&&slowTimer===null)slowTimer=setTimer(()=>{slowTimer=null;if(phase==='loading'){phase='slow';render();}},slowMs);
  }
- return {schedule,get phase(){return phase;}};
+ return {schedule,refresh(){if(inFlight)return;if(timer!==null){clearTimer(timer);timer=null;}void tick();},get phase(){return phase;}};
 }
