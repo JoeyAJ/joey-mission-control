@@ -48,6 +48,35 @@
       "kind": "blocked",
       "summary": "Implemented and tested: 1188 units + build/check + 12 browser cases pass. PR #21 remains draft. Auto-review denied mark-ready action as beyond draft authorization; no merge/production deploy attempted. Need explicit PR21 ready/merge approval. Implementation e31020e; handoff/blocker docs ffbd66e.",
       "result": null
+    },
+    {
+      "id": "self-release-completed",
+      "sequence": 4,
+      "eventAt": "2026-11-02T08:26:34.106Z",
+      "kind": "completed",
+      "summary": "User explicitly approved PR21 ready/merge. PR21 merged; Vercel production READY exact 641cfc7. Production HTTP browser read unavailable through connected fetch. Engine catalog visibility follow-up continues in linked run; no Owner acceptance claimed.",
+      "result": {
+        "codeSha": "641cfc7fb9de51527ceebe6b9135448f7b6fd628",
+        "tests": [
+          {
+            "name": "guarded unit suite",
+            "outcome": "PASS"
+          },
+          {
+            "name": "12 Chromium locale/device/privacy cases",
+            "outcome": "PASS"
+          },
+          {
+            "name": "build and check",
+            "outcome": "PASS"
+          }
+        ],
+        "nextSteps": "Follow linked catalog visibility run. Actual Owner acceptance pending; production URL https://joey-mission-control-one.vercel.app/#joey; deployment dpl_EhzQuyauq4ZwoHNar4yYzzYCE7U4.",
+        "handoff": {
+          "path": "HANDOFF.md",
+          "commitSha": "641cfc7fb9de51527ceebe6b9135448f7b6fd628"
+        }
+      }
     }
   ]
 }
