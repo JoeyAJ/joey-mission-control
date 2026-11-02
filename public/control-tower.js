@@ -1,3 +1,4 @@
+import {missionControlLinks} from './mission-control-project.js';
 // Control Tower: Joey's daily overview. Shows only what Joey needs to steer projects
 // (state, version, responsible Agent, one-line status) and the handoff to the next Agent.
 // Technical evidence stays behind the existing advanced views.
@@ -259,7 +260,7 @@ export function renderControlTower({doc=document,locale='zh-TW',projects=[],runs
   if(guest){}
   else if(c.kind==='registered'){const tech=el('details','tower-detail-tech');tech.open=true;tech.append(el('summary','',w.detailTech),el('p','tower-empty',c.live?w.techRegisteredLive:w.techRegistered));if(c.live){const open=el('button','tower-button',w.openWorkspace);open.type='button';open.addEventListener('click',()=>onDetails(c.id));tech.append(open);}const dl=el('dl','tower-facts');const fact=(label,value,href)=>{if(!value)return;const v=el('dd');if(href){const a=el('a','tower-link',value);a.href=href;a.target='_blank';a.rel='noopener noreferrer';v.append(a);}else v.textContent=value;dl.append(el('dt','',label),v);};
    const repo=/^[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+$/.test(c.repositoryId||'')?c.repositoryId:null;fact(w.repoLabel,repo,repo&&'https://github.com/'+repo);fact(w.branchLabel,c.ref);fact(w.siteLabel,c.siteUrl,c.siteUrl);fact(w.catalogLabel,[c.version,c.lastAgent,c.asOf].filter(Boolean).join(' · '));tech.append(dl);page.append(tech);}
-  else if(c.kind!=='draft'){const tech=el('details','tower-detail-tech');tech.append(el('summary','',w.detailTech),el('p','tower-empty',w.techIntro));const open=el('button','tower-button',w.openWorkspace);open.type='button';open.addEventListener('click',()=>onDetails(c.id));tech.append(open);page.append(tech);}
+  else if(c.kind!=='draft'){const tech=el('details','tower-detail-tech');tech.append(el('summary','',w.detailTech),el('p','tower-empty',w.techIntro));const open=el('button','tower-button',w.openWorkspace);open.type='button';open.addEventListener('click',()=>onDetails(c.id));tech.append(open);if(c.id==='MISSION_CONTROL'){for(const [label,url] of missionControlLinks(locale)){const a=el('a','tower-link',label);a.href=url;a.target='_blank';a.rel='noopener noreferrer';tech.append(a);}}page.append(tech);}
   return page;
  }
  if(board){root.append(renderBoard(model.cards.filter(visible)));}
