@@ -1,3 +1,4 @@
+import {catalogNotice} from './tower-catalog.js';
 import {missionControlLinks} from './mission-control-project.js';
 // Control Tower: Joey's daily overview. Shows only what Joey needs to steer projects
 // (state, version, responsible Agent, one-line status) and the handoff to the next Agent.
@@ -73,7 +74,7 @@ export function registeredInstruction({name,repositoryId,ref='main',projectId=nu
 }
 // Guests see one small 「擁有者登入」 link; the existing Owner sign-in panel stays hidden until it is clicked (kept for this page load).
 let guestLoginRevealed=false;
-export function renderControlTower({doc=document,locale='zh-TW',projects=[],runsByProject={},now=Date.now(),demo=false,signedIn=true,onStatus=null,loading=false,loadingSlow=false,filter='all',onFilter=()=>{},onDecision=null,onDetails=()=>{},onAdvanced=()=>{},onLocale=null,account=null,ownerSiteUrl=null,detailId=null,onOpenDetail=()=>{},onBack=()=>{},onIdea=null,onIdeaEdit=null,signedInForIdeas=false,mountHandoff=null,prepareInstruction=null,storage=globalThis.localStorage,onChange=()=>{},view='list',onView=null,guest=false}={}){
+export function renderControlTower({doc=document,locale='zh-TW',projects=[],runsByProject={},now=Date.now(),demo=false,signedIn=true,onStatus=null,loading=false,loadingSlow=false,filter='all',onFilter=()=>{},onDecision=null,onDetails=()=>{},onAdvanced=()=>{},onLocale=null,account=null,ownerSiteUrl=null,detailId=null,onOpenDetail=()=>{},onBack=()=>{},onIdea=null,onIdeaEdit=null,signedInForIdeas=false,mountHandoff=null,prepareInstruction=null,storage=globalThis.localStorage,onChange=()=>{},view='list',onView=null,guest=false,catalogStatus=null,onCatalogRetry=null}={}){
  // Guest (signed-out visitor): read-only. No handoff, review, edit, status, idea or technical links.
  if(guest){onStatus=null;onDecision=null;onIdea=null;onIdeaEdit=null;mountHandoff=null;prepareInstruction=null;onDetails=()=>{};onAdvanced=()=>{};}
  const w=towerWords(locale),el=(tag,cls,text)=>{const n=doc.createElement(tag);if(cls)n.className=cls;if(text!==undefined)n.textContent=text;return n;};
@@ -96,6 +97,7 @@ export function renderControlTower({doc=document,locale='zh-TW',projects=[],runs
  else if(loadingSlow)root.append(el('p','tower-banner tower-banner-warn',w.loadingSlow));
  else if(guest)guestNote();
  else if(!signedIn)root.append(el('p','tower-banner',w.signin));
+ if(catalogStatus){const notice=catalogNotice(catalogStatus,{guest,locale});if(notice){const b=el('div','tower-banner tower-banner-warn');b.dataset.catalogStatus=guest?'signin':catalogStatus;b.setAttribute('role','status');b.append(el('p','',notice.message));if(notice.retry&&onCatalogRetry){const retry=el('button','tower-button',notice.retry);retry.type='button';retry.addEventListener('click',onCatalogRetry);b.append(retry);}root.append(b);}}
  // Radar: one chip per state that has projects; clicking filters the board.
  const radar=el('div','tower-radar');radar.setAttribute('role','group');radar.setAttribute('aria-label',w.title);
  const chip=(key,label,count)=>{const b=el('button','tower-chip');b.type='button';b.dataset.state=key;b.setAttribute('aria-pressed',String(filter===key));b.append(el('span','tower-chip-count',String(count)),el('span','tower-chip-label',label));b.addEventListener('click',()=>onFilter(filter===key?'all':key));return b;};

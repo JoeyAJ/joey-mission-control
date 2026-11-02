@@ -12,7 +12,7 @@
 | Owner 登入、AAL2／TOTP、密碼恢復、email login 邊界 | `src/continuity/owner-*.mjs`, `password-recovery*.mjs`; 對應 Owner/Auth tests | 生產 origin 已固定；歷史 OTP 準備不等於所有登入方式已啟用。此次不寄信、不改 Auth。 |
 | 可替換 Agent 的可攜交接、最新來源解析、手動複製備援 | `public/joey-takeover.js`, `takeover-instruction.js`, `src/canonical/remote-handoff-adapter.mjs`; takeover/remote-handoff tests | 歷史 `MC_CURRENT_ACCEPTANCE.md` 記載 MC 及五個 scope Owner 讀取／接手驗證；跨裝置 clipboard 仍有待驗收範圍。複製不等於 Agent 已啟動。 |
 | 專案記憶、Registry／Current State／Handoff、來源衝突與新鮮度 | `src/canonical/`, `src/projection/`, `src/continue/`; canonical/source/continue tests | 公開 snapshot 是歷史基準；私人 fresh-read 另行驗證。Git 作者不當作 Agent 身分。 |
-| 既有 MISSION_CONTROL 日常卡片與 main 文件入口（本次） | `public/mission-control-project.js`, `app.js`, `control-tower.js`; `tests/mission-control-project.test.mjs` | 增量待本次發布證據；不另註冊、不更動既有 snapshot 或 registry。未有回報時版本／Agent 留空。 |
+| 既有 MISSION_CONTROL 日常卡片與 main 文件入口（本次） | `public/mission-control-project.js`, `app.js`, `control-tower.js`; `tests/mission-control-project.test.mjs` | PR #21 已部署於 `641cfc7fb9de51527ceebe6b9135448f7b6fd628`（Vercel READY，遠端 HTTP 行為待驗）；不另註冊、不更動既有 snapshot 或 registry。未有回報時版本／Agent 留空。 |
 | 私人 registry 專案、記憶 hash 驗證、工作紀錄、拒絕／移除／恢復 | `src/onboarding/project-registration-*.mjs`; registration tests | Engine 的登記資料與 Owner 顯示獨立於四個固定 snapshot 卡片。全 catalog 驗證失敗會隱藏登記卡；不能繞過驗證。 |
 | Idea 草稿、PRD、bootstrap bundle、建立前衝突檢查 | `src/onboarding/`; onboarding/draft/bootstrap/preflight tests | 私人 cloud draft 歷史已啟用；本機草稿仍可用。準備 bundle 不等於已建 repo、已部署或已授權新 scope。 |
 | Owner 跨裝置狀態／交接意圖／驗收同步 | `public/tower-sync.js`; tower-sync tests；歷史 SQL migration 文件 | 歷史 HANDOFF 記載 RPC 已安裝；local-first／revision 防護。此次不重裝 SQL；實際裝置登入同步未重驗。 |
@@ -25,6 +25,10 @@
 | VM link／worker evidence、摘要、連線與故障恢復介面 | `src/continuity/owner-vm-link*`, `owner-worker-*`, `docs/contracts/vm-link/`; 對應測試與歷史 receipts | 有歷史 bounded runtime repair 證據；不能因此宣稱 coding runner 已接通。此次未連線或發命令至 VM。 |
 | finalization merge→preview、journal／cancel／resume core | `src/tasks/task-finalization-*.mjs`, `task-closure-*.mjs`; finalization tests | **fixture-only**；live factory 明確 `LIVE_EXECUTION_DISABLED`，缺 action grant、verified provider capability、private durable store。非生產自動合併／部署。 |
 | 真正啟動 Agent、隔離分支開發、獨立 reviewer、有界修正、費用控制 | 尚無已接通端到端證據；見 [下一階段](MC_NEXT_PHASE.md) | **待開發／待驗證**。這次不啟用 runner、不新增付費模型／credentials／服務。 |
+
+## Engine 顯示修正 — 2026-11-02
+
+`public/tower-catalog.js` 與 `app.js` 修正 catalog 成功未單獨建立 Owner-ready、錯誤被靜默吞掉的問題。Owner 看見三語重試提示；guest 只看見不含專案身分的登入說明。空 catalog、未登入、讀取失敗三者分開；10 秒 timeout、晚到內容不回填。失去 Owner 時清除舊私人卡片／草稿。官方 catalog 在 `9cd11d75ba355d640e115c1f455f73584b8d66f9` fresh-read 驗證 PASS。新測試：`tests/tower-catalog.test.mjs`；瀏覽器新增三語失敗→重試→六卡恢復；實際 Owner 登入仍未在本 session 驗收。
 
 ## 來源與驗收優先順序
 

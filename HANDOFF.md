@@ -1,15 +1,17 @@
 # Mission Control 自身入口與交接 — 2026-11-02
 
 Project: MISSION_CONTROL
-Timestamp: 2026-11-02T06:59:04.000Z
+Timestamp: 2026-11-02T08:26:54.000Z
 Task: MC 自身日常入口、已開發功能盤點與下一階段規劃
 Status: LOCAL_VERIFIED_PENDING_PUBLICATION
 Last Developer: Codex
 Executed by: Codex
 Actual Model: 未提供可核實的實際模型 ID
-Branch: codex/mc-self-project-handoff-20261102
+Branch: main（本次修正分支 codex/mc-catalog-visibility-20261102）
 
 ## Summary
+
+2026-11-02 08:21 UTC Joey 已明確同意 PR #21 ready／merge／正式發布；先前拒絕動作重試一次成功，未提交 APPROVE。PR #21 已 merge 為 `641cfc7fb9de51527ceebe6b9135448f7b6fd628`，Vercel 正式部署 `dpl_EhzQuyauq4ZwoHNar4yYzzYCE7U4` READY。另依 Joey 08:22 指示修正 Engine catalog 顯示失敗的靜默處理。最終修正發布 exact SHA／URL 與結束回報見官方 [後續 run](https://github.com/JoeyAJ/joey-mission-control/blob/mc/progress/.mission-control/runs/mc-catalog-release-20261102.json) 及驗證紀錄。
 
 沿用既有 MISSION_CONTROL／BASELINE 身分加入日常清單，不新登記系統、不更動五個專案資料。Owner 詳情的技術區連至 main 程式庫、最新交接、功能盤點與下一階段。讀取 MC 報告沿用原 scope；卡片不憑空填入版本、Agent 或時間。
 
@@ -38,12 +40,16 @@ Repository: https://github.com/JoeyAJ/joey-mission-control
 
 ## Verification
 
+重新 fresh-read `mc/registry`：`9cd11d75ba355d640e115c1f455f73584b8d66f9`；官方 `validateRegistrationCatalog` 通過，1 個登記項目、Engine 五份 memory hashes 均符合 ledger，無登記刪除。正式 guest 預期五卡＝原四卡＋MC；已驗證 Owner 且 catalog 載入成功預期六卡＝再加 Engine。MC 的第五卡不是 Engine 公開化。
+
 本次精確 commit、測試、UI／部署結果與未驗證項目記於 [驗證紀錄](docs/MC_SELF_PROJECT_VERIFICATION_20261102.md)。只有實際 PASS 才可填入；Agent 自報完成、部署 READY、獨立證據和 Joey 驗收分別保留。
 
 ## Next Action
 
-本次 1188/1188 測試、build/check、portable validate 及 12 組瀏覽器測試通過；實作 commit `e31020e43d29b4898d87940af3c0d53635283280`，draft PR #21。Vercel 分支預覽 READY，正式發布尚未完成。先取得針對 #21 ready／merge 的明確核准，再沿既有路線發布並回讀 exact deployed SHA／URL／行為。下一位 Agent 先 fetch main，讀 AGENT_CONTROL.md B、此文件、功能盤點、下一階段；保持 mc/progress rolling retention 與今早既有 operational report。若繼續升級，先選單一小任務驗證真正 runner，勿直接啟用自動 merge／deploy。
+Joey 驗收正式網址：未登入看到原四項＋MC；Owner 登入並完成驗證後看到 Engine。私人清單失敗會顯示三語提示與重新讀取，不能當作已刪除；10 秒未回覆會明確失敗，catalog 成功本身足以建立 Owner-ready，其他回報／草稿暫時失敗不會降為 guest。失去 Owner 或 catalog 失敗會清掉舊私人卡片，避免殘留。
+
+先 fetch main，讀 AGENT_CONTROL.md B、此文件、功能盤點、下一階段與官方 run 的 exact release receipt。新任務要用官方 atomic reporter；保留 mc/progress rolling retention。下一階段 runner 仍僅是規劃，勿啟用自動 merge／deploy。
 
 ## Acceptance and blockers
 
-Joey 本次要求已記錄；產品驗收待 Joey。自動核准審查已明確拒絕將 PR #21 從 draft 改為 ready，理由是現有可用授權被判定只涵蓋 draft。動作未執行，PR 仍為 draft，未 merge 或部署正式站。需明確核准 #21 ready／merge 才可繼續；不改其他路徑繞過。精確動作、理由、preview／production SHA 與恢復步驟見驗證紀錄。
+Joey 已授權本次 ready／merge／正式發布及小範圍 catalog 修正，前次 ready 阻擋已解除。真實 Owner/AAL2 登入、Joey 裝置 clipboard 與最終產品驗收仍待確認。Vercel metadata 可確認 exact production SHA／READY；本環境的正式 HTTP 行為讀取不可用：web open 無法訪問、Vercel web_fetch_vercel_url 回覆部署找不到或連線授權不足，且無可用 Vercel CLI fallback。未建立共享連結或改訪問權限。這項限制不等同 UI 測試失敗；也不能以 metadata 或 synthetic Owner 測試冒充遠端實際登入驗證。
