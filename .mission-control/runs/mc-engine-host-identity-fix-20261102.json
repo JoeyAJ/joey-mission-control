@@ -32,6 +32,14 @@
       "kind": "started",
       "summary": "Actual Owner screenshot reports REGISTRATION_PRIVATE_IDENTITY_MISMATCH HTTP409. Exact catalog throw checks MC host; GitHub metadata confirms same ID/name but visibility public. Fix pinned host identity separately from private imported-project contract; no auth/credential/visibility changes.",
       "result": null
+    },
+    {
+      "id": "host-identity-deployed-awaiting-actual-owner-visibility",
+      "sequence": 2,
+      "eventAt": "2026-11-02T11:07:58.156Z",
+      "kind": "blocked",
+      "summary": "Confirmed root: actual Owner 409 came from MC catalog-host guard requiring private, but same GitHub ID/name host is public. PR25 fixes pinned host identity, preserves private imports/Owner gates. Production READY 834dee1380d7c1351e2dd2a8e8d7855e3e39ef73; dpl_7iuNU5gzAVfngsFZGUSxCFF4EKWf; https://joey-mission-control-one.vercel.app/#joey . 1198 tests + 15 browser cases pass. Actual post-fix Engine visibility awaits Joey existing verified session refresh; no relogin/token/security change.",
+      "result": null
     }
   ]
 }
