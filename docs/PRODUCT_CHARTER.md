@@ -1,3 +1,5 @@
+> 2026-11-02 current: [MC 功能盤點](MC_FEATURE_INVENTORY.md)、[下一階段待辦](MC_NEXT_PHASE.md)、[最新交接](../HANDOFF.md)。下方帶日期的階段記錄保留為歷史；live runner／finalization 尚未接通。
+
 > PR/CI read-only increment 2026-10-11: task-bound completed report / exact-commit inspection is implemented and synthetically verified. Runtime GitHub permissions and actual Owner HTTP/device acceptance remain unverified; Agent tests, observed CI and Joey acceptance stay separate. No merge/deploy executor or new permission grant. [Current evidence and boundaries](MC_PR_CI_RECONCILIATION_20261011.md). Existing approved task/draft persistence and verified source/report scopes remain preserved.
 
 > Current approved milestone 2026-10-11: exact Owner cloud draft SQL/ACL install and bounded native/live checks PASS; server-only activation is ON. Real Owner HTTP/device acceptance remains pending; cloud drafts are not task creation or end-to-end PR/approval/merge automation. [Evidence and eight-step gaps](MC_PROJECT_DRAFT_ACTIVATION_VERIFICATION_20261011.md). Earlier OFF/NOT_APPLIED statements below are dated history superseded only for this exact approved milestone.

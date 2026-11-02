@@ -1,3 +1,5 @@
+> 2026-11-02 current: [MC 功能盤點](MC_FEATURE_INVENTORY.md)、[下一階段待辦](MC_NEXT_PHASE.md)、[最新交接](../HANDOFF.md)。下方帶日期的階段記錄保留為歷史；live runner／finalization 尚未接通。
+
 # Current hierarchy integration checkpoint — 2026-10-12
 
 Exact3e8fd2b slice integrated locallyf322232; Owner bundle rebuilt, focused68/portable956/browser36/root20 PASS. Remaining browser regression blocked by thread/process resource errors; canonical remote/fixed Preview heldd9a7beb. Resume this same integration run37/40; no capacity/history changes. Core repair and all guards/inactive OTP preserved. Dedicated owner-email-login.html exact allowlist approved+verified00:11UTC; prepare explicit Magic Link after integration, no mail or config mutation. See MC_WORKSPACE_HIERARCHY_INTEGRATION_20261011.md.
