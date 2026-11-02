@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "mc.repository-run.v1",
+  "projectId": "MISSION_CONTROL",
+  "track": "BASELINE",
+  "runId": "mc-catalog-release-20261102",
+  "predecessorRunId": "mc-self-project-20261102",
+  "taskId": "mc-self-project-handoff-20261102",
+  "featureTitle": "MC / Engine 私人專案顯示與發布驗證",
+  "agentName": "Codex",
+  "provider": "OpenAI",
+  "model": null,
+  "repositoryId": "JoeyAJ/joey-mission-control",
+  "reportRef": "mc/progress",
+  "workRef": "codex/mc-catalog-visibility-20261102",
+  "baseline": {
+    "ref": "codex/mc-command-center-checkpoint-20261006",
+    "commitSha": "06840bafd2cabf2cff81e822b8a63299e32cb366",
+    "handoffPath": "HANDOFF.md",
+    "handoffDigest": "07d2e3a9d3549acc236b75f259f3b58669ef37b12483ffa87df5e601a72d5661",
+    "contextPaths": [
+      "README.md",
+      "docs/PRODUCT_CHARTER.md",
+      "docs/MC_PHASE_PLAN.md",
+      "docs/STAGE_HANDOFF_TEMPLATE.md"
+    ]
+  },
+  "events": [
+    {
+      "id": "catalog-start",
+      "sequence": 1,
+      "eventAt": "2026-11-02T08:27:04.069Z",
+      "kind": "started",
+      "summary": "PR21 production deployed. Fresh registry validates all five Engine memory hashes. Fix silent catalog failures and Owner readiness; keep private data authenticated. Actual production HTTP fetch currently unavailable.",
+      "result": null
+    }
+  ]
+}
