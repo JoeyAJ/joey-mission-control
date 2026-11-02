@@ -32,6 +32,43 @@
       "kind": "started",
       "summary": "PR21 production deployed. Fresh registry validates all five Engine memory hashes. Fix silent catalog failures and Owner readiness; keep private data authenticated. Actual production HTTP fetch currently unavailable.",
       "result": null
+    },
+    {
+      "id": "catalog-release-completed",
+      "sequence": 2,
+      "eventAt": "2026-11-02T08:32:50.744Z",
+      "kind": "completed",
+      "summary": "PR21 MC entry, PR22 private catalog recovery and PR23 Handoff closure merged. Production e66818e; 1192 guarded tests, 15 Chromium cases, fresh Engine catalog hash validation pass. Runtime HTTP/actual Owner acceptance unavailable; no privacy/scope or runner activation.",
+      "result": {
+        "codeSha": "e66818eb24f8897d4369acc4cac694d16aebc50c",
+        "tests": [
+          {
+            "name": "1192 guarded tests",
+            "outcome": "PASS"
+          },
+          {
+            "name": "15 Chromium locale/device/privacy/retry cases",
+            "outcome": "PASS"
+          },
+          {
+            "name": "Build, safety check and portable fixture validation",
+            "outcome": "PASS"
+          },
+          {
+            "name": "Real registry 9cd11d75: Engine present, five memory hashes valid",
+            "outcome": "PASS"
+          },
+          {
+            "name": "25 Handoff/catalog closure checks",
+            "outcome": "PASS"
+          }
+        ],
+        "nextSteps": "Joey acceptance: https://joey-mission-control-one.vercel.app/#joey . Guest expects original four + MC; verified Owner with catalog expects six incl Engine. Production dpl_7w5aQDr83Kx743uEqXW6wJFLa3cH exact e66818eb24f8897d4369acc4cac694d16aebc50c; app code equals tested 40188c5/2bef7f1, closure docs only. HTTP fetch unavailable through web/Vercel connector and no CLI fallback; actual Owner/device acceptance unverified. Automation remains planned only.",
+        "handoff": {
+          "path": "HANDOFF.md",
+          "commitSha": "e66818eb24f8897d4369acc4cac694d16aebc50c"
+        }
+      }
     }
   ]
 }
