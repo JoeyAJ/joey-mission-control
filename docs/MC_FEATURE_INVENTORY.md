@@ -41,3 +41,8 @@
 ## 來源與驗收優先順序
 
 先讀本次 HANDOFF，再讀本表及下一階段；舊 `MC_PHASE_PLAN.md` 段落和 `MC_CURRENT_ACCEPTANCE.md` 是帶日期的歷史證據。每一列 main 已含的程式可在以上精確基準 SHA 檢查；部署狀態只以相同 SHA 的實際發布結果為準。
+
+
+## Catalog commit prerequisites
+
+Read and commit identity requirements are independent: fixed public/private host reads retain strict identity consistency; private registration commits require a private, active host with matching repository ID/name, checked again after authorization. Public MC host does not support private registration writes. Owner API and private project import checks remain enforced. Tests: `catalog-public-write-guard.test.mjs`, existing host/application/registration tests; fixture mutations only. Actual Owner Engine visibility remains pending.
