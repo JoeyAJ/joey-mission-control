@@ -1,13 +1,13 @@
 # Mission Control 自身入口與交接 — 2026-11-02
 
 Project: MISSION_CONTROL
-Timestamp: 2026-11-02T08:26:54.000Z
+Timestamp: 2026-11-02T08:31:30.904Z
 Task: MC 自身日常入口、已開發功能盤點與下一階段規劃
-Status: LOCAL_VERIFIED_PENDING_PUBLICATION
+Status: DEPLOYED_OWNER_ACCEPTANCE_PENDING
 Last Developer: Codex
 Executed by: Codex
 Actual Model: 未提供可核實的實際模型 ID
-Branch: main（本次修正分支 codex/mc-catalog-visibility-20261102）
+Branch: main
 
 ## Summary
 
@@ -39,6 +39,8 @@ Repository: https://github.com/JoeyAJ/joey-mission-control
 前序 reviewer 的唯讀證據：registry head `9cd11d75ba355d640e115c1f455f73584b8d66f9`，Engine 五個 memory SHA256 與 ledger 相符，無刪除證據。四個固定卡片來自 production snapshot；Engine 來自 Owner-only registry。未登入正式畫面顯示四卡，是可解釋的權限分界，使用者當時本機登入狀態仍未確認。此次測試 Owner catalog 與 MC 共存；不公開 registry、不繞過 Owner token 或 hash 驗證。若登入後仍少卡，再查 catalog lease、整包驗證與 approved connection；不重建或重複登記。
 
 ## Verification
+
+PR #22 修正已合併並正式部署：應用程式 SHA `40188c50206993a9a33916f5ded550dbbe4e86ee`（與完整測試的 `2bef7f1332cca5dae75d010a57e9882b9d19bc88` tree 完全相同）；deployment `dpl_Btb4c5uUuiCbsYcm8vwfBUTjq4Ac`，production／main／READY。1192/1192 guarded tests、build/check、portable validate 與 15 組 Chromium QA PASS。後續文件收尾不變更應用程式行為；最新整體部署 SHA 以官方 successor run 收尾 receipt 為準。
 
 重新 fresh-read `mc/registry`：`9cd11d75ba355d640e115c1f455f73584b8d66f9`；官方 `validateRegistrationCatalog` 通過，1 個登記項目、Engine 五份 memory hashes 均符合 ledger，無登記刪除。正式 guest 預期五卡＝原四卡＋MC；已驗證 Owner 且 catalog 載入成功預期六卡＝再加 Engine。MC 的第五卡不是 Engine 公開化。
 
