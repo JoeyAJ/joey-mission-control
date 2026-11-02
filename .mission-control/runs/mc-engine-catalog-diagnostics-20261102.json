@@ -32,6 +32,14 @@
       "kind": "started",
       "summary": "Joey screenshot confirms frontend verified Owner and catalog unavailable, not guest-only. Implementing fixed safe Owner-only failure codes and GitHub numeric HTTP status; no access/credential change. Actual Engine visibility remains unresolved.",
       "result": null
+    },
+    {
+      "id": "engine-diagnostic-deployed-awaiting-owner-code",
+      "sequence": 2,
+      "eventAt": "2026-11-02T10:10:16.846Z",
+      "kind": "blocked",
+      "summary": "PR24 diagnostic release production READY: 223e307036a9d25f660177e829998758578789d5; dpl_DEpdMe9BJDzURD1iExzaZSVVnsSS; https://joey-mission-control-one.vercel.app/#joey . 1195 tests + 15 browser cases pass. Owner-only safe catalog/GitHub HTTP codes deployed; no auth/credential/scope changes. Engine visibility UNRESOLVED. Need Joey to reload existing verified page, retry private projects and share banner diagnostic code screenshot; no token/DevTools/relogin required.",
+      "result": null
     }
   ]
 }
