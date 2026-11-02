@@ -32,6 +32,39 @@
       "kind": "started",
       "summary": "Independent review confirmed PR25 shared read/write identity guard broadened public-host writes. Separating read and PRIVATE-only writer checks including final pre-POST recheck. No actual public registry writes for testing; isolated local fixtures only. Current mc/registry head unchanged 9cd11d75; no blanket no-exposure claim.",
       "result": null
+    },
+    {
+      "id": "catalog-commit-preconditions-deployed",
+      "sequence": 2,
+      "eventAt": "2026-11-02T11:19:13.112Z",
+      "kind": "completed",
+      "summary": "PR26 catalog commit preconditions deployed production READY: 3e42213e73d4c0c58e827f23596ee1c182ce5ef9. Public host read retained; private registration commits require private host and final recheck. 1200 tests + 15 Chromium cases pass. No production registry test writes. Engine actual Owner acceptance remains pending.",
+      "result": {
+        "codeSha": "3e42213e73d4c0c58e827f23596ee1c182ce5ef9",
+        "tests": [
+          {
+            "name": "1200 guarded tests",
+            "outcome": "PASS"
+          },
+          {
+            "name": "Public-host read and private-host commit checks, zero fixture POST on denied mutations",
+            "outcome": "PASS"
+          },
+          {
+            "name": "15 Chromium UI/privacy cases",
+            "outcome": "PASS"
+          },
+          {
+            "name": "Build, safety and portable fixture validation",
+            "outcome": "PASS"
+          }
+        ],
+        "nextSteps": "Production https://joey-mission-control-one.vercel.app/#joey ; deployment dpl_AcNFSBPPw74p8R96fhmSbTdH7F5w exact code SHA. Current public MC host supports reads but private registration commits remain unavailable there. Engine visibility must still be confirmed in Joey existing verified Owner flow. No visibility/credential/permission changes.",
+        "handoff": {
+          "path": "HANDOFF.md",
+          "commitSha": "3e42213e73d4c0c58e827f23596ee1c182ce5ef9"
+        }
+      }
     }
   ]
 }
