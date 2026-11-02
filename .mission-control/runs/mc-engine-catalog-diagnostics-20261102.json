@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "mc.repository-run.v1",
+  "projectId": "MISSION_CONTROL",
+  "track": "BASELINE",
+  "runId": "mc-engine-catalog-diagnostics-20261102",
+  "predecessorRunId": "mc-engine-owner-diagnosis-20261102",
+  "taskId": "mc-self-project-handoff-20261102",
+  "featureTitle": "Engine Owner-only catalog 安全診斷碼",
+  "agentName": "Codex",
+  "provider": "OpenAI",
+  "model": null,
+  "repositoryId": "JoeyAJ/joey-mission-control",
+  "reportRef": "mc/progress",
+  "workRef": "codex/mc-engine-catalog-diagnostics-20261102",
+  "baseline": {
+    "ref": "codex/mc-command-center-checkpoint-20261006",
+    "commitSha": "06840bafd2cabf2cff81e822b8a63299e32cb366",
+    "handoffPath": "HANDOFF.md",
+    "handoffDigest": "07d2e3a9d3549acc236b75f259f3b58669ef37b12483ffa87df5e601a72d5661",
+    "contextPaths": [
+      "README.md",
+      "docs/PRODUCT_CHARTER.md",
+      "docs/MC_PHASE_PLAN.md",
+      "docs/STAGE_HANDOFF_TEMPLATE.md"
+    ]
+  },
+  "events": [
+    {
+      "id": "engine-code-start",
+      "sequence": 1,
+      "eventAt": "2026-11-02T10:07:55.073Z",
+      "kind": "started",
+      "summary": "Joey screenshot confirms frontend verified Owner and catalog unavailable, not guest-only. Implementing fixed safe Owner-only failure codes and GitHub numeric HTTP status; no access/credential change. Actual Engine visibility remains unresolved.",
+      "result": null
+    }
+  ]
+}
