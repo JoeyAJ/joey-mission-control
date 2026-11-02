@@ -14,7 +14,7 @@ import {createProjectRegistrationServer} from '../../src/onboarding/project-regi
 export const REGISTRATION_TEST_OWNER='11111111-1111-4111-8111-111111111111';
 export const registrationTestActivation={enabled:true,qualification:'OWNER_PRIVATE_GIT_CATALOG_APPROVED',approvalRef:'synthetic-local-approval',ownerNamespace:'JoeyAJ',destination:registrationCatalogTarget};
 export const gitBlob=content=>{const b=Buffer.from(content);return createHash('sha1').update(Buffer.concat([Buffer.from('blob '+b.length+'\0'),b])).digest('hex');};
-export async function registrationGitFixture({now=Date.parse('2026-10-12T13:00:00.000Z'),project={}}={}) {
+export async function registrationGitFixture({now=Date.parse('2026-10-12T13:00:00.000Z'),project={},catalogVisibility='private'}={}) {
  const root=await fs.mkdtemp(path.join(os.tmpdir(),'mc-registration-native-'));await fs.chmod(root,0o700);
  const env={...process.env,GIT_CONFIG_NOSYSTEM:'1',GIT_CONFIG_GLOBAL:'/dev/null',GIT_AUTHOR_NAME:'Synthetic Registry',GIT_AUTHOR_EMAIL:'synthetic@example.invalid',GIT_COMMITTER_NAME:'Synthetic Registry',GIT_COMMITTER_EMAIL:'synthetic@example.invalid'};
  const git=(args,input,extra={})=>execFileSync('git',args,{cwd:root,env:{...env,...extra},input,encoding:'utf8'}).trim();
@@ -29,7 +29,7 @@ export async function registrationGitFixture({now=Date.parse('2026-10-12T13:00:0
  const fetchImpl=async(target,options={})=>{
   const u=new URL(target);if(u.origin!=='https://api.github.com')throw Error('NO_EXTERNAL_NETWORK');state.requests.push({method:options.method||'GET',path:u.pathname});let data;
   const repoPrefix='/repos/'+registrationCatalogTarget.repositoryId;
-  if(u.pathname===repoPrefix)data={id:registrationCatalogTarget.repositoryNumericId,full_name:registrationCatalogTarget.repositoryId,private:false,visibility:'public',archived:false,disabled:false};
+  if(u.pathname===repoPrefix)data={id:registrationCatalogTarget.repositoryNumericId,full_name:registrationCatalogTarget.repositoryId,private:catalogVisibility==='private',visibility:catalogVisibility,archived:false,disabled:false};
   else if(u.pathname===repoPrefix+'/git/ref/heads/mc/registry')data={object:{type:'commit',sha:git(['rev-parse','refs/heads/mc/registry'])}};
   else if(u.pathname.startsWith(repoPrefix+'/git/commits/')){const sha=u.pathname.split('/').at(-1);data={sha,tree:{sha:git(['rev-parse',sha+'^{tree}'])}};}
   else if(u.pathname.startsWith(repoPrefix+'/git/trees/')){const sha=u.pathname.split('/').at(-1),raw=git(['ls-tree','-z',sha]);data={sha,truncated:false,tree:raw?raw.split('\0').filter(Boolean).map(row=>{const [meta,name]=row.split('\t'),[mode,type,sha]=meta.split(' ');return {path:name,mode,type,sha};}):[]};}

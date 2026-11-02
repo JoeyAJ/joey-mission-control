@@ -1,7 +1,7 @@
 # Mission Control 自身入口與交接 — 2026-11-02
 
 Project: MISSION_CONTROL
-Timestamp: 2026-11-02T11:05:39.742Z
+Timestamp: 2026-11-02T11:14:12.264Z
 Task: MC 自身日常入口、已開發功能盤點與下一階段規劃
 Status: DEPLOYED_OWNER_ACCEPTANCE_PENDING
 Last Developer: Codex
@@ -11,13 +11,23 @@ Branch: main
 
 ## Summary
 
+### 最新安全修正：PR25 共用 identity guard 的寫入回歸
+
+獨立審查確認 P1：PR25 的 identity() 同時被 readSnapshot 與 commitFiles 使用，接受 public MC host 也會在已配置 writer 的環境允許 PRIVATE_GIT_REGISTRATION 將八份 ledger／memory 寫入 public host。Owner-only API 不保護直接 Git repository 讀取；先前「沒有存取擴張」的概括說法不正確。
+
+本次限制性修正將讀寫契約分開：讀取只接受同一固定 numeric ID／名稱、private/public 一致且未封存／未停用的原私人 host 或已核實 public host；寫入必須 private=true、visibility=private，並在 authorization callback 之後、送 GraphQL POST 前再次核對。public host 在第一個 write guard 即拒絕，visibility 中途變 public 也拒絕；fixture tag／credential 不構成豁免。Owner/AAL2 與私人匯入專案契約保持嚴格。
+
+所有寫入測試只在無外部網路的隔離 fixture／暫存 Git 執行；未對正式 public registry 做測試寫入。可讀 mc/registry head 仍為 `9cd11d75ba355d640e115c1f455f73584b8d66f9`，與 PR25 前觀察一致，該 reachable head 的最新 commit 為 2026-10-23；目前未觀察到 PR25 後的 registry branch 變更。這不排除未觀察的 refs／暫存變更／讀取，也不代表既有 public catalog 沒有保密性問題。既有資料的 public confidentiality 是另一事項，此次不更改 repo visibility、credentials 或 permissions。
+
+Production metadata 目前僅有 READ token；writer token 只綁舊 checkpoint preview，這是額外目前配置證據，不能代替程式 writer guard 或聲稱從未發生暴露。本次 exact release 與收尾見 [官方安全修正 run](https://github.com/JoeyAJ/joey-mission-control/blob/mc/progress/.mission-control/runs/mc-catalog-public-write-safety-20261102.json)。Engine 實際 Owner 可見性仍需在安全修正發布後確認。
+
 ### 最新根因與修正 — 2026-11-02 11:01 UTC Owner 診斷
 
 Joey 實際 Owner 截圖回傳 `REGISTRATION_PRIVATE_IDENTITY_MISMATCH · HTTP 409`。在 GET catalog 路徑，唯一對應 throw 位於 `createRegistrationGitPort` 的 MC **catalog host** identity check；它在 Owner 前置驗證及 GitHub repo metadata HTTP 200 之後、讀 registry 之前。這不是 Google 帳號或 Engine 專案 ID 的比對。
 
 新讀取的 GitHub metadata：`JoeyAJ/joey-mission-control`，ID `1404959099`，visibility **public**，archived=false。舊程式對同一個固定 MC host 強制 private=true／visibility=private，與實際 host 不符，足以產生截圖的 409。之前的 fixture 把 MC host 模擬成 private，因此未涵蓋正式情況。
 
-修正：固定 catalog HOST 使用獨立 `registrationCatalogHostIdentity`（public／private=false／未封存／未停用），並繼續嚴格核對同一 repo numeric ID、full name 與全部 flags；缺欄位、不同 ID／名稱／visibility、archived／disabled 都拒絕。待匯入專案的 private=true／visibility=private 契約保持原樣，Owner/AAL2、token、scope、registry、來源 hash 和讀寫權限不變；沒有更改任何 repository visibility 或把 Engine 公開。
+修正：固定 catalog HOST 使用獨立 `registrationCatalogHostIdentity`（public／private=false／未封存／未停用），並繼續嚴格核對同一 repo numeric ID、full name 與全部 flags；缺欄位、不同 ID／名稱／visibility、archived／disabled 都拒絕。待匯入專案的 private=true／visibility=private 契約保持原樣，Owner/AAL2、token、scope、registry、來源 hash 及外部 credentials/permissions 設定未變；但共享 guard 引入了上方已說明的寫入行為回歸，現已補上限制性 private writer guard。沒有更改 repository visibility。
 
 此根因修正的 exact release 與回報見 [官方 run](https://github.com/JoeyAJ/joey-mission-control/blob/mc/progress/.mission-control/runs/mc-engine-host-identity-fix-20261102.json)。部署後需在 Joey 現有已驗證 Owner flow 確認 Engine 真正可見；目前不以 mock 或 READY 宣稱實機驗收通過。只需正常重新整理／重新讀取，不要求重新登入或新的通用診斷截圖。
 
