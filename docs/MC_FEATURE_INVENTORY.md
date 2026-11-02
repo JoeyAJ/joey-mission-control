@@ -28,7 +28,7 @@
 
 ## Engine 顯示修正 — 2026-11-02
 
-`public/tower-catalog.js` 與 `app.js` 修正 catalog 成功未單獨建立 Owner-ready、錯誤被靜默吞掉的問題。Owner 看見三語重試提示；guest 只看見不含專案身分的登入說明。空 catalog、未登入、讀取失敗三者分開；10 秒 timeout、晚到內容不回填。失去 Owner 時清除舊私人卡片／草稿。官方 catalog 在 `9cd11d75ba355d640e115c1f455f73584b8d66f9` fresh-read 驗證 PASS。新測試：`tests/tower-catalog.test.mjs`；瀏覽器新增三語失敗→重試→六卡恢復；實際 Owner 登入仍未在本 session 驗收。
+`public/tower-catalog.js` 與 `app.js` 修正 catalog 成功未單獨建立 Owner-ready、錯誤被靜默吞掉的問題。Owner 看見三語重試提示；guest 只看見不含專案身分的登入說明。空 catalog、未登入、讀取失敗三者分開；10 秒 timeout、晚到內容不回填。失去 Owner 時清除舊私人卡片／草稿。官方 catalog 在 `9cd11d75ba355d640e115c1f455f73584b8d66f9` fresh-read 驗證 PASS。已隨 PR #22 部署：`40188c50206993a9a33916f5ded550dbbe4e86ee`，Vercel production READY。新測試：`tests/tower-catalog.test.mjs`；瀏覽器新增三語失敗→重試→六卡恢復；實際 Owner 登入仍未在本 session 驗收。
 
 ## 來源與驗收優先順序
 
