@@ -11,13 +11,19 @@ Branch: main
 
 ## Summary
 
+### Current catalog commit preconditions
+
+Catalog reads retain the fixed repository identity and Owner checks. Registry commits require a separate private-host identity check (`private=true`, `visibility=private`, correct repository ID/name, not archived/disabled), including a fresh check after the authorization callback. A public host can be read but cannot receive private registration commits. Current public MC host therefore supports the read path while private registration writes remain unavailable there. No repository visibility, credential or external permission setting was changed.
+
+Verification: full guarded suite 1200/1200, focused transport/application checks 17/17, Handoff/identity checks 24/24, and 15 Chromium UI/privacy cases PASS; build/check/portable validate PASS. Mutation checks use isolated fixtures only, never production registry writes. Actual Engine visibility in Joey's verified Owner session remains pending. Exact release is recorded by the official run receipt.
+
 ### 最新根因與修正 — 2026-11-02 11:01 UTC Owner 診斷
 
 Joey 實際 Owner 截圖回傳 `REGISTRATION_PRIVATE_IDENTITY_MISMATCH · HTTP 409`。在 GET catalog 路徑，唯一對應 throw 位於 `createRegistrationGitPort` 的 MC **catalog host** identity check；它在 Owner 前置驗證及 GitHub repo metadata HTTP 200 之後、讀 registry 之前。這不是 Google 帳號或 Engine 專案 ID 的比對。
 
 新讀取的 GitHub metadata：`JoeyAJ/joey-mission-control`，ID `1404959099`，visibility **public**，archived=false。舊程式對同一個固定 MC host 強制 private=true／visibility=private，與實際 host 不符，足以產生截圖的 409。之前的 fixture 把 MC host 模擬成 private，因此未涵蓋正式情況。
 
-修正：固定 catalog HOST 使用獨立 `registrationCatalogHostIdentity`（public／private=false／未封存／未停用），並繼續嚴格核對同一 repo numeric ID、full name 與全部 flags；缺欄位、不同 ID／名稱／visibility、archived／disabled 都拒絕。待匯入專案的 private=true／visibility=private 契約保持原樣，Owner/AAL2、token、scope、registry、來源 hash 和讀寫權限不變；沒有更改任何 repository visibility 或把 Engine 公開。
+修正：固定 catalog HOST 使用獨立 `registrationCatalogHostIdentity`（public／private=false／未封存／未停用），並繼續嚴格核對同一 repo numeric ID、full name 與全部 flags；缺欄位、不同 ID／名稱／visibility、archived／disabled 都拒絕。待匯入專案的 private=true／visibility=private 契約保持原樣，Owner/AAL2、token、scope、registry、來源 hash 與外部 credentials/permissions 設定未變；沒有更改任何 repository visibility 或把 Engine 公開。
 
 此根因修正的 exact release 與回報見 [官方 run](https://github.com/JoeyAJ/joey-mission-control/blob/mc/progress/.mission-control/runs/mc-engine-host-identity-fix-20261102.json)。部署後需在 Joey 現有已驗證 Owner flow 確認 Engine 真正可見；目前不以 mock 或 READY 宣稱實機驗收通過。只需正常重新整理／重新讀取，不要求重新登入或新的通用診斷截圖。
 

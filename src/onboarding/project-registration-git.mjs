@@ -1,5 +1,5 @@
 import {boundedPrivateJsonRequest} from '../continuity/remote-handoff-server.mjs';
-import {registrationActivated, registrationCatalogTarget, projectRegistrationActivation, registrationReservedRepositoryIds,registrationCatalogHostIdentity} from './project-registration-config.mjs';
+import {registrationActivated, registrationCatalogTarget, projectRegistrationActivation, registrationReservedRepositoryIds,registrationCatalogHostIdentity,registrationCatalogWriteIdentity} from './project-registration-config.mjs';
 import {REGISTRY_PATH,INDEX_PATH,LEDGER_PATH,parseRegistrationLedger,validateRegistrationCatalog,CATALOG_LIMIT} from './project-registration-catalog.mjs';
 import {registrationMemoryPaths,createLocalProjectRegistryWriter} from './project-registry-writer.mjs';
 import {assertIssuedRegistrationReceipt,contentDigest,registrationError} from './project-registration-contract.mjs';
@@ -19,7 +19,10 @@ export function createRegistrationGitPort({credential,readCredential=null,activa
     const result=await boundedPrivateJsonRequest(fetchImpl,path.startsWith('/graphql')?'https://api.github.com/graphql':'https://api.github.com/repos/'+c.repositoryId+path,{method,headers:{Authorization:'Bearer '+auth,Accept:'application/vnd.github+json','X-GitHub-Api-Version':'2026-03-10',...(body?{'Content-Type':'application/json'}:{})},...(body?{body:JSON.stringify(body)}:{})},signal,limit);
     if(result.status!==200){const error=registrationError('REGISTRATION_CATALOG_UNAVAILABLE',503);if([401,403,404,429,500,502,503,504].includes(result.status))error.upstreamStatus=result.status;throw error;}return result.data;
   };
-  const identity=async signal=>{const r=await request('',{signal,limit:65536});if(Number(r.id)!==c.repositoryNumericId||r.full_name!==c.repositoryId||r.private!==registrationCatalogHostIdentity.private||r.visibility!==registrationCatalogHostIdentity.visibility||r.archived!==registrationCatalogHostIdentity.archived||r.disabled!==registrationCatalogHostIdentity.disabled)failure('REGISTRATION_PRIVATE_IDENTITY_MISMATCH',409);};
+  const matchesIdentity=(r,policy)=>Number(r.id)===c.repositoryNumericId&&r.full_name===c.repositoryId&&r.private===policy.private&&r.visibility===policy.visibility&&r.archived===policy.archived&&r.disabled===policy.disabled;
+  // Reads retain the original private-host contract plus the observed fixed public host.
+  // Writes always require the private contract; neither a tag nor a credential bypasses it.
+  const identity=async(signal,{write=false}={})=>{const r=await request('',{signal,limit:65536});if(write?!matchesIdentity(r,registrationCatalogWriteIdentity):!matchesIdentity(r,registrationCatalogHostIdentity)&&!matchesIdentity(r,registrationCatalogWriteIdentity))failure('REGISTRATION_PRIVATE_IDENTITY_MISMATCH',409);};
   const head=async signal=>{const r=await request('/git/ref/heads/'+c.ref,{signal,limit:65536});if(r.object?.type!=='commit'||!sha(r.object.sha))failure();return r.object.sha;};
   const assertTargetAbsent=async(projectId,expectedHeadSha,signal)=>{
     registrationMemoryPaths(projectId);
@@ -58,10 +61,11 @@ export function createRegistrationGitPort({credential,readCredential=null,activa
       if(!sha(expectedHeadSha))failure('REGISTRATION_REQUEST_INVALID',400);
       const paths=[...roots,...registrationMemoryPaths(projectId)];if(Object.keys(files).length!==8||paths.some(p=>typeof files[p]!=='string'||Buffer.byteLength(files[p])>(roots.includes(p)?1048576:98304)))failure('REGISTRATION_SCOPE_DENIED',403);
       if(typeof beforeMutation!=='function')failure('REGISTRATION_SCOPE_DENIED',403);
-      await identity(signal);
+      await identity(signal,{write:true});
       await assertTargetAbsent(projectId,expectedHeadSha,signal);
       const input={branch:{repositoryNameWithOwner:c.repositoryId,refName:c.ref},expectedHeadOid:expectedHeadSha,fileChanges:{additions:paths.map(path=>({path,contents:Buffer.from(files[path]).toString('base64')})),deletions:[]},message:{headline:'Register verified private project '+projectId}};
       await beforeMutation();
+      await identity(signal,{write:true});
       const r=await request('/graphql',{method:'POST',signal,body:{query:'mutation RegisterPrivateProject($input:CreateCommitOnBranchInput!){createCommitOnBranch(input:$input){commit{oid}ref{target{oid}}}}',variables:{input}},limit:65536});
       if(r.errors?.length)failure(r.errors.some(e=>e.type==='STALE_DATA')?'REGISTRATION_CATALOG_HEAD_CONFLICT':'REGISTRATION_CATALOG_UNAVAILABLE',r.errors.some(e=>e.type==='STALE_DATA')?409:503);
       const result=r.data?.createCommitOnBranch;if(!sha(result?.commit?.oid)||result.ref?.target?.oid!==result.commit.oid)failure();return {commitSha:result.commit.oid};

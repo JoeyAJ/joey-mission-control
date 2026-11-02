@@ -72,3 +72,8 @@ Narrow fix: independent pinned `registrationCatalogHostIdentity` matches the obs
 Regression tests use actual production-shaped host metadata, reject 10 tampered/missing identity-field cases before contents reads, deny non-Owner before Git, and verify imported public repositories still fail with zero commits. Earlier fixture-only checks were insufficient because the fixture host visibility differed from production. Final exact deployment and test counts are in `mc-engine-host-identity-fix-20261102` atomic report; actual Owner Engine visibility still needs post-release confirmation.
 
 Host-identity fix validation: 1198/1198 full guarded tests PASS; 15 Chromium UI/privacy/retry cases PASS; build/check/portable validate PASS. Focused transport/host/application checks 15/15 and updated Handoff/host checks 22/22 PASS. Deployed merge must match the tested candidate tree. Actual post-fix Engine visibility on Joey’s verified Owner session remains a separate acceptance result, not established by these tests.
+
+
+## Catalog commit precondition verification
+
+Full guarded suite 1200/1200 PASS; focused transport/application checks 17/17 PASS; Handoff/identity checks 24/24 PASS; 15 Chromium UI/privacy cases PASS; build/check/portable validate PASS. Fixed public-host read succeeds; private registration commit requires private host; visibility changes during authorization are checked again before POST. Rejection cases perform zero POST/commits in isolated fixture Git with no external network. No production registry mutation was used for validation. Current public MC host remains read-only for private registration. No visibility, credentials or external permissions were changed. Engine actual Owner acceptance remains separate and pending.
