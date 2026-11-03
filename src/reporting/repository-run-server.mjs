@@ -3,6 +3,7 @@ import {createHash} from 'node:crypto';
 import {ownerAuthConfig} from '../../public/owner-auth-config.js';
 import {boundedPrivateJsonRequest,createCurrentOwnerVerifier} from '../continuity/remote-handoff-server.mjs';
 import {repositoryRunConfiguration,readRepositoryRuns} from './repository-run-source.mjs';
+import {withGitHubReadDiagnostics} from './github-read-diagnostic-server.mjs';
 import {REPORT_REF,REPORT_DIRECTORY,MAX_REPORT_BYTES,MAX_RUNS,MAX_TOTAL_RUNS,REPORT_DIRECTORIES,runReportLocation,runReportPath} from './repository-run-contract.mjs';
 import {ROLLING_LIMIT,RETENTION_PATH,MAX_REFERENCE_BYTES,MAX_EVIDENCE_INDEX_BYTES,recoveryPath,evidencePath,rollingScope,validateRetentionMarker,validateRecoveryReference,validateRecoveredReport,validateEvidenceIndex} from './rolling-retention.mjs';
 const sha=/^[a-f0-9]{40}$/,bearer=/^Bearer ([A-Za-z0-9_.-]{20,8192})$/;
@@ -10,9 +11,10 @@ const error=code=>Object.assign(Error(code),{code});
 // Immutable blob cache only; ref and both inventories are always read afresh.
 const blobCache=new Map(),CACHE_ENTRIES=MAX_TOTAL_RUNS*2,CACHE_TTL=300000;
 export function createGitHubRepositoryRunReader({credential,fetchImpl=globalThis.fetch,configuration,now=Date.now,cache=blobCache}={}){
+ const readFetch=withGitHubReadDiagnostics(fetchImpl,'repository-reports');
  const c=configuration,configured=typeof credential==='string'&&credential.length>=20&&!/\s/.test(credential),namespace=configured?createHash('sha256').update(credential).digest('hex')+':'+c.repositoryId:null;let pinned=null;
  const scope=repo=>{if(!configured||repo!==c.repositoryId)throw error('ACCESS_DENIED');};
- const get=(url,signal)=>boundedPrivateJsonRequest(fetchImpl,url,{headers:{Authorization:'Bearer '+credential,Accept:'application/vnd.github+json','X-GitHub-Api-Version':'2026-03-10'}},signal,131072);
+ const get=(url,signal)=>boundedPrivateJsonRequest(readFetch,url,{headers:{Authorization:'Bearer '+credential,Accept:'application/vnd.github+json','X-GitHub-Api-Version':'2026-03-10'}},signal,131072);
  const contents=(path,commit)=>{const url=new URL('https://api.github.com/repos/'+c.repositoryId+'/contents/'+path.split('/').map(encodeURIComponent).join('/'));url.searchParams.set('ref',commit);return url.href;};
  const denial=r=>{if([401,403].includes(r.status))throw error('ACCESS_DENIED');};
  async function immutableFile(path,commitSha,maxBytes,signal,expectedBlob=null){

@@ -1,4 +1,5 @@
 import {boundedPrivateJsonRequest} from '../continuity/remote-handoff-server.mjs';
+import {withGitHubReadDiagnostics} from '../reporting/github-read-diagnostic-server.mjs';
 import {registrationActivated, registrationCatalogTarget, projectRegistrationActivation, registrationReservedRepositoryIds,registrationCatalogHostIdentity,registrationCatalogWriteIdentity} from './project-registration-config.mjs';
 import {REGISTRY_PATH,INDEX_PATH,LEDGER_PATH,parseRegistrationLedger,validateRegistrationCatalog,CATALOG_LIMIT} from './project-registration-catalog.mjs';
 import {registrationMemoryPaths,createLocalProjectRegistryWriter} from './project-registry-writer.mjs';
@@ -9,6 +10,7 @@ const roots=[REGISTRY_PATH,INDEX_PATH,LEDGER_PATH];
 const allowed=p=>roots.includes(p)||/^PROJECTS\/[A-Z][A-Z0-9_]{2,63}\/(?:PROJECT_MEMORY|CURRENT_STATE|NEXT_ACTIONS|ARCHITECTURE|DECISIONS)\.md$/.test(p);
 const failure=(code='REGISTRATION_CATALOG_UNAVAILABLE',status=503)=>{throw registrationError(code,status);};
 export function createRegistrationGitPort({credential,readCredential=null,activation=projectRegistrationActivation,ownerSubject,fetchImpl=globalThis.fetch,sourceQualification='APPROVED_REMOTE_GIT'}={}) {
+  const readFetch=withGitHubReadDiagnostics(fetchImpl,'catalog');
   const usable=v=>typeof v==='string'&&v.length>=20&&!/\s/.test(v);
   const configured=registrationActivated(activation)&&usable(credential);
   // Catalog reads may use the existing read-only repository credential; writes never do.
@@ -16,7 +18,7 @@ export function createRegistrationGitPort({credential,readCredential=null,activa
   const c=registrationCatalogTarget;
   const request=async(path,{signal,method='GET',body,limit=3145728}={})=>{
     const write=method!=='GET'||path.startsWith('/graphql');if(write?!configured:!readConfigured)failure('REGISTRATION_NOT_ACTIVATED');const auth=write||usable(credential)?credential:readCredential;
-    const result=await boundedPrivateJsonRequest(fetchImpl,path.startsWith('/graphql')?'https://api.github.com/graphql':'https://api.github.com/repos/'+c.repositoryId+path,{method,headers:{Authorization:'Bearer '+auth,Accept:'application/vnd.github+json','X-GitHub-Api-Version':'2026-03-10',...(body?{'Content-Type':'application/json'}:{})},...(body?{body:JSON.stringify(body)}:{})},signal,limit);
+    const result=await boundedPrivateJsonRequest(write?fetchImpl:readFetch,path.startsWith('/graphql')?'https://api.github.com/graphql':'https://api.github.com/repos/'+c.repositoryId+path,{method,headers:{Authorization:'Bearer '+auth,Accept:'application/vnd.github+json','X-GitHub-Api-Version':'2026-03-10',...(body?{'Content-Type':'application/json'}:{})},...(body?{body:JSON.stringify(body)}:{})},signal,limit);
     if(result.status!==200){const error=registrationError('REGISTRATION_CATALOG_UNAVAILABLE',503);if([401,403,404,429,500,502,503,504].includes(result.status))error.upstreamStatus=result.status;throw error;}return result.data;
   };
   const matchesIdentity=(r,policy)=>Number(r.id)===c.repositoryNumericId&&r.full_name===c.repositoryId&&r.private===policy.private&&r.visibility===policy.visibility&&r.archived===policy.archived&&r.disabled===policy.disabled;
