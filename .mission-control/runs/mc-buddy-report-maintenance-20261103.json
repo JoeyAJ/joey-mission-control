@@ -40,6 +40,59 @@
       "kind": "progress",
       "summary": "1202/1202 guarded tests PASS；build／portable validate／static check PASS。實際 Buddy bytes 通過官方 reader/server/client：FOUND、3合法＋1保留隔離audit；接手packet恢復、原歷史與paused保留。三語390/1440畫面18組PASS；正式發布與live驗證待完成。",
       "result": null
+    },
+    {
+      "id": "repair-completed",
+      "sequence": 3,
+      "eventAt": "2026-11-03T00:25:18.630Z",
+      "kind": "completed",
+      "summary": "Joey授權的PR #27已合併並發布MC，exact 1f62df7925edc8327e1777749704b8bb8f330cc1；production READY dpl_3seWQvj8ayLi5xczfgHyFD5NgrRK，canonical alias已核對。Buddy原始歷史及補登完整保留，本地官方讀取/接手恢復。10/28仍是產品變更日，11/03僅補登。正式public HTTP受本環境連線限制，真實Owner複製/驗收未確認。",
+      "result": {
+        "codeSha": "1f62df7925edc8327e1777749704b8bb8f330cc1",
+        "tests": [
+          {
+            "name": "Full guarded suite 1202/1202, zero failed/cancelled/skipped and forbidden attempts",
+            "outcome": "PASS"
+          },
+          {
+            "name": "Build, portable schema validation and static safety",
+            "outcome": "PASS"
+          },
+          {
+            "name": "Actual Buddy bytes: official reader/server/client/audit continuation and sanitized public summary",
+            "outcome": "PASS"
+          },
+          {
+            "name": "18 Chromium cases: zh-TW/ko/en, 390/1440, card/detail/reports, zero external requests",
+            "outcome": "PASS"
+          },
+          {
+            "name": "Original Buddy history/guard/backfill blobs unchanged and paused preserved",
+            "outcome": "PASS"
+          },
+          {
+            "name": "Vercel production exact merged SHA READY and canonical alias identity",
+            "outcome": "PASS"
+          },
+          {
+            "name": "Live public HTTP/card: browser tunnel and web access unavailable",
+            "outcome": "NOT_RUN"
+          },
+          {
+            "name": "Real Owner clipboard/device acceptance: no authorized Owner session in this environment",
+            "outcome": "NOT_RUN"
+          },
+          {
+            "name": "Legacy full-app fixture cannot bundle its obsolete SDK export stub; replaced by actual-byte QA",
+            "outcome": "NOT_RUN"
+          }
+        ],
+        "nextSteps": "At https://joey-mission-control-one.vercel.app/#joey verify live public Buddy card/API after server cache TTL60s (deployment ready 2026-11-03T00:24:19.189Z); then verify Owner handoff copy in existing authorized session. Do not infer live visibility or acceptance from READY/local replay. Latest Buddy source d70a7963febb669fd6205d10e2f7e0c3bf16c03a (2026-10-28); its report HEAD remains40c4e062908c9b2bfbe34ad32727ef228c032327. Card update11/03 is retrospective report time, not product change time. Paused/unknown version preserved. Exact-blob exclusion requires unchanged verified backfill; unknown invalid records still fail closed. No Buddy edits/deployment, data/schema/auth/credentials/permissions/visibility/registry changes. Existing Engine Owner acceptance remains independent.",
+        "handoff": {
+          "path": "HANDOFF.md",
+          "commitSha": "1f62df7925edc8327e1777749704b8bb8f330cc1"
+        }
+      }
     }
   ]
 }
