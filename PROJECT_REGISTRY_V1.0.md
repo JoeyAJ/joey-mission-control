@@ -23,3 +23,25 @@ backend_ref: null
 deployment_project_ref: null
 deployment_preview: null
 ```
+
+### 2. Woosong Newsletter Editor
+
+```yaml
+project_id: WOOSONG_NEWSLETTER_EDITOR
+local_master: null
+github: JoeyAJ/woosong-newsletter-editor
+branch: main
+local_head: 4f03db37f7191fb8048fc4d47c49a727c8f3ba8f
+github_main_head: 4f03db37f7191fb8048fc4d47c49a727c8f3ba8f
+production_source_sha: null
+production: null
+alignment: REGISTRY_VERIFIED_SCOPES_PENDING
+repository_numeric_id: 1443665840
+canonical_entry: HANDOFF.md
+canonical_entry_sha256: be5e92f716c481a63ae83a6b94ca5f42bdd7ed6f2cfe7641aef6fa735facece2
+registration_receipt: owner_wnle_onboarding_20261103
+registration_qualification: INDEPENDENT_PRIVATE_REPOSITORY_IMPORT
+backend_ref: null
+deployment_project_ref: null
+deployment_preview: null
+```

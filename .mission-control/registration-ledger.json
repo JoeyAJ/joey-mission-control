@@ -98,6 +98,97 @@
         "PROJECTS/AI_INTERACTIVE_EXPERIENCE_ENGINE/ARCHITECTURE.md": "68e65c8b206cd26ee8d7f2b1a89dfe6b5c9e75e53b1664ceb0b04991248b796d",
         "PROJECTS/AI_INTERACTIVE_EXPERIENCE_ENGINE/DECISIONS.md": "0139b2e56e292d9ced7d16212e6214d8f5a1730786942bb0a1309748babe45de"
       }
+    },
+    {
+      "receipt": {
+        "schemaVersion": "mc.project-registration.v1",
+        "qualification": "INDEPENDENT_PRIVATE_REPOSITORY_IMPORT",
+        "mode": "IMPORT_EXISTING_PRIVATE_REPOSITORY",
+        "requestId": "owner_wnle_onboarding_20261103",
+        "requestDigest": "81d15af139bae0bc5389d0e2dd731e7aed2125ec35c1a6e1a00bf2e2f40b9516",
+        "ownerSubject": "6f0ca2ae-83e0-4684-af12-0b37d08182db",
+        "approvalRef": "owner-chat-20261103",
+        "draftId": "draft_25e2978f0ba906a69edb6842ff004b61",
+        "draftRevision": 1,
+        "projectId": "WOOSONG_NEWSLETTER_EDITOR",
+        "name": "Woosong Newsletter Editor",
+        "repositoryId": "JoeyAJ/woosong-newsletter-editor",
+        "repositoryNumericId": 1443665840,
+        "ref": "main",
+        "baselineSha": "4f03db37f7191fb8048fc4d47c49a727c8f3ba8f",
+        "files": {
+          "HANDOFF.md": {
+            "sha256": "be5e92f716c481a63ae83a6b94ca5f42bdd7ed6f2cfe7641aef6fa735facece2",
+            "blobId": "1f75e85e7e33ee39d33bcf93e33b28fa62d4866f",
+            "gitMode": "100644"
+          },
+          "PRD.md": {
+            "sha256": "e497e43061a98aab82af4b9e28ca1bb88e504ebd639df88fe9ace67b0ad9a04e",
+            "blobId": "a596ad5cda33e7492ba15c17edd9419b45f80de8",
+            "gitMode": "100644"
+          },
+          "README.md": {
+            "sha256": "5346a7407653ee65678bfa0ca2686eefdba52cbb8b8d536c901da5e6fc0a8184",
+            "blobId": "c2ebe65f996bf2b0dc088d335a1e89f31c18c955",
+            "gitMode": "100644"
+          },
+          "docs/PRODUCT_CHARTER.md": {
+            "sha256": "0ed596c79eead2bb8d5892d46fe9a6b0d0e97f702db4c3e8c20656342a62ecf0",
+            "blobId": "7a59524cd874c19ee9d1896d634822baa5329c21",
+            "gitMode": "100644"
+          },
+          "docs/PHASE_PLAN.md": {
+            "sha256": "31de0893b97d35599d89c95026a97ca4e5b3f2fc5998e493dc6d1c9d20b9acfe",
+            "blobId": "c0a26b0f49af8ee8b39e596bb5cd5fcf61ccfaab",
+            "gitMode": "100644"
+          },
+          ".mission-control/bootstrap.json": {
+            "sha256": "f74ccee309420d1ad33f3d84e8cba4a263f19091341718b8afb568f4c6a32f0f",
+            "blobId": "af85faaa445b638a27397bb9a8f15e570a2e19e8",
+            "gitMode": "100644"
+          },
+          ".mission-control/source-profile.json": {
+            "sha256": "2077fb02a0dd5c2ba9fac8049107a912665fcea2aa90175c1d1ae4374324f156",
+            "blobId": "bffeebf7a9ce048cb6a81714e02babb2180b4a6d",
+            "gitMode": "100644"
+          }
+        },
+        "sourceProfile": {
+          "projectId": "WOOSONG_NEWSLETTER_EDITOR",
+          "track": "BASELINE",
+          "repositoryId": "JoeyAJ/woosong-newsletter-editor",
+          "ref": "main",
+          "path": "HANDOFF.md",
+          "contextPaths": [
+            "PRD.md",
+            "README.md",
+            "docs/PRODUCT_CHARTER.md",
+            "docs/PHASE_PLAN.md"
+          ]
+        },
+        "resources": {
+          "backend": null,
+          "deployment": null
+        },
+        "observedAt": 1793668423301,
+        "expiresAt": 1793668453301,
+        "environmentStatus": "NOT_REQUIRED",
+        "deploymentStatus": "NOT_REQUIRED",
+        "sourceReadScope": "PENDING_EXPLICIT_ACTIVATION",
+        "reportWriteScope": "PENDING_EXPLICIT_ACTIVATION",
+        "developmentReady": false,
+        "executionAuthorized": false,
+        "verifiedDelivery": false,
+        "joeyAcceptance": "PENDING"
+      },
+      "baseCatalogHeadSha": "9cd11d75ba355d640e115c1f455f73584b8d66f9",
+      "memoryHashes": {
+        "PROJECTS/WOOSONG_NEWSLETTER_EDITOR/PROJECT_MEMORY.md": "b0becd2291866b803c9fa9b92f06d06f126a26e4e7d447f94ba2c6a54565c396",
+        "PROJECTS/WOOSONG_NEWSLETTER_EDITOR/CURRENT_STATE.md": "3452fd36442e27010613fd54593b68232cab039cc87cde1dcb72bbc4614deb86",
+        "PROJECTS/WOOSONG_NEWSLETTER_EDITOR/NEXT_ACTIONS.md": "aeaa757e0a49424ae3bb5862dfde630b3f06acb55040f8457cb101b9b76e1ea6",
+        "PROJECTS/WOOSONG_NEWSLETTER_EDITOR/ARCHITECTURE.md": "72342fd3662b7d35504999853024c5871df4cb7c16550ecc672fe775383251e1",
+        "PROJECTS/WOOSONG_NEWSLETTER_EDITOR/DECISIONS.md": "0e64d4961723ca1322c27264f773a737b7cf5079d1b0dd74a627688551157e6a"
+      }
     }
   ]
 }
