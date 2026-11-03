@@ -32,6 +32,14 @@
       "kind": "started",
       "summary": "Joey 已明確授權精確 Buddy 舊回報隔離修正與 MC 正式發布。Fresh main 3e42213；保留原檔、補登及 rolling history，不改 Buddy、權限、憑證、DB、暫停或版本。",
       "result": null
+    },
+    {
+      "id": "repair-verified",
+      "sequence": 2,
+      "eventAt": "2026-11-03T00:23:15.662Z",
+      "kind": "progress",
+      "summary": "1202/1202 guarded tests PASS；build／portable validate／static check PASS。實際 Buddy bytes 通過官方 reader/server/client：FOUND、3合法＋1保留隔離audit；接手packet恢復、原歷史與paused保留。三語390/1440畫面18組PASS；正式發布與live驗證待完成。",
+      "result": null
     }
   ]
 }
