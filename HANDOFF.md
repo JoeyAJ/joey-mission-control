@@ -1,15 +1,21 @@
 # Mission Control 自身入口與交接 — 2026-11-03
 
 Project: MISSION_CONTROL
-Timestamp: 2026-11-03T00:23:15.662Z
-Task: Buddy 歷史回報精確隔離與日常紀錄恢復
-Status: APPROVED_RELEASE_IN_PROGRESS
+Timestamp: 2026-11-03T00:48:48.580Z
+Task: Owner 回報失敗時保留既有公開歷史顯示
+Status: LOCAL_VERIFIED_PENDING_PUBLICATION
 Last Developer: Codex
 Executed by: Codex
 Actual Model: 未提供可核實的實際模型 ID
 Branch: main
 
 ## Summary
+
+### Owner 仍無 Buddy 紀錄 — 2026-11-03 後續修正
+
+Joey 新截圖在 Owner 畫面仍無紀錄，並顯示 catalog503／GitHub403；parent 的實際 guest 檢查已有最新 Buddy 回報，不能把 guest 成功當 Owner 驗收。已定位 `readOwnerTowerRuns` 全部失敗仍回傳空物件，而日常畫面因物件為 truthy 跳過既有公開摘要。改為逐個固定公開專案選來源；可用私人回報優先，缺失／未確認時才顯示該專案既有安全公開摘要。私人 catalog-only 專案與接手／複製授權不變，catalog錯誤仍明確顯示。PR #27 精確隔離、全部歷史、Joey暫停、未知版本與Buddy來源保留。
+
+403 目前不能判定為權限或限流，原 transport 沒有保留相應 headers，Vercel 查詢沒有應用程式日誌；不是「沒有錯誤」。新 server-only 固定診斷只記操作、HTTP狀態與有證據的限流／SSO／未分類拒絕，不記原始body、URL、repo、身分或憑證，不改scope、不自動重試。詳見[診斷、修正與驗收邊界](docs/MC_OWNER_PUBLIC_REPORT_FALLBACK_20261103.md)。發布 exact SHA、檢查與未完成項目以[官方 run](https://github.com/JoeyAJ/joey-mission-control/blob/mc/progress/.mission-control/runs/mc-owner-tower-fallback-20261103.json)為準；必須在受影響的 Owner 工作階段確認，不以 guest／READY／fixture 代替。
 
 ### Buddy 歷史回報精確隔離 — 2026-11-03
 
