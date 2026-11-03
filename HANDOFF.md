@@ -1,15 +1,21 @@
-# Mission Control 自身入口與交接 — 2026-11-02
+# Mission Control 自身入口與交接 — 2026-11-03
 
 Project: MISSION_CONTROL
-Timestamp: 2026-11-02T11:05:39.742Z
-Task: MC 自身日常入口、已開發功能盤點與下一階段規劃
-Status: DEPLOYED_OWNER_ACCEPTANCE_PENDING
+Timestamp: 2026-11-03T00:23:15.662Z
+Task: Buddy 歷史回報精確隔離與日常紀錄恢復
+Status: APPROVED_RELEASE_IN_PROGRESS
 Last Developer: Codex
 Executed by: Codex
 Actual Model: 未提供可核實的實際模型 ID
 Branch: main
 
 ## Summary
+
+### Buddy 歷史回報精確隔離 — 2026-11-03
+
+Joey 已明確授權本次修正與 MC 正式發布。Buddy 一筆舊回報格式不合法，導致 `PARTIAL`；日常卡片 summary 因此丟棄所有合法回報並退回 10/03 snapshot，接手複製也停止。新增 server-only 精確 blob 維護例外，同時要求同次完整讀取內有未改動、通過驗證的歷史補登；原始舊檔與全部歷史保留，不作可信 predecessor。其他 `PARTIAL`、來源／完整性／Owner 拒絕仍停止接手。詳見[修正及驗證邊界](docs/MC_BUDDY_REPORT_MAINTENANCE_20261103.md)。
+
+Buddy 最新實際來源仍為 2026-10-28 `d70a7963febb669fd6205d10e2f7e0c3bf16c03a`，原開發 Claude Code；11/03 Codex 是歷史核對補登，不是產品修改日期。保留 Joey 暫停、未知版本及未驗收狀態。正式發布 exact SHA、驗證與部署結果以[官方 MC run](https://github.com/JoeyAJ/joey-mission-control/blob/mc/progress/.mission-control/runs/mc-buddy-report-maintenance-20261103.json)為準；READY／本地畫面不能取代正式 Owner 驗收。
 
 ### Current catalog commit preconditions
 
