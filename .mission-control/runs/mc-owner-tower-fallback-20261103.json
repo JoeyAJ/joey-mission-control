@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "mc.repository-run.v1",
+  "projectId": "MISSION_CONTROL",
+  "track": "BASELINE",
+  "runId": "mc-owner-tower-fallback-20261103",
+  "predecessorRunId": "mc-buddy-report-maintenance-20261103",
+  "taskId": "mc-owner-tower-fallback-20261103",
+  "featureTitle": "修復 Owner 回報讀取失敗時遺失公開歷史紀錄",
+  "agentName": "Codex",
+  "provider": null,
+  "model": null,
+  "repositoryId": "JoeyAJ/joey-mission-control",
+  "reportRef": "mc/progress",
+  "workRef": "codex/owner-tower-public-fallback-20261103",
+  "baseline": {
+    "ref": "codex/mc-command-center-checkpoint-20261006",
+    "commitSha": "06840bafd2cabf2cff81e822b8a63299e32cb366",
+    "handoffPath": "HANDOFF.md",
+    "handoffDigest": "07d2e3a9d3549acc236b75f259f3b58669ef37b12483ffa87df5e601a72d5661",
+    "contextPaths": [
+      "README.md",
+      "docs/PRODUCT_CHARTER.md",
+      "docs/MC_PHASE_PLAN.md",
+      "docs/STAGE_HANDOFF_TEMPLATE.md"
+    ]
+  },
+  "events": [
+    {
+      "id": "owner-fallback-start",
+      "sequence": 1,
+      "eventAt": "2026-11-03T00:43:23.977Z",
+      "kind": "started",
+      "summary": "Joey回報Owner仍無Buddy紀錄；新截圖catalog503/GitHub403，guest曾確認最新紀錄。Fresh main1f62df7。已定位Owner空物件阻止公開摘要fallback；403權限或限流原因尚未確認。沿用已授權的窄修正/發布，保留精確隔離與全部歷史，不改憑證或scope。",
+      "result": null
+    }
+  ]
+}
