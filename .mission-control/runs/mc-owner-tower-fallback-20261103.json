@@ -32,6 +32,14 @@
       "kind": "started",
       "summary": "Joey回報Owner仍無Buddy紀錄；新截圖catalog503/GitHub403，guest曾確認最新紀錄。Fresh main1f62df7。已定位Owner空物件阻止公開摘要fallback；403權限或限流原因尚未確認。沿用已授權的窄修正/發布，保留精確隔離與全部歷史，不改憑證或scope。",
       "result": null
+    },
+    {
+      "id": "owner-fallback-reproduced",
+      "sequence": 2,
+      "eventAt": "2026-11-03T00:51:10.418Z",
+      "kind": "progress",
+      "summary": "已重現Owner私人報告全失敗回傳{}，truthy使公開摘要被跳過；catalog503/403為獨立錯誤。逐固定公開專案fallback修正及無敏感資訊403分類已完成。實際app+HTTPclients模擬Owner503、Owner200未確認、guest三語390/1440共18組PASS；不改私人接手/權限，完整suite最後重跑中。",
+      "result": null
     }
   ]
 }
