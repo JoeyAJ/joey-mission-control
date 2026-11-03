@@ -40,6 +40,55 @@
       "kind": "progress",
       "summary": "已重現Owner私人報告全失敗回傳{}，truthy使公開摘要被跳過；catalog503/403為獨立錯誤。逐固定公開專案fallback修正及無敏感資訊403分類已完成。實際app+HTTPclients模擬Owner503、Owner200未確認、guest三語390/1440共18組PASS；不改私人接手/權限，完整suite最後重跑中。",
       "result": null
+    },
+    {
+      "id": "owner-fallback-completed",
+      "sequence": 3,
+      "eventAt": "2026-11-03T00:57:29.943Z",
+      "kind": "completed",
+      "summary": "PR #28已依既有授權合併並發布MC，exact0af56227a29377029fe7329688c1dc82b72e6102，production READY dpl_LSDrRyLPrcJJcbNmgjDrpWthgmG1及canonical alias已核對。Owner空/未確認回報不再阻止固定專案公開摘要，私人接手仍嚴格驗證。1207 tests及18實際app syntheticOwner畫面PASS。catalog403成因仍未確認，真實Owner驗收/私人copy未確認。",
+      "result": {
+        "codeSha": "0af56227a29377029fe7329688c1dc82b72e6102",
+        "tests": [
+          {
+            "name": "Full guarded suite1207/1207, zero failed/cancelled/skipped/forbidden attempts",
+            "outcome": "PASS"
+          },
+          {
+            "name": "Build, portable schema validation, static safety and explicit public module allowlist",
+            "outcome": "PASS"
+          },
+          {
+            "name": "18 actual-app cases: real HTTP clients, synthetic Owner503/Owner200-unconfirmed/guest, 3 locales 2 widths",
+            "outcome": "PASS"
+          },
+          {
+            "name": "Per-project public fallback: valid Owner priority, private catalog scope exclusion, logout, public errors",
+            "outcome": "PASS"
+          },
+          {
+            "name": "Fixed GitHub diagnostic classifications, preserved response, no URL/body/identity/credential logging or retry",
+            "outcome": "PASS"
+          },
+          {
+            "name": "Vercel exact merged SHA productionREADY and canonical alias identity",
+            "outcome": "PASS"
+          },
+          {
+            "name": "Affected real Owner card and private handoff copy: authorized session unavailable here",
+            "outcome": "NOT_RUN"
+          },
+          {
+            "name": "Live403 permission vs rate-limit classification: no new diagnostic events observed yet",
+            "outcome": "NOT_RUN"
+          }
+        ],
+        "nextSteps": "On existing Owner session normally reload https://joey-mission-control-one.vercel.app/#joey and verify Buddy card/history under exact0af5622, not just guest. Existing browser code must load this release; no sign-out/re-login requested. Catalog503/GitHub403 remains independently unresolved. Read server MC_GITHUB_READ_DIAGNOSTIC after a genuine request: PRIMARY_RATE_LIMIT/SECONDARY_RATE_LIMIT/RATE_LIMIT/SSO_REQUIRED/FORBIDDEN_UNCLASSIFIED. Missing events or rate headers do not prove permission failure. Never bypass denied private handoff or change credentials/scope/visibility without explicit authority. Public fallback uses only existing sanitized fixed-project endpoints; both-current-source failure is not invented success. Preserve paused/unknown version and exact-blob maintenance. Buddy source remainsd70a7963febb669fd6205d10e2f7e0c3bf16c03a (10/28); its reportHEAD40c4e062908c9b2bfbe34ad32727ef228c032327 unchanged. No data/schema/registry/Buddy changes.",
+        "handoff": {
+          "path": "HANDOFF.md",
+          "commitSha": "0af56227a29377029fe7329688c1dc82b72e6102"
+        }
+      }
     }
   ]
 }
