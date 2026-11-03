@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "mc.repository-run.v1",
+  "projectId": "MISSION_CONTROL",
+  "track": "BASELINE",
+  "runId": "mc-buddy-report-maintenance-20261103",
+  "predecessorRunId": "mc-catalog-public-write-safety-20261102",
+  "taskId": "mc-buddy-report-maintenance-20261103",
+  "featureTitle": "Buddy 歷史回報精確隔離與日常紀錄恢復",
+  "agentName": "Codex",
+  "provider": null,
+  "model": null,
+  "repositoryId": "JoeyAJ/joey-mission-control",
+  "reportRef": "mc/progress",
+  "workRef": "codex/buddy-report-maintenance-20261103",
+  "baseline": {
+    "ref": "codex/mc-command-center-checkpoint-20261006",
+    "commitSha": "06840bafd2cabf2cff81e822b8a63299e32cb366",
+    "handoffPath": "HANDOFF.md",
+    "handoffDigest": "07d2e3a9d3549acc236b75f259f3b58669ef37b12483ffa87df5e601a72d5661",
+    "contextPaths": [
+      "README.md",
+      "docs/PRODUCT_CHARTER.md",
+      "docs/MC_PHASE_PLAN.md",
+      "docs/STAGE_HANDOFF_TEMPLATE.md"
+    ]
+  },
+  "events": [
+    {
+      "id": "repair-start",
+      "sequence": 1,
+      "eventAt": "2026-11-03T00:19:31.664Z",
+      "kind": "started",
+      "summary": "Joey 已明確授權精確 Buddy 舊回報隔離修正與 MC 正式發布。Fresh main 3e42213；保留原檔、補登及 rolling history，不改 Buddy、權限、憑證、DB、暫停或版本。",
+      "result": null
+    }
+  ]
+}
