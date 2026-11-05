@@ -45,3 +45,25 @@ backend_ref: null
 deployment_project_ref: null
 deployment_preview: null
 ```
+
+### 3. SLIP 中文組本科招生工作臺
+
+```yaml
+project_id: SLIP_CN_UG
+local_master: null
+github: JoeyAJ/admissions-pdf-system
+branch: main
+local_head: aa6167fc62c4c75e0c0869f32e46d14241fe7507
+github_main_head: aa6167fc62c4c75e0c0869f32e46d14241fe7507
+production_source_sha: null
+production: null
+alignment: REGISTRY_VERIFIED_SCOPES_PENDING
+repository_numeric_id: 1243627223
+canonical_entry: HANDOFF.md
+canonical_entry_sha256: 4ae97883ef73f841aa315910bed18bdb806d54f61b3c1eb80e89ec7730aa965f
+registration_receipt: owner_slip_onboarding_20261105
+registration_qualification: INDEPENDENT_PRIVATE_REPOSITORY_IMPORT
+backend_ref: null
+deployment_project_ref: null
+deployment_preview: null
+```

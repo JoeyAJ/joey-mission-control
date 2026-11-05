@@ -1,0 +1,19 @@
+# SLIP_CN_UG — DECISIONS
+
+Project: SLIP_CN_UG
+Status: Pending Development
+
+- 2026-11-05 — Register SLIP_CN_UG under owner-chat-20261105 through a separate docs-only baseline and mc/registry catalog.
+- Preserve PR #18 as open; registration is not feature delivery or owner acceptance.
+- Use fake data and Airtable SoR; no real SIS or production Excel. Resource provisioning is not part of registration.
+
+## Registration source
+
+Repository: JoeyAJ/admissions-pdf-system
+Branch: main
+Verified document baseline: aa6167fc62c4c75e0c0869f32e46d14241fe7507
+Entry: HANDOFF.md
+Entry SHA256: 4ae97883ef73f841aa315910bed18bdb806d54f61b3c1eb80e89ec7730aa965f
+Approval: owner-chat-20261105
+
+The baseline is a historical documentation receipt; registration does not authorize development or activate source-read/report-write scopes. S1 lives on open PR #18 and is not merged.

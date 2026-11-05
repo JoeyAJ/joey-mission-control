@@ -189,6 +189,97 @@
         "PROJECTS/WOOSONG_NEWSLETTER_EDITOR/ARCHITECTURE.md": "72342fd3662b7d35504999853024c5871df4cb7c16550ecc672fe775383251e1",
         "PROJECTS/WOOSONG_NEWSLETTER_EDITOR/DECISIONS.md": "0e64d4961723ca1322c27264f773a737b7cf5079d1b0dd74a627688551157e6a"
       }
+    },
+    {
+      "receipt": {
+        "schemaVersion": "mc.project-registration.v1",
+        "qualification": "INDEPENDENT_PRIVATE_REPOSITORY_IMPORT",
+        "mode": "IMPORT_EXISTING_PRIVATE_REPOSITORY",
+        "requestId": "owner_slip_onboarding_20261105",
+        "requestDigest": "471aa4273012f166bc400526f848378aeeea96513d71c3598f3bc6677f3d86ee",
+        "ownerSubject": "6f0ca2ae-83e0-4684-af12-0b37d08182db",
+        "approvalRef": "owner-chat-20261105",
+        "draftId": "draft_a8921e46789752c17c212f5e",
+        "draftRevision": 1,
+        "projectId": "SLIP_CN_UG",
+        "name": "SLIP 中文組本科招生工作臺",
+        "repositoryId": "JoeyAJ/admissions-pdf-system",
+        "repositoryNumericId": 1243627223,
+        "ref": "main",
+        "baselineSha": "aa6167fc62c4c75e0c0869f32e46d14241fe7507",
+        "files": {
+          "HANDOFF.md": {
+            "sha256": "4ae97883ef73f841aa315910bed18bdb806d54f61b3c1eb80e89ec7730aa965f",
+            "blobId": "ef3a25fff6584531b10e634e5ecac56ee92a5a33",
+            "gitMode": "100644"
+          },
+          "PRD.md": {
+            "sha256": "133ad88b1ad828d0c03956393f8c02f095133387c4f3cbde02b4e9932788764a",
+            "blobId": "624e3d47cdada2a754cf47b8a9fe46c52d3fa0aa",
+            "gitMode": "100644"
+          },
+          "README.md": {
+            "sha256": "e6fe4bb4485fa5468b70be47e8045aa8b6f12055c5a77aafdfd8ca724daaf4df",
+            "blobId": "cb677ced93c337b0193b03475f3db3befeac6687",
+            "gitMode": "100644"
+          },
+          "docs/PRODUCT_CHARTER.md": {
+            "sha256": "cd6087388951ff0000baaa9cd6b9ec8f4fb163de01e9fe844c1e0bd9eefd9b9b",
+            "blobId": "db704aed257149732dd1c869bacf4de3e9bdd896",
+            "gitMode": "100644"
+          },
+          "docs/PHASE_PLAN.md": {
+            "sha256": "c308659aec4e017f69fdcf46ec62e8de460b7b521a8c99686c07b202b59ec52e",
+            "blobId": "705d3de8eef509f82625f92f1ecb75b663f44e07",
+            "gitMode": "100644"
+          },
+          ".mission-control/bootstrap.json": {
+            "sha256": "a81c809fce313338e568013fe00f39e0249b9c2ab831f23d0cad261a1c86f8a5",
+            "blobId": "c08a12fc6fa7f99ed96aecb6fdc927959b792a75",
+            "gitMode": "100644"
+          },
+          ".mission-control/source-profile.json": {
+            "sha256": "5472ffd3f9445c299abbc1c6138f7f9045133c98b658a574c7fdcf113875c245",
+            "blobId": "fa72c8274a9d61a907f2f5d75893afc89e89ae32",
+            "gitMode": "100644"
+          }
+        },
+        "sourceProfile": {
+          "projectId": "SLIP_CN_UG",
+          "track": "BASELINE",
+          "repositoryId": "JoeyAJ/admissions-pdf-system",
+          "ref": "main",
+          "path": "HANDOFF.md",
+          "contextPaths": [
+            "PRD.md",
+            "README.md",
+            "docs/PRODUCT_CHARTER.md",
+            "docs/PHASE_PLAN.md"
+          ]
+        },
+        "resources": {
+          "backend": null,
+          "deployment": null
+        },
+        "observedAt": 1793871994622,
+        "expiresAt": 1793872294622,
+        "environmentStatus": "NOT_REQUIRED",
+        "deploymentStatus": "NOT_REQUIRED",
+        "sourceReadScope": "PENDING_EXPLICIT_ACTIVATION",
+        "reportWriteScope": "PENDING_EXPLICIT_ACTIVATION",
+        "developmentReady": false,
+        "executionAuthorized": false,
+        "verifiedDelivery": false,
+        "joeyAcceptance": "PENDING"
+      },
+      "baseCatalogHeadSha": "ff5e13eae58c4f96af77daac7675a3240ec5c3f3",
+      "memoryHashes": {
+        "PROJECTS/SLIP_CN_UG/PROJECT_MEMORY.md": "bb70c9c324466f5bce25d84855824e9fac888d63c94f1cdd9f286fcb05dc8863",
+        "PROJECTS/SLIP_CN_UG/CURRENT_STATE.md": "08638000f5cdcddd14dc474ba06e92904c7e681f1ac73c6fc2962472b3d00e87",
+        "PROJECTS/SLIP_CN_UG/DECISIONS.md": "a34e1adda370edee5a1a6233a24e4ced1a05e6379df403e40127ea2b58049c14",
+        "PROJECTS/SLIP_CN_UG/NEXT_ACTIONS.md": "96a93e2752ed9e78484fec37b2324368103585658beef637c72a9b8aede40753",
+        "PROJECTS/SLIP_CN_UG/ARCHITECTURE.md": "04dd594ab4261a3bce249d0ab921cea7957a931bc0a02896d9be157fdecff92b"
+      }
     }
   ]
 }
