@@ -16,6 +16,7 @@ import {createDeploymentProjectEntryServer} from '../src/continuity/project-entr
 import {ownerAuthConfig} from '../public/owner-auth-config.js';
 import {createPublicTowerRunServer,createPublicTowerStatusServer} from '../src/reporting/public-tower-runs.mjs';
 import {createImpactExportServer} from '../src/reporting/impact-export.mjs';
+const impactExportServer=createImpactExportServer();
 import {applyProjectUrls} from '../src/canonical/project-url-metadata.mjs';
 import {createDeploymentProjectOnboardingServer} from '../src/onboarding/project-onboarding-server.mjs';
 import {createDeploymentProjectRegistrationApplication} from '../src/onboarding/project-registration-application.mjs';
@@ -64,7 +65,7 @@ function rawProductionResponse(method,url){
 }
 export default async function handler(req,res){
  try{const url=new URL(req.url,'https://mission-control.invalid'),route=url.searchParams.get('route');let result;
-  if(route==='private/impact-export'){const response=await createImpactExportServer().handle(req,{project:url.searchParams.get('project')});res.writeHead(response.status,{...securityHeaders,'Content-Type':'application/json; charset=utf-8',...response.headers});res.end(JSON.stringify(response.body));return;}
+  if(route==='private/impact-export'){const response=await impactExportServer.handle(req,{project:url.searchParams.get('project')});res.writeHead(response.status,{...securityHeaders,'Content-Type':'application/json; charset=utf-8',...response.headers});res.end(JSON.stringify(response.body));return;}
   const dynamic=req.headers.host===new URL(ownerAuthConfig.stageOrigin).host?await createDeploymentAuthorizedProjectRuntime().handle(req,{route,project:url.searchParams.get('project'),track:url.searchParams.get('track')||'BASELINE'}):null;
   if(dynamic)result=dynamic;
   else if(['private/remote-handoff','private/remote-handoff/config'].includes(route)&&req.headers.host===new URL(ownerAuthConfig.stageOrigin).host){result=await createDeploymentRemoteHandoffServer().handle(req,{action:route.endsWith('/config')?'config':'read',project:url.searchParams.get('project')||'MISSION_CONTROL',track:url.searchParams.get('track')||'BASELINE'});}

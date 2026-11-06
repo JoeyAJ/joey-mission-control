@@ -3,6 +3,7 @@ import {Buffer} from 'node:buffer';
 import {timingSafeEqual} from 'node:crypto';
 import {repositoryRunConfiguration,readRepositoryRuns} from './repository-run-source.mjs';
 import {createGitHubRepositoryRunReader} from './repository-run-server.mjs';
+import {appChecksConfigured,createAppChecksCredential} from './github-app-checks-credential.mjs';
 
 export const IMPACT_PROJECTS=Object.freeze({NEXAEON:{name:'NexAeon',slug:'nexaeon-web',url:'https://nexaeon-web.vercel.app/'},MISSION_CONTROL:{name:'Mission Control',slug:'joey-mission-control',url:'https://joey-mission-control-one.vercel.app/'},WOOSONG_BUDDY:{name:'Woosong Buddy',slug:'woosong-buddy',url:'https://woosong-buddy-app.vercel.app/'},JOEY_ASSET_SYSTEM:{name:'Joey Asset Studio',slug:'joey-asset-studio',url:'https://joey-asset-studio.vercel.app/'},NAMYOUNG_WEB3D:{name:'Namyoung Web3D',slug:'namyoung-web3d',url:'https://namyoung-web3d.vercel.app/'}});
 export function exportMilestone(projectId,observation,ci){
@@ -17,6 +18,7 @@ export function exportMilestone(projectId,observation,ci){
   productAccepted:false,academicClaims:false};
 }
 export function createImpactExportServer({environment=process.env,fetchImpl=globalThis.fetch,read=null,verify=null,now=Date.now}={}){
+ const appCredential=createAppChecksCredential({environment,fetchImpl,now,repositories:Object.keys(IMPACT_PROJECTS).map(id=>repositoryRunConfiguration(id,{track:'BASELINE'}).repositoryId)});
  return {async handle(req,{project}={}){
   const headers={'Cache-Control':'private, no-store','CDN-Cache-Control':'private, no-store','X-Robots-Tag':'noindex, nofollow'};
   const result=(status,body)=>({status,body,headers});
@@ -39,9 +41,14 @@ export function createImpactExportServer({environment=process.env,fetchImpl=glob
    else{
     const url=`https://api.github.com/repos/${config.repositoryId}/commits/${sha}/check-runs?per_page=100`;
     const headers={Accept:'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28'};
-    let response=await fetchImpl(url,{headers:{...headers,Authorization:'Bearer '+environment.MC_GITHUB_READ_TOKEN},redirect:'error',signal:AbortSignal.timeout(10000)});
+    const useApp=appChecksConfigured(environment);
+    let credential=useApp?await appCredential.get(config.repositoryId):environment.MC_GITHUB_READ_TOKEN;
+    const request=()=>fetchImpl(url,{headers:{...headers,Authorization:'Bearer '+credential},redirect:'error',signal:AbortSignal.timeout(10000)});
+    let response=await request();
+    // A revoked/expired token gets exactly one refresh. Permission failures never trigger retries or legacy fallback.
+    if(useApp&&response.status===401){appCredential.invalidate(config.repositoryId,credential);credential=await appCredential.get(config.repositoryId);response=await request();}
     const limited=r=>r.status===429||r.headers?.get?.('x-ratelimit-remaining')==='0';
-    if(!response.ok&&[401,403,404].includes(response.status)){
+    if(!useApp&&!response.ok&&[401,403,404].includes(response.status)){
      // Contents-read credentials need not have Checks permission. A public-only fallback grants no private access.
      const metadata=await fetchImpl('https://api.github.com/repos/'+config.repositoryId,{headers,redirect:'error',signal:AbortSignal.timeout(10000)});
      const identity=metadata.ok?await metadata.json():null;
@@ -58,6 +65,6 @@ export function createImpactExportServer({environment=process.env,fetchImpl=glob
    }
    const item=exportMilestone(project,observation,ci);
    return item?result(200,{item}):result(409,{error:'IMPACT_MILESTONE_UNAVAILABLE'});
-  }catch{return result(503,{error:'IMPACT_SOURCE_UNAVAILABLE'});}
+  }catch(error){return result(503,error.appCredential?{error:error.code,phase:error.phase,...(error.upstreamStatus?{upstreamStatus:error.upstreamStatus}:{})}:{error:'IMPACT_SOURCE_UNAVAILABLE'});}
  }};
 }
