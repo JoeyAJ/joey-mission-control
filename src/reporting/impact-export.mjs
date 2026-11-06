@@ -4,7 +4,7 @@ import {timingSafeEqual} from 'node:crypto';
 import {repositoryRunConfiguration,readRepositoryRuns} from './repository-run-source.mjs';
 import {createGitHubRepositoryRunReader} from './repository-run-server.mjs';
 
-export const IMPACT_PROJECTS=Object.freeze({NEXAEON:{name:'NexAeon',slug:'nexaeon-web',url:'https://nexaeon-web.vercel.app/'},MISSION_CONTROL:{name:'Mission Control',slug:'joey-mission-control',url:'https://joey-mission-control-one.vercel.app/'},WOOSONG_BUDDY:{name:'Woosong Buddy',slug:'woosong-buddy',url:'https://woosong-buddy-app.vercel.app/'},JOEY_ASSET_SYSTEM:{name:'Joey Asset Studio',slug:'joey-asset-studio',url:'https://joey-asset-studio.vercel.app/'}});
+export const IMPACT_PROJECTS=Object.freeze({NEXAEON:{name:'NexAeon',slug:'nexaeon-web',url:'https://nexaeon-web.vercel.app/'},MISSION_CONTROL:{name:'Mission Control',slug:'joey-mission-control',url:'https://joey-mission-control-one.vercel.app/'},WOOSONG_BUDDY:{name:'Woosong Buddy',slug:'woosong-buddy',url:'https://woosong-buddy-app.vercel.app/'},JOEY_ASSET_SYSTEM:{name:'Joey Asset Studio',slug:'joey-asset-studio',url:'https://joey-asset-studio.vercel.app/'},NAMYOUNG_WEB3D:{name:'Namyoung Web3D',slug:'namyoung-web3d',url:'https://namyoung-web3d.vercel.app/'}});
 export function exportMilestone(projectId,observation,ci){
  const policy=IMPACT_PROJECTS[projectId];
  if(!policy||observation.status!=='FOUND'||ci?.qualification!=='GITHUB_ACTIONS_EXACT_COMMIT'||!ci.checks||!Number.isFinite(Date.parse(ci.checkedAt)))return null;
@@ -25,6 +25,7 @@ export function createImpactExportServer({environment=process.env,fetchImpl=glob
   if(!secret||secret.length<32)return result(503,{error:'IMPACT_CONNECTION_NOT_CONFIGURED'});
   const a=Buffer.from(req.headers?.authorization||''),b=Buffer.from('Bearer '+secret);
   if(a.length!==b.length||!timingSafeEqual(a,b))return result(401,{error:'AUTH_REQUIRED'});
+  if(project==null)return result(200,{schemaVersion:'mc.impact-catalog.v1',projects:Object.entries(IMPACT_PROJECTS).map(([projectId,policy])=>({projectId,...policy}))});
   if(!Object.hasOwn(IMPACT_PROJECTS,project||''))return result(404,{error:'IMPACT_PROJECT_NOT_ALLOWED'});
   try{
    const config=repositoryRunConfiguration(project,{track:'BASELINE'});
