@@ -2,6 +2,8 @@
 
 ## NexAeon V2 成果匯出 — 2026-11-06
 
+GitHub App 後續：Joey 已建立專用 App 並於 Production 儲存三項連接設定。新增 CI 專用的單 repo／Checks read installation token 交換、記憶體快取與到期更新；原報告 Contents 憑證及 Owner／source grants 不變。部分設定與 App 錯誤停止，401 最多更新一次，403 不降級。15 項專項測試通過；完整 Linux CI、實際 Production 匯出與四來源同步尚須在本次發布核對，不可由設定存在推定成功。詳見上列契約文件。
+
 範圍驗收後續：既有授權來源共五個，加入原本即有 report/source scope 的 NAMYOUNG_WEB3D；新增受驗證的來源目錄，網站從 MC 取得公開投影欄位，不需兩端人工維護清單。不新增 source grants 或私人 repo 權限。下方四來源描述屬前一個已發布版本。
 
 Codex 已依 Joey 本次端到端開發、測試、PR、合併與部署授權，新增限定四個既有 BASELINE 的 server-to-server 成果匯出；不改 source profiles、scope grants、Owner／registry／報告內容或其他專案。實際模型 ID 未由環境提供。PR #29 已以 `8fb4984877ca3ddda61a90d5e15c8f7a8a8ed8ad` 合併，精確 head `bde7711e6e4dfa7f8bffdab56dd2e24880583cd4` Linux CI 的 1210 項測試、build、validate、check 全過，正式 Vercel Git 部署 Ready。

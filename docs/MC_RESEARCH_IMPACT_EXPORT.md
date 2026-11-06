@@ -15,3 +15,15 @@ NexAeon 定期拉取這份結構化成果，在私人 Research Workspace 建立�
 回滾：停用 NexAeon 的同步開關，或回復 MC 上一個已驗證部署。此功能不寫 MC 資料庫／registry／report branch，沒有 MC 資料遷移。
 
 來源清單：相同受限端點不指定 project 時，只向已驗證服務回傳 mc.impact-catalog.v1 的 projectId／名稱／slug／網址。網站以此清單核對每筆成果的精確來源，不再維護另一份專案 allowlist。清單不包含 repo、原始報告或額外私人範圍；未知來源仍拒絕。
+
+## GitHub App CI 讀取 — 2026-11-06
+
+Joey 已在 GitHub 建立並安裝專用 App，於 MC Production 設定 `MC_GITHUB_APP_ID`、`MC_GITHUB_APP_INSTALLATION_ID`、`MC_GITHUB_APP_PRIVATE_KEY`。私鑰僅由伺服器讀取，不拉回工作區、不輸出於診斷或回應。
+
+原 `MC_GITHUB_READ_TOKEN` 繼續讀取既有受限報告；App 只處理 CI。每次憑證交換明示限定單一既有 repo 與 Checks read，不繼承整個安裝範圍或 Contents 權限。RS256 App JWT 有限時效；installation token 僅存在記憶體，距到期兩分鐘內更新，同一 repo 的並發請求共用交換。上游 401 只允許重新取得一次；403 不重試、不回退成個人 Token 或匿名讀取。未設定 App 時保留原有連接模式，以便回滾；部分設定、無效私鑰或交換失敗均停止，不靜默降級。
+
+GitHub 官方文件目前列明 fine-grained 個人 Token 不支援 Checks API；此前將四個 403 一概解釋為「再補 Checks 唯讀權限」並不完整。App 支援該 API，但仍須實際安裝範圍、Checks read 及精確提交的成功 CI。App 連接成功不會追認失敗／空白／未完成的歷史 CI，也不會自動公開草稿。
+
+回滾可切回先前部署；也可移除全部三項 App 設定並部署，恢復原有模式。原報告 Token 與來源授權不改；四個私人來源在原模式下可能再次如實回報 CI 讀取受阻。只移除部分 App 設定會停止 CI 匯出，不能當作回滾。
+
+參考：[GitHub App installation tokens](https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-an-installation-access-token-for-a-github-app)、[Checks API](https://docs.github.com/en/rest/checks/runs#list-check-runs-for-a-git-reference)。
