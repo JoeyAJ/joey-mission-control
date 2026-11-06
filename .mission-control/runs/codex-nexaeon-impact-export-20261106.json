@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "mc.repository-run.v1",
+  "projectId": "MISSION_CONTROL",
+  "track": "BASELINE",
+  "runId": "codex-nexaeon-impact-export-20261106",
+  "predecessorRunId": "mc-owner-tower-fallback-20261103",
+  "taskId": "mc-impact-export-20261106",
+  "featureTitle": "NexAeon 受限成果匯出與 CI 查核",
+  "agentName": "Codex",
+  "provider": null,
+  "model": null,
+  "repositoryId": "JoeyAJ/joey-mission-control",
+  "reportRef": "mc/progress",
+  "workRef": "codex/impact-ci-diagnostics",
+  "baseline": {
+    "ref": "codex/mc-command-center-checkpoint-20261006",
+    "commitSha": "06840bafd2cabf2cff81e822b8a63299e32cb366",
+    "handoffPath": "HANDOFF.md",
+    "handoffDigest": "07d2e3a9d3549acc236b75f259f3b58669ef37b12483ffa87df5e601a72d5661",
+    "contextPaths": [
+      "README.md",
+      "docs/PRODUCT_CHARTER.md",
+      "docs/MC_PHASE_PLAN.md",
+      "docs/STAGE_HANDOFF_TEMPLATE.md"
+    ]
+  },
+  "events": [
+    {
+      "id": "integration-proof-start",
+      "sequence": 1,
+      "eventAt": "2026-11-06T05:00:06.667Z",
+      "kind": "started",
+      "summary": "受限成果匯出已實作、測試並發布；開始以真實 MC 里程碑驗證跨系統匯入，其他來源 CI 權限仍待平台處理。",
+      "result": null
+    }
+  ]
+}
