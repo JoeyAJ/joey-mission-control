@@ -41,3 +41,8 @@ test('private or mismatched repository identity cannot use the public CI fallbac
   assert.equal(result.body.error,'IMPACT_CI_READ_ACCESS_REQUIRED');assert.equal(calls,2);
  }
 });
+test('a provider-evidenced rate limit is distinct from missing private Checks access',async()=>{
+ let calls=0;const server=createImpactExportServer({environment:{NEXAEON_IMPACT_SYNC_SECRET:secret},read:async()=>observation,fetchImpl:async()=>++calls===1?{ok:false,status:403}:{ok:false,status:403,headers:{get:key=>key==='x-ratelimit-remaining'?'0':null}}});
+ const r=await server.handle({method:'GET',headers:{authorization:'Bearer '+secret}},{project:'NEXAEON'});
+ assert.equal(r.body.error,'IMPACT_CI_RATE_LIMITED');assert.equal(r.body.phase,'public-metadata');assert.equal(r.body.upstreamStatus,403);
+});

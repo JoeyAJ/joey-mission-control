@@ -39,14 +39,16 @@ export function createImpactExportServer({environment=process.env,fetchImpl=glob
     const url=`https://api.github.com/repos/${config.repositoryId}/commits/${sha}/check-runs?per_page=100`;
     const headers={Accept:'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28'};
     let response=await fetchImpl(url,{headers:{...headers,Authorization:'Bearer '+environment.MC_GITHUB_READ_TOKEN},redirect:'error',signal:AbortSignal.timeout(10000)});
+    const limited=r=>r.status===429||r.headers?.get?.('x-ratelimit-remaining')==='0';
     if(!response.ok&&[401,403,404].includes(response.status)){
      // Contents-read credentials need not have Checks permission. A public-only fallback grants no private access.
      const metadata=await fetchImpl('https://api.github.com/repos/'+config.repositoryId,{headers,redirect:'error',signal:AbortSignal.timeout(10000)});
      const identity=metadata.ok?await metadata.json():null;
+     if(!metadata.ok&&limited(metadata))return result(503,{error:'IMPACT_CI_RATE_LIMITED',upstreamStatus:metadata.status,phase:'public-metadata'});
      if(identity?.full_name===config.repositoryId&&identity.private===false&&identity.visibility==='public'&&identity.archived===false&&identity.disabled===false)
       response=await fetchImpl(url,{headers,redirect:'error',signal:AbortSignal.timeout(10000)});
     }
-    if(!response.ok)return result(503,{error:[401,403,404].includes(response.status)?'IMPACT_CI_READ_ACCESS_REQUIRED':'IMPACT_CI_READ_UNAVAILABLE',upstreamStatus:response.status});
+    if(!response.ok)return result(503,{error:limited(response)?'IMPACT_CI_RATE_LIMITED':[401,403,404].includes(response.status)?'IMPACT_CI_READ_ACCESS_REQUIRED':'IMPACT_CI_READ_UNAVAILABLE',upstreamStatus:response.status,phase:'checks'});
     const payload=await response.json();
     const checks=payload.check_runs?.filter(c=>c.app?.slug==='github-actions');
     // Fail closed for pagination, pending/failing checks and an empty CI result.
