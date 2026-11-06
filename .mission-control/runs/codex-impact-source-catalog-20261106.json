@@ -32,6 +32,35 @@
       "kind": "started",
       "summary": "登錄本次已實作與部署的來源目錄補強交付，接續驗證正式里程碑更新流程。",
       "result": null
+    },
+    {
+      "id": "catalog-component-delivered",
+      "sequence": 2,
+      "eventAt": "2026-11-06T06:27:26.718042+00:00",
+      "kind": "completed",
+      "summary": "MC來源目錄補強已發布並通過正式提交Linux1214測試及受限目錄實測；僅表示此元件完成，不代表整體Goal或Joey最終驗收。",
+      "result": {
+        "codeSha": "f0cfcc333ab6ac538c58c75f6ca5bc8f39232ecc",
+        "tests": [
+          {
+            "name": "Exact production commit Linux portable verification: 1214 tests",
+            "outcome": "PASS"
+          },
+          {
+            "name": "Build, validate and static safety checks",
+            "outcome": "PASS"
+          },
+          {
+            "name": "Authenticated production catalog: all five existing scopes, no private report fields",
+            "outcome": "PASS"
+          }
+        ],
+        "nextSteps": "網站同步只更新既有待審核資產；四個其他來源Checks403仍需平台權限，首次公開仍由Joey審核。",
+        "handoff": {
+          "path": "HANDOFF.md",
+          "commitSha": "f0cfcc333ab6ac538c58c75f6ca5bc8f39232ecc"
+        }
+      }
     }
   ]
 }
