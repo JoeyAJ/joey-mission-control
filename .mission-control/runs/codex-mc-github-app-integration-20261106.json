@@ -32,6 +32,39 @@
       "kind": "started",
       "summary": "GitHub App CI 連接已實作，15項專項測試及隔離建置驗證通過；PR33完整Linux驗證執行中，正式來源與同步尚待發布實測。",
       "result": null
+    },
+    {
+      "id": "github-app-integration-delivered",
+      "sequence": 2,
+      "eventAt": "2026-11-06T07:35:55.336147+00:00",
+      "kind": "completed",
+      "summary": "GitHub App CI 連接已正式部署54f2b44，合併後Linux完整1222測試、建置及隔離驗證通過；實際App憑證交換與來源CI讀取成功，Namyoung安裝範圍已由Joey當下確認後儲存。其他來源的既有測試CI與新驗證報告接續同步，未自動公開。",
+      "result": {
+        "codeSha": "54f2b44a3fda5b7092d8d7dcb1f07ea4bc91b0fc",
+        "tests": [
+          {
+            "name": "Exact production merge commit portable verification: 1222 tests",
+            "outcome": "PASS"
+          },
+          {
+            "name": "Build, schema validation, safety checks and zero workstation read attempts",
+            "outcome": "PASS"
+          },
+          {
+            "name": "Scoped App JWT, cache/refresh, 401 bound, concurrency and failure privacy regression tests",
+            "outcome": "PASS"
+          },
+          {
+            "name": "Production App authentication and Checks API access; approved Namyoung installation scope",
+            "outcome": "PASS"
+          }
+        ],
+        "nextSteps": "完成五來源私人待審核同步及重跑驗收；首次公開、敏感資料與重大成果聲明仍由Joey審核，不代表所有產品採用或最終產品驗收。",
+        "handoff": {
+          "path": "HANDOFF.md",
+          "commitSha": "54f2b44a3fda5b7092d8d7dcb1f07ea4bc91b0fc"
+        }
+      }
     }
   ]
 }
