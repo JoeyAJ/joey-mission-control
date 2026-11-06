@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "mc.repository-run.v1",
+  "projectId": "MISSION_CONTROL",
+  "track": "BASELINE",
+  "runId": "codex-impact-source-catalog-20261106",
+  "predecessorRunId": "codex-nexaeon-impact-export-20261106",
+  "taskId": "mc-impact-source-catalog-20261106",
+  "featureTitle": "受驗證成果來源目錄：補齊五個既有授權專案",
+  "agentName": "Codex",
+  "provider": null,
+  "model": null,
+  "repositoryId": "JoeyAJ/joey-mission-control",
+  "reportRef": "mc/progress",
+  "workRef": "codex/impact-authorized-source-catalog",
+  "baseline": {
+    "ref": "codex/mc-command-center-checkpoint-20261006",
+    "commitSha": "06840bafd2cabf2cff81e822b8a63299e32cb366",
+    "handoffPath": "HANDOFF.md",
+    "handoffDigest": "07d2e3a9d3549acc236b75f259f3b58669ef37b12483ffa87df5e601a72d5661",
+    "contextPaths": [
+      "README.md",
+      "docs/PRODUCT_CHARTER.md",
+      "docs/MC_PHASE_PLAN.md",
+      "docs/STAGE_HANDOFF_TEMPLATE.md"
+    ]
+  },
+  "events": [
+    {
+      "id": "catalog-delivery-registration",
+      "sequence": 1,
+      "eventAt": "2026-11-06T06:27:26.718042+00:00",
+      "kind": "started",
+      "summary": "登錄本次已實作與部署的來源目錄補強交付，接續驗證正式里程碑更新流程。",
+      "result": null
+    }
+  ]
+}
