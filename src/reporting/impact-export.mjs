@@ -36,8 +36,18 @@ export function createImpactExportServer({environment=process.env,fetchImpl=glob
    let ci;
    if(verify)ci=await verify(config,sha);
    else{
-    const response=await fetchImpl(`https://api.github.com/repos/${config.repositoryId}/commits/${sha}/check-runs?per_page=100`,{headers:{Accept:'application/vnd.github+json',Authorization:'Bearer '+environment.MC_GITHUB_READ_TOKEN,'X-GitHub-Api-Version':'2022-11-28'},redirect:'error',signal:AbortSignal.timeout(10000)});
-    if(!response.ok)throw Error();const payload=await response.json();
+    const url=`https://api.github.com/repos/${config.repositoryId}/commits/${sha}/check-runs?per_page=100`;
+    const headers={Accept:'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28'};
+    let response=await fetchImpl(url,{headers:{...headers,Authorization:'Bearer '+environment.MC_GITHUB_READ_TOKEN},redirect:'error',signal:AbortSignal.timeout(10000)});
+    if(!response.ok&&[401,403,404].includes(response.status)){
+     // Contents-read credentials need not have Checks permission. A public-only fallback grants no private access.
+     const metadata=await fetchImpl('https://api.github.com/repos/'+config.repositoryId,{headers,redirect:'error',signal:AbortSignal.timeout(10000)});
+     const identity=metadata.ok?await metadata.json():null;
+     if(identity?.full_name===config.repositoryId&&identity.private===false&&identity.visibility==='public'&&identity.archived===false&&identity.disabled===false)
+      response=await fetchImpl(url,{headers,redirect:'error',signal:AbortSignal.timeout(10000)});
+    }
+    if(!response.ok)return result(503,{error:[401,403,404].includes(response.status)?'IMPACT_CI_READ_ACCESS_REQUIRED':'IMPACT_CI_READ_UNAVAILABLE',upstreamStatus:response.status});
+    const payload=await response.json();
     const checks=payload.check_runs?.filter(c=>c.app?.slug==='github-actions');
     // Fail closed for pagination, pending/failing checks and an empty CI result.
     if(!Array.isArray(checks)||!checks.length||payload.total_count>100||checks.some(c=>c.head_sha!==sha||c.status!=='completed'||c.conclusion!=='success'))return result(409,{error:'IMPACT_CI_NOT_VERIFIED'});
