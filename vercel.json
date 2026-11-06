@@ -4,6 +4,7 @@
   "outputDirectory": "public",
   "functions": {
     "api/index.mjs": {
+      "maxDuration": 300,
       "includeFiles": "{deployment/*.json,metadata/project-urls.v1.json}"
     }
   },
