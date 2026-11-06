@@ -32,6 +32,35 @@
       "kind": "started",
       "summary": "受限成果匯出已實作、測試並發布；開始以真實 MC 里程碑驗證跨系統匯入，其他來源 CI 權限仍待平台處理。",
       "result": null
+    },
+    {
+      "id": "bounded-export-completed",
+      "sequence": 2,
+      "eventAt": "2026-11-06T05:02:29.432Z",
+      "kind": "completed",
+      "summary": "受限成果匯出、安全診斷與正式發布已完成；Linux精確來源樹1213測試通過。其他三個來源Checks403仍待平台權限，未宣稱NexAeon整體Goal完成。",
+      "result": {
+        "codeSha": "82f48c87e21e8024f3ea35e44c3717fd4b61d206",
+        "tests": [
+          {
+            "name": "Linux portable verification exact source tree: 1213 tests",
+            "outcome": "PASS"
+          },
+          {
+            "name": "Build, validate, check and zero forbidden workstation reads",
+            "outcome": "PASS"
+          },
+          {
+            "name": "Bounded export, private credential isolation and CI diagnostics",
+            "outcome": "PASS"
+          }
+        ],
+        "nextSteps": "NexAeon繼續驗證MC此里程碑匯入；其他來源需GitHub Checks唯讀連接；首次公開由Joey審核。",
+        "handoff": {
+          "path": "HANDOFF.md",
+          "commitSha": "82f48c87e21e8024f3ea35e44c3717fd4b61d206"
+        }
+      }
     }
   ]
 }
