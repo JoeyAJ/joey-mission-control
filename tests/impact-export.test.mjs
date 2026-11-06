@@ -24,3 +24,20 @@ test('a pending/failing or empty CI response cannot export a completed report',a
   assert.equal((await server.handle({method:'GET',headers:{authorization:'Bearer '+secret}},{project:'NEXAEON'})).status,409);
  }
 });
+test('public CI fallback checks repo identity and never sends the private credential',async()=>{
+ const calls=[];const server=createImpactExportServer({environment:{NEXAEON_IMPACT_SYNC_SECRET:secret,MC_GITHUB_READ_TOKEN:'private-contents-only'},read:async()=>observation,fetchImpl:async(url,options)=>{
+  calls.push({url,options});
+  if(calls.length===1)return{ok:false,status:403};
+  if(calls.length===2)return{ok:true,json:async()=>({full_name:'JoeyAJ/nexaeon-web',private:false,visibility:'public',archived:false,disabled:false})};
+  return{ok:true,json:async()=>({total_count:1,check_runs:[{head_sha:sha,app:{slug:'github-actions'},status:'completed',conclusion:'success'}]})};
+ }});
+ assert.equal((await server.handle({method:'GET',headers:{authorization:'Bearer '+secret}},{project:'NEXAEON'})).status,200);
+ assert.equal(calls.length,3);assert.equal(calls[1].options.headers.Authorization,undefined);assert.equal(calls[2].options.headers.Authorization,undefined);
+});
+test('private or mismatched repository identity cannot use the public CI fallback',async()=>{
+ for(const identity of [{full_name:'JoeyAJ/nexaeon-web',private:true,visibility:'private',archived:false,disabled:false},{full_name:'Other/repo',private:false,visibility:'public',archived:false,disabled:false}]){
+  let calls=0;const server=createImpactExportServer({environment:{NEXAEON_IMPACT_SYNC_SECRET:secret},read:async()=>observation,fetchImpl:async()=>++calls===1?{ok:false,status:403}:{ok:true,json:async()=>identity}});
+  const result=await server.handle({method:'GET',headers:{authorization:'Bearer '+secret}},{project:'NEXAEON'});
+  assert.equal(result.body.error,'IMPACT_CI_READ_ACCESS_REQUIRED');assert.equal(calls,2);
+ }
+});
