@@ -2,6 +2,8 @@
 
 ## NexAeon V2 成果匯出 — 2026-11-06
 
+範圍驗收後續：既有授權來源共五個，加入原本即有 report/source scope 的 NAMYOUNG_WEB3D；新增受驗證的來源目錄，網站從 MC 取得公開投影欄位，不需兩端人工維護清單。不新增 source grants 或私人 repo 權限。下方四來源描述屬前一個已發布版本。
+
 Codex 已依 Joey 本次端到端開發、測試、PR、合併與部署授權，新增限定四個既有 BASELINE 的 server-to-server 成果匯出；不改 source profiles、scope grants、Owner／registry／報告內容或其他專案。實際模型 ID 未由環境提供。PR #29 已以 `8fb4984877ca3ddda61a90d5e15c8f7a8a8ed8ad` 合併，精確 head `bde7711e6e4dfa7f8bffdab56dd2e24880583cd4` Linux CI 的 1210 項測試、build、validate、check 全過，正式 Vercel Git 部署 Ready。
 
 正式跨系統測試發現：MC 本身舊報告尚無成功 CI；其他來源在 CI 讀取回傳無法連接。後續修正只增加公開 repo identity 驗證後的免私人權限 CI 讀取，以及受限的上游 HTTP 狀態；私人 repo 不回退或擴權。待該修正精確 CI／部署及真實匯出結果後才能聲稱串接完成。NexAeon 的 50 筆研究資產已登錄且全為私人，零變更重跑通過。首次公開內容仍須 Joey 審核，不由工程授權代替。契約與回滾：[MC_RESEARCH_IMPACT_EXPORT](docs/MC_RESEARCH_IMPACT_EXPORT.md)。

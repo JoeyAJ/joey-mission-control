@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {createImpactExportServer,exportMilestone} from '../src/reporting/impact-export.mjs';
+import {createImpactExportServer,exportMilestone,IMPACT_PROJECTS} from '../src/reporting/impact-export.mjs';
 const secret='a'.repeat(48),sha='b'.repeat(40);
 const observation={status:'FOUND',runs:[{report:{projectId:'NEXAEON',track:'BASELINE',featureTitle:'PRIVATE TITLE',events:[{kind:'completed',eventAt:'2026-11-06T00:00:00Z',summary:'PRIVATE SUMMARY',result:{codeSha:sha,tests:[{name:'private test',outcome:'PASS'}]}}]}}]};
 const ci={codeSha:sha,qualification:'GITHUB_ACTIONS_EXACT_COMMIT',checks:1,checkedAt:'2026-11-06T01:00:00Z'};
@@ -45,4 +45,15 @@ test('a provider-evidenced rate limit is distinct from missing private Checks ac
  let calls=0;const server=createImpactExportServer({environment:{NEXAEON_IMPACT_SYNC_SECRET:secret},read:async()=>observation,fetchImpl:async()=>++calls===1?{ok:false,status:403}:{ok:false,status:403,headers:{get:key=>key==='x-ratelimit-remaining'?'0':null}}});
  const r=await server.handle({method:'GET',headers:{authorization:'Bearer '+secret}},{project:'NEXAEON'});
  assert.equal(r.body.error,'IMPACT_CI_RATE_LIMITED');assert.equal(r.body.phase,'public-metadata');assert.equal(r.body.upstreamStatus,403);
+});
+test('authenticated source catalog covers all existing baseline scopes without disclosing reports or repositories',async()=>{
+ let reads=0;const server=createImpactExportServer({environment:{NEXAEON_IMPACT_SYNC_SECRET:secret},read:async()=>{reads++;return observation;}});
+ assert.equal((await server.handle({method:'GET',headers:{}})).status,401);
+ const r=await server.handle({method:'GET',headers:{authorization:'Bearer '+secret}});
+ assert.equal(r.status,200);assert.equal(reads,0);assert.equal(r.body.schemaVersion,'mc.impact-catalog.v1');
+ assert.deepEqual(r.body.projects.map(p=>p.projectId).sort(),['NEXAEON','MISSION_CONTROL','WOOSONG_BUDDY','JOEY_ASSET_SYSTEM','NAMYOUNG_WEB3D'].sort());
+ for(const p of r.body.projects)assert.deepEqual(Object.keys(p).sort(),['projectId','name','slug','url'].sort());
+ assert.ok(!JSON.stringify(r.body).includes('repositoryId'));assert.ok(!JSON.stringify(r.body).includes('PRIVATE'));
+ const named=structuredClone(observation);named.runs[0].report.projectId='NAMYOUNG_WEB3D';
+ assert.equal(exportMilestone('NAMYOUNG_WEB3D',named,ci).url,IMPACT_PROJECTS.NAMYOUNG_WEB3D.url);
 });
