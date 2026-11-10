@@ -19,7 +19,7 @@ export function exportMilestone(projectId,observation,ci){
 }
 export function createImpactExportServer({environment=process.env,fetchImpl=globalThis.fetch,read=null,verify=null,now=Date.now}={}){
  const appCredential=createAppChecksCredential({environment,fetchImpl,now,repositories:Object.keys(IMPACT_PROJECTS).map(id=>repositoryRunConfiguration(id,{track:'BASELINE'}).repositoryId)});
- return {async handle(req,{project}={}){
+ return {async handle(req,{project,view}={}){
   const headers={'Cache-Control':'private, no-store','CDN-Cache-Control':'private, no-store','X-Robots-Tag':'noindex, nofollow'};
   const result=(status,body)=>({status,body,headers});
   if(req.method!=='GET')return result(405,{error:'READ_ONLY_ENDPOINT'});
@@ -33,6 +33,13 @@ export function createImpactExportServer({environment=process.env,fetchImpl=glob
    const config=repositoryRunConfiguration(project,{track:'BASELINE'});
    const observation=read?await read(config):await readRepositoryRuns({configuration:config,reader:createGitHubRepositoryRunReader({credential:environment.MC_GITHUB_READ_TOKEN,fetchImpl,configuration:config,now}),now});
    if(observation.status!=='FOUND')return result(409,{error:'IMPACT_SOURCE_UNCONFIRMED'});
+   if(view==='progress') {
+    const reports=observation.runs.map(r=>r.report).filter(r=>r.projectId===project&&r.track==='BASELINE').sort((a,b)=>Date.parse(b.events.at(-1).eventAt)-Date.parse(a.events.at(-1).eventAt));
+    const r=reports[0],e=r?.events.at(-1);
+    if(!e)return result(409,{error:'IMPACT_PROGRESS_UNAVAILABLE'});
+    const text=v=>typeof v==='string'?v.slice(0,4000):'';
+    return result(200,{item:{schemaVersion:'mc.private-progress.v1',projectId:project,kind:e.kind,updatedAt:e.eventAt,summary:text(e.summary),next:text(e.result?.nextSteps),block:e.kind==='blocked'||e.kind==='failed'?text(e.summary):'',agent:text(r.agentName),productAccepted:false}});
+   }
    const rows=observation.runs.filter(r=>r.report.events.at(-1)?.kind==='completed').sort((a,b)=>Date.parse(b.report.events.at(-1).eventAt)-Date.parse(a.report.events.at(-1).eventAt));
    const sha=rows[0]?.report.events.at(-1)?.result?.codeSha;
    if(!/^[a-f0-9]{40}$/.test(sha||''))return result(409,{error:'IMPACT_MILESTONE_UNAVAILABLE'});

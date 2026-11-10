@@ -65,7 +65,7 @@ function rawProductionResponse(method,url){
 }
 export default async function handler(req,res){
  try{const url=new URL(req.url,'https://mission-control.invalid'),route=url.searchParams.get('route');let result;
-  if(route==='private/impact-export'){const response=await impactExportServer.handle(req,{project:url.searchParams.get('project')});res.writeHead(response.status,{...securityHeaders,'Content-Type':'application/json; charset=utf-8',...response.headers});res.end(JSON.stringify(response.body));return;}
+  if(route==='private/impact-export'){const response=await impactExportServer.handle(req,{project:url.searchParams.get('project'),view:url.searchParams.get('view')});res.writeHead(response.status,{...securityHeaders,'Content-Type':'application/json; charset=utf-8',...response.headers});res.end(JSON.stringify(response.body));return;}
   const dynamic=req.headers.host===new URL(ownerAuthConfig.stageOrigin).host?await createDeploymentAuthorizedProjectRuntime().handle(req,{route,project:url.searchParams.get('project'),track:url.searchParams.get('track')||'BASELINE'}):null;
   if(dynamic)result=dynamic;
   else if(['private/remote-handoff','private/remote-handoff/config'].includes(route)&&req.headers.host===new URL(ownerAuthConfig.stageOrigin).host){result=await createDeploymentRemoteHandoffServer().handle(req,{action:route.endsWith('/config')?'config':'read',project:url.searchParams.get('project')||'MISSION_CONTROL',track:url.searchParams.get('track')||'BASELINE'});}

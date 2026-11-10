@@ -57,3 +57,14 @@ test('authenticated source catalog covers all existing baseline scopes without d
  const named=structuredClone(observation);named.runs[0].report.projectId='NAMYOUNG_WEB3D';
  assert.equal(exportMilestone('NAMYOUNG_WEB3D',named,ci).url,IMPACT_PROJECTS.NAMYOUNG_WEB3D.url);
 });
+
+test('private progress includes unaccepted work without weakening milestone CI',async()=>{
+ const source=structuredClone(observation);source.runs[0].report.events[0].kind='blocked';source.runs[0].report.events[0].result=null;
+ let checks=0;const server=createImpactExportServer({environment:{NEXAEON_IMPACT_SYNC_SECRET:secret},read:async()=>source,verify:async()=>{checks++;return ci;}});
+ const req={method:'GET',headers:{authorization:'Bearer '+secret}};
+ assert.equal((await server.handle({method:'GET',headers:{}},{project:'NEXAEON',view:'progress'})).status,401);
+ const response=await server.handle(req,{project:'NEXAEON',view:'progress'});
+ assert.equal(response.body.item.kind,'blocked');assert.equal(response.body.item.block,'PRIVATE SUMMARY');assert.equal(response.body.item.productAccepted,false);assert.equal(checks,0);
+ assert.equal((await server.handle(req,{project:'UNAUTHORIZED',view:'progress'})).status,404);
+ assert.equal((await server.handle(req,{project:'NEXAEON'})).status,409);
+});
