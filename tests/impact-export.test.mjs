@@ -63,6 +63,7 @@ test('private progress includes unaccepted work without weakening milestone CI',
  let checks=0;const server=createImpactExportServer({environment:{NEXAEON_IMPACT_SYNC_SECRET:secret},read:async()=>source,verify:async()=>{checks++;return ci;}});
  const req={method:'GET',headers:{authorization:'Bearer '+secret}};
  assert.equal((await server.handle({method:'GET',headers:{}},{project:'NEXAEON',view:'progress'})).status,401);
+ source.runs[0].report.events.push({kind:'heartbeat',eventAt:'2026-11-06T00:01:00Z',summary:'still waiting',result:null});
  const response=await server.handle(req,{project:'NEXAEON',view:'progress'});
  assert.equal(response.body.item.kind,'blocked');assert.equal(response.body.item.block,'PRIVATE SUMMARY');assert.equal(response.body.item.productAccepted,false);assert.equal(checks,0);
  assert.equal((await server.handle(req,{project:'UNAUTHORIZED',view:'progress'})).status,404);

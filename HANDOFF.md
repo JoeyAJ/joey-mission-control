@@ -1,5 +1,12 @@
 # Mission Control 自身入口與交接 — 2026-11-03
 
+## Private progress closeout follow-up — 2026-11-11
+
+Joey explicitly requested completing the remaining private-control integration. Active branch: `codex/private-progress-20261111`. MC PR34 adds a bounded authenticated progress projection on existing BASELINE scopes, independent of publication CI; unresolved blockers survive heartbeat events. NexAeon PR35 adds authenticated progress display and project-detail links, removes duplicate MC buttons, and records real manual/cron synchronization outcomes in a private reserved Notion record. Dry-run remains read-only. No user acceptance or public research approval is inferred. Paper/admissions have no connected MC source; Engine remains registry-only. Do not invent progress for these entries.
+
+Validation and deployment are pending exact-head remote CI. Local NexAeon lint/build and 569 units passed before diagnostic additions; MC focused 8 tests pass. Local browser launch is blocked by socket permissions; use full remote CI. Production Notion write/reload requires an existing authorized admin browser session, currently unavailable in this environment. Historical incident logs exceeded retention; the new diagnostic record can only establish future actual runs, not recover old evidence. No secrets, permissions, grants or access controls changed.
+
+
 ## NexAeon V2 成果匯出 — 2026-11-06
 
 GitHub App 後續：Joey 已建立專用 App 並於 Production 儲存三項連接設定。新增 CI 專用的單 repo／Checks read installation token 交換、記憶體快取與到期更新；原報告 Contents 憑證及 Owner／source grants 不變。部分設定與 App 錯誤停止，401 最多更新一次，403 不降級。15 項專項測試通過；完整 Linux CI、實際 Production 匯出與四來源同步尚須在本次發布核對，不可由設定存在推定成功。詳見上列契約文件。
