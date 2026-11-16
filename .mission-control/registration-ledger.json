@@ -280,6 +280,97 @@
         "PROJECTS/SLIP_CN_UG/NEXT_ACTIONS.md": "96a93e2752ed9e78484fec37b2324368103585658beef637c72a9b8aede40753",
         "PROJECTS/SLIP_CN_UG/ARCHITECTURE.md": "04dd594ab4261a3bce249d0ab921cea7957a931bc0a02896d9be157fdecff92b"
       }
+    },
+    {
+      "receipt": {
+        "schemaVersion": "mc.project-registration.v1",
+        "qualification": "INDEPENDENT_PRIVATE_REPOSITORY_IMPORT",
+        "mode": "IMPORT_EXISTING_PRIVATE_REPOSITORY",
+        "requestId": "owner_w3dc_onboarding_20261116",
+        "requestDigest": "9b29b762a417c89556aed74491cd5fabad5bfb56dc390c8b104ab382d287f897",
+        "ownerSubject": "6f0ca2ae-83e0-4684-af12-0b37d08182db",
+        "approvalRef": "owner-chat-20261116",
+        "draftId": "draft_6ddeb0e6c6a69a0faf48955c",
+        "draftRevision": 1,
+        "projectId": "WOOSONG_3D_CAMPUS",
+        "name": "又松大學 3D 校園預覽",
+        "repositoryId": "JoeyAJ/woosong-3d-campus",
+        "repositoryNumericId": 1459858344,
+        "ref": "main",
+        "baselineSha": "58948a6e197d3a7e326dca368baf526683b37184",
+        "files": {
+          "HANDOFF.md": {
+            "sha256": "5a9bb34cea1504935260c5153a12b184d9607a10110fd263d0d11a661f474f26",
+            "blobId": "d30b48d32c8fd2c950dd09ffa54ef6dfc2ff23bb",
+            "gitMode": "100644"
+          },
+          "PRD.md": {
+            "sha256": "392589141d9e63d1d9ef8b1199e181ca12a5985f7e90fb35d3e6796b079d64a3",
+            "blobId": "05ce9d0b9d2f0d909bec2667507b1ecc91bbf58a",
+            "gitMode": "100644"
+          },
+          "README.md": {
+            "sha256": "ed3ed83960b3d5dd8ccc6800e34e48c0d2d12433d8b5431b48b0ea3008cf790e",
+            "blobId": "4284a42391ad8adb20570c976e87de815236380a",
+            "gitMode": "100644"
+          },
+          "docs/PRODUCT_CHARTER.md": {
+            "sha256": "77380c6d16d34283dfcc1e8ce2b5241261a53117296d8ce48bb7ac18da03d105",
+            "blobId": "859d7994413ef2d5789436355f5008c7cff06a52",
+            "gitMode": "100644"
+          },
+          "docs/PHASE_PLAN.md": {
+            "sha256": "21303f76222e6d145b80dd9f50c57f37fc827469362d51fa62bae4e9c093c941",
+            "blobId": "86237aa401c20c5b31a3e3af56e7fa1c06be112c",
+            "gitMode": "100644"
+          },
+          ".mission-control/bootstrap.json": {
+            "sha256": "bdf7bdb14b96f725edebac276b3caf9cc129b19f1cf4ab4c18ec6b13fbcbdd1e",
+            "blobId": "af13f2a2a93256db21be4853c1856c9c652e1179",
+            "gitMode": "100644"
+          },
+          ".mission-control/source-profile.json": {
+            "sha256": "5efc5d043db42cd3b550ee296b7a7c9b66633facaba0b7fa18e067923a5115bc",
+            "blobId": "44992aedc5c552279b067705da02abf71ee39b25",
+            "gitMode": "100644"
+          }
+        },
+        "sourceProfile": {
+          "projectId": "WOOSONG_3D_CAMPUS",
+          "track": "BASELINE",
+          "repositoryId": "JoeyAJ/woosong-3d-campus",
+          "ref": "main",
+          "path": "HANDOFF.md",
+          "contextPaths": [
+            "PRD.md",
+            "README.md",
+            "docs/PRODUCT_CHARTER.md",
+            "docs/PHASE_PLAN.md"
+          ]
+        },
+        "resources": {
+          "backend": null,
+          "deployment": null
+        },
+        "observedAt": 1794828000000,
+        "expiresAt": 1794828300000,
+        "environmentStatus": "NOT_REQUIRED",
+        "deploymentStatus": "NOT_REQUIRED",
+        "sourceReadScope": "PENDING_EXPLICIT_ACTIVATION",
+        "reportWriteScope": "PENDING_EXPLICIT_ACTIVATION",
+        "developmentReady": false,
+        "executionAuthorized": false,
+        "verifiedDelivery": false,
+        "joeyAcceptance": "PENDING"
+      },
+      "baseCatalogHeadSha": "17c3249cd3928f8c6ccb4fc8c480e0df10268640",
+      "memoryHashes": {
+        "PROJECTS/WOOSONG_3D_CAMPUS/PROJECT_MEMORY.md": "084d56d032b488f4748fdbc62fc4ee95fef44c067ca10dc49f0c035ccf2faa82",
+        "PROJECTS/WOOSONG_3D_CAMPUS/CURRENT_STATE.md": "a8d1c0e2878fb8fc796e455251067e9ef773bc9a6e43c67d897a4cdcb54da3d0",
+        "PROJECTS/WOOSONG_3D_CAMPUS/NEXT_ACTIONS.md": "a6209cc7cb4c1888095224438fa1f0a7ac915bb1830f6950252bad5e63e5d02c",
+        "PROJECTS/WOOSONG_3D_CAMPUS/ARCHITECTURE.md": "d2a2cc72da7f6ebac700f540947e3e1bc0822a722ec49efaa8129a8fb51bfdcc",
+        "PROJECTS/WOOSONG_3D_CAMPUS/DECISIONS.md": "773a790c2bf2addcfa23f4a3ea75e854b38911638f250e1a073af29df2fd578d"
+      }
     }
   ]
 }

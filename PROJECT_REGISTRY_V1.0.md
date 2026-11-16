@@ -67,3 +67,25 @@ backend_ref: null
 deployment_project_ref: null
 deployment_preview: null
 ```
+
+### 4. 又松大學 3D 校園預覽
+
+```yaml
+project_id: WOOSONG_3D_CAMPUS
+local_master: null
+github: JoeyAJ/woosong-3d-campus
+branch: main
+local_head: 58948a6e197d3a7e326dca368baf526683b37184
+github_main_head: 58948a6e197d3a7e326dca368baf526683b37184
+production_source_sha: null
+production: null
+alignment: REGISTRY_VERIFIED_SCOPES_PENDING
+repository_numeric_id: 1459858344
+canonical_entry: HANDOFF.md
+canonical_entry_sha256: 5a9bb34cea1504935260c5153a12b184d9607a10110fd263d0d11a661f474f26
+registration_receipt: owner_w3dc_onboarding_20261116
+registration_qualification: INDEPENDENT_PRIVATE_REPOSITORY_IMPORT
+backend_ref: null
+deployment_project_ref: null
+deployment_preview: null
+```
