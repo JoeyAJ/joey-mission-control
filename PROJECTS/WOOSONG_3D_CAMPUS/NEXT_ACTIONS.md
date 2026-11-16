@@ -5,7 +5,7 @@ Status: Pending Development
 
 ## Recommended Next Step
 
-Joey reviews v1.1 on a real phone (W13 sign, night view, Sol-i view), then picks the next upgrade from docs/PHASE_PLAN.md in the repository.
+Joey reviews v1.2 on a real phone (Sol-i view, night glow, west gate, W3 door, effects switch), then picks the next upgrade from docs/PHASE_PLAN.md in the repository.
 
 ## Blockers
 
