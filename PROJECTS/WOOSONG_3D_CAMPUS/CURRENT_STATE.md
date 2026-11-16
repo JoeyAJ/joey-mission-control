@@ -17,7 +17,7 @@ Registered in Mission Control. v1 was fixed by Joey as the first version on 2026
 
 ## Work log
 
-- 2026-11-16T20:40:00+09:00 | Claude | in_progress | v1.2: Sol-i clearance and camera collision, gait animation, night glow, west gate vehicle entrance, W3 door, effects switch.
+- 2026-11-16T20:25:00+09:00 | Claude | in_progress | v1.2: Sol-i clearance and camera collision, gait animation, night glow, west gate vehicle entrance, W3 door, effects switch.
 - 2026-11-16T20:20:00+09:00 | Claude | in_progress | Registered in MC; v1.1 awaiting Joey's review.
 - 2026-11-16T20:00:00+09:00 | Claude | in_progress | v1.1: W13 sign corrected from official photo, night lighting fixed, facade styles, Sol-i view in tour and route.
 - 2026-11-16T19:10:00+09:00 | Claude | in_progress | v1 frozen by Joey as first version; GitHub repo, public URL and Notion record created.
