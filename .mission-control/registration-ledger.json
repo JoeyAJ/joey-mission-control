@@ -352,8 +352,8 @@
           "backend": null,
           "deployment": null
         },
-        "observedAt": 1794828000000,
-        "expiresAt": 1794828300000,
+        "observedAt": 1794826500000,
+        "expiresAt": 1794826800000,
         "environmentStatus": "NOT_REQUIRED",
         "deploymentStatus": "NOT_REQUIRED",
         "sourceReadScope": "PENDING_EXPLICIT_ACTIVATION",
