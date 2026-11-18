@@ -14,6 +14,8 @@ Status: In Development
 - 2026-11-18 — Joey authorized A–E in the existing solar project, normal publication to its existing public URL, MC/Handoff updates and the asset development master record. New v0.5.1 delivery awaits his product review; do not imply acceptance from the instruction to implement.
 - 2026-11-18 — Borrow Anatomy architecture and interaction techniques, not unlicensed source/models. Original procedural solar geometry; same deterministic Runtime/save/share. E has no student sample or physical-phone performance conclusion. Preserve AI deferral.
 
+- 2026-11-18 continuation — Joey explicitly authorized applying solar's development logic/technical standard to all existing experiences and continuing normal existing-site publication / MC sync. Use 3D for physical anatomy and process comparison for accounting; 13 original assets / 19 views, same deterministic models, missions and saved/share contracts. Earlier other-topic restriction is superseded by this request. No automatic acceptance or student-efficacy claim; API deferral remains.
+
 ## Registration source
 
 Repository: JoeyAJ/ai-interactive-experience-engine

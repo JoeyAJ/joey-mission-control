@@ -3,11 +3,15 @@
 Project: AI_INTERACTIVE_EXPERIENCE_ENGINE
 Status: In Development
 
-Specification (JSON, v0.2) → strict validation against approved models and scene assets → shared Runtime (deterministic simulation, missions, share links) → generic UI with whitelisted SVG scenes plus a lazy original solar Three.js viewer. Next.js 16 + TypeScript on Vercel (Hobby, free). AI (later) only writes specifications through the same validation; generated code is never executed.
+Specification (JSON, v0.2) → strict validation against approved models and scene assets → shared Runtime (deterministic simulation, missions, share links) → generic UI with whitelisted SVG scenes plus lazy original solar and shared anatomy Three.js viewers. Next.js 16 + TypeScript on Vercel (Hobby, free). AI (later) only writes specifications through the same validation; generated code is never executed.
 
 ## Solar presentation adapter — v0.5.1
 
 SolarStructure → error boundary → Solar3DPanel → imperative WebGL viewer → original grouped geometry. Runtime still owns navigation, teaching state, deterministic models, missions and save/share. No copied Anatomy source/models; methods and pinned references are in docs/DEVELOPMENT_MASTER_RECORD.md in the product repository.
+
+## Existing-topic presentation — v0.5.2
+
+Declarative anatomy catalog → per-part original geometry factory → lazy shared WebGL viewer → existing view adapter. Portrait-aware sphere framing fits assembled/exploded bounds; stable IDs support picking, focus, three-language facts and recognition. Session pose/mode/selection live in a Runtime provider; persistent contracts do not change. ProcessLens reads existing outputs and captured baselines, with percentage-point deltas. Railway forwards the existing playback solver sample (body/base/time) instead of adding a second simulation. Original SVG mechanisms and GPU/module/render fallback remain. The complete author-method/adaptation record stays in the product master record.
 
 ## Registration source
 

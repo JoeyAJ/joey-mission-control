@@ -3,13 +3,17 @@
 Project: AI_INTERACTIVE_EXPERIENCE_ENGINE
 Status: In Development
 
-Independent project AI_INTERACTIVE_EXPERIENCE_ENGINE: a reusable AI interactive experience engine. Repository JoeyAJ/ai-interactive-experience-engine (main = public site https://ai-interactive-experience-engine.vercel.app). Developing Agent: Codex. Current version v0.5.1, awaiting Joey review. Separate from JOEY_ASSET_SYSTEM.
+Independent project AI_INTERACTIVE_EXPERIENCE_ENGINE: a reusable AI interactive experience engine. Repository JoeyAJ/ai-interactive-experience-engine (main = public site https://ai-interactive-experience-engine.vercel.app). Developing Agent: Codex. Current version v0.5.2, awaiting Joey review. Separate from JOEY_ASSET_SYSTEM.
 
 ## Asset development master record
 
 https://github.com/JoeyAJ/ai-interactive-experience-engine/blob/main/docs/DEVELOPMENT_MASTER_RECORD.md
 
-Records the 2026-11-18 A–E solar upgrade, Anatomy Atelier production logic/technical sources, adoption/non-copy decisions, core compatibility and measured/unmeasured boundaries. Same public site; no new solar project, model API or other-topic 3D conversion. E technical comparison and evaluation protocol are delivered; no student-efficacy claim.
+Records the complete observed Anatomy Atelier production logic and pinned technical sources, original solar A–E upgrade, and v0.5.2 shared multi-topic adaptation: catalog/geometry/viewer/framing/identification, same-model process baselines, existing rail sample/time, preservation and measured/unmeasured boundaries. Same public site and project; no live model API. Joey explicitly authorized the existing-topic continuation; student efficacy remains unmeasured.
+
+## Exact v0.5.2 delivery
+
+PR42 / PR43 main e377c9137723b990e9230958e4c442b0c60130c4; production dpl_GAPzgGtM59kU1F1bmNgUjPphUJC5 READY, fixed alias and public browser checks confirmed. 259 tests, 13 core sources identical. MC run engine-existing-anatomy-20261118. Handoff https://github.com/JoeyAJ/ai-interactive-experience-engine/blob/main/HANDOFF.md; master https://github.com/JoeyAJ/ai-interactive-experience-engine/blob/main/docs/DEVELOPMENT_MASTER_RECORD.md. Joey review remains pending.
 
 ## Exact v0.5.1 delivery
 

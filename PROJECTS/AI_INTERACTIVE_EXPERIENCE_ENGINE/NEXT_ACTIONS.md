@@ -5,9 +5,11 @@ Status: In Development
 
 ## Recommended Next Step
 
-請 Joey 到原公開網址驗收 v0.5.1：住宅→太陽能 3D→拆層／選零件→矽電池／機制→返回；主記錄 docs/DEVELOPMENT_MASTER_RECORD.md。E 技術驗證與試用方案已交付，學生效益與實機 FPS 尚未測量；試用後才評估經營／鐵道，AI API 維持延後。
+請 Joey 到原公開網址與 MC 驗收 v0.5.2：住宅各設備的構造與深入返回、經營流程／基準比較、鐵道轉向架／彈簧／阻尼器與播放；Handoff及資產開發主記錄已更新。259項測試通過；學生效果／實機FPS尚未測量，之後可依E試用方案實測，AI API維持延後。
 
 ## Memo
+
+- 2026-11-18 — Joey explicitly authorized extending the solar logic/technology to all existing experiences, same-site publication and MC/Handoff/master-record updates; this supersedes the earlier solar-only increment. It does not authorize live/paid AI or a new project.
 
 - Claude API: Joey decided on 2026-10-15 to open the API key only when professors start formal use. Model already chosen: Claude Opus 5.5; AI features behind a passcode; the key is set by Joey in Vercel and never pasted in chat.
 - Every accepted version must be synced to this MC record by the developing Agent (version, state, next step).

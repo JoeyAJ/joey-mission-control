@@ -4,7 +4,7 @@ Project: AI_INTERACTIVE_EXPERIENCE_ENGINE
 Status: In Development
 
 ```yaml
-version: v0.5.1
+version: v0.5.2
 current_agent: Codex
 agent_model: not-recorded
 as_of: 2026-11-18
@@ -13,9 +13,11 @@ public_url: https://ai-interactive-experience-engine.vercel.app
 
 ## Current Stage
 
-v0.5 interaction core accepted by Joey and live. v0.5.1 adds solar 3D anatomy, seven selectable original geometry parts, exploded assembly, house location/return, four-question identification practice and SVG fallback in the same Runtime. Build continues with Joey review next; student learning efficacy is unmeasured. AI remains off.
+v0.5 interaction core accepted by Joey and live. v0.5.2 extends the solar development method to existing home, business, culinary and railway lessons: 13 original anatomy assets, 19 views, shared recognition/viewer and causal baseline comparisons. Build continues with Joey review next; student efficacy is unmeasured. AI remains off.
 
 ## Work log
+
+- 2026-11-18T12:35:16+09:00 | Codex | completed | v0.5.2 依太陽能標準優化其餘既有教學：住宅／商店／鐵道原創3D、流程前後比較、辨識與回退；259 tests、三語、保存分享及原站驗證通過；主記錄與handoff更新，Joey待驗收。
 
 - 2026-11-18T10:45:32+09:00 | Codex | completed | v0.5.1 太陽能 3D A–E 增量：原專案七零件拆層、旋轉聚焦、辨識挑戰與 SVG 回退；241 tests/typecheck/build 通過；主記錄含 Anatomy 方法來源；Joey 待驗收，學生效果未測。
 
@@ -32,16 +34,19 @@ v0.5 interaction core accepted by Joey and live. v0.5.1 adds solar 3D anatomy, s
 
 ## Latest delivery
 
-- PR: https://github.com/JoeyAJ/ai-interactive-experience-engine/pull/41
-- Application implementation: 37b431d641896a8b17f2f315bf2c938bc9dd90cb; final candidate e549ebb313cda3fa9a8c29bb630cee4887cb81c2
-- Main merge: bb86949e420bc11b275079bcb6b0f7432de9b5e8
-- Production: dpl_8M6seDMrZ8rN6xBbmLAFo1F4cdGo, READY, same main SHA and fixed public alias.
-- Actual public house → 3D cells → silicon → PV open circuit → return passed; browser error query empty. 241 tests/typecheck/build and core byte identity recorded.
+- Version: v0.5.2, Agent Codex, PR42 + camera-return fix PR43 (https://github.com/JoeyAJ/ai-interactive-experience-engine/pull/43)
+- Application candidate: 66471d95dbae21eed9594bc0ae42a862ba926a17
+- Main merge: e377c9137723b990e9230958e4c442b0c60130c4
+- Production: dpl_GAPzgGtM59kU1F1bmNgUjPphUJC5, READY, same main SHA and original public alias.
+- 259 tests/typecheck/build; 13 model/spec/state core sources byte-identical. Actual home five entrances/depths, business five entrances, culinary, rail playback/mission, old solar save and Korean parameterized share passed; actual 320/1280 browser layouts. Public verification also passed on the original site.
 - Master record: https://github.com/JoeyAJ/ai-interactive-experience-engine/blob/main/docs/DEVELOPMENT_MASTER_RECORD.md
 - Handoff: https://github.com/JoeyAJ/ai-interactive-experience-engine/blob/main/HANDOFF.md
-- E technical comparison/protocol delivered; physical phone FPS and student outcomes NOT_RUN. Joey acceptance PENDING.
+- MC run: engine-existing-anatomy-20261118, predecessor engine-solar-3d-ae-20261118; terminal result records exact checks and handoff commit.
+- Student learning outcomes / physical-phone FPS NOT_RUN. Joey acceptance PENDING. No new project, model API, credentials or backend changes.
 
 ## Version history
+
+- v0.5.2 · Existing-topic shared anatomy / causal comparisons — delivered 2026-11-18, Joey acceptance pending (PR #42 / #43)
 
 - v0.5.1 · Solar 3D A–D + E technical evaluation/protocol — delivered 2026-11-18, Joey acceptance pending (PR #41)
 
