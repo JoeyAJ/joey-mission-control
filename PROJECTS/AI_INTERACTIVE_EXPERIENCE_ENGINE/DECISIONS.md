@@ -11,6 +11,9 @@ Status: In Development
 - 2026-10-15 — Rule: every accepted version is synced to Mission Control by the developing Agent.
 - 2026-10-15 — Live progress reports activated (90-day grant, expires 2027-01-13); Agents report to this repository's mc/progress branch. First real run accepted by Joey.
 
+- 2026-11-18 — Joey authorized A–E in the existing solar project, normal publication to its existing public URL, MC/Handoff updates and the asset development master record. New v0.5.1 delivery awaits his product review; do not imply acceptance from the instruction to implement.
+- 2026-11-18 — Borrow Anatomy architecture and interaction techniques, not unlicensed source/models. Original procedural solar geometry; same deterministic Runtime/save/share. E has no student sample or physical-phone performance conclusion. Preserve AI deferral.
+
 ## Registration source
 
 Repository: JoeyAJ/ai-interactive-experience-engine

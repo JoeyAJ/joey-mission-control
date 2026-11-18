@@ -5,7 +5,7 @@ Status: In Development
 
 ## Recommended Next Step
 
-Prepare the Woosong pilot (v0.7): culinary first, then railway electrical with a faculty-verified model. Memo: open the Claude API (AI generation and explanation, v0.6) only when the engine is formally handed to professors.
+請 Joey 到原公開網址驗收 v0.5.1：住宅→太陽能 3D→拆層／選零件→矽電池／機制→返回；主記錄 docs/DEVELOPMENT_MASTER_RECORD.md。E 技術驗證與試用方案已交付，學生效益與實機 FPS 尚未測量；試用後才評估經營／鐵道，AI API 維持延後。
 
 ## Memo
 

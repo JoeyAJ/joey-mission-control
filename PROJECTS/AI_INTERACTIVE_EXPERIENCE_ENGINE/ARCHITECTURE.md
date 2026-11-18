@@ -3,7 +3,11 @@
 Project: AI_INTERACTIVE_EXPERIENCE_ENGINE
 Status: In Development
 
-Specification (JSON, v0.2) → strict validation against approved models and scene assets → shared Runtime (deterministic simulation, missions, share links) → generic UI with whitelisted 2D scenes. Next.js 16 + TypeScript on Vercel (Hobby, free). AI (later) only writes specifications through the same validation; generated code is never executed.
+Specification (JSON, v0.2) → strict validation against approved models and scene assets → shared Runtime (deterministic simulation, missions, share links) → generic UI with whitelisted SVG scenes plus a lazy original solar Three.js viewer. Next.js 16 + TypeScript on Vercel (Hobby, free). AI (later) only writes specifications through the same validation; generated code is never executed.
+
+## Solar presentation adapter — v0.5.1
+
+SolarStructure → error boundary → Solar3DPanel → imperative WebGL viewer → original grouped geometry. Runtime still owns navigation, teaching state, deterministic models, missions and save/share. No copied Anatomy source/models; methods and pinned references are in docs/DEVELOPMENT_MASTER_RECORD.md in the product repository.
 
 ## Registration source
 
