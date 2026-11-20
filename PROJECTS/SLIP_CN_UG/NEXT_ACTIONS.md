@@ -5,7 +5,7 @@ Status: Pending Development
 
 ## Recommended Next Step
 
-Joey reviews S1 on PR #18 preview with fake data and decides on development/acceptance separately. Registration does not merge PR #18.
+Joey 可用 https://admissions-pdf-system.vercel.app/demo 檢查初審、補件追蹤、主管唯讀統計及重設；只用內建假資料，正式登入與使用者驗收另行決定。
 
 ## Blockers
 
