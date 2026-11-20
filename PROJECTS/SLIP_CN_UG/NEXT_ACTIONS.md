@@ -5,7 +5,7 @@ Status: Pending Development
 
 ## Recommended Next Step
 
-Joey 可用 https://admissions-pdf-system.vercel.app/demo 檢查初審、補件追蹤、主管唯讀統計及重設；只用內建假資料，正式登入與使用者驗收另行決定。
+Joey 可在 https://admissions-pdf-system.vercel.app/demo 一鍵載入假資料，試做補齊與部分補件、主管檢視及重設；正式登入與驗收另行決定。
 
 ## Blockers
 

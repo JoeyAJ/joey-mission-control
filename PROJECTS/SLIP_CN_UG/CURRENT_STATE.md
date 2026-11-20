@@ -12,9 +12,11 @@ public_url: https://admissions-pdf-system.vercel.app
 
 ## Current Stage
 
-S1 獨立假資料示範已可操作：桌機、手機的繁中、韓文、英文均確認資料初審、補件追蹤、主管唯讀統計與重設。Production URL remains the canonical entry; formal sign-in stays closed. User acceptance and access activation are not asserted. PR #22; Vercel source 409d5381af2338a8021d4e93837453dab8ef8f6e (dpl_EWN6q3bLAkhSimf1LgvVV2fj7SD5).
+公開假資料示範新增 10 筆合成案件及補件佇列，完成及部分補件、主管唯讀檢視、歷程與重設均告核對；手機、桌機及三語通過。Production URL remains the canonical entry; formal sign-in stays closed. User acceptance and access activation are not asserted. PR #23; Vercel READY source 34a420d5486007670eac0413f7e03ad1e5905862 (dpl_EBK1As4PqRoikputHfs3hEt9cQ4C).
 
 ## Work log
+
+- 2026-11-20T18:11:20+09:00 | ChatGPT | completed | 公開假資料示範 https://admissions-pdf-system.vercel.app/demo 更新 10 筆合成案件及補件佇列；桌機、手機三語驗證通過（PR #23），正式登入仍關閉。
 
 - 2026-11-20T17:40:13+09:00 | ChatGPT | completed | 公開假資料示範 https://admissions-pdf-system.vercel.app/demo 已通過桌機與手機三語操作核對（PR #22）；正式登入維持關閉。
 
