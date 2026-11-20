@@ -46,7 +46,7 @@ deployment_project_ref: null
 deployment_preview: null
 ```
 
-### 3. SLIP 中文組本科招生工作臺
+### 3. SLIP
 
 ```yaml
 project_id: SLIP_CN_UG
