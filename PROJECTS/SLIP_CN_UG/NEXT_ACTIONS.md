@@ -5,7 +5,7 @@ Status: Pending Development
 
 ## Recommended Next Step
 
-先修正 OAuth 回呼，再於 PR #24 隔離預覽版以 Google Picker 選定唯一指定測試檔案，用合成掃描樣本 C 核對只新增一列，並重送確認不產生重複列；不使用真實學生資料或執行大學院擷取。
+從 https://admissions-pdf-system.vercel.app/login 進入受 Google 驗證保護的流程，以核定測試表和合成掃描樣本確認新增一列，再重送確認無重複；不用真實學生資料，附件影像辨識另行安排。
 
 ## Blockers
 

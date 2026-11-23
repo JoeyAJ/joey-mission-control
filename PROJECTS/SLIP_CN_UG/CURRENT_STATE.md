@@ -12,9 +12,11 @@ public_url: https://admissions-pdf-system.vercel.app
 
 ## Current Stage
 
-PR #24 的隔離預覽版接上 PDF → OCR → 指定測試用 Google 試算表，修正 OAuth 設定後已排除入口 404。指定測試者本人完成 Google 登入與檔案範圍的授權，但回呼仍顯示「Sign-in or file consent not verified」，未進入上傳頁，也未寫入。另一份合成掃描 PDF（樣本 C）已在本機通過測試。Production URL remains the canonical entry; public demo, formal sign-in, access and acceptance remain unchanged.
+PR #25 已將 Google 驗證入口與交接文件合併至正式站，入口為 https://admissions-pdf-system.vercel.app/login；正式部署來源 12a9707085d2360bda4581d7c795960139170dcf（READY）。PR #24 隔離預覽已確認指定使用者 Google 登入、檔案授權和測試表選取；五份原始版型合成 PDF 已交付，三份文字型及兩份掃描型已在本機核對。尚未驗證實際寫入或防重複；附件影像辨識尚未實作。Production URL remains the canonical entry; no real student data or new access/acceptance is claimed.
 
 ## Work log
+
+- 2026-11-23T11:44:30+09:00 | ChatGPT | in_progress | PR #25 正式站登入入口及交接文件已上線；隔離預覽已核對 Google 登入及測試表選取，五份原版型合成 PDF 已交付，實際寫入和防重複待驗證。
 
 - 2026-11-23T10:45:44+09:00 | ChatGPT | blocked | PR #24 預覽入口 404 已修正；指定測試者已完成 Google 登入及同意，但回呼未通過，未進入上傳頁或寫入。合成掃描樣本 C 已通過本機核對。
 
