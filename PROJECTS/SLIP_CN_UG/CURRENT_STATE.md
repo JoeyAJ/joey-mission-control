@@ -12,9 +12,11 @@ public_url: https://admissions-pdf-system.vercel.app
 
 ## Current Stage
 
-SLIP V2 PR #24 保持草稿；受保護預覽 READY，來源 6c9ef9ca38b3e431028e4d2d9814a9ac9ad8e299（dpl_FBBTdtDXyZhKzkhpFNxy1dXJ8KGQ）。使用者驗收發現掃描 F 的 O 畢業學校、Q 地址漏填；新版按欄位 OCR，在五份原始樣本核對 F 的 O／Q 已可辨識、Z=有、AB=无，G 地址仍空白。新增「只重新解析，不寫入」：跳過試算表寫入及查重查詢，保留既有保護。60 項測試通過、4 項舊樣本略過；模擬寫入器與 Chromium 已核對。交接與部署紀錄已更新；未改既有列，未驗證登入後的實際寫入、回讀或防重複。正式登入入口 https://admissions-pdf-system.vercel.app/login 維持 12a9707085d2360bda4581d7c795960139170dcf 並連到受保護預覽。Production URL remains the canonical entry; no new access or acceptance is claimed.
+SLIP V2 PR #24 仍為草稿；受保護預覽 READY，來源 090013fbdb732c4b6e1ae6f8142d3df1e7582c08（dpl_Dr44TGvA5JoDq4cYdW1ZC2Kf5brF）。只比較 O／Q；需唯一且有佐證的身分匹配、簽署的工作階段及列錨點，三分鐘內由本人確認。列標記為中繼資料，不改儲存格。只預選空白欄；已有值的衝突需手動勾選，不改公式、不寫入空辨識值、不覆寫整列。確認後先重讀，只寫所選欄，再回讀，重試不重寫。五份 V2 OCR 核對，75 項通過／4 項舊樣本略過；桌機手機 Chromium 模擬與匿名比較／確認 403 已核對。交接已更新；開發期間未呼叫實際試算表，真實寫入和回讀待指定帳號複驗。正式登入入口 https://admissions-pdf-system.vercel.app/login 維持 12a9707085d2360bda4581d7c795960139170dcf，連到受保護預覽。Production URL remains the canonical entry; no new access or acceptance is claimed.
 
 ## Work log
+
+- 2026-11-23T14:35:15+09:00 | ChatGPT | in_progress | 受保護預覽已上線 O／Q 逐欄比較及本人確認；五份 OCR、75 項測試及匿名防護已核對，未執行任何實際試算表操作。
 
 - 2026-11-23T13:28:07+09:00 | ChatGPT | in_progress | 受保護預覽 READY：掃描 F 的畢業學校、地址已在新版核對；新增只重新解析、不寫入，60 項通過。登入後複驗與寫入回讀／防重複仍待確認。
 

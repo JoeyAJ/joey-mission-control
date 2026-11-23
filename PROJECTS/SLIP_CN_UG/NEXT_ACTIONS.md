@@ -5,7 +5,7 @@ Status: Pending Development
 
 ## Recommended Next Step
 
-從 https://admissions-pdf-system.vercel.app/login 進入受保護預覽，先用合成樣本 F 的「只重新解析，不寫入」核對 O／Q；獨立驗證實際寫入、回讀和防重複前，不要修改既有測試列或使用真實學生資料。
+從 https://admissions-pdf-system.vercel.app/login 進入受保護預覽，只用核定合成測試表，由使用者本人確認選定 O／Q 欄。若共用協作者正在更動該列，先停止並重新比較；核對只改所選欄及重試無重寫，不使用真實學生資料。
 
 ## Blockers
 
