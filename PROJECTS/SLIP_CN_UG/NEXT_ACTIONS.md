@@ -5,7 +5,7 @@ Status: Pending Development
 
 ## Recommended Next Step
 
-Joey 可在 https://admissions-pdf-system.vercel.app/demo 一鍵載入假資料，試做補齊與部分補件、主管檢視及重設；正式登入與驗收另行決定。
+先修正 OAuth 回呼，再於 PR #24 隔離預覽版以 Google Picker 選定唯一指定測試檔案，用合成掃描樣本 C 核對只新增一列，並重送確認不產生重複列；不使用真實學生資料或執行大學院擷取。
 
 ## Blockers
 

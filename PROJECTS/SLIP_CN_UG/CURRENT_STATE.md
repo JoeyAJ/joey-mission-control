@@ -6,15 +6,17 @@ Status: Pending Development
 ```yaml
 current_agent: 이 박사 （내 심장） · Dev 寫碼與專案實作
 agent_model: codex
-as_of: 2026-11-20
+as_of: 2026-11-23
 public_url: https://admissions-pdf-system.vercel.app
 ```
 
 ## Current Stage
 
-公開假資料示範新增 10 筆合成案件及補件佇列，完成及部分補件、主管唯讀檢視、歷程與重設均告核對；手機、桌機及三語通過。Production URL remains the canonical entry; formal sign-in stays closed. User acceptance and access activation are not asserted. PR #23; Vercel READY source 34a420d5486007670eac0413f7e03ad1e5905862 (dpl_EBK1As4PqRoikputHfs3hEt9cQ4C).
+PR #24 的隔離預覽版接上 PDF → OCR → 指定測試用 Google 試算表，修正 OAuth 設定後已排除入口 404。指定測試者本人完成 Google 登入與檔案範圍的授權，但回呼仍顯示「Sign-in or file consent not verified」，未進入上傳頁，也未寫入。另一份合成掃描 PDF（樣本 C）已在本機通過測試。Production URL remains the canonical entry; public demo, formal sign-in, access and acceptance remain unchanged.
 
 ## Work log
+
+- 2026-11-23T10:45:44+09:00 | ChatGPT | blocked | PR #24 預覽入口 404 已修正；指定測試者已完成 Google 登入及同意，但回呼未通過，未進入上傳頁或寫入。合成掃描樣本 C 已通過本機核對。
 
 - 2026-11-20T18:11:20+09:00 | ChatGPT | completed | 公開假資料示範 https://admissions-pdf-system.vercel.app/demo 更新 10 筆合成案件及補件佇列；桌機、手機三語驗證通過（PR #23），正式登入仍關閉。
 
