@@ -12,9 +12,11 @@ public_url: https://admissions-pdf-system.vercel.app
 
 ## Current Stage
 
-PR #25 已將 Google 驗證入口與交接文件合併至正式站，入口為 https://admissions-pdf-system.vercel.app/login；正式部署來源 12a9707085d2360bda4581d7c795960139170dcf（READY）。PR #24 隔離預覽已確認指定使用者 Google 登入、檔案授權和測試表選取；五份原始版型合成 PDF 已交付，三份文字型及兩份掃描型已在本機核對。尚未驗證實際寫入或防重複；附件影像辨識尚未實作。Production URL remains the canonical entry; no real student data or new access/acceptance is claimed.
+SLIP V2 PR #24 隔離預覽 READY，來源 d61695d1e2468fce688a5e44c2737a892b0cf441（dpl_8hMqCK2z4UdQM8siZ5wnj9Djyvn7）；預覽分支交接與部署紀錄已更新。支援五份 PDF 逐份處理、各自顯示結果及重試，含 15 項直接對應欄位與 W–AE 影像區域收件標記。已核對原版型三份文字型與兩份掃描型；54 項 Python 通過，4 項因缺 A/B 原檔略過；手機與桌機模擬核對混合、五份、六份、拒絕與重試。E 雙選及 F 不確定欄位保留空白，不推測大一成績，AE 只標記區域收件、不代表真偽或分數。正式入口 https://admissions-pdf-system.vercel.app/login 仍為 12a9707085d2360bda4581d7c795960139170dcf，連到受保護預覽。實際試算表寫入及防重複尚未驗證。Production URL remains the canonical entry; no access or acceptance is claimed.
 
 ## Work log
+
+- 2026-11-23T12:41:56+09:00 | ChatGPT | in_progress | V2 隔離預覽 READY：五份佇列、獨立結果／重試、15 項欄位及 W–AE 收件標記已核對；交接已更新，實際寫入與防重複仍待驗證。
 
 - 2026-11-23T11:44:30+09:00 | ChatGPT | in_progress | PR #25 正式站登入入口及交接文件已上線；隔離預覽已核對 Google 登入及測試表選取，五份原版型合成 PDF 已交付，實際寫入和防重複待驗證。
 

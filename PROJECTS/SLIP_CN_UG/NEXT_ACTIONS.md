@@ -5,7 +5,7 @@ Status: Pending Development
 
 ## Recommended Next Step
 
-從 https://admissions-pdf-system.vercel.app/login 進入受 Google 驗證保護的流程，以核定測試表和合成掃描樣本確認新增一列，再重送確認無重複；不用真實學生資料，附件影像辨識另行安排。
+從 https://admissions-pdf-system.vercel.app/login 使用核定帳號與測試表，用合成 PDF 驗證實際寫入及重試不重複，並核對 E、F 與 AE 的保留規則；不使用真實學生資料。
 
 ## Blockers
 
