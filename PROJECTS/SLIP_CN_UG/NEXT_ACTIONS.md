@@ -5,7 +5,7 @@ Status: Pending Development
 
 ## Recommended Next Step
 
-從 https://admissions-pdf-system.vercel.app/login 使用核定帳號與測試表，用合成 PDF 驗證實際寫入及重試不重複，並核對 E、F 與 AE 的保留規則；不使用真實學生資料。
+從 https://admissions-pdf-system.vercel.app/login 進入受保護預覽，先用合成樣本 F 的「只重新解析，不寫入」核對 O／Q；獨立驗證實際寫入、回讀和防重複前，不要修改既有測試列或使用真實學生資料。
 
 ## Blockers
 
