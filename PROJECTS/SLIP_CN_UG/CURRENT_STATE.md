@@ -4,7 +4,7 @@ Project: SLIP_CN_UG
 Status: Pending Development
 
 ```yaml
-version: V2 draft (PR #24, #27)
+version: V2 預覽 S2-a（PR #26、#28 已併）
 current_agent: Claude Code
 agent_model: claude-opus-5
 as_of: 2026-11-24
@@ -16,6 +16,8 @@ public_url: https://admissions-pdf-system.vercel.app
 SLIP V2 PR #24 仍為草稿；受保護預覽 READY，來源 090013fbdb732c4b6e1ae6f8142d3df1e7582c08（dpl_Dr44TGvA5JoDq4cYdW1ZC2Kf5brF）。只比較 O／Q；需唯一且有佐證的身分匹配、簽署的工作階段及列錨點，三分鐘內由本人確認。列標記為中繼資料，不改儲存格。只預選空白欄；已有值的衝突需手動勾選，不改公式、不寫入空辨識值、不覆寫整列。確認後先重讀，只寫所選欄，再回讀，重試不重寫。五份 V2 OCR 核對，75 項通過／4 項舊樣本略過；桌機手機 Chromium 模擬與匿名比較／確認 403 已核對。交接已更新；開發期間未呼叫實際試算表，真實寫入和回讀待指定帳號複驗。正式登入入口 https://admissions-pdf-system.vercel.app/login 維持 12a9707085d2360bda4581d7c795960139170dcf，連到受保護預覽。Production URL remains the canonical entry; no new access or acceptance is claimed.
 
 ## Work log
+
+- 2026-11-24T18:05:00+09:00 | Claude Code | in_progress | S2-a 名冊已在受保護預覽上線並由本人實測；回報的完成率與面試時間顯示錯誤（0.75／46351）已修正為依試算表顯示值（PR #28 已併，c2ba1b3，部署 READY）。S2-b 寫入 R～U 仍為草稿 PR #27，尚未合併；正式站維持 12a9707，未部署任何 pilot 功能。
 
 - 2026-11-24T17:10:00+09:00 | Claude Code | in_progress | 草稿 PR #27：S2-b 本人確認推進工作流步驟，寫入當日日期（韓國時區）；沿用 PR #24 已驗證的列錨點機制並分開中繼資料命名空間，只允許當前待辦步驟、目標格須空白、非日期值拒絕。36 項新測試加真實 Chromium 驗證預覽零寫入、確認僅一次。AF 面試時間仍未實作。
 
