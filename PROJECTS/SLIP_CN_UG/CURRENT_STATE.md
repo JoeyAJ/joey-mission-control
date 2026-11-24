@@ -4,7 +4,7 @@ Project: SLIP_CN_UG
 Status: Pending Development
 
 ```yaml
-version: V2 draft (PR #24)
+version: V2 draft (PR #24, #26)
 current_agent: Claude Code
 agent_model: claude-opus-5
 as_of: 2026-11-24
@@ -16,6 +16,8 @@ public_url: https://admissions-pdf-system.vercel.app
 SLIP V2 PR #24 仍為草稿；受保護預覽 READY，來源 090013fbdb732c4b6e1ae6f8142d3df1e7582c08（dpl_Dr44TGvA5JoDq4cYdW1ZC2Kf5brF）。只比較 O／Q；需唯一且有佐證的身分匹配、簽署的工作階段及列錨點，三分鐘內由本人確認。列標記為中繼資料，不改儲存格。只預選空白欄；已有值的衝突需手動勾選，不改公式、不寫入空辨識值、不覆寫整列。確認後先重讀，只寫所選欄，再回讀，重試不重寫。五份 V2 OCR 核對，75 項通過／4 項舊樣本略過；桌機手機 Chromium 模擬與匿名比較／確認 403 已核對。交接已更新；開發期間未呼叫實際試算表，真實寫入和回讀待指定帳號複驗。正式登入入口 https://admissions-pdf-system.vercel.app/login 維持 12a9707085d2360bda4581d7c795960139170dcf，連到受保護預覽。Production URL remains the canonical entry; no new access or acceptance is claimed.
 
 ## Work log
+
+- 2026-11-24T12:40:00+09:00 | Claude Code | in_progress | 草稿 PR #26：S2-a 唯讀名冊與依表頭解析欄位（研究生院分頁欄序不同），修好微信漏抽（五案 0→3 完全正確、1 擷取、1 依信心門檻正確留空）；31 項新測試通過，回歸與基準完全相同。R～U／AF 仍無任何寫入，實際寫入待本人確認。
 
 - 2026-11-24T10:05:00+09:00 | Claude Code | in_progress | 接手 SLIP：已讀 HANDOFF／PRD／charter／phase plan 與 PR #24，確認 O／Q 修正候選仍待本人實機確認，未動任何程式或試算表。
 
