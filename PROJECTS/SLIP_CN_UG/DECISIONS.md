@@ -9,6 +9,7 @@ Status: Pending Development
 
 - 2026-11-26 — SLIP 重新定位為學生全程預警平台(申請→入學→在學→畢業);框架先行,各階段自動化需先與負責人溝通後再併入。
 - 2026-11-26 — 入學階段模組以已驗證的 Airtable「测试自动化流程v1.0.0」為準;舊 Airtable SLIP base 與舊庫 slip-cn-ug-admissions 淘汰刪除;admissions-pdf-system 為唯一程式庫。舊「假資料、Airtable SLIP-CN-UG-Product 為 SoR」的決定作廢。
+- 2026-11-26 — owner 決定新建私有庫 JoeyAJ/SLIP(Student Lifecycle Intelligence Platform)作為 SLIP 框架與模組的程式庫,招生模組以 Airtable「测试自动化流程v1.0.0」為資料層;取代同日稍早「admissions-pdf-system 為唯一程式庫」的決定。admissions-pdf-system 保留為 PDF 識別輸入側元件,其併入或封存由 owner 另行決定。MC 登記收據仍綁定 admissions-pdf-system,改綁新庫需走 MC 登記流程。
 - 2026-11-26 — 文件改寫以 admissions-pdf-system PR #30 提出,待 owner 合併;PR #18 與既有分支不動。
 
 ## Registration source

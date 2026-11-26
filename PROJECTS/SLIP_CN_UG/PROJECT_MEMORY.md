@@ -3,7 +3,7 @@
 Project: SLIP_CN_UG
 Status: Pending Development
 
-SLIP 定位更新(2026-11-26,owner 決定):學生從申請入學到畢業的全程預警平台。學生出現異常時,自動提醒該階段的負責人。私有庫 JoeyAJ/admissions-pdf-system(numeric ID 1243627223)為 SLIP 唯一正式程式庫;舊過渡庫 slip-cn-ug-admissions 與舊 Airtable base SLIP-CN-UG-Product、SLIP-CN本科-催補任務板-試跑已淘汰並刪除。專案代號 SLIP_CN_UG 沿用。
+SLIP 定位更新(2026-11-26,owner 決定):學生從申請入學到畢業的全程預警平台。學生出現異常時,自動提醒該階段的負責人。SLIP 框架與模組的程式庫為新建私有庫 JoeyAJ/SLIP(2026-11-26 owner 決定,已含模組規格、招生模組說明與 Airtable 讀取入口);JoeyAJ/admissions-pdf-system(numeric ID 1243627223)為 MC 登記時的原始庫,保留為 PDF 識別輸入側元件;舊過渡庫 slip-cn-ug-admissions 與舊 Airtable base SLIP-CN-UG-Product、SLIP-CN本科-催補任務板-試跑已淘汰並刪除。專案代號 SLIP_CN_UG 沿用。
 
 核心功能(要做的框架):
 1. 學生主檔:一位學生一個編號,貫穿全程(沿用招生編號 No.)。

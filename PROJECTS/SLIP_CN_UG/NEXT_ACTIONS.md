@@ -5,7 +5,7 @@ Status: Pending Development
 
 ## Recommended Next Step
 
-第一步:把入學階段已驗證的 Airtable 自動化整理成 SLIP 的第一組「規則」,並定下學生主檔欄位與階段清單(L0)——每條規則寫明階段、觸發條件、通知對象角色、通知方式。同時備好給在學、畢業階段負責人的一頁問題清單(資料來源、能否匯出、通知對象、個資規定)。先確認並合併 admissions-pdf-system PR #30(文件改寫)。
+第一步:把入學階段已驗證的 Airtable 自動化整理成 SLIP 的第一組「規則」,並定下學生主檔欄位與階段清單(L0)——每條規則寫明階段、觸發條件、通知對象角色、通知方式。同時備好給在學、畢業階段負責人的一頁問題清單(資料來源、能否匯出、通知對象、個資規定)。SLIP 新庫 JoeyAJ/SLIP 已有模組規格與招生模組骨架;待 owner 取得 Airtable 唯讀令牌並匯入 Vercel(環境變數 AIRTABLE_TOKEN、AIRTABLE_BASE_ID),再把現有看板與錄取通知書產生器併入招生模組。admissions-pdf-system PR #30(文件改寫)待 owner 決定是否合併。
 
 ## Blockers
 

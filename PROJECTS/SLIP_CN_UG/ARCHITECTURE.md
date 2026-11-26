@@ -3,7 +3,7 @@
 Project: SLIP_CN_UG
 Status: Pending Development
 
-Existing Next.js / TypeScript / Tailwind CSS app deployed on Vercel(admissions-pdf-system)。目標架構分層:
+框架與模組放在新庫 JoeyAJ/SLIP(Vercel 靜態首頁+Serverless 讀取 Airtable,金鑰只放環境變數,API 只回傳人數);admissions-pdf-system 為既有 Next.js / TypeScript / Tailwind CSS 應用,保留 PDF 識別輸入側。目標架構分層:
 - 框架層(L0,待建):學生主檔、階段、規則(含負責人路由)、事件紀錄。
 - 階段模組:入學(L1)= 已驗證 Airtable「测试自动化流程v1.0.0」(含 Vercel 錄取通知書產生器與看板);在學(L2)、畢業(L3)待與負責人溝通後設計。
 - 目前程式庫內:公開合成資料 /demo;PDF 識別 → 私人 Google Sheet 的受保護預覽(S2-a 名冊、S2-b 本人確認寫入,尚待真實寫入複驗)。PR #18(S1 五步驟工作臺)未合併,處置由 owner 決定。

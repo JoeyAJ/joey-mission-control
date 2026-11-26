@@ -17,6 +17,8 @@ SLIP V2 PR #24 仍為草稿；受保護預覽 READY，來源 090013fbdb732c4b6e1
 
 ## Work log
 
+- 2026-11-26T15:35:00+09:00 | Claude Code | completed | 新建私有庫 JoeyAJ/SLIP:模組規格、招生模組說明、Airtable 唯讀入口與首頁骨架已推送;MC 記錄同步,登記收據仍綁 admissions-pdf-system。
+
 - 2026-11-26T12:00:00+09:00 | Claude Code | completed | 定位更新為學生全程預警平台;舊 Airtable SLIP 與舊庫淘汰;文件改寫 PR #30 待合併;MC 記錄的核心功能與下一步已同步。
 
 - 2026-11-24T18:40:00+09:00 | Claude Code | in_progress | 受保護預覽併入全部更新（02fd463）：名冊首欄改顯示 Sheet 的 No.（PR #29），以及 S2-b 本人確認推進 R～U 寫入當日日期（PR #27）。152 項測試，回歸與基準完全相同。正式站維持 12a9707 未變；公開部署尚缺 Vercel Production 變數與 Google Console 重新導向／Picker 網域設定，待本人處理。真實寫入尚未執行，待本人在預覽實測。
