@@ -4,18 +4,20 @@ Project: SLIP_CN_UG
 Status: Pending Development
 
 ```yaml
-version: V2 預覽 S2-a＋S2-b（PR #26／#28／#29／#27 已併）
+version: 招生模組 v1（錄取通知書生成器＋看板已併入 JoeyAJ/SLIP）
 current_agent: Claude Code
-agent_model: claude-sonnet-5-5
+agent_model: claude-opus-5
 as_of: 2026-11-26
-public_url: https://admissions-pdf-system.vercel.app
+public_url: https://woosong-letter.vercel.app
 ```
 
 ## Current Stage
 
-SLIP V2 PR #24 仍為草稿；受保護預覽 READY，來源 090013fbdb732c4b6e1ae6f8142d3df1e7582c08（dpl_Dr44TGvA5JoDq4cYdW1ZC2Kf5brF）。只比較 O／Q；需唯一且有佐證的身分匹配、簽署的工作階段及列錨點，三分鐘內由本人確認。列標記為中繼資料，不改儲存格。只預選空白欄；已有值的衝突需手動勾選，不改公式、不寫入空辨識值、不覆寫整列。確認後先重讀，只寫所選欄，再回讀，重試不重寫。五份 V2 OCR 核對，75 項通過／4 項舊樣本略過；桌機手機 Chromium 模擬與匿名比較／確認 403 已核對。交接已更新；開發期間未呼叫實際試算表，真實寫入和回讀待指定帳號複驗。正式登入入口 https://admissions-pdf-system.vercel.app/login 維持 12a9707085d2360bda4581d7c795960139170dcf，連到受保護預覽。Production URL remains the canonical entry; no new access or acceptance is claimed.
+SLIP 平台骨架在私有庫 JoeyAJ/SLIP。Vercel 專案 woosong-letter 已改由該庫 main 自動建置，公開站 https://woosong-letter.vercel.app 的首頁即模組清單加招生各階段人數。招生模組（平台的第一個模組）可用：原本獨立的錄取通知書生成器與即時看板整套併入 modules/admission/letter/，對外路徑一字未改，Airtable 的公式欄與四類 Email 自動化照舊運作。本科／研究生／SolBridge 三類別的階段人數由同一份 Airtable 欄位 ID 定義計算，首頁與完整看板不會出現兩套數字；看板讀取用唯讀令牌，寫回 PDF 與每週快照才用寫入令牌，密鑰只放 Vercel 環境變數。接下來要 build 的是在學（缺課預警）與畢業（學分不足分階段提醒）兩個階段模組，兩者的資料來源與通知對象須先與各階段負責人談定才動工；平台層的學生主檔、階段、規則與事件紀錄同一輪一起 build。錄取通知書的端對端產出須由 owner 本人在 Airtable 點連結核對。
 
 ## Work log
+
+- 2026-11-26T17:05:00+09:00 | Claude Code | completed | woosong-letter 整套併入 JoeyAJ/SLIP 招生模組；Vercel 改接 SLIP main，公開站改為 woosong-letter.vercel.app；看板無聲卡住與 cron 明碼金鑰已修。
 
 - 2026-11-26T15:35:00+09:00 | Claude Code | completed | 新建私有庫 JoeyAJ/SLIP:模組規格、招生模組說明、Airtable 唯讀入口與首頁骨架已推送;MC 記錄同步,登記收據仍綁 admissions-pdf-system。
 
