@@ -5,11 +5,11 @@ Status: Pending Development
 
 ## Recommended Next Step
 
-從 https://admissions-pdf-system.vercel.app/login 進入受保護預覽，只用核定合成測試表，由使用者本人確認選定 O／Q 欄。若共用協作者正在更動該列，先停止並重新比較；核對只改所選欄及重試無重寫，不使用真實學生資料。
+第一步:把入學階段已驗證的 Airtable 自動化整理成 SLIP 的第一組「規則」,並定下學生主檔欄位與階段清單(L0)——每條規則寫明階段、觸發條件、通知對象角色、通知方式。同時備好給在學、畢業階段負責人的一頁問題清單(資料來源、能否匯出、通知對象、個資規定)。先確認並合併 admissions-pdf-system PR #30(文件改寫)。
 
 ## Blockers
 
-Development and source-read/report-write scopes await explicit activation. No real student data may be used.
+在學、畢業階段需先與各負責人溝通才能設計。PDF → Google Sheet 試驗與 Airtable 入學模組的關係待 owner 決定。真實學生資料的存放與存取須符合學校規定。
 
 ## Registration source
 

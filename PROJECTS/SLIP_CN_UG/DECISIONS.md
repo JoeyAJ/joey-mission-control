@@ -7,6 +7,10 @@ Status: Pending Development
 - Preserve PR #18 as open; registration is not feature delivery or owner acceptance.
 - Use fake data and Airtable SoR; no real SIS or production Excel. Resource provisioning is not part of registration.
 
+- 2026-11-26 — SLIP 重新定位為學生全程預警平台(申請→入學→在學→畢業);框架先行,各階段自動化需先與負責人溝通後再併入。
+- 2026-11-26 — 入學階段模組以已驗證的 Airtable「测试自动化流程v1.0.0」為準;舊 Airtable SLIP base 與舊庫 slip-cn-ug-admissions 淘汰刪除;admissions-pdf-system 為唯一程式庫。舊「假資料、Airtable SLIP-CN-UG-Product 為 SoR」的決定作廢。
+- 2026-11-26 — 文件改寫以 admissions-pdf-system PR #30 提出,待 owner 合併;PR #18 與既有分支不動。
+
 ## Registration source
 
 Repository: JoeyAJ/admissions-pdf-system
