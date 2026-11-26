@@ -5,7 +5,7 @@ Status: Pending Development
 
 ## Recommended Next Step
 
-三件事並行。一、owner 在 Airtable 本科表點一筆假資料的「生成录取通知书」連結,核對 PDF 內容與寫回「录取通知PDF」欄——這是招生模組唯一還沒端對端核對的環節。二、把入學階段已驗證的自動化整理成 SLIP 的第一組「規則」,並定下學生主檔欄位與階段清單(平台層 L0):每條規則寫明階段、觸發條件、通知對象角色、通知方式。三、備好給在學、畢業階段負責人的一頁問題清單(資料來源、能否匯出、通知對象、個資規定),約時間談。另:MC 登記收據仍綁 admissions-pdf-system,要改綁 JoeyAJ/SLIP 須走 MC 登記流程,前置是在 SLIP 的 main 補上 HANDOFF.md、PRD.md、docs/PRODUCT_CHARTER.md、docs/PHASE_PLAN.md、.mission-control/bootstrap.json,由 owner 決定是否進行。
+兩件事並行。一、把入學階段已驗證的自動化整理成 SLIP 的第一組「規則」,並定下學生主檔欄位與階段清單(平台層 L0):每條規則寫明階段、觸發條件、通知對象角色、通知方式。二、備好給在學、畢業階段負責人的一頁問題清單(資料來源、能否匯出、通知對象、個資規定),約時間談。招生模組已由 owner 於 2026-11-26 核對:首頁看板數字、錄取通知書 PDF 產出與寫回 Airtable 皆正常;僅餘 2026-12-01 第一次每週快照 cron 待自動執行後確認「每周快照」表新增 4 筆。另:MC 登記收據仍綁 admissions-pdf-system,要改綁 JoeyAJ/SLIP 須走 MC 登記流程,前置是在 SLIP 的 main 補上 HANDOFF.md、PRD.md、docs/PRODUCT_CHARTER.md、docs/PHASE_PLAN.md、.mission-control/bootstrap.json,由 owner 決定是否進行。
 
 ## Blockers
 
