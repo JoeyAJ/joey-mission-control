@@ -54,6 +54,6 @@ export function createDeploymentProjectRegistrationApplication({activation=proje
  const enabled=registrationActivated(activation);
  return createProjectRegistrationApplication({activation,ownerSubject:policy.ownerSubject,allowedOrigin:policy.stageOrigin,verifyOwner:createCurrentOwnerVerifier({fetchImpl,policy,now}),now,
   draftPort:enabled?createProjectDraftRpcPort({fetchImpl,policy}):null,
-  gitPort:enabled?createRegistrationGitPort({credential:environment.MC_GITHUB_REGISTRY_WRITE_TOKEN,readCredential:environment.MC_GITHUB_READ_TOKEN,activation,ownerSubject:policy.ownerSubject,fetchImpl}):null,
+  gitPort:enabled?createRegistrationGitPort({credential:environment.MC_GITHUB_REGISTRY_WRITE_TOKEN,readCredential:environment.MC_GITHUB_READ_TOKEN,cacheCatalog:true,activation,ownerSubject:policy.ownerSubject,fetchImpl}):null,
   repositoryReaderFactory:({repositoryId,ref})=>createProjectRegistrationRepositoryReader({credential:enabled?environment.MC_GITHUB_READ_TOKEN:undefined,fetchImpl,repositoryId,ref})});
 }
