@@ -5,7 +5,7 @@ Status: Pending Development
 
 ## Recommended Next Step
 
-兩件事並行。一、把入學階段已驗證的自動化整理成 SLIP 的第一組「規則」,並定下學生主檔欄位與階段清單(平台層 L0):每條規則寫明階段、觸發條件、通知對象角色、通知方式。二、備好給在學、畢業階段負責人的一頁問題清單(資料來源、能否匯出、通知對象、個資規定),約時間談。招生模組已由 owner 於 2026-11-26 核對:首頁看板數字、錄取通知書 PDF 產出與寫回 Airtable 皆正常;僅餘 2026-12-01 第一次每週快照 cron 待自動執行後確認「每周快照」表新增 4 筆。Google Sheet 名冊試點:S2-c 面試時間草稿 PR #31 待 owner 在受保護預覽實測後合併入試點分支;六項暫定設計(可改期、日期＋選填時間、寫成日期值、無前置條件、前後一年、只開本科分頁)待 owner 確認。另:MC 登記收據仍綁 admissions-pdf-system,要改綁 JoeyAJ/SLIP 須走 MC 登記流程,前置是在 SLIP 的 main 補上 HANDOFF.md、PRD.md、docs/PRODUCT_CHARTER.md、docs/PHASE_PLAN.md、.mission-control/bootstrap.json,由 owner 決定是否進行。
+學校版 PR JoeyAJ/SLIP#2:owner 在預覽網址核對後合併入 main;在 Vercel 設定 SLIP_USERS(用 tools/hash-password.js 產生密碼雜湊)與 SLIP_SESSION_SECRET,再照 docs/handover/acceptance-checklist.md 請招生部驗收。兩件事並行。一、把入學階段已驗證的自動化整理成 SLIP 的第一組「規則」,並定下學生主檔欄位與階段清單(平台層 L0):每條規則寫明階段、觸發條件、通知對象角色、通知方式。二、備好給在學、畢業階段負責人的一頁問題清單(資料來源、能否匯出、通知對象、個資規定),約時間談。招生模組已由 owner 於 2026-11-26 核對:首頁看板數字、錄取通知書 PDF 產出與寫回 Airtable 皆正常;僅餘 2026-12-01 第一次每週快照 cron 待自動執行後確認「每周快照」表新增 4 筆。Google Sheet 名冊試點:S2-c 面試時間草稿 PR #31 待 owner 在受保護預覽實測後合併入試點分支;六項暫定設計(可改期、日期＋選填時間、寫成日期值、無前置條件、前後一年、只開本科分頁)待 owner 確認。另:MC 登記收據仍綁 admissions-pdf-system,要改綁 JoeyAJ/SLIP 須走 MC 登記流程,前置是在 SLIP 的 main 補上 HANDOFF.md、PRD.md、docs/PRODUCT_CHARTER.md、docs/PHASE_PLAN.md、.mission-control/bootstrap.json,由 owner 決定是否進行。
 
 ## Blockers
 

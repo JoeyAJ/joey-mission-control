@@ -13,9 +13,11 @@ public_url: https://woosong-letter.vercel.app
 
 ## Current Stage
 
-SLIP 平台骨架在私有庫 JoeyAJ/SLIP。Vercel 專案 woosong-letter 已改由該庫 main 自動建置，公開站 https://woosong-letter.vercel.app 的首頁即模組清單加招生各階段人數。招生模組（平台的第一個模組）可用：原本獨立的錄取通知書生成器與即時看板整套併入 modules/admission/letter/，對外路徑一字未改，Airtable 的公式欄與四類 Email 自動化照舊運作。本科／研究生／SolBridge 三類別的階段人數由同一份 Airtable 欄位 ID 定義計算，首頁與完整看板不會出現兩套數字；看板讀取用唯讀令牌，寫回 PDF 與每週快照才用寫入令牌，密鑰只放 Vercel 環境變數。接下來要 build 的是在學（缺課預警）與畢業（學分不足分階段提醒）兩個階段模組，兩者的資料來源與通知對象須先與各階段負責人談定才動工；平台層的學生主檔、階段、規則與事件紀錄同一輪一起 build。錄取通知書的端對端產出已由 owner 於 2026-11-26 核對無誤(PDF 內容與寫回 Airtable 附件欄);每週快照 cron 的首次自動執行在 2026-12-01。另一條線(admissions-pdf-system 的 Google Sheet 名冊試點):S2-c 面試時間排程(AF 欄,可改期、寫成日期值、二次確認後只寫一格)已以草稿 PR #31 提出,合併目標為試點分支;owner 表示 SLIP 要做成可交付招生部使用的系統。
+SLIP 平台骨架在私有庫 JoeyAJ/SLIP。Vercel 專案 woosong-letter 已改由該庫 main 自動建置，公開站 https://woosong-letter.vercel.app 的首頁即模組清單加招生各階段人數。招生模組（平台的第一個模組）可用：原本獨立的錄取通知書生成器與即時看板整套併入 modules/admission/letter/，對外路徑一字未改，Airtable 的公式欄與四類 Email 自動化照舊運作。本科／研究生／SolBridge 三類別的階段人數由同一份 Airtable 欄位 ID 定義計算，首頁與完整看板不會出現兩套數字；看板讀取用唯讀令牌，寫回 PDF 與每週快照才用寫入令牌，密鑰只放 Vercel 環境變數。接下來要 build 的是在學（缺課預警）與畢業（學分不足分階段提醒）兩個階段模組，兩者的資料來源與通知對象須先與各階段負責人談定才動工；平台層的學生主檔、階段、規則與事件紀錄同一輪一起 build。錄取通知書的端對端產出已由 owner 於 2026-11-26 核對無誤(PDF 內容與寫回 Airtable 附件欄);每週快照 cron 的首次自動執行在 2026-12-01。另一條線(admissions-pdf-system 的 Google Sheet 名冊試點):S2-c 面試時間排程(AF 欄,可改期、寫成日期值、二次確認後只寫一格)已以草稿 PR #31 提出,合併目標為試點分支;學校版(交付招生部)已以草稿 PR JoeyAJ/SLIP#2 提出:又松大學校徽配色、韓文為主中文切換、全站登入與角色權限(admin／manager／staff,可限定類別與負責老師),舊訪問碼仍可登入;另附系統管理頁、韓中使用說明頁,以及 docs/handover 的管理員手冊、驗收清單與交付提案;JOEY 品牌版改為 /showcase.html 示範頁。合併入 main 與建立正式帳號(SLIP_USERS)待 owner 決定。
 
 ## Work log
+
+- 2026-11-27T18:10:00+09:00 | Claude Code | in_progress | SLIP 學校版草稿 PR JoeyAJ/SLIP#2:校徽品牌、韓中雙語、全站登入與角色權限、系統管理與使用說明頁、交付文件三份;JOEY 展示頁 /showcase.html。尚未合併 main。
 
 - 2026-11-27T17:55:00+09:00 | Claude Code | in_progress | S2-c 面試時間排程草稿 PR #31(admissions-pdf-system,目標試點分支):可改期、寫成日期值、讀回核對;順修 S2-b 寫入後名冊未重新載入。38 項新測試通過。
 
