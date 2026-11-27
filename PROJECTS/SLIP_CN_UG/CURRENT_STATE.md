@@ -70,3 +70,4 @@ Approval: owner-chat-20261105
 
 The baseline is a historical documentation receipt; registration does not authorize development or activate source-read/report-write scopes. S1 lives on open PR #18 and is not merged.
 - 2026-11-27 SLIP 模組框架（PR #2, 6c730b2）：上方模組列 申請→入學→簽證→在校管理→畢業→校友（校友為補充）；首頁=模組總覽，申請總覽移到 /apply.html；未上線模組走 /module.html?m=key，列計劃功能與通知管道（負責部門/Email/KakaoTalk，未接）。模組定義集中在 brand/app.js MODULES。PR #3 待審核頁改放 MODULES.apply.sub。
+- 2026-11-27 正式上線：PR #2（5a0d0cf）與 PR #3 自動收件（97d9b7a）合併到 main；正式網址 wsu-slip.vercel.app，登入頁與帳號設定已確認正常。
