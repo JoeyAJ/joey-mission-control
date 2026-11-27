@@ -4,7 +4,7 @@ Project: SLIP_CN_UG
 Status: Pending Development
 
 ```yaml
-version: SLIP 學校版 v1.4（PR #7 頂部工具列與 Logo 同排，已併入 JoeyAJ/SLIP main）
+version: SLIP 學校版 v1.5（PR #8 外觀預設跟隨系統，已併入 JoeyAJ/SLIP main）
 current_agent: Claude Code
 agent_model: claude-opus-5-5
 as_of: 2026-11-27
@@ -13,10 +13,11 @@ public_url: https://wsu-slip.vercel.app
 
 ## Current Stage
 
-SLIP 學校版已併入私有庫 JoeyAJ/SLIP 的 main，正式網址 https://wsu-slip.vercel.app（Vercel 專案由 woosong-letter 改名）。定位是交付又松大學招生部使用的學生全周期平台：又松大學校徽配色、韓文為主中文切換、全站登入與角色權限（招生部只用 admin／manager 帳號 joey、ipak-admin、ipak），帳號在 SLIP_USERS，首次登入強制改密碼，新密碼雜湊存 Airtable「SLIP账号」表，系統管理頁可重置。上方模組列 申請→入學→簽證→在校管理→畢業→校友，模組定義集中在 brand/app.js MODULES；目前只有申請模組上線，其餘為佔位頁（列計劃功能與通知管道，未接），接下來依各部門談定的內容逐一 build。中文／英文／韓文三組資料互不可見：中文組用原 base appOjpvsgbLz3cg3Y，英文組 base appVFO2KxK1w4SWx3，韓文組 base appRCfzQNel7J0I3l；英／韓兩組目前沒有任何 Airtable 自動化或寄信。負責老師轉換率已移除。自動收件（PR #3）：每天 10:00（韓國時間）掃 Google Drive 學期資料夾（中文組 2027-1），新學生資料進「申请收件箱」待審核頁，人工確認後才登記入主表；ANTHROPIC_API_KEY 刻意留空，待學校交付時提供，在那之前收件記為「待提取」需人工填。交付文件在 docs/handover：交付提案、驗收清單、管理員手冊。JOEY 品牌版為 /showcase.html 展示頁。PR #4（3b23263）加入英文介面、英文全稱 Student Lifecycle Intelligence Platform、深色模式與液態玻璃外觀，頁腳改為官網品牌標記（PR #5，96ed23c：Infinity Eye ＋ Joey ／ Personal AI Lab，所有語言套用）；PR #6（996ddba）加強淺色版液態玻璃、加入滑鼠跟隨光暈 hover 效果與 A−／A／A+ 頁面縮放（90–140%，記住設定）；PR #7（2ec61f6）把頂部工具列改回與 Logo 同一排：語言縮寫、「Aa」顯示選單、帳號選單；官網專案頁的 SLIP 介紹與截圖也同步換成學校版。另一條線 admissions-pdf-system 的 S2-c 面試時間排程仍是草稿 PR #31，未合併。
+SLIP 學校版已併入私有庫 JoeyAJ/SLIP 的 main，正式網址 https://wsu-slip.vercel.app（Vercel 專案由 woosong-letter 改名）。定位是交付又松大學招生部使用的學生全周期平台：又松大學校徽配色、韓文為主中文切換、全站登入與角色權限（招生部只用 admin／manager 帳號 joey、ipak-admin、ipak），帳號在 SLIP_USERS，首次登入強制改密碼，新密碼雜湊存 Airtable「SLIP账号」表，系統管理頁可重置。上方模組列 申請→入學→簽證→在校管理→畢業→校友，模組定義集中在 brand/app.js MODULES；目前只有申請模組上線，其餘為佔位頁（列計劃功能與通知管道，未接），接下來依各部門談定的內容逐一 build。中文／英文／韓文三組資料互不可見：中文組用原 base appOjpvsgbLz3cg3Y，英文組 base appVFO2KxK1w4SWx3，韓文組 base appRCfzQNel7J0I3l；英／韓兩組目前沒有任何 Airtable 自動化或寄信。負責老師轉換率已移除。自動收件（PR #3）：每天 10:00（韓國時間）掃 Google Drive 學期資料夾（中文組 2027-1），新學生資料進「申请收件箱」待審核頁，人工確認後才登記入主表；ANTHROPIC_API_KEY 刻意留空，待學校交付時提供，在那之前收件記為「待提取」需人工填。交付文件在 docs/handover：交付提案、驗收清單、管理員手冊。JOEY 品牌版為 /showcase.html 展示頁。PR #4（3b23263）加入英文介面、英文全稱 Student Lifecycle Intelligence Platform、深色模式與液態玻璃外觀，頁腳改為官網品牌標記（PR #5，96ed23c：Infinity Eye ＋ Joey ／ Personal AI Lab，所有語言套用）；PR #6（996ddba）加強淺色版液態玻璃、加入滑鼠跟隨光暈 hover 效果與 A−／A／A+ 頁面縮放（90–140%，記住設定）；PR #7（2ec61f6）把頂部工具列改回與 Logo 同一排：語言縮寫、「Aa」顯示選單、帳號選單；PR #8（ba33666）外觀預設跟隨系統，可選 跟隨系統／淺色／深色，舊的 slip.theme 設定作廢；官網專案頁的 SLIP 介紹與截圖也同步換成學校版。另一條線 admissions-pdf-system 的 S2-c 面試時間排程仍是草稿 PR #31，未合併。
 
 ## Work log
 
+- 2026-11-27T23:47:00+09:00 | Claude Code | completed | SLIP#8 併入 main(ba33666)並部署 production:外觀預設跟隨系統,可選 跟隨系統/淺色/深色,舊 slip.theme 設定作廢。
 - 2026-11-27T23:43:00+09:00 | Claude Code | completed | SLIP#7 併入 main(2ec61f6)並部署 production:頂部工具列改回與 Logo 同一排,語言改縮寫、「Aa」顯示選單、帳號選單。
 - 2026-11-27T23:38:00+09:00 | Claude Code | completed | SLIP#6 併入 main(996ddba)並部署 production:淺色版液態玻璃加強、滑鼠跟隨光暈 hover、A−/A/A+ 頁面縮放(90–140%,記住設定)。
 - 2026-11-27T23:35:00+09:00 | Claude Code | completed | SLIP#5 併入 main(96ed23c)並部署 production:頁腳改用官網品牌標記 Infinity Eye ＋ Joey ／ Personal AI Lab,所有語言套用。
