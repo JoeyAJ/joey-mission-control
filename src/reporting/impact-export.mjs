@@ -38,7 +38,7 @@ export function createImpactExportServer({environment=process.env,fetchImpl=glob
     const r=reports[0],e=r?.events.at(-1),stateEvent=r?.events.findLast(v=>v.kind!=='heartbeat');
     if(!e)return result(409,{error:'IMPACT_PROGRESS_UNAVAILABLE'});
     const text=v=>typeof v==='string'?v.slice(0,4000):'';
-    return result(200,{item:{schemaVersion:'mc.private-progress.v1',projectId:project,kind:stateEvent?.kind||e.kind,updatedAt:e.eventAt,summary:text(e.summary),next:text(e.result?.nextSteps),block:stateEvent?.kind==='blocked'||stateEvent?.kind==='failed'?text(stateEvent.summary):'',agent:text(r.agentName),productAccepted:false}});
+    return result(200,{item:{schemaVersion:'mc.private-progress.v1',projectId:project,kind:stateEvent?.kind||e.kind,updatedAt:e.eventAt,summary:text((stateEvent||e).summary),next:text(e.result?.nextSteps),block:stateEvent?.kind==='blocked'||stateEvent?.kind==='failed'?text(stateEvent.summary):'',agent:text(r.agentName),productAccepted:false}});
    }
    const rows=observation.runs.filter(r=>r.report.events.at(-1)?.kind==='completed').sort((a,b)=>Date.parse(b.report.events.at(-1).eventAt)-Date.parse(a.report.events.at(-1).eventAt));
    const sha=rows[0]?.report.events.at(-1)?.result?.codeSha;
