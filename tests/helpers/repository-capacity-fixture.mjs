@@ -14,6 +14,8 @@ export function capacityFixture(count=21){
   if(u.pathname.endsWith('/git/ref/heads/mc/progress'))return mode==='ref-outage'?response({},500):mode==='denied'?response({},403):response({object:{type:'commit',sha:head}});
   if(u.searchParams.get('ref')!==head)throw Error('SYNTHETIC_PIN_INVALID');const path=decodeURIComponent(u.pathname.split('/contents/')[1]);
   if(path==='.mission-control/runs'||path==='.mission-control/runs-page-2'){if(path.endsWith('page-2')&&mode==='page-outage')return response({},500);if(path.endsWith('page-2')&&mode==='page-denied')return response({},403);const rows=[...files].filter(([p])=>p.startsWith(path+'/')).map(([p,v])=>({type:'file',name:p.split('/').at(-1),path:p,sha:v.blob,size:v.bytes.length}));return rows.length?response(rows):response({},404);}
+  // NexAeon rolls (no marker in this fixture yet): the marker lookup is not a report read.
+  if(path==='.mission-control/progress-retention.json')return response({},404);
   reads++;const value=files.get(path);if(!value)return response({},404);return response({type:'file',encoding:'base64',sha:value.blob,size:value.bytes.length,content:mode==='bad-blob'?'!':value.bytes.toString('base64')});
  };
  const reader=()=>createGitHubRepositoryRunReader({credential,configuration,fetchImpl,cache,now:()=>clock});
