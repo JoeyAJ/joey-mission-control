@@ -17,6 +17,7 @@ SLIP 平台骨架在私有庫 JoeyAJ/SLIP。Vercel 專案 woosong-letter 已改�
 
 ## Work log
 
+- 2026-11-27T21:30:00+09:00 | Claude Code | in_progress | SLIP#2:英文組表 EN Team Applications、韓文組表 한국어팀 지원자(各自語言欄位),SLIP 彙整三組並可按組篩選;拿掉負責老師轉換率。英/韓兩表目前沒有任何 Airtable 自動化或寄信。待辦:Joey 和英文/韓文組負責人談流程與申請資料後,再調整兩表欄位、決定是否加寄信自動化(在那之前不要做)。
 - 2026-11-27T20:55:00+09:00 | Claude Code | in_progress | SLIP#2 加「修改密碼」:SLIP_USERS 為初始密碼、首次登入強制改;新密碼雜湊存 Airtable「SLIP账号」tblATb2UWbPHk3YLw;系統管理頁可「초기화」重置。預覽已部署 0a8b57b,待 Joey 首次登入改密碼驗證寫入。
 - 2026-11-27T18:10:00+09:00 | Claude Code | in_progress | SLIP 學校版草稿 PR JoeyAJ/SLIP#2:校徽品牌、韓中雙語、全站登入與角色權限、系統管理與使用說明頁、交付文件三份;JOEY 展示頁 /showcase.html。尚未合併 main。
 
