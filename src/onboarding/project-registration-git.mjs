@@ -8,8 +8,11 @@ import {assertIssuedRegistrationReceipt,contentDigest,registrationError} from '.
 const sha=v=>typeof v==='string'&&/^[a-f0-9]{40}$/.test(v);
 const roots=[REGISTRY_PATH,INDEX_PATH,LEDGER_PATH];
 const allowed=p=>roots.includes(p)||/^PROJECTS\/[A-Z][A-Z0-9_]{2,63}\/(?:PROJECT_MEMORY|CURRENT_STATE|NEXT_ACTIONS|ARCHITECTURE|DECISIONS)\.md$/.test(p);
+// Validated catalog snapshots per fetch implementation, owner and commit. A page load then costs two
+// GitHub reads (identity + branch head) instead of ~35 while the branch head is unchanged.
+const catalogCache=new WeakMap();
 const failure=(code='REGISTRATION_CATALOG_UNAVAILABLE',status=503)=>{throw registrationError(code,status);};
-export function createRegistrationGitPort({credential,readCredential=null,activation=projectRegistrationActivation,ownerSubject,fetchImpl=globalThis.fetch,sourceQualification='APPROVED_REMOTE_GIT'}={}) {
+export function createRegistrationGitPort({credential,readCredential=null,activation=projectRegistrationActivation,ownerSubject,fetchImpl=globalThis.fetch,sourceQualification='APPROVED_REMOTE_GIT',cacheCatalog=false}={}) {
   const readFetch=withGitHubReadDiagnostics(fetchImpl,'catalog');
   const usable=v=>typeof v==='string'&&v.length>=20&&!/\s/.test(v);
   const configured=registrationActivated(activation)&&usable(credential);
@@ -42,6 +45,8 @@ export function createRegistrationGitPort({credential,readCredential=null,activa
   return Object.freeze({qualification:'SCOPED_GIT_REGISTRATION_PORT',sourceQualification,configured,readConfigured,
     async readSnapshot({signal,expectedCommitSha}={}) {
       await identity(signal);const headSha=await head(signal);if(expectedCommitSha&&headSha!==expectedCommitSha)failure('REGISTRATION_CATALOG_HEAD_CONFLICT',409);
+      const cacheKey=c.repositoryId+'@'+c.ref+'#'+ownerSubject, cached=cacheCatalog?catalogCache.get(fetchImpl)?.get(cacheKey):null;
+      if(cached?.headSha===headSha)return cached.snapshot;
       const commit=await request('/git/commits/'+headSha,{signal,limit:65536});if(commit.sha!==headSha||!sha(commit.tree?.sha))failure();const trees=new Map();
       const tree=async id=>{if(!trees.has(id))trees.set(id,request('/git/trees/'+id,{signal,limit:262144}));const t=await trees.get(id);if(t.sha!==id||t.truncated!==false||!Array.isArray(t.tree)||t.tree.length>2048)failure('REGISTRATION_GIT_ENTRY_INVALID',409);return t;};
       const read=async path=>{
@@ -57,7 +62,9 @@ export function createRegistrationGitPort({credential,readCredential=null,activa
       const ledger=parseRegistrationLedger(files[LEDGER_PATH],ownerSubject), memoryPaths=ledger.entries.flatMap(e=>registrationMemoryPaths(e.receipt.projectId));
       for(let i=0;i<memoryPaths.length;i+=4)await Promise.all(memoryPaths.slice(i,i+4).map(async path=>{files[path]=await read(path);}));
       await identity(signal);if(await head(signal)!==headSha)failure('REGISTRATION_CATALOG_HEAD_CONFLICT',409);
-      return validateRegistrationCatalog({headSha,files},ownerSubject);
+      const snapshot=validateRegistrationCatalog({headSha,files},ownerSubject);
+      if(cacheCatalog&&fetchImpl&&(typeof fetchImpl==='function'||typeof fetchImpl==='object')){if(!catalogCache.has(fetchImpl))catalogCache.set(fetchImpl,new Map());catalogCache.get(fetchImpl).set(cacheKey,{headSha,snapshot});}
+      return snapshot;
     },
     async commitFiles({expectedHeadSha,projectId,files,signal,beforeMutation}) {
       if(!sha(expectedHeadSha))failure('REGISTRATION_REQUEST_INVALID',400);
