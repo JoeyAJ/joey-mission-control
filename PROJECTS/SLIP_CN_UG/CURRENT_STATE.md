@@ -4,19 +4,22 @@ Project: SLIP_CN_UG
 Status: Pending Development
 
 ```yaml
-version: 招生模組 v1（錄取通知書生成器＋看板已併入 JoeyAJ/SLIP）
+version: SLIP 學校版 v1（PR #2 學校版＋PR #3 自動收件已併入 JoeyAJ/SLIP main）
 current_agent: Claude Code
-agent_model: claude-opus-5
+agent_model: claude-opus-5-5
 as_of: 2026-11-27
-public_url: https://woosong-letter.vercel.app
+public_url: https://wsu-slip.vercel.app
 ```
 
 ## Current Stage
 
-SLIP 平台骨架在私有庫 JoeyAJ/SLIP。Vercel 專案 woosong-letter 已改由該庫 main 自動建置，公開站 https://woosong-letter.vercel.app 的首頁即模組清單加招生各階段人數。招生模組（平台的第一個模組）可用：原本獨立的錄取通知書生成器與即時看板整套併入 modules/admission/letter/，對外路徑一字未改，Airtable 的公式欄與四類 Email 自動化照舊運作。本科／研究生／SolBridge 三類別的階段人數由同一份 Airtable 欄位 ID 定義計算，首頁與完整看板不會出現兩套數字；看板讀取用唯讀令牌，寫回 PDF 與每週快照才用寫入令牌，密鑰只放 Vercel 環境變數。接下來要 build 的是在學（缺課預警）與畢業（學分不足分階段提醒）兩個階段模組，兩者的資料來源與通知對象須先與各階段負責人談定才動工；平台層的學生主檔、階段、規則與事件紀錄同一輪一起 build。錄取通知書的端對端產出已由 owner 於 2026-11-26 核對無誤(PDF 內容與寫回 Airtable 附件欄);每週快照 cron 的首次自動執行在 2026-12-01。另一條線(admissions-pdf-system 的 Google Sheet 名冊試點):S2-c 面試時間排程(AF 欄,可改期、寫成日期值、二次確認後只寫一格)已以草稿 PR #31 提出,合併目標為試點分支;學校版(交付招生部)已以草稿 PR JoeyAJ/SLIP#2 提出:又松大學校徽配色、韓文為主中文切換、全站登入與角色權限(admin／manager／staff,可限定類別與負責老師),舊訪問碼仍可登入;另附系統管理頁、韓中使用說明頁,以及 docs/handover 的管理員手冊、驗收清單與交付提案;JOEY 品牌版改為 /showcase.html 示範頁。合併入 main 與建立正式帳號(SLIP_USERS)待 owner 決定。
+SLIP 學校版已併入私有庫 JoeyAJ/SLIP 的 main，正式網址 https://wsu-slip.vercel.app（Vercel 專案由 woosong-letter 改名）。定位是交付又松大學招生部使用的學生全周期平台：又松大學校徽配色、韓文為主中文切換、全站登入與角色權限（招生部只用 admin／manager 帳號 joey、ipak-admin、ipak），帳號在 SLIP_USERS，首次登入強制改密碼，新密碼雜湊存 Airtable「SLIP账号」表，系統管理頁可重置。上方模組列 申請→入學→簽證→在校管理→畢業→校友，模組定義集中在 brand/app.js MODULES；目前只有申請模組上線，其餘為佔位頁（列計劃功能與通知管道，未接），接下來依各部門談定的內容逐一 build。中文／英文／韓文三組資料互不可見：中文組用原 base appOjpvsgbLz3cg3Y，英文組 base appVFO2KxK1w4SWx3，韓文組 base appRCfzQNel7J0I3l；英／韓兩組目前沒有任何 Airtable 自動化或寄信。負責老師轉換率已移除。自動收件（PR #3）：每天 10:00（韓國時間）掃 Google Drive 學期資料夾（中文組 2027-1），新學生資料進「申请收件箱」待審核頁，人工確認後才登記入主表；ANTHROPIC_API_KEY 刻意留空，待學校交付時提供，在那之前收件記為「待提取」需人工填。交付文件在 docs/handover：交付提案、驗收清單、管理員手冊。JOEY 品牌版為 /showcase.html 展示頁。另一條線 admissions-pdf-system 的 S2-c 面試時間排程仍是草稿 PR #31，未合併。
 
 ## Work log
 
+- 2026-11-27T22:45:00+09:00 | Claude Code | completed | MC 同步:SLIP 學校版 PR #2 與自動收件 PR #3 已併入 main,正式網址 wsu-slip.vercel.app;待辦見下一步(Drive 共用、Production 變數、強密碼、英/韓組流程)。
+- 2026-11-27T22:00:00+09:00 | Claude Code | completed | SLIP#3 自動收件併入 main:每天 10 點掃 Drive 2027-1 資料夾→待審核頁→人工確認登記;ANTHROPIC_API_KEY 留空待學校提供。
+- 2026-11-27T21:50:00+09:00 | Claude Code | completed | SLIP#2 模組框架:申請→入學→簽證→在校管理→畢業→校友,首頁為模組總覽,未上線模組為佔位頁;學校版 PR #2 併入 main。
 - 2026-11-27T21:30:00+09:00 | Claude Code | in_progress | SLIP#2:英文組表 EN Team Applications、韓文組表 한국어팀 지원자(各自語言欄位),SLIP 彙整三組並可按組篩選;拿掉負責老師轉換率。英/韓兩表目前沒有任何 Airtable 自動化或寄信。待辦:Joey 和英文/韓文組負責人談流程與申請資料後,再調整兩表欄位、決定是否加寄信自動化(在那之前不要做)。
 - 2026-11-27T20:55:00+09:00 | Claude Code | in_progress | SLIP#2 加「修改密碼」:SLIP_USERS 為初始密碼、首次登入強制改;新密碼雜湊存 Airtable「SLIP账号」tblATb2UWbPHk3YLw;系統管理頁可「초기화」重置。預覽已部署 0a8b57b,待 Joey 首次登入改密碼驗證寫入。
 - 2026-11-27T18:10:00+09:00 | Claude Code | in_progress | SLIP 學校版草稿 PR JoeyAJ/SLIP#2:校徽品牌、韓中雙語、全站登入與角色權限、系統管理與使用說明頁、交付文件三份;JOEY 展示頁 /showcase.html。尚未合併 main。
@@ -69,4 +72,3 @@ Entry SHA256: 4ae97883ef73f841aa315910bed18bdb806d54f61b3c1eb80e89ec7730aa965f
 Approval: owner-chat-20261105
 
 The baseline is a historical documentation receipt; registration does not authorize development or activate source-read/report-write scopes. S1 lives on open PR #18 and is not merged.
-- 2026-11-27 SLIP 模組框架（PR #2, 6c730b2）：上方模組列 申請→入學→簽證→在校管理→畢業→校友（校友為補充）；首頁=模組總覽，申請總覽移到 /apply.html；未上線模組走 /module.html?m=key，列計劃功能與通知管道（負責部門/Email/KakaoTalk，未接）。模組定義集中在 brand/app.js MODULES。PR #3 待審核頁改放 MODULES.apply.sub。
