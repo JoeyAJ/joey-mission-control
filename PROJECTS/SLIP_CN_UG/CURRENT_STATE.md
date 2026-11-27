@@ -17,7 +17,7 @@ SLIP 學校版已併入私有庫 JoeyAJ/SLIP 的 main，正式網址 https://wsu
 
 ## Work log
 
-- 2026-11-27T22:45:00+09:00 | Claude Code | completed | MC 同步:SLIP 學校版 PR #2 與自動收件 PR #3 已併入 main,正式網址 wsu-slip.vercel.app;待辦見下一步(Drive 共用、Production 變數、強密碼、英/韓組流程)。
+- 2026-11-27T22:45:00+09:00 | Claude Code | completed | MC 同步:SLIP 學校版 PR #2 與自動收件 PR #3 已併入 main,正式網址 wsu-slip.vercel.app;登入頁與帳號設定已確認正常;待辦見下一步。
 - 2026-11-27T22:00:00+09:00 | Claude Code | completed | SLIP#3 自動收件併入 main:每天 10 點掃 Drive 2027-1 資料夾→待審核頁→人工確認登記;ANTHROPIC_API_KEY 留空待學校提供。
 - 2026-11-27T21:50:00+09:00 | Claude Code | completed | SLIP#2 模組框架:申請→入學→簽證→在校管理→畢業→校友,首頁為模組總覽,未上線模組為佔位頁;學校版 PR #2 併入 main。
 - 2026-11-27T21:30:00+09:00 | Claude Code | in_progress | SLIP#2:英文組表 EN Team Applications、韓文組表 한국어팀 지원자(各自語言欄位),SLIP 彙整三組並可按組篩選;拿掉負責老師轉換率。英/韓兩表目前沒有任何 Airtable 自動化或寄信。待辦:Joey 和英文/韓文組負責人談流程與申請資料後,再調整兩表欄位、決定是否加寄信自動化(在那之前不要做)。
