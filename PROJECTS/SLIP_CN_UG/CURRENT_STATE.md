@@ -69,3 +69,4 @@ Entry SHA256: 4ae97883ef73f841aa315910bed18bdb806d54f61b3c1eb80e89ec7730aa965f
 Approval: owner-chat-20261105
 
 The baseline is a historical documentation receipt; registration does not authorize development or activate source-read/report-write scopes. S1 lives on open PR #18 and is not merged.
+- 2026-11-27 SLIP 模組框架（PR #2, 6c730b2）：上方模組列 申請→入學→簽證→在校管理→畢業→校友（校友為補充）；首頁=模組總覽，申請總覽移到 /apply.html；未上線模組走 /module.html?m=key，列計劃功能與通知管道（負責部門/Email/KakaoTalk，未接）。模組定義集中在 brand/app.js MODULES。PR #3 待審核頁改放 MODULES.apply.sub。
